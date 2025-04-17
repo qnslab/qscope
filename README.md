@@ -3,6 +3,8 @@
 ![Project Status: Beta](https://img.shields.io/badge/status-beta-yellow)
 [![Docs](https://img.shields.io/badge/docs-v0.2-blue)](https://qnslab.github.io/qscope/qscope/index.html)
 
+`Quantum Spin Control and Optics Programming Engine`
+
 A framework for controlling physics experiments with a focus on quantum sensing and spin defect measurements.
 
 ![Qscope GUI](./docs/images/qscope_gui.png)
@@ -15,7 +17,7 @@ Qscope features a server-client architecture designed for flexible control of ex
 - **Client**: Controls the system through scripts or GUI
 - **Measurement**: Handles experiment logic with parameter sweeps
 
-Multiple clients can connect simultaneously to control the system, run measurements, and monitor data in real-time.
+Multiple clients (script or gui) can connect simultaneously to control the system, run measurements, and monitor data in real-time.
 
 ## Key Features
 
