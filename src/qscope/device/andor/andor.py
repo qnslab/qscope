@@ -25,13 +25,14 @@ lib_folder = os.path.abspath(
     os.path.join(this_folder, *[".." for i in range(4)], "proprietary_artefacts")
 )
 
-
 # TODO could probably have a class above this for all pylablib cameras, share functionality
 class AndorSDK3(Device):
     def __init__(self, **config_kwargs):
         super().__init__(**config_kwargs)
+
         if platform.system() == "Windows":
-            pll.par["devices/dlls/andor_sdk3"] = lib_folder
+            # pll.par["devices/dlls/andor_sdk3"] = lib_folder
+            pll.par["devices/dlls/andor_sdk3"] = "C:\\Qscope\\proprietary_artefacts"
         else:
             pll.par["devices/only_windows_dlls"] = False
             pll.par["devices/dlls/andor_sdk3"] = "/usr/local/lib/libatcore.so"

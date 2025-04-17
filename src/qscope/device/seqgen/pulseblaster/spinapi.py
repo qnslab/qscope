@@ -50,7 +50,7 @@ debug = False
 
 this_folder = os.path.abspath(os.path.realpath(os.path.dirname(__file__)))
 lib_folder = os.path.abspath(
-    os.path.join(this_folder, *[".." for i in range(5)], "devlib")
+    os.path.join(this_folder, *[".." for i in range(5)], "proprietary_artefacts")
 )
 
 # FIXME would be nice to add types to functions here
