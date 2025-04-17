@@ -1,0 +1,1117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.6">
+<title>qscope.fitting.resonance API documentation</title>
+<meta name="description" content="">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}#lunr-search{width:100%;font-size:1em;padding:6px 9px 5px 9px;border:1px solid silver}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes: true } });</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML" integrity="sha256-kZafAc6mZvK3W3v1pHOcUix30OHQN6pU/NO2oFkqZVw=" crossorigin></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>qscope.fitting.resonance</code></h1>
+</header>
+<section id="section-intro">
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="qscope.fitting.resonance.DifferentialGaussian"><code class="flex name class">
+<span>class <span class="ident">DifferentialGaussian</span></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class DifferentialGaussian(FitModel):
+    def __init__(self):
+        self.param_names = [&#34;position&#34;, &#34;amp&#34;, &#34;width&#34;, &#34;pl&#34;]
+        self.param_units = [&#34;MHz&#34;, &#34;%&#34;, &#34;MHz&#34;, &#34;counts&#34;]
+
+    def guess_parameters(self, fmod=0):
+        # Guess the parameters for the fit
+        if not hasattr(self, &#34;fmod&#34;):
+            self.fmod = fmod
+
+        # Determine if the peak is positive or negative
+        # We are assuming that there is more data below the FWHM than above
+        avg_val = np.mean(self.ydata)
+        max_val = np.max(self.ydata)
+        min_val = np.min(self.ydata)
+
+        a_guess = (max_val - min_val) / 2
+
+        # cemter is inbetween the max and min
+        pos_guess = (
+            self.xdata[np.where(self.ydata == max_val)[0][0]]
+            + (
+                self.xdata[np.where(self.ydata == min_val)[0][0]]
+                - self.xdata[np.where(self.ydata == max_val)[0][0]]
+            )
+            / 2
+        )
+
+        # assume that the fmod has been set to the width
+        w_guess = self.fmod
+        w_guess = 1
+
+        pl_guess = np.mean(self.ydata)
+
+        self.p0 = [pos_guess, a_guess, w_guess, pl_guess]
+
+        return self.p0
+
+    def function(self, x, x0, a, w, c):
+        return (
+            a * np.exp(-((x - 0.5 * self.fmod - x0) ** 2) / w**2)
+            - a * np.exp(-((x + 0.5 * self.fmod - x0) ** 2) / w**2)
+            + c
+        )
+
+    def get_fit_results_txt(self):
+        results = super().get_fit_results_txt()
+        results += (
+            f&#34;sens.: {self.sensitivity(self.fit_results[3]):0.3e} (T/sqrt(Hz)) \n&#34;
+        )
+        return results
+
+    def generate_test_data(self):
+        self.p0 = [5, 1, 1, 1]
+        self.fmod = 1
+        return super().generate_test_data()
+
+    def sensitivity(self, pl):
+        # To get the sensitivity we need to know the absolute counts.
+        # Thus we need to pass this value.
+
+        amp = self.fit_results[1]
+        width = self.fit_results[2]
+
+        planks_const = 6.62607015e-34
+        muB = 9.274009994e-24
+        ge = 2.0023
+
+        eta = (
+            0.7
+            * (planks_const / (ge * muB))
+            * np.abs(width)
+            * 1e6
+            / (np.abs(2 * amp) * np.sqrt(2 * pl))
+        )
+        return eta</code></pre>
+</details>
+<div class="desc"></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.fitting.fit_model.FitModel" href="fit_model.html#qscope.fitting.fit_model.FitModel">FitModel</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.fitting.resonance.DifferentialGaussian.function"><code class="name flex">
+<span>def <span class="ident">function</span></span>(<span>self, x, x0, a, w, c)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def function(self, x, x0, a, w, c):
+    return (
+        a * np.exp(-((x - 0.5 * self.fmod - x0) ** 2) / w**2)
+        - a * np.exp(-((x + 0.5 * self.fmod - x0) ** 2) / w**2)
+        + c
+    )</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.fitting.resonance.DifferentialGaussian.generate_test_data"><code class="name flex">
+<span>def <span class="ident">generate_test_data</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def generate_test_data(self):
+    self.p0 = [5, 1, 1, 1]
+    self.fmod = 1
+    return super().generate_test_data()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.fitting.resonance.DifferentialGaussian.get_fit_results_txt"><code class="name flex">
+<span>def <span class="ident">get_fit_results_txt</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_fit_results_txt(self):
+    results = super().get_fit_results_txt()
+    results += (
+        f&#34;sens.: {self.sensitivity(self.fit_results[3]):0.3e} (T/sqrt(Hz)) \n&#34;
+    )
+    return results</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.fitting.resonance.DifferentialGaussian.guess_parameters"><code class="name flex">
+<span>def <span class="ident">guess_parameters</span></span>(<span>self, fmod=0)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def guess_parameters(self, fmod=0):
+    # Guess the parameters for the fit
+    if not hasattr(self, &#34;fmod&#34;):
+        self.fmod = fmod
+
+    # Determine if the peak is positive or negative
+    # We are assuming that there is more data below the FWHM than above
+    avg_val = np.mean(self.ydata)
+    max_val = np.max(self.ydata)
+    min_val = np.min(self.ydata)
+
+    a_guess = (max_val - min_val) / 2
+
+    # cemter is inbetween the max and min
+    pos_guess = (
+        self.xdata[np.where(self.ydata == max_val)[0][0]]
+        + (
+            self.xdata[np.where(self.ydata == min_val)[0][0]]
+            - self.xdata[np.where(self.ydata == max_val)[0][0]]
+        )
+        / 2
+    )
+
+    # assume that the fmod has been set to the width
+    w_guess = self.fmod
+    w_guess = 1
+
+    pl_guess = np.mean(self.ydata)
+
+    self.p0 = [pos_guess, a_guess, w_guess, pl_guess]
+
+    return self.p0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.fitting.resonance.DifferentialGaussian.sensitivity"><code class="name flex">
+<span>def <span class="ident">sensitivity</span></span>(<span>self, pl)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def sensitivity(self, pl):
+    # To get the sensitivity we need to know the absolute counts.
+    # Thus we need to pass this value.
+
+    amp = self.fit_results[1]
+    width = self.fit_results[2]
+
+    planks_const = 6.62607015e-34
+    muB = 9.274009994e-24
+    ge = 2.0023
+
+    eta = (
+        0.7
+        * (planks_const / (ge * muB))
+        * np.abs(width)
+        * 1e6
+        / (np.abs(2 * amp) * np.sqrt(2 * pl))
+    )
+    return eta</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.fitting.resonance.DifferentialLorentzian"><code class="flex name class">
+<span>class <span class="ident">DifferentialLorentzian</span></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class DifferentialLorentzian(FitModel):
+    def __init__(self):
+        self.param_names = [&#34;pos.&#34;, &#34;amp.&#34;, &#34;wid.&#34;, &#34;pl&#34;]
+        self.param_units = [&#34;MHz&#34;, &#34;%&#34;, &#34;MHz&#34;, &#34;counts&#34;]
+
+    def guess_parameters(self, fmod=0):
+        # Guess the parameters for the fit
+        if not hasattr(self, &#34;fmod&#34;):
+            self.fmod = fmod
+
+        # Determine if the peak is positive or negative
+        # We are assuming that there is more data below the FWHM than above
+        avg_val = np.mean(self.ydata)
+        max_val = np.max(self.ydata)
+        min_val = np.min(self.ydata)
+
+        a_guess = (max_val - min_val) / 2
+
+        # cemter is inbetween the max and min
+        pos_guess = (
+            self.xdata[np.where(self.ydata == max_val)[0][0]]
+            + (
+                self.xdata[np.where(self.ydata == min_val)[0][0]]
+                - self.xdata[np.where(self.ydata == max_val)[0][0]]
+            )
+            / 2
+        )
+
+        # assume that the fmod has been set to the width
+        w_guess = self.fmod
+
+        pl_guess = np.mean(self.ydata)
+
+        self.p0 = [pos_guess, a_guess, w_guess, pl_guess]
+
+        return self.p0
+
+    def function(self, x, x0, a, w, c):
+        return (
+            a * w**2 / (w**2 + (x - 0.5 * self.fmod - x0) ** 2)
+            - a * w**2 / (w**2 + (x + 0.5 * self.fmod - x0) ** 2)
+            + c
+        )
+
+    def get_fit_results_txt(self):
+        results = super().get_fit_results_txt()
+        results += (
+            f&#34;sens.: {self.sensitivity(self.fit_results[3]):0.3e} (T/sqrt(Hz)) \n&#34;
+        )
+        return results
+
+    def generate_test_data(self):
+        self.p0 = [5, 1, 1, 0]
+        self.fmod = 1
+        return super().generate_test_data()
+
+    def sensitivity(self, pl):
+        # To get the sensitivity we need to know the absolute counts.
+        # Thus we need to pass this value.
+
+        amp = self.fit_results[1]
+        width = self.fit_results[2]
+
+        planks_const = 6.62607015e-34
+        muB = 9.274009994e-24
+        ge = 2.0023
+
+        eta = (
+            (4 / (3 * np.sqrt(3)))
+            * (planks_const / (ge * muB))
+            * np.abs(width)
+            * 1e6
+            / (np.abs(2 * amp) * np.sqrt(2 * pl))
+        )
+        return eta</code></pre>
+</details>
+<div class="desc"></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.fitting.fit_model.FitModel" href="fit_model.html#qscope.fitting.fit_model.FitModel">FitModel</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.fitting.resonance.DifferentialLorentzian.function"><code class="name flex">
+<span>def <span class="ident">function</span></span>(<span>self, x, x0, a, w, c)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def function(self, x, x0, a, w, c):
+    return (
+        a * w**2 / (w**2 + (x - 0.5 * self.fmod - x0) ** 2)
+        - a * w**2 / (w**2 + (x + 0.5 * self.fmod - x0) ** 2)
+        + c
+    )</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.fitting.resonance.DifferentialLorentzian.generate_test_data"><code class="name flex">
+<span>def <span class="ident">generate_test_data</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def generate_test_data(self):
+    self.p0 = [5, 1, 1, 0]
+    self.fmod = 1
+    return super().generate_test_data()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.fitting.resonance.DifferentialLorentzian.get_fit_results_txt"><code class="name flex">
+<span>def <span class="ident">get_fit_results_txt</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_fit_results_txt(self):
+    results = super().get_fit_results_txt()
+    results += (
+        f&#34;sens.: {self.sensitivity(self.fit_results[3]):0.3e} (T/sqrt(Hz)) \n&#34;
+    )
+    return results</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.fitting.resonance.DifferentialLorentzian.guess_parameters"><code class="name flex">
+<span>def <span class="ident">guess_parameters</span></span>(<span>self, fmod=0)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def guess_parameters(self, fmod=0):
+    # Guess the parameters for the fit
+    if not hasattr(self, &#34;fmod&#34;):
+        self.fmod = fmod
+
+    # Determine if the peak is positive or negative
+    # We are assuming that there is more data below the FWHM than above
+    avg_val = np.mean(self.ydata)
+    max_val = np.max(self.ydata)
+    min_val = np.min(self.ydata)
+
+    a_guess = (max_val - min_val) / 2
+
+    # cemter is inbetween the max and min
+    pos_guess = (
+        self.xdata[np.where(self.ydata == max_val)[0][0]]
+        + (
+            self.xdata[np.where(self.ydata == min_val)[0][0]]
+            - self.xdata[np.where(self.ydata == max_val)[0][0]]
+        )
+        / 2
+    )
+
+    # assume that the fmod has been set to the width
+    w_guess = self.fmod
+
+    pl_guess = np.mean(self.ydata)
+
+    self.p0 = [pos_guess, a_guess, w_guess, pl_guess]
+
+    return self.p0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.fitting.resonance.DifferentialLorentzian.sensitivity"><code class="name flex">
+<span>def <span class="ident">sensitivity</span></span>(<span>self, pl)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def sensitivity(self, pl):
+    # To get the sensitivity we need to know the absolute counts.
+    # Thus we need to pass this value.
+
+    amp = self.fit_results[1]
+    width = self.fit_results[2]
+
+    planks_const = 6.62607015e-34
+    muB = 9.274009994e-24
+    ge = 2.0023
+
+    eta = (
+        (4 / (3 * np.sqrt(3)))
+        * (planks_const / (ge * muB))
+        * np.abs(width)
+        * 1e6
+        / (np.abs(2 * amp) * np.sqrt(2 * pl))
+    )
+    return eta</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.fitting.resonance.Gaussian"><code class="flex name class">
+<span>class <span class="ident">Gaussian</span></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Gaussian(FitModel):
+    def __init__(self):
+        self.param_names = [&#34;position&#34;, &#34;amp&#34;, &#34;width&#34;, &#34;pl&#34;]
+        self.param_units = [&#34;MHz&#34;, &#34;%&#34;, &#34;MHz&#34;, &#34;counts&#34;]
+
+    def guess_parameters(self, **kwargs):
+        # Guess the parameters for the fit
+
+        # Determine if the peak is positive or negative
+        # We are assuming that there is more data below the FWHM than above
+        avg_val = np.mean(self.ydata)
+        max_val = np.max(self.ydata)
+        min_val = np.min(self.ydata)
+
+        if np.abs(avg_val - max_val) &gt; np.abs(avg_val - min_val):
+            a_guess = max_val - avg_val
+        else:
+            a_guess = min_val - avg_val
+
+        # Find the index of the position
+        if a_guess &lt; 0:
+            peak_val = np.min(self.ydata)
+        else:
+            peak_val = np.max(self.ydata)
+
+        # Find the index of the maximum value
+        peak_index = np.where(self.ydata == peak_val)[0][0]
+        # Find the frequency at the maximum value
+        pos_guess = self.xdata[peak_index]
+
+        # estimate the FWHM
+        # Find the index of the half max value
+        half_max = (peak_val + avg_val) / 2
+        # Find the index that is closest to this value
+        half_max_index = (np.abs(self.ydata - half_max)).argmin()
+        # Find the frequency at the half max value
+        w_guess = np.abs(self.xdata[half_max_index] - pos_guess)
+
+        pl_guess = np.mean(self.ydata)
+
+        self.p0 = [pos_guess, a_guess, w_guess, pl_guess]
+
+        return self.p0
+
+    def get_fit_results_txt(self, total_counts):
+        results = super().get_fit_results_txt()
+        results += f&#34;sens.: {self.sensitivity(total_counts):0.3e} (T/sqrt(Hz))\n&#34;
+
+        return results
+
+    def generate_test_data(self):
+        self.p0 = [5, 1, 1, 0]
+        return super().generate_test_data()
+
+    def function(self, x, x0, a, w, c):
+        # Gaussian function
+        return a * np.exp(-((x - x0) ** 2) / w**2) + c
+
+    def sensitivity(self, total_counts):
+        # To get the sensitivity we need to know the absolute counts.
+        # Thus we need to pass this value.
+
+        amp = self.fit_results[1]
+        width = self.fit_results[2]
+
+        planks_const = 6.62607015e-34
+        muB = 9.274009994e-24
+        ge = 2.0023
+
+        eta = (
+            0.7
+            * (planks_const / (ge * muB))
+            * np.abs(width)
+            * 1e6
+            / (np.abs(amp) * np.sqrt(total_counts))
+        )
+        return eta</code></pre>
+</details>
+<div class="desc"></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.fitting.fit_model.FitModel" href="fit_model.html#qscope.fitting.fit_model.FitModel">FitModel</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.fitting.resonance.Gaussian.function"><code class="name flex">
+<span>def <span class="ident">function</span></span>(<span>self, x, x0, a, w, c)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def function(self, x, x0, a, w, c):
+    # Gaussian function
+    return a * np.exp(-((x - x0) ** 2) / w**2) + c</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.fitting.resonance.Gaussian.generate_test_data"><code class="name flex">
+<span>def <span class="ident">generate_test_data</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def generate_test_data(self):
+    self.p0 = [5, 1, 1, 0]
+    return super().generate_test_data()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.fitting.resonance.Gaussian.get_fit_results_txt"><code class="name flex">
+<span>def <span class="ident">get_fit_results_txt</span></span>(<span>self, total_counts)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_fit_results_txt(self, total_counts):
+    results = super().get_fit_results_txt()
+    results += f&#34;sens.: {self.sensitivity(total_counts):0.3e} (T/sqrt(Hz))\n&#34;
+
+    return results</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.fitting.resonance.Gaussian.guess_parameters"><code class="name flex">
+<span>def <span class="ident">guess_parameters</span></span>(<span>self, **kwargs)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def guess_parameters(self, **kwargs):
+    # Guess the parameters for the fit
+
+    # Determine if the peak is positive or negative
+    # We are assuming that there is more data below the FWHM than above
+    avg_val = np.mean(self.ydata)
+    max_val = np.max(self.ydata)
+    min_val = np.min(self.ydata)
+
+    if np.abs(avg_val - max_val) &gt; np.abs(avg_val - min_val):
+        a_guess = max_val - avg_val
+    else:
+        a_guess = min_val - avg_val
+
+    # Find the index of the position
+    if a_guess &lt; 0:
+        peak_val = np.min(self.ydata)
+    else:
+        peak_val = np.max(self.ydata)
+
+    # Find the index of the maximum value
+    peak_index = np.where(self.ydata == peak_val)[0][0]
+    # Find the frequency at the maximum value
+    pos_guess = self.xdata[peak_index]
+
+    # estimate the FWHM
+    # Find the index of the half max value
+    half_max = (peak_val + avg_val) / 2
+    # Find the index that is closest to this value
+    half_max_index = (np.abs(self.ydata - half_max)).argmin()
+    # Find the frequency at the half max value
+    w_guess = np.abs(self.xdata[half_max_index] - pos_guess)
+
+    pl_guess = np.mean(self.ydata)
+
+    self.p0 = [pos_guess, a_guess, w_guess, pl_guess]
+
+    return self.p0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.fitting.resonance.Gaussian.sensitivity"><code class="name flex">
+<span>def <span class="ident">sensitivity</span></span>(<span>self, total_counts)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def sensitivity(self, total_counts):
+    # To get the sensitivity we need to know the absolute counts.
+    # Thus we need to pass this value.
+
+    amp = self.fit_results[1]
+    width = self.fit_results[2]
+
+    planks_const = 6.62607015e-34
+    muB = 9.274009994e-24
+    ge = 2.0023
+
+    eta = (
+        0.7
+        * (planks_const / (ge * muB))
+        * np.abs(width)
+        * 1e6
+        / (np.abs(amp) * np.sqrt(total_counts))
+    )
+    return eta</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.fitting.resonance.Linear"><code class="flex name class">
+<span>class <span class="ident">Linear</span></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Linear(FitModel):
+    def __init__(self):
+        self.param_names = [&#34;slope&#34;, &#34;intercept&#34;]
+        self.param_units = [&#34;cps/MHz&#34;, &#34;counts&#34;]
+
+    def guess_parameters(self, **kwargs):
+        # Guess the parameters for the fit
+        slope_guess = (self.ydata[-1] - self.ydata[0]) / (
+            self.xdata[-1] - self.xdata[0]
+        )
+        intercept_guess = np.mean(self.ydata) - slope_guess * np.mean(self.xdata)
+
+        self.p0 = [slope_guess, intercept_guess]
+        return self.p0
+
+    def function(self, x, m, c):
+        return m * x + c
+
+    def generate_test_data(self):
+        self.p0 = [1, 1]
+        return super().generate_test_data()</code></pre>
+</details>
+<div class="desc"></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.fitting.fit_model.FitModel" href="fit_model.html#qscope.fitting.fit_model.FitModel">FitModel</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.fitting.resonance.Linear.function"><code class="name flex">
+<span>def <span class="ident">function</span></span>(<span>self, x, m, c)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def function(self, x, m, c):
+    return m * x + c</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.fitting.resonance.Linear.generate_test_data"><code class="name flex">
+<span>def <span class="ident">generate_test_data</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def generate_test_data(self):
+    self.p0 = [1, 1]
+    return super().generate_test_data()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.fitting.resonance.Linear.guess_parameters"><code class="name flex">
+<span>def <span class="ident">guess_parameters</span></span>(<span>self, **kwargs)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def guess_parameters(self, **kwargs):
+    # Guess the parameters for the fit
+    slope_guess = (self.ydata[-1] - self.ydata[0]) / (
+        self.xdata[-1] - self.xdata[0]
+    )
+    intercept_guess = np.mean(self.ydata) - slope_guess * np.mean(self.xdata)
+
+    self.p0 = [slope_guess, intercept_guess]
+    return self.p0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.fitting.resonance.Lorentzian"><code class="flex name class">
+<span>class <span class="ident">Lorentzian</span></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Lorentzian(FitModel):
+    def __init__(self):
+        self.param_names = [&#34;position&#34;, &#34;amp&#34;, &#34;width&#34;, &#34;pl&#34;]
+        self.param_units = [&#34;MHz&#34;, &#34;%&#34;, &#34;MHz&#34;, &#34;counts&#34;]
+
+    def guess_parameters(self, **kwargs):
+        # Guess the parameters for the fit
+
+        # Determine if the peak is positive or negative
+        # We are assuming that there is more data below the FWHM than above
+        avg_val = np.mean(self.ydata)
+        max_val = np.max(self.ydata)
+        min_val = np.min(self.ydata)
+
+        if np.abs(avg_val - max_val) &gt; np.abs(avg_val - min_val):
+            a_guess = max_val - avg_val
+        else:
+            a_guess = min_val - avg_val
+
+        # Find the index of the position
+        if a_guess &lt; 0:
+            peak_val = np.min(self.ydata)
+        else:
+            peak_val = np.max(self.ydata)
+
+        # Find the index of the maximum value
+        peak_index = np.where(self.ydata == peak_val)[0][0]
+        # Find the frequency at the maximum value
+        pos_guess = self.xdata[peak_index]
+
+        # estimate the FWHM
+        # Find the index of the half max value
+        half_max = (peak_val + avg_val) / 2
+        # Find the index that is closest to this value
+        half_max_index = (np.abs(self.ydata - half_max)).argmin()
+        # Find the frequency at the half max value
+        w_guess = np.abs(self.xdata[half_max_index] - pos_guess)
+
+        pl_guess = np.mean(self.ydata)
+
+        self.p0 = [pos_guess, a_guess, w_guess, pl_guess]
+        return
+
+    def function(self, x, x0, a, w, c):
+        return a * w**2 / (w**2 + (x - x0) ** 2) + c
+
+    def sensitivity(self, total_counts):
+        # To get the sensitivity we need to know the absolute counts.
+        # Thus we need to pass this value.
+
+        amp = self.fit_results[1]
+        width = self.fit_results[2]
+        pl = self.fit_results[3]
+
+        planks_const = 6.62607015e-34
+        muB = 9.274009994e-24
+        ge = 2.0023
+
+        eta = (
+            (4 / (3 * np.sqrt(3)))
+            * (planks_const / (ge * muB))
+            * np.abs(width)
+            * 1e6
+            / (np.abs(amp) * np.sqrt(total_counts))
+        )
+        return eta
+
+    def generate_test_data(self):
+        self.p0 = [5, 1, 1, 1]
+        return super().generate_test_data()
+
+    def get_fit_results_txt(self, total_counts):
+        results = super().get_fit_results_txt()
+        results += f&#34;sens.: {self.sensitivity(total_counts):0.3e} (T/sqrt(Hz))\n&#34;
+        return results</code></pre>
+</details>
+<div class="desc"></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.fitting.fit_model.FitModel" href="fit_model.html#qscope.fitting.fit_model.FitModel">FitModel</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.fitting.resonance.Lorentzian.function"><code class="name flex">
+<span>def <span class="ident">function</span></span>(<span>self, x, x0, a, w, c)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def function(self, x, x0, a, w, c):
+    return a * w**2 / (w**2 + (x - x0) ** 2) + c</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.fitting.resonance.Lorentzian.generate_test_data"><code class="name flex">
+<span>def <span class="ident">generate_test_data</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def generate_test_data(self):
+    self.p0 = [5, 1, 1, 1]
+    return super().generate_test_data()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.fitting.resonance.Lorentzian.get_fit_results_txt"><code class="name flex">
+<span>def <span class="ident">get_fit_results_txt</span></span>(<span>self, total_counts)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_fit_results_txt(self, total_counts):
+    results = super().get_fit_results_txt()
+    results += f&#34;sens.: {self.sensitivity(total_counts):0.3e} (T/sqrt(Hz))\n&#34;
+    return results</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.fitting.resonance.Lorentzian.guess_parameters"><code class="name flex">
+<span>def <span class="ident">guess_parameters</span></span>(<span>self, **kwargs)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def guess_parameters(self, **kwargs):
+    # Guess the parameters for the fit
+
+    # Determine if the peak is positive or negative
+    # We are assuming that there is more data below the FWHM than above
+    avg_val = np.mean(self.ydata)
+    max_val = np.max(self.ydata)
+    min_val = np.min(self.ydata)
+
+    if np.abs(avg_val - max_val) &gt; np.abs(avg_val - min_val):
+        a_guess = max_val - avg_val
+    else:
+        a_guess = min_val - avg_val
+
+    # Find the index of the position
+    if a_guess &lt; 0:
+        peak_val = np.min(self.ydata)
+    else:
+        peak_val = np.max(self.ydata)
+
+    # Find the index of the maximum value
+    peak_index = np.where(self.ydata == peak_val)[0][0]
+    # Find the frequency at the maximum value
+    pos_guess = self.xdata[peak_index]
+
+    # estimate the FWHM
+    # Find the index of the half max value
+    half_max = (peak_val + avg_val) / 2
+    # Find the index that is closest to this value
+    half_max_index = (np.abs(self.ydata - half_max)).argmin()
+    # Find the frequency at the half max value
+    w_guess = np.abs(self.xdata[half_max_index] - pos_guess)
+
+    pl_guess = np.mean(self.ydata)
+
+    self.p0 = [pos_guess, a_guess, w_guess, pl_guess]
+    return</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.fitting.resonance.Lorentzian.sensitivity"><code class="name flex">
+<span>def <span class="ident">sensitivity</span></span>(<span>self, total_counts)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def sensitivity(self, total_counts):
+    # To get the sensitivity we need to know the absolute counts.
+    # Thus we need to pass this value.
+
+    amp = self.fit_results[1]
+    width = self.fit_results[2]
+    pl = self.fit_results[3]
+
+    planks_const = 6.62607015e-34
+    muB = 9.274009994e-24
+    ge = 2.0023
+
+    eta = (
+        (4 / (3 * np.sqrt(3)))
+        * (planks_const / (ge * muB))
+        * np.abs(width)
+        * 1e6
+        / (np.abs(amp) * np.sqrt(total_counts))
+    )
+    return eta</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<form>
+<input id="lunr-search" name="q" placeholder="🔎 Search ..." aria-label="Search"
+disabled minlength="2">
+</form>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.css" integrity="sha512-b+T2i3P45i1LZM7I00Ci5QquB9szqaxu+uuk5TUSGjZQ4w4n+qujQiIuvTv2BxE7WCGQCifNMksyKILDiHzsOg==" crossorigin>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.js" integrity="sha512-2B9/byNV1KKRm5nQ2RLViPFD6U4dUjDGwuW1GU+ImJh8YinPU9Zlq1GzdTMO+G2ROrB5o1qasJBy1ttYz0wCug==" crossorigin></script>
+<style>
+.modal-dialog iframe {
+width: 100vw;
+height: calc(100vh - 80px);
+}
+@media screen and (min-width: 700px) {
+.modal-dialog iframe {
+width: 70vw;
+height: 80vh;
+}
+}
+.modal-dialog .tingle-modal-box {width: auto;}
+.modal-dialog .tingle-modal-box__content {padding: 0;}
+</style>
+<script>
+const input = document.getElementById('lunr-search');
+input.disabled = false;
+input.form.addEventListener('submit', (ev) => {
+ev.preventDefault();
+const url = new URL(window.location);
+url.searchParams.set('q', input.value);
+history.replaceState({}, null, url.toString());
+search(input.value);
+});
+const query = new URL(window.location).searchParams.get('q');
+if (query)
+search(query);
+function search(query) {
+const url = '../../doc-search.html#' + encodeURIComponent(query);
+new tingle.modal({
+cssClass: ['modal-dialog'],
+onClose: () => {
+const url = new URL(window.location);
+url.searchParams.delete('q');
+history.replaceState({}, null, url.toString());
+setTimeout(() => input.focus(), 100);
+}
+}).setContent('<iframe src="' + url + '"></iframe>').open();
+}
+</script>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="qscope.fitting" href="index.html">qscope.fitting</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="qscope.fitting.resonance.DifferentialGaussian" href="#qscope.fitting.resonance.DifferentialGaussian">DifferentialGaussian</a></code></h4>
+<ul class="">
+<li><code><a title="qscope.fitting.resonance.DifferentialGaussian.function" href="#qscope.fitting.resonance.DifferentialGaussian.function">function</a></code></li>
+<li><code><a title="qscope.fitting.resonance.DifferentialGaussian.generate_test_data" href="#qscope.fitting.resonance.DifferentialGaussian.generate_test_data">generate_test_data</a></code></li>
+<li><code><a title="qscope.fitting.resonance.DifferentialGaussian.get_fit_results_txt" href="#qscope.fitting.resonance.DifferentialGaussian.get_fit_results_txt">get_fit_results_txt</a></code></li>
+<li><code><a title="qscope.fitting.resonance.DifferentialGaussian.guess_parameters" href="#qscope.fitting.resonance.DifferentialGaussian.guess_parameters">guess_parameters</a></code></li>
+<li><code><a title="qscope.fitting.resonance.DifferentialGaussian.sensitivity" href="#qscope.fitting.resonance.DifferentialGaussian.sensitivity">sensitivity</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.fitting.resonance.DifferentialLorentzian" href="#qscope.fitting.resonance.DifferentialLorentzian">DifferentialLorentzian</a></code></h4>
+<ul class="">
+<li><code><a title="qscope.fitting.resonance.DifferentialLorentzian.function" href="#qscope.fitting.resonance.DifferentialLorentzian.function">function</a></code></li>
+<li><code><a title="qscope.fitting.resonance.DifferentialLorentzian.generate_test_data" href="#qscope.fitting.resonance.DifferentialLorentzian.generate_test_data">generate_test_data</a></code></li>
+<li><code><a title="qscope.fitting.resonance.DifferentialLorentzian.get_fit_results_txt" href="#qscope.fitting.resonance.DifferentialLorentzian.get_fit_results_txt">get_fit_results_txt</a></code></li>
+<li><code><a title="qscope.fitting.resonance.DifferentialLorentzian.guess_parameters" href="#qscope.fitting.resonance.DifferentialLorentzian.guess_parameters">guess_parameters</a></code></li>
+<li><code><a title="qscope.fitting.resonance.DifferentialLorentzian.sensitivity" href="#qscope.fitting.resonance.DifferentialLorentzian.sensitivity">sensitivity</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.fitting.resonance.Gaussian" href="#qscope.fitting.resonance.Gaussian">Gaussian</a></code></h4>
+<ul class="">
+<li><code><a title="qscope.fitting.resonance.Gaussian.function" href="#qscope.fitting.resonance.Gaussian.function">function</a></code></li>
+<li><code><a title="qscope.fitting.resonance.Gaussian.generate_test_data" href="#qscope.fitting.resonance.Gaussian.generate_test_data">generate_test_data</a></code></li>
+<li><code><a title="qscope.fitting.resonance.Gaussian.get_fit_results_txt" href="#qscope.fitting.resonance.Gaussian.get_fit_results_txt">get_fit_results_txt</a></code></li>
+<li><code><a title="qscope.fitting.resonance.Gaussian.guess_parameters" href="#qscope.fitting.resonance.Gaussian.guess_parameters">guess_parameters</a></code></li>
+<li><code><a title="qscope.fitting.resonance.Gaussian.sensitivity" href="#qscope.fitting.resonance.Gaussian.sensitivity">sensitivity</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.fitting.resonance.Linear" href="#qscope.fitting.resonance.Linear">Linear</a></code></h4>
+<ul class="">
+<li><code><a title="qscope.fitting.resonance.Linear.function" href="#qscope.fitting.resonance.Linear.function">function</a></code></li>
+<li><code><a title="qscope.fitting.resonance.Linear.generate_test_data" href="#qscope.fitting.resonance.Linear.generate_test_data">generate_test_data</a></code></li>
+<li><code><a title="qscope.fitting.resonance.Linear.guess_parameters" href="#qscope.fitting.resonance.Linear.guess_parameters">guess_parameters</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.fitting.resonance.Lorentzian" href="#qscope.fitting.resonance.Lorentzian">Lorentzian</a></code></h4>
+<ul class="">
+<li><code><a title="qscope.fitting.resonance.Lorentzian.function" href="#qscope.fitting.resonance.Lorentzian.function">function</a></code></li>
+<li><code><a title="qscope.fitting.resonance.Lorentzian.generate_test_data" href="#qscope.fitting.resonance.Lorentzian.generate_test_data">generate_test_data</a></code></li>
+<li><code><a title="qscope.fitting.resonance.Lorentzian.get_fit_results_txt" href="#qscope.fitting.resonance.Lorentzian.get_fit_results_txt">get_fit_results_txt</a></code></li>
+<li><code><a title="qscope.fitting.resonance.Lorentzian.guess_parameters" href="#qscope.fitting.resonance.Lorentzian.guess_parameters">guess_parameters</a></code></li>
+<li><code><a title="qscope.fitting.resonance.Lorentzian.sensitivity" href="#qscope.fitting.resonance.Lorentzian.sensitivity">sensitivity</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
+</footer>
+</body>
+</html>

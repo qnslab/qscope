@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.6">
+<title>qscope.device.seqgen.sequence_plotting API documentation</title>
+<meta name="description" content="">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}#lunr-search{width:100%;font-size:1em;padding:6px 9px 5px 9px;border:1px solid silver}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes: true } });</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML" integrity="sha256-kZafAc6mZvK3W3v1pHOcUix30OHQN6pU/NO2oFkqZVw=" crossorigin></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>qscope.device.seqgen.sequence_plotting</code></h1>
+</header>
+<section id="section-intro">
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="qscope.device.seqgen.sequence_plotting.plot_instructions_kernel"><code class="name flex">
+<span>def <span class="ident">plot_instructions_kernel</span></span>(<span>insts, ch_defs)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def plot_instructions_kernel(insts, ch_defs):
+    plt.figure(figsize=(10, 5))
+
+    # estimate the total time of the sequence
+    total_time = 0
+    for inst in insts:
+        total_time += inst[&#34;dur&#34;] + inst[&#34;ch_delay&#34;]
+
+    t = 0
+    chs = np.zeros(8)
+    # make sure each ch has a unique y value
+    for i in range(8):
+        chs[i] = chs[i] + i * 1.1
+
+    # Define a list of colors from tab20
+    colormap = plt.get_cmap(&#34;tab20&#34;)
+    # set every 2nd color for the line color
+    line_colors = [colormap(i) for i in range(0, 20, 2)]
+    fill_colors = [colormap(i) for i in range(1, 20, 2)]
+    line_colors = [
+        &#34;tab:blue&#34;,
+        &#34;tab:orange&#34;,
+        &#34;tab:green&#34;,
+        &#34;tab:red&#34;,
+        &#34;tab:purple&#34;,
+        &#34;tab:brown&#34;,
+        &#34;tab:pink&#34;,
+        &#34;tab:gray&#34;,
+        &#34;tab:olive&#34;,
+        &#34;tab:cyan&#34;,
+    ]
+
+    prev_chs = []
+    prev_const_chs = []
+    prev_delay = 0
+
+    for inst in insts:
+        # iterate over the chs and set the chs array to the correct value
+        for ch in inst[&#34;active_chs&#34;]:
+            # get the index of the ch
+            ch_index = list(ch_defs.keys()).index(ch)
+            # plot the time the ch is high
+            plt.plot(
+                [t, t + inst[&#34;dur&#34;]],
+                [chs[ch_index] + 1, chs[ch_index] + 1],
+                color=line_colors[ch_index],
+            )
+            # Plot a fill between the 0 and 1 of the ch
+            plt.fill_between(
+                [t, t + inst[&#34;dur&#34;]],
+                chs[ch_index],
+                chs[ch_index] + 1,
+                color=fill_colors[ch_index],
+            )
+            if ch not in prev_chs:
+                # Plot the step
+                plt.plot(
+                    [t, t], [chs[ch_index], chs[ch_index] + 1], line_colors[ch_index]
+                )
+                # plot the time the ch is low
+                # plt.plot([t+inst[&#34;dur&#34;], t+inst[&#34;dur&#34;]], [chs[ch_index] + 1, chs[ch_index]], line_colors[ch_index])
+
+        for ch in inst[&#34;const_chs&#34;]:
+            # get the index of the ch
+            ch_index = list(ch_defs.keys()).index(ch)
+            dur = inst[&#34;dur&#34;] + inst[&#34;ch_delay&#34;]
+            # plot the time the ch is high
+            plt.plot(
+                [t, t + dur],
+                [chs[ch_index] + 1, chs[ch_index] + 1],
+                line_colors[ch_index],
+            )
+
+            # Plot a fill between the 0 and 1 of the ch
+            plt.fill_between(
+                [t, t + dur],
+                chs[ch_index],
+                chs[ch_index] + 1,
+                color=fill_colors[ch_index],
+            )
+
+            if ch not in prev_const_chs:
+                # Plot the step on
+                plt.plot(
+                    [t, t], [chs[ch_index], chs[ch_index] + 1], line_colors[ch_index]
+                )
+
+        # plot all zeros for the inst delay except for const chs
+        for ch in ch_defs:
+            if ch not in inst[&#34;const_chs&#34;]:
+                ch_index = list(ch_defs.keys()).index(ch)
+                plt.plot(
+                    [t + inst[&#34;dur&#34;], t + inst[&#34;dur&#34;] + inst[&#34;ch_delay&#34;]],
+                    [chs[ch_index], chs[ch_index]],
+                    line_colors[ch_index],
+                )
+            if ch in prev_const_chs and ch not in inst[&#34;const_chs&#34;]:
+                ch_index = list(ch_defs.keys()).index(ch)
+                # Plot step off
+                plt.plot(
+                    [t - prev_delay, t - prev_delay],
+                    [chs[ch_index] + 1, chs[ch_index]],
+                    line_colors[ch_index],
+                )
+
+        # plot the constant 0 of the other chs that are not on
+        for ch in ch_defs:
+            if ch not in inst[&#34;active_chs&#34;] and ch not in inst[&#34;const_chs&#34;]:
+                ch_index = list(ch_defs.keys()).index(ch)
+                plt.plot(
+                    [t, t + inst[&#34;dur&#34;]],
+                    [chs[ch_index], chs[ch_index]],
+                    line_colors[ch_index],
+                )
+            if ch in prev_chs and ch not in inst[&#34;active_chs&#34;]:
+                ch_index = list(ch_defs.keys()).index(ch)
+                # Plot step off
+                plt.plot(
+                    [t - prev_delay, t - prev_delay],
+                    [chs[ch_index] + 1, chs[ch_index]],
+                    line_colors[ch_index],
+                )
+
+        prev_chs = inst[&#34;active_chs&#34;]
+        prev_delay = inst[&#34;ch_delay&#34;]
+        prev_const_chs = inst[&#34;const_chs&#34;]
+        t += inst[&#34;dur&#34;] + inst[&#34;ch_delay&#34;]
+
+    plt.yticks(chs + 0.5, list(ch_defs.keys()))
+    plt.xlabel(&#34;Time (s)&#34;)
+    plt.show()
+
+    # Plot the instruction kernel</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.seqgen.sequence_plotting.plot_pulses_kernel"><code class="name flex">
+<span>def <span class="ident">plot_pulses_kernel</span></span>(<span>ch_defs, chs)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def plot_pulses_kernel(ch_defs, chs):
+    plt.figure(figsize=(10, 5))
+
+    # estimate the total time of the sequence
+    total_time = 0
+    for ch in ch_defs:
+        if len(ch_defs[ch][&#34;start&#34;]) &gt; 0:
+            total_time = max(
+                total_time, max(ch_defs[ch][&#34;start&#34;]) + max(ch_defs[ch][&#34;dur&#34;])
+            )
+
+    chs = np.zeros(8)
+    # make sure each ch has a unique y value
+    for i in range(8):
+        chs[i] = chs[i] + i * 1.1
+
+    # Define a list of colors from tab20
+    colormap = plt.get_cmap(&#34;tab20&#34;)
+    # set every 2nd color for the line color
+    line_colors = [colormap(i) for i in range(0, 20, 2)]
+    fill_colors = [colormap(i) for i in range(1, 20, 2)]
+    line_colors = [
+        &#34;tab:blue&#34;,
+        &#34;tab:orange&#34;,
+        &#34;tab:green&#34;,
+        &#34;tab:red&#34;,
+        &#34;tab:purple&#34;,
+        &#34;tab:brown&#34;,
+        &#34;tab:pink&#34;,
+        &#34;tab:gray&#34;,
+        &#34;tab:olive&#34;,
+        &#34;tab:cyan&#34;,
+    ]
+
+    prev_chs = []
+
+    for ch in ch_defs:
+        ch_index = list(ch_defs.keys()).index(ch)
+        # iterate over the chs and set the chs array to the correct value
+        if len(ch_defs[ch][&#34;start&#34;]) &gt; 0:
+            for idx in range(len(ch_defs[ch][&#34;start&#34;])):
+                t = ch_defs[ch][&#34;start&#34;][idx]
+                dur = ch_defs[ch][&#34;dur&#34;][idx]
+                if ch_defs[ch][&#34;state&#34;][idx]:
+                    # plot the time the ch is high
+                    plt.plot(
+                        [t, t + dur],
+                        [chs[ch_index] + 1, chs[ch_index] + 1],
+                        color=line_colors[ch_index],
+                    )
+                    plt.fill_between(
+                        [t, t + dur],
+                        chs[ch_index],
+                        chs[ch_index] + 1,
+                        color=fill_colors[ch_index],
+                    )
+                    # on off components
+                    plt.plot(
+                        [t, t],
+                        [chs[ch_index], chs[ch_index] + 1],
+                        line_colors[ch_index],
+                    )
+                    plt.plot(
+                        [t + dur, t + dur],
+                        [chs[ch_index], chs[ch_index] + 1],
+                        line_colors[ch_index],
+                    )
+                else:
+                    # plot the time the ch is low
+                    plt.plot(
+                        [t, t + dur],
+                        [chs[ch_index], chs[ch_index]],
+                        line_colors[ch_index],
+                    )
+            # Now determine when the ch is off and plot the off component
+            if ch_defs[ch][&#34;start&#34;][0] &gt; 0:
+                plt.plot(
+                    [0, ch_defs[ch][&#34;start&#34;][0]],
+                    [chs[ch_index], chs[ch_index]],
+                    line_colors[ch_index],
+                )
+        else:
+            # plot the time the ch is low the entire time
+            plt.plot(
+                [0, total_time], [chs[ch_index], chs[ch_index]], line_colors[ch_index]
+            )
+
+    # plot the constant 0 of the other chs that are not on
+
+    plt.yticks(chs + 0.5, list(ch_defs.keys()))
+    plt.xlabel(&#34;Time (s)&#34;)
+    plt.show()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<form>
+<input id="lunr-search" name="q" placeholder="🔎 Search ..." aria-label="Search"
+disabled minlength="2">
+</form>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.css" integrity="sha512-b+T2i3P45i1LZM7I00Ci5QquB9szqaxu+uuk5TUSGjZQ4w4n+qujQiIuvTv2BxE7WCGQCifNMksyKILDiHzsOg==" crossorigin>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.js" integrity="sha512-2B9/byNV1KKRm5nQ2RLViPFD6U4dUjDGwuW1GU+ImJh8YinPU9Zlq1GzdTMO+G2ROrB5o1qasJBy1ttYz0wCug==" crossorigin></script>
+<style>
+.modal-dialog iframe {
+width: 100vw;
+height: calc(100vh - 80px);
+}
+@media screen and (min-width: 700px) {
+.modal-dialog iframe {
+width: 70vw;
+height: 80vh;
+}
+}
+.modal-dialog .tingle-modal-box {width: auto;}
+.modal-dialog .tingle-modal-box__content {padding: 0;}
+</style>
+<script>
+const input = document.getElementById('lunr-search');
+input.disabled = false;
+input.form.addEventListener('submit', (ev) => {
+ev.preventDefault();
+const url = new URL(window.location);
+url.searchParams.set('q', input.value);
+history.replaceState({}, null, url.toString());
+search(input.value);
+});
+const query = new URL(window.location).searchParams.get('q');
+if (query)
+search(query);
+function search(query) {
+const url = '../../../doc-search.html#' + encodeURIComponent(query);
+new tingle.modal({
+cssClass: ['modal-dialog'],
+onClose: () => {
+const url = new URL(window.location);
+url.searchParams.delete('q');
+history.replaceState({}, null, url.toString());
+setTimeout(() => input.focus(), 100);
+}
+}).setContent('<iframe src="' + url + '"></iframe>').open();
+}
+</script>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="qscope.device.seqgen" href="index.html">qscope.device.seqgen</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="qscope.device.seqgen.sequence_plotting.plot_instructions_kernel" href="#qscope.device.seqgen.sequence_plotting.plot_instructions_kernel">plot_instructions_kernel</a></code></li>
+<li><code><a title="qscope.device.seqgen.sequence_plotting.plot_pulses_kernel" href="#qscope.device.seqgen.sequence_plotting.plot_pulses_kernel">plot_pulses_kernel</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
+</footer>
+</body>
+</html>

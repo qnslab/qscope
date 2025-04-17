@@ -1,0 +1,928 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.6">
+<title>qscope.system.sysconfig API documentation</title>
+<meta name="description" content="System configuration handling for QScope …">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}#lunr-search{width:100%;font-size:1em;padding:6px 9px 5px 9px;border:1px solid silver}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes: true } });</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML" integrity="sha256-kZafAc6mZvK3W3v1pHOcUix30OHQN6pU/NO2oFkqZVw=" crossorigin></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>qscope.system.sysconfig</code></h1>
+</header>
+<section id="section-intro">
+<p>System configuration handling for QScope.</p>
+<p>This module provides functionality for managing QScope system configurations through INI files.</p>
+<p>Configuration versions:
+- v1: Legacy code-based configurations (pre-INI format)
+- v2: Initial INI format with basic system and device settings
+The configuration system allows:</p>
+<ul>
+<li>Loading and validating system configurations</li>
+<li>Creating and copying system configurations</li>
+<li>Migrating from code-based sysconfig to INI files</li>
+<li>Managing system configurations via CLI</li>
+</ul>
+<p>The INI file format uses sections for each system, with the following structure:</p>
+<p>[system_name]</p>
+<h1 id="basic-settings">Basic settings</h1>
+<p>system_type = SGCameraSystem
+save_dir = ./output/</p>
+<h1 id="objectives-configuration">Objectives configuration</h1>
+<p>objective.20x = 1e-6
+objective.40x = 0.5e-6</p>
+<h1 id="device-configurations">Device configurations</h1>
+<p>device.camera.type = MockCamera
+device.camera.role = MAIN_CAMERA
+device.camera.exposure = 0.1</p>
+<p>device.seqgen.type = MockSeqGen
+device.seqgen.role = SEQUENCE_GEN
+device.seqgen.board = 0</p>
+<h2 id="see-also">See Also</h2>
+<dl>
+<dt><code><a title="qscope.system.config" href="config.html">qscope.system.config</a></code></dt>
+<dd>Code-based system configurations</dd>
+<dt><code><a title="qscope.system.system" href="system.html">qscope.system.system</a></code></dt>
+<dd>System class implementations</dd>
+<dt><code><a title="qscope.types" href="../types/index.html">qscope.types</a></code></dt>
+<dd>Device role definitions</dd>
+</dl>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="qscope.system.sysconfig.copy_system_config"><code class="name flex">
+<span>def <span class="ident">copy_system_config</span></span>(<span>source: str, dest: str, to_user: bool = True) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def copy_system_config(source: str, dest: str, to_user: bool = True) -&gt; None:
+    &#34;&#34;&#34;Copy an existing system configuration to create a new one.
+
+    Creates a new system configuration by duplicating an existing one.
+    Useful for creating variations of existing configurations.
+
+    Parameters
+    ----------
+    source : str
+        Name of the existing system configuration to copy
+    dest : str
+        Name for the new system configuration
+
+    Raises
+    ------
+    FileNotFoundError
+        If systems.ini configuration file doesn&#39;t exist
+    ValueError
+        If source system doesn&#39;t exist or destination name already in use
+
+    Notes
+    -----
+    - Copies all settings including:
+        - System type
+        - Save directory
+        - Device configurations
+        - Objective settings
+    - New configuration can be modified after copying
+
+    Examples
+    --------
+    &gt;&gt;&gt; copy_system_config(&#39;Mock&#39;, &#39;CustomMock&#39;)
+    # Creates new &#39;CustomMock&#39; configuration identical to &#39;Mock&#39;
+    &#34;&#34;&#34;
+    config_file = Path.home() / &#34;.qscope&#34; / &#34;systems.ini&#34;
+    if not config_file.exists():
+        raise FileNotFoundError(&#34;No systems configuration file found&#34;)
+
+    config = ConfigParser()
+    config.read(config_file)
+
+    if source not in config.sections():
+        raise ValueError(f&#34;Source system &#39;{source}&#39; not found&#34;)
+    if dest in config.sections():
+        raise ValueError(f&#34;Destination system &#39;{dest}&#39; already exists&#34;)
+
+    config[dest] = config[source]
+
+    with config_file.open(&#34;w&#34;) as f:
+        config.write(f)</code></pre>
+</details>
+<div class="desc"><p>Copy an existing system configuration to create a new one.</p>
+<p>Creates a new system configuration by duplicating an existing one.
+Useful for creating variations of existing configurations.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>source</code></strong> :&ensp;<code>str</code></dt>
+<dd>Name of the existing system configuration to copy</dd>
+<dt><strong><code>dest</code></strong> :&ensp;<code>str</code></dt>
+<dd>Name for the new system configuration</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>FileNotFoundError</code></dt>
+<dd>If systems.ini configuration file doesn't exist</dd>
+<dt><code>ValueError</code></dt>
+<dd>If source system doesn't exist or destination name already in use</dd>
+</dl>
+<h2 id="notes">Notes</h2>
+<ul>
+<li>Copies all settings including:<ul>
+<li>System type</li>
+<li>Save directory</li>
+<li>Device configurations</li>
+<li>Objective settings</li>
+</ul>
+</li>
+<li>New configuration can be modified after copying</li>
+</ul>
+<h2 id="examples">Examples</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; copy_system_config('Mock', 'CustomMock')
+# Creates new 'CustomMock' configuration identical to 'Mock'
+</code></pre></div>
+</dd>
+<dt id="qscope.system.sysconfig.create_default_systems_file"><code class="name flex">
+<span>def <span class="ident">create_default_systems_file</span></span>(<span>file_path: Path) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def create_default_systems_file(file_path: Path) -&gt; None:
+    &#34;&#34;&#34;Create default systems.ini file with example configurations.&#34;&#34;&#34;
+    from loguru import logger
+
+    file_path.parent.mkdir(parents=True, exist_ok=True)
+
+    logger.debug(f&#34;Creating default systems file at {file_path}&#34;)
+
+    config = ConfigParser()
+    config.read_dict(
+        {
+            &#34;DEFAULT&#34;: {
+                &#34;# QScope System Configurations&#34;: &#34;&#34;,
+                &#34;# ---------------------------&#34;: &#34;&#34;,
+                &#34;#&#34;: &#34;&#34;,
+                &#34;# This file contains system configurations for QScope.&#34;: &#34;&#34;,
+                &#34;# Configuration format version: v2&#34;: &#34;&#34;,
+                &#34;version&#34;: ConfigVersion.CURRENT,
+                &#34;# Each section represents a different system configuration.&#34;: &#34;&#34;,
+                &#34;#&#34;: &#34;&#34;,
+                &#34;# Required fields for each system:&#34;: &#34;&#34;,
+                &#34;# - system_type: Type of system (e.g., SGCameraSystem)&#34;: &#34;&#34;,
+                &#34;# - save_dir: Directory for saving data&#34;: &#34;&#34;,
+                &#34;#&#34;: &#34;&#34;,
+                &#34;# Device configuration format:&#34;: &#34;&#34;,
+                &#34;# device.&lt;name&gt;.type: Device class name&#34;: &#34;&#34;,
+                &#34;# device.&lt;name&gt;.role: Device role in system&#34;: &#34;&#34;,
+                &#34;# device.&lt;name&gt;.&lt;parameter&gt;: Device specific parameters&#34;: &#34;&#34;,
+            }
+        }
+    )
+
+    # Add Mock system as example
+    config[&#34;Mock&#34;] = {
+        &#34;system_type&#34;: &#34;SGCameraSystem&#34;,
+        &#34;save_dir&#34;: &#34;./mock_output/&#34;,
+        &#34;use_save_dir_only&#34;: &#34;true&#34;,
+        &#34;objective.20x&#34;: &#34;nan&#34;,
+        &#34;device.seqgen.type&#34;: &#34;MockSeqGen&#34;,
+        &#34;device.seqgen.role&#34;: &#34;SEQUENCE_GEN&#34;,
+        &#34;device.rf.type&#34;: &#34;MockRFSource&#34;,
+        &#34;device.rf.role&#34;: &#34;PRIMARY_RF&#34;,
+        &#34;device.camera.type&#34;: &#34;MockCamera&#34;,
+        &#34;device.camera.role&#34;: &#34;MAIN_CAMERA&#34;,
+    }
+
+    # Read existing config if it exists
+    if file_path.exists():
+        logger.debug(&#34;Found existing config file&#34;)
+        existing_config = ConfigParser()
+        existing_config.read(file_path)
+
+        logger.debug(f&#34;Existing sections: {existing_config.sections()}&#34;)
+        logger.debug(f&#34;Existing DEFAULT settings: {dict(existing_config[&#39;DEFAULT&#39;])}&#34;)
+
+        # Debug dump of existing config
+        logger.debug(&#34;Full existing config contents:&#34;)
+        for section in existing_config.sections():
+            logger.debug(f&#34;[{section}]&#34;)
+            for key, value in existing_config[section].items():
+                logger.debug(f&#34;{key} = {value}&#34;)
+
+        # Copy existing sections to new config
+        for section in existing_config.sections():
+            if section not in config.sections():
+                logger.debug(f&#34;Preserving existing section: {section}&#34;)
+                # Create new section and copy items individually
+                config[section] = {}
+                for key, value in existing_config[section].items():
+                    config[section][key] = value
+                    logger.debug(f&#34;Copied {section}.{key} = {value}&#34;)
+            else:
+                logger.debug(f&#34;Section {section} already exists in new config&#34;)
+                # Merge items from existing section
+                for key, value in existing_config[section].items():
+                    if key not in config[section]:
+                        config[section][key] = value
+                        logger.debug(f&#34;Merged {section}.{key} = {value}&#34;)
+
+        # Copy DEFAULT section settings
+        if &#34;DEFAULT&#34; in existing_config:
+            for key, value in existing_config[&#34;DEFAULT&#34;].items():
+                if key not in config[&#34;DEFAULT&#34;]:
+                    logger.debug(f&#34;Preserving DEFAULT setting: {key}={value}&#34;)
+                    config[&#34;DEFAULT&#34;][key] = value
+                else:
+                    logger.debug(f&#34;DEFAULT setting {key} already exists in new config&#34;)
+
+    # Create parent directories if needed
+    file_path.parent.mkdir(parents=True, exist_ok=True)
+
+    logger.debug(&#34;Writing final config:&#34;)
+    for section in config.sections():
+        logger.debug(f&#34;Section {section}: {dict(config[section])}&#34;)
+    logger.debug(f&#34;Final DEFAULT settings: {dict(config[&#39;DEFAULT&#39;])}&#34;)
+
+    with file_path.open(&#34;w&#34;) as f:
+        config.write(f)</code></pre>
+</details>
+<div class="desc"><p>Create default systems.ini file with example configurations.</p></div>
+</dd>
+<dt id="qscope.system.sysconfig.get_config_version"><code class="name flex">
+<span>def <span class="ident">get_config_version</span></span>(<span>config: ConfigParser | Type[SystemConfig]) ‑> <a title="qscope.system.base_config.ConfigVersion" href="base_config.html#qscope.system.base_config.ConfigVersion">ConfigVersion</a></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_config_version(config: ConfigParser | Type[SystemConfig]) -&gt; ConfigVersion:
+    &#34;&#34;&#34;Get the version of a configuration.
+
+    Parameters
+    ----------
+    config : ConfigParser | Type[SystemConfig]
+        Configuration to check version of, either INI or code-based
+
+    Returns
+    -------
+    ConfigVersion
+        Version of the configuration
+
+    Notes
+    -----
+    - INI sysconfig store version in DEFAULT section
+    - Code sysconfig have version as class attribute
+    - Returns LEGACY for code sysconfig without version
+    &#34;&#34;&#34;
+    if isinstance(config, ConfigParser):
+        return ConfigVersion(
+            config.get(&#34;DEFAULT&#34;, &#34;version&#34;, fallback=ConfigVersion.LEGACY)
+        )
+    else:
+        return getattr(config, &#34;config_version&#34;, ConfigVersion.LEGACY)</code></pre>
+</details>
+<div class="desc"><p>Get the version of a configuration.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>config</code></strong> :&ensp;<code>ConfigParser | Type[SystemConfig]</code></dt>
+<dd>Configuration to check version of, either INI or code-based</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>ConfigVersion</code></dt>
+<dd>Version of the configuration</dd>
+</dl>
+<h2 id="notes">Notes</h2>
+<ul>
+<li>INI sysconfig store version in DEFAULT section</li>
+<li>Code sysconfig have version as class attribute</li>
+<li>Returns LEGACY for code sysconfig without version</li>
+</ul></div>
+</dd>
+<dt id="qscope.system.sysconfig.install_all_system_configs"><code class="name flex">
+<span>def <span class="ident">install_all_system_configs</span></span>(<span>) ‑> list[str]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def install_all_system_configs() -&gt; list[str]:
+    &#34;&#34;&#34;Install all package system configurations to user directory.
+
+    Returns
+    -------
+    list[str]
+        Names of installed configurations
+
+    Notes
+    -----
+    - Skips configurations that already exist in user config
+    - Creates user config directory if needed
+    &#34;&#34;&#34;
+    import qscope
+
+    package_config_dir = Path(qscope.__file__).parent / &#34;sysconfig&#34; / &#34;systems&#34;
+
+    installed = []
+
+    for ini_file in package_config_dir.glob(&#34;*.ini&#34;):
+        if ini_file.name == &#34;README.md&#34;:
+            continue
+
+        config = ConfigParser()
+        config.read(ini_file)
+
+        for section in config.sections():
+            try:
+                install_system_config(section)
+                installed.append(section)
+            except ValueError:
+                # Skip if already exists in user config
+                pass
+
+    return installed</code></pre>
+</details>
+<div class="desc"><p>Install all package system configurations to user directory.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list[str]</code></dt>
+<dd>Names of installed configurations</dd>
+</dl>
+<h2 id="notes">Notes</h2>
+<ul>
+<li>Skips configurations that already exist in user config</li>
+<li>Creates user config directory if needed</li>
+</ul></div>
+</dd>
+<dt id="qscope.system.sysconfig.install_system_config"><code class="name flex">
+<span>def <span class="ident">install_system_config</span></span>(<span>name: str) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def install_system_config(name: str) -&gt; None:
+    &#34;&#34;&#34;Install a package system configuration to user directory.
+
+    Parameters
+    ----------
+    name : str
+        Name of the system configuration to install
+
+    Raises
+    ------
+    FileNotFoundError
+        If package configuration doesn&#39;t exist
+    ValueError
+        If system name is invalid or already exists in user config
+    &#34;&#34;&#34;
+    import qscope
+
+    package_config_dir = Path(qscope.__file__).parent / &#34;sysconfig&#34; / &#34;systems&#34;
+    package_system_file = package_config_dir / f&#34;{name.lower()}.ini&#34;
+
+    if not package_system_file.exists():
+        raise FileNotFoundError(f&#34;Package configuration &#39;{name}&#39; not found&#34;)
+
+    # Read package config
+    config = ConfigParser()
+    config.read(package_system_file)
+
+    # Verify system exists in package config
+    if name not in config.sections():
+        raise ValueError(f&#34;System &#39;{name}&#39; not found in package configuration&#34;)
+
+    # Create user config directory if needed
+    user_config_dir = Path.home() / &#34;.qscope&#34;
+    user_config_dir.mkdir(parents=True, exist_ok=True)
+
+    user_systems_file = user_config_dir / &#34;systems.ini&#34;
+
+    # Read existing user config if it exists
+    if user_systems_file.exists():
+        user_config = ConfigParser()
+        user_config.read(user_systems_file)
+        if name in user_config.sections():
+            raise ValueError(f&#34;System &#39;{name}&#39; already exists in user configuration&#34;)
+
+    # Copy system config to user file
+    if user_systems_file.exists():
+        user_config = ConfigParser()
+        user_config.read(user_systems_file)
+    else:
+        user_config = ConfigParser()
+        user_config[&#34;DEFAULT&#34;] = {&#34;version&#34;: ConfigVersion.CURRENT.value}
+
+    user_config[name] = config[name]
+
+    with user_systems_file.open(&#34;w&#34;) as f:
+        user_config.write(f)</code></pre>
+</details>
+<div class="desc"><p>Install a package system configuration to user directory.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>name</code></strong> :&ensp;<code>str</code></dt>
+<dd>Name of the system configuration to install</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>FileNotFoundError</code></dt>
+<dd>If package configuration doesn't exist</dd>
+<dt><code>ValueError</code></dt>
+<dd>If system name is invalid or already exists in user config</dd>
+</dl></div>
+</dd>
+<dt id="qscope.system.sysconfig.list_available_systems"><code class="name flex">
+<span>def <span class="ident">list_available_systems</span></span>(<span>) ‑> dict[str, str]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def list_available_systems() -&gt; dict[str, str]:
+    &#34;&#34;&#34;List all available system configurations.
+
+    Returns
+    -------
+    dict[str, str]
+        Dictionary mapping system names to their source (&#39;user&#39; or &#39;package&#39;)
+
+    Notes
+    -----
+    - Checks both package defaults and user configurations
+    - User configurations take precedence over package defaults
+    - Does not validate configurations
+
+    Examples
+    --------
+    &gt;&gt;&gt; systems = list_available_systems()
+    &gt;&gt;&gt; print(systems)
+    {&#39;Mock&#39;: &#39;package&#39;, &#39;CustomMock&#39;: &#39;user&#39;}
+    &#34;&#34;&#34;
+    systems = {}
+
+    # Check package defaults
+    import qscope
+
+    package_config_dir = Path(qscope.__file__).parent / &#34;sysconfig&#34; / &#34;systems&#34;
+    if package_config_dir.exists():
+        for file in package_config_dir.glob(&#34;*.ini&#34;):
+            config = ConfigParser()
+            config.read(file)
+            for section in config.sections():
+                systems[section] = &#34;package&#34;
+
+    # Check user sysconfig (overrides package defaults)
+    user_systems_file = Path.home() / &#34;.qscope&#34; / &#34;systems.ini&#34;
+    if user_systems_file.exists():
+        config = ConfigParser()
+        config.read(user_systems_file)
+        for section in config.sections():
+            systems[section] = &#34;user&#34;
+
+    return systems</code></pre>
+</details>
+<div class="desc"><p>List all available system configurations.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dict[str, str]</code></dt>
+<dd>Dictionary mapping system names to their source ('user' or 'package')</dd>
+</dl>
+<h2 id="notes">Notes</h2>
+<ul>
+<li>Checks both package defaults and user configurations</li>
+<li>User configurations take precedence over package defaults</li>
+<li>Does not validate configurations</li>
+</ul>
+<h2 id="examples">Examples</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; systems = list_available_systems()
+&gt;&gt;&gt; print(systems)
+{'Mock': 'package', 'CustomMock': 'user'}
+</code></pre></div>
+</dd>
+<dt id="qscope.system.sysconfig.load_system_config"><code class="name flex">
+<span>def <span class="ident">load_system_config</span></span>(<span>system_name: str) ‑> <a title="qscope.system.base_config.SystemConfig" href="base_config.html#qscope.system.base_config.SystemConfig">SystemConfig</a></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def load_system_config(system_name: str) -&gt; SystemConfig:
+    &#34;&#34;&#34;Load system configuration from INI file.
+
+    Checks both package defaults and user sysconfig (~/.qscope/systems.ini).
+    User sysconfig take precedence over package defaults.
+
+    Parameters
+    ----------
+    system_name : str
+        Name of the system configuration to load
+
+    Returns
+    -------
+    SystemConfig
+        Loaded and validated system configuration object
+
+    Notes
+    -----
+    Search order:
+    1. ~/.qscope/systems.ini
+    2. package/sysconfig/systems/&lt;system_name&gt;.ini
+    &#34;&#34;&#34;
+    # Check user config first
+    user_config_dir = Path.home() / &#34;.qscope&#34;
+    user_systems_file = user_config_dir / &#34;systems.ini&#34;
+
+    # Check package defaults
+    import qscope
+
+    package_config_dir = Path(qscope.__file__).parent / &#34;sysconfig&#34; / &#34;systems&#34;
+    package_system_file = package_config_dir / f&#34;{system_name.lower()}.ini&#34;
+
+    config = ConfigParser()
+
+    # Try user config first
+    if user_systems_file.exists():
+        config.read(user_systems_file)
+        # Case-insensitive section lookup
+        for section in config.sections():
+            if section.lower() == system_name.lower():
+                return _create_system_config(config, section)
+
+    # Fall back to package defaults
+    if package_system_file.exists():
+        config.read(package_system_file)
+        # Case-insensitive section lookup
+        for section in config.sections():
+            if section.lower() == system_name.lower():
+                return _create_system_config(config, section)
+
+    raise ValueError(
+        f&#34;System &#39;{system_name}&#39; not found in:\n&#34;
+        f&#34;- User config: {user_systems_file}\n&#34;
+        f&#34;- Package config: {package_system_file}&#34;
+    )</code></pre>
+</details>
+<div class="desc"><p>Load system configuration from INI file.</p>
+<p>Checks both package defaults and user sysconfig (~/.qscope/systems.ini).
+User sysconfig take precedence over package defaults.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>system_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>Name of the system configuration to load</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>SystemConfig</code></dt>
+<dd>Loaded and validated system configuration object</dd>
+</dl>
+<h2 id="notes">Notes</h2>
+<p>Search order:
+1. ~/.qscope/systems.ini
+2. package/sysconfig/systems/<system_name>.ini</p></div>
+</dd>
+<dt id="qscope.system.sysconfig.migrate_from_code_config"><code class="name flex">
+<span>def <span class="ident">migrate_from_code_config</span></span>(<span>system_config: SystemConfig, file_path: Path) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def migrate_from_code_config(system_config: SystemConfig, file_path: Path) -&gt; None:
+    &#34;&#34;&#34;Migrate a code-based system configuration to INI file format.
+
+    Converts a system configuration defined in Python code to an INI file entry.
+    This facilitates migration from legacy code-based sysconfig to the new INI format.
+
+    Parameters
+    ----------
+    system_config : SystemConfig
+        System configuration instance to migrate
+    file_path : Path
+        Path where the INI file should be saved
+
+    Raises
+    ------
+    ValueError
+        If system configuration has incompatible version
+
+    Notes
+    -----
+    - Preserves all configuration parameters including:
+        - System type and basic settings
+        - Device configurations and roles
+        - Objective settings
+        - Device-specific parameters
+    - Adds warning about deprecated code-based configurations
+    - Creates parent directories if needed
+
+    Examples
+    --------
+    &gt;&gt;&gt; from qscope.system.config import Mock
+    &gt;&gt;&gt; mock_config = Mock()
+    &gt;&gt;&gt; migrate_from_code_config(mock_config, Path(&#39;~/.qscope/systems.ini&#39;))
+    # Migrates Mock system configuration to INI file
+    &#34;&#34;&#34;
+    # Check version compatibility
+    version = get_config_version(system_config.__class__)
+    if version != ConfigVersion.LEGACY:
+        raise ValueError(
+            f&#34;Can only migrate LEGACY (v1) configurations. {system_config.__class__.__name__} &#34;
+            f&#34;has version {version}&#34;
+        )
+
+    # Read existing config if it exists
+    config = ConfigParser()
+    if file_path.exists():
+        config.read(file_path)
+
+    # Set version in DEFAULT section
+    config[&#34;DEFAULT&#34;] = {&#34;version&#34;: ConfigVersion.CURRENT.value}
+
+    sys_instance = system_config
+
+    section = sys_instance.system_name
+    config[section] = {}
+
+    # Basic settings
+    config[section][&#34;system_type&#34;] = sys_instance.system_type.__name__
+    config[section][&#34;save_dir&#34;] = sys_instance.save_dir
+
+    # Objectives
+    for obj, size in sys_instance.objective_pixel_size.items():
+        config[section][f&#34;objective.{obj}&#34;] = str(size)
+
+    # Devices
+    for role, (dev_class, params) in sys_instance.devices_config.items():
+        # Use full role name in lowercase for device config keys
+        dev_name = str(role).lower()
+        config[section][f&#34;device.{dev_name}.type&#34;] = dev_class.__name__
+        config[section][f&#34;device.{dev_name}.role&#34;] = str(role)
+
+        # Device specific parameters
+        for param_name, param_value in params.items():
+            if isinstance(param_value, dict):
+                for sub_name, sub_value in param_value.items():
+                    if isinstance(sub_value, dict):
+                        # Handle nested dictionaries (e.g. sequence_params)
+                        for sub_sub_name, sub_sub_value in sub_value.items():
+                            config[section][
+                                f&#34;device.{dev_name}.{param_name}.{sub_name}.{sub_sub_name}&#34;
+                            ] = str(sub_sub_value)
+                    else:
+                        config[section][
+                            f&#34;device.{dev_name}.{param_name}.{sub_name}&#34;
+                        ] = str(sub_value)
+            else:
+                config[section][f&#34;device.{dev_name}.{param_name}&#34;] = str(param_value)
+
+    with file_path.open(&#34;w&#34;) as f:
+        config.write(f)</code></pre>
+</details>
+<div class="desc"><p>Migrate a code-based system configuration to INI file format.</p>
+<p>Converts a system configuration defined in Python code to an INI file entry.
+This facilitates migration from legacy code-based sysconfig to the new INI format.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>system_config</code></strong> :&ensp;<code>SystemConfig</code></dt>
+<dd>System configuration instance to migrate</dd>
+<dt><strong><code>file_path</code></strong> :&ensp;<code>Path</code></dt>
+<dd>Path where the INI file should be saved</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>ValueError</code></dt>
+<dd>If system configuration has incompatible version</dd>
+</dl>
+<h2 id="notes">Notes</h2>
+<ul>
+<li>Preserves all configuration parameters including:<ul>
+<li>System type and basic settings</li>
+<li>Device configurations and roles</li>
+<li>Objective settings</li>
+<li>Device-specific parameters</li>
+</ul>
+</li>
+<li>Adds warning about deprecated code-based configurations</li>
+<li>Creates parent directories if needed</li>
+</ul>
+<h2 id="examples">Examples</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; from qscope.system.config import Mock
+&gt;&gt;&gt; mock_config = Mock()
+&gt;&gt;&gt; migrate_from_code_config(mock_config, Path('~/.qscope/systems.ini'))
+# Migrates Mock system configuration to INI file
+</code></pre></div>
+</dd>
+<dt id="qscope.system.sysconfig.validate_system_config"><code class="name flex">
+<span>def <span class="ident">validate_system_config</span></span>(<span>config: ConfigParser, section: str) ‑> tuple[bool, str]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def validate_system_config(config: ConfigParser, section: str) -&gt; tuple[bool, str]:
+    &#34;&#34;&#34;Validate system configuration section.
+
+    Parameters
+    ----------
+    config : ConfigParser
+        ConfigParser instance containing the configuration
+    section : str
+        Name of the section to validate
+
+    Returns
+    -------
+    tuple[bool, str]
+        (is_valid, error_message)
+    &#34;&#34;&#34;
+    # Check required fields
+    if &#34;system_type&#34; not in config[section] or &#34;save_dir&#34; not in config[section]:
+        return False, &#34;Missing required fields: system_type and save_dir&#34;
+
+    # Import needed types and populate VALID_SYSTEM_TYPES if empty
+    if not VALID_SYSTEM_TYPES:
+        from qscope.system.system import SGCameraSystem, SGSystem, System
+
+        VALID_SYSTEM_TYPES.update(
+            {&#34;SGCameraSystem&#34;: SGCameraSystem, &#34;SGSystem&#34;: SGSystem, &#34;System&#34;: System}
+        )
+    from qscope.device import MockCamera, MockRFSource, MockSeqGen
+    from qscope.types import MAIN_CAMERA, PREFIX_TO_ROLE, PRIMARY_RF, SEQUENCE_GEN
+
+    # Validate system type
+    system_type = config[section][&#34;system_type&#34;]
+    if system_type not in VALID_SYSTEM_TYPES:
+        return False, f&#34;Invalid system type: {system_type}&#34;
+
+    # Collect device roles from config
+    device_roles = set()
+    for key in config[section]:
+        if key.startswith(&#34;device.&#34;) and key.endswith(&#34;.type&#34;):
+            prefix = key[len(&#34;device.&#34;) : -(len(&#34;.type&#34;))]
+            if prefix not in PREFIX_TO_ROLE:
+                return False, f&#34;Invalid device prefix: {prefix}&#34;
+            device_roles.add(PREFIX_TO_ROLE[prefix])
+
+            # Validate device type
+            dev_type = config[section][key]
+            valid_types = get_valid_device_types()
+            if dev_type not in valid_types:
+                return False, f&#34;Invalid device type: {dev_type}&#34;
+
+    # Check system role requirements
+    if system_type == &#34;SGCameraSystem&#34;:
+        required_roles = {SEQUENCE_GEN, PRIMARY_RF, MAIN_CAMERA}
+        missing = required_roles - device_roles
+        if missing:
+            return (
+                False,
+                f&#34;Missing required roles: {&#39;, &#39;.join(str(r) for r in missing)}&#34;,
+            )
+
+    return True, &#34;&#34;</code></pre>
+</details>
+<div class="desc"><p>Validate system configuration section.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>config</code></strong> :&ensp;<code>ConfigParser</code></dt>
+<dd>ConfigParser instance containing the configuration</dd>
+<dt><strong><code>section</code></strong> :&ensp;<code>str</code></dt>
+<dd>Name of the section to validate</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>tuple[bool, str]</code></dt>
+<dd>(is_valid, error_message)</dd>
+</dl></div>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<form>
+<input id="lunr-search" name="q" placeholder="🔎 Search ..." aria-label="Search"
+disabled minlength="2">
+</form>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.css" integrity="sha512-b+T2i3P45i1LZM7I00Ci5QquB9szqaxu+uuk5TUSGjZQ4w4n+qujQiIuvTv2BxE7WCGQCifNMksyKILDiHzsOg==" crossorigin>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.js" integrity="sha512-2B9/byNV1KKRm5nQ2RLViPFD6U4dUjDGwuW1GU+ImJh8YinPU9Zlq1GzdTMO+G2ROrB5o1qasJBy1ttYz0wCug==" crossorigin></script>
+<style>
+.modal-dialog iframe {
+width: 100vw;
+height: calc(100vh - 80px);
+}
+@media screen and (min-width: 700px) {
+.modal-dialog iframe {
+width: 70vw;
+height: 80vh;
+}
+}
+.modal-dialog .tingle-modal-box {width: auto;}
+.modal-dialog .tingle-modal-box__content {padding: 0;}
+</style>
+<script>
+const input = document.getElementById('lunr-search');
+input.disabled = false;
+input.form.addEventListener('submit', (ev) => {
+ev.preventDefault();
+const url = new URL(window.location);
+url.searchParams.set('q', input.value);
+history.replaceState({}, null, url.toString());
+search(input.value);
+});
+const query = new URL(window.location).searchParams.get('q');
+if (query)
+search(query);
+function search(query) {
+const url = '../../doc-search.html#' + encodeURIComponent(query);
+new tingle.modal({
+cssClass: ['modal-dialog'],
+onClose: () => {
+const url = new URL(window.location);
+url.searchParams.delete('q');
+history.replaceState({}, null, url.toString());
+setTimeout(() => input.focus(), 100);
+}
+}).setContent('<iframe src="' + url + '"></iframe>').open();
+}
+</script>
+<div class="toc">
+<ul>
+<li><a href="#basic-settings">Basic settings</a></li>
+<li><a href="#objectives-configuration">Objectives configuration</a></li>
+<li><a href="#device-configurations">Device configurations</a><ul>
+<li><a href="#see-also">See Also</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="qscope.system" href="index.html">qscope.system</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="qscope.system.sysconfig.copy_system_config" href="#qscope.system.sysconfig.copy_system_config">copy_system_config</a></code></li>
+<li><code><a title="qscope.system.sysconfig.create_default_systems_file" href="#qscope.system.sysconfig.create_default_systems_file">create_default_systems_file</a></code></li>
+<li><code><a title="qscope.system.sysconfig.get_config_version" href="#qscope.system.sysconfig.get_config_version">get_config_version</a></code></li>
+<li><code><a title="qscope.system.sysconfig.install_all_system_configs" href="#qscope.system.sysconfig.install_all_system_configs">install_all_system_configs</a></code></li>
+<li><code><a title="qscope.system.sysconfig.install_system_config" href="#qscope.system.sysconfig.install_system_config">install_system_config</a></code></li>
+<li><code><a title="qscope.system.sysconfig.list_available_systems" href="#qscope.system.sysconfig.list_available_systems">list_available_systems</a></code></li>
+<li><code><a title="qscope.system.sysconfig.load_system_config" href="#qscope.system.sysconfig.load_system_config">load_system_config</a></code></li>
+<li><code><a title="qscope.system.sysconfig.migrate_from_code_config" href="#qscope.system.sysconfig.migrate_from_code_config">migrate_from_code_config</a></code></li>
+<li><code><a title="qscope.system.sysconfig.validate_system_config" href="#qscope.system.sysconfig.validate_system_config">validate_system_config</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
+</footer>
+</body>
+</html>

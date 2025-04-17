@@ -1,0 +1,2162 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.6">
+<title>qscope.system.system API documentation</title>
+<meta name="description" content="&#34;
+This is a class to define the experimental system.
+It is used to define the equipment and handle passing the device classes.">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}#lunr-search{width:100%;font-size:1em;padding:6px 9px 5px 9px;border:1px solid silver}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes: true } });</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML" integrity="sha256-kZafAc6mZvK3W3v1pHOcUix30OHQN6pU/NO2oFkqZVw=" crossorigin></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>qscope.system.system</code></h1>
+</header>
+<section id="section-intro">
+<p>"
+This is a class to define the experimental system.
+It is used to define the equipment and handle passing the device classes.</p>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="qscope.system.system.check_role_is_connected"><code class="name flex">
+<span>def <span class="ident">check_role_is_connected</span></span>(<span>) ‑> Callable[[Callable[~P, ~T]], Callable[~P, ~T]]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def check_role_is_connected() -&gt; Callable[[Callable[P, T]], Callable[P, T]]:
+    def decorator(func: Callable[P, T]) -&gt; Callable[P, T]:
+        @wraps(func)
+        def wrapper(self: System, *args: P.args, **kwargs: P.kwargs) -&gt; T:
+            if not self.hardware_started_up:
+                raise ValidationError(
+                    f&#34;Cannot call {func.__name__}: &#34;
+                    &#34;Hardware not started up. Call startup() first.&#34;
+                )
+            # Get function signature
+            sig = signature(func)
+            bound_args = sig.bind(self, *args, **kwargs)
+            bound_args.apply_defaults()
+            # Check each parameter
+            for param_name, param_value in bound_args.arguments.items():
+                if isinstance(param_value, DeviceRole):
+                    try:
+                        device = self.get_device_by_role(param_value)
+                        if not device.is_connected():
+                            raise ValidationError(
+                                f&#34;Cannot call {func.__name__}: &#34;
+                                f&#34;Device for role {param_value} is not connected&#34;
+                            )
+                    except ValueError as e:
+                        raise ValidationError(f&#34;Cannot call {func.__name__}: {str(e)}&#34;)
+            return func(self, *args, **kwargs)
+
+        return wrapper
+
+    return decorator</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.system.system.requires_connected_devices"><code class="name flex">
+<span>def <span class="ident">requires_connected_devices</span></span>(<span>*required_roles: DeviceRole) ‑> Callable[[Callable[~P, ~T]], Callable[~P, ~T]]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def requires_connected_devices(
+    *required_roles: DeviceRole,
+) -&gt; Callable[[Callable[P, T]], Callable[P, T]]:
+    &#34;&#34;&#34;Decorator to check if required device roles are present and properly connected.
+
+    Parameters
+    ----------
+    *required_roles : DeviceRole
+        The roles required (e.g. MAIN_CAMERA, RF_SOURCE)
+
+    Examples
+    --------
+    @requires_connected_devices(MAIN_CAMERA, RF_SOURCE)
+    def take_snapshot(self):
+        &#39;&#39;&#39;Take camera snapshot with RF enabled.&#39;&#39;&#39;
+        camera = self.get_device_by_role(MAIN_CAMERA)
+        return camera.take_snapshot()
+
+    Raises
+    ------
+    ValidationError
+        If hardware is not started or devices are not connected/ready
+    &#34;&#34;&#34;
+
+    def decorator(func: Callable[P, T]) -&gt; Callable[P, T]:
+        @wraps(func)
+        def wrapper(self: System, *args: P.args, **kwargs: P.kwargs) -&gt; T:
+            if not self.hardware_started_up:
+                raise ValidationError(
+                    f&#34;Cannot call {func.__name__}: &#34;
+                    &#34;Hardware not started up. Call startup() first.&#34;
+                )
+
+            for role in required_roles:
+                try:
+                    device = self.get_device_by_role(role)
+                    is_valid, error_msg = validate_device_states(device)
+                    if not is_valid:
+                        raise ValidationError(
+                            f&#34;Cannot call {func.__name__}: {error_msg}&#34;
+                        )
+                except ValueError as e:
+                    raise ValidationError(f&#34;Cannot call {func.__name__}: {str(e)}&#34;)
+
+            return func(self, *args, **kwargs)
+
+        return wrapper
+
+    return decorator</code></pre>
+</details>
+<div class="desc"><p>Decorator to check if required device roles are present and properly connected.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>*required_roles</code></strong> :&ensp;<code>DeviceRole</code></dt>
+<dd>The roles required (e.g. MAIN_CAMERA, RF_SOURCE)</dd>
+</dl>
+<h2 id="examples">Examples</h2>
+<p>@requires_connected_devices(MAIN_CAMERA, RF_SOURCE)
+def take_snapshot(self):
+'''Take camera snapshot with RF enabled.'''
+camera = self.get_device_by_role(MAIN_CAMERA)
+return camera.take_snapshot()</p>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>ValidationError</code></dt>
+<dd>If hardware is not started or devices are not connected/ready</dd>
+</dl></div>
+</dd>
+<dt id="qscope.system.system.system_requirements"><code class="name flex">
+<span>def <span class="ident">system_requirements</span></span>(<span>required_roles: Set[DeviceRole], optional_roles: Set[DeviceRole] = set()) ‑> Callable[[Type[~T]], Type[~T]]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def system_requirements(
+    required_roles: Set[DeviceRole], optional_roles: Set[DeviceRole] = set()
+) -&gt; Callable[[Type[T]], Type[T]]:
+    &#34;&#34;&#34;Decorator to specify required and optional device roles for a system type.
+
+    Parameters
+    ----------
+    required_roles : Set[DeviceRole]
+        Device roles that must be present in the system
+    optional_roles : Set[DeviceRole]
+        Device roles that may be present in the system
+
+    Examples
+    --------
+    @system_requirements(
+        required_roles={SEQUENCE_GEN, MAIN_CAMERA},
+        optional_roles={PRIMARY_RF}
+    )
+    class SGCameraSystem(SGSystem):
+        &#39;&#39;&#39;System with sequence generator and camera.&#39;&#39;&#39;
+        pass
+
+    Raises
+    ------
+    ValidationError
+        If role requirements cannot be satisfied by available device types
+    &#34;&#34;&#34;
+
+    def decorator(cls: Type[T]) -&gt; Type[T]:
+        cls._required_roles = required_roles
+        cls._optional_roles = optional_roles
+
+        # Add validation method to class
+        def validate_roles(self, config_roles: Set[DeviceRole]) -&gt; tuple[bool, str]:
+            &#34;&#34;&#34;Validate that a set of roles meets this system&#39;s requirements.
+
+            Parameters
+            ----------
+            config_roles : Set[DeviceRole]
+                The roles to validate
+
+            Returns
+            -------
+            tuple[bool, str]
+                (is_valid, error_message)
+            &#34;&#34;&#34;
+            from qscope.types.validation import validate_system_roles
+
+            is_valid, error_msg = validate_system_roles(
+                self._required_roles, self._optional_roles, config_roles
+            )
+
+            if not is_valid:
+                raise ValueError(
+                    f&#34;Invalid roles for {self.__class__.__name__}: {error_msg}&#34;
+                )
+            return True, &#34;&#34;
+
+        cls.validate_roles = validate_roles
+        return cls
+
+    return decorator</code></pre>
+</details>
+<div class="desc"><p>Decorator to specify required and optional device roles for a system type.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>required_roles</code></strong> :&ensp;<code>Set[DeviceRole]</code></dt>
+<dd>Device roles that must be present in the system</dd>
+<dt><strong><code>optional_roles</code></strong> :&ensp;<code>Set[DeviceRole]</code></dt>
+<dd>Device roles that may be present in the system</dd>
+</dl>
+<h2 id="examples">Examples</h2>
+<p>@system_requirements(
+required_roles={SEQUENCE_GEN, MAIN_CAMERA},
+optional_roles={PRIMARY_RF}
+)
+class SGCameraSystem(SGSystem):
+'''System with sequence generator and camera.'''
+pass</p>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>ValidationError</code></dt>
+<dd>If role requirements cannot be satisfied by available device types</dd>
+</dl></div>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="qscope.system.system.SGAPDSystem"><code class="flex name class">
+<span>class <span class="ident">SGAPDSystem</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class SGAPDSystem(SGSystem):
+    pass</code></pre>
+</details>
+<div class="desc"><p>All systems with a common clock (pulseblaster etc.) - so most systems.</p>
+<p>Initialize system with configuration.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>sys_config</code></strong> :&ensp;<code>str | Type[SystemConfig]</code></dt>
+<dd>Either a system name to load from config file, or a SystemConfig class</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>ValueError</code></dt>
+<dd>If system configuration is invalid or not found</dd>
+</dl></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.system.system.SGSystem" href="#qscope.system.system.SGSystem">SGSystem</a></li>
+<li><a title="qscope.system.system.System" href="#qscope.system.system.System">System</a></li>
+</ul>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="qscope.system.system.SGSystem" href="#qscope.system.system.SGSystem">SGSystem</a></b></code>:
+<ul class="hlist">
+<li><code><a title="qscope.system.system.SGSystem.add_device_with_role" href="#qscope.system.system.System.add_device_with_role">add_device_with_role</a></code></li>
+<li><code><a title="qscope.system.system.SGSystem.get_all_devices_attrs" href="#qscope.system.system.System.get_all_devices_attrs">get_all_devices_attrs</a></code></li>
+<li><code><a title="qscope.system.system.SGSystem.get_device_by_role" href="#qscope.system.system.System.get_device_by_role">get_device_by_role</a></code></li>
+<li><code><a title="qscope.system.system.SGSystem.get_device_roles" href="#qscope.system.system.System.get_device_roles">get_device_roles</a></code></li>
+<li><code><a title="qscope.system.system.SGSystem.get_metadata" href="#qscope.system.system.System.get_metadata">get_metadata</a></code></li>
+<li><code><a title="qscope.system.system.SGSystem.has_device_role" href="#qscope.system.system.System.has_device_role">has_device_role</a></code></li>
+<li><code><a title="qscope.system.system.SGSystem.load_sequence" href="#qscope.system.system.SGSystem.load_sequence">load_sequence</a></code></li>
+<li><code><a title="qscope.system.system.SGSystem.reconnect_rf" href="#qscope.system.system.System.reconnect_rf">reconnect_rf</a></code></li>
+<li><code><a title="qscope.system.system.SGSystem.set_laser_rf_output" href="#qscope.system.system.SGSystem.set_laser_rf_output">set_laser_rf_output</a></code></li>
+<li><code><a title="qscope.system.system.SGSystem.set_matplotlib_style" href="#qscope.system.system.System.set_matplotlib_style">set_matplotlib_style</a></code></li>
+<li><code><a title="qscope.system.system.SGSystem.set_rf_output" href="#qscope.system.system.SGSystem.set_rf_output">set_rf_output</a></code></li>
+<li><code><a title="qscope.system.system.SGSystem.setup_rf_sweep" href="#qscope.system.system.System.setup_rf_sweep">setup_rf_sweep</a></code></li>
+<li><code><a title="qscope.system.system.SGSystem.start_rf_sweep" href="#qscope.system.system.System.start_rf_sweep">start_rf_sweep</a></code></li>
+<li><code><a title="qscope.system.system.SGSystem.validate_roles" href="#qscope.system.system.SGSystem.validate_roles">validate_roles</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="qscope.system.system.SGCameraSystem"><code class="flex name class">
+<span>class <span class="ident">SGCameraSystem</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@system_requirements(
+    required_roles={SEQUENCE_GEN, MAIN_CAMERA},
+    optional_roles={PRIMARY_RF, SECONDARY_RF},
+)
+class SGCameraSystem(SGSystem):
+    &#34;&#34;&#34;Common clock + camera.&#34;&#34;&#34;
+
+    # NOTE
+    #  would need to implement differently for basic CW odmr systems.
+    #  if we do that, copy a bunch of this across
+
+    objective: str | None = None
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        if len(self.objective_pixel_size) == 1:
+            self.set_objective(list(self.objective_pixel_size.keys())[0])
+
+    def _calc_pixel_size(self) -&gt; tuple[float, float]:
+        if self.has_camera():
+            hwb = self.get_device_by_role(MAIN_CAMERA).get_hardware_binning()
+            pa, pb = self.objective_pixel_size[self.get_objective()]
+            return hwb * pa, hwb * pb
+        else:
+            logger.error(&#34;No camera found in system, cannot calculate pixel size.&#34;)
+            return -1.0, -1.0
+
+    @check_role_is_connected()
+    def get_cam_trig_time(self, role: DeviceRole[CameraProtocol] = MAIN_CAMERA) -&gt; float:
+        return self.get_device_by_role(role).get_trigger_time()
+
+    def get_pixel_size(self) -&gt; tuple[float, float]:
+        return self._calc_pixel_size()
+
+    def set_objective(self, objective) -&gt; None:
+        self.objective = objective
+
+    def get_objective(self) -&gt; str:
+        if self.objective is None:
+            raise ValueError(&#34;Objective attribute not set/chosen.&#34;)
+        else:
+            return self.objective
+
+    @check_role_is_connected()
+    def get_frame_shape(
+        self, role: DeviceRole[CameraProtocol] = MAIN_CAMERA
+    ) -&gt; tuple[int, int]:
+        return self.get_device_by_role(role).get_frame_shape()
+
+    @check_role_is_connected()
+    def take_snapshot(self, role: DeviceRole[CameraProtocol] = MAIN_CAMERA) -&gt; np.ndarray:
+        return self.get_device_by_role(role).take_snapshot()
+
+    @check_role_is_connected()
+    async def start_stream(
+        self, connection, typ, role: DeviceRole[CameraProtocol] = MAIN_CAMERA, **params
+    ):
+        self.stop_streams()  # stop any previous streams
+        # NOTE -&gt; above line means you need to clear stop_stream events in below!
+        #  (see start_video in mock)
+        if typ == &#34;video&#34;:
+            if not self.has_camera():
+                logger.error(&#34;No camera found in system, cannot start video.&#34;)
+                raise RuntimeError(&#34;No camera found in system, cannot start video.&#34;)
+            await self.get_device_by_role(role).start_video(connection)
+        else:
+            logger.error(
+                &#34;Unknown stream type {}, can currently handle &#39;video&#39; only.&#34;, typ
+            )
+            raise RuntimeError(
+                f&#34;Unknown stream type {typ}, can currently handle &#39;video&#39; only.&#34;
+            )
+        self.streaming = True
+
+    # unsure about the logic here, but probably sufficent for now.
+    def stop_video(self):
+        for cam in self._devices:
+            if isinstance(cam, CameraProtocol):
+                cam.stop_video()
+
+    def stop_streams(self):
+        self.stop_video()
+        self.streaming = False
+
+    @check_role_is_connected()
+    def set_camera_params(
+        self,
+        exp_t: float,
+        image_size: tuple[int, int],
+        binning: tuple[int, int],
+        role: DeviceRole[CameraProtocol] = MAIN_CAMERA,
+    ):
+        self.get_device_by_role(role).set_exposure_time(exp_t)
+        self.get_device_by_role(role).set_frame_shape(
+            image_size
+        )  # FIXME change to set_roi??
+        self.get_device_by_role(role).set_hardware_binning(binning)
+
+    @check_role_is_connected()
+    def setup_camera_sequence(
+        self,
+        nframes: int,
+        exposure_time: float,
+        frame_shape: tuple[int, int],
+        role: DeviceRole[CameraProtocol] = MAIN_CAMERA,
+    ):
+        &#34;&#34;&#34;Set up camera for sequence acquisition.
+
+        Parameters
+        ----------
+        nframes : int
+            Number of frames to acquire
+        exposure_time : float # FIXME UNUSED??
+            Exposure time in seconds
+        frame_shape : tuple[int, int]
+            ROI shape (height, width)
+        role: DeviceRole[Camera] = MAIN_CAMERA
+            Which camera to configure
+        &#34;&#34;&#34;
+        # self.system.camera.set_hardware_binning(self.meas_config.hardware_binning)
+        # camera also need to _set_frame_format -&gt; set to &#39;chunks&#39; for meas
+        # also want to set bit depth?
+        self.get_device_by_role(role).set_roi(frame_shape)
+        self.get_device_by_role(role).clear_acquisition()
+        self.get_device_by_role(role).setup_acquisition(
+            mode=&#34;sequence&#34;, nframes=nframes
+        )
+        self.get_device_by_role(role).set_trigger_mode(&#34;ext_exp&#34;)
+        time.sleep(0.5)  # wait for camera to set up
+
+    @check_role_is_connected()
+    def restart_camera_acquisition(
+        self, role: DeviceRole[CameraProtocol] = MAIN_CAMERA
+    ) -&gt; None:
+        &#34;&#34;&#34;Stop and restart camera acquisition.&#34;&#34;&#34;
+        self.get_device_by_role(role).stop_acquisition()
+        self.get_device_by_role(role).start_acquisition()
+
+    def stop_all_acquisition(self) -&gt; None:
+        &#34;&#34;&#34;Stop all acquisition devices, and stop sequences &amp; rf sweeps etc..&#34;&#34;&#34;
+        for device in self._devices:
+            if isinstance(device, CameraProtocol):
+                device.stop_acquisition()
+                device.clear_acquisition()
+            if isinstance(device, SeqGenProtocol):
+                device.stop()
+            if isinstance(device, RFSourceProtocol):
+                device.stop_sweep()</code></pre>
+</details>
+<div class="desc"><p>Common clock + camera.</p>
+<p>Initialize system with configuration.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>sys_config</code></strong> :&ensp;<code>str | Type[SystemConfig]</code></dt>
+<dd>Either a system name to load from config file, or a SystemConfig class</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>ValueError</code></dt>
+<dd>If system configuration is invalid or not found</dd>
+</dl></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.system.system.SGSystem" href="#qscope.system.system.SGSystem">SGSystem</a></li>
+<li><a title="qscope.system.system.System" href="#qscope.system.system.System">System</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="qscope.system.system.SGCameraSystem.objective"><code class="name">var <span class="ident">objective</span> : str | None</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.system.system.SGCameraSystem.get_cam_trig_time"><code class="name flex">
+<span>def <span class="ident">get_cam_trig_time</span></span>(<span>self, role: DeviceRole[CameraProtocol] = MainCamera()) ‑> float</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@check_role_is_connected()
+def get_cam_trig_time(self, role: DeviceRole[CameraProtocol] = MAIN_CAMERA) -&gt; float:
+    return self.get_device_by_role(role).get_trigger_time()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.system.system.SGCameraSystem.get_frame_shape"><code class="name flex">
+<span>def <span class="ident">get_frame_shape</span></span>(<span>self, role: DeviceRole[CameraProtocol] = MainCamera()) ‑> tuple[int, int]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@check_role_is_connected()
+def get_frame_shape(
+    self, role: DeviceRole[CameraProtocol] = MAIN_CAMERA
+) -&gt; tuple[int, int]:
+    return self.get_device_by_role(role).get_frame_shape()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.system.system.SGCameraSystem.get_objective"><code class="name flex">
+<span>def <span class="ident">get_objective</span></span>(<span>self) ‑> str</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_objective(self) -&gt; str:
+    if self.objective is None:
+        raise ValueError(&#34;Objective attribute not set/chosen.&#34;)
+    else:
+        return self.objective</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.system.system.SGCameraSystem.get_pixel_size"><code class="name flex">
+<span>def <span class="ident">get_pixel_size</span></span>(<span>self) ‑> tuple[float, float]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_pixel_size(self) -&gt; tuple[float, float]:
+    return self._calc_pixel_size()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.system.system.SGCameraSystem.restart_camera_acquisition"><code class="name flex">
+<span>def <span class="ident">restart_camera_acquisition</span></span>(<span>self, role: DeviceRole[CameraProtocol] = MainCamera()) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@check_role_is_connected()
+def restart_camera_acquisition(
+    self, role: DeviceRole[CameraProtocol] = MAIN_CAMERA
+) -&gt; None:
+    &#34;&#34;&#34;Stop and restart camera acquisition.&#34;&#34;&#34;
+    self.get_device_by_role(role).stop_acquisition()
+    self.get_device_by_role(role).start_acquisition()</code></pre>
+</details>
+<div class="desc"><p>Stop and restart camera acquisition.</p></div>
+</dd>
+<dt id="qscope.system.system.SGCameraSystem.set_camera_params"><code class="name flex">
+<span>def <span class="ident">set_camera_params</span></span>(<span>self,<br>exp_t: float,<br>image_size: tuple[int, int],<br>binning: tuple[int, int],<br>role: DeviceRole[CameraProtocol] = MainCamera())</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@check_role_is_connected()
+def set_camera_params(
+    self,
+    exp_t: float,
+    image_size: tuple[int, int],
+    binning: tuple[int, int],
+    role: DeviceRole[CameraProtocol] = MAIN_CAMERA,
+):
+    self.get_device_by_role(role).set_exposure_time(exp_t)
+    self.get_device_by_role(role).set_frame_shape(
+        image_size
+    )  # FIXME change to set_roi??
+    self.get_device_by_role(role).set_hardware_binning(binning)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.system.system.SGCameraSystem.set_objective"><code class="name flex">
+<span>def <span class="ident">set_objective</span></span>(<span>self, objective) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_objective(self, objective) -&gt; None:
+    self.objective = objective</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.system.system.SGCameraSystem.setup_camera_sequence"><code class="name flex">
+<span>def <span class="ident">setup_camera_sequence</span></span>(<span>self,<br>nframes: int,<br>exposure_time: float,<br>frame_shape: tuple[int, int],<br>role: DeviceRole[CameraProtocol] = MainCamera())</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@check_role_is_connected()
+def setup_camera_sequence(
+    self,
+    nframes: int,
+    exposure_time: float,
+    frame_shape: tuple[int, int],
+    role: DeviceRole[CameraProtocol] = MAIN_CAMERA,
+):
+    &#34;&#34;&#34;Set up camera for sequence acquisition.
+
+    Parameters
+    ----------
+    nframes : int
+        Number of frames to acquire
+    exposure_time : float # FIXME UNUSED??
+        Exposure time in seconds
+    frame_shape : tuple[int, int]
+        ROI shape (height, width)
+    role: DeviceRole[Camera] = MAIN_CAMERA
+        Which camera to configure
+    &#34;&#34;&#34;
+    # self.system.camera.set_hardware_binning(self.meas_config.hardware_binning)
+    # camera also need to _set_frame_format -&gt; set to &#39;chunks&#39; for meas
+    # also want to set bit depth?
+    self.get_device_by_role(role).set_roi(frame_shape)
+    self.get_device_by_role(role).clear_acquisition()
+    self.get_device_by_role(role).setup_acquisition(
+        mode=&#34;sequence&#34;, nframes=nframes
+    )
+    self.get_device_by_role(role).set_trigger_mode(&#34;ext_exp&#34;)
+    time.sleep(0.5)  # wait for camera to set up</code></pre>
+</details>
+<div class="desc"><p>Set up camera for sequence acquisition.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>nframes</code></strong> :&ensp;<code>int</code></dt>
+<dd>Number of frames to acquire</dd>
+<dt><strong><code>exposure_time</code></strong> :&ensp;<code>float # FIXME UNUSED??</code></dt>
+<dd>Exposure time in seconds</dd>
+<dt><strong><code>frame_shape</code></strong> :&ensp;<code>tuple[int, int]</code></dt>
+<dd>ROI shape (height, width)</dd>
+<dt><strong><code>role</code></strong> :&ensp;<code>DeviceRole[Camera] = MAIN_CAMERA</code></dt>
+<dd>Which camera to configure</dd>
+</dl></div>
+</dd>
+<dt id="qscope.system.system.SGCameraSystem.start_stream"><code class="name flex">
+<span>async def <span class="ident">start_stream</span></span>(<span>self, connection, typ, role: DeviceRole[CameraProtocol] = MainCamera(), **params)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@check_role_is_connected()
+async def start_stream(
+    self, connection, typ, role: DeviceRole[CameraProtocol] = MAIN_CAMERA, **params
+):
+    self.stop_streams()  # stop any previous streams
+    # NOTE -&gt; above line means you need to clear stop_stream events in below!
+    #  (see start_video in mock)
+    if typ == &#34;video&#34;:
+        if not self.has_camera():
+            logger.error(&#34;No camera found in system, cannot start video.&#34;)
+            raise RuntimeError(&#34;No camera found in system, cannot start video.&#34;)
+        await self.get_device_by_role(role).start_video(connection)
+    else:
+        logger.error(
+            &#34;Unknown stream type {}, can currently handle &#39;video&#39; only.&#34;, typ
+        )
+        raise RuntimeError(
+            f&#34;Unknown stream type {typ}, can currently handle &#39;video&#39; only.&#34;
+        )
+    self.streaming = True</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.system.system.SGCameraSystem.stop_all_acquisition"><code class="name flex">
+<span>def <span class="ident">stop_all_acquisition</span></span>(<span>self) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def stop_all_acquisition(self) -&gt; None:
+    &#34;&#34;&#34;Stop all acquisition devices, and stop sequences &amp; rf sweeps etc..&#34;&#34;&#34;
+    for device in self._devices:
+        if isinstance(device, CameraProtocol):
+            device.stop_acquisition()
+            device.clear_acquisition()
+        if isinstance(device, SeqGenProtocol):
+            device.stop()
+        if isinstance(device, RFSourceProtocol):
+            device.stop_sweep()</code></pre>
+</details>
+<div class="desc"><p>Stop all acquisition devices, and stop sequences &amp; rf sweeps etc..</p></div>
+</dd>
+<dt id="qscope.system.system.SGCameraSystem.stop_streams"><code class="name flex">
+<span>def <span class="ident">stop_streams</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def stop_streams(self):
+    self.stop_video()
+    self.streaming = False</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.system.system.SGCameraSystem.stop_video"><code class="name flex">
+<span>def <span class="ident">stop_video</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def stop_video(self):
+    for cam in self._devices:
+        if isinstance(cam, CameraProtocol):
+            cam.stop_video()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.system.system.SGCameraSystem.take_snapshot"><code class="name flex">
+<span>def <span class="ident">take_snapshot</span></span>(<span>self, role: DeviceRole[CameraProtocol] = MainCamera()) ‑> numpy.ndarray</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@check_role_is_connected()
+def take_snapshot(self, role: DeviceRole[CameraProtocol] = MAIN_CAMERA) -&gt; np.ndarray:
+    return self.get_device_by_role(role).take_snapshot()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="qscope.system.system.SGSystem" href="#qscope.system.system.SGSystem">SGSystem</a></b></code>:
+<ul class="hlist">
+<li><code><a title="qscope.system.system.SGSystem.add_device_with_role" href="#qscope.system.system.System.add_device_with_role">add_device_with_role</a></code></li>
+<li><code><a title="qscope.system.system.SGSystem.get_all_devices_attrs" href="#qscope.system.system.System.get_all_devices_attrs">get_all_devices_attrs</a></code></li>
+<li><code><a title="qscope.system.system.SGSystem.get_device_by_role" href="#qscope.system.system.System.get_device_by_role">get_device_by_role</a></code></li>
+<li><code><a title="qscope.system.system.SGSystem.get_device_roles" href="#qscope.system.system.System.get_device_roles">get_device_roles</a></code></li>
+<li><code><a title="qscope.system.system.SGSystem.get_metadata" href="#qscope.system.system.System.get_metadata">get_metadata</a></code></li>
+<li><code><a title="qscope.system.system.SGSystem.has_device_role" href="#qscope.system.system.System.has_device_role">has_device_role</a></code></li>
+<li><code><a title="qscope.system.system.SGSystem.load_sequence" href="#qscope.system.system.SGSystem.load_sequence">load_sequence</a></code></li>
+<li><code><a title="qscope.system.system.SGSystem.reconnect_rf" href="#qscope.system.system.System.reconnect_rf">reconnect_rf</a></code></li>
+<li><code><a title="qscope.system.system.SGSystem.set_laser_rf_output" href="#qscope.system.system.SGSystem.set_laser_rf_output">set_laser_rf_output</a></code></li>
+<li><code><a title="qscope.system.system.SGSystem.set_matplotlib_style" href="#qscope.system.system.System.set_matplotlib_style">set_matplotlib_style</a></code></li>
+<li><code><a title="qscope.system.system.SGSystem.set_rf_output" href="#qscope.system.system.SGSystem.set_rf_output">set_rf_output</a></code></li>
+<li><code><a title="qscope.system.system.SGSystem.setup_rf_sweep" href="#qscope.system.system.System.setup_rf_sweep">setup_rf_sweep</a></code></li>
+<li><code><a title="qscope.system.system.SGSystem.start_rf_sweep" href="#qscope.system.system.System.start_rf_sweep">start_rf_sweep</a></code></li>
+<li><code><a title="qscope.system.system.SGSystem.validate_roles" href="#qscope.system.system.SGSystem.validate_roles">validate_roles</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="qscope.system.system.SGSystem"><code class="flex name class">
+<span>class <span class="ident">SGSystem</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@system_requirements(
+    required_roles={SEQUENCE_GEN},
+    optional_roles={PRIMARY_RF, SECONDARY_RF},
+)
+class SGSystem(System):
+    &#34;&#34;&#34;All systems with a common clock (pulseblaster etc.) - so most systems.&#34;&#34;&#34;
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+    # use `requires_connected_devices` decorator here, assume we only ever
+    # have one seqgen in a system
+    @requires_connected_devices(SEQUENCE_GEN)  # checks that a SEQGEN is connected
+    def set_laser_output(self, state):
+        self.get_device_by_role(SEQUENCE_GEN).laser_output(state)
+
+    @requires_connected_devices(SEQUENCE_GEN)
+    def load_sequence(self, seq_name: str, **seq_kwargs) -&gt; None:
+        &#34;&#34;&#34;Load sequence into sequence generator.
+
+        Parameters
+        ----------
+        seq_name : str
+            Name of sequence to load
+        **seq_kwargs : dict
+            Sequence parameters
+        &#34;&#34;&#34;
+        self.get_device_by_role(SEQUENCE_GEN).load_seq(seq_name, **seq_kwargs)
+
+    @requires_connected_devices(SEQUENCE_GEN)
+    def reset_sequence(self) -&gt; None:
+        self.get_device_by_role(SEQUENCE_GEN).reset()
+
+    @requires_connected_devices(SEQUENCE_GEN)
+    def start_sequence(self) -&gt; None:
+        self.get_device_by_role(SEQUENCE_GEN).start()
+
+    @requires_connected_devices(SEQUENCE_GEN)
+    def set_laser_output(self, state):
+        self.get_device_by_role(SEQUENCE_GEN).laser_output(state)
+
+    @check_role_is_connected()
+    @requires_connected_devices(SEQUENCE_GEN)
+    def set_laser_rf_output(self, role: DeviceRole[RFSourceProtocol], state):
+        &#34;&#34;&#34;Set laser &amp; rf to CW on/off.&#34;&#34;&#34;
+        self.get_device_by_role(SEQUENCE_GEN).laser_rf_output(state)
+        self.set_rf_state(role, state)
+
+    @check_role_is_connected()
+    @requires_connected_devices(SEQUENCE_GEN)
+    def set_rf_output(self, role: DeviceRole[RFSourceProtocol], state):
+        &#34;&#34;&#34;Set rf to CW on/off.&#34;&#34;&#34;
+        logger.info(f&#34;Setting RF output to {state}&#34;)
+        self.get_device_by_role(SEQUENCE_GEN).rf_output(state)
+        self.set_rf_state(state, role)
+        self.get_device_by_role(role).set_state(state)</code></pre>
+</details>
+<div class="desc"><p>All systems with a common clock (pulseblaster etc.) - so most systems.</p>
+<p>Initialize system with configuration.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>sys_config</code></strong> :&ensp;<code>str | Type[SystemConfig]</code></dt>
+<dd>Either a system name to load from config file, or a SystemConfig class</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>ValueError</code></dt>
+<dd>If system configuration is invalid or not found</dd>
+</dl></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.system.system.System" href="#qscope.system.system.System">System</a></li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="qscope.system.system.SGAPDSystem" href="#qscope.system.system.SGAPDSystem">SGAPDSystem</a></li>
+<li><a title="qscope.system.system.SGCameraSystem" href="#qscope.system.system.SGCameraSystem">SGCameraSystem</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.system.system.SGSystem.load_sequence"><code class="name flex">
+<span>def <span class="ident">load_sequence</span></span>(<span>self, seq_name: str, **seq_kwargs) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@requires_connected_devices(SEQUENCE_GEN)
+def load_sequence(self, seq_name: str, **seq_kwargs) -&gt; None:
+    &#34;&#34;&#34;Load sequence into sequence generator.
+
+    Parameters
+    ----------
+    seq_name : str
+        Name of sequence to load
+    **seq_kwargs : dict
+        Sequence parameters
+    &#34;&#34;&#34;
+    self.get_device_by_role(SEQUENCE_GEN).load_seq(seq_name, **seq_kwargs)</code></pre>
+</details>
+<div class="desc"><p>Load sequence into sequence generator.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>seq_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>Name of sequence to load</dd>
+<dt><strong><code>**seq_kwargs</code></strong> :&ensp;<code>dict</code></dt>
+<dd>Sequence parameters</dd>
+</dl></div>
+</dd>
+<dt id="qscope.system.system.SGSystem.reset_sequence"><code class="name flex">
+<span>def <span class="ident">reset_sequence</span></span>(<span>self) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@requires_connected_devices(SEQUENCE_GEN)
+def reset_sequence(self) -&gt; None:
+    self.get_device_by_role(SEQUENCE_GEN).reset()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.system.system.SGSystem.set_laser_output"><code class="name flex">
+<span>def <span class="ident">set_laser_output</span></span>(<span>self, state)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@requires_connected_devices(SEQUENCE_GEN)
+def set_laser_output(self, state):
+    self.get_device_by_role(SEQUENCE_GEN).laser_output(state)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.system.system.SGSystem.set_laser_rf_output"><code class="name flex">
+<span>def <span class="ident">set_laser_rf_output</span></span>(<span>self, role: DeviceRole[RFSourceProtocol], state)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@check_role_is_connected()
+@requires_connected_devices(SEQUENCE_GEN)
+def set_laser_rf_output(self, role: DeviceRole[RFSourceProtocol], state):
+    &#34;&#34;&#34;Set laser &amp; rf to CW on/off.&#34;&#34;&#34;
+    self.get_device_by_role(SEQUENCE_GEN).laser_rf_output(state)
+    self.set_rf_state(role, state)</code></pre>
+</details>
+<div class="desc"><p>Set laser &amp; rf to CW on/off.</p></div>
+</dd>
+<dt id="qscope.system.system.SGSystem.set_rf_output"><code class="name flex">
+<span>def <span class="ident">set_rf_output</span></span>(<span>self, role: DeviceRole[RFSourceProtocol], state)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@check_role_is_connected()
+@requires_connected_devices(SEQUENCE_GEN)
+def set_rf_output(self, role: DeviceRole[RFSourceProtocol], state):
+    &#34;&#34;&#34;Set rf to CW on/off.&#34;&#34;&#34;
+    logger.info(f&#34;Setting RF output to {state}&#34;)
+    self.get_device_by_role(SEQUENCE_GEN).rf_output(state)
+    self.set_rf_state(state, role)
+    self.get_device_by_role(role).set_state(state)</code></pre>
+</details>
+<div class="desc"><p>Set rf to CW on/off.</p></div>
+</dd>
+<dt id="qscope.system.system.SGSystem.start_sequence"><code class="name flex">
+<span>def <span class="ident">start_sequence</span></span>(<span>self) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@requires_connected_devices(SEQUENCE_GEN)
+def start_sequence(self) -&gt; None:
+    self.get_device_by_role(SEQUENCE_GEN).start()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.system.system.SGSystem.validate_roles"><code class="name flex">
+<span>def <span class="ident">validate_roles</span></span>(<span>self, config_roles: Set[DeviceRole]) ‑> tuple[bool, str]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def validate_roles(self, config_roles: Set[DeviceRole]) -&gt; tuple[bool, str]:
+    &#34;&#34;&#34;Validate that a set of roles meets this system&#39;s requirements.
+
+    Parameters
+    ----------
+    config_roles : Set[DeviceRole]
+        The roles to validate
+
+    Returns
+    -------
+    tuple[bool, str]
+        (is_valid, error_message)
+    &#34;&#34;&#34;
+    from qscope.types.validation import validate_system_roles
+
+    is_valid, error_msg = validate_system_roles(
+        self._required_roles, self._optional_roles, config_roles
+    )
+
+    if not is_valid:
+        raise ValueError(
+            f&#34;Invalid roles for {self.__class__.__name__}: {error_msg}&#34;
+        )
+    return True, &#34;&#34;</code></pre>
+</details>
+<div class="desc"><p>Validate that a set of roles meets this system's requirements.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>config_roles</code></strong> :&ensp;<code>Set[DeviceRole]</code></dt>
+<dd>The roles to validate</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>tuple[bool, str]</code></dt>
+<dd>(is_valid, error_message)</dd>
+</dl></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="qscope.system.system.System" href="#qscope.system.system.System">System</a></b></code>:
+<ul class="hlist">
+<li><code><a title="qscope.system.system.System.add_device_with_role" href="#qscope.system.system.System.add_device_with_role">add_device_with_role</a></code></li>
+<li><code><a title="qscope.system.system.System.get_all_devices_attrs" href="#qscope.system.system.System.get_all_devices_attrs">get_all_devices_attrs</a></code></li>
+<li><code><a title="qscope.system.system.System.get_device_by_role" href="#qscope.system.system.System.get_device_by_role">get_device_by_role</a></code></li>
+<li><code><a title="qscope.system.system.System.get_device_roles" href="#qscope.system.system.System.get_device_roles">get_device_roles</a></code></li>
+<li><code><a title="qscope.system.system.System.get_metadata" href="#qscope.system.system.System.get_metadata">get_metadata</a></code></li>
+<li><code><a title="qscope.system.system.System.has_device_role" href="#qscope.system.system.System.has_device_role">has_device_role</a></code></li>
+<li><code><a title="qscope.system.system.System.reconnect_rf" href="#qscope.system.system.System.reconnect_rf">reconnect_rf</a></code></li>
+<li><code><a title="qscope.system.system.System.set_matplotlib_style" href="#qscope.system.system.System.set_matplotlib_style">set_matplotlib_style</a></code></li>
+<li><code><a title="qscope.system.system.System.setup_rf_sweep" href="#qscope.system.system.System.setup_rf_sweep">setup_rf_sweep</a></code></li>
+<li><code><a title="qscope.system.system.System.start_rf_sweep" href="#qscope.system.system.System.start_rf_sweep">start_rf_sweep</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="qscope.system.system.System"><code class="flex name class">
+<span>class <span class="ident">System</span></span>
+<span>(</span><span>sys_config: str | Type[<a title="qscope.system.base_config.SystemConfig" href="base_config.html#qscope.system.base_config.SystemConfig">SystemConfig</a>])</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class System(object):
+    &#34;&#34;&#34;Abstract class for system. Specific configurations are sub-classes, such as
+    CameraSystem, APDSystem, etc., depending on what is most often used.
+    This could be implemented fully dynamically, but that would get messy.
+    &#34;&#34;&#34;
+
+    _devices: list[Device]  # ALL device objects for this system
+
+    _bg_meas_tasks: dict[str, asyncio.Task]  # dict: meas_id -&gt; bg measurement tasks
+
+    streaming: bool = False
+    hardware_started_up: bool = False
+
+    # these are overriden from config.py (here for type checking &amp; clarity)
+    system_name: str
+    save_dir: str
+    use_save_dir_only: bool
+    objective_pixel_size: dict[str, float]
+    devices_config: dict[DeviceRole, tuple[Type[Device], dict[str, Any]]]
+    device_status: dict[str, dict[str, bool | str]]
+
+    def __init__(self, sys_config: str | Type[qscope.system.base_config.SystemConfig]):
+        &#34;&#34;&#34;Initialize system with configuration.
+
+        Parameters
+        ----------
+        sys_config : str | Type[SystemConfig]
+            Either a system name to load from config file, or a SystemConfig class
+
+        Raises
+        ------
+        ValueError
+            If system configuration is invalid or not found
+        &#34;&#34;&#34;
+        self.device_status = dict()
+        self._devices = []  # can&#39;t be set in attr above as they are mutable.
+        self._bg_meas_tasks = dict()
+
+        self.set_matplotlib_style()  # This is for saving the data on the system side.
+
+        try:
+            if isinstance(sys_config, str):
+                # Load from config file
+                logger.info(f&#34;Loading system configuration &#39;{sys_config}&#39;&#34;)
+                config = load_system_config(sys_config)
+                self._use_config(config)
+            else:
+                # Use provided config class or instance
+                logger.info(
+                    f&#34;Using system configuration of type {type(sys_config).__name__}&#34;
+                )
+                if isinstance(sys_config, type):  # If it&#39;s a class
+                    self._use_config(sys_config())
+                else:  # If it&#39;s an instance
+                    self._use_config(sys_config)
+
+            try:
+                self._init_dev_config(self.devices_config)
+            except Exception as e:
+                logger.exception(&#34;Error initialising devices.&#34;)
+                raise
+        except Exception as e:
+            logger.exception(&#34;Error initializing system configuration.&#34;)
+            raise
+
+    def set_matplotlib_style(self):
+        &#34;&#34;&#34;
+        Matplotlib style that is used for saving data
+        &#34;&#34;&#34;
+        light_grey = &#34;#F0F0F0&#34;
+        dark_grey = &#34;#D0D0D0&#34;
+        plt.rcParams.update(
+            {
+                &#34;lines.color&#34;: &#34;black&#34;,
+                &#34;patch.edgecolor&#34;: &#34;black&#34;,
+                &#34;text.color&#34;: &#34;black&#34;,
+                &#34;axes.facecolor&#34;: &#34;white&#34;,
+                &#34;axes.edgecolor&#34;: &#34;black&#34;,
+                &#34;axes.labelcolor&#34;: &#34;black&#34;,
+                &#34;lines.linewidth&#34;: 0.75,
+                &#34;axes.linewidth&#34;: 0.75,
+                &#34;font.size&#34;: 10,
+                &#34;axes.titlesize&#34;: 10,
+                &#34;axes.labelsize&#34;: 10,
+                &#34;xtick.labelsize&#34;: 8,
+                &#34;ytick.labelsize&#34;: 8,
+                &#34;xtick.color&#34;: &#34;black&#34;,
+                &#34;ytick.color&#34;: &#34;black&#34;,
+                &#34;grid.color&#34;: dark_grey,
+                # Set the legend font color
+                &#34;legend.labelcolor&#34;: &#34;black&#34;,
+                &#34;legend.facecolor&#34;: &#34;white&#34;,
+                &#34;legend.framealpha&#34;: 0,
+                &#34;figure.facecolor&#34;: &#34;white&#34;,
+                &#34;figure.edgecolor&#34;: &#34;white&#34;,
+                &#34;savefig.facecolor&#34;: &#34;white&#34;,
+                &#34;savefig.edgecolor&#34;: &#34;white&#34;,
+            }
+        )
+
+    def add_device_with_role(self, device: Device, role: DeviceRole) -&gt; None:
+        &#34;&#34;&#34;Add a device to the system and assign it a role.
+
+        Parameters
+        ----------
+        device : Device
+            Device to add and assign role to
+        role : DeviceRole
+            Role to assign
+
+        Raises
+        ------
+        ValueError
+            If role is already assigned to a different device
+        TypeError
+            If device type is incompatible with role
+        &#34;&#34;&#34;
+        from qscope.types.validation import _get_base_classes
+
+        # Check device type compatibility
+        is_valid, error_msg = role.validate_device_type(type(device))
+        if not is_valid:
+            raise TypeError(f&#34;Cannot assign role {role}: {error_msg}&#34;)
+
+        # Check if role already assigned to a different device
+        for existing_device in self._devices:
+            if existing_device is not device and existing_device.has_role(role):
+                raise ValueError(
+                    f&#34;Role {role.__class__.__name__} already assigned to device &#34;
+                    f&#34;{existing_device.__class__.__name__}&#34;
+                )
+
+        # Add device to system&#39;s device list if not already present
+        if device not in self._devices:
+            self._devices.append(device)
+
+        # Assign the role using protected method
+        device._add_role(role)
+
+    def _init_dev_config(
+        self, dev_config: dict[DeviceRole, tuple[Type[Device], dict[str, Any]]]
+    ) -&gt; None:
+        &#34;&#34;&#34;Initialize device configuration and validate roles.
+
+        Parameters
+        ----------
+        dev_config : dict[DeviceRole, tuple[Type[Device], dict[str, Any]]]
+            Mapping from roles to (device class, config dict) tuples
+        &#34;&#34;&#34;
+        logger.info(&#34;Initialising devices.&#34;)
+
+        # Get configured roles
+        config_roles = set(dev_config.keys())
+
+        # Validate roles if system has requirements
+        if hasattr(self, &#34;validate_roles&#34;):
+            is_valid, error_msg = self.validate_roles(config_roles)
+            if not is_valid:
+                raise ValueError(error_msg)
+
+        try:
+            # Initialize devices
+            for role, (device_class, config_dict) in dev_config.items():
+                try:
+                    # Filter out metadata fields from config dict
+                    device_params = {
+                        k: v
+                        for k, v in config_dict.items()
+                        if not k.startswith(&#34;_&#34;) and k not in [&#34;role&#34;, &#34;type&#34;]
+                    }
+
+                    # Create device instance with filtered params
+                    device = device_class(**device_params)
+                    self.add_device_with_role(device, role)
+                    logger.info(f&#34;Initialized {device_class.__name__} with role {role}&#34;)
+                except Exception as e:
+                    logger.error(f&#34;Failed to initialize {device_class.__name__}: {e}&#34;)
+                    raise
+
+        except Exception as e:
+            logger.exception(&#34;Error initializing devices&#34;)
+            raise
+
+        # Validate device types against required roles after initialization
+        if hasattr(self, &#34;_required_roles&#34;):
+            # Construct device config dict for validation
+            available_devices = {
+                role: (type(device), &#34;&#34;)
+                # Empty string as config str not needed for validation
+                for device in self._devices
+                for role in device.get_roles()
+            }
+
+            # First check required roles
+            is_valid, error_msg = validate_device_role_mapping(
+                self._required_roles, available_devices
+            )
+            if not is_valid:
+                raise ValueError(
+                    f&#34;Missing required roles for {self.__class__.__name__}: {error_msg}&#34;
+                )
+                # Then check optional roles if present
+            if hasattr(self, &#34;_optional_roles&#34;) and self._optional_roles:
+                is_valid, _ = validate_device_role_mapping(
+                    self._optional_roles, available_devices
+                )
+                # Optional roles validation doesn&#39;t raise error if not found
+
+    def _use_config(self, sysconfig: qscope.system.config.SystemConfig):
+        for key in sysconfig.__dict__:
+            if key[0] != &#34;_&#34;:
+                setattr(self, key, getattr(sysconfig, key))
+
+    def has_camera(self):
+        for device in self._devices:
+            if isinstance(device, CameraProtocol):
+                logger.info(&#34;System has a camera.&#34;)
+                return True
+        return False
+
+    def get_all_devices_attrs(self):
+        &#34;&#34;&#34;This function is used to get the value of an attribute from the system class.&#34;&#34;&#34;
+        param_dict = {}
+        for i in self._devices:
+            name = i.__class__.__name__ + &#34;_1&#34;
+            while name in param_dict:
+                name = name[:-1] + str(int(name[-1]) + 1)
+            param_dict[name] = i.get_all_attrs()
+        return param_dict
+
+    def get_metadata(self):
+        &#34;&#34;&#34;This function is used to unroll the metadata from the system class.
+        It returns a dictionary with all the metadata from the system class.&#34;&#34;&#34;
+        param_dict = {}
+        for i in self._devices:
+            name = i.__class__.__name__ + &#34;_1&#34;
+            while name in param_dict:
+                name = name[:-1] + str(int(name[-1]) + 1)
+            metadata = i.unroll_metadata()
+            # Convert role constants to role class names
+            if &#34;roles&#34; in metadata:
+                metadata[&#34;roles&#34;] = [role.__class__.__name__ for role in i.get_roles()]
+            param_dict[name] = metadata
+        param_dict[&#34;system_name&#34;] = self.system_name
+        param_dict[&#34;system_type&#34;] = self.__class__.__name__
+        param_dict[&#34;save_dir&#34;] = self.save_dir
+        param_dict[&#34;objective_pixel_size&#34;] = self.objective_pixel_size
+        return param_dict
+
+    def connect_devices(self) -&gt; dict[str, dict[str, bool | str]]:
+        dev_status: dict[str, dict[str, bool | str]] = dict()
+        for device in self._devices:
+            ok, msg = device.open()
+            name = device.__class__.__name__ + &#34;_1&#34;
+            while name in dev_status:
+                name = name[:-1] + str(int(name[-1]) + 1)
+            dev_status[name] = {&#34;status&#34;: ok, &#34;message&#34;: msg}
+        self.device_status = dev_status
+        return dev_status
+
+    def disconnect_devices(self):
+        for device in self._devices:
+            device.close()
+
+    def add_bg_meas_task(self, meas_id: str, task: asyncio.Task):
+        self._bg_meas_tasks[meas_id] = task
+
+    def cancel_tasks(self):
+        for task in self._bg_meas_tasks.values():
+            try:
+                task.cancel()
+            except Exception:
+                logger.exception(&#34;Error cancelling task. Continuing&#34;)
+        self._bg_meas_tasks = dict()
+
+    def packdown(self):
+        self.cancel_tasks()  # cancels measurement tasks running in bg
+        self.disconnect_devices()
+        self.hardware_started_up = False
+
+    def startup(self) -&gt; dict[str, dict[str, bool | str]]:
+        ret = self.connect_devices()
+        self.hardware_started_up = True
+        return ret
+
+    # these are just for type-checking
+    @overload
+    def get_device_by_role(self, role: DeviceRole[CameraProtocol]) -&gt; CameraInterface: ...
+
+    @overload
+    def get_device_by_role(self, role: DeviceRole[RFSourceProtocol]) -&gt; RFSourceInterface: ...
+
+    @overload
+    def get_device_by_role(self, role: DeviceRole[SeqGenProtocol]) -&gt; SeqGenInterface: ...
+
+    @overload
+    def get_device_by_role(self, role: DeviceRole[DigitizerProtocol]) -&gt; DigitizerInterface: ...
+
+    def get_device_by_role(self, role: DeviceRole) -&gt; RoleInterface:
+        &#34;&#34;&#34;Get first device that fulfills the specified role.
+
+        Parameters
+        ----------
+        role : DeviceRole
+            Required role
+
+        Returns
+        -------
+        Device
+            Device fulfilling the role
+
+        Raises
+        ------
+        ValueError
+            If no device fulfills the role
+        &#34;&#34;&#34;
+        for device in self._devices:
+            if device.has_role(role):
+                return device
+        raise ValueError(f&#34;No device found for role {role}&#34;)
+
+    def has_device_role(self, role: DeviceRole) -&gt; bool:
+        &#34;&#34;&#34;Check if system has any device fulfilling the specified role.
+
+        Parameters
+        ----------
+        role : DeviceRole
+            Role to check for
+
+        Returns
+        -------
+        bool
+            True if role is fulfilled
+        &#34;&#34;&#34;
+        return any(d.has_role(role) for d in self._devices)
+
+    def get_device_roles(self) -&gt; set[DeviceRole]:
+        &#34;&#34;&#34;Get all roles fulfilled by devices in the system.
+
+        Returns
+        -------
+        set[DeviceRole]
+            Set of roles
+        &#34;&#34;&#34;
+        return {role for d in self._devices for role in d.get_roles()}
+
+    @check_role_is_connected()
+    def setup_rf_sweep(
+        self,
+        freq_list: np.ndarray,
+        power: float,
+        step_time: float = 0.1,  # Needs to be the camera trigger time for camera systems
+        role: DeviceRole[RFSourceProtocol] = PRIMARY_RF,
+    ) -&gt; None:
+        &#34;&#34;&#34;Configure RF source for frequency sweep.
+
+        Parameters
+        ----------
+        freq_list : np.ndarray
+            List of frequencies to sweep
+        power : float
+            RF power in dBm
+        role : DeviceRole[RFSource] = PRIMARY_RF
+            Which RF source to configure
+        &#34;&#34;&#34;
+        rfsource = self.get_device_by_role(role)
+        rfsource.set_power(power)  # POWER MUST BE SET BEFORE FREQ LIST
+        rfsource.set_freq_list(freq_list, step_time)
+
+    @check_role_is_connected()  # checks that &#39;role&#39; device is connected
+    def setup_single_rf_freq(
+        self, rf_freq: float, rf_pow: float, role: DeviceRole[RFSourceProtocol] = PRIMARY_RF
+    ):
+        rfsource = self.get_device_by_role(role)
+        rfsource.set_freq(rf_freq)
+        rfsource.set_power(rf_pow)
+
+    @check_role_is_connected()
+    def set_rf_state(self, state: bool, role: DeviceRole[RFSourceProtocol] = PRIMARY_RF):
+        rfsource = self.get_device_by_role(role)
+        rfsource.set_state(state)
+
+    @check_role_is_connected()
+    def set_rf_params(
+        self, freq: float, power: float, role: DeviceRole[RFSourceProtocol] = PRIMARY_RF
+    ):
+        rfsource = self.get_device_by_role(role)
+        rfsource.set_freq(freq)
+        rfsource.set_power(power)
+
+    @check_role_is_connected()
+    def start_rf_sweep(self, role: DeviceRole[RFSourceProtocol] = PRIMARY_RF) -&gt; None:
+        &#34;&#34;&#34;Start RF frequency sweep.&#34;&#34;&#34;
+        self.get_device_by_role(role).start_sweep()
+
+    @check_role_is_connected()
+    def reconnect_rf(self, role: DeviceRole[RFSourceProtocol] = PRIMARY_RF) -&gt; None:
+        &#34;&#34;&#34;Reconnect RF source.&#34;&#34;&#34;
+        self.get_device_by_role(role).reconnect()</code></pre>
+</details>
+<div class="desc"><p>Abstract class for system. Specific configurations are sub-classes, such as
+CameraSystem, APDSystem, etc., depending on what is most often used.
+This could be implemented fully dynamically, but that would get messy.</p>
+<p>Initialize system with configuration.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>sys_config</code></strong> :&ensp;<code>str | Type[SystemConfig]</code></dt>
+<dd>Either a system name to load from config file, or a SystemConfig class</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>ValueError</code></dt>
+<dd>If system configuration is invalid or not found</dd>
+</dl></div>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="qscope.system.system.SGSystem" href="#qscope.system.system.SGSystem">SGSystem</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="qscope.system.system.System.device_status"><code class="name">var <span class="ident">device_status</span> : dict[str, dict[str, bool | str]]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.system.system.System.devices_config"><code class="name">var <span class="ident">devices_config</span> : dict[<a title="qscope.types.roles.DeviceRole" href="../types/roles.html#qscope.types.roles.DeviceRole">DeviceRole</a>, tuple[typing.Type[<a title="qscope.device.device.Device" href="../device/device.html#qscope.device.device.Device">Device</a>], dict[str, typing.Any]]]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.system.system.System.hardware_started_up"><code class="name">var <span class="ident">hardware_started_up</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.system.system.System.objective_pixel_size"><code class="name">var <span class="ident">objective_pixel_size</span> : dict[str, float]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.system.system.System.save_dir"><code class="name">var <span class="ident">save_dir</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.system.system.System.streaming"><code class="name">var <span class="ident">streaming</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.system.system.System.system_name"><code class="name">var <span class="ident">system_name</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.system.system.System.use_save_dir_only"><code class="name">var <span class="ident">use_save_dir_only</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.system.system.System.add_bg_meas_task"><code class="name flex">
+<span>def <span class="ident">add_bg_meas_task</span></span>(<span>self, meas_id: str, task: asyncio.Task)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def add_bg_meas_task(self, meas_id: str, task: asyncio.Task):
+    self._bg_meas_tasks[meas_id] = task</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.system.system.System.add_device_with_role"><code class="name flex">
+<span>def <span class="ident">add_device_with_role</span></span>(<span>self, device: Device, role: DeviceRole) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def add_device_with_role(self, device: Device, role: DeviceRole) -&gt; None:
+    &#34;&#34;&#34;Add a device to the system and assign it a role.
+
+    Parameters
+    ----------
+    device : Device
+        Device to add and assign role to
+    role : DeviceRole
+        Role to assign
+
+    Raises
+    ------
+    ValueError
+        If role is already assigned to a different device
+    TypeError
+        If device type is incompatible with role
+    &#34;&#34;&#34;
+    from qscope.types.validation import _get_base_classes
+
+    # Check device type compatibility
+    is_valid, error_msg = role.validate_device_type(type(device))
+    if not is_valid:
+        raise TypeError(f&#34;Cannot assign role {role}: {error_msg}&#34;)
+
+    # Check if role already assigned to a different device
+    for existing_device in self._devices:
+        if existing_device is not device and existing_device.has_role(role):
+            raise ValueError(
+                f&#34;Role {role.__class__.__name__} already assigned to device &#34;
+                f&#34;{existing_device.__class__.__name__}&#34;
+            )
+
+    # Add device to system&#39;s device list if not already present
+    if device not in self._devices:
+        self._devices.append(device)
+
+    # Assign the role using protected method
+    device._add_role(role)</code></pre>
+</details>
+<div class="desc"><p>Add a device to the system and assign it a role.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>device</code></strong> :&ensp;<code>Device</code></dt>
+<dd>Device to add and assign role to</dd>
+<dt><strong><code>role</code></strong> :&ensp;<code>DeviceRole</code></dt>
+<dd>Role to assign</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>ValueError</code></dt>
+<dd>If role is already assigned to a different device</dd>
+<dt><code>TypeError</code></dt>
+<dd>If device type is incompatible with role</dd>
+</dl></div>
+</dd>
+<dt id="qscope.system.system.System.cancel_tasks"><code class="name flex">
+<span>def <span class="ident">cancel_tasks</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def cancel_tasks(self):
+    for task in self._bg_meas_tasks.values():
+        try:
+            task.cancel()
+        except Exception:
+            logger.exception(&#34;Error cancelling task. Continuing&#34;)
+    self._bg_meas_tasks = dict()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.system.system.System.connect_devices"><code class="name flex">
+<span>def <span class="ident">connect_devices</span></span>(<span>self) ‑> dict[str, dict[str, bool | str]]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def connect_devices(self) -&gt; dict[str, dict[str, bool | str]]:
+    dev_status: dict[str, dict[str, bool | str]] = dict()
+    for device in self._devices:
+        ok, msg = device.open()
+        name = device.__class__.__name__ + &#34;_1&#34;
+        while name in dev_status:
+            name = name[:-1] + str(int(name[-1]) + 1)
+        dev_status[name] = {&#34;status&#34;: ok, &#34;message&#34;: msg}
+    self.device_status = dev_status
+    return dev_status</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.system.system.System.disconnect_devices"><code class="name flex">
+<span>def <span class="ident">disconnect_devices</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def disconnect_devices(self):
+    for device in self._devices:
+        device.close()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.system.system.System.get_all_devices_attrs"><code class="name flex">
+<span>def <span class="ident">get_all_devices_attrs</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_all_devices_attrs(self):
+    &#34;&#34;&#34;This function is used to get the value of an attribute from the system class.&#34;&#34;&#34;
+    param_dict = {}
+    for i in self._devices:
+        name = i.__class__.__name__ + &#34;_1&#34;
+        while name in param_dict:
+            name = name[:-1] + str(int(name[-1]) + 1)
+        param_dict[name] = i.get_all_attrs()
+    return param_dict</code></pre>
+</details>
+<div class="desc"><p>This function is used to get the value of an attribute from the system class.</p></div>
+</dd>
+<dt id="qscope.system.system.System.get_device_by_role"><code class="name flex">
+<span>def <span class="ident">get_device_by_role</span></span>(<span>self, role: DeviceRole) ‑> <a title="qscope.types.interfaces.RoleInterface" href="../types/interfaces.html#qscope.types.interfaces.RoleInterface">RoleInterface</a></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_device_by_role(self, role: DeviceRole) -&gt; RoleInterface:
+    &#34;&#34;&#34;Get first device that fulfills the specified role.
+
+    Parameters
+    ----------
+    role : DeviceRole
+        Required role
+
+    Returns
+    -------
+    Device
+        Device fulfilling the role
+
+    Raises
+    ------
+    ValueError
+        If no device fulfills the role
+    &#34;&#34;&#34;
+    for device in self._devices:
+        if device.has_role(role):
+            return device
+    raise ValueError(f&#34;No device found for role {role}&#34;)</code></pre>
+</details>
+<div class="desc"><p>Get first device that fulfills the specified role.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>role</code></strong> :&ensp;<code>DeviceRole</code></dt>
+<dd>Required role</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Device</code></dt>
+<dd>Device fulfilling the role</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>ValueError</code></dt>
+<dd>If no device fulfills the role</dd>
+</dl></div>
+</dd>
+<dt id="qscope.system.system.System.get_device_roles"><code class="name flex">
+<span>def <span class="ident">get_device_roles</span></span>(<span>self) ‑> set[<a title="qscope.types.roles.DeviceRole" href="../types/roles.html#qscope.types.roles.DeviceRole">DeviceRole</a>]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_device_roles(self) -&gt; set[DeviceRole]:
+    &#34;&#34;&#34;Get all roles fulfilled by devices in the system.
+
+    Returns
+    -------
+    set[DeviceRole]
+        Set of roles
+    &#34;&#34;&#34;
+    return {role for d in self._devices for role in d.get_roles()}</code></pre>
+</details>
+<div class="desc"><p>Get all roles fulfilled by devices in the system.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>set[DeviceRole]</code></dt>
+<dd>Set of roles</dd>
+</dl></div>
+</dd>
+<dt id="qscope.system.system.System.get_metadata"><code class="name flex">
+<span>def <span class="ident">get_metadata</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_metadata(self):
+    &#34;&#34;&#34;This function is used to unroll the metadata from the system class.
+    It returns a dictionary with all the metadata from the system class.&#34;&#34;&#34;
+    param_dict = {}
+    for i in self._devices:
+        name = i.__class__.__name__ + &#34;_1&#34;
+        while name in param_dict:
+            name = name[:-1] + str(int(name[-1]) + 1)
+        metadata = i.unroll_metadata()
+        # Convert role constants to role class names
+        if &#34;roles&#34; in metadata:
+            metadata[&#34;roles&#34;] = [role.__class__.__name__ for role in i.get_roles()]
+        param_dict[name] = metadata
+    param_dict[&#34;system_name&#34;] = self.system_name
+    param_dict[&#34;system_type&#34;] = self.__class__.__name__
+    param_dict[&#34;save_dir&#34;] = self.save_dir
+    param_dict[&#34;objective_pixel_size&#34;] = self.objective_pixel_size
+    return param_dict</code></pre>
+</details>
+<div class="desc"><p>This function is used to unroll the metadata from the system class.
+It returns a dictionary with all the metadata from the system class.</p></div>
+</dd>
+<dt id="qscope.system.system.System.has_camera"><code class="name flex">
+<span>def <span class="ident">has_camera</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def has_camera(self):
+    for device in self._devices:
+        if isinstance(device, CameraProtocol):
+            logger.info(&#34;System has a camera.&#34;)
+            return True
+    return False</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.system.system.System.has_device_role"><code class="name flex">
+<span>def <span class="ident">has_device_role</span></span>(<span>self, role: DeviceRole) ‑> bool</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def has_device_role(self, role: DeviceRole) -&gt; bool:
+    &#34;&#34;&#34;Check if system has any device fulfilling the specified role.
+
+    Parameters
+    ----------
+    role : DeviceRole
+        Role to check for
+
+    Returns
+    -------
+    bool
+        True if role is fulfilled
+    &#34;&#34;&#34;
+    return any(d.has_role(role) for d in self._devices)</code></pre>
+</details>
+<div class="desc"><p>Check if system has any device fulfilling the specified role.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>role</code></strong> :&ensp;<code>DeviceRole</code></dt>
+<dd>Role to check for</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>bool</code></dt>
+<dd>True if role is fulfilled</dd>
+</dl></div>
+</dd>
+<dt id="qscope.system.system.System.packdown"><code class="name flex">
+<span>def <span class="ident">packdown</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def packdown(self):
+    self.cancel_tasks()  # cancels measurement tasks running in bg
+    self.disconnect_devices()
+    self.hardware_started_up = False</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.system.system.System.reconnect_rf"><code class="name flex">
+<span>def <span class="ident">reconnect_rf</span></span>(<span>self, role: DeviceRole[RFSourceProtocol] = PrimaryRFSource()) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@check_role_is_connected()
+def reconnect_rf(self, role: DeviceRole[RFSourceProtocol] = PRIMARY_RF) -&gt; None:
+    &#34;&#34;&#34;Reconnect RF source.&#34;&#34;&#34;
+    self.get_device_by_role(role).reconnect()</code></pre>
+</details>
+<div class="desc"><p>Reconnect RF source.</p></div>
+</dd>
+<dt id="qscope.system.system.System.set_matplotlib_style"><code class="name flex">
+<span>def <span class="ident">set_matplotlib_style</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_matplotlib_style(self):
+    &#34;&#34;&#34;
+    Matplotlib style that is used for saving data
+    &#34;&#34;&#34;
+    light_grey = &#34;#F0F0F0&#34;
+    dark_grey = &#34;#D0D0D0&#34;
+    plt.rcParams.update(
+        {
+            &#34;lines.color&#34;: &#34;black&#34;,
+            &#34;patch.edgecolor&#34;: &#34;black&#34;,
+            &#34;text.color&#34;: &#34;black&#34;,
+            &#34;axes.facecolor&#34;: &#34;white&#34;,
+            &#34;axes.edgecolor&#34;: &#34;black&#34;,
+            &#34;axes.labelcolor&#34;: &#34;black&#34;,
+            &#34;lines.linewidth&#34;: 0.75,
+            &#34;axes.linewidth&#34;: 0.75,
+            &#34;font.size&#34;: 10,
+            &#34;axes.titlesize&#34;: 10,
+            &#34;axes.labelsize&#34;: 10,
+            &#34;xtick.labelsize&#34;: 8,
+            &#34;ytick.labelsize&#34;: 8,
+            &#34;xtick.color&#34;: &#34;black&#34;,
+            &#34;ytick.color&#34;: &#34;black&#34;,
+            &#34;grid.color&#34;: dark_grey,
+            # Set the legend font color
+            &#34;legend.labelcolor&#34;: &#34;black&#34;,
+            &#34;legend.facecolor&#34;: &#34;white&#34;,
+            &#34;legend.framealpha&#34;: 0,
+            &#34;figure.facecolor&#34;: &#34;white&#34;,
+            &#34;figure.edgecolor&#34;: &#34;white&#34;,
+            &#34;savefig.facecolor&#34;: &#34;white&#34;,
+            &#34;savefig.edgecolor&#34;: &#34;white&#34;,
+        }
+    )</code></pre>
+</details>
+<div class="desc"><p>Matplotlib style that is used for saving data</p></div>
+</dd>
+<dt id="qscope.system.system.System.set_rf_params"><code class="name flex">
+<span>def <span class="ident">set_rf_params</span></span>(<span>self,<br>freq: float,<br>power: float,<br>role: DeviceRole[RFSourceProtocol] = PrimaryRFSource())</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@check_role_is_connected()
+def set_rf_params(
+    self, freq: float, power: float, role: DeviceRole[RFSourceProtocol] = PRIMARY_RF
+):
+    rfsource = self.get_device_by_role(role)
+    rfsource.set_freq(freq)
+    rfsource.set_power(power)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.system.system.System.set_rf_state"><code class="name flex">
+<span>def <span class="ident">set_rf_state</span></span>(<span>self, state: bool, role: DeviceRole[RFSourceProtocol] = PrimaryRFSource())</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@check_role_is_connected()
+def set_rf_state(self, state: bool, role: DeviceRole[RFSourceProtocol] = PRIMARY_RF):
+    rfsource = self.get_device_by_role(role)
+    rfsource.set_state(state)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.system.system.System.setup_rf_sweep"><code class="name flex">
+<span>def <span class="ident">setup_rf_sweep</span></span>(<span>self,<br>freq_list: np.ndarray,<br>power: float,<br>step_time: float = 0.1,<br>role: DeviceRole[RFSourceProtocol] = PrimaryRFSource()) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@check_role_is_connected()
+def setup_rf_sweep(
+    self,
+    freq_list: np.ndarray,
+    power: float,
+    step_time: float = 0.1,  # Needs to be the camera trigger time for camera systems
+    role: DeviceRole[RFSourceProtocol] = PRIMARY_RF,
+) -&gt; None:
+    &#34;&#34;&#34;Configure RF source for frequency sweep.
+
+    Parameters
+    ----------
+    freq_list : np.ndarray
+        List of frequencies to sweep
+    power : float
+        RF power in dBm
+    role : DeviceRole[RFSource] = PRIMARY_RF
+        Which RF source to configure
+    &#34;&#34;&#34;
+    rfsource = self.get_device_by_role(role)
+    rfsource.set_power(power)  # POWER MUST BE SET BEFORE FREQ LIST
+    rfsource.set_freq_list(freq_list, step_time)</code></pre>
+</details>
+<div class="desc"><p>Configure RF source for frequency sweep.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>freq_list</code></strong> :&ensp;<code>np.ndarray</code></dt>
+<dd>List of frequencies to sweep</dd>
+<dt><strong><code>power</code></strong> :&ensp;<code>float</code></dt>
+<dd>RF power in dBm</dd>
+<dt><strong><code>role</code></strong> :&ensp;<code>DeviceRole[RFSource] = PRIMARY_RF</code></dt>
+<dd>Which RF source to configure</dd>
+</dl></div>
+</dd>
+<dt id="qscope.system.system.System.setup_single_rf_freq"><code class="name flex">
+<span>def <span class="ident">setup_single_rf_freq</span></span>(<span>self,<br>rf_freq: float,<br>rf_pow: float,<br>role: DeviceRole[RFSourceProtocol] = PrimaryRFSource())</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@check_role_is_connected()  # checks that &#39;role&#39; device is connected
+def setup_single_rf_freq(
+    self, rf_freq: float, rf_pow: float, role: DeviceRole[RFSourceProtocol] = PRIMARY_RF
+):
+    rfsource = self.get_device_by_role(role)
+    rfsource.set_freq(rf_freq)
+    rfsource.set_power(rf_pow)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.system.system.System.start_rf_sweep"><code class="name flex">
+<span>def <span class="ident">start_rf_sweep</span></span>(<span>self, role: DeviceRole[RFSourceProtocol] = PrimaryRFSource()) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@check_role_is_connected()
+def start_rf_sweep(self, role: DeviceRole[RFSourceProtocol] = PRIMARY_RF) -&gt; None:
+    &#34;&#34;&#34;Start RF frequency sweep.&#34;&#34;&#34;
+    self.get_device_by_role(role).start_sweep()</code></pre>
+</details>
+<div class="desc"><p>Start RF frequency sweep.</p></div>
+</dd>
+<dt id="qscope.system.system.System.startup"><code class="name flex">
+<span>def <span class="ident">startup</span></span>(<span>self) ‑> dict[str, dict[str, bool | str]]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def startup(self) -&gt; dict[str, dict[str, bool | str]]:
+    ret = self.connect_devices()
+    self.hardware_started_up = True
+    return ret</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<form>
+<input id="lunr-search" name="q" placeholder="🔎 Search ..." aria-label="Search"
+disabled minlength="2">
+</form>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.css" integrity="sha512-b+T2i3P45i1LZM7I00Ci5QquB9szqaxu+uuk5TUSGjZQ4w4n+qujQiIuvTv2BxE7WCGQCifNMksyKILDiHzsOg==" crossorigin>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.js" integrity="sha512-2B9/byNV1KKRm5nQ2RLViPFD6U4dUjDGwuW1GU+ImJh8YinPU9Zlq1GzdTMO+G2ROrB5o1qasJBy1ttYz0wCug==" crossorigin></script>
+<style>
+.modal-dialog iframe {
+width: 100vw;
+height: calc(100vh - 80px);
+}
+@media screen and (min-width: 700px) {
+.modal-dialog iframe {
+width: 70vw;
+height: 80vh;
+}
+}
+.modal-dialog .tingle-modal-box {width: auto;}
+.modal-dialog .tingle-modal-box__content {padding: 0;}
+</style>
+<script>
+const input = document.getElementById('lunr-search');
+input.disabled = false;
+input.form.addEventListener('submit', (ev) => {
+ev.preventDefault();
+const url = new URL(window.location);
+url.searchParams.set('q', input.value);
+history.replaceState({}, null, url.toString());
+search(input.value);
+});
+const query = new URL(window.location).searchParams.get('q');
+if (query)
+search(query);
+function search(query) {
+const url = '../../doc-search.html#' + encodeURIComponent(query);
+new tingle.modal({
+cssClass: ['modal-dialog'],
+onClose: () => {
+const url = new URL(window.location);
+url.searchParams.delete('q');
+history.replaceState({}, null, url.toString());
+setTimeout(() => input.focus(), 100);
+}
+}).setContent('<iframe src="' + url + '"></iframe>').open();
+}
+</script>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="qscope.system" href="index.html">qscope.system</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="qscope.system.system.check_role_is_connected" href="#qscope.system.system.check_role_is_connected">check_role_is_connected</a></code></li>
+<li><code><a title="qscope.system.system.requires_connected_devices" href="#qscope.system.system.requires_connected_devices">requires_connected_devices</a></code></li>
+<li><code><a title="qscope.system.system.system_requirements" href="#qscope.system.system.system_requirements">system_requirements</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="qscope.system.system.SGAPDSystem" href="#qscope.system.system.SGAPDSystem">SGAPDSystem</a></code></h4>
+</li>
+<li>
+<h4><code><a title="qscope.system.system.SGCameraSystem" href="#qscope.system.system.SGCameraSystem">SGCameraSystem</a></code></h4>
+<ul class="">
+<li><code><a title="qscope.system.system.SGCameraSystem.get_cam_trig_time" href="#qscope.system.system.SGCameraSystem.get_cam_trig_time">get_cam_trig_time</a></code></li>
+<li><code><a title="qscope.system.system.SGCameraSystem.get_frame_shape" href="#qscope.system.system.SGCameraSystem.get_frame_shape">get_frame_shape</a></code></li>
+<li><code><a title="qscope.system.system.SGCameraSystem.get_objective" href="#qscope.system.system.SGCameraSystem.get_objective">get_objective</a></code></li>
+<li><code><a title="qscope.system.system.SGCameraSystem.get_pixel_size" href="#qscope.system.system.SGCameraSystem.get_pixel_size">get_pixel_size</a></code></li>
+<li><code><a title="qscope.system.system.SGCameraSystem.objective" href="#qscope.system.system.SGCameraSystem.objective">objective</a></code></li>
+<li><code><a title="qscope.system.system.SGCameraSystem.restart_camera_acquisition" href="#qscope.system.system.SGCameraSystem.restart_camera_acquisition">restart_camera_acquisition</a></code></li>
+<li><code><a title="qscope.system.system.SGCameraSystem.set_camera_params" href="#qscope.system.system.SGCameraSystem.set_camera_params">set_camera_params</a></code></li>
+<li><code><a title="qscope.system.system.SGCameraSystem.set_objective" href="#qscope.system.system.SGCameraSystem.set_objective">set_objective</a></code></li>
+<li><code><a title="qscope.system.system.SGCameraSystem.setup_camera_sequence" href="#qscope.system.system.SGCameraSystem.setup_camera_sequence">setup_camera_sequence</a></code></li>
+<li><code><a title="qscope.system.system.SGCameraSystem.start_stream" href="#qscope.system.system.SGCameraSystem.start_stream">start_stream</a></code></li>
+<li><code><a title="qscope.system.system.SGCameraSystem.stop_all_acquisition" href="#qscope.system.system.SGCameraSystem.stop_all_acquisition">stop_all_acquisition</a></code></li>
+<li><code><a title="qscope.system.system.SGCameraSystem.stop_streams" href="#qscope.system.system.SGCameraSystem.stop_streams">stop_streams</a></code></li>
+<li><code><a title="qscope.system.system.SGCameraSystem.stop_video" href="#qscope.system.system.SGCameraSystem.stop_video">stop_video</a></code></li>
+<li><code><a title="qscope.system.system.SGCameraSystem.take_snapshot" href="#qscope.system.system.SGCameraSystem.take_snapshot">take_snapshot</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.system.system.SGSystem" href="#qscope.system.system.SGSystem">SGSystem</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.system.system.SGSystem.load_sequence" href="#qscope.system.system.SGSystem.load_sequence">load_sequence</a></code></li>
+<li><code><a title="qscope.system.system.SGSystem.reset_sequence" href="#qscope.system.system.SGSystem.reset_sequence">reset_sequence</a></code></li>
+<li><code><a title="qscope.system.system.SGSystem.set_laser_output" href="#qscope.system.system.SGSystem.set_laser_output">set_laser_output</a></code></li>
+<li><code><a title="qscope.system.system.SGSystem.set_laser_rf_output" href="#qscope.system.system.SGSystem.set_laser_rf_output">set_laser_rf_output</a></code></li>
+<li><code><a title="qscope.system.system.SGSystem.set_rf_output" href="#qscope.system.system.SGSystem.set_rf_output">set_rf_output</a></code></li>
+<li><code><a title="qscope.system.system.SGSystem.start_sequence" href="#qscope.system.system.SGSystem.start_sequence">start_sequence</a></code></li>
+<li><code><a title="qscope.system.system.SGSystem.validate_roles" href="#qscope.system.system.SGSystem.validate_roles">validate_roles</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.system.system.System" href="#qscope.system.system.System">System</a></code></h4>
+<ul class="">
+<li><code><a title="qscope.system.system.System.add_bg_meas_task" href="#qscope.system.system.System.add_bg_meas_task">add_bg_meas_task</a></code></li>
+<li><code><a title="qscope.system.system.System.add_device_with_role" href="#qscope.system.system.System.add_device_with_role">add_device_with_role</a></code></li>
+<li><code><a title="qscope.system.system.System.cancel_tasks" href="#qscope.system.system.System.cancel_tasks">cancel_tasks</a></code></li>
+<li><code><a title="qscope.system.system.System.connect_devices" href="#qscope.system.system.System.connect_devices">connect_devices</a></code></li>
+<li><code><a title="qscope.system.system.System.device_status" href="#qscope.system.system.System.device_status">device_status</a></code></li>
+<li><code><a title="qscope.system.system.System.devices_config" href="#qscope.system.system.System.devices_config">devices_config</a></code></li>
+<li><code><a title="qscope.system.system.System.disconnect_devices" href="#qscope.system.system.System.disconnect_devices">disconnect_devices</a></code></li>
+<li><code><a title="qscope.system.system.System.get_all_devices_attrs" href="#qscope.system.system.System.get_all_devices_attrs">get_all_devices_attrs</a></code></li>
+<li><code><a title="qscope.system.system.System.get_device_by_role" href="#qscope.system.system.System.get_device_by_role">get_device_by_role</a></code></li>
+<li><code><a title="qscope.system.system.System.get_device_roles" href="#qscope.system.system.System.get_device_roles">get_device_roles</a></code></li>
+<li><code><a title="qscope.system.system.System.get_metadata" href="#qscope.system.system.System.get_metadata">get_metadata</a></code></li>
+<li><code><a title="qscope.system.system.System.hardware_started_up" href="#qscope.system.system.System.hardware_started_up">hardware_started_up</a></code></li>
+<li><code><a title="qscope.system.system.System.has_camera" href="#qscope.system.system.System.has_camera">has_camera</a></code></li>
+<li><code><a title="qscope.system.system.System.has_device_role" href="#qscope.system.system.System.has_device_role">has_device_role</a></code></li>
+<li><code><a title="qscope.system.system.System.objective_pixel_size" href="#qscope.system.system.System.objective_pixel_size">objective_pixel_size</a></code></li>
+<li><code><a title="qscope.system.system.System.packdown" href="#qscope.system.system.System.packdown">packdown</a></code></li>
+<li><code><a title="qscope.system.system.System.reconnect_rf" href="#qscope.system.system.System.reconnect_rf">reconnect_rf</a></code></li>
+<li><code><a title="qscope.system.system.System.save_dir" href="#qscope.system.system.System.save_dir">save_dir</a></code></li>
+<li><code><a title="qscope.system.system.System.set_matplotlib_style" href="#qscope.system.system.System.set_matplotlib_style">set_matplotlib_style</a></code></li>
+<li><code><a title="qscope.system.system.System.set_rf_params" href="#qscope.system.system.System.set_rf_params">set_rf_params</a></code></li>
+<li><code><a title="qscope.system.system.System.set_rf_state" href="#qscope.system.system.System.set_rf_state">set_rf_state</a></code></li>
+<li><code><a title="qscope.system.system.System.setup_rf_sweep" href="#qscope.system.system.System.setup_rf_sweep">setup_rf_sweep</a></code></li>
+<li><code><a title="qscope.system.system.System.setup_single_rf_freq" href="#qscope.system.system.System.setup_single_rf_freq">setup_single_rf_freq</a></code></li>
+<li><code><a title="qscope.system.system.System.start_rf_sweep" href="#qscope.system.system.System.start_rf_sweep">start_rf_sweep</a></code></li>
+<li><code><a title="qscope.system.system.System.startup" href="#qscope.system.system.System.startup">startup</a></code></li>
+<li><code><a title="qscope.system.system.System.streaming" href="#qscope.system.system.System.streaming">streaming</a></code></li>
+<li><code><a title="qscope.system.system.System.system_name" href="#qscope.system.system.System.system_name">system_name</a></code></li>
+<li><code><a title="qscope.system.system.System.use_save_dir_only" href="#qscope.system.system.System.use_save_dir_only">use_save_dir_only</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
+</footer>
+</body>
+</html>

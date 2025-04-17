@@ -1,0 +1,1934 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.6">
+<title>qscope.types.messages API documentation</title>
+<meta name="description" content="Message types and constants for client-server communication.">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}#lunr-search{width:100%;font-size:1em;padding:6px 9px 5px 9px;border:1px solid silver}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes: true } });</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML" integrity="sha256-kZafAc6mZvK3W3v1pHOcUix30OHQN6pU/NO2oFkqZVw=" crossorigin></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>qscope.types.messages</code></h1>
+</header>
+<section id="section-intro">
+<p>Message types and constants for client-server communication.</p>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="qscope.types.messages.get_all_subclasses_map"><code class="name flex">
+<span>def <span class="ident">get_all_subclasses_map</span></span>(<span>cls: type) ‑> dict[slice(<class 'str'>, <class 'type'>, None)]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_all_subclasses_map(cls: type) -&gt; dict[str:type]:
+    &#34;&#34;&#34;Get all subclasses of a class recursively.&#34;&#34;&#34;
+
+    def _get_all(clas: type, subclasses: dict[str:type]):
+        if not clas.__subclasses__():
+            return subclasses
+        for subcls in clas.__subclasses__():
+            subclasses[subcls.__name__] = subcls
+            subclasses |= _get_all(subcls, subclasses)
+        return subclasses
+
+    return _get_all(cls, dict())</code></pre>
+</details>
+<div class="desc"><p>Get all subclasses of a class recursively.</p></div>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="qscope.types.messages.ArrayResponse"><code class="flex name class">
+<span>class <span class="ident">ArrayResponse</span></span>
+<span>(</span><span>*, type: str = 'array', value: np.ndarray = &lt;factory&gt;)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass(kw_only=True, repr=False)
+class ArrayResponse(Response):
+    type: str = &#34;array&#34;
+    value: np.ndarray = field(
+        metadata={&#34;serialize&#34;: pickle.dumps, &#34;deserialize&#34;: pickle.loads},
+        default_factory=lambda: np.array([]),
+    )</code></pre>
+</details>
+<div class="desc"><p>ArrayResponse(*, type: 'str' = 'array', value: 'np.ndarray' = <factory>)</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.messages.Response" href="#qscope.types.messages.Response">Response</a></li>
+<li><a title="qscope.types.messages.Message" href="#qscope.types.messages.Message">Message</a></li>
+<li>mashumaro.mixins.msgpack.DataClassMessagePackMixin</li>
+<li>mashumaro.mixins.dict.DataClassDictMixin</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="qscope.types.messages.ArrayResponse.from_dict"><code class="name flex">
+<span>def <span class="ident">from_dict</span></span>(<span>d, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.ArrayResponse.from_msgpack"><code class="name flex">
+<span>def <span class="ident">from_msgpack</span></span>(<span>d, decoder=&lt;function default_decoder&gt;, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="qscope.types.messages.ArrayResponse.type"><code class="name">var <span class="ident">type</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.ArrayResponse.value"><code class="name">var <span class="ident">value</span> : numpy.ndarray</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.types.messages.ArrayResponse.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.ArrayResponse.to_msgpack"><code class="name flex">
+<span>def <span class="ident">to_msgpack</span></span>(<span>self, encoder=&lt;function default_encoder&gt;)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.types.messages.ClientSyncResponse"><code class="flex name class">
+<span>class <span class="ident">ClientSyncResponse</span></span>
+<span>(</span><span>*,<br>type: str = 'client_sync',<br>value: Any,<br>system_type: str,<br>system_name: str,<br>is_streaming: bool,<br>all_meas_info: dict,<br>sys_metadata: dict,<br>version: str)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass(kw_only=True, repr=False)
+class ClientSyncResponse(Response):
+    type: str = &#34;client_sync&#34;
+    system_type: str
+    system_name: str
+    is_streaming: bool
+    all_meas_info: dict
+    sys_metadata: dict
+    version: str</code></pre>
+</details>
+<div class="desc"><p>ClientSyncResponse(*, type: 'str' = 'client_sync', value: 'Any', system_type: 'str', system_name: 'str', is_streaming: 'bool', all_meas_info: 'dict', sys_metadata: 'dict', version: 'str')</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.messages.Response" href="#qscope.types.messages.Response">Response</a></li>
+<li><a title="qscope.types.messages.Message" href="#qscope.types.messages.Message">Message</a></li>
+<li>mashumaro.mixins.msgpack.DataClassMessagePackMixin</li>
+<li>mashumaro.mixins.dict.DataClassDictMixin</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="qscope.types.messages.ClientSyncResponse.from_dict"><code class="name flex">
+<span>def <span class="ident">from_dict</span></span>(<span>d, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.ClientSyncResponse.from_msgpack"><code class="name flex">
+<span>def <span class="ident">from_msgpack</span></span>(<span>d, decoder=&lt;function default_decoder&gt;, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="qscope.types.messages.ClientSyncResponse.all_meas_info"><code class="name">var <span class="ident">all_meas_info</span> : dict</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.ClientSyncResponse.is_streaming"><code class="name">var <span class="ident">is_streaming</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.ClientSyncResponse.sys_metadata"><code class="name">var <span class="ident">sys_metadata</span> : dict</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.ClientSyncResponse.system_name"><code class="name">var <span class="ident">system_name</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.ClientSyncResponse.system_type"><code class="name">var <span class="ident">system_type</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.ClientSyncResponse.type"><code class="name">var <span class="ident">type</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.ClientSyncResponse.version"><code class="name">var <span class="ident">version</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.types.messages.ClientSyncResponse.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.ClientSyncResponse.to_msgpack"><code class="name flex">
+<span>def <span class="ident">to_msgpack</span></span>(<span>self, encoder=&lt;function default_encoder&gt;)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.types.messages.DictResponse"><code class="flex name class">
+<span>class <span class="ident">DictResponse</span></span>
+<span>(</span><span>*, type: str = 'dict', value: dict = &lt;factory&gt;)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass(kw_only=True, repr=False)
+class DictResponse(Response):
+    type: str = &#34;dict&#34;
+    value: dict = field(default_factory=dict)</code></pre>
+</details>
+<div class="desc"><p>DictResponse(*, type: 'str' = 'dict', value: 'dict' = <factory>)</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.messages.Response" href="#qscope.types.messages.Response">Response</a></li>
+<li><a title="qscope.types.messages.Message" href="#qscope.types.messages.Message">Message</a></li>
+<li>mashumaro.mixins.msgpack.DataClassMessagePackMixin</li>
+<li>mashumaro.mixins.dict.DataClassDictMixin</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="qscope.types.messages.DictResponse.from_dict"><code class="name flex">
+<span>def <span class="ident">from_dict</span></span>(<span>d, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.DictResponse.from_msgpack"><code class="name flex">
+<span>def <span class="ident">from_msgpack</span></span>(<span>d, decoder=&lt;function default_decoder&gt;, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="qscope.types.messages.DictResponse.type"><code class="name">var <span class="ident">type</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.DictResponse.value"><code class="name">var <span class="ident">value</span> : dict</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.types.messages.DictResponse.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.DictResponse.to_msgpack"><code class="name flex">
+<span>def <span class="ident">to_msgpack</span></span>(<span>self, encoder=&lt;function default_encoder&gt;)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.types.messages.ErrorResponse"><code class="flex name class">
+<span>class <span class="ident">ErrorResponse</span></span>
+<span>(</span><span>*, type: str = 'error', value: str = '')</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass(kw_only=True, repr=False)
+class ErrorResponse(Response):
+    type: str = &#34;error&#34;
+    value: str = &#34;&#34;</code></pre>
+</details>
+<div class="desc"><p>ErrorResponse(*, type: 'str' = 'error', value: 'str' = '')</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.messages.Response" href="#qscope.types.messages.Response">Response</a></li>
+<li><a title="qscope.types.messages.Message" href="#qscope.types.messages.Message">Message</a></li>
+<li>mashumaro.mixins.msgpack.DataClassMessagePackMixin</li>
+<li>mashumaro.mixins.dict.DataClassDictMixin</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="qscope.types.messages.ErrorResponse.from_dict"><code class="name flex">
+<span>def <span class="ident">from_dict</span></span>(<span>d, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.ErrorResponse.from_msgpack"><code class="name flex">
+<span>def <span class="ident">from_msgpack</span></span>(<span>d, decoder=&lt;function default_decoder&gt;, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="qscope.types.messages.ErrorResponse.type"><code class="name">var <span class="ident">type</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.ErrorResponse.value"><code class="name">var <span class="ident">value</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.types.messages.ErrorResponse.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.ErrorResponse.to_msgpack"><code class="name flex">
+<span>def <span class="ident">to_msgpack</span></span>(<span>self, encoder=&lt;function default_encoder&gt;)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.types.messages.MeasurementFrame"><code class="flex name class">
+<span>class <span class="ident">MeasurementFrame</span></span>
+<span>(</span><span>*,<br>type: str = 'measurement_frame',<br>meas_id: str,<br>frame_num: int,<br>sig_frame: np.ndarray,<br>ref_frame: np.ndarray)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass(kw_only=True, repr=False)
+class MeasurementFrame(Notification):
+    type: str = &#34;measurement_frame&#34;
+    meas_id: str
+    frame_num: int
+    sig_frame: np.ndarray = field(
+        metadata={&#34;serialize&#34;: pickle.dumps, &#34;deserialize&#34;: pickle.loads}
+    )
+    ref_frame: np.ndarray = field(
+        metadata={&#34;serialize&#34;: pickle.dumps, &#34;deserialize&#34;: pickle.loads}
+    )</code></pre>
+</details>
+<div class="desc"><p>MeasurementFrame(*, type: 'str' = 'measurement_frame', meas_id: 'str', frame_num: 'int', sig_frame: 'np.ndarray', ref_frame: 'np.ndarray')</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.messages.Notification" href="#qscope.types.messages.Notification">Notification</a></li>
+<li><a title="qscope.types.messages.Message" href="#qscope.types.messages.Message">Message</a></li>
+<li>mashumaro.mixins.msgpack.DataClassMessagePackMixin</li>
+<li>mashumaro.mixins.dict.DataClassDictMixin</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="qscope.types.messages.MeasurementFrame.from_dict"><code class="name flex">
+<span>def <span class="ident">from_dict</span></span>(<span>d, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.MeasurementFrame.from_msgpack"><code class="name flex">
+<span>def <span class="ident">from_msgpack</span></span>(<span>d, decoder=&lt;function default_decoder&gt;, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="qscope.types.messages.MeasurementFrame.frame_num"><code class="name">var <span class="ident">frame_num</span> : int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.MeasurementFrame.meas_id"><code class="name">var <span class="ident">meas_id</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.MeasurementFrame.ref_frame"><code class="name">var <span class="ident">ref_frame</span> : numpy.ndarray</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.MeasurementFrame.sig_frame"><code class="name">var <span class="ident">sig_frame</span> : numpy.ndarray</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.MeasurementFrame.type"><code class="name">var <span class="ident">type</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.types.messages.MeasurementFrame.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.MeasurementFrame.to_msgpack"><code class="name flex">
+<span>def <span class="ident">to_msgpack</span></span>(<span>self, encoder=&lt;function default_encoder&gt;)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.types.messages.MeasurementUpdate"><code class="flex name class">
+<span>class <span class="ident">MeasurementUpdate</span></span>
+<span>(</span><span>*, type: str = 'measurement_update', meas_id: str, old_state: str, new_state: str)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass(kw_only=True, repr=False)
+class MeasurementUpdate(Notification):
+    type: str = &#34;measurement_update&#34;
+    meas_id: str
+    old_state: str
+    new_state: str</code></pre>
+</details>
+<div class="desc"><p>MeasurementUpdate(*, type: 'str' = 'measurement_update', meas_id: 'str', old_state: 'str', new_state: 'str')</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.messages.Notification" href="#qscope.types.messages.Notification">Notification</a></li>
+<li><a title="qscope.types.messages.Message" href="#qscope.types.messages.Message">Message</a></li>
+<li>mashumaro.mixins.msgpack.DataClassMessagePackMixin</li>
+<li>mashumaro.mixins.dict.DataClassDictMixin</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="qscope.types.messages.MeasurementUpdate.from_dict"><code class="name flex">
+<span>def <span class="ident">from_dict</span></span>(<span>d, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.MeasurementUpdate.from_msgpack"><code class="name flex">
+<span>def <span class="ident">from_msgpack</span></span>(<span>d, decoder=&lt;function default_decoder&gt;, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="qscope.types.messages.MeasurementUpdate.meas_id"><code class="name">var <span class="ident">meas_id</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.MeasurementUpdate.new_state"><code class="name">var <span class="ident">new_state</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.MeasurementUpdate.old_state"><code class="name">var <span class="ident">old_state</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.MeasurementUpdate.type"><code class="name">var <span class="ident">type</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.types.messages.MeasurementUpdate.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.MeasurementUpdate.to_msgpack"><code class="name flex">
+<span>def <span class="ident">to_msgpack</span></span>(<span>self, encoder=&lt;function default_encoder&gt;)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.types.messages.Message"><code class="flex name class">
+<span>class <span class="ident">Message</span></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass
+class Message(DataClassMessagePackMixin):
+    &#34;&#34;&#34;Base class for all messages.&#34;&#34;&#34;
+
+    def __repr__(self):
+        msg = self.__class__.__name__ + &#34;(&#34;
+        for i, (field, val) in enumerate(self.__dict__.items()):
+            if i not in (0, len(self.__dict__)):
+                msg += &#34;, &#34;
+            if isinstance(val, np.ndarray):
+                msg += f&#34;{field}=&lt;Array&gt;&#34;
+            else:
+                msg += f&#34;{field}={getattr(self, field)}&#34;
+        return msg + &#34;)&#34;</code></pre>
+</details>
+<div class="desc"><p>Base class for all messages.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>mashumaro.mixins.msgpack.DataClassMessagePackMixin</li>
+<li>mashumaro.mixins.dict.DataClassDictMixin</li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="qscope.types.messages.Notification" href="#qscope.types.messages.Notification">Notification</a></li>
+<li><a title="qscope.types.messages.Request" href="#qscope.types.messages.Request">Request</a></li>
+<li><a title="qscope.types.messages.Response" href="#qscope.types.messages.Response">Response</a></li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="qscope.types.messages.Message.from_dict"><code class="name flex">
+<span>def <span class="ident">from_dict</span></span>(<span>d, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.Message.from_msgpack"><code class="name flex">
+<span>def <span class="ident">from_msgpack</span></span>(<span>d, decoder=&lt;function default_decoder&gt;, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.types.messages.Message.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.Message.to_msgpack"><code class="name flex">
+<span>def <span class="ident">to_msgpack</span></span>(<span>self, encoder=&lt;function default_encoder&gt;)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.types.messages.MsgResponse"><code class="flex name class">
+<span>class <span class="ident">MsgResponse</span></span>
+<span>(</span><span>*, type: str = 'msg', value: str = '')</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass(kw_only=True, repr=False)
+class MsgResponse(Response):
+    type: str = &#34;msg&#34;
+    value: str = &#34;&#34;</code></pre>
+</details>
+<div class="desc"><p>MsgResponse(*, type: 'str' = 'msg', value: 'str' = '')</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.messages.Response" href="#qscope.types.messages.Response">Response</a></li>
+<li><a title="qscope.types.messages.Message" href="#qscope.types.messages.Message">Message</a></li>
+<li>mashumaro.mixins.msgpack.DataClassMessagePackMixin</li>
+<li>mashumaro.mixins.dict.DataClassDictMixin</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="qscope.types.messages.MsgResponse.from_dict"><code class="name flex">
+<span>def <span class="ident">from_dict</span></span>(<span>d, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.MsgResponse.from_msgpack"><code class="name flex">
+<span>def <span class="ident">from_msgpack</span></span>(<span>d, decoder=&lt;function default_decoder&gt;, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="qscope.types.messages.MsgResponse.type"><code class="name">var <span class="ident">type</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.MsgResponse.value"><code class="name">var <span class="ident">value</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.types.messages.MsgResponse.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.MsgResponse.to_msgpack"><code class="name flex">
+<span>def <span class="ident">to_msgpack</span></span>(<span>self, encoder=&lt;function default_encoder&gt;)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.types.messages.NewMeasurement"><code class="flex name class">
+<span>class <span class="ident">NewMeasurement</span></span>
+<span>(</span><span>*, type: str = 'new_measurement', meas_id: str, meas_config: Any)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass(kw_only=True, repr=False)
+class NewMeasurement(Notification):
+    type: str = &#34;new_measurement&#34;
+    meas_id: str
+    meas_config: Any = field(
+        metadata={&#34;serialize&#34;: pickle.dumps, &#34;deserialize&#34;: pickle.loads}
+    )</code></pre>
+</details>
+<div class="desc"><p>NewMeasurement(*, type: 'str' = 'new_measurement', meas_id: 'str', meas_config: 'Any')</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.messages.Notification" href="#qscope.types.messages.Notification">Notification</a></li>
+<li><a title="qscope.types.messages.Message" href="#qscope.types.messages.Message">Message</a></li>
+<li>mashumaro.mixins.msgpack.DataClassMessagePackMixin</li>
+<li>mashumaro.mixins.dict.DataClassDictMixin</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="qscope.types.messages.NewMeasurement.from_dict"><code class="name flex">
+<span>def <span class="ident">from_dict</span></span>(<span>d, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.NewMeasurement.from_msgpack"><code class="name flex">
+<span>def <span class="ident">from_msgpack</span></span>(<span>d, decoder=&lt;function default_decoder&gt;, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="qscope.types.messages.NewMeasurement.meas_config"><code class="name">var <span class="ident">meas_config</span> : Any</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.NewMeasurement.meas_id"><code class="name">var <span class="ident">meas_id</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.NewMeasurement.type"><code class="name">var <span class="ident">type</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.types.messages.NewMeasurement.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.NewMeasurement.to_msgpack"><code class="name flex">
+<span>def <span class="ident">to_msgpack</span></span>(<span>self, encoder=&lt;function default_encoder&gt;)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.types.messages.NewStream"><code class="flex name class">
+<span>class <span class="ident">NewStream</span></span>
+<span>(</span><span>*, type: str = 'new_stream', stream_type: str)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass(kw_only=True, repr=False)
+class NewStream(Notification):
+    type: str = &#34;new_stream&#34;
+    stream_type: str</code></pre>
+</details>
+<div class="desc"><p>NewStream(*, type: 'str' = 'new_stream', stream_type: 'str')</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.messages.Notification" href="#qscope.types.messages.Notification">Notification</a></li>
+<li><a title="qscope.types.messages.Message" href="#qscope.types.messages.Message">Message</a></li>
+<li>mashumaro.mixins.msgpack.DataClassMessagePackMixin</li>
+<li>mashumaro.mixins.dict.DataClassDictMixin</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="qscope.types.messages.NewStream.from_dict"><code class="name flex">
+<span>def <span class="ident">from_dict</span></span>(<span>d, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.NewStream.from_msgpack"><code class="name flex">
+<span>def <span class="ident">from_msgpack</span></span>(<span>d, decoder=&lt;function default_decoder&gt;, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="qscope.types.messages.NewStream.stream_type"><code class="name">var <span class="ident">stream_type</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.NewStream.type"><code class="name">var <span class="ident">type</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.types.messages.NewStream.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.NewStream.to_msgpack"><code class="name flex">
+<span>def <span class="ident">to_msgpack</span></span>(<span>self, encoder=&lt;function default_encoder&gt;)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.types.messages.Notification"><code class="flex name class">
+<span>class <span class="ident">Notification</span></span>
+<span>(</span><span>*, type: str)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass(kw_only=True, repr=False)
+class Notification(Message):
+    type: str
+
+    class Config:
+        discriminator = Discriminator(field=&#34;type&#34;, include_subtypes=True)</code></pre>
+</details>
+<div class="desc"><p>Notification(*, type: 'str')</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.messages.Message" href="#qscope.types.messages.Message">Message</a></li>
+<li>mashumaro.mixins.msgpack.DataClassMessagePackMixin</li>
+<li>mashumaro.mixins.dict.DataClassDictMixin</li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="qscope.types.messages.MeasurementFrame" href="#qscope.types.messages.MeasurementFrame">MeasurementFrame</a></li>
+<li><a title="qscope.types.messages.MeasurementUpdate" href="#qscope.types.messages.MeasurementUpdate">MeasurementUpdate</a></li>
+<li><a title="qscope.types.messages.NewMeasurement" href="#qscope.types.messages.NewMeasurement">NewMeasurement</a></li>
+<li><a title="qscope.types.messages.NewStream" href="#qscope.types.messages.NewStream">NewStream</a></li>
+<li><a title="qscope.types.messages.RollingAvgSweepUpdate" href="#qscope.types.messages.RollingAvgSweepUpdate">RollingAvgSweepUpdate</a></li>
+<li><a title="qscope.types.messages.SaveFullComplete" href="#qscope.types.messages.SaveFullComplete">SaveFullComplete</a></li>
+<li><a title="qscope.types.messages.SweepUpdate" href="#qscope.types.messages.SweepUpdate">SweepUpdate</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="qscope.types.messages.Notification.Config"><code class="name">var <span class="ident">Config</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Static methods</h3>
+<dl>
+<dt id="qscope.types.messages.Notification.from_dict"><code class="name flex">
+<span>def <span class="ident">from_dict</span></span>(<span>d, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.Notification.from_msgpack"><code class="name flex">
+<span>def <span class="ident">from_msgpack</span></span>(<span>d, decoder=&lt;function default_decoder&gt;, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="qscope.types.messages.Notification.type"><code class="name">var <span class="ident">type</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.types.messages.Notification.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.Notification.to_msgpack"><code class="name flex">
+<span>def <span class="ident">to_msgpack</span></span>(<span>self, encoder=&lt;function default_encoder&gt;)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.types.messages.PleaseWaitResponse"><code class="flex name class">
+<span>class <span class="ident">PleaseWaitResponse</span></span>
+<span>(</span><span>*, type: str = 'please_wait', value: str = '')</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass(kw_only=True, repr=False)
+class PleaseWaitResponse(Response):
+    type: str = &#34;please_wait&#34;
+    value: str = &#34;&#34;</code></pre>
+</details>
+<div class="desc"><p>PleaseWaitResponse(*, type: 'str' = 'please_wait', value: 'str' = '')</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.messages.Response" href="#qscope.types.messages.Response">Response</a></li>
+<li><a title="qscope.types.messages.Message" href="#qscope.types.messages.Message">Message</a></li>
+<li>mashumaro.mixins.msgpack.DataClassMessagePackMixin</li>
+<li>mashumaro.mixins.dict.DataClassDictMixin</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="qscope.types.messages.PleaseWaitResponse.from_dict"><code class="name flex">
+<span>def <span class="ident">from_dict</span></span>(<span>d, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.PleaseWaitResponse.from_msgpack"><code class="name flex">
+<span>def <span class="ident">from_msgpack</span></span>(<span>d, decoder=&lt;function default_decoder&gt;, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="qscope.types.messages.PleaseWaitResponse.type"><code class="name">var <span class="ident">type</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.PleaseWaitResponse.value"><code class="name">var <span class="ident">value</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.types.messages.PleaseWaitResponse.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.PleaseWaitResponse.to_msgpack"><code class="name flex">
+<span>def <span class="ident">to_msgpack</span></span>(<span>self, encoder=&lt;function default_encoder&gt;)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.types.messages.Request"><code class="flex name class">
+<span>class <span class="ident">Request</span></span>
+<span>(</span><span>command: str,<br>params: dict[str, bool | str | float | int | tuple | None] = &lt;factory&gt;)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass(repr=False)
+class Request(Message):
+    &#34;&#34;&#34;A request from client to server.
+
+    Request needs to be general (client-&gt;server) as server has no info on what type of
+    message it&#39;s getting. Requester does know what type of response to expect, so
+    that object can be specialised.
+    &#34;&#34;&#34;
+
+    command: str
+    params: dict[str, bool | str | float | int | tuple | None] = field(
+        default_factory=dict
+    )</code></pre>
+</details>
+<div class="desc"><p>A request from client to server.</p>
+<p>Request needs to be general (client-&gt;server) as server has no info on what type of
+message it's getting. Requester does know what type of response to expect, so
+that object can be specialised.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.messages.Message" href="#qscope.types.messages.Message">Message</a></li>
+<li>mashumaro.mixins.msgpack.DataClassMessagePackMixin</li>
+<li>mashumaro.mixins.dict.DataClassDictMixin</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="qscope.types.messages.Request.from_dict"><code class="name flex">
+<span>def <span class="ident">from_dict</span></span>(<span>d, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.Request.from_msgpack"><code class="name flex">
+<span>def <span class="ident">from_msgpack</span></span>(<span>d, decoder=&lt;function default_decoder&gt;, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="qscope.types.messages.Request.command"><code class="name">var <span class="ident">command</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.Request.params"><code class="name">var <span class="ident">params</span> : dict[str, bool | str | float | int | tuple | None]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.types.messages.Request.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.Request.to_msgpack"><code class="name flex">
+<span>def <span class="ident">to_msgpack</span></span>(<span>self, encoder=&lt;function default_encoder&gt;)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.types.messages.Response"><code class="flex name class">
+<span>class <span class="ident">Response</span></span>
+<span>(</span><span>*, type: str, value: Any)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass(kw_only=True, repr=False)
+class Response(Message):
+    &#34;&#34;&#34;A response from server to client&#39;s request.
+    ALL Responses have an error string, or empty if no error&#34;&#34;&#34;
+
+    type: str  # subclass to define
+    value: Any  # subclass to define
+
+    class Config:
+        discriminator = Discriminator(field=&#34;type&#34;, include_subtypes=True)</code></pre>
+</details>
+<div class="desc"><p>A response from server to client's request.
+ALL Responses have an error string, or empty if no error</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.messages.Message" href="#qscope.types.messages.Message">Message</a></li>
+<li>mashumaro.mixins.msgpack.DataClassMessagePackMixin</li>
+<li>mashumaro.mixins.dict.DataClassDictMixin</li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="qscope.types.messages.ArrayResponse" href="#qscope.types.messages.ArrayResponse">ArrayResponse</a></li>
+<li><a title="qscope.types.messages.ClientSyncResponse" href="#qscope.types.messages.ClientSyncResponse">ClientSyncResponse</a></li>
+<li><a title="qscope.types.messages.DictResponse" href="#qscope.types.messages.DictResponse">DictResponse</a></li>
+<li><a title="qscope.types.messages.ErrorResponse" href="#qscope.types.messages.ErrorResponse">ErrorResponse</a></li>
+<li><a title="qscope.types.messages.MsgResponse" href="#qscope.types.messages.MsgResponse">MsgResponse</a></li>
+<li><a title="qscope.types.messages.PleaseWaitResponse" href="#qscope.types.messages.PleaseWaitResponse">PleaseWaitResponse</a></li>
+<li><a title="qscope.types.messages.Shape2DResponse" href="#qscope.types.messages.Shape2DResponse">Shape2DResponse</a></li>
+<li><a title="qscope.types.messages.TupleResponse" href="#qscope.types.messages.TupleResponse">TupleResponse</a></li>
+<li><a title="qscope.types.messages.ValueResponse" href="#qscope.types.messages.ValueResponse">ValueResponse</a></li>
+<li><a title="qscope.types.messages.WarningResponse" href="#qscope.types.messages.WarningResponse">WarningResponse</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="qscope.types.messages.Response.Config"><code class="name">var <span class="ident">Config</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Static methods</h3>
+<dl>
+<dt id="qscope.types.messages.Response.from_dict"><code class="name flex">
+<span>def <span class="ident">from_dict</span></span>(<span>d, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.Response.from_msgpack"><code class="name flex">
+<span>def <span class="ident">from_msgpack</span></span>(<span>d, decoder=&lt;function default_decoder&gt;, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="qscope.types.messages.Response.type"><code class="name">var <span class="ident">type</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.Response.value"><code class="name">var <span class="ident">value</span> : Any</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.types.messages.Response.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.Response.to_msgpack"><code class="name flex">
+<span>def <span class="ident">to_msgpack</span></span>(<span>self, encoder=&lt;function default_encoder&gt;)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.types.messages.RollingAvgSweepUpdate"><code class="flex name class">
+<span>class <span class="ident">RollingAvgSweepUpdate</span></span>
+<span>(</span><span>*,<br>type: str = 'rolling_avg_sweep_update',<br>meas_id: str,<br>avg_window: int,<br>aoi: tuple[int, int, int, int] | None,<br>sweep_idxs: np.ndarray,<br>sweep_x: np.ndarray,<br>sweep_ysig: np.ndarray,<br>sweep_yref: np.ndarray)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass(kw_only=True, repr=False)
+class RollingAvgSweepUpdate(Notification):
+    type: str = &#34;rolling_avg_sweep_update&#34;
+    meas_id: str
+    avg_window: int
+    aoi: tuple[int, int, int, int] | None
+    # plot will be a 2d color mesh (y, x) = (n_sweeps, n_points) [origin=upper right]
+    sweep_idxs: np.ndarray = field(
+        metadata={&#34;serialize&#34;: pickle.dumps, &#34;deserialize&#34;: pickle.loads}
+    )  # 1D array shape: n_sweeps
+    sweep_x: np.ndarray = field(
+        metadata={&#34;serialize&#34;: pickle.dumps, &#34;deserialize&#34;: pickle.loads}
+    )  # 1D array, shape: n_points
+    sweep_ysig: np.ndarray = field(
+        metadata={&#34;serialize&#34;: pickle.dumps, &#34;deserialize&#34;: pickle.loads}
+    )  # 2D array (n_sweeps, n_points)
+    sweep_yref: np.ndarray = field(
+        metadata={&#34;serialize&#34;: pickle.dumps, &#34;deserialize&#34;: pickle.loads}
+    )  # 2D array (n_sweeps, n_points)</code></pre>
+</details>
+<div class="desc"><p>RollingAvgSweepUpdate(*, type: 'str' = 'rolling_avg_sweep_update', meas_id: 'str', avg_window: 'int', aoi: 'tuple[int, int, int, int] | None', sweep_idxs: 'np.ndarray', sweep_x: 'np.ndarray', sweep_ysig: 'np.ndarray', sweep_yref: 'np.ndarray')</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.messages.Notification" href="#qscope.types.messages.Notification">Notification</a></li>
+<li><a title="qscope.types.messages.Message" href="#qscope.types.messages.Message">Message</a></li>
+<li>mashumaro.mixins.msgpack.DataClassMessagePackMixin</li>
+<li>mashumaro.mixins.dict.DataClassDictMixin</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="qscope.types.messages.RollingAvgSweepUpdate.from_dict"><code class="name flex">
+<span>def <span class="ident">from_dict</span></span>(<span>d, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.RollingAvgSweepUpdate.from_msgpack"><code class="name flex">
+<span>def <span class="ident">from_msgpack</span></span>(<span>d, decoder=&lt;function default_decoder&gt;, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="qscope.types.messages.RollingAvgSweepUpdate.aoi"><code class="name">var <span class="ident">aoi</span> : tuple[int, int, int, int] | None</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.RollingAvgSweepUpdate.avg_window"><code class="name">var <span class="ident">avg_window</span> : int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.RollingAvgSweepUpdate.meas_id"><code class="name">var <span class="ident">meas_id</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.RollingAvgSweepUpdate.sweep_idxs"><code class="name">var <span class="ident">sweep_idxs</span> : numpy.ndarray</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.RollingAvgSweepUpdate.sweep_x"><code class="name">var <span class="ident">sweep_x</span> : numpy.ndarray</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.RollingAvgSweepUpdate.sweep_yref"><code class="name">var <span class="ident">sweep_yref</span> : numpy.ndarray</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.RollingAvgSweepUpdate.sweep_ysig"><code class="name">var <span class="ident">sweep_ysig</span> : numpy.ndarray</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.RollingAvgSweepUpdate.type"><code class="name">var <span class="ident">type</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.types.messages.RollingAvgSweepUpdate.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.RollingAvgSweepUpdate.to_msgpack"><code class="name flex">
+<span>def <span class="ident">to_msgpack</span></span>(<span>self, encoder=&lt;function default_encoder&gt;)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.types.messages.SaveFullComplete"><code class="flex name class">
+<span>class <span class="ident">SaveFullComplete</span></span>
+<span>(</span><span>*, type: str = 'save_full_complete', meas_id: str, save_path: str)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass(kw_only=True, repr=False)
+class SaveFullComplete(Notification):
+    &#34;&#34;&#34;Notification sent when a full data save operation completes&#34;&#34;&#34;
+
+    type: str = &#34;save_full_complete&#34;
+    meas_id: str
+    save_path: str</code></pre>
+</details>
+<div class="desc"><p>Notification sent when a full data save operation completes</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.messages.Notification" href="#qscope.types.messages.Notification">Notification</a></li>
+<li><a title="qscope.types.messages.Message" href="#qscope.types.messages.Message">Message</a></li>
+<li>mashumaro.mixins.msgpack.DataClassMessagePackMixin</li>
+<li>mashumaro.mixins.dict.DataClassDictMixin</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="qscope.types.messages.SaveFullComplete.from_dict"><code class="name flex">
+<span>def <span class="ident">from_dict</span></span>(<span>d, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.SaveFullComplete.from_msgpack"><code class="name flex">
+<span>def <span class="ident">from_msgpack</span></span>(<span>d, decoder=&lt;function default_decoder&gt;, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="qscope.types.messages.SaveFullComplete.meas_id"><code class="name">var <span class="ident">meas_id</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.SaveFullComplete.save_path"><code class="name">var <span class="ident">save_path</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.SaveFullComplete.type"><code class="name">var <span class="ident">type</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.types.messages.SaveFullComplete.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.SaveFullComplete.to_msgpack"><code class="name flex">
+<span>def <span class="ident">to_msgpack</span></span>(<span>self, encoder=&lt;function default_encoder&gt;)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.types.messages.Shape2DResponse"><code class="flex name class">
+<span>class <span class="ident">Shape2DResponse</span></span>
+<span>(</span><span>*, type: str = 'shape2D', value: tuple[int, int] = (-1, -1))</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass(kw_only=True, repr=False)
+class Shape2DResponse(Response):
+    type: str = &#34;shape2D&#34;
+    value: tuple[int, int] = (-1, -1)</code></pre>
+</details>
+<div class="desc"><p>Shape2DResponse(*, type: 'str' = 'shape2D', value: 'tuple[int, int]' = (-1, -1))</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.messages.Response" href="#qscope.types.messages.Response">Response</a></li>
+<li><a title="qscope.types.messages.Message" href="#qscope.types.messages.Message">Message</a></li>
+<li>mashumaro.mixins.msgpack.DataClassMessagePackMixin</li>
+<li>mashumaro.mixins.dict.DataClassDictMixin</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="qscope.types.messages.Shape2DResponse.from_dict"><code class="name flex">
+<span>def <span class="ident">from_dict</span></span>(<span>d, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.Shape2DResponse.from_msgpack"><code class="name flex">
+<span>def <span class="ident">from_msgpack</span></span>(<span>d, decoder=&lt;function default_decoder&gt;, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="qscope.types.messages.Shape2DResponse.type"><code class="name">var <span class="ident">type</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.Shape2DResponse.value"><code class="name">var <span class="ident">value</span> : tuple[int, int]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.types.messages.Shape2DResponse.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.Shape2DResponse.to_msgpack"><code class="name flex">
+<span>def <span class="ident">to_msgpack</span></span>(<span>self, encoder=&lt;function default_encoder&gt;)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.types.messages.SweepUpdate"><code class="flex name class">
+<span>class <span class="ident">SweepUpdate</span></span>
+<span>(</span><span>*,<br>type: str = 'sweep_update',<br>meas_id: str,<br>sweep_progress: float,<br>nsweeps: int,<br>aoi: tuple[int, int, int, int] | None,<br>sweep_data: np.ndarray)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass(kw_only=True, repr=False)
+class SweepUpdate(Notification):
+    type: str = &#34;sweep_update&#34;
+    meas_id: str
+    sweep_progress: float
+    nsweeps: int
+    aoi: tuple[int, int, int, int] | None
+    sweep_data: np.ndarray = field(
+        metadata={&#34;serialize&#34;: pickle.dumps, &#34;deserialize&#34;: pickle.loads}
+    )</code></pre>
+</details>
+<div class="desc"><p>SweepUpdate(*, type: 'str' = 'sweep_update', meas_id: 'str', sweep_progress: 'float', nsweeps: 'int', aoi: 'tuple[int, int, int, int] | None', sweep_data: 'np.ndarray')</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.messages.Notification" href="#qscope.types.messages.Notification">Notification</a></li>
+<li><a title="qscope.types.messages.Message" href="#qscope.types.messages.Message">Message</a></li>
+<li>mashumaro.mixins.msgpack.DataClassMessagePackMixin</li>
+<li>mashumaro.mixins.dict.DataClassDictMixin</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="qscope.types.messages.SweepUpdate.from_dict"><code class="name flex">
+<span>def <span class="ident">from_dict</span></span>(<span>d, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.SweepUpdate.from_msgpack"><code class="name flex">
+<span>def <span class="ident">from_msgpack</span></span>(<span>d, decoder=&lt;function default_decoder&gt;, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="qscope.types.messages.SweepUpdate.aoi"><code class="name">var <span class="ident">aoi</span> : tuple[int, int, int, int] | None</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.SweepUpdate.meas_id"><code class="name">var <span class="ident">meas_id</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.SweepUpdate.nsweeps"><code class="name">var <span class="ident">nsweeps</span> : int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.SweepUpdate.sweep_data"><code class="name">var <span class="ident">sweep_data</span> : numpy.ndarray</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.SweepUpdate.sweep_progress"><code class="name">var <span class="ident">sweep_progress</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.SweepUpdate.type"><code class="name">var <span class="ident">type</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.types.messages.SweepUpdate.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.SweepUpdate.to_msgpack"><code class="name flex">
+<span>def <span class="ident">to_msgpack</span></span>(<span>self, encoder=&lt;function default_encoder&gt;)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.types.messages.TupleResponse"><code class="flex name class">
+<span>class <span class="ident">TupleResponse</span></span>
+<span>(</span><span>*, type: str = 'tuple', value: tuple = ())</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass(kw_only=True, repr=False)
+class TupleResponse(Response):
+    type: str = &#34;tuple&#34;
+    value: tuple = ()</code></pre>
+</details>
+<div class="desc"><p>TupleResponse(*, type: 'str' = 'tuple', value: 'tuple' = ())</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.messages.Response" href="#qscope.types.messages.Response">Response</a></li>
+<li><a title="qscope.types.messages.Message" href="#qscope.types.messages.Message">Message</a></li>
+<li>mashumaro.mixins.msgpack.DataClassMessagePackMixin</li>
+<li>mashumaro.mixins.dict.DataClassDictMixin</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="qscope.types.messages.TupleResponse.from_dict"><code class="name flex">
+<span>def <span class="ident">from_dict</span></span>(<span>d, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.TupleResponse.from_msgpack"><code class="name flex">
+<span>def <span class="ident">from_msgpack</span></span>(<span>d, decoder=&lt;function default_decoder&gt;, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="qscope.types.messages.TupleResponse.type"><code class="name">var <span class="ident">type</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.TupleResponse.value"><code class="name">var <span class="ident">value</span> : tuple</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.types.messages.TupleResponse.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.TupleResponse.to_msgpack"><code class="name flex">
+<span>def <span class="ident">to_msgpack</span></span>(<span>self, encoder=&lt;function default_encoder&gt;)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.types.messages.ValueResponse"><code class="flex name class">
+<span>class <span class="ident">ValueResponse</span></span>
+<span>(</span><span>*, type: str = 'value', value: int | float | str | bool = False)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass(kw_only=True, repr=False)
+class ValueResponse(Response):
+    type: str = &#34;value&#34;
+    value: int | float | str | bool = False</code></pre>
+</details>
+<div class="desc"><p>ValueResponse(*, type: 'str' = 'value', value: 'int | float | str | bool' = False)</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.messages.Response" href="#qscope.types.messages.Response">Response</a></li>
+<li><a title="qscope.types.messages.Message" href="#qscope.types.messages.Message">Message</a></li>
+<li>mashumaro.mixins.msgpack.DataClassMessagePackMixin</li>
+<li>mashumaro.mixins.dict.DataClassDictMixin</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="qscope.types.messages.ValueResponse.from_dict"><code class="name flex">
+<span>def <span class="ident">from_dict</span></span>(<span>d, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.ValueResponse.from_msgpack"><code class="name flex">
+<span>def <span class="ident">from_msgpack</span></span>(<span>d, decoder=&lt;function default_decoder&gt;, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="qscope.types.messages.ValueResponse.type"><code class="name">var <span class="ident">type</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.ValueResponse.value"><code class="name">var <span class="ident">value</span> : int | float | str | bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.types.messages.ValueResponse.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.ValueResponse.to_msgpack"><code class="name flex">
+<span>def <span class="ident">to_msgpack</span></span>(<span>self, encoder=&lt;function default_encoder&gt;)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.types.messages.WarningResponse"><code class="flex name class">
+<span>class <span class="ident">WarningResponse</span></span>
+<span>(</span><span>*, type: str = 'warning', value: str = '')</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass(kw_only=True, repr=False)
+class WarningResponse(Response):
+    type: str = &#34;warning&#34;
+    value: str = &#34;&#34;</code></pre>
+</details>
+<div class="desc"><p>WarningResponse(*, type: 'str' = 'warning', value: 'str' = '')</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.messages.Response" href="#qscope.types.messages.Response">Response</a></li>
+<li><a title="qscope.types.messages.Message" href="#qscope.types.messages.Message">Message</a></li>
+<li>mashumaro.mixins.msgpack.DataClassMessagePackMixin</li>
+<li>mashumaro.mixins.dict.DataClassDictMixin</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="qscope.types.messages.WarningResponse.from_dict"><code class="name flex">
+<span>def <span class="ident">from_dict</span></span>(<span>d, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.WarningResponse.from_msgpack"><code class="name flex">
+<span>def <span class="ident">from_msgpack</span></span>(<span>d, decoder=&lt;function default_decoder&gt;, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="qscope.types.messages.WarningResponse.type"><code class="name">var <span class="ident">type</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.WarningResponse.value"><code class="name">var <span class="ident">value</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.types.messages.WarningResponse.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.WarningResponse.to_msgpack"><code class="name flex">
+<span>def <span class="ident">to_msgpack</span></span>(<span>self, encoder=&lt;function default_encoder&gt;)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<form>
+<input id="lunr-search" name="q" placeholder="🔎 Search ..." aria-label="Search"
+disabled minlength="2">
+</form>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.css" integrity="sha512-b+T2i3P45i1LZM7I00Ci5QquB9szqaxu+uuk5TUSGjZQ4w4n+qujQiIuvTv2BxE7WCGQCifNMksyKILDiHzsOg==" crossorigin>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.js" integrity="sha512-2B9/byNV1KKRm5nQ2RLViPFD6U4dUjDGwuW1GU+ImJh8YinPU9Zlq1GzdTMO+G2ROrB5o1qasJBy1ttYz0wCug==" crossorigin></script>
+<style>
+.modal-dialog iframe {
+width: 100vw;
+height: calc(100vh - 80px);
+}
+@media screen and (min-width: 700px) {
+.modal-dialog iframe {
+width: 70vw;
+height: 80vh;
+}
+}
+.modal-dialog .tingle-modal-box {width: auto;}
+.modal-dialog .tingle-modal-box__content {padding: 0;}
+</style>
+<script>
+const input = document.getElementById('lunr-search');
+input.disabled = false;
+input.form.addEventListener('submit', (ev) => {
+ev.preventDefault();
+const url = new URL(window.location);
+url.searchParams.set('q', input.value);
+history.replaceState({}, null, url.toString());
+search(input.value);
+});
+const query = new URL(window.location).searchParams.get('q');
+if (query)
+search(query);
+function search(query) {
+const url = '../../doc-search.html#' + encodeURIComponent(query);
+new tingle.modal({
+cssClass: ['modal-dialog'],
+onClose: () => {
+const url = new URL(window.location);
+url.searchParams.delete('q');
+history.replaceState({}, null, url.toString());
+setTimeout(() => input.focus(), 100);
+}
+}).setContent('<iframe src="' + url + '"></iframe>').open();
+}
+</script>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="qscope.types" href="index.html">qscope.types</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="qscope.types.messages.get_all_subclasses_map" href="#qscope.types.messages.get_all_subclasses_map">get_all_subclasses_map</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="qscope.types.messages.ArrayResponse" href="#qscope.types.messages.ArrayResponse">ArrayResponse</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.types.messages.ArrayResponse.from_dict" href="#qscope.types.messages.ArrayResponse.from_dict">from_dict</a></code></li>
+<li><code><a title="qscope.types.messages.ArrayResponse.from_msgpack" href="#qscope.types.messages.ArrayResponse.from_msgpack">from_msgpack</a></code></li>
+<li><code><a title="qscope.types.messages.ArrayResponse.to_dict" href="#qscope.types.messages.ArrayResponse.to_dict">to_dict</a></code></li>
+<li><code><a title="qscope.types.messages.ArrayResponse.to_msgpack" href="#qscope.types.messages.ArrayResponse.to_msgpack">to_msgpack</a></code></li>
+<li><code><a title="qscope.types.messages.ArrayResponse.type" href="#qscope.types.messages.ArrayResponse.type">type</a></code></li>
+<li><code><a title="qscope.types.messages.ArrayResponse.value" href="#qscope.types.messages.ArrayResponse.value">value</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.messages.ClientSyncResponse" href="#qscope.types.messages.ClientSyncResponse">ClientSyncResponse</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.types.messages.ClientSyncResponse.all_meas_info" href="#qscope.types.messages.ClientSyncResponse.all_meas_info">all_meas_info</a></code></li>
+<li><code><a title="qscope.types.messages.ClientSyncResponse.from_dict" href="#qscope.types.messages.ClientSyncResponse.from_dict">from_dict</a></code></li>
+<li><code><a title="qscope.types.messages.ClientSyncResponse.from_msgpack" href="#qscope.types.messages.ClientSyncResponse.from_msgpack">from_msgpack</a></code></li>
+<li><code><a title="qscope.types.messages.ClientSyncResponse.is_streaming" href="#qscope.types.messages.ClientSyncResponse.is_streaming">is_streaming</a></code></li>
+<li><code><a title="qscope.types.messages.ClientSyncResponse.sys_metadata" href="#qscope.types.messages.ClientSyncResponse.sys_metadata">sys_metadata</a></code></li>
+<li><code><a title="qscope.types.messages.ClientSyncResponse.system_name" href="#qscope.types.messages.ClientSyncResponse.system_name">system_name</a></code></li>
+<li><code><a title="qscope.types.messages.ClientSyncResponse.system_type" href="#qscope.types.messages.ClientSyncResponse.system_type">system_type</a></code></li>
+<li><code><a title="qscope.types.messages.ClientSyncResponse.to_dict" href="#qscope.types.messages.ClientSyncResponse.to_dict">to_dict</a></code></li>
+<li><code><a title="qscope.types.messages.ClientSyncResponse.to_msgpack" href="#qscope.types.messages.ClientSyncResponse.to_msgpack">to_msgpack</a></code></li>
+<li><code><a title="qscope.types.messages.ClientSyncResponse.type" href="#qscope.types.messages.ClientSyncResponse.type">type</a></code></li>
+<li><code><a title="qscope.types.messages.ClientSyncResponse.version" href="#qscope.types.messages.ClientSyncResponse.version">version</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.messages.DictResponse" href="#qscope.types.messages.DictResponse">DictResponse</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.types.messages.DictResponse.from_dict" href="#qscope.types.messages.DictResponse.from_dict">from_dict</a></code></li>
+<li><code><a title="qscope.types.messages.DictResponse.from_msgpack" href="#qscope.types.messages.DictResponse.from_msgpack">from_msgpack</a></code></li>
+<li><code><a title="qscope.types.messages.DictResponse.to_dict" href="#qscope.types.messages.DictResponse.to_dict">to_dict</a></code></li>
+<li><code><a title="qscope.types.messages.DictResponse.to_msgpack" href="#qscope.types.messages.DictResponse.to_msgpack">to_msgpack</a></code></li>
+<li><code><a title="qscope.types.messages.DictResponse.type" href="#qscope.types.messages.DictResponse.type">type</a></code></li>
+<li><code><a title="qscope.types.messages.DictResponse.value" href="#qscope.types.messages.DictResponse.value">value</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.messages.ErrorResponse" href="#qscope.types.messages.ErrorResponse">ErrorResponse</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.types.messages.ErrorResponse.from_dict" href="#qscope.types.messages.ErrorResponse.from_dict">from_dict</a></code></li>
+<li><code><a title="qscope.types.messages.ErrorResponse.from_msgpack" href="#qscope.types.messages.ErrorResponse.from_msgpack">from_msgpack</a></code></li>
+<li><code><a title="qscope.types.messages.ErrorResponse.to_dict" href="#qscope.types.messages.ErrorResponse.to_dict">to_dict</a></code></li>
+<li><code><a title="qscope.types.messages.ErrorResponse.to_msgpack" href="#qscope.types.messages.ErrorResponse.to_msgpack">to_msgpack</a></code></li>
+<li><code><a title="qscope.types.messages.ErrorResponse.type" href="#qscope.types.messages.ErrorResponse.type">type</a></code></li>
+<li><code><a title="qscope.types.messages.ErrorResponse.value" href="#qscope.types.messages.ErrorResponse.value">value</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.messages.MeasurementFrame" href="#qscope.types.messages.MeasurementFrame">MeasurementFrame</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.types.messages.MeasurementFrame.frame_num" href="#qscope.types.messages.MeasurementFrame.frame_num">frame_num</a></code></li>
+<li><code><a title="qscope.types.messages.MeasurementFrame.from_dict" href="#qscope.types.messages.MeasurementFrame.from_dict">from_dict</a></code></li>
+<li><code><a title="qscope.types.messages.MeasurementFrame.from_msgpack" href="#qscope.types.messages.MeasurementFrame.from_msgpack">from_msgpack</a></code></li>
+<li><code><a title="qscope.types.messages.MeasurementFrame.meas_id" href="#qscope.types.messages.MeasurementFrame.meas_id">meas_id</a></code></li>
+<li><code><a title="qscope.types.messages.MeasurementFrame.ref_frame" href="#qscope.types.messages.MeasurementFrame.ref_frame">ref_frame</a></code></li>
+<li><code><a title="qscope.types.messages.MeasurementFrame.sig_frame" href="#qscope.types.messages.MeasurementFrame.sig_frame">sig_frame</a></code></li>
+<li><code><a title="qscope.types.messages.MeasurementFrame.to_dict" href="#qscope.types.messages.MeasurementFrame.to_dict">to_dict</a></code></li>
+<li><code><a title="qscope.types.messages.MeasurementFrame.to_msgpack" href="#qscope.types.messages.MeasurementFrame.to_msgpack">to_msgpack</a></code></li>
+<li><code><a title="qscope.types.messages.MeasurementFrame.type" href="#qscope.types.messages.MeasurementFrame.type">type</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.messages.MeasurementUpdate" href="#qscope.types.messages.MeasurementUpdate">MeasurementUpdate</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.types.messages.MeasurementUpdate.from_dict" href="#qscope.types.messages.MeasurementUpdate.from_dict">from_dict</a></code></li>
+<li><code><a title="qscope.types.messages.MeasurementUpdate.from_msgpack" href="#qscope.types.messages.MeasurementUpdate.from_msgpack">from_msgpack</a></code></li>
+<li><code><a title="qscope.types.messages.MeasurementUpdate.meas_id" href="#qscope.types.messages.MeasurementUpdate.meas_id">meas_id</a></code></li>
+<li><code><a title="qscope.types.messages.MeasurementUpdate.new_state" href="#qscope.types.messages.MeasurementUpdate.new_state">new_state</a></code></li>
+<li><code><a title="qscope.types.messages.MeasurementUpdate.old_state" href="#qscope.types.messages.MeasurementUpdate.old_state">old_state</a></code></li>
+<li><code><a title="qscope.types.messages.MeasurementUpdate.to_dict" href="#qscope.types.messages.MeasurementUpdate.to_dict">to_dict</a></code></li>
+<li><code><a title="qscope.types.messages.MeasurementUpdate.to_msgpack" href="#qscope.types.messages.MeasurementUpdate.to_msgpack">to_msgpack</a></code></li>
+<li><code><a title="qscope.types.messages.MeasurementUpdate.type" href="#qscope.types.messages.MeasurementUpdate.type">type</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.messages.Message" href="#qscope.types.messages.Message">Message</a></code></h4>
+<ul class="">
+<li><code><a title="qscope.types.messages.Message.from_dict" href="#qscope.types.messages.Message.from_dict">from_dict</a></code></li>
+<li><code><a title="qscope.types.messages.Message.from_msgpack" href="#qscope.types.messages.Message.from_msgpack">from_msgpack</a></code></li>
+<li><code><a title="qscope.types.messages.Message.to_dict" href="#qscope.types.messages.Message.to_dict">to_dict</a></code></li>
+<li><code><a title="qscope.types.messages.Message.to_msgpack" href="#qscope.types.messages.Message.to_msgpack">to_msgpack</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.messages.MsgResponse" href="#qscope.types.messages.MsgResponse">MsgResponse</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.types.messages.MsgResponse.from_dict" href="#qscope.types.messages.MsgResponse.from_dict">from_dict</a></code></li>
+<li><code><a title="qscope.types.messages.MsgResponse.from_msgpack" href="#qscope.types.messages.MsgResponse.from_msgpack">from_msgpack</a></code></li>
+<li><code><a title="qscope.types.messages.MsgResponse.to_dict" href="#qscope.types.messages.MsgResponse.to_dict">to_dict</a></code></li>
+<li><code><a title="qscope.types.messages.MsgResponse.to_msgpack" href="#qscope.types.messages.MsgResponse.to_msgpack">to_msgpack</a></code></li>
+<li><code><a title="qscope.types.messages.MsgResponse.type" href="#qscope.types.messages.MsgResponse.type">type</a></code></li>
+<li><code><a title="qscope.types.messages.MsgResponse.value" href="#qscope.types.messages.MsgResponse.value">value</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.messages.NewMeasurement" href="#qscope.types.messages.NewMeasurement">NewMeasurement</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.types.messages.NewMeasurement.from_dict" href="#qscope.types.messages.NewMeasurement.from_dict">from_dict</a></code></li>
+<li><code><a title="qscope.types.messages.NewMeasurement.from_msgpack" href="#qscope.types.messages.NewMeasurement.from_msgpack">from_msgpack</a></code></li>
+<li><code><a title="qscope.types.messages.NewMeasurement.meas_config" href="#qscope.types.messages.NewMeasurement.meas_config">meas_config</a></code></li>
+<li><code><a title="qscope.types.messages.NewMeasurement.meas_id" href="#qscope.types.messages.NewMeasurement.meas_id">meas_id</a></code></li>
+<li><code><a title="qscope.types.messages.NewMeasurement.to_dict" href="#qscope.types.messages.NewMeasurement.to_dict">to_dict</a></code></li>
+<li><code><a title="qscope.types.messages.NewMeasurement.to_msgpack" href="#qscope.types.messages.NewMeasurement.to_msgpack">to_msgpack</a></code></li>
+<li><code><a title="qscope.types.messages.NewMeasurement.type" href="#qscope.types.messages.NewMeasurement.type">type</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.messages.NewStream" href="#qscope.types.messages.NewStream">NewStream</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.types.messages.NewStream.from_dict" href="#qscope.types.messages.NewStream.from_dict">from_dict</a></code></li>
+<li><code><a title="qscope.types.messages.NewStream.from_msgpack" href="#qscope.types.messages.NewStream.from_msgpack">from_msgpack</a></code></li>
+<li><code><a title="qscope.types.messages.NewStream.stream_type" href="#qscope.types.messages.NewStream.stream_type">stream_type</a></code></li>
+<li><code><a title="qscope.types.messages.NewStream.to_dict" href="#qscope.types.messages.NewStream.to_dict">to_dict</a></code></li>
+<li><code><a title="qscope.types.messages.NewStream.to_msgpack" href="#qscope.types.messages.NewStream.to_msgpack">to_msgpack</a></code></li>
+<li><code><a title="qscope.types.messages.NewStream.type" href="#qscope.types.messages.NewStream.type">type</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.messages.Notification" href="#qscope.types.messages.Notification">Notification</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.types.messages.Notification.Config" href="#qscope.types.messages.Notification.Config">Config</a></code></li>
+<li><code><a title="qscope.types.messages.Notification.from_dict" href="#qscope.types.messages.Notification.from_dict">from_dict</a></code></li>
+<li><code><a title="qscope.types.messages.Notification.from_msgpack" href="#qscope.types.messages.Notification.from_msgpack">from_msgpack</a></code></li>
+<li><code><a title="qscope.types.messages.Notification.to_dict" href="#qscope.types.messages.Notification.to_dict">to_dict</a></code></li>
+<li><code><a title="qscope.types.messages.Notification.to_msgpack" href="#qscope.types.messages.Notification.to_msgpack">to_msgpack</a></code></li>
+<li><code><a title="qscope.types.messages.Notification.type" href="#qscope.types.messages.Notification.type">type</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.messages.PleaseWaitResponse" href="#qscope.types.messages.PleaseWaitResponse">PleaseWaitResponse</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.types.messages.PleaseWaitResponse.from_dict" href="#qscope.types.messages.PleaseWaitResponse.from_dict">from_dict</a></code></li>
+<li><code><a title="qscope.types.messages.PleaseWaitResponse.from_msgpack" href="#qscope.types.messages.PleaseWaitResponse.from_msgpack">from_msgpack</a></code></li>
+<li><code><a title="qscope.types.messages.PleaseWaitResponse.to_dict" href="#qscope.types.messages.PleaseWaitResponse.to_dict">to_dict</a></code></li>
+<li><code><a title="qscope.types.messages.PleaseWaitResponse.to_msgpack" href="#qscope.types.messages.PleaseWaitResponse.to_msgpack">to_msgpack</a></code></li>
+<li><code><a title="qscope.types.messages.PleaseWaitResponse.type" href="#qscope.types.messages.PleaseWaitResponse.type">type</a></code></li>
+<li><code><a title="qscope.types.messages.PleaseWaitResponse.value" href="#qscope.types.messages.PleaseWaitResponse.value">value</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.messages.Request" href="#qscope.types.messages.Request">Request</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.types.messages.Request.command" href="#qscope.types.messages.Request.command">command</a></code></li>
+<li><code><a title="qscope.types.messages.Request.from_dict" href="#qscope.types.messages.Request.from_dict">from_dict</a></code></li>
+<li><code><a title="qscope.types.messages.Request.from_msgpack" href="#qscope.types.messages.Request.from_msgpack">from_msgpack</a></code></li>
+<li><code><a title="qscope.types.messages.Request.params" href="#qscope.types.messages.Request.params">params</a></code></li>
+<li><code><a title="qscope.types.messages.Request.to_dict" href="#qscope.types.messages.Request.to_dict">to_dict</a></code></li>
+<li><code><a title="qscope.types.messages.Request.to_msgpack" href="#qscope.types.messages.Request.to_msgpack">to_msgpack</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.messages.Response" href="#qscope.types.messages.Response">Response</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.types.messages.Response.Config" href="#qscope.types.messages.Response.Config">Config</a></code></li>
+<li><code><a title="qscope.types.messages.Response.from_dict" href="#qscope.types.messages.Response.from_dict">from_dict</a></code></li>
+<li><code><a title="qscope.types.messages.Response.from_msgpack" href="#qscope.types.messages.Response.from_msgpack">from_msgpack</a></code></li>
+<li><code><a title="qscope.types.messages.Response.to_dict" href="#qscope.types.messages.Response.to_dict">to_dict</a></code></li>
+<li><code><a title="qscope.types.messages.Response.to_msgpack" href="#qscope.types.messages.Response.to_msgpack">to_msgpack</a></code></li>
+<li><code><a title="qscope.types.messages.Response.type" href="#qscope.types.messages.Response.type">type</a></code></li>
+<li><code><a title="qscope.types.messages.Response.value" href="#qscope.types.messages.Response.value">value</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.messages.RollingAvgSweepUpdate" href="#qscope.types.messages.RollingAvgSweepUpdate">RollingAvgSweepUpdate</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.types.messages.RollingAvgSweepUpdate.aoi" href="#qscope.types.messages.RollingAvgSweepUpdate.aoi">aoi</a></code></li>
+<li><code><a title="qscope.types.messages.RollingAvgSweepUpdate.avg_window" href="#qscope.types.messages.RollingAvgSweepUpdate.avg_window">avg_window</a></code></li>
+<li><code><a title="qscope.types.messages.RollingAvgSweepUpdate.from_dict" href="#qscope.types.messages.RollingAvgSweepUpdate.from_dict">from_dict</a></code></li>
+<li><code><a title="qscope.types.messages.RollingAvgSweepUpdate.from_msgpack" href="#qscope.types.messages.RollingAvgSweepUpdate.from_msgpack">from_msgpack</a></code></li>
+<li><code><a title="qscope.types.messages.RollingAvgSweepUpdate.meas_id" href="#qscope.types.messages.RollingAvgSweepUpdate.meas_id">meas_id</a></code></li>
+<li><code><a title="qscope.types.messages.RollingAvgSweepUpdate.sweep_idxs" href="#qscope.types.messages.RollingAvgSweepUpdate.sweep_idxs">sweep_idxs</a></code></li>
+<li><code><a title="qscope.types.messages.RollingAvgSweepUpdate.sweep_x" href="#qscope.types.messages.RollingAvgSweepUpdate.sweep_x">sweep_x</a></code></li>
+<li><code><a title="qscope.types.messages.RollingAvgSweepUpdate.sweep_yref" href="#qscope.types.messages.RollingAvgSweepUpdate.sweep_yref">sweep_yref</a></code></li>
+<li><code><a title="qscope.types.messages.RollingAvgSweepUpdate.sweep_ysig" href="#qscope.types.messages.RollingAvgSweepUpdate.sweep_ysig">sweep_ysig</a></code></li>
+<li><code><a title="qscope.types.messages.RollingAvgSweepUpdate.to_dict" href="#qscope.types.messages.RollingAvgSweepUpdate.to_dict">to_dict</a></code></li>
+<li><code><a title="qscope.types.messages.RollingAvgSweepUpdate.to_msgpack" href="#qscope.types.messages.RollingAvgSweepUpdate.to_msgpack">to_msgpack</a></code></li>
+<li><code><a title="qscope.types.messages.RollingAvgSweepUpdate.type" href="#qscope.types.messages.RollingAvgSweepUpdate.type">type</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.messages.SaveFullComplete" href="#qscope.types.messages.SaveFullComplete">SaveFullComplete</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.types.messages.SaveFullComplete.from_dict" href="#qscope.types.messages.SaveFullComplete.from_dict">from_dict</a></code></li>
+<li><code><a title="qscope.types.messages.SaveFullComplete.from_msgpack" href="#qscope.types.messages.SaveFullComplete.from_msgpack">from_msgpack</a></code></li>
+<li><code><a title="qscope.types.messages.SaveFullComplete.meas_id" href="#qscope.types.messages.SaveFullComplete.meas_id">meas_id</a></code></li>
+<li><code><a title="qscope.types.messages.SaveFullComplete.save_path" href="#qscope.types.messages.SaveFullComplete.save_path">save_path</a></code></li>
+<li><code><a title="qscope.types.messages.SaveFullComplete.to_dict" href="#qscope.types.messages.SaveFullComplete.to_dict">to_dict</a></code></li>
+<li><code><a title="qscope.types.messages.SaveFullComplete.to_msgpack" href="#qscope.types.messages.SaveFullComplete.to_msgpack">to_msgpack</a></code></li>
+<li><code><a title="qscope.types.messages.SaveFullComplete.type" href="#qscope.types.messages.SaveFullComplete.type">type</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.messages.Shape2DResponse" href="#qscope.types.messages.Shape2DResponse">Shape2DResponse</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.types.messages.Shape2DResponse.from_dict" href="#qscope.types.messages.Shape2DResponse.from_dict">from_dict</a></code></li>
+<li><code><a title="qscope.types.messages.Shape2DResponse.from_msgpack" href="#qscope.types.messages.Shape2DResponse.from_msgpack">from_msgpack</a></code></li>
+<li><code><a title="qscope.types.messages.Shape2DResponse.to_dict" href="#qscope.types.messages.Shape2DResponse.to_dict">to_dict</a></code></li>
+<li><code><a title="qscope.types.messages.Shape2DResponse.to_msgpack" href="#qscope.types.messages.Shape2DResponse.to_msgpack">to_msgpack</a></code></li>
+<li><code><a title="qscope.types.messages.Shape2DResponse.type" href="#qscope.types.messages.Shape2DResponse.type">type</a></code></li>
+<li><code><a title="qscope.types.messages.Shape2DResponse.value" href="#qscope.types.messages.Shape2DResponse.value">value</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.messages.SweepUpdate" href="#qscope.types.messages.SweepUpdate">SweepUpdate</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.types.messages.SweepUpdate.aoi" href="#qscope.types.messages.SweepUpdate.aoi">aoi</a></code></li>
+<li><code><a title="qscope.types.messages.SweepUpdate.from_dict" href="#qscope.types.messages.SweepUpdate.from_dict">from_dict</a></code></li>
+<li><code><a title="qscope.types.messages.SweepUpdate.from_msgpack" href="#qscope.types.messages.SweepUpdate.from_msgpack">from_msgpack</a></code></li>
+<li><code><a title="qscope.types.messages.SweepUpdate.meas_id" href="#qscope.types.messages.SweepUpdate.meas_id">meas_id</a></code></li>
+<li><code><a title="qscope.types.messages.SweepUpdate.nsweeps" href="#qscope.types.messages.SweepUpdate.nsweeps">nsweeps</a></code></li>
+<li><code><a title="qscope.types.messages.SweepUpdate.sweep_data" href="#qscope.types.messages.SweepUpdate.sweep_data">sweep_data</a></code></li>
+<li><code><a title="qscope.types.messages.SweepUpdate.sweep_progress" href="#qscope.types.messages.SweepUpdate.sweep_progress">sweep_progress</a></code></li>
+<li><code><a title="qscope.types.messages.SweepUpdate.to_dict" href="#qscope.types.messages.SweepUpdate.to_dict">to_dict</a></code></li>
+<li><code><a title="qscope.types.messages.SweepUpdate.to_msgpack" href="#qscope.types.messages.SweepUpdate.to_msgpack">to_msgpack</a></code></li>
+<li><code><a title="qscope.types.messages.SweepUpdate.type" href="#qscope.types.messages.SweepUpdate.type">type</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.messages.TupleResponse" href="#qscope.types.messages.TupleResponse">TupleResponse</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.types.messages.TupleResponse.from_dict" href="#qscope.types.messages.TupleResponse.from_dict">from_dict</a></code></li>
+<li><code><a title="qscope.types.messages.TupleResponse.from_msgpack" href="#qscope.types.messages.TupleResponse.from_msgpack">from_msgpack</a></code></li>
+<li><code><a title="qscope.types.messages.TupleResponse.to_dict" href="#qscope.types.messages.TupleResponse.to_dict">to_dict</a></code></li>
+<li><code><a title="qscope.types.messages.TupleResponse.to_msgpack" href="#qscope.types.messages.TupleResponse.to_msgpack">to_msgpack</a></code></li>
+<li><code><a title="qscope.types.messages.TupleResponse.type" href="#qscope.types.messages.TupleResponse.type">type</a></code></li>
+<li><code><a title="qscope.types.messages.TupleResponse.value" href="#qscope.types.messages.TupleResponse.value">value</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.messages.ValueResponse" href="#qscope.types.messages.ValueResponse">ValueResponse</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.types.messages.ValueResponse.from_dict" href="#qscope.types.messages.ValueResponse.from_dict">from_dict</a></code></li>
+<li><code><a title="qscope.types.messages.ValueResponse.from_msgpack" href="#qscope.types.messages.ValueResponse.from_msgpack">from_msgpack</a></code></li>
+<li><code><a title="qscope.types.messages.ValueResponse.to_dict" href="#qscope.types.messages.ValueResponse.to_dict">to_dict</a></code></li>
+<li><code><a title="qscope.types.messages.ValueResponse.to_msgpack" href="#qscope.types.messages.ValueResponse.to_msgpack">to_msgpack</a></code></li>
+<li><code><a title="qscope.types.messages.ValueResponse.type" href="#qscope.types.messages.ValueResponse.type">type</a></code></li>
+<li><code><a title="qscope.types.messages.ValueResponse.value" href="#qscope.types.messages.ValueResponse.value">value</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.messages.WarningResponse" href="#qscope.types.messages.WarningResponse">WarningResponse</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.types.messages.WarningResponse.from_dict" href="#qscope.types.messages.WarningResponse.from_dict">from_dict</a></code></li>
+<li><code><a title="qscope.types.messages.WarningResponse.from_msgpack" href="#qscope.types.messages.WarningResponse.from_msgpack">from_msgpack</a></code></li>
+<li><code><a title="qscope.types.messages.WarningResponse.to_dict" href="#qscope.types.messages.WarningResponse.to_dict">to_dict</a></code></li>
+<li><code><a title="qscope.types.messages.WarningResponse.to_msgpack" href="#qscope.types.messages.WarningResponse.to_msgpack">to_msgpack</a></code></li>
+<li><code><a title="qscope.types.messages.WarningResponse.type" href="#qscope.types.messages.WarningResponse.type">type</a></code></li>
+<li><code><a title="qscope.types.messages.WarningResponse.value" href="#qscope.types.messages.WarningResponse.value">value</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
+</footer>
+</body>
+</html>

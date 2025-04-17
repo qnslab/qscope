@@ -1,0 +1,1901 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.6">
+<title>qscope.device.andor.andor API documentation</title>
+<meta name="description" content="">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}#lunr-search{width:100%;font-size:1em;padding:6px 9px 5px 9px;border:1px solid silver}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes: true } });</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML" integrity="sha256-kZafAc6mZvK3W3v1pHOcUix30OHQN6pU/NO2oFkqZVw=" crossorigin></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>qscope.device.andor.andor</code></h1>
+</header>
+<section id="section-intro">
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="qscope.device.andor.andor.AndorSDK3"><code class="flex name class">
+<span>class <span class="ident">AndorSDK3</span></span>
+<span>(</span><span>**config_kwargs)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class AndorSDK3(Device):
+    def __init__(self, **config_kwargs):
+        super().__init__(**config_kwargs)
+        if platform.system() == &#34;Windows&#34;:
+            pll.par[&#34;devices/dlls/andor_sdk3&#34;] = lib_folder
+        else:
+            pll.par[&#34;devices/only_windows_dlls&#34;] = False
+            pll.par[&#34;devices/dlls/andor_sdk3&#34;] = &#34;/usr/local/lib/libatcore.so&#34;
+
+        self._binning = (1, 1)
+        self._exposure_time = 0.3
+
+        self.video_stop_event = asyncio.Event()
+
+    def open(self) -&gt; tuple[bool, str]:
+        try:
+            self.cam = pylablib.devices.Andor.AndorSDK3Camera()
+            self.cam.open()
+            if pylablib.devices.Andor.get_cameras_number_SDK3() == 2 and not isinstance(
+                self, AndorSimCam
+            ):
+                # only simcams, but we don&#39;t want a simcam (first two cams are always simcams)
+                self.cam.close()
+                raise RuntimeError(
+                    f&#34;Can&#39;t find Camera of type {self.__class__.__name__}&#34;
+                )
+
+            self._set_image_indexing(&#34;xyb&#34;)
+            # self._set_frame_format(&#34;chunks&#34;)
+            self._set_frame_format(&#34;array&#34;)
+            self._set_attr_dev(&#34;SensorCooling&#34;, True)  # is this ok for all cams?
+            self._set_attr_dev(&#34;SimplePreAmpGainControl&#34;, 2)
+            self.cam.name = self._get_attr_dev(&#34;CameraModel&#34;)
+
+            self.set_shutter_mode(self._shutter_mode)
+            self.set_roi(self._roi)
+            self.set_hardware_binning(self._binning)
+            self.set_exposure_time(self._exposure_time)
+            # self._sensor_width = self._get_attr_dev(&#34;SensorWidth&#34;)
+            # self._sensor_height = self._get_attr_dev(&#34;SensorHeight&#34;)
+            self.set_trigger_mode(
+                &#34;ext_exp&#34;
+            )  # use b. deflt, will switch to int when needed
+            # Set up the camera gain
+            logger.info(f&#34;Connected to Camera: {self.cam.get_device_info()}&#34;)
+            return True, f&#34;Connected to Camera: {self.cam.get_device_info()}&#34;
+        except Exception as e:
+            logger.exception(&#34;Error connecting to Camera.&#34;)
+            return False, f&#34;Error connecting to Camera: {format_error_response()}&#34;
+
+    def close(self):
+        if hasattr(self, &#34;cam&#34;):
+            self.cam.close()
+            logger.info(
+                &#34;Disconnected from Camera: {}&#34;,
+                self.cam.name if hasattr(self.cam, &#34;name&#34;) else &#34;Unknown camera&#34;,
+            )
+
+    def is_connected(self):
+        if not hasattr(self, &#34;cam&#34;):
+            return False
+        return self.cam.is_opened()
+
+    def get_readout_time(self):
+        # returns the readout time in seconds
+        readout_time = self._get_attr_dev(&#34;ReadoutTime&#34;)
+        # add 10% more time to be safe
+        return readout_time + 0.2 * readout_time
+
+    def take_snapshot(self):
+        self.set_trigger_mode(&#34;int&#34;)
+        image = self.cam.snap()
+        self.set_trigger_mode(&#34;ext_exp&#34;)
+        return image
+
+    def get_all_seq_frames(self):
+        # TODO what shape is returned? Need some more docs around here.
+        return self.cam.read_multiple_images()
+
+    def setup_acquisition(self, mode=&#34;sequence&#34;, nframes=1):
+        self.cam.setup_acquisition(mode=&#34;sequence&#34;, nframes=nframes)
+
+    def clear_acquisition(self):
+        self.cam.clear_acquisition()
+
+    def start_acquisition(self):
+        self.cam.start_acquisition()
+
+    def stop_acquisition(self):
+        self.cam.stop_acquisition()
+
+    def get_trigger_time(self) -&gt; float:
+        return self.get_readout_time()
+
+    # def get_amp_mode(self, *args, **kwargs):
+    #     return self._cam.get_amp_mode(full=True)
+
+    #################################################################
+    # set camera parameters                                         #
+
+    def set_trigger_mode(self, mode):
+        self.cam.set_trigger_mode(mode)
+
+    def set_shutter_mode(self, mode):
+        # sets the shutter mode to either &#34;Rolling&#34; or &#34;Global&#34;
+        # also defines the trigger mode to the correct format for each mode
+        if mode == &#34;Rolling&#34;:
+            self._set_attr_dev(&#34;ElectronicShutteringMode&#34;, &#34;Rolling&#34;)
+            self.set_trigger_mode(&#34;ext_exp&#34;)
+        elif mode == &#34;Global&#34;:
+            self._set_attr_dev(&#34;ElectronicShutteringMode&#34;, &#34;Global&#34;)
+            self.set_trigger_mode(&#34;ext&#34;)
+        else:
+            logger.error(&#34;Shutter mode {} not recognised.&#34;, mode)
+
+    def get_shutter_mode(self):
+        self._shutter_mode = self._get_attr_dev(&#34;ElectronicShutteringMode&#34;)
+        return self._shutter_mode
+
+    def _set_image_indexing(self, indexing):
+        self.cam.set_image_indexing(indexing)
+
+    def _set_frame_format(self, fmt):
+        &#34;&#34;&#34;
+        Can be &#34;list&#34; (list of 2D arrays),
+        &#34;array&#34; (a single 3D array),
+        &#34;chunks&#34; (list of 3D “chunk” arrays;
+        &#34;&#34;&#34;
+        # TODO we want to set this to &#39;chunks&#39; for measurements/sequences
+        # (or &#39;try_chunks&#39;)?
+        self.cam.set_frame_format(fmt)
+
+    def _get_attr_dev(self, attr):
+        return self.cam.get_attribute_value(attr)
+
+    def _set_attr_dev(self, attr, value):
+        # the attributes for Zyla are case sensitive so we need to make sure the
+        # attribute is in the correct case
+
+        # cross check the attribute with the list of attributes and adjust the case
+        # if necessary
+        attr_list = self.cam.get_all_attributes()
+        # if the attribute matches one in the list when it is all lower case then
+        # set the attribute to the one in the list
+        new_attr = [attr_ for attr_ in attr_list if attr.lower() == attr_.lower()][0]
+        self.cam.set_attribute_value(new_attr, value)
+
+    #################################################################
+    #               CAMERA PROPERTIES                               #
+    #################################################################
+
+    def get_roi(self):
+        # this returns both the roi and the binning to keep them seperate for
+        # easier data handling we define both seperately
+        roi_and_bin = self.cam.get_roi()
+        self._roi = roi_and_bin[0:4]
+        return self._roi
+
+    def set_roi(self, roi):
+        if len(roi) != 4:
+            # then the user has passed a centered roi with a radius
+            roi = [
+                int(self._sensor_width / 2 - roi[0] / 2),
+                int(self._sensor_width / 2 + roi[0] / 2),
+                int(self._sensor_height / 2 - roi[1] / 2),
+                int(self._sensor_height / 2 + roi[1] / 2),
+            ]
+        # TODO add check for roi size within sensor size?
+        self.cam.set_roi(*roi, *self.get_hardware_binning())
+        self._roi = roi
+        self.update_data_size()
+        return self._roi
+
+    def get_hardware_binning(self):
+        roi_and_bin = self.cam.get_roi()
+        self._binning = roi_and_bin[4:6]
+        return self._binning
+
+    def set_hardware_binning(self, binning):
+        roi = self.get_roi()
+        self.cam.set_roi(*roi, *binning)
+        self._frame_shape = [roi[1] - roi[0], roi[3] - roi[2]]
+        self._binning = binning
+        self.update_data_size()
+
+    def get_frame_shape(self):
+        roi = self.get_roi()
+        self._frame_shape = [roi[1] - roi[0], roi[3] - roi[2]]
+        return self._frame_shape
+
+    def set_frame_shape(self, frame_shape):
+        roi = [
+            self._sensor_width / 2 - frame_shape[0] / 2,
+            self._sensor_width / 2 + frame_shape[0] / 2,
+            self._sensor_height / 2 - frame_shape[1] / 2,
+            self._sensor_height / 2 + frame_shape[1] / 2,
+        ]
+        # roi = [int(i) for i in roi] # need one of these?
+        self.cam.set_roi(*roi, *self.get_hardware_binning())
+
+        self.set_roi(roi)
+        logger.info(&#34;Set camera roi to: {}&#34;, roi)
+        self._frame_shape = frame_shape
+        self.update_data_size()
+        return self._frame_shape
+
+    def update_data_size(self):
+        self._data_size = self.cam.get_data_dimensions()
+        return self._data_size
+
+    def get_data_size(self):
+        return self._data_size
+
+    def get_exposure_time(self):
+        self._exposure_time = self.cam.cav[&#34;ExposureTime&#34;]
+        logger.info(&#34;Exposure time: {}&#34;, self._exposure_time)
+        return self._exposure_time
+
+    def set_exposure_time(self, value):
+        # to set the exposure time we need to make sure the trigger mode is set to
+        # internal
+        trig_mode = self._get_attr_dev(&#34;TriggerMode&#34;)
+        self.cam.set_trigger_mode(&#34;int&#34;)
+        self.cam.set_exposure(value)
+        # switch back to the original trigger mode
+        if trig_mode == &#34;Internal&#34;:
+            self.cam.set_trigger_mode(&#34;int&#34;)
+        elif trig_mode == &#34;External Exposure&#34;:
+            self.cam.set_trigger_mode(&#34;ext_exp&#34;)
+        self._exposure_time = value
+
+    def wait_for_frame(self):
+        return self.cam.wait_for_frame(error_on_stopped=True)
+
+    async def start_video(self, connection):
+        logger.info(&#34;Starting video feed&#34;)
+
+        async def video_loop(cn: ServerConnection, stop_event: asyncio.Event):
+            cn.reset_stream()
+            # start the camera acquisition
+            self.cam.set_trigger_mode(&#34;int&#34;)
+            self.cam.setup_acquisition(mode=&#34;sequence&#34;, nframes=15)
+            self.cam.start_acquisition()
+            await asyncio.sleep(0)
+            while True:
+                await asyncio.sleep(0)
+                try:
+                    if stop_event.is_set():
+                        stop_event.clear()
+                        logger.info(&#34;Stopping video feed&#34;)
+                        self.cam.stop_acquisition()
+                        # set the trigger mode back to external exposure
+                        self.set_trigger_mode(&#34;ext_exp&#34;)
+                        break
+                    self.cam.wait_for_frame()
+                    ar = np.array(self.get_all_seq_frames())[0, ::]
+                    cn.send_stream_chunk(ar, header=&#34;video&#34;)
+                except Exception as e:
+                    logger.exception(&#34;Error in video loop.&#34;)
+                    break
+
+        self.video_stop_event.clear()
+        self.task = asyncio.create_task(video_loop(connection, self.video_stop_event))
+        await asyncio.sleep(0)  # let above start
+
+    def stop_video(self):
+        self.video_stop_event.set()
+
+    def start_popup_video(self, exposure=None, blit=False):
+        &#34;&#34;&#34;
+        This is to test the circular buffer mode of the camera
+        &#34;&#34;&#34;
+        mpl.use(&#34;Qt5Agg&#34;)
+        if exposure is not None:
+            self.exposure = exposure
+
+        frame = self.take_snapshot()
+
+        # determine the order of magnitude for the summed data
+        sum_pl = np.sum(frame, axis=(0, 1))
+
+        # start the camera acquisition
+        self.cam.set_trigger_mode(&#34;int&#34;)
+        self.cam.setup_acquisition(mode=&#34;sequence&#34;, nframes=15)
+        self.cam.start_acquisition()
+
+        plt.ion()
+        fig = plt.figure(figsize=(13, 5))
+        ax1 = fig.add_subplot(1, 2, 1)
+        ax2 = fig.add_subplot(1, 2, 2)
+
+        # add a buffer to the range for count changes
+        cmax = np.max(frame) + 0.1 * np.max(frame)
+        cmin = np.min(frame) - 0.1 * np.min(frame)
+
+        img = ax1.imshow(frame, interpolation=&#34;None&#34;, cmap=&#34;gray&#34;, vmin=cmin, vmax=cmax, origin=&#34;upper&#34;)
+        # Add a colorbar to the image
+        divider = make_axes_locatable(ax1)
+        cax = divider.append_axes(&#34;right&#34;, size=&#34;5%&#34;, pad=0.05)
+        cbar = fig.colorbar(img, cax=cax, orientation=&#34;vertical&#34;)
+
+        # Create the time trace
+        sum_pl = np.sum(frame, axis=(0, 1))
+        time = 0
+        (line,) = ax2.plot(time, sum_pl)
+        # axes labels
+        ax2.set_xlabel(&#34;Time (s)&#34;)
+        ax2.set_ylabel(&#34;Intensity (cps)&#34;)
+        ax2.set_xlim(0, 5)
+
+        # add a space between the plots
+        fig.subplots_adjust(wspace=0.3)
+
+        fig.canvas.draw()  # note that the first draw comes before setting data
+
+        # cache the background
+        if blit:
+            axbackground = fig.canvas.copy_from_bbox(ax1.bbox)
+            ax2background = fig.canvas.copy_from_bbox(ax2.bbox)
+
+        plt.show(block=False)
+
+        b_draw = False
+        n_frames = 0
+        sum_pl = np.array([])
+        while True:
+            # Get a frame from the camera
+            self.cam.wait_for_frame()
+            frames = self.get_all_seq_frames()
+            n_frames += frames.shape[0]
+
+            # sum each frame to get the total intensity
+            sum_pl = np.append(sum_pl, np.sum(frames, axis=(1, 2)))
+            time = self._exposure_time * np.arange(sum_pl.shape[0])
+
+            # set the new data
+            cmax = np.max(frames[-1, ::])
+            cmin = np.min(frames[-1, ::])
+
+            img.set_data(frames[-1, ::])
+            img.set_clim(cmin, cmax)
+
+            line.set_data(time, sum_pl)
+
+            if blit:
+                # restore background
+                fig.canvas.restore_region(axbackground)
+                fig.canvas.restore_region(ax2background)
+
+                # redraw just the points
+                ax1.draw_artist(img)
+                ax2.draw_artist(line)
+
+                # update the axes
+                ax2.set_ylim(np.min(sum_pl), np.max(sum_pl))
+                # check if x axis needs to be updated
+                if time[-1] &gt; ax2.get_xlim()[1]:
+                    ax2.set_xlim(time[0], time[-1] + 5)
+                    b_draw = True
+
+                # fill in the axes rectangle
+                fig.canvas.blit(ax1.bbox)
+                fig.canvas.blit(ax2.bbox)
+            else:
+                ax2.set_ylim(np.min(sum_pl), np.max(sum_pl))
+
+                if time[-1] &gt; ax2.get_xlim()[1]:
+                    ax2.set_xlim(time[0], time[-1] + 5)
+
+                b_draw = True
+
+            if b_draw:
+                fig.canvas.draw()
+                b_draw = False
+
+            fig.canvas.flush_events()
+
+            # stop if the user closes the figure
+            if not plt.fignum_exists(fig.number):
+                break
+
+        # stop the camera acquisition
+        self.cam.stop_acquisition()
+        # set the trigger mode back to external exposure
+        self.set_trigger_mode(&#34;ext_exp&#34;)
+
+        # close the figure
+        plt.close(fig)
+
+        return time, sum_pl</code></pre>
+</details>
+<div class="desc"><p>Base class for all hardware devices in QScope.</p>
+<p>The Device class provides the foundation for hardware abstraction in QScope.
+Specific device implementations inherit from this class and implement the
+methods required by their intended roles.</p>
+<p>A device can fulfill multiple roles if it implements all required methods
+for those roles. The system validates role compatibility at runtime.</p>
+<h2 id="device-architecture">Device Architecture</h2>
+<p>Devices are part of QScope's hardware abstraction layer:</p>
+<ol>
+<li>Base Device Class (this class)</li>
+<li>Provides configuration validation</li>
+<li>Manages role assignments</li>
+<li>Handles connection state</li>
+<li>
+<p>Defines required methods</p>
+</li>
+<li>
+<p>Device Implementations</p>
+</li>
+<li>Inherit from Device</li>
+<li>Implement protocol methods for specific roles</li>
+<li>Provide hardware-specific functionality</li>
+<li>
+<p>Can implement multiple protocols</p>
+</li>
+<li>
+<p>System Integration</p>
+</li>
+<li>Devices are added to systems with specific roles</li>
+<li>System validates that devices implement required protocols</li>
+<li>Devices are accessed through role interfaces</li>
+</ol>
+<h2 id="required-methods">Required Methods</h2>
+<p>All device implementations must override these methods:</p>
+<ul>
+<li>open(): Connect to the hardware</li>
+<li>close(): Disconnect from the hardware</li>
+<li>is_connected(): Check connection status</li>
+</ul>
+<p>In addition, devices must implement all methods required by the
+protocols of the roles they intend to fulfill.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>required_config</code></strong> :&ensp;<code>dict[str, Type]</code></dt>
+<dd>Required configuration parameters and their types</dd>
+<dt><strong><code>_roles</code></strong> :&ensp;<code>Set[DeviceRole[Device]]</code></dt>
+<dd>Set of roles this device fulfills</dd>
+</dl>
+<h2 id="examples">Examples</h2>
+<p>Creating a new device implementation:</p>
+<pre><code class="language-python">class MyRFSource(Device):
+    required_config = {
+        &quot;visa_addr&quot;: str,
+        &quot;max_power&quot;: float
+    }
+
+    def __init__(self, **config_kwargs):
+        super().__init__(**config_kwargs)
+        self.connected = False
+
+    def open(self) -&gt; tuple[bool, str]:
+        # Implementation for connecting to hardware
+        self.connected = True
+        return True, &quot;Connected successfully&quot;
+
+    def close(self):
+        # Implementation for disconnecting
+        self.connected = False
+
+    def is_connected(self) -&gt; bool:
+        return self.connected
+
+    # Implement methods required by RFSourceProtocol
+    def set_freq(self, freq: float) -&gt; None:
+        # Implementation
+        pass
+
+    def set_power(self, power: float) -&gt; None:
+        # Implementation
+        pass
+</code></pre>
+<p>Using the device with a role:</p>
+<pre><code class="language-python"># Create device instance
+rf = MyRFSource(visa_addr=&quot;TCPIP0::192.168.1.1::INSTR&quot;, max_power=20.0)
+
+# Add to system with role
+system.add_device_with_role(rf, PRIMARY_RF)
+</code></pre>
+<h2 id="see-also">See Also</h2>
+<dl>
+<dt><code><a title="qscope.types.protocols" href="../../types/protocols.html">qscope.types.protocols</a></code></dt>
+<dd>Protocol definitions</dd>
+<dt><code><a title="qscope.types.roles" href="../../types/roles.html">qscope.types.roles</a></code></dt>
+<dd>Role definitions</dd>
+<dt><code><a title="qscope.types.interfaces" href="../../types/interfaces.html">qscope.types.interfaces</a></code></dt>
+<dd>Interface implementations</dd>
+<dt><code><a title="qscope.system" href="../../system/index.html">qscope.system</a></code></dt>
+<dd>System implementation</dd>
+</dl></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.device.device.Device" href="../device.html#qscope.device.device.Device">Device</a></li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="qscope.device.andor.andor.AndorSimCam" href="#qscope.device.andor.andor.AndorSimCam">AndorSimCam</a></li>
+<li><a title="qscope.device.andor.andor.Sona42" href="#qscope.device.andor.andor.Sona42">Sona42</a></li>
+<li><a title="qscope.device.andor.andor.Zyla42" href="#qscope.device.andor.andor.Zyla42">Zyla42</a></li>
+<li><a title="qscope.device.andor.andor.Zyla55" href="#qscope.device.andor.andor.Zyla55">Zyla55</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.device.andor.andor.AndorSDK3.clear_acquisition"><code class="name flex">
+<span>def <span class="ident">clear_acquisition</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def clear_acquisition(self):
+    self.cam.clear_acquisition()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.andor.andor.AndorSDK3.close"><code class="name flex">
+<span>def <span class="ident">close</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def close(self):
+    if hasattr(self, &#34;cam&#34;):
+        self.cam.close()
+        logger.info(
+            &#34;Disconnected from Camera: {}&#34;,
+            self.cam.name if hasattr(self.cam, &#34;name&#34;) else &#34;Unknown camera&#34;,
+        )</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.andor.andor.AndorSDK3.get_all_seq_frames"><code class="name flex">
+<span>def <span class="ident">get_all_seq_frames</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_all_seq_frames(self):
+    # TODO what shape is returned? Need some more docs around here.
+    return self.cam.read_multiple_images()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.andor.andor.AndorSDK3.get_data_size"><code class="name flex">
+<span>def <span class="ident">get_data_size</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_data_size(self):
+    return self._data_size</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.andor.andor.AndorSDK3.get_exposure_time"><code class="name flex">
+<span>def <span class="ident">get_exposure_time</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_exposure_time(self):
+    self._exposure_time = self.cam.cav[&#34;ExposureTime&#34;]
+    logger.info(&#34;Exposure time: {}&#34;, self._exposure_time)
+    return self._exposure_time</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.andor.andor.AndorSDK3.get_frame_shape"><code class="name flex">
+<span>def <span class="ident">get_frame_shape</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_frame_shape(self):
+    roi = self.get_roi()
+    self._frame_shape = [roi[1] - roi[0], roi[3] - roi[2]]
+    return self._frame_shape</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.andor.andor.AndorSDK3.get_hardware_binning"><code class="name flex">
+<span>def <span class="ident">get_hardware_binning</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_hardware_binning(self):
+    roi_and_bin = self.cam.get_roi()
+    self._binning = roi_and_bin[4:6]
+    return self._binning</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.andor.andor.AndorSDK3.get_readout_time"><code class="name flex">
+<span>def <span class="ident">get_readout_time</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_readout_time(self):
+    # returns the readout time in seconds
+    readout_time = self._get_attr_dev(&#34;ReadoutTime&#34;)
+    # add 10% more time to be safe
+    return readout_time + 0.2 * readout_time</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.andor.andor.AndorSDK3.get_roi"><code class="name flex">
+<span>def <span class="ident">get_roi</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_roi(self):
+    # this returns both the roi and the binning to keep them seperate for
+    # easier data handling we define both seperately
+    roi_and_bin = self.cam.get_roi()
+    self._roi = roi_and_bin[0:4]
+    return self._roi</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.andor.andor.AndorSDK3.get_shutter_mode"><code class="name flex">
+<span>def <span class="ident">get_shutter_mode</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_shutter_mode(self):
+    self._shutter_mode = self._get_attr_dev(&#34;ElectronicShutteringMode&#34;)
+    return self._shutter_mode</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.andor.andor.AndorSDK3.get_trigger_time"><code class="name flex">
+<span>def <span class="ident">get_trigger_time</span></span>(<span>self) ‑> float</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_trigger_time(self) -&gt; float:
+    return self.get_readout_time()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.andor.andor.AndorSDK3.is_connected"><code class="name flex">
+<span>def <span class="ident">is_connected</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def is_connected(self):
+    if not hasattr(self, &#34;cam&#34;):
+        return False
+    return self.cam.is_opened()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.andor.andor.AndorSDK3.open"><code class="name flex">
+<span>def <span class="ident">open</span></span>(<span>self) ‑> tuple[bool, str]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def open(self) -&gt; tuple[bool, str]:
+    try:
+        self.cam = pylablib.devices.Andor.AndorSDK3Camera()
+        self.cam.open()
+        if pylablib.devices.Andor.get_cameras_number_SDK3() == 2 and not isinstance(
+            self, AndorSimCam
+        ):
+            # only simcams, but we don&#39;t want a simcam (first two cams are always simcams)
+            self.cam.close()
+            raise RuntimeError(
+                f&#34;Can&#39;t find Camera of type {self.__class__.__name__}&#34;
+            )
+
+        self._set_image_indexing(&#34;xyb&#34;)
+        # self._set_frame_format(&#34;chunks&#34;)
+        self._set_frame_format(&#34;array&#34;)
+        self._set_attr_dev(&#34;SensorCooling&#34;, True)  # is this ok for all cams?
+        self._set_attr_dev(&#34;SimplePreAmpGainControl&#34;, 2)
+        self.cam.name = self._get_attr_dev(&#34;CameraModel&#34;)
+
+        self.set_shutter_mode(self._shutter_mode)
+        self.set_roi(self._roi)
+        self.set_hardware_binning(self._binning)
+        self.set_exposure_time(self._exposure_time)
+        # self._sensor_width = self._get_attr_dev(&#34;SensorWidth&#34;)
+        # self._sensor_height = self._get_attr_dev(&#34;SensorHeight&#34;)
+        self.set_trigger_mode(
+            &#34;ext_exp&#34;
+        )  # use b. deflt, will switch to int when needed
+        # Set up the camera gain
+        logger.info(f&#34;Connected to Camera: {self.cam.get_device_info()}&#34;)
+        return True, f&#34;Connected to Camera: {self.cam.get_device_info()}&#34;
+    except Exception as e:
+        logger.exception(&#34;Error connecting to Camera.&#34;)
+        return False, f&#34;Error connecting to Camera: {format_error_response()}&#34;</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.andor.andor.AndorSDK3.set_exposure_time"><code class="name flex">
+<span>def <span class="ident">set_exposure_time</span></span>(<span>self, value)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_exposure_time(self, value):
+    # to set the exposure time we need to make sure the trigger mode is set to
+    # internal
+    trig_mode = self._get_attr_dev(&#34;TriggerMode&#34;)
+    self.cam.set_trigger_mode(&#34;int&#34;)
+    self.cam.set_exposure(value)
+    # switch back to the original trigger mode
+    if trig_mode == &#34;Internal&#34;:
+        self.cam.set_trigger_mode(&#34;int&#34;)
+    elif trig_mode == &#34;External Exposure&#34;:
+        self.cam.set_trigger_mode(&#34;ext_exp&#34;)
+    self._exposure_time = value</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.andor.andor.AndorSDK3.set_frame_shape"><code class="name flex">
+<span>def <span class="ident">set_frame_shape</span></span>(<span>self, frame_shape)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_frame_shape(self, frame_shape):
+    roi = [
+        self._sensor_width / 2 - frame_shape[0] / 2,
+        self._sensor_width / 2 + frame_shape[0] / 2,
+        self._sensor_height / 2 - frame_shape[1] / 2,
+        self._sensor_height / 2 + frame_shape[1] / 2,
+    ]
+    # roi = [int(i) for i in roi] # need one of these?
+    self.cam.set_roi(*roi, *self.get_hardware_binning())
+
+    self.set_roi(roi)
+    logger.info(&#34;Set camera roi to: {}&#34;, roi)
+    self._frame_shape = frame_shape
+    self.update_data_size()
+    return self._frame_shape</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.andor.andor.AndorSDK3.set_hardware_binning"><code class="name flex">
+<span>def <span class="ident">set_hardware_binning</span></span>(<span>self, binning)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_hardware_binning(self, binning):
+    roi = self.get_roi()
+    self.cam.set_roi(*roi, *binning)
+    self._frame_shape = [roi[1] - roi[0], roi[3] - roi[2]]
+    self._binning = binning
+    self.update_data_size()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.andor.andor.AndorSDK3.set_roi"><code class="name flex">
+<span>def <span class="ident">set_roi</span></span>(<span>self, roi)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_roi(self, roi):
+    if len(roi) != 4:
+        # then the user has passed a centered roi with a radius
+        roi = [
+            int(self._sensor_width / 2 - roi[0] / 2),
+            int(self._sensor_width / 2 + roi[0] / 2),
+            int(self._sensor_height / 2 - roi[1] / 2),
+            int(self._sensor_height / 2 + roi[1] / 2),
+        ]
+    # TODO add check for roi size within sensor size?
+    self.cam.set_roi(*roi, *self.get_hardware_binning())
+    self._roi = roi
+    self.update_data_size()
+    return self._roi</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.andor.andor.AndorSDK3.set_shutter_mode"><code class="name flex">
+<span>def <span class="ident">set_shutter_mode</span></span>(<span>self, mode)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_shutter_mode(self, mode):
+    # sets the shutter mode to either &#34;Rolling&#34; or &#34;Global&#34;
+    # also defines the trigger mode to the correct format for each mode
+    if mode == &#34;Rolling&#34;:
+        self._set_attr_dev(&#34;ElectronicShutteringMode&#34;, &#34;Rolling&#34;)
+        self.set_trigger_mode(&#34;ext_exp&#34;)
+    elif mode == &#34;Global&#34;:
+        self._set_attr_dev(&#34;ElectronicShutteringMode&#34;, &#34;Global&#34;)
+        self.set_trigger_mode(&#34;ext&#34;)
+    else:
+        logger.error(&#34;Shutter mode {} not recognised.&#34;, mode)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.andor.andor.AndorSDK3.set_trigger_mode"><code class="name flex">
+<span>def <span class="ident">set_trigger_mode</span></span>(<span>self, mode)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_trigger_mode(self, mode):
+    self.cam.set_trigger_mode(mode)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.andor.andor.AndorSDK3.setup_acquisition"><code class="name flex">
+<span>def <span class="ident">setup_acquisition</span></span>(<span>self, mode='sequence', nframes=1)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def setup_acquisition(self, mode=&#34;sequence&#34;, nframes=1):
+    self.cam.setup_acquisition(mode=&#34;sequence&#34;, nframes=nframes)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.andor.andor.AndorSDK3.start_acquisition"><code class="name flex">
+<span>def <span class="ident">start_acquisition</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def start_acquisition(self):
+    self.cam.start_acquisition()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.andor.andor.AndorSDK3.start_popup_video"><code class="name flex">
+<span>def <span class="ident">start_popup_video</span></span>(<span>self, exposure=None, blit=False)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def start_popup_video(self, exposure=None, blit=False):
+    &#34;&#34;&#34;
+    This is to test the circular buffer mode of the camera
+    &#34;&#34;&#34;
+    mpl.use(&#34;Qt5Agg&#34;)
+    if exposure is not None:
+        self.exposure = exposure
+
+    frame = self.take_snapshot()
+
+    # determine the order of magnitude for the summed data
+    sum_pl = np.sum(frame, axis=(0, 1))
+
+    # start the camera acquisition
+    self.cam.set_trigger_mode(&#34;int&#34;)
+    self.cam.setup_acquisition(mode=&#34;sequence&#34;, nframes=15)
+    self.cam.start_acquisition()
+
+    plt.ion()
+    fig = plt.figure(figsize=(13, 5))
+    ax1 = fig.add_subplot(1, 2, 1)
+    ax2 = fig.add_subplot(1, 2, 2)
+
+    # add a buffer to the range for count changes
+    cmax = np.max(frame) + 0.1 * np.max(frame)
+    cmin = np.min(frame) - 0.1 * np.min(frame)
+
+    img = ax1.imshow(frame, interpolation=&#34;None&#34;, cmap=&#34;gray&#34;, vmin=cmin, vmax=cmax, origin=&#34;upper&#34;)
+    # Add a colorbar to the image
+    divider = make_axes_locatable(ax1)
+    cax = divider.append_axes(&#34;right&#34;, size=&#34;5%&#34;, pad=0.05)
+    cbar = fig.colorbar(img, cax=cax, orientation=&#34;vertical&#34;)
+
+    # Create the time trace
+    sum_pl = np.sum(frame, axis=(0, 1))
+    time = 0
+    (line,) = ax2.plot(time, sum_pl)
+    # axes labels
+    ax2.set_xlabel(&#34;Time (s)&#34;)
+    ax2.set_ylabel(&#34;Intensity (cps)&#34;)
+    ax2.set_xlim(0, 5)
+
+    # add a space between the plots
+    fig.subplots_adjust(wspace=0.3)
+
+    fig.canvas.draw()  # note that the first draw comes before setting data
+
+    # cache the background
+    if blit:
+        axbackground = fig.canvas.copy_from_bbox(ax1.bbox)
+        ax2background = fig.canvas.copy_from_bbox(ax2.bbox)
+
+    plt.show(block=False)
+
+    b_draw = False
+    n_frames = 0
+    sum_pl = np.array([])
+    while True:
+        # Get a frame from the camera
+        self.cam.wait_for_frame()
+        frames = self.get_all_seq_frames()
+        n_frames += frames.shape[0]
+
+        # sum each frame to get the total intensity
+        sum_pl = np.append(sum_pl, np.sum(frames, axis=(1, 2)))
+        time = self._exposure_time * np.arange(sum_pl.shape[0])
+
+        # set the new data
+        cmax = np.max(frames[-1, ::])
+        cmin = np.min(frames[-1, ::])
+
+        img.set_data(frames[-1, ::])
+        img.set_clim(cmin, cmax)
+
+        line.set_data(time, sum_pl)
+
+        if blit:
+            # restore background
+            fig.canvas.restore_region(axbackground)
+            fig.canvas.restore_region(ax2background)
+
+            # redraw just the points
+            ax1.draw_artist(img)
+            ax2.draw_artist(line)
+
+            # update the axes
+            ax2.set_ylim(np.min(sum_pl), np.max(sum_pl))
+            # check if x axis needs to be updated
+            if time[-1] &gt; ax2.get_xlim()[1]:
+                ax2.set_xlim(time[0], time[-1] + 5)
+                b_draw = True
+
+            # fill in the axes rectangle
+            fig.canvas.blit(ax1.bbox)
+            fig.canvas.blit(ax2.bbox)
+        else:
+            ax2.set_ylim(np.min(sum_pl), np.max(sum_pl))
+
+            if time[-1] &gt; ax2.get_xlim()[1]:
+                ax2.set_xlim(time[0], time[-1] + 5)
+
+            b_draw = True
+
+        if b_draw:
+            fig.canvas.draw()
+            b_draw = False
+
+        fig.canvas.flush_events()
+
+        # stop if the user closes the figure
+        if not plt.fignum_exists(fig.number):
+            break
+
+    # stop the camera acquisition
+    self.cam.stop_acquisition()
+    # set the trigger mode back to external exposure
+    self.set_trigger_mode(&#34;ext_exp&#34;)
+
+    # close the figure
+    plt.close(fig)
+
+    return time, sum_pl</code></pre>
+</details>
+<div class="desc"><p>This is to test the circular buffer mode of the camera</p></div>
+</dd>
+<dt id="qscope.device.andor.andor.AndorSDK3.start_video"><code class="name flex">
+<span>async def <span class="ident">start_video</span></span>(<span>self, connection)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">async def start_video(self, connection):
+    logger.info(&#34;Starting video feed&#34;)
+
+    async def video_loop(cn: ServerConnection, stop_event: asyncio.Event):
+        cn.reset_stream()
+        # start the camera acquisition
+        self.cam.set_trigger_mode(&#34;int&#34;)
+        self.cam.setup_acquisition(mode=&#34;sequence&#34;, nframes=15)
+        self.cam.start_acquisition()
+        await asyncio.sleep(0)
+        while True:
+            await asyncio.sleep(0)
+            try:
+                if stop_event.is_set():
+                    stop_event.clear()
+                    logger.info(&#34;Stopping video feed&#34;)
+                    self.cam.stop_acquisition()
+                    # set the trigger mode back to external exposure
+                    self.set_trigger_mode(&#34;ext_exp&#34;)
+                    break
+                self.cam.wait_for_frame()
+                ar = np.array(self.get_all_seq_frames())[0, ::]
+                cn.send_stream_chunk(ar, header=&#34;video&#34;)
+            except Exception as e:
+                logger.exception(&#34;Error in video loop.&#34;)
+                break
+
+    self.video_stop_event.clear()
+    self.task = asyncio.create_task(video_loop(connection, self.video_stop_event))
+    await asyncio.sleep(0)  # let above start</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.andor.andor.AndorSDK3.stop_acquisition"><code class="name flex">
+<span>def <span class="ident">stop_acquisition</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def stop_acquisition(self):
+    self.cam.stop_acquisition()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.andor.andor.AndorSDK3.stop_video"><code class="name flex">
+<span>def <span class="ident">stop_video</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def stop_video(self):
+    self.video_stop_event.set()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.andor.andor.AndorSDK3.take_snapshot"><code class="name flex">
+<span>def <span class="ident">take_snapshot</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def take_snapshot(self):
+    self.set_trigger_mode(&#34;int&#34;)
+    image = self.cam.snap()
+    self.set_trigger_mode(&#34;ext_exp&#34;)
+    return image</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.andor.andor.AndorSDK3.update_data_size"><code class="name flex">
+<span>def <span class="ident">update_data_size</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update_data_size(self):
+    self._data_size = self.cam.get_data_dimensions()
+    return self._data_size</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.andor.andor.AndorSDK3.wait_for_frame"><code class="name flex">
+<span>def <span class="ident">wait_for_frame</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def wait_for_frame(self):
+    return self.cam.wait_for_frame(error_on_stopped=True)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="qscope.device.device.Device" href="../device.html#qscope.device.device.Device">Device</a></b></code>:
+<ul class="hlist">
+<li><code><a title="qscope.device.device.Device.get_all_attrs" href="../device.html#qscope.device.device.Device.get_all_attrs">get_all_attrs</a></code></li>
+<li><code><a title="qscope.device.device.Device.get_roles" href="../device.html#qscope.device.device.Device.get_roles">get_roles</a></code></li>
+<li><code><a title="qscope.device.device.Device.has_role" href="../device.html#qscope.device.device.Device.has_role">has_role</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="qscope.device.andor.andor.AndorSimCam"><code class="flex name class">
+<span>class <span class="ident">AndorSimCam</span></span>
+<span>(</span><span>**config_kwargs)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class AndorSimCam(AndorSDK3):
+    pass</code></pre>
+</details>
+<div class="desc"><p>Base class for all hardware devices in QScope.</p>
+<p>The Device class provides the foundation for hardware abstraction in QScope.
+Specific device implementations inherit from this class and implement the
+methods required by their intended roles.</p>
+<p>A device can fulfill multiple roles if it implements all required methods
+for those roles. The system validates role compatibility at runtime.</p>
+<h2 id="device-architecture">Device Architecture</h2>
+<p>Devices are part of QScope's hardware abstraction layer:</p>
+<ol>
+<li>Base Device Class (this class)</li>
+<li>Provides configuration validation</li>
+<li>Manages role assignments</li>
+<li>Handles connection state</li>
+<li>
+<p>Defines required methods</p>
+</li>
+<li>
+<p>Device Implementations</p>
+</li>
+<li>Inherit from Device</li>
+<li>Implement protocol methods for specific roles</li>
+<li>Provide hardware-specific functionality</li>
+<li>
+<p>Can implement multiple protocols</p>
+</li>
+<li>
+<p>System Integration</p>
+</li>
+<li>Devices are added to systems with specific roles</li>
+<li>System validates that devices implement required protocols</li>
+<li>Devices are accessed through role interfaces</li>
+</ol>
+<h2 id="required-methods">Required Methods</h2>
+<p>All device implementations must override these methods:</p>
+<ul>
+<li>open(): Connect to the hardware</li>
+<li>close(): Disconnect from the hardware</li>
+<li>is_connected(): Check connection status</li>
+</ul>
+<p>In addition, devices must implement all methods required by the
+protocols of the roles they intend to fulfill.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>required_config</code></strong> :&ensp;<code>dict[str, Type]</code></dt>
+<dd>Required configuration parameters and their types</dd>
+<dt><strong><code>_roles</code></strong> :&ensp;<code>Set[DeviceRole[Device]]</code></dt>
+<dd>Set of roles this device fulfills</dd>
+</dl>
+<h2 id="examples">Examples</h2>
+<p>Creating a new device implementation:</p>
+<pre><code class="language-python">class MyRFSource(Device):
+    required_config = {
+        &quot;visa_addr&quot;: str,
+        &quot;max_power&quot;: float
+    }
+
+    def __init__(self, **config_kwargs):
+        super().__init__(**config_kwargs)
+        self.connected = False
+
+    def open(self) -&gt; tuple[bool, str]:
+        # Implementation for connecting to hardware
+        self.connected = True
+        return True, &quot;Connected successfully&quot;
+
+    def close(self):
+        # Implementation for disconnecting
+        self.connected = False
+
+    def is_connected(self) -&gt; bool:
+        return self.connected
+
+    # Implement methods required by RFSourceProtocol
+    def set_freq(self, freq: float) -&gt; None:
+        # Implementation
+        pass
+
+    def set_power(self, power: float) -&gt; None:
+        # Implementation
+        pass
+</code></pre>
+<p>Using the device with a role:</p>
+<pre><code class="language-python"># Create device instance
+rf = MyRFSource(visa_addr=&quot;TCPIP0::192.168.1.1::INSTR&quot;, max_power=20.0)
+
+# Add to system with role
+system.add_device_with_role(rf, PRIMARY_RF)
+</code></pre>
+<h2 id="see-also">See Also</h2>
+<dl>
+<dt><code><a title="qscope.types.protocols" href="../../types/protocols.html">qscope.types.protocols</a></code></dt>
+<dd>Protocol definitions</dd>
+<dt><code><a title="qscope.types.roles" href="../../types/roles.html">qscope.types.roles</a></code></dt>
+<dd>Role definitions</dd>
+<dt><code><a title="qscope.types.interfaces" href="../../types/interfaces.html">qscope.types.interfaces</a></code></dt>
+<dd>Interface implementations</dd>
+<dt><code><a title="qscope.system" href="../../system/index.html">qscope.system</a></code></dt>
+<dd>System implementation</dd>
+</dl></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.device.andor.andor.AndorSDK3" href="#qscope.device.andor.andor.AndorSDK3">AndorSDK3</a></li>
+<li><a title="qscope.device.device.Device" href="../device.html#qscope.device.device.Device">Device</a></li>
+</ul>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="qscope.device.andor.andor.AndorSDK3" href="#qscope.device.andor.andor.AndorSDK3">AndorSDK3</a></b></code>:
+<ul class="hlist">
+<li><code><a title="qscope.device.andor.andor.AndorSDK3.get_all_attrs" href="../device.html#qscope.device.device.Device.get_all_attrs">get_all_attrs</a></code></li>
+<li><code><a title="qscope.device.andor.andor.AndorSDK3.get_roles" href="../device.html#qscope.device.device.Device.get_roles">get_roles</a></code></li>
+<li><code><a title="qscope.device.andor.andor.AndorSDK3.has_role" href="../device.html#qscope.device.device.Device.has_role">has_role</a></code></li>
+<li><code><a title="qscope.device.andor.andor.AndorSDK3.start_popup_video" href="#qscope.device.andor.andor.AndorSDK3.start_popup_video">start_popup_video</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="qscope.device.andor.andor.Sona42"><code class="flex name class">
+<span>class <span class="ident">Sona42</span></span>
+<span>(</span><span>**config_kwargs)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Sona42(AndorSDK3):
+    def __init__(self, **config_kwargs):
+        super().__init__(**config_kwargs)
+        self._shutter_mode = &#34;Rolling&#34;
+        self._roi = (0, 2048, 0, 2048)  # correct?
+
+    def open(self) -&gt; tuple[bool, str]:
+        # FIXME, SONA temp is set differently.
+        super().open()
+        self.cam.set_temperature(-25, enable_cooler=True)
+        self._set_attr_dev(&#34;SensorCooling&#34;, True)</code></pre>
+</details>
+<div class="desc"><p>Base class for all hardware devices in QScope.</p>
+<p>The Device class provides the foundation for hardware abstraction in QScope.
+Specific device implementations inherit from this class and implement the
+methods required by their intended roles.</p>
+<p>A device can fulfill multiple roles if it implements all required methods
+for those roles. The system validates role compatibility at runtime.</p>
+<h2 id="device-architecture">Device Architecture</h2>
+<p>Devices are part of QScope's hardware abstraction layer:</p>
+<ol>
+<li>Base Device Class (this class)</li>
+<li>Provides configuration validation</li>
+<li>Manages role assignments</li>
+<li>Handles connection state</li>
+<li>
+<p>Defines required methods</p>
+</li>
+<li>
+<p>Device Implementations</p>
+</li>
+<li>Inherit from Device</li>
+<li>Implement protocol methods for specific roles</li>
+<li>Provide hardware-specific functionality</li>
+<li>
+<p>Can implement multiple protocols</p>
+</li>
+<li>
+<p>System Integration</p>
+</li>
+<li>Devices are added to systems with specific roles</li>
+<li>System validates that devices implement required protocols</li>
+<li>Devices are accessed through role interfaces</li>
+</ol>
+<h2 id="required-methods">Required Methods</h2>
+<p>All device implementations must override these methods:</p>
+<ul>
+<li>open(): Connect to the hardware</li>
+<li>close(): Disconnect from the hardware</li>
+<li>is_connected(): Check connection status</li>
+</ul>
+<p>In addition, devices must implement all methods required by the
+protocols of the roles they intend to fulfill.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>required_config</code></strong> :&ensp;<code>dict[str, Type]</code></dt>
+<dd>Required configuration parameters and their types</dd>
+<dt><strong><code>_roles</code></strong> :&ensp;<code>Set[DeviceRole[Device]]</code></dt>
+<dd>Set of roles this device fulfills</dd>
+</dl>
+<h2 id="examples">Examples</h2>
+<p>Creating a new device implementation:</p>
+<pre><code class="language-python">class MyRFSource(Device):
+    required_config = {
+        &quot;visa_addr&quot;: str,
+        &quot;max_power&quot;: float
+    }
+
+    def __init__(self, **config_kwargs):
+        super().__init__(**config_kwargs)
+        self.connected = False
+
+    def open(self) -&gt; tuple[bool, str]:
+        # Implementation for connecting to hardware
+        self.connected = True
+        return True, &quot;Connected successfully&quot;
+
+    def close(self):
+        # Implementation for disconnecting
+        self.connected = False
+
+    def is_connected(self) -&gt; bool:
+        return self.connected
+
+    # Implement methods required by RFSourceProtocol
+    def set_freq(self, freq: float) -&gt; None:
+        # Implementation
+        pass
+
+    def set_power(self, power: float) -&gt; None:
+        # Implementation
+        pass
+</code></pre>
+<p>Using the device with a role:</p>
+<pre><code class="language-python"># Create device instance
+rf = MyRFSource(visa_addr=&quot;TCPIP0::192.168.1.1::INSTR&quot;, max_power=20.0)
+
+# Add to system with role
+system.add_device_with_role(rf, PRIMARY_RF)
+</code></pre>
+<h2 id="see-also">See Also</h2>
+<dl>
+<dt><code><a title="qscope.types.protocols" href="../../types/protocols.html">qscope.types.protocols</a></code></dt>
+<dd>Protocol definitions</dd>
+<dt><code><a title="qscope.types.roles" href="../../types/roles.html">qscope.types.roles</a></code></dt>
+<dd>Role definitions</dd>
+<dt><code><a title="qscope.types.interfaces" href="../../types/interfaces.html">qscope.types.interfaces</a></code></dt>
+<dd>Interface implementations</dd>
+<dt><code><a title="qscope.system" href="../../system/index.html">qscope.system</a></code></dt>
+<dd>System implementation</dd>
+</dl></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.device.andor.andor.AndorSDK3" href="#qscope.device.andor.andor.AndorSDK3">AndorSDK3</a></li>
+<li><a title="qscope.device.device.Device" href="../device.html#qscope.device.device.Device">Device</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.device.andor.andor.Sona42.open"><code class="name flex">
+<span>def <span class="ident">open</span></span>(<span>self) ‑> tuple[bool, str]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def open(self) -&gt; tuple[bool, str]:
+    # FIXME, SONA temp is set differently.
+    super().open()
+    self.cam.set_temperature(-25, enable_cooler=True)
+    self._set_attr_dev(&#34;SensorCooling&#34;, True)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="qscope.device.andor.andor.AndorSDK3" href="#qscope.device.andor.andor.AndorSDK3">AndorSDK3</a></b></code>:
+<ul class="hlist">
+<li><code><a title="qscope.device.andor.andor.AndorSDK3.get_all_attrs" href="../device.html#qscope.device.device.Device.get_all_attrs">get_all_attrs</a></code></li>
+<li><code><a title="qscope.device.andor.andor.AndorSDK3.get_roles" href="../device.html#qscope.device.device.Device.get_roles">get_roles</a></code></li>
+<li><code><a title="qscope.device.andor.andor.AndorSDK3.has_role" href="../device.html#qscope.device.device.Device.has_role">has_role</a></code></li>
+<li><code><a title="qscope.device.andor.andor.AndorSDK3.start_popup_video" href="#qscope.device.andor.andor.AndorSDK3.start_popup_video">start_popup_video</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="qscope.device.andor.andor.Zyla42"><code class="flex name class">
+<span>class <span class="ident">Zyla42</span></span>
+<span>(</span><span>**config_kwargs)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Zyla42(AndorSDK3):
+    def __init__(self, **config_kwargs):
+        super().__init__(**config_kwargs)
+        self._shutter_mode = (
+            &#34;Rolling&#34;  # New Zyla 42 is rolling only. (use rolling by default anyway?)
+        )
+        self._roi = (0, 2048, 0, 2048)
+        self._sensor_height = 2048
+        self._sensor_width = 2048</code></pre>
+</details>
+<div class="desc"><p>Base class for all hardware devices in QScope.</p>
+<p>The Device class provides the foundation for hardware abstraction in QScope.
+Specific device implementations inherit from this class and implement the
+methods required by their intended roles.</p>
+<p>A device can fulfill multiple roles if it implements all required methods
+for those roles. The system validates role compatibility at runtime.</p>
+<h2 id="device-architecture">Device Architecture</h2>
+<p>Devices are part of QScope's hardware abstraction layer:</p>
+<ol>
+<li>Base Device Class (this class)</li>
+<li>Provides configuration validation</li>
+<li>Manages role assignments</li>
+<li>Handles connection state</li>
+<li>
+<p>Defines required methods</p>
+</li>
+<li>
+<p>Device Implementations</p>
+</li>
+<li>Inherit from Device</li>
+<li>Implement protocol methods for specific roles</li>
+<li>Provide hardware-specific functionality</li>
+<li>
+<p>Can implement multiple protocols</p>
+</li>
+<li>
+<p>System Integration</p>
+</li>
+<li>Devices are added to systems with specific roles</li>
+<li>System validates that devices implement required protocols</li>
+<li>Devices are accessed through role interfaces</li>
+</ol>
+<h2 id="required-methods">Required Methods</h2>
+<p>All device implementations must override these methods:</p>
+<ul>
+<li>open(): Connect to the hardware</li>
+<li>close(): Disconnect from the hardware</li>
+<li>is_connected(): Check connection status</li>
+</ul>
+<p>In addition, devices must implement all methods required by the
+protocols of the roles they intend to fulfill.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>required_config</code></strong> :&ensp;<code>dict[str, Type]</code></dt>
+<dd>Required configuration parameters and their types</dd>
+<dt><strong><code>_roles</code></strong> :&ensp;<code>Set[DeviceRole[Device]]</code></dt>
+<dd>Set of roles this device fulfills</dd>
+</dl>
+<h2 id="examples">Examples</h2>
+<p>Creating a new device implementation:</p>
+<pre><code class="language-python">class MyRFSource(Device):
+    required_config = {
+        &quot;visa_addr&quot;: str,
+        &quot;max_power&quot;: float
+    }
+
+    def __init__(self, **config_kwargs):
+        super().__init__(**config_kwargs)
+        self.connected = False
+
+    def open(self) -&gt; tuple[bool, str]:
+        # Implementation for connecting to hardware
+        self.connected = True
+        return True, &quot;Connected successfully&quot;
+
+    def close(self):
+        # Implementation for disconnecting
+        self.connected = False
+
+    def is_connected(self) -&gt; bool:
+        return self.connected
+
+    # Implement methods required by RFSourceProtocol
+    def set_freq(self, freq: float) -&gt; None:
+        # Implementation
+        pass
+
+    def set_power(self, power: float) -&gt; None:
+        # Implementation
+        pass
+</code></pre>
+<p>Using the device with a role:</p>
+<pre><code class="language-python"># Create device instance
+rf = MyRFSource(visa_addr=&quot;TCPIP0::192.168.1.1::INSTR&quot;, max_power=20.0)
+
+# Add to system with role
+system.add_device_with_role(rf, PRIMARY_RF)
+</code></pre>
+<h2 id="see-also">See Also</h2>
+<dl>
+<dt><code><a title="qscope.types.protocols" href="../../types/protocols.html">qscope.types.protocols</a></code></dt>
+<dd>Protocol definitions</dd>
+<dt><code><a title="qscope.types.roles" href="../../types/roles.html">qscope.types.roles</a></code></dt>
+<dd>Role definitions</dd>
+<dt><code><a title="qscope.types.interfaces" href="../../types/interfaces.html">qscope.types.interfaces</a></code></dt>
+<dd>Interface implementations</dd>
+<dt><code><a title="qscope.system" href="../../system/index.html">qscope.system</a></code></dt>
+<dd>System implementation</dd>
+</dl></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.device.andor.andor.AndorSDK3" href="#qscope.device.andor.andor.AndorSDK3">AndorSDK3</a></li>
+<li><a title="qscope.device.device.Device" href="../device.html#qscope.device.device.Device">Device</a></li>
+</ul>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="qscope.device.andor.andor.AndorSDK3" href="#qscope.device.andor.andor.AndorSDK3">AndorSDK3</a></b></code>:
+<ul class="hlist">
+<li><code><a title="qscope.device.andor.andor.AndorSDK3.get_all_attrs" href="../device.html#qscope.device.device.Device.get_all_attrs">get_all_attrs</a></code></li>
+<li><code><a title="qscope.device.andor.andor.AndorSDK3.get_roles" href="../device.html#qscope.device.device.Device.get_roles">get_roles</a></code></li>
+<li><code><a title="qscope.device.andor.andor.AndorSDK3.has_role" href="../device.html#qscope.device.device.Device.has_role">has_role</a></code></li>
+<li><code><a title="qscope.device.andor.andor.AndorSDK3.start_popup_video" href="#qscope.device.andor.andor.AndorSDK3.start_popup_video">start_popup_video</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="qscope.device.andor.andor.Zyla55"><code class="flex name class">
+<span>class <span class="ident">Zyla55</span></span>
+<span>(</span><span>**config_kwargs)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Zyla55(AndorSDK3):
+    def __init__(self, **config_kwargs):
+        super().__init__(**config_kwargs)
+        self._shutter_mode = &#34;Rolling&#34;
+        # is this the correct order(ing)?
+        self._roi = (0, 2056, 0, 2048)
+        self._sensor_height = 2056
+        self._sensor_width = 2048
+
+    def open(self) -&gt; tuple[bool, str]:
+        is_ok, reason = super().open()
+        if is_ok:
+            try:
+                self.cam.set_temperature(-20, enable_cooler=True)
+                self._set_attr_dev(&#34;SensorCooling&#34;, True)
+            except Exception as e:
+                return False, f&#34;Error setting temp: {e}&#34;
+        return is_ok, reason</code></pre>
+</details>
+<div class="desc"><p>Base class for all hardware devices in QScope.</p>
+<p>The Device class provides the foundation for hardware abstraction in QScope.
+Specific device implementations inherit from this class and implement the
+methods required by their intended roles.</p>
+<p>A device can fulfill multiple roles if it implements all required methods
+for those roles. The system validates role compatibility at runtime.</p>
+<h2 id="device-architecture">Device Architecture</h2>
+<p>Devices are part of QScope's hardware abstraction layer:</p>
+<ol>
+<li>Base Device Class (this class)</li>
+<li>Provides configuration validation</li>
+<li>Manages role assignments</li>
+<li>Handles connection state</li>
+<li>
+<p>Defines required methods</p>
+</li>
+<li>
+<p>Device Implementations</p>
+</li>
+<li>Inherit from Device</li>
+<li>Implement protocol methods for specific roles</li>
+<li>Provide hardware-specific functionality</li>
+<li>
+<p>Can implement multiple protocols</p>
+</li>
+<li>
+<p>System Integration</p>
+</li>
+<li>Devices are added to systems with specific roles</li>
+<li>System validates that devices implement required protocols</li>
+<li>Devices are accessed through role interfaces</li>
+</ol>
+<h2 id="required-methods">Required Methods</h2>
+<p>All device implementations must override these methods:</p>
+<ul>
+<li>open(): Connect to the hardware</li>
+<li>close(): Disconnect from the hardware</li>
+<li>is_connected(): Check connection status</li>
+</ul>
+<p>In addition, devices must implement all methods required by the
+protocols of the roles they intend to fulfill.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>required_config</code></strong> :&ensp;<code>dict[str, Type]</code></dt>
+<dd>Required configuration parameters and their types</dd>
+<dt><strong><code>_roles</code></strong> :&ensp;<code>Set[DeviceRole[Device]]</code></dt>
+<dd>Set of roles this device fulfills</dd>
+</dl>
+<h2 id="examples">Examples</h2>
+<p>Creating a new device implementation:</p>
+<pre><code class="language-python">class MyRFSource(Device):
+    required_config = {
+        &quot;visa_addr&quot;: str,
+        &quot;max_power&quot;: float
+    }
+
+    def __init__(self, **config_kwargs):
+        super().__init__(**config_kwargs)
+        self.connected = False
+
+    def open(self) -&gt; tuple[bool, str]:
+        # Implementation for connecting to hardware
+        self.connected = True
+        return True, &quot;Connected successfully&quot;
+
+    def close(self):
+        # Implementation for disconnecting
+        self.connected = False
+
+    def is_connected(self) -&gt; bool:
+        return self.connected
+
+    # Implement methods required by RFSourceProtocol
+    def set_freq(self, freq: float) -&gt; None:
+        # Implementation
+        pass
+
+    def set_power(self, power: float) -&gt; None:
+        # Implementation
+        pass
+</code></pre>
+<p>Using the device with a role:</p>
+<pre><code class="language-python"># Create device instance
+rf = MyRFSource(visa_addr=&quot;TCPIP0::192.168.1.1::INSTR&quot;, max_power=20.0)
+
+# Add to system with role
+system.add_device_with_role(rf, PRIMARY_RF)
+</code></pre>
+<h2 id="see-also">See Also</h2>
+<dl>
+<dt><code><a title="qscope.types.protocols" href="../../types/protocols.html">qscope.types.protocols</a></code></dt>
+<dd>Protocol definitions</dd>
+<dt><code><a title="qscope.types.roles" href="../../types/roles.html">qscope.types.roles</a></code></dt>
+<dd>Role definitions</dd>
+<dt><code><a title="qscope.types.interfaces" href="../../types/interfaces.html">qscope.types.interfaces</a></code></dt>
+<dd>Interface implementations</dd>
+<dt><code><a title="qscope.system" href="../../system/index.html">qscope.system</a></code></dt>
+<dd>System implementation</dd>
+</dl></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.device.andor.andor.AndorSDK3" href="#qscope.device.andor.andor.AndorSDK3">AndorSDK3</a></li>
+<li><a title="qscope.device.device.Device" href="../device.html#qscope.device.device.Device">Device</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.device.andor.andor.Zyla55.open"><code class="name flex">
+<span>def <span class="ident">open</span></span>(<span>self) ‑> tuple[bool, str]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def open(self) -&gt; tuple[bool, str]:
+    is_ok, reason = super().open()
+    if is_ok:
+        try:
+            self.cam.set_temperature(-20, enable_cooler=True)
+            self._set_attr_dev(&#34;SensorCooling&#34;, True)
+        except Exception as e:
+            return False, f&#34;Error setting temp: {e}&#34;
+    return is_ok, reason</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="qscope.device.andor.andor.AndorSDK3" href="#qscope.device.andor.andor.AndorSDK3">AndorSDK3</a></b></code>:
+<ul class="hlist">
+<li><code><a title="qscope.device.andor.andor.AndorSDK3.get_all_attrs" href="../device.html#qscope.device.device.Device.get_all_attrs">get_all_attrs</a></code></li>
+<li><code><a title="qscope.device.andor.andor.AndorSDK3.get_roles" href="../device.html#qscope.device.device.Device.get_roles">get_roles</a></code></li>
+<li><code><a title="qscope.device.andor.andor.AndorSDK3.has_role" href="../device.html#qscope.device.device.Device.has_role">has_role</a></code></li>
+<li><code><a title="qscope.device.andor.andor.AndorSDK3.start_popup_video" href="#qscope.device.andor.andor.AndorSDK3.start_popup_video">start_popup_video</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<form>
+<input id="lunr-search" name="q" placeholder="🔎 Search ..." aria-label="Search"
+disabled minlength="2">
+</form>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.css" integrity="sha512-b+T2i3P45i1LZM7I00Ci5QquB9szqaxu+uuk5TUSGjZQ4w4n+qujQiIuvTv2BxE7WCGQCifNMksyKILDiHzsOg==" crossorigin>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.js" integrity="sha512-2B9/byNV1KKRm5nQ2RLViPFD6U4dUjDGwuW1GU+ImJh8YinPU9Zlq1GzdTMO+G2ROrB5o1qasJBy1ttYz0wCug==" crossorigin></script>
+<style>
+.modal-dialog iframe {
+width: 100vw;
+height: calc(100vh - 80px);
+}
+@media screen and (min-width: 700px) {
+.modal-dialog iframe {
+width: 70vw;
+height: 80vh;
+}
+}
+.modal-dialog .tingle-modal-box {width: auto;}
+.modal-dialog .tingle-modal-box__content {padding: 0;}
+</style>
+<script>
+const input = document.getElementById('lunr-search');
+input.disabled = false;
+input.form.addEventListener('submit', (ev) => {
+ev.preventDefault();
+const url = new URL(window.location);
+url.searchParams.set('q', input.value);
+history.replaceState({}, null, url.toString());
+search(input.value);
+});
+const query = new URL(window.location).searchParams.get('q');
+if (query)
+search(query);
+function search(query) {
+const url = '../../../doc-search.html#' + encodeURIComponent(query);
+new tingle.modal({
+cssClass: ['modal-dialog'],
+onClose: () => {
+const url = new URL(window.location);
+url.searchParams.delete('q');
+history.replaceState({}, null, url.toString());
+setTimeout(() => input.focus(), 100);
+}
+}).setContent('<iframe src="' + url + '"></iframe>').open();
+}
+</script>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="qscope.device.andor" href="index.html">qscope.device.andor</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="qscope.device.andor.andor.AndorSDK3" href="#qscope.device.andor.andor.AndorSDK3">AndorSDK3</a></code></h4>
+<ul class="">
+<li><code><a title="qscope.device.andor.andor.AndorSDK3.clear_acquisition" href="#qscope.device.andor.andor.AndorSDK3.clear_acquisition">clear_acquisition</a></code></li>
+<li><code><a title="qscope.device.andor.andor.AndorSDK3.close" href="#qscope.device.andor.andor.AndorSDK3.close">close</a></code></li>
+<li><code><a title="qscope.device.andor.andor.AndorSDK3.get_all_seq_frames" href="#qscope.device.andor.andor.AndorSDK3.get_all_seq_frames">get_all_seq_frames</a></code></li>
+<li><code><a title="qscope.device.andor.andor.AndorSDK3.get_data_size" href="#qscope.device.andor.andor.AndorSDK3.get_data_size">get_data_size</a></code></li>
+<li><code><a title="qscope.device.andor.andor.AndorSDK3.get_exposure_time" href="#qscope.device.andor.andor.AndorSDK3.get_exposure_time">get_exposure_time</a></code></li>
+<li><code><a title="qscope.device.andor.andor.AndorSDK3.get_frame_shape" href="#qscope.device.andor.andor.AndorSDK3.get_frame_shape">get_frame_shape</a></code></li>
+<li><code><a title="qscope.device.andor.andor.AndorSDK3.get_hardware_binning" href="#qscope.device.andor.andor.AndorSDK3.get_hardware_binning">get_hardware_binning</a></code></li>
+<li><code><a title="qscope.device.andor.andor.AndorSDK3.get_readout_time" href="#qscope.device.andor.andor.AndorSDK3.get_readout_time">get_readout_time</a></code></li>
+<li><code><a title="qscope.device.andor.andor.AndorSDK3.get_roi" href="#qscope.device.andor.andor.AndorSDK3.get_roi">get_roi</a></code></li>
+<li><code><a title="qscope.device.andor.andor.AndorSDK3.get_shutter_mode" href="#qscope.device.andor.andor.AndorSDK3.get_shutter_mode">get_shutter_mode</a></code></li>
+<li><code><a title="qscope.device.andor.andor.AndorSDK3.get_trigger_time" href="#qscope.device.andor.andor.AndorSDK3.get_trigger_time">get_trigger_time</a></code></li>
+<li><code><a title="qscope.device.andor.andor.AndorSDK3.is_connected" href="#qscope.device.andor.andor.AndorSDK3.is_connected">is_connected</a></code></li>
+<li><code><a title="qscope.device.andor.andor.AndorSDK3.open" href="#qscope.device.andor.andor.AndorSDK3.open">open</a></code></li>
+<li><code><a title="qscope.device.andor.andor.AndorSDK3.set_exposure_time" href="#qscope.device.andor.andor.AndorSDK3.set_exposure_time">set_exposure_time</a></code></li>
+<li><code><a title="qscope.device.andor.andor.AndorSDK3.set_frame_shape" href="#qscope.device.andor.andor.AndorSDK3.set_frame_shape">set_frame_shape</a></code></li>
+<li><code><a title="qscope.device.andor.andor.AndorSDK3.set_hardware_binning" href="#qscope.device.andor.andor.AndorSDK3.set_hardware_binning">set_hardware_binning</a></code></li>
+<li><code><a title="qscope.device.andor.andor.AndorSDK3.set_roi" href="#qscope.device.andor.andor.AndorSDK3.set_roi">set_roi</a></code></li>
+<li><code><a title="qscope.device.andor.andor.AndorSDK3.set_shutter_mode" href="#qscope.device.andor.andor.AndorSDK3.set_shutter_mode">set_shutter_mode</a></code></li>
+<li><code><a title="qscope.device.andor.andor.AndorSDK3.set_trigger_mode" href="#qscope.device.andor.andor.AndorSDK3.set_trigger_mode">set_trigger_mode</a></code></li>
+<li><code><a title="qscope.device.andor.andor.AndorSDK3.setup_acquisition" href="#qscope.device.andor.andor.AndorSDK3.setup_acquisition">setup_acquisition</a></code></li>
+<li><code><a title="qscope.device.andor.andor.AndorSDK3.start_acquisition" href="#qscope.device.andor.andor.AndorSDK3.start_acquisition">start_acquisition</a></code></li>
+<li><code><a title="qscope.device.andor.andor.AndorSDK3.start_popup_video" href="#qscope.device.andor.andor.AndorSDK3.start_popup_video">start_popup_video</a></code></li>
+<li><code><a title="qscope.device.andor.andor.AndorSDK3.start_video" href="#qscope.device.andor.andor.AndorSDK3.start_video">start_video</a></code></li>
+<li><code><a title="qscope.device.andor.andor.AndorSDK3.stop_acquisition" href="#qscope.device.andor.andor.AndorSDK3.stop_acquisition">stop_acquisition</a></code></li>
+<li><code><a title="qscope.device.andor.andor.AndorSDK3.stop_video" href="#qscope.device.andor.andor.AndorSDK3.stop_video">stop_video</a></code></li>
+<li><code><a title="qscope.device.andor.andor.AndorSDK3.take_snapshot" href="#qscope.device.andor.andor.AndorSDK3.take_snapshot">take_snapshot</a></code></li>
+<li><code><a title="qscope.device.andor.andor.AndorSDK3.update_data_size" href="#qscope.device.andor.andor.AndorSDK3.update_data_size">update_data_size</a></code></li>
+<li><code><a title="qscope.device.andor.andor.AndorSDK3.wait_for_frame" href="#qscope.device.andor.andor.AndorSDK3.wait_for_frame">wait_for_frame</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.device.andor.andor.AndorSimCam" href="#qscope.device.andor.andor.AndorSimCam">AndorSimCam</a></code></h4>
+</li>
+<li>
+<h4><code><a title="qscope.device.andor.andor.Sona42" href="#qscope.device.andor.andor.Sona42">Sona42</a></code></h4>
+<ul class="">
+<li><code><a title="qscope.device.andor.andor.Sona42.open" href="#qscope.device.andor.andor.Sona42.open">open</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.device.andor.andor.Zyla42" href="#qscope.device.andor.andor.Zyla42">Zyla42</a></code></h4>
+</li>
+<li>
+<h4><code><a title="qscope.device.andor.andor.Zyla55" href="#qscope.device.andor.andor.Zyla55">Zyla55</a></code></h4>
+<ul class="">
+<li><code><a title="qscope.device.andor.andor.Zyla55.open" href="#qscope.device.andor.andor.Zyla55.open">open</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,2339 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.6">
+<title>qscope.fitting.mpl API documentation</title>
+<meta name="description" content="Fitting utilities for magnetophotoluminescence (MPL) data analysis …">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}#lunr-search{width:100%;font-size:1em;padding:6px 9px 5px 9px;border:1px solid silver}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes: true } });</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML" integrity="sha256-kZafAc6mZvK3W3v1pHOcUix30OHQN6pU/NO2oFkqZVw=" crossorigin></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>qscope.fitting.mpl</code></h1>
+</header>
+<section id="section-intro">
+<p>Fitting utilities for magnetophotoluminescence (MPL) data analysis.</p>
+<p>This module provides tools for analyzing transitions in MPL data, including:
+- 10-90% rise/fall time analysis
+- Exponential curve fitting for time constants
+- Combined analysis workflows</p>
+<p>The main class (MPLFitter) handles all fitting operations with both
+static methods for individual operations and combined workflows.</p>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="qscope.fitting.mpl.MPLFitter"><code class="flex name class">
+<span>class <span class="ident">MPLFitter</span></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class MPLFitter:
+    &#34;&#34;&#34;Handles fitting operations for MPL transition data.
+    
+    This class provides methods for analyzing transitions in MPL data,
+    including 10-90% rise/fall time analysis and exponential curve fitting.
+    
+    Methods
+    -------
+    analyze_transitions
+        Analyze PL transitions using clock signal for edge detection
+    fit_exponential_curves
+        Fit exponential curves to rise and fall transitions
+    analyze_and_fit
+        Perform both transition analysis and exponential fitting in one operation
+    
+    Attributes
+    ----------
+    _cache : Dict[str, Any]
+        Cache for storing analysis results to avoid redundant calculations
+    &#34;&#34;&#34;
+    # Class-level cache for storing analysis results
+    _cache = {}
+    
+    @staticmethod
+    def rise_exp(
+        t: NDArray[np.float64], 
+        a: float, 
+        tau: float, 
+        c: float
+    ) -&gt; NDArray[np.float64]:
+        &#34;&#34;&#34;Exponential rise function: f(t) = a * (1 - exp(-t/tau)) + c
+        
+        Parameters
+        ----------
+        t : np.ndarray
+            Time points
+        a : float
+            Amplitude
+        tau : float
+            Time constant
+        c : float
+            Offset
+            
+        Returns
+        -------
+        np.ndarray
+            Function values
+        &#34;&#34;&#34;
+        return a * (1 - np.exp(-t/tau)) + c
+    
+    @staticmethod
+    def fall_exp(
+        t: NDArray[np.float64], 
+        a: float, 
+        tau: float, 
+        c: float
+    ) -&gt; NDArray[np.float64]:
+        &#34;&#34;&#34;Exponential decay function: f(t) = a * exp(-t/tau) + c
+        
+        Parameters
+        ----------
+        t : np.ndarray
+            Time points
+        a : float
+            Amplitude
+        tau : float
+            Time constant
+        c : float
+            Offset
+            
+        Returns
+        -------
+        np.ndarray
+            Function values
+        &#34;&#34;&#34;
+        return a * np.exp(-t/tau) + c
+    
+    @classmethod
+    def _detect_clock_edges(
+        cls,
+        clock_data: NDArray[np.float64],
+        trigger_threshold: float = 2.5
+    ) -&gt; Dict[str, Any]:
+        &#34;&#34;&#34;Detect edges in clock signal for transition analysis.
+        
+        Parameters
+        ----------
+        clock_data : NDArray[np.float64]
+            Clock signal data
+        trigger_threshold : float, optional
+            Threshold for clock signal edge detection, by default 2.5
+            
+        Returns
+        -------
+        Dict[str, Any]
+            Dictionary containing:
+            - edges: All detected edges
+            - rising_edges: Rising edge indices
+            - falling_edges: Falling edge indices
+            - field_on_edges: Field ON edge indices
+            - field_off_edges: Field OFF edge indices
+            - on_segments: List of (start, end) indices for ON segments
+            - off_segments: List of (start, end) indices for OFF segments
+        &#34;&#34;&#34;
+        # Create binary signal where clock is above threshold
+        clock_binary = clock_data &gt; trigger_threshold
+        
+        # Find all edges (transitions in the binary signal)
+        edges = np.where(np.diff(clock_binary.astype(int)) != 0)[0]
+        
+        # Separate rising and falling edges
+        rising_edges = np.where(np.diff(clock_binary.astype(int)) &gt; 0)[0]
+        falling_edges = np.where(np.diff(clock_binary.astype(int)) &lt; 0)[0]
+        
+        # Log debug info about detected edges
+        logger.debug(f&#34;Clock signal analysis:&#34;)
+        logger.debug(f&#34;  Total edges detected: {len(edges)}&#34;)
+        logger.debug(f&#34;  Rising edges detected: {len(rising_edges)} at indices {rising_edges}&#34;)
+        logger.debug(f&#34;  Falling edges detected: {len(falling_edges)} at indices {falling_edges}&#34;)
+        
+        # Identify magnetic field transitions based on clock edges
+        # Note: Data acquisition starts with field OFF due to pre-trigger capture
+        # First rising edge in data = field ON, second rising edge = field OFF, etc.
+        field_on_edges = rising_edges[::2]  # Every other rising edge (0, 2, 4...)
+        field_off_edges = rising_edges[1::2]  # Every other rising edge (1, 3, 5...)
+        
+        logger.debug(f&#34;  Field ON edges detected: {len(field_on_edges)} at indices {field_on_edges}&#34;)
+        logger.debug(f&#34;  Field OFF edges detected: {len(field_off_edges)} at indices {field_off_edges}&#34;)
+        
+        # Identify full pulse segments
+        # For each ON edge, find the corresponding OFF edge
+        on_segments = []
+        for i, on_edge in enumerate(field_on_edges):
+            if i &lt; len(field_off_edges):
+                off_edge = field_off_edges[i]
+                on_segments.append((on_edge, off_edge))
+        
+        # For each OFF edge, find the next ON edge or use the end of the data
+        off_segments = []
+        for i, off_edge in enumerate(field_off_edges):
+            if i + 1 &lt; len(field_on_edges):
+                next_on_edge = field_on_edges[i + 1]
+            else:
+                # Use the end of the data as the end of the last OFF segment
+                next_on_edge = len(clock_data) - 1
+            off_segments.append((off_edge, next_on_edge))
+        
+        logger.debug(f&#34;  Identified {len(on_segments)} ON segments and {len(off_segments)} OFF segments&#34;)
+        
+        return {
+            &#34;edges&#34;: edges,
+            &#34;rising_edges&#34;: rising_edges,
+            &#34;falling_edges&#34;: falling_edges,
+            &#34;field_on_edges&#34;: field_on_edges,
+            &#34;field_off_edges&#34;: field_off_edges,
+            &#34;on_segments&#34;: on_segments,
+            &#34;off_segments&#34;: off_segments
+        }
+    
+    @classmethod
+    def _analyze_pulse_segment(
+        cls,
+        time_data: NDArray[np.float64],
+        pl_data: NDArray[np.float64],
+        start_idx: int,
+        end_idx: int,
+        is_on_segment: bool,
+        plot_pulses: bool = False
+    ) -&gt; Tuple[float, float, int, int]:
+        &#34;&#34;&#34;Analyze a single pulse segment for transition timing and contrast.
+        
+        Parameters
+        ----------
+        time_data : NDArray[np.float64]
+            Time points
+        pl_data : NDArray[np.float64]
+            PL signal data
+        start_idx : int
+            Start index of the pulse segment
+        end_idx : int
+            End index of the pulse segment
+        is_on_segment : bool
+            Whether this is an ON segment (True) or OFF segment (False)
+        plot_pulses : bool, optional
+            Whether to plot detailed pulse analysis, by default False
+            
+        Returns
+        -------
+        Tuple[float, float, int, int]
+            (transition_time, contrast, 10% index, 90% index)
+        &#34;&#34;&#34;
+        # Extract the full segment
+        segment_time = time_data[start_idx:end_idx]
+        segment_pl = pl_data[start_idx:end_idx]
+        
+        if len(segment_time) &lt; 10:
+            logger.debug(f&#34;    Segment too small ({len(segment_time)} points), skipping analysis&#34;)
+            return np.nan, np.nan, -1, -1
+        
+        # Calculate baseline and steady-state levels
+        # Use first 0.1% and last 0.1% of the segment
+        n_points = len(segment_pl)
+        n_baseline = max(int(n_points * 0.001), 1)
+        n_steady = max(int(n_points * 0.001), 1)
+        
+        baseline_level = np.mean(segment_pl[:n_baseline])
+        steady_state = np.mean(segment_pl[-n_steady:])
+        
+        # Calculate contrast
+        contrast_value = 100 * (steady_state - baseline_level) / baseline_level if baseline_level != 0 else np.nan
+        
+        # Determine if contrast is positive or negative
+        is_positive_contrast = steady_state &gt; baseline_level
+        
+        logger.debug(f&#34;  {&#39;ON&#39; if is_on_segment else &#39;OFF&#39;} segment from {start_idx} to {end_idx}:&#34;)
+        logger.debug(f&#34;    Baseline level: {baseline_level:.6f}, Steady state: {steady_state:.6f}&#34;)
+        logger.debug(f&#34;    Contrast: {contrast_value:.2f}%, {&#39;Positive&#39; if is_positive_contrast else &#39;Negative&#39;}&#34;)
+        
+        # Calculate 10% and 90% levels
+        level_change = steady_state - baseline_level
+        
+        if abs(level_change) &lt; 1e-9:
+            logger.warning(f&#34;    Level change too small ({abs(level_change):.9f}), skipping transition analysis&#34;)
+            return np.nan, contrast_value, -1, -1
+        
+        if is_positive_contrast:
+            level_10 = baseline_level + 0.1 * level_change
+            level_90 = baseline_level + 0.9 * level_change
+        else:
+            level_10 = baseline_level + 0.9 * level_change
+            level_90 = baseline_level + 0.1 * level_change
+        
+        logger.debug(f&#34;    10% level: {level_10:.6f}, 90% level: {level_90:.6f}&#34;)
+        
+        # Find indices where signal crosses these levels - vectorized operation
+        if is_positive_contrast:
+            idx_10_candidates = np.where(segment_pl &gt; level_10)[0]
+            idx_90_candidates = np.where(segment_pl &gt; level_90)[0]
+        else:
+            idx_10_candidates = np.where(segment_pl &lt; level_10)[0]
+            idx_90_candidates = np.where(segment_pl &lt; level_90)[0]
+        
+        logger.debug(f&#34;    Found {len(idx_10_candidates)} candidates for 10% crossing, {len(idx_90_candidates)} for 90% crossing&#34;)
+        
+        # Get the first valid crossing points
+        idx_10 = idx_10_candidates[0] if len(idx_10_candidates) &gt; 0 else -1
+        idx_90 = idx_90_candidates[0] if len(idx_90_candidates) &gt; 0 else -1
+        
+        # Ensure correct ordering of crossings
+        if idx_10 &gt;= 0 and idx_90 &gt;= 0:
+            if is_on_segment and idx_10 &gt; idx_90:
+                # For rising edges, 10% should come before 90%
+                logger.warning(f&#34;    10% crossing ({idx_10}) after 90% crossing ({idx_90}), swapping&#34;)
+                idx_10, idx_90 = idx_90, idx_10
+            elif not is_on_segment and idx_90 &gt; idx_10:
+                # For falling edges, 90% should come before 10%
+                logger.warning(f&#34;    90% crossing ({idx_90}) after 10% crossing ({idx_10}), swapping&#34;)
+                idx_90, idx_10 = idx_10, idx_90
+        
+        if plot_pulses:
+            cls._plot_pulse_segment(
+                segment_time, segment_pl, 
+                n_baseline, n_steady,
+                baseline_level, steady_state,
+                level_10, level_90,
+                idx_10, idx_90,
+                is_on_segment, is_positive_contrast
+            )
+        
+        # Calculate transition time if both points are valid
+        if idx_10 &gt;= 0 and idx_90 &gt;= 0:
+            # Calculate transition time
+            transition_time = abs(segment_time[idx_90] - segment_time[idx_10])
+            logger.debug(f&#34;    Transition time: {transition_time*1000:.3f} ms&#34;)
+            
+            # Convert to global indices for plotting
+            global_idx_10 = start_idx + idx_10
+            global_idx_90 = start_idx + idx_90
+            
+            logger.debug(f&#34;    Global indices - 10%: {global_idx_10}, 90%: {global_idx_90}&#34;)
+            logger.debug(f&#34;    Time points - 10%: {segment_time[idx_10]:.6f}s, 90%: {segment_time[idx_90]:.6f}s&#34;)
+            
+            return transition_time, contrast_value, global_idx_10, global_idx_90
+        
+        # If we get here, something went wrong
+        return np.nan, contrast_value, -1, -1
+    
+    @classmethod
+    def _plot_pulse_segment(
+        cls,
+        segment_time: NDArray[np.float64],
+        segment_pl: NDArray[np.float64],
+        n_baseline: int,
+        n_steady: int,
+        baseline_level: float,
+        steady_state: float,
+        level_10: float,
+        level_90: float,
+        idx_10: int,
+        idx_90: int,
+        is_on_segment: bool,
+        is_positive_contrast: bool
+    ) -&gt; None:
+        &#34;&#34;&#34;Plot detailed pulse segment analysis.
+        
+        Parameters
+        ----------
+        segment_time : NDArray[np.float64]
+            Time points for the segment
+        segment_pl : NDArray[np.float64]
+            PL data for the segment
+        n_baseline : int
+            Number of points in baseline region
+        n_steady : int
+            Number of points in steady-state region
+        baseline_level : float
+            Baseline level
+        steady_state : float
+            Steady-state level
+        level_10 : float
+            10% level
+        level_90 : float
+            90% level
+        idx_10 : int
+            Index of 10% crossing
+        idx_90 : int
+            Index of 90% crossing
+        is_on_segment : bool
+            Whether this is an ON segment
+        is_positive_contrast : bool
+            Whether contrast is positive
+        &#34;&#34;&#34;
+        # Create debug plot for this transition
+        plt.figure(figsize=(12, 8))
+        
+        # Plot the segment data
+        plt.title(f&#34;{&#39;ON&#39; if is_on_segment else &#39;OFF&#39;} Segment Analysis&#34;)
+        plt.plot(segment_time, segment_pl, &#39;b-&#39;, label=&#39;Segment Data&#39;)
+        
+        # Mark the baseline and steady-state regions
+        plt.axvspan(segment_time[0], segment_time[n_baseline-1], 
+                   color=&#39;g&#39;, alpha=0.2, label=&#39;Baseline Region&#39;)
+        plt.axvspan(segment_time[-n_steady], segment_time[-1], 
+                   color=&#39;r&#39;, alpha=0.2, label=&#39;Steady-state Region&#39;)
+        
+        # Mark the baseline and steady-state levels
+        plt.axhline(y=baseline_level, color=&#39;g&#39;, linestyle=&#39;-&#39;, label=f&#39;Baseline: {baseline_level:.6f}&#39;)
+        plt.axhline(y=steady_state, color=&#39;r&#39;, linestyle=&#39;-&#39;, label=f&#39;Steady-state: {steady_state:.6f}&#39;)
+        
+        # Mark the 10% and 90% levels
+        plt.axhline(y=level_10, color=&#39;g&#39;, linestyle=&#39;--&#39;, label=f&#39;10% Level: {level_10:.6f}&#39;)
+        plt.axhline(y=level_90, color=&#39;r&#39;, linestyle=&#39;--&#39;, label=f&#39;90% Level: {level_90:.6f}&#39;)
+        
+        # Mark the detected crossing points if valid
+        if idx_10 &gt;= 0:
+            plt.plot(segment_time[idx_10], segment_pl[idx_10], &#39;go&#39;, markersize=8, 
+                    label=f&#39;10% Crossing at {idx_10}&#39;)
+        if idx_90 &gt;= 0:
+            plt.plot(segment_time[idx_90], segment_pl[idx_90], &#39;ro&#39;, markersize=8, 
+                    label=f&#39;90% Crossing at {idx_90}&#39;)
+        
+        # Add exponential fit if valid crossing points are found
+        if idx_10 &gt;= 0 and idx_90 &gt;= 0:
+            cls._plot_exponential_fit(
+                segment_time, segment_pl,
+                idx_10, idx_90,
+                baseline_level, steady_state,
+                is_on_segment, is_positive_contrast
+            )
+        
+        plt.grid(True)
+        plt.legend()
+        
+        # Calculate contrast value for the info text
+        contrast_value = 100 * (steady_state - baseline_level) / baseline_level if baseline_level != 0 else np.nan
+        
+        # Add information about contrast and timing
+        info_text = (
+            f&#34;Baseline: {baseline_level:.6f}\n&#34;
+            f&#34;Steady state: {steady_state:.6f}\n&#34;
+            f&#34;Contrast: {contrast_value:.2f}%\n&#34;
+            f&#34;Is positive contrast: {is_positive_contrast}\n&#34;
+        )
+        
+        if idx_10 &gt;= 0 and idx_90 &gt;= 0:
+            transition_time = abs(segment_time[idx_90] - segment_time[idx_10])
+            info_text += f&#34;Transition time: {transition_time*1000:.3f} ms&#34;
+        
+        plt.figtext(0.02, 0.02, info_text, fontsize=10, 
+                   bbox=dict(facecolor=&#39;white&#39;, alpha=0.8))
+        
+        plt.tight_layout()
+        plt.show()
+    
+    @classmethod
+    def _plot_exponential_fit(
+        cls,
+        segment_time: NDArray[np.float64],
+        segment_pl: NDArray[np.float64],
+        idx_10: int,
+        idx_90: int,
+        baseline_level: float,
+        steady_state: float,
+        is_on_segment: bool,
+        is_positive_contrast: bool
+    ) -&gt; None:
+        &#34;&#34;&#34;Plot exponential fit for a pulse segment.
+        
+        Parameters
+        ----------
+        segment_time : NDArray[np.float64]
+            Time points for the segment
+        segment_pl : NDArray[np.float64]
+            PL data for the segment
+        idx_10 : int
+            Index of 10% crossing
+        idx_90 : int
+            Index of 90% crossing
+        baseline_level : float
+            Baseline level
+        steady_state : float
+            Steady-state level
+        is_on_segment : bool
+            Whether this is an ON segment
+        is_positive_contrast : bool
+            Whether contrast is positive
+        &#34;&#34;&#34;
+        from scipy.optimize import curve_fit
+        
+        # Define exponential functions for fitting
+        def rise_exp(t, a, tau, c):
+            &#34;&#34;&#34;Exponential rise function: f(t) = a * (1 - exp(-t/tau)) + c&#34;&#34;&#34;
+            return a * (1 - np.exp(-t/tau)) + c
+        
+        def fall_exp(t, a, tau, c):
+            &#34;&#34;&#34;Exponential decay function: f(t) = a * exp(-t/tau) + c&#34;&#34;&#34;
+            return a * np.exp(-t/tau) + c
+        
+        # Use the full segment for fitting
+        fit_time = segment_time
+        fit_pl = segment_pl
+        
+        # Check if we have enough data points for fitting
+        if len(fit_time) == 0:
+            logger.error(f&#34;    No data points in fit region&#34;)
+            return
+        
+        # Normalize time to start at 0 for fitting
+        t_norm = fit_time - fit_time[0]
+        
+        try:
+            # Initial parameter guesses
+            if is_on_segment:  # Field ON response
+                # Choose appropriate function based on contrast sign
+                if is_positive_contrast:
+                    # PL increases: use exponential rise function
+                    fit_func = rise_exp
+                    p0 = [
+                        abs(steady_state - baseline_level),  # amplitude
+                        abs(segment_time[idx_90] - segment_time[idx_10]) / 2.2,  # time constant
+                        baseline_level  # baseline
+                    ]
+                else:
+                    # PL decreases: use exponential decay function
+                    fit_func = fall_exp
+                    p0 = [
+                        abs(baseline_level - steady_state),  # amplitude
+                        abs(segment_time[idx_90] - segment_time[idx_10]) / 2.2,  # time constant
+                        steady_state  # final level
+                    ]
+            
+                # Fit appropriate exponential function
+                popt, _ = curve_fit(fit_func, t_norm, fit_pl, p0=p0, maxfev=5000)
+            
+                # Plot fit curve
+                t_fit = np.linspace(0, max(t_norm), 100)
+                y_fit = fit_func(t_fit, *popt)
+                plt.plot(t_fit + fit_time[0], y_fit, &#39;k--&#39;, 
+                        label=f&#39;Field ON Response Fit: τ = {popt[1]*1000:.2f} ms&#39;)
+            else:  # Field OFF response
+                # Calculate initial and final values for the segment
+                n_initial = max(int(len(segment_pl) * 0.05), 5)  # Use first 5% for initial value
+                n_final = max(int(len(segment_pl) * 0.05), 5)    # Use last 5% for final value
+                
+                initial_value = np.mean(segment_pl[:n_initial])
+                final_value = np.mean(segment_pl[-n_final:])
+                
+                # Choose appropriate function based on contrast sign
+                if is_positive_contrast:
+                    # PL was higher during field ON, now decreasing: use exponential decay
+                    fit_func = fall_exp
+                    p0 = [
+                        abs(initial_value - final_value),  # amplitude
+                        abs(segment_time[idx_10] - segment_time[idx_90]) / 2.2,  # time constant
+                        final_value  # final level
+                    ]
+                else:
+                    # PL was lower during field ON, now increasing: use exponential rise
+                    fit_func = rise_exp
+                    p0 = [
+                        abs(final_value - initial_value),  # amplitude
+                        abs(segment_time[idx_10] - segment_time[idx_90]) / 2.2,  # time constant
+                        initial_value  # baseline
+                    ]
+            
+                # Fit appropriate exponential function
+                popt, _ = curve_fit(fit_func, t_norm, fit_pl, p0=p0, maxfev=5000)
+            
+                # Plot fit curve
+                t_fit = np.linspace(0, max(t_norm), 100)
+                y_fit = fit_func(t_fit, *popt)
+                plt.plot(t_fit + fit_time[0], y_fit, &#39;k--&#39;, 
+                        label=f&#39;Field OFF Response Fit: τ = {popt[1]*1000:.2f} ms&#39;)
+        except Exception as e:
+            logger.exception(f&#34;    Error fitting exponential: {e}&#34;)
+    
+    @classmethod
+    def analyze_transitions(
+        cls, 
+        time_data: NDArray[np.float64], 
+        pl_data: NDArray[np.float64], 
+        clock_data: NDArray[np.float64], 
+        trigger_threshold: float = 2.5, 
+        plot_pulses: bool = False,
+        use_cache: bool = True
+    ) -&gt; Dict[str, Any]:
+        &#34;&#34;&#34;Analyze PL transitions using clock signal for edge detection with full pulse width analysis.
+        
+        This function always calculates 10-90% rise/fall times.
+        
+        Parameters
+        ----------
+        time_data : np.ndarray
+            Time points
+        pl_data : np.ndarray
+            PL signal data
+        clock_data : np.ndarray
+            Clock signal data
+        trigger_threshold : float, optional
+            Threshold for clock signal edge detection, by default 2.5
+        plot_pulses : bool, optional
+            Whether to plot detailed pulse analysis, by default False
+            
+        Returns
+        -------
+        dict
+            Analysis results including:
+            - rise_times: List of 10-90% rise times
+            - fall_times: List of 10-90% fall times
+            - contrasts: List of contrast values for each transition
+            - rise_indices: Indices of rise transitions
+            - fall_indices: Indices of fall transitions
+            - rise_10_indices: Indices of 10% rise points
+            - rise_90_indices: Indices of 90% rise points
+            - fall_10_indices: Indices of 10% fall points
+            - fall_90_indices: Indices of 90% fall points
+            - on_segments: List of (start, end) indices for ON segments
+            - off_segments: List of (start, end) indices for OFF segments
+        &#34;&#34;&#34;
+        # Generate a cache key based on input data
+        if use_cache:
+            # Use hash of data arrays for cache key
+            cache_key = (
+                hash(time_data.tobytes()),
+                hash(pl_data.tobytes()),
+                hash(clock_data.tobytes()),
+                trigger_threshold
+            )
+            
+            # Check if we have cached results
+            if cache_key in cls._cache:
+                logger.debug(&#34;Using cached analysis results&#34;)
+                # Return cached results but respect the plot_pulses parameter
+                cached_results = cls._cache[cache_key].copy()
+                if plot_pulses:
+                    # If plotting is requested, we need to reanalyze the segments
+                    # but we can reuse the edge detection results
+                    edge_data = {
+                        &#34;on_segments&#34;: cached_results.get(&#34;on_segments&#34;, []),
+                        &#34;off_segments&#34;: cached_results.get(&#34;off_segments&#34;, []),
+                        &#34;field_on_edges&#34;: cached_results.get(&#34;rise_indices&#34;, []),
+                        &#34;field_off_edges&#34;: cached_results.get(&#34;fall_indices&#34;, [])
+                    }
+                else:
+                    return cached_results
+        
+        # Detect clock edges and segments
+        edge_data = cls._detect_clock_edges(clock_data, trigger_threshold)
+        
+        # Ensure we have at least one edge
+        if len(edge_data[&#34;edges&#34;]) == 0:
+            logger.warning(&#34;  No edges detected!&#34;)
+            return {
+                &#34;rise_times&#34;: [],
+                &#34;fall_times&#34;: [],
+                &#34;contrasts&#34;: [],
+                &#34;rise_indices&#34;: [],
+                &#34;fall_indices&#34;: [],
+                &#34;rise_10_indices&#34;: [],
+                &#34;rise_90_indices&#34;: [],
+                &#34;fall_10_indices&#34;: [],
+                &#34;fall_90_indices&#34;: [],
+                &#34;mean_rise_time&#34;: np.nan,
+                &#34;mean_fall_time&#34;: np.nan,
+                &#34;mean_contrast&#34;: np.nan
+            }
+        
+        # Extract data from edge detection
+        field_on_edges = edge_data[&#34;field_on_edges&#34;]
+        field_off_edges = edge_data[&#34;field_off_edges&#34;]
+        on_segments = edge_data[&#34;on_segments&#34;]
+        off_segments = edge_data[&#34;off_segments&#34;]
+        
+        # Storage for analysis results
+        rise_times = []
+        fall_times = []
+        contrasts = []
+        rise_indices = field_on_edges.tolist()
+        fall_indices = field_off_edges.tolist()
+        rise_10_indices = []
+        rise_90_indices = []
+        fall_10_indices = []
+        fall_90_indices = []
+        
+        # Function to analyze a full pulse segment
+        def analyze_pulse_segment(start_idx, end_idx, is_on_segment):
+            &#34;&#34;&#34;Analyze a full pulse segment.
+            
+            Parameters
+            ----------
+            start_idx : int
+                Start index of the pulse segment
+            end_idx : int
+                End index of the pulse segment
+            is_on_segment : bool
+                Whether this is an ON segment (True) or OFF segment (False)
+                
+            Returns
+            -------
+            tuple
+                (transition_time, contrast, 10% index, 90% index)
+            &#34;&#34;&#34;
+            # Extract the full segment
+            segment_time = time_data[start_idx:end_idx]
+            segment_pl = pl_data[start_idx:end_idx]
+            
+            if len(segment_time) &lt; 10:
+                logger.debug(f&#34;    Segment too small ({len(segment_time)} points), skipping analysis&#34;)
+                return np.nan, np.nan, -1, -1
+            
+            # Calculate baseline and steady-state levels
+            # Use first 0.1% and last 0.1% of the segment
+            n_points = len(segment_pl)
+            n_baseline = max(int(n_points * 0.001), 1)
+            n_steady = max(int(n_points * 0.001), 1)
+            
+            baseline_level = np.mean(segment_pl[:n_baseline])
+            steady_state = np.mean(segment_pl[-n_steady:])
+            
+            # Calculate contrast
+            contrast_value = 100 * (steady_state - baseline_level) / baseline_level if baseline_level != 0 else np.nan
+            
+            # Determine if contrast is positive or negative
+            is_positive_contrast = steady_state &gt; baseline_level
+            
+            logger.debug(f&#34;  {&#39;ON&#39; if is_on_segment else &#39;OFF&#39;} segment from {start_idx} to {end_idx}:&#34;)
+            logger.debug(f&#34;    Baseline level: {baseline_level:.6f}, Steady state: {steady_state:.6f}&#34;)
+            logger.debug(f&#34;    Contrast: {contrast_value:.2f}%, {&#39;Positive&#39; if is_positive_contrast else &#39;Negative&#39;}&#34;)
+            
+            # Calculate 10% and 90% levels
+            level_change = steady_state - baseline_level
+            
+            if abs(level_change) &lt; 1e-9:
+                logger.warning(f&#34;    Level change too small ({abs(level_change):.9f}), skipping transition analysis&#34;)
+                return np.nan, contrast_value, -1, -1
+            
+            if is_positive_contrast:
+                level_10 = baseline_level + 0.1 * level_change
+                level_90 = baseline_level + 0.9 * level_change
+            else:
+                level_10 = baseline_level + 0.9 * level_change
+                level_90 = baseline_level + 0.1 * level_change
+            
+            logger.debug(f&#34;    10% level: {level_10:.6f}, 90% level: {level_90:.6f}&#34;)
+            
+            # Find indices where signal crosses these levels
+            if is_positive_contrast:
+                idx_10_candidates = np.where(segment_pl &gt; level_10)[0]
+                idx_90_candidates = np.where(segment_pl &gt; level_90)[0]
+            else:
+                idx_10_candidates = np.where(segment_pl &lt; level_10)[0]
+                idx_90_candidates = np.where(segment_pl &lt; level_90)[0]
+            
+            logger.debug(f&#34;    Found {len(idx_10_candidates)} candidates for 10% crossing, {len(idx_90_candidates)} for 90% crossing&#34;)
+            
+            # Get the first valid crossing points
+            idx_10 = idx_10_candidates[0] if len(idx_10_candidates) &gt; 0 else -1
+            idx_90 = idx_90_candidates[0] if len(idx_90_candidates) &gt; 0 else -1
+            
+            # Ensure correct ordering of crossings
+            if idx_10 &gt;= 0 and idx_90 &gt;= 0:
+                if is_on_segment and idx_10 &gt; idx_90:
+                    # For rising edges, 10% should come before 90%
+                    logger.warning(f&#34;    10% crossing ({idx_10}) after 90% crossing ({idx_90}), swapping&#34;)
+                    idx_10, idx_90 = idx_90, idx_10
+                elif not is_on_segment and idx_90 &gt; idx_10:
+                    # For falling edges, 90% should come before 10%
+                    logger.warning(f&#34;    90% crossing ({idx_90}) after 10% crossing ({idx_10}), swapping&#34;)
+                    idx_90, idx_10 = idx_10, idx_90
+            
+            if plot_pulses:
+                # Create debug plot for this transition
+                plt.figure(figsize=(12, 8))
+                
+                # Plot the segment data
+                plt.title(f&#34;{&#39;ON&#39; if is_on_segment else &#39;OFF&#39;} Segment Analysis&#34;)
+                plt.plot(segment_time, segment_pl, &#39;b-&#39;, label=&#39;Segment Data&#39;)
+                
+                # Mark the baseline and steady-state regions
+                plt.axvspan(segment_time[0], segment_time[n_baseline-1], 
+                           color=&#39;g&#39;, alpha=0.2, label=&#39;Baseline Region&#39;)
+                plt.axvspan(segment_time[-n_steady], segment_time[-1], 
+                           color=&#39;r&#39;, alpha=0.2, label=&#39;Steady-state Region&#39;)
+                
+                # Mark the baseline and steady-state levels
+                plt.axhline(y=baseline_level, color=&#39;g&#39;, linestyle=&#39;-&#39;, label=f&#39;Baseline: {baseline_level:.6f}&#39;)
+                plt.axhline(y=steady_state, color=&#39;r&#39;, linestyle=&#39;-&#39;, label=f&#39;Steady-state: {steady_state:.6f}&#39;)
+                
+                # Mark the 10% and 90% levels
+                plt.axhline(y=level_10, color=&#39;g&#39;, linestyle=&#39;--&#39;, label=f&#39;10% Level: {level_10:.6f}&#39;)
+                plt.axhline(y=level_90, color=&#39;r&#39;, linestyle=&#39;--&#39;, label=f&#39;90% Level: {level_90:.6f}&#39;)
+                
+                # Mark the detected crossing points if valid
+                if idx_10 &gt;= 0:
+                    plt.plot(segment_time[idx_10], segment_pl[idx_10], &#39;go&#39;, markersize=8, 
+                            label=f&#39;10% Crossing at {idx_10}&#39;)
+                if idx_90 &gt;= 0:
+                    plt.plot(segment_time[idx_90], segment_pl[idx_90], &#39;ro&#39;, markersize=8, 
+                            label=f&#39;90% Crossing at {idx_90}&#39;)
+                
+                # Add exponential fit if valid crossing points are found
+                if idx_10 &gt;= 0 and idx_90 &gt;= 0:
+                    # Define exponential functions for fitting
+                    def rise_exp(t, a, tau, c):
+                        &#34;&#34;&#34;Exponential rise function: f(t) = a * (1 - exp(-t/tau)) + c&#34;&#34;&#34;
+                        return a * (1 - np.exp(-t/tau)) + c
+                    
+                    def fall_exp(t, a, tau, c):
+                        &#34;&#34;&#34;Exponential decay function: f(t) = a * exp(-t/tau) + c&#34;&#34;&#34;
+                        return a * np.exp(-t/tau) + c
+                    
+                    # Use the full segment for fitting
+                    fit_time = segment_time
+                    fit_pl = segment_pl
+                    
+                    # Check if we have enough data points for fitting
+                    if len(fit_time) == 0:
+                        logger.error(f&#34;    No data points in fit region&#34;)
+                        # Skip the rest of this iteration
+                        return np.nan, contrast_value, -1, -1
+                    
+                    # Normalize time to start at 0 for fitting
+                    t_norm = fit_time - fit_time[0]
+                    
+                    try:
+                        # Determine if PL increases or decreases during this segment
+                        is_positive_contrast = steady_state &gt; baseline_level
+                    
+                        # Initial parameter guesses
+                        if is_on_segment:  # Field ON response
+                            # Choose appropriate function based on contrast sign
+                            if is_positive_contrast:
+                                # PL increases: use exponential rise function
+                                fit_func = rise_exp
+                                p0 = [
+                                    abs(steady_state - baseline_level),  # amplitude
+                                    abs(segment_time[idx_90] - segment_time[idx_10]) / 2.2,  # time constant
+                                    baseline_level  # baseline
+                                ]
+                            else:
+                                # PL decreases: use exponential decay function
+                                fit_func = fall_exp
+                                p0 = [
+                                    abs(baseline_level - steady_state),  # amplitude
+                                    abs(segment_time[idx_90] - segment_time[idx_10]) / 2.2,  # time constant
+                                    steady_state  # final level
+                                ]
+                        
+                            # Fit appropriate exponential function
+                            popt, _ = curve_fit(fit_func, t_norm, fit_pl, p0=p0, maxfev=5000)
+                        
+                            # Plot fit curve
+                            t_fit = np.linspace(0, max(t_norm), 100)
+                            y_fit = fit_func(t_fit, *popt)
+                            plt.plot(t_fit + fit_time[0], y_fit, &#39;k--&#39;, 
+                                    label=f&#39;Field ON Response Fit: τ = {popt[1]*1000:.2f} ms&#39;)
+                        else:  # Field OFF response
+                            # Calculate initial and final values for the segment
+                            n_initial = max(int(len(segment_pl) * 0.05), 5)  # Use first 5% for initial value
+                            n_final = max(int(len(segment_pl) * 0.05), 5)    # Use last 5% for final value
+                            
+                            initial_value = np.mean(segment_pl[:n_initial])
+                            final_value = np.mean(segment_pl[-n_final:])
+                            
+                            # Choose appropriate function based on contrast sign
+                            if is_positive_contrast:
+                                # PL was higher during field ON, now decreasing: use exponential decay
+                                fit_func = fall_exp
+                                p0 = [
+                                    abs(initial_value - final_value),  # amplitude
+                                    abs(segment_time[idx_10] - segment_time[idx_90]) / 2.2,  # time constant
+                                    final_value  # final level
+                                ]
+                            else:
+                                # PL was lower during field ON, now increasing: use exponential rise
+                                fit_func = rise_exp
+                                p0 = [
+                                    abs(final_value - initial_value),  # amplitude
+                                    abs(segment_time[idx_10] - segment_time[idx_90]) / 2.2,  # time constant
+                                    initial_value  # baseline
+                                ]
+                        
+                            # Fit appropriate exponential function
+                            popt, _ = curve_fit(fit_func, t_norm, fit_pl, p0=p0, maxfev=5000)
+                        
+                            # Plot fit curve
+                            t_fit = np.linspace(0, max(t_norm), 100)
+                            y_fit = fit_func(t_fit, *popt)
+                            plt.plot(t_fit + fit_time[0], y_fit, &#39;k--&#39;, 
+                                    label=f&#39;Field OFF Response Fit: τ = {popt[1]*1000:.2f} ms&#39;)
+                    except Exception as e:
+                        logger.exception(f&#34;    Error fitting exponential: {e}&#34;)
+                
+                plt.grid(True)
+                plt.legend()
+                
+                # Add information about contrast and timing
+                info_text = (
+                    f&#34;Baseline: {baseline_level:.6f}\n&#34;
+                    f&#34;Steady state: {steady_state:.6f}\n&#34;
+                    f&#34;Contrast: {contrast_value:.2f}%\n&#34;
+                    f&#34;Is positive contrast: {is_positive_contrast}\n&#34;
+                )
+                
+                if idx_10 &gt;= 0 and idx_90 &gt;= 0:
+                    transition_time = abs(segment_time[idx_90] - segment_time[idx_10])
+                    info_text += f&#34;Transition time: {transition_time*1000:.3f} ms&#34;
+                
+                plt.figtext(0.02, 0.02, info_text, fontsize=10, 
+                           bbox=dict(facecolor=&#39;white&#39;, alpha=0.8))
+                
+                plt.tight_layout()
+                plt.show()
+            
+            # Calculate transition time if both points are valid
+            if idx_10 &gt;= 0 and idx_90 &gt;= 0:
+                # Calculate transition time
+                transition_time = abs(segment_time[idx_90] - segment_time[idx_10])
+                logger.debug(f&#34;    Transition time: {transition_time*1000:.3f} ms&#34;)
+                
+                # Convert to global indices for plotting
+                global_idx_10 = start_idx + idx_10
+                global_idx_90 = start_idx + idx_90
+                
+                logger.debug(f&#34;    Global indices - 10%: {global_idx_10}, 90%: {global_idx_90}&#34;)
+                logger.debug(f&#34;    Time points - 10%: {segment_time[idx_10]:.6f}s, 90%: {segment_time[idx_90]:.6f}s&#34;)
+                
+                return transition_time, contrast_value, global_idx_10, global_idx_90
+            
+            # If we get here, something went wrong
+            return np.nan, contrast_value, -1, -1
+        
+        # Analyze ON segments (field turning ON)
+        for i, (on_edge, off_edge) in enumerate(on_segments):
+            logger.debug(f&#34;\nAnalyzing ON segment {i+1}: {on_edge} to {off_edge}&#34;)
+            
+            # Check if segment is valid (has enough points)
+            if off_edge - on_edge &lt; 10:
+                logger.debug(f&#34;  Segment too small ({off_edge - on_edge} points), skipping analysis&#34;)
+                continue
+                
+            rise_time, contrast, idx_10, idx_90 = analyze_pulse_segment(on_edge, off_edge, True)
+            
+            if not np.isnan(rise_time) and not np.isnan(contrast):
+                rise_times.append(rise_time)
+                contrasts.append(contrast)
+                rise_10_indices.append(idx_10)
+                rise_90_indices.append(idx_90)
+        
+        # Analyze OFF segments (field turning OFF)
+        for i, (off_edge, next_on_edge) in enumerate(off_segments):
+            logger.debug(f&#34;\nAnalyzing OFF segment {i+1}: {off_edge} to {next_on_edge}&#34;)
+            
+            # Check if segment is valid (has enough points)
+            if next_on_edge - off_edge &lt; 10:
+                logger.debug(f&#34;  Segment too small ({next_on_edge - off_edge} points), skipping analysis&#34;)
+                continue
+                
+            fall_time, _, idx_10, idx_90 = analyze_pulse_segment(off_edge, next_on_edge, False)
+            
+            if not np.isnan(fall_time):
+                fall_times.append(fall_time)
+                fall_10_indices.append(idx_10)
+                fall_90_indices.append(idx_90)
+        
+        # Calculate mean values - use numpy for efficiency
+        mean_rise_time = np.mean(rise_times) if rise_times else np.nan
+        mean_fall_time = np.mean(fall_times) if fall_times else np.nan
+        mean_contrast = np.mean(contrasts) if contrasts else np.nan
+        
+        # Log only key summary information
+        if not np.isnan(mean_contrast):
+            logger.info(f&#34;  Mean contrast: {mean_contrast:.2f}%&#34;)
+        
+        # Prepare results dictionary
+        results = {
+            &#34;rise_times&#34;: rise_times,  # Field ON response times
+            &#34;fall_times&#34;: fall_times,  # Field OFF response times
+            &#34;contrasts&#34;: contrasts,
+            &#34;rise_indices&#34;: rise_indices,  # Field ON edges
+            &#34;fall_indices&#34;: fall_indices,  # Field OFF edges
+            &#34;rise_10_indices&#34;: rise_10_indices,  # 10% points for field ON response
+            &#34;rise_90_indices&#34;: rise_90_indices,  # 90% points for field ON response
+            &#34;fall_10_indices&#34;: fall_10_indices,  # 10% points for field OFF response
+            &#34;fall_90_indices&#34;: fall_90_indices,  # 90% points for field OFF response
+            &#34;mean_rise_time&#34;: mean_rise_time,  # Mean field ON response time
+            &#34;mean_fall_time&#34;: mean_fall_time,  # Mean field OFF response time
+            &#34;mean_contrast&#34;: mean_contrast,
+            # Add segment data for potential exponential fitting
+            &#34;on_segments&#34;: on_segments,  # Field ON segments
+            &#34;off_segments&#34;: off_segments  # Field OFF segments
+        }
+        
+        # Cache the results if caching is enabled
+        if use_cache:
+            cache_key = (
+                hash(time_data.tobytes()),
+                hash(pl_data.tobytes()),
+                hash(clock_data.tobytes()),
+                trigger_threshold
+            )
+            cls._cache[cache_key] = results.copy()
+            
+            # Limit cache size to prevent memory issues
+            if len(cls._cache) &gt; 10:
+                # Remove oldest entry (first key)
+                oldest_key = next(iter(cls._cache))
+                del cls._cache[oldest_key]
+        
+        return results
+    
+    @staticmethod
+    def global_rise_exp(
+        t: NDArray[np.float64], 
+        a: float, 
+        tau: float, 
+        c: float,
+        t0: float
+    ) -&gt; NDArray[np.float64]:
+        &#34;&#34;&#34;Exponential rise function with absolute time reference: f(t) = a * (1 - exp(-(t-t0)/tau)) + c
+        
+        Parameters
+        ----------
+        t : np.ndarray
+            Time points (absolute time)
+        a : float
+            Amplitude
+        tau : float
+            Time constant
+        c : float
+            Offset
+        t0 : float
+            Time offset (start time)
+            
+        Returns
+        -------
+        np.ndarray
+            Function values
+        &#34;&#34;&#34;
+        return a * (1 - np.exp(-(t-t0)/tau)) + c
+    
+    @staticmethod
+    def global_fall_exp(
+        t: NDArray[np.float64], 
+        a: float, 
+        tau: float, 
+        c: float,
+        t0: float
+    ) -&gt; NDArray[np.float64]:
+        &#34;&#34;&#34;Exponential decay function with absolute time reference: f(t) = a * exp(-(t-t0)/tau) + c
+        
+        Parameters
+        ----------
+        t : np.ndarray
+            Time points (absolute time)
+        a : float
+            Amplitude
+        tau : float
+            Time constant
+        c : float
+            Offset
+        t0 : float
+            Time offset (start time)
+            
+        Returns
+        -------
+        np.ndarray
+            Function values
+        &#34;&#34;&#34;
+        return a * np.exp(-(t-t0)/tau) + c
+        
+    @staticmethod
+    def double_rise_exp(
+        t: NDArray[np.float64], 
+        a1: float, 
+        tau1: float, 
+        a2: float, 
+        tau2: float, 
+        c: float
+    ) -&gt; NDArray[np.float64]:
+        &#34;&#34;&#34;Double exponential rise function: f(t) = a1*(1-exp(-t/tau1)) + a2*(1-exp(-t/tau2)) + c
+        
+        Parameters
+        ----------
+        t : np.ndarray
+            Time points
+        a1 : float
+            Amplitude of first component
+        tau1 : float
+            Time constant of first component
+        a2 : float
+            Amplitude of second component
+        tau2 : float
+            Time constant of second component
+        c : float
+            Offset
+            
+        Returns
+        -------
+        np.ndarray
+            Function values
+        &#34;&#34;&#34;
+        return a1 * (1 - np.exp(-t/tau1)) + a2 * (1 - np.exp(-t/tau2)) + c
+    
+    @staticmethod
+    def double_fall_exp(
+        t: NDArray[np.float64], 
+        a1: float, 
+        tau1: float, 
+        a2: float, 
+        tau2: float, 
+        c: float
+    ) -&gt; NDArray[np.float64]:
+        &#34;&#34;&#34;Double exponential decay function: f(t) = a1*exp(-t/tau1) + a2*exp(-t/tau2) + c
+        
+        Parameters
+        ----------
+        t : np.ndarray
+            Time points
+        a1 : float
+            Amplitude of first component
+        tau1 : float
+            Time constant of first component
+        a2 : float
+            Amplitude of second component
+        tau2 : float
+            Time constant of second component
+        c : float
+            Offset
+            
+        Returns
+        -------
+        np.ndarray
+            Function values
+        &#34;&#34;&#34;
+        return a1 * np.exp(-t/tau1) + a2 * np.exp(-t/tau2) + c
+    
+    @staticmethod
+    def global_double_rise_exp(
+        t: NDArray[np.float64], 
+        a1: float, 
+        tau1: float, 
+        a2: float, 
+        tau2: float, 
+        c: float,
+        t0: float
+    ) -&gt; NDArray[np.float64]:
+        &#34;&#34;&#34;Double exponential rise function with absolute time reference
+        
+        Parameters
+        ----------
+        t : np.ndarray
+            Time points (absolute time)
+        a1 : float
+            Amplitude of first component
+        tau1 : float
+            Time constant of first component
+        a2 : float
+            Amplitude of second component
+        tau2 : float
+            Time constant of second component
+        c : float
+            Offset
+        t0 : float
+            Time offset (start time)
+            
+        Returns
+        -------
+        np.ndarray
+            Function values
+        &#34;&#34;&#34;
+        return a1 * (1 - np.exp(-(t-t0)/tau1)) + a2 * (1 - np.exp(-(t-t0)/tau2)) + c
+    
+    @staticmethod
+    def global_double_fall_exp(
+        t: NDArray[np.float64], 
+        a1: float, 
+        tau1: float, 
+        a2: float, 
+        tau2: float, 
+        c: float,
+        t0: float
+    ) -&gt; NDArray[np.float64]:
+        &#34;&#34;&#34;Double exponential decay function with absolute time reference
+        
+        Parameters
+        ----------
+        t : np.ndarray
+            Time points (absolute time)
+        a1 : float
+            Amplitude of first component
+        tau1 : float
+            Time constant of first component
+        a2 : float
+            Amplitude of second component
+        tau2 : float
+            Time constant of second component
+        c : float
+            Offset
+        t0 : float
+            Time offset (start time)
+            
+        Returns
+        -------
+        np.ndarray
+            Function values
+        &#34;&#34;&#34;
+        return a1 * np.exp(-(t-t0)/tau1) + a2 * np.exp(-(t-t0)/tau2) + c
+
+    @classmethod
+    def _fit_segment_exponential(
+        cls,
+        segment_time: NDArray[np.float64],
+        segment_pl: NDArray[np.float64],
+        is_on_segment: bool,
+        rise_time: Optional[float] = None,
+        fit_type: str = &#34;single&#34;
+    ) -&gt; Tuple[Dict[str, Any], bool]:
+        &#34;&#34;&#34;Fit exponential curve to a segment.
+        
+        Parameters
+        ----------
+        segment_time : NDArray[np.float64]
+            Time points for the segment
+        segment_pl : NDArray[np.float64]
+            PL data for the segment
+        is_on_segment : bool
+            Whether this is an ON segment
+        rise_time : Optional[float], optional
+            Rise time for initial guess, by default None
+        fit_type : str, optional
+            Type of exponential fit to use (&#34;single&#34; or &#34;double&#34;), by default &#34;single&#34;
+            
+        Returns
+        -------
+        Tuple[Dict[str, Any], bool]
+            (fit parameters, is_positive_contrast)
+        &#34;&#34;&#34;
+        # Calculate baseline and steady state for better initial guesses
+        n_points = len(segment_pl)
+        n_baseline = max(int(n_points * 0.05), 5)  # Use first 5% for baseline
+        n_steady = max(int(n_points * 0.05), 5)    # Use last 5% for steady state
+        
+        baseline_level = np.mean(segment_pl[:n_baseline])
+        steady_state = np.mean(segment_pl[-n_steady:])
+        
+        # Determine if PL increases or decreases
+        is_positive_contrast = steady_state &gt; baseline_level
+        
+        # For field OFF segments, we need to check if PL is increasing or decreasing
+        # This is different from the contrast calculation
+        is_decreasing = False
+        if not is_on_segment:
+            # For field OFF segments, check the actual trend
+            is_decreasing = baseline_level &gt; steady_state
+        
+        # Initial time constant guess
+        time_constant_guess = rise_time / 2.2 if rise_time is not None else 0.1
+        
+        # Get the time offset (start time of the segment)
+        t0 = segment_time[0]
+        
+        try:
+            # Determine if we&#39;re using single or double exponential fit
+            if fit_type == &#34;single&#34;:
+                if (is_on_segment and is_positive_contrast) or (not is_on_segment and not is_decreasing):
+                    # PL increases: use exponential rise function with global time reference
+                    p0 = [
+                        abs(steady_state - baseline_level),  # amplitude
+                        time_constant_guess,  # time constant
+                        baseline_level,  # baseline
+                        t0  # time offset
+                    ]
+                    
+                    # Define a wrapper function for curve_fit that uses the global time
+                    def fit_func(t, a, tau, c):
+                        return cls.global_rise_exp(t, a, tau, c, t0)
+                    
+                    popt, pcov = curve_fit(fit_func, segment_time, segment_pl, p0=p0[:3], maxfev=5000)
+                    
+                    # Add the time offset to the parameters
+                    popt = list(popt) + [t0]
+                    
+                    # Create a function that can be used to evaluate the fit at any time
+                    def fit_function(t):
+                        return cls.global_rise_exp(t, *popt)
+                    
+                    # Store the function type
+                    is_rise = True
+                else:
+                    # PL decreases: use exponential decay function with global time reference
+                    p0 = [
+                        abs(baseline_level - steady_state),  # amplitude
+                        time_constant_guess,  # time constant
+                        steady_state,  # final level
+                        t0  # time offset
+                    ]
+                    
+                    # Define a wrapper function for curve_fit that uses the global time
+                    def fit_func(t, a, tau, c):
+                        return cls.global_fall_exp(t, a, tau, c, t0)
+                    
+                    popt, pcov = curve_fit(fit_func, segment_time, segment_pl, p0=p0[:3], maxfev=5000)
+                    
+                    # Add the time offset to the parameters
+                    popt = list(popt) + [t0]
+                    
+                    # Create a function that can be used to evaluate the fit at any time
+                    def fit_function(t):
+                        return cls.global_fall_exp(t, *popt)
+                    
+                    # Store the function type
+                    is_rise = False
+                
+                # Calculate residuals and R-squared for goodness of fit
+                residuals = segment_pl - fit_function(segment_time)
+                ss_res = np.sum(residuals**2)
+                ss_tot = np.sum((segment_pl - np.mean(segment_pl))**2)
+                r_squared = 1 - (ss_res / ss_tot)
+                
+                # Store all the necessary information for plotting
+                fit_info = {
+                    &#34;params&#34;: popt,
+                    &#34;is_rise&#34;: is_rise,
+                    &#34;function&#34;: fit_function,
+                    &#34;baseline&#34;: baseline_level,
+                    &#34;steady_state&#34;: steady_state,
+                    &#34;is_positive_contrast&#34;: is_positive_contrast,
+                    &#34;fit_type&#34;: &#34;single&#34;,
+                    &#34;r_squared&#34;: r_squared
+                }
+            
+            else:  # Double exponential fit
+                if (is_on_segment and is_positive_contrast) or (not is_on_segment and not is_decreasing):
+                    # PL increases: use double exponential rise function
+                    # For initial guess, split the amplitude in two parts with different time constants
+                    amplitude = abs(steady_state - baseline_level)
+                    p0 = [
+                        amplitude * 0.7,  # amplitude of first component (70%)
+                        time_constant_guess * 0.5,  # faster time constant
+                        amplitude * 0.3,  # amplitude of second component (30%)
+                        time_constant_guess * 3.0,  # slower time constant
+                        baseline_level,  # baseline
+                        t0  # time offset
+                    ]
+                    
+                    # Define a wrapper function for curve_fit that uses the global time
+                    def fit_func(t, a1, tau1, a2, tau2, c):
+                        return cls.global_double_rise_exp(t, a1, tau1, a2, tau2, c, t0)
+                    
+                    # Try to fit with double exponential, but handle potential failures
+                    try:
+                        popt, pcov = curve_fit(fit_func, segment_time, segment_pl, p0=p0[:5], 
+                                              maxfev=10000, bounds=([0, 0, 0, 0, -np.inf], 
+                                                                   [np.inf, np.inf, np.inf, np.inf, np.inf]))
+                    except RuntimeError:
+                        # If double exponential fit fails, try with more relaxed bounds
+                        logger.warning(&#34;Double exponential fit failed with initial bounds, trying with relaxed bounds&#34;)
+                        popt, pcov = curve_fit(fit_func, segment_time, segment_pl, p0=p0[:5], maxfev=10000)
+                    
+                    # Add the time offset to the parameters
+                    popt = list(popt) + [t0]
+                    
+                    # Create a function that can be used to evaluate the fit at any time
+                    def fit_function(t):
+                        return cls.global_double_rise_exp(t, *popt)
+                    
+                    # Store the function type
+                    is_rise = True
+                else:
+                    # PL decreases: use double exponential decay function
+                    amplitude = abs(baseline_level - steady_state)
+                    p0 = [
+                        amplitude * 0.7,  # amplitude of first component (70%)
+                        time_constant_guess * 0.5,  # faster time constant
+                        amplitude * 0.3,  # amplitude of second component (30%)
+                        time_constant_guess * 3.0,  # slower time constant
+                        steady_state,  # final level
+                        t0  # time offset
+                    ]
+                    
+                    # Define a wrapper function for curve_fit that uses the global time
+                    def fit_func(t, a1, tau1, a2, tau2, c):
+                        return cls.global_double_fall_exp(t, a1, tau1, a2, tau2, c, t0)
+                    
+                    # Try to fit with double exponential, but handle potential failures
+                    try:
+                        popt, pcov = curve_fit(fit_func, segment_time, segment_pl, p0=p0[:5], 
+                                              maxfev=10000, bounds=([0, 0, 0, 0, -np.inf], 
+                                                                   [np.inf, np.inf, np.inf, np.inf, np.inf]))
+                    except RuntimeError:
+                        # If double exponential fit fails, try with more relaxed bounds
+                        logger.warning(&#34;Double exponential fit failed with initial bounds, trying with relaxed bounds&#34;)
+                        popt, pcov = curve_fit(fit_func, segment_time, segment_pl, p0=p0[:5], maxfev=10000)
+                    
+                    # Add the time offset to the parameters
+                    popt = list(popt) + [t0]
+                    
+                    # Create a function that can be used to evaluate the fit at any time
+                    def fit_function(t):
+                        return cls.global_double_fall_exp(t, *popt)
+                    
+                    # Store the function type
+                    is_rise = False
+                
+                # Calculate residuals and R-squared for goodness of fit
+                residuals = segment_pl - fit_function(segment_time)
+                ss_res = np.sum(residuals**2)
+                ss_tot = np.sum((segment_pl - np.mean(segment_pl))**2)
+                r_squared = 1 - (ss_res / ss_tot)
+                
+                # Sort time constants to have the faster one first
+                if popt[1] &gt; popt[3]:
+                    # Swap time constants and amplitudes
+                    a1, tau1, a2, tau2 = popt[0], popt[1], popt[2], popt[3]
+                    popt[0], popt[1], popt[2], popt[3] = a2, tau2, a1, tau1
+                
+                # Store all the necessary information for plotting
+                fit_info = {
+                    &#34;params&#34;: popt,
+                    &#34;is_rise&#34;: is_rise,
+                    &#34;function&#34;: fit_function,
+                    &#34;baseline&#34;: baseline_level,
+                    &#34;steady_state&#34;: steady_state,
+                    &#34;is_positive_contrast&#34;: is_positive_contrast,
+                    &#34;fit_type&#34;: &#34;double&#34;,
+                    &#34;r_squared&#34;: r_squared
+                }
+                
+            return fit_info, is_positive_contrast
+        except Exception as e:
+            logger.exception(f&#34;  Error fitting exponential: {e}&#34;)
+            return {&#34;fit_type&#34;: &#34;failed&#34;}, is_positive_contrast
+    
+    @classmethod
+    def clear_cache(cls) -&gt; None:
+        &#34;&#34;&#34;Clear the analysis results cache.
+        
+        This method should be called when memory usage is a concern
+        or when fresh analysis is required regardless of input data.
+        &#34;&#34;&#34;
+        cls._cache.clear()
+        logger.debug(&#34;MPLFitter cache cleared&#34;)
+    
+    @classmethod
+    def fit_exponential_curves(
+        cls, 
+        time_data: NDArray[np.float64], 
+        pl_data: NDArray[np.float64], 
+        transition_results: Dict[str, Any],
+        fit_type: str = &#34;single&#34;
+    ) -&gt; Dict[str, Any]:
+        &#34;&#34;&#34;Fit exponential curves to the rise and fall transitions.
+        
+        Parameters
+        ----------
+        time_data : np.ndarray
+            Time points
+        pl_data : np.ndarray
+            PL signal data
+        transition_results : dict
+            Results from analyze_transitions function
+        fit_type : str, optional
+            Type of exponential fit to use (&#34;single&#34; or &#34;double&#34;), by default &#34;single&#34;
+            
+        Returns
+        -------
+        dict
+            Exponential fit results including:
+            - rise_tau: List of rise time constants
+            - fall_tau: List of fall time constants
+            - rise_fit_params: List of all fit parameters for rise transitions
+            - fall_fit_params: List of all fit parameters for fall transitions
+            - mean_rise_tau: Mean rise time constant
+            - mean_fall_tau: Mean fall time constant
+            - fit_type: Type of exponential fit used
+        &#34;&#34;&#34;
+        # Get segments from transition results
+        on_segments = transition_results.get(&#34;on_segments&#34;, [])
+        off_segments = transition_results.get(&#34;off_segments&#34;, [])
+        
+        # Get 10-90% times for initial guesses
+        rise_times = transition_results.get(&#34;rise_times&#34;, [])
+        fall_times = transition_results.get(&#34;fall_times&#34;, [])
+        
+        # Storage for fit results
+        rise_tau = []
+        fall_tau = []
+        rise_fit_params = []
+        fall_fit_params = []
+        
+        # For double exponential, we&#39;ll store both time constants
+        if fit_type == &#34;double&#34;:
+            rise_tau1 = []
+            rise_tau2 = []
+            fall_tau1 = []
+            fall_tau2 = []
+        
+        # Fit ON segments (field ON response)
+        for i, (on_edge, off_edge) in enumerate(on_segments):
+            if i &lt; len(rise_times):
+                # Extract segment data
+                segment_time = time_data[on_edge:off_edge]
+                segment_pl = pl_data[on_edge:off_edge]
+                
+                # Fit exponential
+                fit_info, _ = cls._fit_segment_exponential(
+                    segment_time, segment_pl, True, rise_times[i], fit_type
+                )
+                
+                # Check if fit_info is a dictionary with valid parameters
+                if isinstance(fit_info, dict) and &#34;params&#34; in fit_info:
+                    if fit_type == &#34;single&#34; and len(fit_info[&#34;params&#34;]) &gt; 1:
+                        rise_tau.append(fit_info[&#34;params&#34;][1])  # tau
+                        rise_fit_params.append(fit_info)
+                    elif fit_type == &#34;double&#34; and len(fit_info[&#34;params&#34;]) &gt; 3:
+                        # For double exponential, store both time constants
+                        rise_tau1.append(fit_info[&#34;params&#34;][1])  # tau1
+                        rise_tau2.append(fit_info[&#34;params&#34;][3])  # tau2
+                        rise_fit_params.append(fit_info)
+                elif isinstance(fit_info, list) and len(fit_info) &gt; 1:
+                    # Handle old format for backward compatibility
+                    rise_tau.append(fit_info[1])  # tau
+                    rise_fit_params.append(fit_info)
+        
+        # Fit OFF segments (field OFF response)
+        for i, (off_edge, next_on_edge) in enumerate(off_segments):
+            if i &lt; len(fall_times):
+                # Extract segment data
+                segment_time = time_data[off_edge:next_on_edge]
+                segment_pl = pl_data[off_edge:next_on_edge]
+                
+                # Fit exponential
+                fit_info, _ = cls._fit_segment_exponential(
+                    segment_time, segment_pl, False, fall_times[i], fit_type
+                )
+                
+                # Check if fit_info is a dictionary with valid parameters
+                if isinstance(fit_info, dict) and &#34;params&#34; in fit_info:
+                    if fit_type == &#34;single&#34; and len(fit_info[&#34;params&#34;]) &gt; 1:
+                        fall_tau.append(fit_info[&#34;params&#34;][1])  # tau
+                        fall_fit_params.append(fit_info)
+                    elif fit_type == &#34;double&#34; and len(fit_info[&#34;params&#34;]) &gt; 3:
+                        # For double exponential, store both time constants
+                        fall_tau1.append(fit_info[&#34;params&#34;][1])  # tau1
+                        fall_tau2.append(fit_info[&#34;params&#34;][3])  # tau2
+                        fall_fit_params.append(fit_info)
+                elif isinstance(fit_info, list) and len(fit_info) &gt; 1:
+                    # Handle old format for backward compatibility
+                    fall_tau.append(fit_info[1])  # tau
+                    fall_fit_params.append(fit_info)
+        
+        # Calculate mean values using numpy for efficiency
+        if fit_type == &#34;single&#34;:
+            mean_rise_tau = np.mean(rise_tau) if rise_tau else np.nan
+            mean_fall_tau = np.mean(fall_tau) if fall_tau else np.nan
+            
+            return {
+                &#34;rise_tau&#34;: rise_tau,
+                &#34;fall_tau&#34;: fall_tau,
+                &#34;rise_fit_params&#34;: rise_fit_params,
+                &#34;fall_fit_params&#34;: fall_fit_params,
+                &#34;mean_rise_tau&#34;: mean_rise_tau,
+                &#34;mean_fall_tau&#34;: mean_fall_tau,
+                &#34;fit_type&#34;: fit_type
+            }
+        else:  # Double exponential
+            mean_rise_tau1 = np.mean(rise_tau1) if rise_tau1 else np.nan
+            mean_rise_tau2 = np.mean(rise_tau2) if rise_tau2 else np.nan
+            mean_fall_tau1 = np.mean(fall_tau1) if fall_tau1 else np.nan
+            mean_fall_tau2 = np.mean(fall_tau2) if fall_tau2 else np.nan
+            
+            return {
+                &#34;rise_tau1&#34;: rise_tau1,
+                &#34;rise_tau2&#34;: rise_tau2,
+                &#34;fall_tau1&#34;: fall_tau1,
+                &#34;fall_tau2&#34;: fall_tau2,
+                &#34;rise_fit_params&#34;: rise_fit_params,
+                &#34;fall_fit_params&#34;: fall_fit_params,
+                &#34;mean_rise_tau1&#34;: mean_rise_tau1,
+                &#34;mean_rise_tau2&#34;: mean_rise_tau2,
+                &#34;mean_fall_tau1&#34;: mean_fall_tau1,
+                &#34;mean_fall_tau2&#34;: mean_fall_tau2,
+                &#34;fit_type&#34;: fit_type
+            }
+    
+    @classmethod
+    def analyze_and_fit(
+        cls, 
+        time_data: NDArray[np.float64], 
+        pl_data: NDArray[np.float64], 
+        clock_data: NDArray[np.float64], 
+        trigger_threshold: float = 2.5, 
+        plot_pulses: bool = False,
+        use_cache: bool = True,
+        fit_type: str = &#34;single&#34;
+    ) -&gt; Dict[str, Any]:
+        &#34;&#34;&#34;Perform both transition analysis and exponential fitting in one operation.
+        
+        This method combines analyze_transitions and fit_exponential_curves for efficiency.
+        
+        Parameters
+        ----------
+        time_data : np.ndarray
+            Time points
+        pl_data : np.ndarray
+            PL signal data
+        clock_data : np.ndarray
+            Clock signal data
+        trigger_threshold : float, optional
+            Threshold for clock signal edge detection, by default 2.5
+        plot_pulses : bool, optional
+            Whether to plot detailed pulse analysis, by default False
+        use_cache : bool, optional
+            Whether to use cached results, by default True
+        fit_type : str, optional
+            Type of exponential fit to use (&#34;single&#34; or &#34;double&#34;), by default &#34;single&#34;
+            
+        Returns
+        -------
+        dict
+            Combined analysis results from both transition analysis and exponential fitting
+        &#34;&#34;&#34;
+        # First perform transition analysis
+        transition_results = cls.analyze_transitions(
+            time_data, pl_data, clock_data, 
+            trigger_threshold, plot_pulses, use_cache
+        )
+        
+        # Check if we have valid transitions to fit
+        if len(transition_results.get(&#34;rise_times&#34;, [])) &gt; 0 or len(transition_results.get(&#34;fall_times&#34;, [])) &gt; 0:
+            # Perform exponential fitting
+            fit_results = cls.fit_exponential_curves(
+                time_data, pl_data, transition_results, fit_type
+            )
+            
+            # Merge results
+            transition_results.update(fit_results)
+            
+        return transition_results</code></pre>
+</details>
+<div class="desc"><p>Handles fitting operations for MPL transition data.</p>
+<p>This class provides methods for analyzing transitions in MPL data,
+including 10-90% rise/fall time analysis and exponential curve fitting.</p>
+<h2 id="methods">Methods</h2>
+<p>analyze_transitions
+Analyze PL transitions using clock signal for edge detection
+fit_exponential_curves
+Fit exponential curves to rise and fall transitions
+analyze_and_fit
+Perform both transition analysis and exponential fitting in one operation</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>_cache</code></strong> :&ensp;<code>Dict[str, Any]</code></dt>
+<dd>Cache for storing analysis results to avoid redundant calculations</dd>
+</dl></div>
+<h3>Static methods</h3>
+<dl>
+<dt id="qscope.fitting.mpl.MPLFitter.analyze_and_fit"><code class="name flex">
+<span>def <span class="ident">analyze_and_fit</span></span>(<span>time_data: numpy.ndarray[typing.Any, numpy.dtype[numpy.float64]],<br>pl_data: numpy.ndarray[typing.Any, numpy.dtype[numpy.float64]],<br>clock_data: numpy.ndarray[typing.Any, numpy.dtype[numpy.float64]],<br>trigger_threshold: float = 2.5,<br>plot_pulses: bool = False,<br>use_cache: bool = True,<br>fit_type: str = 'single') ‑> Dict[str, Any]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Perform both transition analysis and exponential fitting in one operation.</p>
+<p>This method combines analyze_transitions and fit_exponential_curves for efficiency.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>time_data</code></strong> :&ensp;<code>np.ndarray</code></dt>
+<dd>Time points</dd>
+<dt><strong><code>pl_data</code></strong> :&ensp;<code>np.ndarray</code></dt>
+<dd>PL signal data</dd>
+<dt><strong><code>clock_data</code></strong> :&ensp;<code>np.ndarray</code></dt>
+<dd>Clock signal data</dd>
+<dt><strong><code>trigger_threshold</code></strong> :&ensp;<code>float</code>, optional</dt>
+<dd>Threshold for clock signal edge detection, by default 2.5</dd>
+<dt><strong><code>plot_pulses</code></strong> :&ensp;<code>bool</code>, optional</dt>
+<dd>Whether to plot detailed pulse analysis, by default False</dd>
+<dt><strong><code>use_cache</code></strong> :&ensp;<code>bool</code>, optional</dt>
+<dd>Whether to use cached results, by default True</dd>
+<dt><strong><code>fit_type</code></strong> :&ensp;<code>str</code>, optional</dt>
+<dd>Type of exponential fit to use ("single" or "double"), by default "single"</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dict</code></dt>
+<dd>Combined analysis results from both transition analysis and exponential fitting</dd>
+</dl></div>
+</dd>
+<dt id="qscope.fitting.mpl.MPLFitter.analyze_transitions"><code class="name flex">
+<span>def <span class="ident">analyze_transitions</span></span>(<span>time_data: numpy.ndarray[typing.Any, numpy.dtype[numpy.float64]],<br>pl_data: numpy.ndarray[typing.Any, numpy.dtype[numpy.float64]],<br>clock_data: numpy.ndarray[typing.Any, numpy.dtype[numpy.float64]],<br>trigger_threshold: float = 2.5,<br>plot_pulses: bool = False,<br>use_cache: bool = True) ‑> Dict[str, Any]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Analyze PL transitions using clock signal for edge detection with full pulse width analysis.</p>
+<p>This function always calculates 10-90% rise/fall times.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>time_data</code></strong> :&ensp;<code>np.ndarray</code></dt>
+<dd>Time points</dd>
+<dt><strong><code>pl_data</code></strong> :&ensp;<code>np.ndarray</code></dt>
+<dd>PL signal data</dd>
+<dt><strong><code>clock_data</code></strong> :&ensp;<code>np.ndarray</code></dt>
+<dd>Clock signal data</dd>
+<dt><strong><code>trigger_threshold</code></strong> :&ensp;<code>float</code>, optional</dt>
+<dd>Threshold for clock signal edge detection, by default 2.5</dd>
+<dt><strong><code>plot_pulses</code></strong> :&ensp;<code>bool</code>, optional</dt>
+<dd>Whether to plot detailed pulse analysis, by default False</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dict</code></dt>
+<dd>Analysis results including:
+- rise_times: List of 10-90% rise times
+- fall_times: List of 10-90% fall times
+- contrasts: List of contrast values for each transition
+- rise_indices: Indices of rise transitions
+- fall_indices: Indices of fall transitions
+- rise_10_indices: Indices of 10% rise points
+- rise_90_indices: Indices of 90% rise points
+- fall_10_indices: Indices of 10% fall points
+- fall_90_indices: Indices of 90% fall points
+- on_segments: List of (start, end) indices for ON segments
+- off_segments: List of (start, end) indices for OFF segments</dd>
+</dl></div>
+</dd>
+<dt id="qscope.fitting.mpl.MPLFitter.clear_cache"><code class="name flex">
+<span>def <span class="ident">clear_cache</span></span>(<span>) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Clear the analysis results cache.</p>
+<p>This method should be called when memory usage is a concern
+or when fresh analysis is required regardless of input data.</p></div>
+</dd>
+<dt id="qscope.fitting.mpl.MPLFitter.double_fall_exp"><code class="name flex">
+<span>def <span class="ident">double_fall_exp</span></span>(<span>t: numpy.ndarray[typing.Any, numpy.dtype[numpy.float64]],<br>a1: float,<br>tau1: float,<br>a2: float,<br>tau2: float,<br>c: float) ‑> numpy.ndarray[typing.Any, numpy.dtype[numpy.float64]]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def double_fall_exp(
+    t: NDArray[np.float64], 
+    a1: float, 
+    tau1: float, 
+    a2: float, 
+    tau2: float, 
+    c: float
+) -&gt; NDArray[np.float64]:
+    &#34;&#34;&#34;Double exponential decay function: f(t) = a1*exp(-t/tau1) + a2*exp(-t/tau2) + c
+    
+    Parameters
+    ----------
+    t : np.ndarray
+        Time points
+    a1 : float
+        Amplitude of first component
+    tau1 : float
+        Time constant of first component
+    a2 : float
+        Amplitude of second component
+    tau2 : float
+        Time constant of second component
+    c : float
+        Offset
+        
+    Returns
+    -------
+    np.ndarray
+        Function values
+    &#34;&#34;&#34;
+    return a1 * np.exp(-t/tau1) + a2 * np.exp(-t/tau2) + c</code></pre>
+</details>
+<div class="desc"><p>Double exponential decay function: f(t) = a1<em>exp(-t/tau1) + a2</em>exp(-t/tau2) + c</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>t</code></strong> :&ensp;<code>np.ndarray</code></dt>
+<dd>Time points</dd>
+<dt><strong><code>a1</code></strong> :&ensp;<code>float</code></dt>
+<dd>Amplitude of first component</dd>
+<dt><strong><code>tau1</code></strong> :&ensp;<code>float</code></dt>
+<dd>Time constant of first component</dd>
+<dt><strong><code>a2</code></strong> :&ensp;<code>float</code></dt>
+<dd>Amplitude of second component</dd>
+<dt><strong><code>tau2</code></strong> :&ensp;<code>float</code></dt>
+<dd>Time constant of second component</dd>
+<dt><strong><code>c</code></strong> :&ensp;<code>float</code></dt>
+<dd>Offset</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>np.ndarray</code></dt>
+<dd>Function values</dd>
+</dl></div>
+</dd>
+<dt id="qscope.fitting.mpl.MPLFitter.double_rise_exp"><code class="name flex">
+<span>def <span class="ident">double_rise_exp</span></span>(<span>t: numpy.ndarray[typing.Any, numpy.dtype[numpy.float64]],<br>a1: float,<br>tau1: float,<br>a2: float,<br>tau2: float,<br>c: float) ‑> numpy.ndarray[typing.Any, numpy.dtype[numpy.float64]]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def double_rise_exp(
+    t: NDArray[np.float64], 
+    a1: float, 
+    tau1: float, 
+    a2: float, 
+    tau2: float, 
+    c: float
+) -&gt; NDArray[np.float64]:
+    &#34;&#34;&#34;Double exponential rise function: f(t) = a1*(1-exp(-t/tau1)) + a2*(1-exp(-t/tau2)) + c
+    
+    Parameters
+    ----------
+    t : np.ndarray
+        Time points
+    a1 : float
+        Amplitude of first component
+    tau1 : float
+        Time constant of first component
+    a2 : float
+        Amplitude of second component
+    tau2 : float
+        Time constant of second component
+    c : float
+        Offset
+        
+    Returns
+    -------
+    np.ndarray
+        Function values
+    &#34;&#34;&#34;
+    return a1 * (1 - np.exp(-t/tau1)) + a2 * (1 - np.exp(-t/tau2)) + c</code></pre>
+</details>
+<div class="desc"><p>Double exponential rise function: f(t) = a1<em>(1-exp(-t/tau1)) + a2</em>(1-exp(-t/tau2)) + c</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>t</code></strong> :&ensp;<code>np.ndarray</code></dt>
+<dd>Time points</dd>
+<dt><strong><code>a1</code></strong> :&ensp;<code>float</code></dt>
+<dd>Amplitude of first component</dd>
+<dt><strong><code>tau1</code></strong> :&ensp;<code>float</code></dt>
+<dd>Time constant of first component</dd>
+<dt><strong><code>a2</code></strong> :&ensp;<code>float</code></dt>
+<dd>Amplitude of second component</dd>
+<dt><strong><code>tau2</code></strong> :&ensp;<code>float</code></dt>
+<dd>Time constant of second component</dd>
+<dt><strong><code>c</code></strong> :&ensp;<code>float</code></dt>
+<dd>Offset</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>np.ndarray</code></dt>
+<dd>Function values</dd>
+</dl></div>
+</dd>
+<dt id="qscope.fitting.mpl.MPLFitter.fall_exp"><code class="name flex">
+<span>def <span class="ident">fall_exp</span></span>(<span>t: numpy.ndarray[typing.Any, numpy.dtype[numpy.float64]],<br>a: float,<br>tau: float,<br>c: float) ‑> numpy.ndarray[typing.Any, numpy.dtype[numpy.float64]]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def fall_exp(
+    t: NDArray[np.float64], 
+    a: float, 
+    tau: float, 
+    c: float
+) -&gt; NDArray[np.float64]:
+    &#34;&#34;&#34;Exponential decay function: f(t) = a * exp(-t/tau) + c
+    
+    Parameters
+    ----------
+    t : np.ndarray
+        Time points
+    a : float
+        Amplitude
+    tau : float
+        Time constant
+    c : float
+        Offset
+        
+    Returns
+    -------
+    np.ndarray
+        Function values
+    &#34;&#34;&#34;
+    return a * np.exp(-t/tau) + c</code></pre>
+</details>
+<div class="desc"><p>Exponential decay function: f(t) = a * exp(-t/tau) + c</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>t</code></strong> :&ensp;<code>np.ndarray</code></dt>
+<dd>Time points</dd>
+<dt><strong><code>a</code></strong> :&ensp;<code>float</code></dt>
+<dd>Amplitude</dd>
+<dt><strong><code>tau</code></strong> :&ensp;<code>float</code></dt>
+<dd>Time constant</dd>
+<dt><strong><code>c</code></strong> :&ensp;<code>float</code></dt>
+<dd>Offset</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>np.ndarray</code></dt>
+<dd>Function values</dd>
+</dl></div>
+</dd>
+<dt id="qscope.fitting.mpl.MPLFitter.fit_exponential_curves"><code class="name flex">
+<span>def <span class="ident">fit_exponential_curves</span></span>(<span>time_data: numpy.ndarray[typing.Any, numpy.dtype[numpy.float64]],<br>pl_data: numpy.ndarray[typing.Any, numpy.dtype[numpy.float64]],<br>transition_results: Dict[str, Any],<br>fit_type: str = 'single') ‑> Dict[str, Any]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Fit exponential curves to the rise and fall transitions.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>time_data</code></strong> :&ensp;<code>np.ndarray</code></dt>
+<dd>Time points</dd>
+<dt><strong><code>pl_data</code></strong> :&ensp;<code>np.ndarray</code></dt>
+<dd>PL signal data</dd>
+<dt><strong><code>transition_results</code></strong> :&ensp;<code>dict</code></dt>
+<dd>Results from analyze_transitions function</dd>
+<dt><strong><code>fit_type</code></strong> :&ensp;<code>str</code>, optional</dt>
+<dd>Type of exponential fit to use ("single" or "double"), by default "single"</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dict</code></dt>
+<dd>Exponential fit results including:
+- rise_tau: List of rise time constants
+- fall_tau: List of fall time constants
+- rise_fit_params: List of all fit parameters for rise transitions
+- fall_fit_params: List of all fit parameters for fall transitions
+- mean_rise_tau: Mean rise time constant
+- mean_fall_tau: Mean fall time constant
+- fit_type: Type of exponential fit used</dd>
+</dl></div>
+</dd>
+<dt id="qscope.fitting.mpl.MPLFitter.global_double_fall_exp"><code class="name flex">
+<span>def <span class="ident">global_double_fall_exp</span></span>(<span>t: numpy.ndarray[typing.Any, numpy.dtype[numpy.float64]],<br>a1: float,<br>tau1: float,<br>a2: float,<br>tau2: float,<br>c: float,<br>t0: float) ‑> numpy.ndarray[typing.Any, numpy.dtype[numpy.float64]]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def global_double_fall_exp(
+    t: NDArray[np.float64], 
+    a1: float, 
+    tau1: float, 
+    a2: float, 
+    tau2: float, 
+    c: float,
+    t0: float
+) -&gt; NDArray[np.float64]:
+    &#34;&#34;&#34;Double exponential decay function with absolute time reference
+    
+    Parameters
+    ----------
+    t : np.ndarray
+        Time points (absolute time)
+    a1 : float
+        Amplitude of first component
+    tau1 : float
+        Time constant of first component
+    a2 : float
+        Amplitude of second component
+    tau2 : float
+        Time constant of second component
+    c : float
+        Offset
+    t0 : float
+        Time offset (start time)
+        
+    Returns
+    -------
+    np.ndarray
+        Function values
+    &#34;&#34;&#34;
+    return a1 * np.exp(-(t-t0)/tau1) + a2 * np.exp(-(t-t0)/tau2) + c</code></pre>
+</details>
+<div class="desc"><p>Double exponential decay function with absolute time reference</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>t</code></strong> :&ensp;<code>np.ndarray</code></dt>
+<dd>Time points (absolute time)</dd>
+<dt><strong><code>a1</code></strong> :&ensp;<code>float</code></dt>
+<dd>Amplitude of first component</dd>
+<dt><strong><code>tau1</code></strong> :&ensp;<code>float</code></dt>
+<dd>Time constant of first component</dd>
+<dt><strong><code>a2</code></strong> :&ensp;<code>float</code></dt>
+<dd>Amplitude of second component</dd>
+<dt><strong><code>tau2</code></strong> :&ensp;<code>float</code></dt>
+<dd>Time constant of second component</dd>
+<dt><strong><code>c</code></strong> :&ensp;<code>float</code></dt>
+<dd>Offset</dd>
+<dt><strong><code>t0</code></strong> :&ensp;<code>float</code></dt>
+<dd>Time offset (start time)</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>np.ndarray</code></dt>
+<dd>Function values</dd>
+</dl></div>
+</dd>
+<dt id="qscope.fitting.mpl.MPLFitter.global_double_rise_exp"><code class="name flex">
+<span>def <span class="ident">global_double_rise_exp</span></span>(<span>t: numpy.ndarray[typing.Any, numpy.dtype[numpy.float64]],<br>a1: float,<br>tau1: float,<br>a2: float,<br>tau2: float,<br>c: float,<br>t0: float) ‑> numpy.ndarray[typing.Any, numpy.dtype[numpy.float64]]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def global_double_rise_exp(
+    t: NDArray[np.float64], 
+    a1: float, 
+    tau1: float, 
+    a2: float, 
+    tau2: float, 
+    c: float,
+    t0: float
+) -&gt; NDArray[np.float64]:
+    &#34;&#34;&#34;Double exponential rise function with absolute time reference
+    
+    Parameters
+    ----------
+    t : np.ndarray
+        Time points (absolute time)
+    a1 : float
+        Amplitude of first component
+    tau1 : float
+        Time constant of first component
+    a2 : float
+        Amplitude of second component
+    tau2 : float
+        Time constant of second component
+    c : float
+        Offset
+    t0 : float
+        Time offset (start time)
+        
+    Returns
+    -------
+    np.ndarray
+        Function values
+    &#34;&#34;&#34;
+    return a1 * (1 - np.exp(-(t-t0)/tau1)) + a2 * (1 - np.exp(-(t-t0)/tau2)) + c</code></pre>
+</details>
+<div class="desc"><p>Double exponential rise function with absolute time reference</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>t</code></strong> :&ensp;<code>np.ndarray</code></dt>
+<dd>Time points (absolute time)</dd>
+<dt><strong><code>a1</code></strong> :&ensp;<code>float</code></dt>
+<dd>Amplitude of first component</dd>
+<dt><strong><code>tau1</code></strong> :&ensp;<code>float</code></dt>
+<dd>Time constant of first component</dd>
+<dt><strong><code>a2</code></strong> :&ensp;<code>float</code></dt>
+<dd>Amplitude of second component</dd>
+<dt><strong><code>tau2</code></strong> :&ensp;<code>float</code></dt>
+<dd>Time constant of second component</dd>
+<dt><strong><code>c</code></strong> :&ensp;<code>float</code></dt>
+<dd>Offset</dd>
+<dt><strong><code>t0</code></strong> :&ensp;<code>float</code></dt>
+<dd>Time offset (start time)</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>np.ndarray</code></dt>
+<dd>Function values</dd>
+</dl></div>
+</dd>
+<dt id="qscope.fitting.mpl.MPLFitter.global_fall_exp"><code class="name flex">
+<span>def <span class="ident">global_fall_exp</span></span>(<span>t: numpy.ndarray[typing.Any, numpy.dtype[numpy.float64]],<br>a: float,<br>tau: float,<br>c: float,<br>t0: float) ‑> numpy.ndarray[typing.Any, numpy.dtype[numpy.float64]]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def global_fall_exp(
+    t: NDArray[np.float64], 
+    a: float, 
+    tau: float, 
+    c: float,
+    t0: float
+) -&gt; NDArray[np.float64]:
+    &#34;&#34;&#34;Exponential decay function with absolute time reference: f(t) = a * exp(-(t-t0)/tau) + c
+    
+    Parameters
+    ----------
+    t : np.ndarray
+        Time points (absolute time)
+    a : float
+        Amplitude
+    tau : float
+        Time constant
+    c : float
+        Offset
+    t0 : float
+        Time offset (start time)
+        
+    Returns
+    -------
+    np.ndarray
+        Function values
+    &#34;&#34;&#34;
+    return a * np.exp(-(t-t0)/tau) + c</code></pre>
+</details>
+<div class="desc"><p>Exponential decay function with absolute time reference: f(t) = a * exp(-(t-t0)/tau) + c</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>t</code></strong> :&ensp;<code>np.ndarray</code></dt>
+<dd>Time points (absolute time)</dd>
+<dt><strong><code>a</code></strong> :&ensp;<code>float</code></dt>
+<dd>Amplitude</dd>
+<dt><strong><code>tau</code></strong> :&ensp;<code>float</code></dt>
+<dd>Time constant</dd>
+<dt><strong><code>c</code></strong> :&ensp;<code>float</code></dt>
+<dd>Offset</dd>
+<dt><strong><code>t0</code></strong> :&ensp;<code>float</code></dt>
+<dd>Time offset (start time)</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>np.ndarray</code></dt>
+<dd>Function values</dd>
+</dl></div>
+</dd>
+<dt id="qscope.fitting.mpl.MPLFitter.global_rise_exp"><code class="name flex">
+<span>def <span class="ident">global_rise_exp</span></span>(<span>t: numpy.ndarray[typing.Any, numpy.dtype[numpy.float64]],<br>a: float,<br>tau: float,<br>c: float,<br>t0: float) ‑> numpy.ndarray[typing.Any, numpy.dtype[numpy.float64]]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def global_rise_exp(
+    t: NDArray[np.float64], 
+    a: float, 
+    tau: float, 
+    c: float,
+    t0: float
+) -&gt; NDArray[np.float64]:
+    &#34;&#34;&#34;Exponential rise function with absolute time reference: f(t) = a * (1 - exp(-(t-t0)/tau)) + c
+    
+    Parameters
+    ----------
+    t : np.ndarray
+        Time points (absolute time)
+    a : float
+        Amplitude
+    tau : float
+        Time constant
+    c : float
+        Offset
+    t0 : float
+        Time offset (start time)
+        
+    Returns
+    -------
+    np.ndarray
+        Function values
+    &#34;&#34;&#34;
+    return a * (1 - np.exp(-(t-t0)/tau)) + c</code></pre>
+</details>
+<div class="desc"><p>Exponential rise function with absolute time reference: f(t) = a * (1 - exp(-(t-t0)/tau)) + c</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>t</code></strong> :&ensp;<code>np.ndarray</code></dt>
+<dd>Time points (absolute time)</dd>
+<dt><strong><code>a</code></strong> :&ensp;<code>float</code></dt>
+<dd>Amplitude</dd>
+<dt><strong><code>tau</code></strong> :&ensp;<code>float</code></dt>
+<dd>Time constant</dd>
+<dt><strong><code>c</code></strong> :&ensp;<code>float</code></dt>
+<dd>Offset</dd>
+<dt><strong><code>t0</code></strong> :&ensp;<code>float</code></dt>
+<dd>Time offset (start time)</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>np.ndarray</code></dt>
+<dd>Function values</dd>
+</dl></div>
+</dd>
+<dt id="qscope.fitting.mpl.MPLFitter.rise_exp"><code class="name flex">
+<span>def <span class="ident">rise_exp</span></span>(<span>t: numpy.ndarray[typing.Any, numpy.dtype[numpy.float64]],<br>a: float,<br>tau: float,<br>c: float) ‑> numpy.ndarray[typing.Any, numpy.dtype[numpy.float64]]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def rise_exp(
+    t: NDArray[np.float64], 
+    a: float, 
+    tau: float, 
+    c: float
+) -&gt; NDArray[np.float64]:
+    &#34;&#34;&#34;Exponential rise function: f(t) = a * (1 - exp(-t/tau)) + c
+    
+    Parameters
+    ----------
+    t : np.ndarray
+        Time points
+    a : float
+        Amplitude
+    tau : float
+        Time constant
+    c : float
+        Offset
+        
+    Returns
+    -------
+    np.ndarray
+        Function values
+    &#34;&#34;&#34;
+    return a * (1 - np.exp(-t/tau)) + c</code></pre>
+</details>
+<div class="desc"><p>Exponential rise function: f(t) = a * (1 - exp(-t/tau)) + c</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>t</code></strong> :&ensp;<code>np.ndarray</code></dt>
+<dd>Time points</dd>
+<dt><strong><code>a</code></strong> :&ensp;<code>float</code></dt>
+<dd>Amplitude</dd>
+<dt><strong><code>tau</code></strong> :&ensp;<code>float</code></dt>
+<dd>Time constant</dd>
+<dt><strong><code>c</code></strong> :&ensp;<code>float</code></dt>
+<dd>Offset</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>np.ndarray</code></dt>
+<dd>Function values</dd>
+</dl></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<form>
+<input id="lunr-search" name="q" placeholder="🔎 Search ..." aria-label="Search"
+disabled minlength="2">
+</form>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.css" integrity="sha512-b+T2i3P45i1LZM7I00Ci5QquB9szqaxu+uuk5TUSGjZQ4w4n+qujQiIuvTv2BxE7WCGQCifNMksyKILDiHzsOg==" crossorigin>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.js" integrity="sha512-2B9/byNV1KKRm5nQ2RLViPFD6U4dUjDGwuW1GU+ImJh8YinPU9Zlq1GzdTMO+G2ROrB5o1qasJBy1ttYz0wCug==" crossorigin></script>
+<style>
+.modal-dialog iframe {
+width: 100vw;
+height: calc(100vh - 80px);
+}
+@media screen and (min-width: 700px) {
+.modal-dialog iframe {
+width: 70vw;
+height: 80vh;
+}
+}
+.modal-dialog .tingle-modal-box {width: auto;}
+.modal-dialog .tingle-modal-box__content {padding: 0;}
+</style>
+<script>
+const input = document.getElementById('lunr-search');
+input.disabled = false;
+input.form.addEventListener('submit', (ev) => {
+ev.preventDefault();
+const url = new URL(window.location);
+url.searchParams.set('q', input.value);
+history.replaceState({}, null, url.toString());
+search(input.value);
+});
+const query = new URL(window.location).searchParams.get('q');
+if (query)
+search(query);
+function search(query) {
+const url = '../../doc-search.html#' + encodeURIComponent(query);
+new tingle.modal({
+cssClass: ['modal-dialog'],
+onClose: () => {
+const url = new URL(window.location);
+url.searchParams.delete('q');
+history.replaceState({}, null, url.toString());
+setTimeout(() => input.focus(), 100);
+}
+}).setContent('<iframe src="' + url + '"></iframe>').open();
+}
+</script>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="qscope.fitting" href="index.html">qscope.fitting</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="qscope.fitting.mpl.MPLFitter" href="#qscope.fitting.mpl.MPLFitter">MPLFitter</a></code></h4>
+<ul class="">
+<li><code><a title="qscope.fitting.mpl.MPLFitter.analyze_and_fit" href="#qscope.fitting.mpl.MPLFitter.analyze_and_fit">analyze_and_fit</a></code></li>
+<li><code><a title="qscope.fitting.mpl.MPLFitter.analyze_transitions" href="#qscope.fitting.mpl.MPLFitter.analyze_transitions">analyze_transitions</a></code></li>
+<li><code><a title="qscope.fitting.mpl.MPLFitter.clear_cache" href="#qscope.fitting.mpl.MPLFitter.clear_cache">clear_cache</a></code></li>
+<li><code><a title="qscope.fitting.mpl.MPLFitter.double_fall_exp" href="#qscope.fitting.mpl.MPLFitter.double_fall_exp">double_fall_exp</a></code></li>
+<li><code><a title="qscope.fitting.mpl.MPLFitter.double_rise_exp" href="#qscope.fitting.mpl.MPLFitter.double_rise_exp">double_rise_exp</a></code></li>
+<li><code><a title="qscope.fitting.mpl.MPLFitter.fall_exp" href="#qscope.fitting.mpl.MPLFitter.fall_exp">fall_exp</a></code></li>
+<li><code><a title="qscope.fitting.mpl.MPLFitter.fit_exponential_curves" href="#qscope.fitting.mpl.MPLFitter.fit_exponential_curves">fit_exponential_curves</a></code></li>
+<li><code><a title="qscope.fitting.mpl.MPLFitter.global_double_fall_exp" href="#qscope.fitting.mpl.MPLFitter.global_double_fall_exp">global_double_fall_exp</a></code></li>
+<li><code><a title="qscope.fitting.mpl.MPLFitter.global_double_rise_exp" href="#qscope.fitting.mpl.MPLFitter.global_double_rise_exp">global_double_rise_exp</a></code></li>
+<li><code><a title="qscope.fitting.mpl.MPLFitter.global_fall_exp" href="#qscope.fitting.mpl.MPLFitter.global_fall_exp">global_fall_exp</a></code></li>
+<li><code><a title="qscope.fitting.mpl.MPLFitter.global_rise_exp" href="#qscope.fitting.mpl.MPLFitter.global_rise_exp">global_rise_exp</a></code></li>
+<li><code><a title="qscope.fitting.mpl.MPLFitter.rise_exp" href="#qscope.fitting.mpl.MPLFitter.rise_exp">rise_exp</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
+</footer>
+</body>
+</html>

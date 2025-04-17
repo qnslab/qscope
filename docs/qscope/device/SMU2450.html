@@ -1,0 +1,3070 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.6">
+<title>qscope.device.SMU2450 API documentation</title>
+<meta name="description" content="Class for controlling the Keithley SMU2450 SourceMeter …">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}#lunr-search{width:100%;font-size:1em;padding:6px 9px 5px 9px;border:1px solid silver}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes: true } });</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML" integrity="sha256-kZafAc6mZvK3W3v1pHOcUix30OHQN6pU/NO2oFkqZVw=" crossorigin></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>qscope.device.SMU2450</code></h1>
+</header>
+<section id="section-intro">
+<p>Class for controlling the Keithley SMU2450 SourceMeter.</p>
+<p>Uses VISA communication and SCPI commands to control the Keithley 2450.
+Implements voltage/current source and measurement capabilities with
+safety features like ramping and compliance limits.</p>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="qscope.device.SMU2450.SMU2450"><code class="flex name class">
+<span>class <span class="ident">SMU2450</span></span>
+<span>(</span><span>visa_address: str | None = None,<br>resource_manager: pyvisa.highlevel.ResourceManager | None = None)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class SMU2450(Device):
+    &#34;&#34;&#34;Keithley 2450 SourceMeter implementation.
+
+    Provides high-precision voltage/current sourcing and measurement capabilities.
+    Supports voltage/current sourcing with optional ramping, compliance limits,
+    and various measurement configurations.
+
+    Parameters
+    ----------
+    visa_address : str, optional
+        VISA resource address of the instrument.
+        If None, will attempt to find first available 2450.
+    resource_manager : pyvisa.ResourceManager, optional
+        PyVISA ResourceManager instance.
+        If None, will create one with Python backend.
+
+    Attributes
+    ----------
+    visa_address : str
+        VISA address of the connected device
+    rm : pyvisa.ResourceManager
+        PyVISA resource manager instance
+    inst : pyvisa.Resource
+        PyVISA resource instance for device communication
+    _nplc : float
+        Integration time in power line cycles (0.01 to 10)
+    _auto_zero : bool
+        Auto-zero setting state
+    _source_delay : float
+        Delay after setting source value in seconds
+    _mode : str
+        Current source mode (&#34;voltage&#34; or &#34;current&#34;)
+    _output_enabled : bool
+        Current output state
+    &#34;&#34;&#34;
+
+    def __init__(
+        self,
+        visa_address: Optional[str] = None,
+        resource_manager: Optional[pyvisa.ResourceManager] = None,
+    ):
+        &#34;&#34;&#34;Initialize SMU2450 device.
+
+        Args:
+            visa_address: Optional VISA resource address of the instrument.
+                         If None, will attempt to find first available 2450.
+            resource_manager: Optional PyVISA ResourceManager instance.
+                            If None, will create one with Python backend.
+        &#34;&#34;&#34;
+        super().__init__()
+        # Store the resource manager reference
+        self.rm = resource_manager
+        self.inst = None
+        self._owns_rm = False  # Track if we created our own resource manager
+
+        # Create resource manager if none provided
+        if self.rm is None:
+            self.rm = pyvisa.ResourceManager()
+            self._owns_rm = True  # We created it, so we should close it
+
+        if visa_address is None:
+            # Try cached address first
+            cached_addr = get_cached_address(&#34;smu2450&#34;)
+            if cached_addr:
+                try:
+                    # Quick test if device at cached address is available
+                    inst = self.rm.open_resource(cached_addr)
+                    idn = inst.query(&#34;*IDN?&#34;)
+                    if &#34;MODEL 2450&#34; in idn:
+                        self.visa_address = cached_addr
+                        inst.close()
+                        logger.debug(f&#34;Using cached SMU address: {cached_addr}&#34;)
+                        return
+                except Exception:
+                    logger.trace(&#34;Cached address not valid, falling back to discovery&#34;)
+
+            # Fall back to discovery if cache miss or invalid
+            devices = list_visa_devices(
+                model_filter=&#34;MODEL 2450&#34;, detailed=False, resource_manager=self.rm
+            )
+            if not devices:
+                raise RuntimeError(&#34;No Keithley 2450 devices found&#34;)
+            self.visa_address = next(iter(devices.keys()))
+            # Cache the discovered address
+            update_cached_address(&#34;smu2450&#34;, self.visa_address)
+            logger.info(
+                f&#34;Auto-discovered Keithley 2450 at {self.visa_address}: {devices[self.visa_address]}&#34;
+            )
+        else:
+            self.visa_address = visa_address
+            # Cache explicitly provided address
+            update_cached_address(&#34;smu2450&#34;, self.visa_address)
+
+        # Configuration settings
+        self._nplc = DEFAULT_NPLC
+        self._auto_zero = DEFAULT_AUTO_ZERO
+        self._source_delay = DEFAULT_SOURCE_DELAY
+
+        # Current state
+        self._mode: Optional[str] = None
+        self._output_enabled = False
+
+    def _check_error(self) -&gt; None:
+        &#34;&#34;&#34;Check for device errors and raise if found.&#34;&#34;&#34;
+        error = self._communicate(&#34;SYST:ERR?&#34;, query=True, check_errors=False)
+        if not error.startswith(&#34;0&#34;):
+            raise RuntimeError(f&#34;Device error: {error}&#34;)
+
+    def _handle_error(self, action: str, e: Exception) -&gt; None:
+        &#34;&#34;&#34;Centralized error handling with logging.&#34;&#34;&#34;
+        logger.error(f&#34;Error during {action}: {e}&#34;)
+        self.abort()  # Safe abort on errors
+        raise RuntimeError(f&#34;{action} failed: {str(e)}&#34;)
+
+    def _recover_from_pipe_error(self) -&gt; bool:
+        &#34;&#34;&#34;Attempt to recover from a pipe error by resetting communication.
+        
+        Returns
+        -------
+        bool
+            True if recovery was successful, False otherwise
+        &#34;&#34;&#34;
+        logger.trace(&#34;Attempting to recover from pipe error&#34;)
+        
+        # Define recovery steps
+        recovery_steps = [
+            lambda: self._close_connection(),
+            lambda: time.sleep(0.5),  # Shorter wait time
+            lambda: self._recreate_resource_manager(),
+            lambda: self._open_connection(),
+            lambda: self._reset_device(),
+            lambda: self._verify_connection()
+        ]
+        
+        # Try recovery sequence up to 2 times
+        for attempt in range(2):
+            try:
+                # Execute each recovery step
+                for step in recovery_steps:
+                    step()
+                
+                # If we get here, recovery was successful
+                logger.trace(&#34;Successfully recovered from pipe error&#34;)
+                return True
+                
+            except Exception as e:
+                logger.trace(f&#34;Recovery attempt {attempt + 1} failed: {e}&#34;)
+                time.sleep(1.0)  # Wait between attempts
+        
+        logger.error(&#34;All recovery attempts failed&#34;)
+        return False
+        
+    def _close_connection(self) -&gt; None:
+        &#34;&#34;&#34;Close the current connection safely.&#34;&#34;&#34;
+        if self.inst:
+            try:
+                self.inst.close()
+            except Exception:
+                pass
+            self.inst = None
+            
+    def _recreate_resource_manager(self) -&gt; None:
+        &#34;&#34;&#34;Recreate the resource manager if we own it.&#34;&#34;&#34;
+        if self._owns_rm:
+            self.rm = pyvisa.ResourceManager()
+            
+    def _open_connection(self) -&gt; None:
+        &#34;&#34;&#34;Open a new connection to the device.&#34;&#34;&#34;
+        self.inst = self.rm.open_resource(self.visa_address)
+        self.inst.timeout = 5000  # Longer timeout during recovery
+        
+    def _reset_device(self) -&gt; None:
+        &#34;&#34;&#34;Reset the device to a known state.&#34;&#34;&#34;
+        self.inst.write(&#34;*RST&#34;)
+        time.sleep(0.2)
+        self.inst.write(&#34;*CLS&#34;)
+        time.sleep(0.2)
+        
+    def _verify_connection(self) -&gt; None:
+        &#34;&#34;&#34;Verify the connection is working properly.&#34;&#34;&#34;
+        response = self.inst.query(&#34;*IDN?&#34;)
+        if &#34;MODEL 2450&#34; not in response:
+            raise RuntimeError(&#34;Device identification failed&#34;)
+        self.inst.timeout = 2000  # Reset to normal timeout
+
+    def _communicate(self, command: str, query: bool = False, check_errors: bool = False, 
+                    description: str = None) -&gt; Optional[str]:
+        &#34;&#34;&#34;Unified communication method with error handling and recovery.
+        
+        Parameters
+        ----------
+        command : str
+            Command to send to the device
+        query : bool
+            Whether this is a query command
+        check_errors : bool
+            Whether to check for device errors after command execution
+        description : str
+            Human-readable description of what this command does
+            
+        Returns
+        -------
+        Optional[str]
+            Response string if query=True, None otherwise
+            
+        Raises
+        ------
+        RuntimeError
+            If the device is not connected or command execution fails
+            If check_errors=True and the command results in a device error
+        &#34;&#34;&#34;
+        if not self.inst:
+            raise RuntimeError(ERROR_MESSAGES[&#34;not_connected&#34;])
+
+        max_retries = 2
+        for attempt in range(max_retries):
+            try:
+                logger.trace(f&#34;{&#39;Querying&#39; if query else &#39;Writing&#39;}: {command}&#34;)
+                if query:
+                    time.sleep(0.02)  # Reduced delay before queries
+                    result = self.inst.query(command).strip()
+                    logger.trace(f&#34;Query result: {result}&#34;)
+                    
+                    # Check for errors if requested
+                    if check_errors:
+                        error = self.inst.query(&#34;SYST:ERR?&#34;).strip()
+                        if not error.startswith(&#34;0&#34;):
+                            cmd_desc = f&#34; ({description})&#34; if description else &#34;&#34;
+                            raise RuntimeError(f&#34;Error executing query{cmd_desc}: {command}\nDevice error: {error}&#34;)
+                    
+                    return result
+                else:
+                    self.inst.write(command)
+                    time.sleep(0.01)  # Reduced delay after writes
+                    logger.trace(f&#34;Command write successful&#34;)
+                    
+                    # Check for errors if requested
+                    if check_errors:
+                        error = self.inst.query(&#34;SYST:ERR?&#34;).strip()
+                        if not error.startswith(&#34;0&#34;):
+                            cmd_desc = f&#34; ({description})&#34; if description else &#34;&#34;
+                            raise RuntimeError(f&#34;Error executing command{cmd_desc}: {command}\nDevice error: {error}&#34;)
+                    
+                    return None
+
+            except Exception as e:
+                logger.trace(f&#34;Communication error with command {command}: {str(e)}&#34;)
+
+                if &#34;Pipe&#34; in str(e) and attempt &lt; max_retries - 1:
+                    logger.trace(&#34;Pipe error detected, attempting recovery&#34;)
+                    if self._recover_from_pipe_error():
+                        logger.trace(&#34;Recovery successful, retrying command&#34;)
+                        continue
+
+                self._handle_error(f&#34;{&#39;query&#39; if query else &#39;command&#39;} {command}&#34;, e)
+    
+    def _communicate_with_check(self, command: str, query: bool = False, description: str = None) -&gt; Optional[str]:
+        &#34;&#34;&#34;Execute a command and immediately check for errors.
+        
+        This is a convenience wrapper around _communicate with check_errors=True.
+        
+        Parameters
+        ----------
+        command : str
+            Command to send to the device
+        query : bool
+            Whether this is a query command
+        description : str
+            Human-readable description of what this command does
+            
+        Returns
+        -------
+        Optional[str]
+            Response string if query=True, None otherwise
+        &#34;&#34;&#34;
+        return self._communicate(command, query=query, check_errors=True, description=description)
+
+    def check_compliance(self) -&gt; bool:
+        &#34;&#34;&#34;Check if device is in compliance (limit reached).&#34;&#34;&#34;
+        try:
+            if not self.inst:
+                return False
+
+            # First check if output is even enabled
+            if not self.get_output_state():
+                return False
+
+            # Get current mode and appropriate command
+            mode = self.get_mode()
+            if mode == &#34;voltage&#34;:
+                cmd = &#34;:SOUR:VOLT:ILIM:TRIP?&#34;
+            else:
+                cmd = &#34;:SOUR:CURR:VLIM:TRIP?&#34;
+
+            # Query compliance state without error checking (to avoid false errors)
+            try:
+                result = self._communicate(cmd, query=True, check_errors=False)
+                return bool(int(result))
+            except Exception as e:
+                logger.trace(f&#34;Compliance check failed with command {cmd}: {e}&#34;)
+                # Try alternative compliance check method
+                status = self._communicate(&#34;:STAT:OPER:COND?&#34;, query=True, check_errors=False)
+                return bool(int(status) &amp; 0x0800)  # Check compliance bit
+
+        except Exception as e:
+            logger.trace(f&#34;Compliance check failed: {e}&#34;)
+            return False  # Return False on any error to avoid false positives
+
+    def _ramp_value(
+        self, start: float, target: float, ramp_rate: float, set_func
+    ) -&gt; None:
+        &#34;&#34;&#34;Ramp a value smoothly with adaptive timing.
+
+        Args:
+            start: Starting value
+            target: Target value
+            ramp_rate: Rate of change per second
+            set_func: Function to set the value
+
+        Raises:
+            ValueError: If ramp_rate is not positive
+            RuntimeError: If compliance limit reached or other error occurs
+        &#34;&#34;&#34;
+        if ramp_rate &lt;= 0:
+            raise ValueError(&#34;Ramp rate must be positive&#34;)
+
+        # Calculate optimal step parameters based on ramp rate
+        delta = abs(target - start)
+        min_step_time = 0.02  # Reduced minimum step time
+        max_step_time = 0.1  # Maximum step time
+
+        # Calculate number of steps based on ramp rate and timing constraints
+        ideal_time = delta / ramp_rate
+        n_steps = max(
+            min(
+                int(ideal_time / min_step_time),  # Steps based on min time
+                int(delta * 20),  # Max 20 steps per unit change
+            ),
+            5,  # Minimum 5 steps for smooth ramping
+        )
+
+        # Generate step values with smaller steps near endpoints
+        t = np.linspace(0, 1, n_steps)
+        # Use smooth sigmoid-like function for step sizes
+        smoothing = 0.5 * (1 - np.cos(np.pi * t))
+        values = start + (target - start) * smoothing
+
+        # Calculate timing
+        step_times = np.diff(smoothing) * delta / ramp_rate
+
+        start_time = time.time()
+        next_check_time = start_time
+        check_interval = max(
+            min_step_time * 2, ideal_time / 10
+        )  # Dynamic compliance check interval
+
+        try:
+            for i, (val, step_time) in enumerate(zip(values, np.append(step_times, 0))):
+                current_time = time.time()
+
+                # Set value
+                set_func(val)
+
+                # Check compliance on a time basis rather than step count
+                if current_time &gt;= next_check_time:
+                    if self.check_compliance():
+                        raise RuntimeError(f&#34;Compliance limit reached at {val}&#34;)
+                    next_check_time = current_time + check_interval
+
+                # Adaptive timing adjustment
+                elapsed = time.time() - current_time
+                if step_time &gt; elapsed:
+                    sleep_time = min(max_step_time, step_time - elapsed)
+                    if sleep_time &gt; 0.001:  # Only sleep for meaningful intervals
+                        time.sleep(sleep_time)
+
+        except Exception as e:
+            logger.error(f&#34;Error during ramp: {e}&#34;)
+            self.abort()
+            raise RuntimeError(f&#34;Ramp failed: {str(e)}&#34;)
+
+    def configure(
+        self,
+        nplc: Optional[float] = None,
+        auto_zero: Optional[bool] = None,
+        source_delay: Optional[float] = None,
+        voltage_range: Optional[float] = None,
+        current_range: Optional[float] = None,
+    ) -&gt; None:
+        &#34;&#34;&#34;Configure measurement settings.
+
+        Args:
+            nplc: Integration time in power line cycles (0.01 to 10)
+            auto_zero: Enable/disable auto-zero functionality
+            source_delay: Delay after setting source value, in seconds
+            voltage_range: Voltage measurement range (0 for auto-range)
+            current_range: Current measurement range (0 for auto-range)
+        &#34;&#34;&#34;
+        if not self.inst:
+            raise RuntimeError(&#34;Device not connected&#34;)
+
+        original_timeout = self.inst.timeout
+        try:
+            # Longer timeout for configuration
+            self.inst.timeout = 10000  # 10 seconds
+
+            if nplc is not None:
+                if not 0.01 &lt;= nplc &lt;= 10:
+                    raise ValueError(&#34;NPLC must be between 0.01 and 10&#34;)
+                self._communicate(f&#34;:SENS:CURR:NPLC {nplc}&#34;)
+                self._communicate(f&#34;:SENS:VOLT:NPLC {nplc}&#34;)
+                error = self._communicate(&#34;SYST:ERR?&#34;, query=True)
+                if not error.startswith(&#34;0&#34;):
+                    raise RuntimeError(f&#34;NPLC setting failed: {error}&#34;)
+                self._nplc = nplc
+
+            if auto_zero is not None:
+                self._communicate(f&#34;:SYST:AZER {&#39;ON&#39; if auto_zero else &#39;OFF&#39;}&#34;)
+                error = self._communicate(&#34;SYST:ERR?&#34;, query=True)
+                if not error.startswith(&#34;0&#34;):
+                    raise RuntimeError(f&#34;Auto-zero setting failed: {error}&#34;)
+                self._auto_zero = auto_zero
+
+            if source_delay is not None:
+                if source_delay &lt; 0:
+                    raise ValueError(&#34;Source delay cannot be negative&#34;)
+                self._communicate(f&#34;:SOUR:DEL {source_delay}&#34;)
+                error = self._communicate(&#34;SYST:ERR?&#34;, query=True)
+                if not error.startswith(&#34;0&#34;):
+                    raise RuntimeError(f&#34;Source delay setting failed: {error}&#34;)
+                self._source_delay = source_delay
+
+            if voltage_range is not None:
+                if voltage_range == 0:
+                    self._communicate(&#34;:SENS:VOLT:RANG:AUTO ON&#34;)
+                    error = self._communicate(&#34;SYST:ERR?&#34;, query=True)
+                    if not error.startswith(&#34;0&#34;):
+                        raise RuntimeError(&#34;Voltage auto-range setting failed: {error}&#34;)
+                else:
+                    self._communicate(&#34;:SENS:VOLT:RANG:AUTO OFF&#34;)
+                    self._communicate(f&#34;:SENS:VOLT:RANG {abs(voltage_range)}&#34;)
+                    error = self._communicate(&#34;SYST:ERR?&#34;, query=True)
+                    if not error.startswith(&#34;0&#34;):
+                        raise RuntimeError(f&#34;Voltage range setting failed: {error}&#34;)
+
+            if current_range is not None:
+                if current_range == 0:
+                    self._communicate(&#34;:SENS:CURR:RANG:AUTO ON&#34;)
+                else:
+                    self._communicate(&#34;:SENS:CURR:RANG:AUTO OFF&#34;)
+                    self._communicate(f&#34;:SENS:CURR:RANG {abs(current_range)}&#34;)
+                error = self._communicate(&#34;SYST:ERR?&#34;, query=True)
+                if not error.startswith(&#34;0&#34;):
+                    raise RuntimeError(f&#34;Current range setting failed: {error}&#34;)
+        finally:
+            self.inst.timeout = original_timeout
+
+    def open(self) -&gt; None:
+        &#34;&#34;&#34;Open connection to the instrument and configure defaults.&#34;&#34;&#34;
+        try:
+            self.inst = self.rm.open_resource(self.visa_address)
+            self.inst.timeout = 2000  # 2 second timeout
+
+            # Set proper termination characters
+            self.inst.read_termination = &#34;\n&#34;
+            self.inst.write_termination = &#34;\n&#34;
+
+            # Basic initialization sequence
+            idn = self._communicate(&#34;*IDN?&#34;, query=True, check_errors=True)
+            if &#34;MODEL 2450&#34; not in idn:
+                raise RuntimeError(f&#34;Unexpected device ID: {idn}&#34;)
+
+            # Basic configuration
+            self._communicate(&#34;*RST&#34;, check_errors=True)  # Reset
+            time.sleep(0.1)
+            self._communicate(&#34;*CLS&#34;, check_errors=True)  # Clear status
+            time.sleep(0.1)
+
+            # Basic configuration - standard safe state
+            self._communicate(&#34;:SOUR:FUNC VOLT&#34;, check_errors=True)  # Start in voltage source mode
+            self._communicate(&#34;:SOUR:VOLT:RANG 20&#34;, check_errors=True)  # Set to 20V range for safety
+            self._communicate(&#34;:SOUR:VOLT:ILIM 0.5&#34;, check_errors=True)  # Set 500mA compliance
+            self._communicate(&#39;:SENS:FUNC &#34;CURR&#34;&#39;, check_errors=True)  # Measure current
+            self._communicate(&#34;:SENS:CURR:RANG 1.05&#34;, check_errors=True)  # Set to max current range
+            self._communicate(&#34;:SENS:CURR:NPLC 1&#34;, check_errors=True)  # Set integration time
+            self._communicate(&#34;:OUTP OFF&#34;, check_errors=True)  # Ensure output is off
+
+            self._mode = &#34;voltage&#34;  # Set initial mode
+
+        except Exception as e:
+            if self.inst:
+                try:
+                    self.inst.close()
+                except:
+                    pass
+                self.inst = None
+            raise RuntimeError(f&#34;Failed to connect to instrument: {str(e)}&#34;)
+
+    def close(self) -&gt; None:
+        &#34;&#34;&#34;Safely close connection to the instrument.&#34;&#34;&#34;
+        if self.inst:
+            try:
+                self.zero_output()  # Safely return to zero
+                self._communicate(&#34;:OUTP OFF&#34;)
+                self.inst.close()
+            except Exception as e:
+                logger.error(f&#34;Error closing instrument: {e}&#34;)
+            finally:
+                self.inst = None
+
+        # Only close the resource manager if we created it
+        if self._owns_rm and self.rm:
+            try:
+                self.rm.close()
+            except Exception as e:
+                logger.error(f&#34;Error closing resource manager: {e}&#34;)
+            finally:
+                self.rm = None
+                self._owns_rm = False
+
+    def _measure_point(
+        self, mode: str, value: float, delay: float
+    ) -&gt; Tuple[float, float]:
+        &#34;&#34;&#34;Measure a single point in the sweep.&#34;&#34;&#34;
+        if mode == &#34;voltage&#34;:
+            self._communicate(f&#34;:SOUR:VOLT {value}&#34;)
+        else:
+            self._communicate(f&#34;:SOUR:CURR {value}&#34;)
+        time.sleep(delay)
+
+        # Measure source value and the complementary measurement
+        if mode == &#34;voltage&#34;:
+            source_val = float(self._communicate(&#34;:MEAS:VOLT?&#34;, query=True))
+            meas_val = float(self._communicate(&#34;:MEAS:CURR?&#34;, query=True))
+        else:
+            source_val = float(self._communicate(&#34;:MEAS:CURR?&#34;, query=True))
+            meas_val = float(self._communicate(&#34;:MEAS:VOLT?&#34;, query=True))
+            
+        return source_val, meas_val
+
+    def measure_iv_curve(
+        self,
+        start: float,
+        stop: float,
+        points: int,
+        delay: float = 0.1,
+        sweep_type: Literal[&#34;linear&#34;, &#34;log&#34;] = &#34;linear&#34;,
+        bidirectional: bool = False,
+    ) -&gt; Tuple[list[float], list[float]]:
+        &#34;&#34;&#34;Perform an I-V curve measurement.&#34;&#34;&#34;
+        if not self.inst:
+            raise RuntimeError(&#34;Device not connected&#34;)
+
+        mode = self.get_mode()
+        source_vals = []
+        meas_vals = []
+
+        try:
+            # Enable output before starting sweep
+            self.set_output_state(True)
+
+            # Generate source values
+            if sweep_type == &#34;linear&#34;:
+                forward = np.linspace(start, stop, points)
+                if bidirectional:
+                    backward = np.linspace(stop, start, points)
+                    values = np.concatenate([forward, backward])
+                else:
+                    values = forward
+            else:
+                forward = np.logspace(
+                    np.log10(abs(start)), np.log10(abs(stop)), points
+                ) * np.sign(start)
+                if bidirectional:
+                    backward = np.logspace(
+                        np.log10(abs(stop)), np.log10(abs(start)), points
+                    ) * np.sign(stop)
+                    values = np.concatenate([forward, backward])
+                else:
+                    values = forward
+
+            # Measure point by point
+            for val in values:
+                source, meas = self._measure_point(mode, val, delay)
+                source_vals.append(source)
+                meas_vals.append(meas)
+
+                # Check compliance periodically
+                if self.check_compliance():
+                    raise RuntimeError(&#34;Compliance limit reached during measurement&#34;)
+
+            return source_vals, meas_vals
+
+        except Exception as e:
+            self.abort()  # Safely abort on any error
+            raise RuntimeError(f&#34;IV curve measurement failed: {str(e)}&#34;)
+
+    def set_mode(self, mode: Literal[&#34;voltage&#34;, &#34;current&#34;]) -&gt; None:
+        &#34;&#34;&#34;Set the source mode.
+
+        Args:
+            mode: Either &#34;voltage&#34; for voltage source mode or &#34;current&#34; for current source mode
+
+        Raises:
+            ValueError: If mode is not &#34;voltage&#34; or &#34;current&#34;
+            RuntimeError: If device is not connected
+        &#34;&#34;&#34;
+        if mode not in [&#34;voltage&#34;, &#34;current&#34;]:
+            raise ValueError(&#39;Mode must be either &#34;voltage&#34; or &#34;current&#34;&#39;)
+
+        func = &#34;VOLT&#34; if mode == &#34;voltage&#34; else &#34;CURR&#34;
+        self._communicate(f&#34;:SOUR:FUNC {func}&#34;)
+        time.sleep(0.1)
+        self._check_error()
+        self._mode = mode
+
+    def set_voltage(self, voltage: float, ramp_rate: Optional[float] = None) -&gt; None:
+        &#34;&#34;&#34;Set output voltage, optionally ramping to target.
+
+        Args:
+            voltage: Target voltage in volts (-20V to +20V)
+            ramp_rate: Optional ramp rate in V/s. If None, sets immediately.
+
+        Raises:
+            RuntimeError: If device not connected
+            ValueError: If voltage outside valid range
+        &#34;&#34;&#34;
+        if not -20 &lt;= voltage &lt;= 20:
+            raise ValueError(
+                f&#34;Voltage {voltage}V outside instrument range (-20V to +20V)&#34;
+            )
+
+        try:
+            if ramp_rate is not None:
+                current = float(self._communicate(&#34;:SOUR:VOLT?&#34;, query=True))
+                self._ramp_value(
+                    current,
+                    voltage,
+                    ramp_rate,
+                    lambda v: self._communicate(f&#34;:SOUR:VOLT {v}&#34;),
+                )
+            else:
+                self._communicate(f&#34;:SOUR:VOLT {voltage}&#34;)
+
+            # Add settling time and verification
+            time.sleep(0.1)
+
+            # Verify voltage was set correctly
+            attempts = 3
+            for _ in range(attempts):
+                try:
+                    actual = float(self._communicate(&#34;:SOUR:VOLT?&#34;, query=True))
+                    if abs(actual - voltage) &lt; 0.01:  # Within 10mV
+                        return
+                    time.sleep(0.1)
+                except Exception as e:
+                    logger.trace(f&#34;Voltage verification attempt failed: {e}&#34;)
+                    time.sleep(0.1)
+
+            raise RuntimeError(&#34;Failed to verify voltage setting&#34;)
+
+        except Exception as e:
+            self._handle_error(f&#34;setting voltage to {voltage}V&#34;, e)
+
+    def set_current(
+        self,
+        current: float,
+        ramp_rate: Optional[float] = None,
+        fast: Optional[bool] = False,
+    ) -&gt; None:
+        &#34;&#34;&#34;Set output current, optionally ramping to target.
+
+        Args:
+            current: Target current in amps (-1.05A to +1.05A)
+            ramp_rate: Optional ramp rate in A/s. If None, sets immediately.
+
+        Raises:
+            RuntimeError: If device not connected
+            ValueError: If current outside valid range
+        &#34;&#34;&#34;
+        if not -1.05 &lt;= current &lt;= 1.05:
+            raise ValueError(
+                f&#34;Current {current}A outside instrument range (-1.05A to +1.05A)&#34;
+            )
+
+        try:
+            if ramp_rate is not None:
+                current_val = float(self._communicate(&#34;:SOUR:CURR?&#34;, query=True))
+                self._ramp_value(
+                    current_val,
+                    current,
+                    ramp_rate,
+                    lambda i: self._communicate(f&#34;:SOUR:CURR {i}&#34;),
+                )
+            else:
+                self._communicate(f&#34;:SOUR:CURR {current}&#34;)
+
+            if not fast:
+                # Add settling time and verification
+                time.sleep(0.05)
+                actual = float(self._communicate(&#34;:SOUR:CURR?&#34;, query=True))
+                if abs(actual - current) &gt; 0.001:  # Within 1mA
+                    raise RuntimeError(
+                        f&#34;Failed to verify current setting: got {actual}A, expected {current}A&#34;
+                    )
+
+        except Exception as e:
+            self._handle_error(f&#34;setting current to {current}A&#34;, e)
+
+    def set_compliance(self, value: float) -&gt; None:
+        &#34;&#34;&#34;Set compliance limit based on current mode.
+
+        In voltage source mode, sets current compliance.
+        In current source mode, sets voltage compliance.
+
+        Args:
+            value: Compliance limit value
+
+        Raises:
+            RuntimeError: If device not connected
+        &#34;&#34;&#34;
+        mode = self.get_mode()
+        if mode == &#34;voltage&#34;:
+            self._communicate(f&#34;:SOUR:VOLT:ILIM {value}&#34;)
+        else:
+            self._communicate(f&#34;:SOUR:CURR:VLIM {value}&#34;)
+        error = self._communicate(&#34;SYST:ERR?&#34;, query=True)
+        if not error.startswith(&#34;0&#34;):
+            raise RuntimeError(f&#34;Error setting compliance limit: {error}&#34;)
+
+    def set_output_state(self, state: bool) -&gt; None:
+        &#34;&#34;&#34;Enable or disable the output.
+
+        Args:
+            state: True to enable output, False to disable
+
+        Raises:
+            RuntimeError: If device not connected
+        &#34;&#34;&#34;
+        self._communicate(f&#34;:OUTP {1 if state else 0}&#34;)
+        time.sleep(0.1)
+        self._check_error()
+        self._output_enabled = state
+
+    def get_voltage(self) -&gt; float:
+        &#34;&#34;&#34;Get the present output voltage.
+
+        Returns:
+            float: Present voltage in volts
+
+        Raises:
+            RuntimeError: If device not connected
+        &#34;&#34;&#34;
+        return float(self._communicate(&#34;:MEAS:VOLT?&#34;, query=True))
+
+    def get_current(self) -&gt; float:
+        &#34;&#34;&#34;Get the present output current.
+
+        Returns:
+            float: Present current in amps
+
+        Raises:
+            RuntimeError: If device not connected
+        &#34;&#34;&#34;
+        return float(self._communicate(&#34;:MEAS:CURR?&#34;, query=True))
+
+    def get_output_state(self) -&gt; bool:
+        &#34;&#34;&#34;Get the present output state.
+
+        Returns:
+            bool: True if output enabled, False if disabled
+
+        Raises:
+            RuntimeError: If device not connected
+        &#34;&#34;&#34;
+        result = self._communicate(&#34;:OUTP?&#34;, query=True)
+        return bool(int(result))
+
+    def get_mode(self) -&gt; str:
+        &#34;&#34;&#34;Get the present source mode.
+
+        Returns
+        -------
+        str
+            Either &#34;voltage&#34; or &#34;current&#34;
+
+        Raises
+        ------
+        RuntimeError
+            If device not connected
+        &#34;&#34;&#34;
+        func = self._communicate(&#34;:SOUR:FUNC?&#34;, query=True).strip(&#39;&#34;&#39;)
+        return &#34;voltage&#34; if func == &#34;VOLT&#34; else &#34;current&#34;
+
+    def abort(self) -&gt; None:
+        &#34;&#34;&#34;Abort any ongoing operations safely.&#34;&#34;&#34;
+        if not self.inst:
+            return
+            
+        logger.trace(&#34;Attempting abort sequence&#34;)
+        
+        # Define critical commands to execute in sequence
+        commands = [
+            (&#34;ABOR&#34;, &#34;abort command&#34;),
+            (&#34;TRIG:LOAD:EMPTY&#34;, &#34;reset trigger model&#34;),
+            (&#34;:OUTP OFF&#34;, &#34;disable output&#34;)
+        ]
+        
+        # Execute each command with basic error handling
+        for cmd, description in commands:
+            try:
+                self.inst.write(cmd)
+                time.sleep(0.05)  # Shorter delay between commands
+                logger.trace(f&#34;Executed {description}&#34;)
+            except Exception as e:
+                logger.warning(f&#34;Error during {description}: {e}&#34;)
+                # Continue with next command even if this one failed
+        
+        # Final emergency output disable if needed
+        try:
+            self.inst.write(&#34;:OUTP OFF&#34;)
+        except Exception:
+            pass
+            
+        logger.trace(&#34;Abort sequence completed&#34;)
+
+    def zero_output(self) -&gt; None:
+        &#34;&#34;&#34;Safely return output to zero.
+
+        Ramps the output to zero and disables it.
+        &#34;&#34;&#34;
+        logger.trace(&#34;Attempting zero_output&#34;)
+        try:
+            # Simpler zero sequence
+            logger.trace(&#34;Setting voltage to 0&#34;)
+            self.inst.write(&#34;:SOUR:VOLT 0&#34;)
+            time.sleep(0.1)
+            logger.trace(&#34;Disabling output&#34;)
+            self.inst.write(&#34;:OUTP 0&#34;)
+            time.sleep(0.1)
+            logger.trace(&#34;zero_output completed successfully&#34;)
+        except Exception as e:
+            logger.error(f&#34;Error during zero_output: {e}&#34;)
+            try:
+                logger.trace(&#34;Attempting emergency output disable&#34;)
+                self.inst.write(&#34;:OUTP 0&#34;)  # One last try to disable output
+                logger.trace(&#34;Emergency disable successful&#34;)
+            except Exception as e2:
+                logger.error(f&#34;Emergency disable failed: {e2}&#34;)
+
+    def get_compliance_limit(self) -&gt; float:
+        &#34;&#34;&#34;Get the current compliance limit.
+
+        Returns:
+            float: Current compliance limit (current in voltage mode, voltage in current mode)
+        &#34;&#34;&#34;
+        mode = self.get_mode()
+        if mode == &#34;voltage&#34;:
+            result = self._communicate(&#34;:SOUR:VOLT:ILIM?&#34;, query=True)
+            error = self._communicate(&#34;SYST:ERR?&#34;, query=True)
+            if not error.startswith(&#34;0&#34;):
+                raise RuntimeError(f&#34;Error getting voltage compliance: {error}&#34;)
+            return float(result)
+        else:
+            result = self._communicate(&#34;:SOUR:CURR:VLIM?&#34;, query=True)
+            error = self._communicate(&#34;SYST:ERR?&#34;, query=True)
+            if not error.startswith(&#34;0&#34;):
+                raise RuntimeError(f&#34;Error getting current compliance: {error}&#34;)
+            return float(result)
+
+    def is_remote(self) -&gt; bool:
+        &#34;&#34;&#34;Check if device is in remote control mode.
+
+        Returns:
+            bool: True if in remote mode, False if in local mode
+        &#34;&#34;&#34;
+        result = self._communicate(&#34;:SYST:REM?&#34;, query=True)
+        error = self._communicate(&#34;SYST:ERR?&#34;, query=True)
+        if not error.startswith(&#34;0&#34;):
+            raise RuntimeError(f&#34;Error checking remote mode: {error}&#34;)
+        return bool(int(result))
+
+    def set_local(self) -&gt; None:
+        &#34;&#34;&#34;Return control to front panel.&#34;&#34;&#34;
+        self._communicate(&#34;:SYST:LOC&#34;)
+        error = self._communicate(&#34;SYST:ERR?&#34;, query=True)
+        if not error.startswith(&#34;0&#34;):
+            raise RuntimeError(f&#34;Error setting local mode: {error}&#34;)
+
+    def get_ranges(self) -&gt; Dict[str, Tuple[float, float]]:
+        &#34;&#34;&#34;Get available ranges for voltage and current.
+
+        Returns:
+            Dict with &#39;voltage&#39; and &#39;current&#39; keys mapping to (min, max) tuples
+        &#34;&#34;&#34;
+        # 2450 ranges from datasheet
+        return {
+            &#34;voltage&#34;: (-20.0, 20.0),
+            &#34;current&#34;: (-1.05, 1.05),  # ±1.05A DC, ±1.0A pulse
+        }
+
+    def get_mode_state(self) -&gt; str:
+        &#34;&#34;&#34;Get current source mode (&#34;voltage&#34; or &#34;current&#34;).&#34;&#34;&#34;
+        return self._mode
+
+    def get_output_enabled(self) -&gt; bool:
+        &#34;&#34;&#34;Get current output state.&#34;&#34;&#34;
+        return self._output_enabled
+
+    def get_nplc(self) -&gt; float:
+        &#34;&#34;&#34;Get integration time in power line cycles.&#34;&#34;&#34;
+        return self._nplc
+
+    def get_auto_zero(self) -&gt; bool:
+        &#34;&#34;&#34;Get auto-zero setting state.&#34;&#34;&#34;
+        return self._auto_zero
+
+    def get_source_delay(self) -&gt; float:
+        &#34;&#34;&#34;Get delay after setting source value in seconds.&#34;&#34;&#34;
+        return self._source_delay
+
+    def configure_trigger(self, config: TriggerConfig) -&gt; None:
+        &#34;&#34;&#34;Configure triggering behavior.
+        
+        Parameters
+        ----------
+        config : TriggerConfig
+            TriggerConfig instance with trigger settings
+            
+        Raises
+        ------
+        ValueError
+            If trigger configuration is invalid
+        RuntimeError
+            If device is not connected or trigger configuration fails
+        &#34;&#34;&#34;
+        if not self.inst:
+            raise RuntimeError(ERROR_MESSAGES[&#34;not_connected&#34;])
+        
+        # Configure the trigger model
+        self._configure_trigger_simple(config)
+        self._check_error()
+
+    def wait_for_trigger(self, timeout: float = 1.0) -&gt; bool:
+        &#34;&#34;&#34;Wait for trigger event.
+        
+        Args:
+            timeout: Maximum time to wait in seconds
+            
+        Returns:
+            bool: True if triggered, False if timed out
+            
+        Raises:
+            RuntimeError: If device not connected or error occurs
+        &#34;&#34;&#34;
+        if not self.inst:
+            raise RuntimeError(&#34;Device not connected&#34;)
+
+        start = time.time()
+        while time.time() - start &lt; timeout:
+            status = self._communicate(&#34;:STAT:OPER:COND?&#34;, query=True)
+            if int(status) &amp; 0x0002:  # Check trigger bit
+                return True
+            time.sleep(0.01)
+        return False
+
+    def configure_digital_io(self, pin: int, mode: Literal[&#34;trigger&#34;, &#34;input&#34;, &#34;output&#34;] = &#34;trigger&#34;) -&gt; None:
+        &#34;&#34;&#34;Configure a digital I/O pin.
+        
+        Args:
+            pin: Digital I/O pin number (1-6)
+            mode: Pin mode - &#34;trigger&#34; for trigger input, &#34;input&#34; for digital input,
+                  &#34;output&#34; for digital output
+        &#34;&#34;&#34;
+        if not 1 &lt;= pin &lt;= 6:
+            raise ValueError(&#34;Pin must be between 1 and 6&#34;)
+            
+        if mode == &#34;trigger&#34;:
+            self._communicate(f&#34;DIG:LINE{pin}:MODE TRIG, IN&#34;)
+        elif mode == &#34;input&#34;:
+            self._communicate(f&#34;DIG:LINE{pin}:MODE DIG, IN&#34;)
+        elif mode == &#34;output&#34;:
+            self._communicate(f&#34;DIG:LINE{pin}:MODE DIG, OUT&#34;)
+
+    def start_trigger_model(self) -&gt; None:
+        &#34;&#34;&#34;Start the configured trigger model.&#34;&#34;&#34;
+        self._communicate(&#34;:INIT&#34;)
+        self._check_error()
+
+    def stop_trigger_model(self, max_wait: float = 2.0) -&gt; str:
+        &#34;&#34;&#34;Stop the trigger model execution and wait for it to fully stop.
+        
+        Parameters
+        ----------
+        max_wait : float
+            Maximum time to wait in seconds for the trigger model to stop
+            
+        Returns
+        -------
+        str
+            Final trigger model state after stopping
+        &#34;&#34;&#34;
+        logger.debug(&#34;Stopping trigger model&#34;)
+        
+        # Define stop sequence commands
+        stop_commands = [
+            (&#34;ABOR&#34;, &#34;abort trigger model&#34;),
+            # (&#34;TRIG:LOAD:EMPTY&#34;, &#34;reset trigger model&#34;)
+        ]
+        
+        # Execute stop sequence
+        for cmd, description in stop_commands:
+            try:
+                self._communicate(cmd, check_errors=False)
+                logger.trace(f&#34;Executed {description}&#34;)
+            except Exception as e:
+                logger.warning(f&#34;Error during {description}: {e}&#34;)
+        
+        # Wait for trigger model to fully stop with timeout
+        acceptable_states = [&#34;idle&#34;, &#34;empty&#34;, &#34;aborted&#34;]
+        start_time = time.time()
+        
+        while time.time() - start_time &lt; max_wait:
+            try:
+                state = self.get_trigger_state()
+                if state in acceptable_states:
+                    logger.debug(f&#34;Trigger model is now in {state} state&#34;)
+                    return state
+                time.sleep(0.1)  # Short sleep between checks
+            except Exception:
+                break
+        raise RuntimeError(f&#34;Could not abort, state: {state}&#34;)
+        
+        # # If we get here, try a more aggressive reset
+        # try:
+        #     self._communicate(&#34;*RST&#34;, check_errors=False)
+        #     self._communicate(&#34;*CLS&#34;, check_errors=False)
+        #     return &#34;reset&#34;
+        # except Exception:
+        #     return &#34;unknown&#34;
+
+    def get_trigger_state(self) -&gt; str:
+        &#34;&#34;&#34;Get the current trigger model state.
+        
+        Returns:
+            str: Current state (&#34;idle&#34;, &#34;running&#34;, &#34;waiting&#34;, &#34;empty&#34;, 
+                               &#34;building&#34;, &#34;failed&#34;, &#34;aborting&#34;, &#34;aborted&#34;)
+                               
+        Note:
+            The device returns both the state and the last executed block number
+            in format like &#34;IDLE;IDLE;9&#34;. This method extracts just the state.
+        &#34;&#34;&#34;
+        try:
+            response = self._communicate(&#34;:TRIG:STATE?&#34;, query=True)
+            
+            # Handle empty response
+            if not response:
+                return &#34;unknown&#34;
+                
+            # Extract just the state part from the response
+            # Response format is typically &#34;STATE;STATE;BLOCK_NUMBER&#34;
+            if &#34;;&#34; in response:
+                state = response.split(&#34;;&#34;)[0]
+            else:
+                state = response
+                
+            # Clean up the state - remove any block information
+            if &#34;)&#34; in state:
+                state = &#34;running&#34;  # If we see block info, the model is running
+            
+            # Normalize state to lowercase
+            return state.lower()
+        except Exception as e:
+            logger.warning(f&#34;Error getting trigger state: {e}&#34;)
+            return &#34;unknown&#34;
+
+    def _configure_trigger_simple(self, config: TriggerConfig) -&gt; None:
+        &#34;&#34;&#34;Configure a simple trigger model for toggling output based on digital input.
+        
+        Parameters
+        ----------
+        config : TriggerConfig
+            Trigger configuration
+        &#34;&#34;&#34;
+        logger.debug(&#34;Configuring simple trigger model&#34;)
+        
+        try:
+            # Step 1: Reset and prepare the device
+            self._setup_device_for_triggering(config)
+            
+            # Step 2: Create configuration list with high and low states
+            list_name = &#34;sourceList&#34;
+            self._create_source_config_list(list_name, config)
+            
+            # Step 3: Build the trigger model blocks
+            self._build_trigger_model_blocks(config, list_name)
+            
+            # Step 4: Enable output
+            self._communicate_with_check(&#34;:OUTP ON&#34;, description=&#34;Enable output&#34;)
+            
+            self._check_error()
+
+            logger.debug(&#34;Trigger model configured successfully&#34;)
+            
+        except Exception as e:
+            self._handle_error(&#34;configuring simple trigger&#34;, e)
+            
+    def _setup_device_for_triggering(self, config: TriggerConfig) -&gt; None:
+        &#34;&#34;&#34;Prepare the device for triggering by setting up basic configuration.
+        
+        Parameters
+        ----------
+        config : TriggerConfig
+            Trigger configuration
+        &#34;&#34;&#34;
+        # Reset trigger model and device
+        self._communicate_with_check(&#34;*RST&#34;, description=&#34;Reset device&#34;)
+        self._communicate_with_check(&#34;*CLS&#34;, description=&#34;Clear status&#34;)
+
+        # Explicitly set the source mode
+        if self._mode == &#34;current&#34;:
+            self._communicate_with_check(&#34;:SOUR:FUNC CURR&#34;, description=&#34;Set to current source mode&#34;)
+            # Set voltage limit for current source mode
+            self._communicate_with_check(&#34;:SOUR:CURR:VLIM 20&#34;, description=&#34;Set voltage limit to 20V&#34;)
+        else:
+            self._communicate_with_check(&#34;:SOUR:FUNC VOLT&#34;, description=&#34;Set to voltage source mode&#34;)
+            # Set smart current limit for voltage source mode based on expected current
+            # Use 1.05A as default max, but calculate based on config if possible
+            if hasattr(config, &#39;high_value&#39;) and config.high_value &gt; 0:
+                # Calculate current from voltage using Ohm&#39;s law with the provided resistance
+                resistance = getattr(config, &#39;resistance&#39;, 20.0)  # Use provided resistance or default to 20 ohms
+                expected_current = config.high_value / resistance
+                
+                # For high currents near the maximum, use less headroom
+                if expected_current &gt; 0.8:  # If we&#39;re near the max current
+                    estimated_current = min(1.05, expected_current * 1.05)  # Use only 5% headroom
+                    logger.info(f&#34;High current detected ({expected_current:.3f}A), using reduced headroom&#34;)
+                else:
+                    estimated_current = min(1.05, expected_current * 1.2)  # Normal 20% headroom
+                
+                # First disable auto-ranging for current measurement
+                self._communicate_with_check(&#34;:SENS:CURR:RANG:AUTO OFF&#34;, 
+                                           description=&#34;Disable current auto-range&#34;)
+                
+                # For high currents, set to max range directly
+                if expected_current &gt; 0.8:
+                    self._communicate_with_check(&#34;:SENS:CURR:RANG 1.05&#34;, 
+                                               description=&#34;Set current measurement range to maximum (1.05A)&#34;)
+                else:
+                    # Set current measurement range before setting compliance limit
+                    self._communicate_with_check(f&#34;:SENS:CURR:RANG {estimated_current}&#34;, 
+                                               description=f&#34;Set current measurement range to {estimated_current}A&#34;)
+                
+                # Then set current limit
+                self._communicate_with_check(f&#34;:SOUR:VOLT:ILIM {estimated_current}&#34;, 
+                                           description=f&#34;Set current limit to {estimated_current}A (using {resistance}Ω)&#34;)
+            else:
+                # Default to max current if we can&#39;t estimate
+                self._communicate_with_check(&#34;:SOUR:VOLT:ILIM 1.05&#34;, description=&#34;Set current limit to 1.05A&#34;)
+                self._communicate_with_check(&#34;:SENS:CURR:RANG:AUTO OFF&#34;, description=&#34;Disable current auto-range&#34;)
+                self._communicate_with_check(&#34;:SENS:CURR:RANG 1.05&#34;, description=&#34;Set current measurement range to 1.05A&#34;)
+
+        # Verify the mode is set correctly
+        actual_mode = self._communicate_with_check(&#34;:SOUR:FUNC?&#34;, query=True, description=&#34;Verify source mode&#34;)
+        logger.debug(f&#34;Source mode set to: {actual_mode}&#34;)
+        
+        # Clear any existing trigger model
+        self._communicate_with_check(&#34;TRIG:LOAD:EMPTY&#34;, description=&#34;Empty trigger model&#34;)
+        
+        # Configure digital line for external triggering
+        self._communicate_with_check(
+            f&#34;DIG:LINE{config.pin}:MODE TRIG, IN&#34;, 
+            description=f&#34;Set digital line {config.pin} as trigger input&#34;
+        )
+        
+        # Set edge detection
+        edge_str = &#34;EITH&#34; if config.edge == TriggerEdge.EITHER else (&#34;RIS&#34; if config.edge == TriggerEdge.RISING else &#34;FALL&#34;)
+        self._communicate_with_check(
+            f&#34;TRIG:DIG{config.pin}:IN:EDGE {edge_str}&#34;,
+            description=f&#34;Set trigger edge to {edge_str}&#34;
+        )
+
+        # Optimize for fast transitions
+        self._communicate_with_check(&#34;:SOUR:DEL:AUTO OFF&#34;, description=&#34;Disable auto delay&#34;)
+        self._communicate_with_check(&#34;:SOUR:DEL 0&#34;, description=&#34;Set source delay to 0&#34;)
+        self._communicate_with_check(&#34;:SENS:CURR:NPLC 0.01&#34;, description=&#34;Set NPLC to minimum&#34;)
+    
+    def _create_source_config_list(self, list_name: str, config: TriggerConfig) -&gt; None:
+        &#34;&#34;&#34;Create a configuration list with high and low states.
+        
+        Parameters
+        ----------
+        list_name : str
+            Name of the configuration list to create
+        config : TriggerConfig
+            Trigger configuration with high and low values
+        &#34;&#34;&#34;
+        # Create a new configuration list
+        self._communicate_with_check(
+            f&#34;SOUR:CONF:LIST:CRE \&#34;{list_name}\&#34;&#34;,
+            description=&#34;Create source configuration list&#34;
+        )
+        
+        if self._mode == &#34;current&#34;:
+            # Set appropriate current range
+            self._communicate_with_check(&#34;:SOUR:CURR:RANG:AUTO OFF&#34;, description=&#34;Disable auto range&#34;)
+            
+            # Calculate appropriate range based on high value
+            high_current = 1.2 * config.high_value
+            current_range = 1.0  # Default to max range
+            if high_current &lt;= 0.01:
+                current_range = 0.01
+            elif high_current &lt;= 0.1:
+                current_range = 0.1
+            elif high_current &lt;= 1.0:
+                current_range = 1.0
+                
+            self._communicate_with_check(
+                f&#34;:SOUR:CURR:RANG {current_range}&#34;,
+                description=f&#34;Set current range to {current_range}A&#34;
+            )
+            
+            # Configure and store low state
+            self._communicate_with_check(f&#34;:SOUR:CURR {config.low_value}&#34;, description=&#34;Set low current&#34;)
+            self._communicate_with_check(f&#34;SOUR:CONF:LIST:STOR \&#34;{list_name}\&#34;&#34;, description=&#34;Store low state&#34;)
+            
+            # Configure and store high state
+            self._communicate_with_check(f&#34;:SOUR:CURR {config.high_value}&#34;, description=&#34;Set high current&#34;)
+            self._communicate_with_check(f&#34;SOUR:CONF:LIST:STOR \&#34;{list_name}\&#34;&#34;, description=&#34;Store high state&#34;)
+        else:
+            # Set appropriate voltage range for voltage mode
+            self._communicate_with_check(&#34;:SOUR:VOLT:RANG:AUTO OFF&#34;, description=&#34;Disable auto range&#34;)
+            
+            # Calculate appropriate range based on high value
+            high_voltage = 1.2 * config.high_value
+            voltage_range = 20.0  # Default to max range
+            if high_voltage &lt;= 2.0:
+                voltage_range = 2.0
+            elif high_voltage &lt;= 7.0:
+                voltage_range = 7.0
+            elif high_voltage &lt;= 20.0:
+                voltage_range = 20.0
+                
+            self._communicate_with_check(
+                f&#34;:SOUR:VOLT:RANG {voltage_range}&#34;,
+                description=f&#34;Set voltage range to {voltage_range}V&#34;
+            )
+            
+            # Calculate appropriate current limit based on expected current
+            resistance = getattr(config, &#39;resistance&#39;, 20.0)  # Use provided resistance or default to 20 ohms
+            expected_current = config.high_value / resistance
+            
+            # For high currents near the maximum, use less headroom
+            if expected_current &gt; 0.8:  # If we&#39;re near the max current
+                current_limit = min(1.05, expected_current * 1.05)  # Use only 5% headroom
+                logger.info(f&#34;High current detected ({expected_current:.3f}A), using reduced headroom&#34;)
+            else:
+                current_limit = min(1.05, expected_current * 1.2)  # Normal 20% headroom
+            
+            # First disable auto-ranging for current measurement
+            self._communicate_with_check(&#34;:SENS:CURR:RANG:AUTO OFF&#34;, 
+                                       description=&#34;Disable current auto-range&#34;)
+            
+            # For high currents, set to max range directly
+            if expected_current &gt; 0.8:
+                self._communicate_with_check(&#34;:SENS:CURR:RANG 1.05&#34;, 
+                                           description=&#34;Set current measurement range to maximum (1.05A)&#34;)
+            else:
+                # Set current measurement range before setting compliance limit
+                self._communicate_with_check(f&#34;:SENS:CURR:RANG {current_limit}&#34;, 
+                                           description=f&#34;Set current measurement range to {current_limit}A&#34;)
+            
+            # Then set current limit
+            self._communicate_with_check(f&#34;:SOUR:VOLT:ILIM {current_limit}&#34;, 
+                                       description=f&#34;Set current limit to {current_limit}A (using {resistance}Ω)&#34;)
+            
+            # Configure and store low state for voltage mode
+            self._communicate_with_check(f&#34;:SOUR:VOLT {config.low_value}&#34;, description=&#34;Set low voltage&#34;)
+            self._communicate_with_check(f&#34;SOUR:CONF:LIST:STOR \&#34;{list_name}\&#34;&#34;, description=&#34;Store low state&#34;)
+            
+            # Configure and store high state
+            self._communicate_with_check(f&#34;:SOUR:VOLT {config.high_value}&#34;, description=&#34;Set high voltage&#34;)
+            
+            # For high currents, maintain the same approach as above
+            if expected_current &gt; 0.8:
+                self._communicate_with_check(&#34;:SENS:CURR:RANG 1.05&#34;, 
+                                           description=&#34;Set current measurement range to maximum (1.05A)&#34;)
+            else:
+                self._communicate_with_check(f&#34;:SENS:CURR:RANG {current_limit}&#34;, 
+                                           description=&#34;Set current measurement range for high state&#34;)
+                
+            # Set current limit again before storing high state to ensure it&#39;s included
+            self._communicate_with_check(f&#34;:SOUR:VOLT:ILIM {current_limit}&#34;, 
+                                       description=&#34;Set current limit for high state&#34;)
+            self._communicate_with_check(f&#34;SOUR:CONF:LIST:STOR \&#34;{list_name}\&#34;&#34;, description=&#34;Store high state&#34;)
+        
+        # Set back to low state initially
+        self._communicate_with_check(f&#34;SOUR:CONF:LIST:REC \&#34;{list_name}\&#34;, 1&#34;, description=&#34;Recall low state&#34;)
+    
+    def _build_trigger_model_blocks(self, config: TriggerConfig, list_name: str) -&gt; None:
+        &#34;&#34;&#34;Build the trigger model blocks for toggling between states.
+        
+        Parameters
+        ----------
+        config : TriggerConfig
+            Trigger configuration
+        list_name : str
+            Name of the configuration list to use
+        &#34;&#34;&#34;
+        # Build a trigger model that alternates between high and low states on rising edges
+        commands = [
+            # Block 1: Wait for rising edge trigger
+            f&#34;TRIG:BLOC:WAIT 1, DIG{config.pin}&#34;,
+            
+            # Block 2: Recall high state configuration
+            f&#34;TRIG:BLOC:CONF:REC 2, \&#34;{list_name}\&#34;, 2&#34;,
+            
+            # Block 3: Wait for rising edge trigger again
+            f&#34;TRIG:BLOC:WAIT 3, DIG{config.pin}&#34;,
+            
+            # Block 4: Recall low state configuration
+            f&#34;TRIG:BLOC:CONF:REC 4, \&#34;{list_name}\&#34;, 1&#34;,
+        ]
+        
+        # Add the appropriate branching block based on count
+        if config.count &gt; 0:
+            commands.append(f&#34;TRIG:BLOC:BRAN:COUN 5, {config.count}, 1&#34;)
+        else:
+            commands.append(&#34;TRIG:BLOC:BRAN:ALW 5, 1&#34;)
+        
+        # Execute all commands
+        for cmd in commands:
+            self._communicate_with_check(cmd, description=&#34;Build trigger model block&#34;)
+            
+    def is_responding(self) -&gt; bool:
+        &#34;&#34;&#34;Check if device is connected and responding.
+        
+        Returns
+        -------
+        bool
+            True if device is connected and responding
+        &#34;&#34;&#34;
+        if not self.inst:
+            return False
+            
+        try:
+            # Try to query device ID as a simple check
+            response = self._communicate(&#34;*IDN?&#34;, query=True, check_errors=False)
+            return &#34;MODEL 2450&#34; in response
+        except Exception as e:
+            logger.trace(f&#34;Device not responding: {e}&#34;)
+            return False
+            
+    def get_all_attrs(self) -&gt; Dict[str, Any]:
+        &#34;&#34;&#34;Get all device attributes.
+
+        Returns:
+            Dict containing current device state and settings
+        &#34;&#34;&#34;
+        return {
+            &#34;voltage&#34;: self.get_voltage(),
+            &#34;current&#34;: self.get_current(),
+            &#34;output_state&#34;: self.get_output_state(),
+            &#34;mode&#34;: self.get_mode(),
+            &#34;nplc&#34;: self._nplc,
+            &#34;auto_zero&#34;: self._auto_zero,
+            &#34;source_delay&#34;: self._source_delay,
+        }</code></pre>
+</details>
+<div class="desc"><p>Keithley 2450 SourceMeter implementation.</p>
+<p>Provides high-precision voltage/current sourcing and measurement capabilities.
+Supports voltage/current sourcing with optional ramping, compliance limits,
+and various measurement configurations.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>visa_address</code></strong> :&ensp;<code>str</code>, optional</dt>
+<dd>VISA resource address of the instrument.
+If None, will attempt to find first available 2450.</dd>
+<dt><strong><code>resource_manager</code></strong> :&ensp;<code>pyvisa.ResourceManager</code>, optional</dt>
+<dd>PyVISA ResourceManager instance.
+If None, will create one with Python backend.</dd>
+</dl>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>visa_address</code></strong> :&ensp;<code>str</code></dt>
+<dd>VISA address of the connected device</dd>
+<dt><strong><code>rm</code></strong> :&ensp;<code>pyvisa.ResourceManager</code></dt>
+<dd>PyVISA resource manager instance</dd>
+<dt><strong><code>inst</code></strong> :&ensp;<code>pyvisa.Resource</code></dt>
+<dd>PyVISA resource instance for device communication</dd>
+<dt><strong><code>_nplc</code></strong> :&ensp;<code>float</code></dt>
+<dd>Integration time in power line cycles (0.01 to 10)</dd>
+<dt><strong><code>_auto_zero</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Auto-zero setting state</dd>
+<dt><strong><code>_source_delay</code></strong> :&ensp;<code>float</code></dt>
+<dd>Delay after setting source value in seconds</dd>
+<dt><strong><code>_mode</code></strong> :&ensp;<code>str</code></dt>
+<dd>Current source mode ("voltage" or "current")</dd>
+<dt><strong><code>_output_enabled</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Current output state</dd>
+</dl>
+<p>Initialize SMU2450 device.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>visa_address</code></strong></dt>
+<dd>Optional VISA resource address of the instrument.
+If None, will attempt to find first available 2450.</dd>
+<dt><strong><code>resource_manager</code></strong></dt>
+<dd>Optional PyVISA ResourceManager instance.
+If None, will create one with Python backend.</dd>
+</dl></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.device.device.Device" href="device.html#qscope.device.device.Device">Device</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.device.SMU2450.SMU2450.abort"><code class="name flex">
+<span>def <span class="ident">abort</span></span>(<span>self) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def abort(self) -&gt; None:
+    &#34;&#34;&#34;Abort any ongoing operations safely.&#34;&#34;&#34;
+    if not self.inst:
+        return
+        
+    logger.trace(&#34;Attempting abort sequence&#34;)
+    
+    # Define critical commands to execute in sequence
+    commands = [
+        (&#34;ABOR&#34;, &#34;abort command&#34;),
+        (&#34;TRIG:LOAD:EMPTY&#34;, &#34;reset trigger model&#34;),
+        (&#34;:OUTP OFF&#34;, &#34;disable output&#34;)
+    ]
+    
+    # Execute each command with basic error handling
+    for cmd, description in commands:
+        try:
+            self.inst.write(cmd)
+            time.sleep(0.05)  # Shorter delay between commands
+            logger.trace(f&#34;Executed {description}&#34;)
+        except Exception as e:
+            logger.warning(f&#34;Error during {description}: {e}&#34;)
+            # Continue with next command even if this one failed
+    
+    # Final emergency output disable if needed
+    try:
+        self.inst.write(&#34;:OUTP OFF&#34;)
+    except Exception:
+        pass
+        
+    logger.trace(&#34;Abort sequence completed&#34;)</code></pre>
+</details>
+<div class="desc"><p>Abort any ongoing operations safely.</p></div>
+</dd>
+<dt id="qscope.device.SMU2450.SMU2450.check_compliance"><code class="name flex">
+<span>def <span class="ident">check_compliance</span></span>(<span>self) ‑> bool</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def check_compliance(self) -&gt; bool:
+    &#34;&#34;&#34;Check if device is in compliance (limit reached).&#34;&#34;&#34;
+    try:
+        if not self.inst:
+            return False
+
+        # First check if output is even enabled
+        if not self.get_output_state():
+            return False
+
+        # Get current mode and appropriate command
+        mode = self.get_mode()
+        if mode == &#34;voltage&#34;:
+            cmd = &#34;:SOUR:VOLT:ILIM:TRIP?&#34;
+        else:
+            cmd = &#34;:SOUR:CURR:VLIM:TRIP?&#34;
+
+        # Query compliance state without error checking (to avoid false errors)
+        try:
+            result = self._communicate(cmd, query=True, check_errors=False)
+            return bool(int(result))
+        except Exception as e:
+            logger.trace(f&#34;Compliance check failed with command {cmd}: {e}&#34;)
+            # Try alternative compliance check method
+            status = self._communicate(&#34;:STAT:OPER:COND?&#34;, query=True, check_errors=False)
+            return bool(int(status) &amp; 0x0800)  # Check compliance bit
+
+    except Exception as e:
+        logger.trace(f&#34;Compliance check failed: {e}&#34;)
+        return False  # Return False on any error to avoid false positives</code></pre>
+</details>
+<div class="desc"><p>Check if device is in compliance (limit reached).</p></div>
+</dd>
+<dt id="qscope.device.SMU2450.SMU2450.close"><code class="name flex">
+<span>def <span class="ident">close</span></span>(<span>self) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def close(self) -&gt; None:
+    &#34;&#34;&#34;Safely close connection to the instrument.&#34;&#34;&#34;
+    if self.inst:
+        try:
+            self.zero_output()  # Safely return to zero
+            self._communicate(&#34;:OUTP OFF&#34;)
+            self.inst.close()
+        except Exception as e:
+            logger.error(f&#34;Error closing instrument: {e}&#34;)
+        finally:
+            self.inst = None
+
+    # Only close the resource manager if we created it
+    if self._owns_rm and self.rm:
+        try:
+            self.rm.close()
+        except Exception as e:
+            logger.error(f&#34;Error closing resource manager: {e}&#34;)
+        finally:
+            self.rm = None
+            self._owns_rm = False</code></pre>
+</details>
+<div class="desc"><p>Safely close connection to the instrument.</p></div>
+</dd>
+<dt id="qscope.device.SMU2450.SMU2450.configure"><code class="name flex">
+<span>def <span class="ident">configure</span></span>(<span>self,<br>nplc: float | None = None,<br>auto_zero: bool | None = None,<br>source_delay: float | None = None,<br>voltage_range: float | None = None,<br>current_range: float | None = None) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def configure(
+    self,
+    nplc: Optional[float] = None,
+    auto_zero: Optional[bool] = None,
+    source_delay: Optional[float] = None,
+    voltage_range: Optional[float] = None,
+    current_range: Optional[float] = None,
+) -&gt; None:
+    &#34;&#34;&#34;Configure measurement settings.
+
+    Args:
+        nplc: Integration time in power line cycles (0.01 to 10)
+        auto_zero: Enable/disable auto-zero functionality
+        source_delay: Delay after setting source value, in seconds
+        voltage_range: Voltage measurement range (0 for auto-range)
+        current_range: Current measurement range (0 for auto-range)
+    &#34;&#34;&#34;
+    if not self.inst:
+        raise RuntimeError(&#34;Device not connected&#34;)
+
+    original_timeout = self.inst.timeout
+    try:
+        # Longer timeout for configuration
+        self.inst.timeout = 10000  # 10 seconds
+
+        if nplc is not None:
+            if not 0.01 &lt;= nplc &lt;= 10:
+                raise ValueError(&#34;NPLC must be between 0.01 and 10&#34;)
+            self._communicate(f&#34;:SENS:CURR:NPLC {nplc}&#34;)
+            self._communicate(f&#34;:SENS:VOLT:NPLC {nplc}&#34;)
+            error = self._communicate(&#34;SYST:ERR?&#34;, query=True)
+            if not error.startswith(&#34;0&#34;):
+                raise RuntimeError(f&#34;NPLC setting failed: {error}&#34;)
+            self._nplc = nplc
+
+        if auto_zero is not None:
+            self._communicate(f&#34;:SYST:AZER {&#39;ON&#39; if auto_zero else &#39;OFF&#39;}&#34;)
+            error = self._communicate(&#34;SYST:ERR?&#34;, query=True)
+            if not error.startswith(&#34;0&#34;):
+                raise RuntimeError(f&#34;Auto-zero setting failed: {error}&#34;)
+            self._auto_zero = auto_zero
+
+        if source_delay is not None:
+            if source_delay &lt; 0:
+                raise ValueError(&#34;Source delay cannot be negative&#34;)
+            self._communicate(f&#34;:SOUR:DEL {source_delay}&#34;)
+            error = self._communicate(&#34;SYST:ERR?&#34;, query=True)
+            if not error.startswith(&#34;0&#34;):
+                raise RuntimeError(f&#34;Source delay setting failed: {error}&#34;)
+            self._source_delay = source_delay
+
+        if voltage_range is not None:
+            if voltage_range == 0:
+                self._communicate(&#34;:SENS:VOLT:RANG:AUTO ON&#34;)
+                error = self._communicate(&#34;SYST:ERR?&#34;, query=True)
+                if not error.startswith(&#34;0&#34;):
+                    raise RuntimeError(&#34;Voltage auto-range setting failed: {error}&#34;)
+            else:
+                self._communicate(&#34;:SENS:VOLT:RANG:AUTO OFF&#34;)
+                self._communicate(f&#34;:SENS:VOLT:RANG {abs(voltage_range)}&#34;)
+                error = self._communicate(&#34;SYST:ERR?&#34;, query=True)
+                if not error.startswith(&#34;0&#34;):
+                    raise RuntimeError(f&#34;Voltage range setting failed: {error}&#34;)
+
+        if current_range is not None:
+            if current_range == 0:
+                self._communicate(&#34;:SENS:CURR:RANG:AUTO ON&#34;)
+            else:
+                self._communicate(&#34;:SENS:CURR:RANG:AUTO OFF&#34;)
+                self._communicate(f&#34;:SENS:CURR:RANG {abs(current_range)}&#34;)
+            error = self._communicate(&#34;SYST:ERR?&#34;, query=True)
+            if not error.startswith(&#34;0&#34;):
+                raise RuntimeError(f&#34;Current range setting failed: {error}&#34;)
+    finally:
+        self.inst.timeout = original_timeout</code></pre>
+</details>
+<div class="desc"><p>Configure measurement settings.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>nplc</code></strong></dt>
+<dd>Integration time in power line cycles (0.01 to 10)</dd>
+<dt><strong><code>auto_zero</code></strong></dt>
+<dd>Enable/disable auto-zero functionality</dd>
+<dt><strong><code>source_delay</code></strong></dt>
+<dd>Delay after setting source value, in seconds</dd>
+<dt><strong><code>voltage_range</code></strong></dt>
+<dd>Voltage measurement range (0 for auto-range)</dd>
+<dt><strong><code>current_range</code></strong></dt>
+<dd>Current measurement range (0 for auto-range)</dd>
+</dl></div>
+</dd>
+<dt id="qscope.device.SMU2450.SMU2450.configure_digital_io"><code class="name flex">
+<span>def <span class="ident">configure_digital_io</span></span>(<span>self, pin: int, mode: Literal['trigger', 'input', 'output'] = 'trigger') ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def configure_digital_io(self, pin: int, mode: Literal[&#34;trigger&#34;, &#34;input&#34;, &#34;output&#34;] = &#34;trigger&#34;) -&gt; None:
+    &#34;&#34;&#34;Configure a digital I/O pin.
+    
+    Args:
+        pin: Digital I/O pin number (1-6)
+        mode: Pin mode - &#34;trigger&#34; for trigger input, &#34;input&#34; for digital input,
+              &#34;output&#34; for digital output
+    &#34;&#34;&#34;
+    if not 1 &lt;= pin &lt;= 6:
+        raise ValueError(&#34;Pin must be between 1 and 6&#34;)
+        
+    if mode == &#34;trigger&#34;:
+        self._communicate(f&#34;DIG:LINE{pin}:MODE TRIG, IN&#34;)
+    elif mode == &#34;input&#34;:
+        self._communicate(f&#34;DIG:LINE{pin}:MODE DIG, IN&#34;)
+    elif mode == &#34;output&#34;:
+        self._communicate(f&#34;DIG:LINE{pin}:MODE DIG, OUT&#34;)</code></pre>
+</details>
+<div class="desc"><p>Configure a digital I/O pin.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>pin</code></strong></dt>
+<dd>Digital I/O pin number (1-6)</dd>
+<dt><strong><code>mode</code></strong></dt>
+<dd>Pin mode - "trigger" for trigger input, "input" for digital input,
+"output" for digital output</dd>
+</dl></div>
+</dd>
+<dt id="qscope.device.SMU2450.SMU2450.configure_trigger"><code class="name flex">
+<span>def <span class="ident">configure_trigger</span></span>(<span>self,<br>config: <a title="qscope.device.SMU2450.TriggerConfig" href="#qscope.device.SMU2450.TriggerConfig">TriggerConfig</a>) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def configure_trigger(self, config: TriggerConfig) -&gt; None:
+    &#34;&#34;&#34;Configure triggering behavior.
+    
+    Parameters
+    ----------
+    config : TriggerConfig
+        TriggerConfig instance with trigger settings
+        
+    Raises
+    ------
+    ValueError
+        If trigger configuration is invalid
+    RuntimeError
+        If device is not connected or trigger configuration fails
+    &#34;&#34;&#34;
+    if not self.inst:
+        raise RuntimeError(ERROR_MESSAGES[&#34;not_connected&#34;])
+    
+    # Configure the trigger model
+    self._configure_trigger_simple(config)
+    self._check_error()</code></pre>
+</details>
+<div class="desc"><p>Configure triggering behavior.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>config</code></strong> :&ensp;<code><a title="qscope.device.SMU2450.TriggerConfig" href="#qscope.device.SMU2450.TriggerConfig">TriggerConfig</a></code></dt>
+<dd>TriggerConfig instance with trigger settings</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>ValueError</code></dt>
+<dd>If trigger configuration is invalid</dd>
+<dt><code>RuntimeError</code></dt>
+<dd>If device is not connected or trigger configuration fails</dd>
+</dl></div>
+</dd>
+<dt id="qscope.device.SMU2450.SMU2450.get_all_attrs"><code class="name flex">
+<span>def <span class="ident">get_all_attrs</span></span>(<span>self) ‑> Dict[str, Any]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_all_attrs(self) -&gt; Dict[str, Any]:
+    &#34;&#34;&#34;Get all device attributes.
+
+    Returns:
+        Dict containing current device state and settings
+    &#34;&#34;&#34;
+    return {
+        &#34;voltage&#34;: self.get_voltage(),
+        &#34;current&#34;: self.get_current(),
+        &#34;output_state&#34;: self.get_output_state(),
+        &#34;mode&#34;: self.get_mode(),
+        &#34;nplc&#34;: self._nplc,
+        &#34;auto_zero&#34;: self._auto_zero,
+        &#34;source_delay&#34;: self._source_delay,
+    }</code></pre>
+</details>
+<div class="desc"><p>Get all device attributes.</p>
+<h2 id="returns">Returns</h2>
+<p>Dict containing current device state and settings</p></div>
+</dd>
+<dt id="qscope.device.SMU2450.SMU2450.get_auto_zero"><code class="name flex">
+<span>def <span class="ident">get_auto_zero</span></span>(<span>self) ‑> bool</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_auto_zero(self) -&gt; bool:
+    &#34;&#34;&#34;Get auto-zero setting state.&#34;&#34;&#34;
+    return self._auto_zero</code></pre>
+</details>
+<div class="desc"><p>Get auto-zero setting state.</p></div>
+</dd>
+<dt id="qscope.device.SMU2450.SMU2450.get_compliance_limit"><code class="name flex">
+<span>def <span class="ident">get_compliance_limit</span></span>(<span>self) ‑> float</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_compliance_limit(self) -&gt; float:
+    &#34;&#34;&#34;Get the current compliance limit.
+
+    Returns:
+        float: Current compliance limit (current in voltage mode, voltage in current mode)
+    &#34;&#34;&#34;
+    mode = self.get_mode()
+    if mode == &#34;voltage&#34;:
+        result = self._communicate(&#34;:SOUR:VOLT:ILIM?&#34;, query=True)
+        error = self._communicate(&#34;SYST:ERR?&#34;, query=True)
+        if not error.startswith(&#34;0&#34;):
+            raise RuntimeError(f&#34;Error getting voltage compliance: {error}&#34;)
+        return float(result)
+    else:
+        result = self._communicate(&#34;:SOUR:CURR:VLIM?&#34;, query=True)
+        error = self._communicate(&#34;SYST:ERR?&#34;, query=True)
+        if not error.startswith(&#34;0&#34;):
+            raise RuntimeError(f&#34;Error getting current compliance: {error}&#34;)
+        return float(result)</code></pre>
+</details>
+<div class="desc"><p>Get the current compliance limit.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>float</code></dt>
+<dd>Current compliance limit (current in voltage mode, voltage in current mode)</dd>
+</dl></div>
+</dd>
+<dt id="qscope.device.SMU2450.SMU2450.get_current"><code class="name flex">
+<span>def <span class="ident">get_current</span></span>(<span>self) ‑> float</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_current(self) -&gt; float:
+    &#34;&#34;&#34;Get the present output current.
+
+    Returns:
+        float: Present current in amps
+
+    Raises:
+        RuntimeError: If device not connected
+    &#34;&#34;&#34;
+    return float(self._communicate(&#34;:MEAS:CURR?&#34;, query=True))</code></pre>
+</details>
+<div class="desc"><p>Get the present output current.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>float</code></dt>
+<dd>Present current in amps</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>RuntimeError</code></dt>
+<dd>If device not connected</dd>
+</dl></div>
+</dd>
+<dt id="qscope.device.SMU2450.SMU2450.get_mode"><code class="name flex">
+<span>def <span class="ident">get_mode</span></span>(<span>self) ‑> str</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_mode(self) -&gt; str:
+    &#34;&#34;&#34;Get the present source mode.
+
+    Returns
+    -------
+    str
+        Either &#34;voltage&#34; or &#34;current&#34;
+
+    Raises
+    ------
+    RuntimeError
+        If device not connected
+    &#34;&#34;&#34;
+    func = self._communicate(&#34;:SOUR:FUNC?&#34;, query=True).strip(&#39;&#34;&#39;)
+    return &#34;voltage&#34; if func == &#34;VOLT&#34; else &#34;current&#34;</code></pre>
+</details>
+<div class="desc"><p>Get the present source mode.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>Either "voltage" or "current"</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>RuntimeError</code></dt>
+<dd>If device not connected</dd>
+</dl></div>
+</dd>
+<dt id="qscope.device.SMU2450.SMU2450.get_mode_state"><code class="name flex">
+<span>def <span class="ident">get_mode_state</span></span>(<span>self) ‑> str</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_mode_state(self) -&gt; str:
+    &#34;&#34;&#34;Get current source mode (&#34;voltage&#34; or &#34;current&#34;).&#34;&#34;&#34;
+    return self._mode</code></pre>
+</details>
+<div class="desc"><p>Get current source mode ("voltage" or "current").</p></div>
+</dd>
+<dt id="qscope.device.SMU2450.SMU2450.get_nplc"><code class="name flex">
+<span>def <span class="ident">get_nplc</span></span>(<span>self) ‑> float</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_nplc(self) -&gt; float:
+    &#34;&#34;&#34;Get integration time in power line cycles.&#34;&#34;&#34;
+    return self._nplc</code></pre>
+</details>
+<div class="desc"><p>Get integration time in power line cycles.</p></div>
+</dd>
+<dt id="qscope.device.SMU2450.SMU2450.get_output_enabled"><code class="name flex">
+<span>def <span class="ident">get_output_enabled</span></span>(<span>self) ‑> bool</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_output_enabled(self) -&gt; bool:
+    &#34;&#34;&#34;Get current output state.&#34;&#34;&#34;
+    return self._output_enabled</code></pre>
+</details>
+<div class="desc"><p>Get current output state.</p></div>
+</dd>
+<dt id="qscope.device.SMU2450.SMU2450.get_output_state"><code class="name flex">
+<span>def <span class="ident">get_output_state</span></span>(<span>self) ‑> bool</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_output_state(self) -&gt; bool:
+    &#34;&#34;&#34;Get the present output state.
+
+    Returns:
+        bool: True if output enabled, False if disabled
+
+    Raises:
+        RuntimeError: If device not connected
+    &#34;&#34;&#34;
+    result = self._communicate(&#34;:OUTP?&#34;, query=True)
+    return bool(int(result))</code></pre>
+</details>
+<div class="desc"><p>Get the present output state.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>bool</code></dt>
+<dd>True if output enabled, False if disabled</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>RuntimeError</code></dt>
+<dd>If device not connected</dd>
+</dl></div>
+</dd>
+<dt id="qscope.device.SMU2450.SMU2450.get_ranges"><code class="name flex">
+<span>def <span class="ident">get_ranges</span></span>(<span>self) ‑> Dict[str, Tuple[float, float]]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_ranges(self) -&gt; Dict[str, Tuple[float, float]]:
+    &#34;&#34;&#34;Get available ranges for voltage and current.
+
+    Returns:
+        Dict with &#39;voltage&#39; and &#39;current&#39; keys mapping to (min, max) tuples
+    &#34;&#34;&#34;
+    # 2450 ranges from datasheet
+    return {
+        &#34;voltage&#34;: (-20.0, 20.0),
+        &#34;current&#34;: (-1.05, 1.05),  # ±1.05A DC, ±1.0A pulse
+    }</code></pre>
+</details>
+<div class="desc"><p>Get available ranges for voltage and current.</p>
+<h2 id="returns">Returns</h2>
+<p>Dict with 'voltage' and 'current' keys mapping to (min, max) tuples</p></div>
+</dd>
+<dt id="qscope.device.SMU2450.SMU2450.get_source_delay"><code class="name flex">
+<span>def <span class="ident">get_source_delay</span></span>(<span>self) ‑> float</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_source_delay(self) -&gt; float:
+    &#34;&#34;&#34;Get delay after setting source value in seconds.&#34;&#34;&#34;
+    return self._source_delay</code></pre>
+</details>
+<div class="desc"><p>Get delay after setting source value in seconds.</p></div>
+</dd>
+<dt id="qscope.device.SMU2450.SMU2450.get_trigger_state"><code class="name flex">
+<span>def <span class="ident">get_trigger_state</span></span>(<span>self) ‑> str</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_trigger_state(self) -&gt; str:
+    &#34;&#34;&#34;Get the current trigger model state.
+    
+    Returns:
+        str: Current state (&#34;idle&#34;, &#34;running&#34;, &#34;waiting&#34;, &#34;empty&#34;, 
+                           &#34;building&#34;, &#34;failed&#34;, &#34;aborting&#34;, &#34;aborted&#34;)
+                           
+    Note:
+        The device returns both the state and the last executed block number
+        in format like &#34;IDLE;IDLE;9&#34;. This method extracts just the state.
+    &#34;&#34;&#34;
+    try:
+        response = self._communicate(&#34;:TRIG:STATE?&#34;, query=True)
+        
+        # Handle empty response
+        if not response:
+            return &#34;unknown&#34;
+            
+        # Extract just the state part from the response
+        # Response format is typically &#34;STATE;STATE;BLOCK_NUMBER&#34;
+        if &#34;;&#34; in response:
+            state = response.split(&#34;;&#34;)[0]
+        else:
+            state = response
+            
+        # Clean up the state - remove any block information
+        if &#34;)&#34; in state:
+            state = &#34;running&#34;  # If we see block info, the model is running
+        
+        # Normalize state to lowercase
+        return state.lower()
+    except Exception as e:
+        logger.warning(f&#34;Error getting trigger state: {e}&#34;)
+        return &#34;unknown&#34;</code></pre>
+</details>
+<div class="desc"><p>Get the current trigger model state.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>Current state ("idle", "running", "waiting", "empty",
+"building", "failed", "aborting", "aborted")</dd>
+</dl>
+<h2 id="note">Note</h2>
+<p>The device returns both the state and the last executed block number
+in format like "IDLE;IDLE;9". This method extracts just the state.</p></div>
+</dd>
+<dt id="qscope.device.SMU2450.SMU2450.get_voltage"><code class="name flex">
+<span>def <span class="ident">get_voltage</span></span>(<span>self) ‑> float</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_voltage(self) -&gt; float:
+    &#34;&#34;&#34;Get the present output voltage.
+
+    Returns:
+        float: Present voltage in volts
+
+    Raises:
+        RuntimeError: If device not connected
+    &#34;&#34;&#34;
+    return float(self._communicate(&#34;:MEAS:VOLT?&#34;, query=True))</code></pre>
+</details>
+<div class="desc"><p>Get the present output voltage.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>float</code></dt>
+<dd>Present voltage in volts</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>RuntimeError</code></dt>
+<dd>If device not connected</dd>
+</dl></div>
+</dd>
+<dt id="qscope.device.SMU2450.SMU2450.is_remote"><code class="name flex">
+<span>def <span class="ident">is_remote</span></span>(<span>self) ‑> bool</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def is_remote(self) -&gt; bool:
+    &#34;&#34;&#34;Check if device is in remote control mode.
+
+    Returns:
+        bool: True if in remote mode, False if in local mode
+    &#34;&#34;&#34;
+    result = self._communicate(&#34;:SYST:REM?&#34;, query=True)
+    error = self._communicate(&#34;SYST:ERR?&#34;, query=True)
+    if not error.startswith(&#34;0&#34;):
+        raise RuntimeError(f&#34;Error checking remote mode: {error}&#34;)
+    return bool(int(result))</code></pre>
+</details>
+<div class="desc"><p>Check if device is in remote control mode.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>bool</code></dt>
+<dd>True if in remote mode, False if in local mode</dd>
+</dl></div>
+</dd>
+<dt id="qscope.device.SMU2450.SMU2450.is_responding"><code class="name flex">
+<span>def <span class="ident">is_responding</span></span>(<span>self) ‑> bool</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def is_responding(self) -&gt; bool:
+    &#34;&#34;&#34;Check if device is connected and responding.
+    
+    Returns
+    -------
+    bool
+        True if device is connected and responding
+    &#34;&#34;&#34;
+    if not self.inst:
+        return False
+        
+    try:
+        # Try to query device ID as a simple check
+        response = self._communicate(&#34;*IDN?&#34;, query=True, check_errors=False)
+        return &#34;MODEL 2450&#34; in response
+    except Exception as e:
+        logger.trace(f&#34;Device not responding: {e}&#34;)
+        return False</code></pre>
+</details>
+<div class="desc"><p>Check if device is connected and responding.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>bool</code></dt>
+<dd>True if device is connected and responding</dd>
+</dl></div>
+</dd>
+<dt id="qscope.device.SMU2450.SMU2450.measure_iv_curve"><code class="name flex">
+<span>def <span class="ident">measure_iv_curve</span></span>(<span>self,<br>start: float,<br>stop: float,<br>points: int,<br>delay: float = 0.1,<br>sweep_type: Literal['linear', 'log'] = 'linear',<br>bidirectional: bool = False) ‑> Tuple[list[float], list[float]]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def measure_iv_curve(
+    self,
+    start: float,
+    stop: float,
+    points: int,
+    delay: float = 0.1,
+    sweep_type: Literal[&#34;linear&#34;, &#34;log&#34;] = &#34;linear&#34;,
+    bidirectional: bool = False,
+) -&gt; Tuple[list[float], list[float]]:
+    &#34;&#34;&#34;Perform an I-V curve measurement.&#34;&#34;&#34;
+    if not self.inst:
+        raise RuntimeError(&#34;Device not connected&#34;)
+
+    mode = self.get_mode()
+    source_vals = []
+    meas_vals = []
+
+    try:
+        # Enable output before starting sweep
+        self.set_output_state(True)
+
+        # Generate source values
+        if sweep_type == &#34;linear&#34;:
+            forward = np.linspace(start, stop, points)
+            if bidirectional:
+                backward = np.linspace(stop, start, points)
+                values = np.concatenate([forward, backward])
+            else:
+                values = forward
+        else:
+            forward = np.logspace(
+                np.log10(abs(start)), np.log10(abs(stop)), points
+            ) * np.sign(start)
+            if bidirectional:
+                backward = np.logspace(
+                    np.log10(abs(stop)), np.log10(abs(start)), points
+                ) * np.sign(stop)
+                values = np.concatenate([forward, backward])
+            else:
+                values = forward
+
+        # Measure point by point
+        for val in values:
+            source, meas = self._measure_point(mode, val, delay)
+            source_vals.append(source)
+            meas_vals.append(meas)
+
+            # Check compliance periodically
+            if self.check_compliance():
+                raise RuntimeError(&#34;Compliance limit reached during measurement&#34;)
+
+        return source_vals, meas_vals
+
+    except Exception as e:
+        self.abort()  # Safely abort on any error
+        raise RuntimeError(f&#34;IV curve measurement failed: {str(e)}&#34;)</code></pre>
+</details>
+<div class="desc"><p>Perform an I-V curve measurement.</p></div>
+</dd>
+<dt id="qscope.device.SMU2450.SMU2450.open"><code class="name flex">
+<span>def <span class="ident">open</span></span>(<span>self) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def open(self) -&gt; None:
+    &#34;&#34;&#34;Open connection to the instrument and configure defaults.&#34;&#34;&#34;
+    try:
+        self.inst = self.rm.open_resource(self.visa_address)
+        self.inst.timeout = 2000  # 2 second timeout
+
+        # Set proper termination characters
+        self.inst.read_termination = &#34;\n&#34;
+        self.inst.write_termination = &#34;\n&#34;
+
+        # Basic initialization sequence
+        idn = self._communicate(&#34;*IDN?&#34;, query=True, check_errors=True)
+        if &#34;MODEL 2450&#34; not in idn:
+            raise RuntimeError(f&#34;Unexpected device ID: {idn}&#34;)
+
+        # Basic configuration
+        self._communicate(&#34;*RST&#34;, check_errors=True)  # Reset
+        time.sleep(0.1)
+        self._communicate(&#34;*CLS&#34;, check_errors=True)  # Clear status
+        time.sleep(0.1)
+
+        # Basic configuration - standard safe state
+        self._communicate(&#34;:SOUR:FUNC VOLT&#34;, check_errors=True)  # Start in voltage source mode
+        self._communicate(&#34;:SOUR:VOLT:RANG 20&#34;, check_errors=True)  # Set to 20V range for safety
+        self._communicate(&#34;:SOUR:VOLT:ILIM 0.5&#34;, check_errors=True)  # Set 500mA compliance
+        self._communicate(&#39;:SENS:FUNC &#34;CURR&#34;&#39;, check_errors=True)  # Measure current
+        self._communicate(&#34;:SENS:CURR:RANG 1.05&#34;, check_errors=True)  # Set to max current range
+        self._communicate(&#34;:SENS:CURR:NPLC 1&#34;, check_errors=True)  # Set integration time
+        self._communicate(&#34;:OUTP OFF&#34;, check_errors=True)  # Ensure output is off
+
+        self._mode = &#34;voltage&#34;  # Set initial mode
+
+    except Exception as e:
+        if self.inst:
+            try:
+                self.inst.close()
+            except:
+                pass
+            self.inst = None
+        raise RuntimeError(f&#34;Failed to connect to instrument: {str(e)}&#34;)</code></pre>
+</details>
+<div class="desc"><p>Open connection to the instrument and configure defaults.</p></div>
+</dd>
+<dt id="qscope.device.SMU2450.SMU2450.set_compliance"><code class="name flex">
+<span>def <span class="ident">set_compliance</span></span>(<span>self, value: float) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_compliance(self, value: float) -&gt; None:
+    &#34;&#34;&#34;Set compliance limit based on current mode.
+
+    In voltage source mode, sets current compliance.
+    In current source mode, sets voltage compliance.
+
+    Args:
+        value: Compliance limit value
+
+    Raises:
+        RuntimeError: If device not connected
+    &#34;&#34;&#34;
+    mode = self.get_mode()
+    if mode == &#34;voltage&#34;:
+        self._communicate(f&#34;:SOUR:VOLT:ILIM {value}&#34;)
+    else:
+        self._communicate(f&#34;:SOUR:CURR:VLIM {value}&#34;)
+    error = self._communicate(&#34;SYST:ERR?&#34;, query=True)
+    if not error.startswith(&#34;0&#34;):
+        raise RuntimeError(f&#34;Error setting compliance limit: {error}&#34;)</code></pre>
+</details>
+<div class="desc"><p>Set compliance limit based on current mode.</p>
+<p>In voltage source mode, sets current compliance.
+In current source mode, sets voltage compliance.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>value</code></strong></dt>
+<dd>Compliance limit value</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>RuntimeError</code></dt>
+<dd>If device not connected</dd>
+</dl></div>
+</dd>
+<dt id="qscope.device.SMU2450.SMU2450.set_current"><code class="name flex">
+<span>def <span class="ident">set_current</span></span>(<span>self, current: float, ramp_rate: float | None = None, fast: bool | None = False) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_current(
+    self,
+    current: float,
+    ramp_rate: Optional[float] = None,
+    fast: Optional[bool] = False,
+) -&gt; None:
+    &#34;&#34;&#34;Set output current, optionally ramping to target.
+
+    Args:
+        current: Target current in amps (-1.05A to +1.05A)
+        ramp_rate: Optional ramp rate in A/s. If None, sets immediately.
+
+    Raises:
+        RuntimeError: If device not connected
+        ValueError: If current outside valid range
+    &#34;&#34;&#34;
+    if not -1.05 &lt;= current &lt;= 1.05:
+        raise ValueError(
+            f&#34;Current {current}A outside instrument range (-1.05A to +1.05A)&#34;
+        )
+
+    try:
+        if ramp_rate is not None:
+            current_val = float(self._communicate(&#34;:SOUR:CURR?&#34;, query=True))
+            self._ramp_value(
+                current_val,
+                current,
+                ramp_rate,
+                lambda i: self._communicate(f&#34;:SOUR:CURR {i}&#34;),
+            )
+        else:
+            self._communicate(f&#34;:SOUR:CURR {current}&#34;)
+
+        if not fast:
+            # Add settling time and verification
+            time.sleep(0.05)
+            actual = float(self._communicate(&#34;:SOUR:CURR?&#34;, query=True))
+            if abs(actual - current) &gt; 0.001:  # Within 1mA
+                raise RuntimeError(
+                    f&#34;Failed to verify current setting: got {actual}A, expected {current}A&#34;
+                )
+
+    except Exception as e:
+        self._handle_error(f&#34;setting current to {current}A&#34;, e)</code></pre>
+</details>
+<div class="desc"><p>Set output current, optionally ramping to target.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>current</code></strong></dt>
+<dd>Target current in amps (-1.05A to +1.05A)</dd>
+<dt><strong><code>ramp_rate</code></strong></dt>
+<dd>Optional ramp rate in A/s. If None, sets immediately.</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>RuntimeError</code></dt>
+<dd>If device not connected</dd>
+<dt><code>ValueError</code></dt>
+<dd>If current outside valid range</dd>
+</dl></div>
+</dd>
+<dt id="qscope.device.SMU2450.SMU2450.set_local"><code class="name flex">
+<span>def <span class="ident">set_local</span></span>(<span>self) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_local(self) -&gt; None:
+    &#34;&#34;&#34;Return control to front panel.&#34;&#34;&#34;
+    self._communicate(&#34;:SYST:LOC&#34;)
+    error = self._communicate(&#34;SYST:ERR?&#34;, query=True)
+    if not error.startswith(&#34;0&#34;):
+        raise RuntimeError(f&#34;Error setting local mode: {error}&#34;)</code></pre>
+</details>
+<div class="desc"><p>Return control to front panel.</p></div>
+</dd>
+<dt id="qscope.device.SMU2450.SMU2450.set_mode"><code class="name flex">
+<span>def <span class="ident">set_mode</span></span>(<span>self, mode: Literal['voltage', 'current']) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_mode(self, mode: Literal[&#34;voltage&#34;, &#34;current&#34;]) -&gt; None:
+    &#34;&#34;&#34;Set the source mode.
+
+    Args:
+        mode: Either &#34;voltage&#34; for voltage source mode or &#34;current&#34; for current source mode
+
+    Raises:
+        ValueError: If mode is not &#34;voltage&#34; or &#34;current&#34;
+        RuntimeError: If device is not connected
+    &#34;&#34;&#34;
+    if mode not in [&#34;voltage&#34;, &#34;current&#34;]:
+        raise ValueError(&#39;Mode must be either &#34;voltage&#34; or &#34;current&#34;&#39;)
+
+    func = &#34;VOLT&#34; if mode == &#34;voltage&#34; else &#34;CURR&#34;
+    self._communicate(f&#34;:SOUR:FUNC {func}&#34;)
+    time.sleep(0.1)
+    self._check_error()
+    self._mode = mode</code></pre>
+</details>
+<div class="desc"><p>Set the source mode.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>mode</code></strong></dt>
+<dd>Either "voltage" for voltage source mode or "current" for current source mode</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>ValueError</code></dt>
+<dd>If mode is not "voltage" or "current"</dd>
+<dt><code>RuntimeError</code></dt>
+<dd>If device is not connected</dd>
+</dl></div>
+</dd>
+<dt id="qscope.device.SMU2450.SMU2450.set_output_state"><code class="name flex">
+<span>def <span class="ident">set_output_state</span></span>(<span>self, state: bool) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_output_state(self, state: bool) -&gt; None:
+    &#34;&#34;&#34;Enable or disable the output.
+
+    Args:
+        state: True to enable output, False to disable
+
+    Raises:
+        RuntimeError: If device not connected
+    &#34;&#34;&#34;
+    self._communicate(f&#34;:OUTP {1 if state else 0}&#34;)
+    time.sleep(0.1)
+    self._check_error()
+    self._output_enabled = state</code></pre>
+</details>
+<div class="desc"><p>Enable or disable the output.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>state</code></strong></dt>
+<dd>True to enable output, False to disable</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>RuntimeError</code></dt>
+<dd>If device not connected</dd>
+</dl></div>
+</dd>
+<dt id="qscope.device.SMU2450.SMU2450.set_voltage"><code class="name flex">
+<span>def <span class="ident">set_voltage</span></span>(<span>self, voltage: float, ramp_rate: float | None = None) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_voltage(self, voltage: float, ramp_rate: Optional[float] = None) -&gt; None:
+    &#34;&#34;&#34;Set output voltage, optionally ramping to target.
+
+    Args:
+        voltage: Target voltage in volts (-20V to +20V)
+        ramp_rate: Optional ramp rate in V/s. If None, sets immediately.
+
+    Raises:
+        RuntimeError: If device not connected
+        ValueError: If voltage outside valid range
+    &#34;&#34;&#34;
+    if not -20 &lt;= voltage &lt;= 20:
+        raise ValueError(
+            f&#34;Voltage {voltage}V outside instrument range (-20V to +20V)&#34;
+        )
+
+    try:
+        if ramp_rate is not None:
+            current = float(self._communicate(&#34;:SOUR:VOLT?&#34;, query=True))
+            self._ramp_value(
+                current,
+                voltage,
+                ramp_rate,
+                lambda v: self._communicate(f&#34;:SOUR:VOLT {v}&#34;),
+            )
+        else:
+            self._communicate(f&#34;:SOUR:VOLT {voltage}&#34;)
+
+        # Add settling time and verification
+        time.sleep(0.1)
+
+        # Verify voltage was set correctly
+        attempts = 3
+        for _ in range(attempts):
+            try:
+                actual = float(self._communicate(&#34;:SOUR:VOLT?&#34;, query=True))
+                if abs(actual - voltage) &lt; 0.01:  # Within 10mV
+                    return
+                time.sleep(0.1)
+            except Exception as e:
+                logger.trace(f&#34;Voltage verification attempt failed: {e}&#34;)
+                time.sleep(0.1)
+
+        raise RuntimeError(&#34;Failed to verify voltage setting&#34;)
+
+    except Exception as e:
+        self._handle_error(f&#34;setting voltage to {voltage}V&#34;, e)</code></pre>
+</details>
+<div class="desc"><p>Set output voltage, optionally ramping to target.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>voltage</code></strong></dt>
+<dd>Target voltage in volts (-20V to +20V)</dd>
+<dt><strong><code>ramp_rate</code></strong></dt>
+<dd>Optional ramp rate in V/s. If None, sets immediately.</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>RuntimeError</code></dt>
+<dd>If device not connected</dd>
+<dt><code>ValueError</code></dt>
+<dd>If voltage outside valid range</dd>
+</dl></div>
+</dd>
+<dt id="qscope.device.SMU2450.SMU2450.start_trigger_model"><code class="name flex">
+<span>def <span class="ident">start_trigger_model</span></span>(<span>self) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def start_trigger_model(self) -&gt; None:
+    &#34;&#34;&#34;Start the configured trigger model.&#34;&#34;&#34;
+    self._communicate(&#34;:INIT&#34;)
+    self._check_error()</code></pre>
+</details>
+<div class="desc"><p>Start the configured trigger model.</p></div>
+</dd>
+<dt id="qscope.device.SMU2450.SMU2450.stop_trigger_model"><code class="name flex">
+<span>def <span class="ident">stop_trigger_model</span></span>(<span>self, max_wait: float = 2.0) ‑> str</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def stop_trigger_model(self, max_wait: float = 2.0) -&gt; str:
+    &#34;&#34;&#34;Stop the trigger model execution and wait for it to fully stop.
+    
+    Parameters
+    ----------
+    max_wait : float
+        Maximum time to wait in seconds for the trigger model to stop
+        
+    Returns
+    -------
+    str
+        Final trigger model state after stopping
+    &#34;&#34;&#34;
+    logger.debug(&#34;Stopping trigger model&#34;)
+    
+    # Define stop sequence commands
+    stop_commands = [
+        (&#34;ABOR&#34;, &#34;abort trigger model&#34;),
+        # (&#34;TRIG:LOAD:EMPTY&#34;, &#34;reset trigger model&#34;)
+    ]
+    
+    # Execute stop sequence
+    for cmd, description in stop_commands:
+        try:
+            self._communicate(cmd, check_errors=False)
+            logger.trace(f&#34;Executed {description}&#34;)
+        except Exception as e:
+            logger.warning(f&#34;Error during {description}: {e}&#34;)
+    
+    # Wait for trigger model to fully stop with timeout
+    acceptable_states = [&#34;idle&#34;, &#34;empty&#34;, &#34;aborted&#34;]
+    start_time = time.time()
+    
+    while time.time() - start_time &lt; max_wait:
+        try:
+            state = self.get_trigger_state()
+            if state in acceptable_states:
+                logger.debug(f&#34;Trigger model is now in {state} state&#34;)
+                return state
+            time.sleep(0.1)  # Short sleep between checks
+        except Exception:
+            break
+    raise RuntimeError(f&#34;Could not abort, state: {state}&#34;)
+    
+    # # If we get here, try a more aggressive reset
+    # try:
+    #     self._communicate(&#34;*RST&#34;, check_errors=False)
+    #     self._communicate(&#34;*CLS&#34;, check_errors=False)
+    #     return &#34;reset&#34;
+    # except Exception:
+    #     return &#34;unknown&#34;</code></pre>
+</details>
+<div class="desc"><p>Stop the trigger model execution and wait for it to fully stop.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>max_wait</code></strong> :&ensp;<code>float</code></dt>
+<dd>Maximum time to wait in seconds for the trigger model to stop</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>Final trigger model state after stopping</dd>
+</dl></div>
+</dd>
+<dt id="qscope.device.SMU2450.SMU2450.wait_for_trigger"><code class="name flex">
+<span>def <span class="ident">wait_for_trigger</span></span>(<span>self, timeout: float = 1.0) ‑> bool</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def wait_for_trigger(self, timeout: float = 1.0) -&gt; bool:
+    &#34;&#34;&#34;Wait for trigger event.
+    
+    Args:
+        timeout: Maximum time to wait in seconds
+        
+    Returns:
+        bool: True if triggered, False if timed out
+        
+    Raises:
+        RuntimeError: If device not connected or error occurs
+    &#34;&#34;&#34;
+    if not self.inst:
+        raise RuntimeError(&#34;Device not connected&#34;)
+
+    start = time.time()
+    while time.time() - start &lt; timeout:
+        status = self._communicate(&#34;:STAT:OPER:COND?&#34;, query=True)
+        if int(status) &amp; 0x0002:  # Check trigger bit
+            return True
+        time.sleep(0.01)
+    return False</code></pre>
+</details>
+<div class="desc"><p>Wait for trigger event.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>timeout</code></strong></dt>
+<dd>Maximum time to wait in seconds</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>bool</code></dt>
+<dd>True if triggered, False if timed out</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>RuntimeError</code></dt>
+<dd>If device not connected or error occurs</dd>
+</dl></div>
+</dd>
+<dt id="qscope.device.SMU2450.SMU2450.zero_output"><code class="name flex">
+<span>def <span class="ident">zero_output</span></span>(<span>self) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def zero_output(self) -&gt; None:
+    &#34;&#34;&#34;Safely return output to zero.
+
+    Ramps the output to zero and disables it.
+    &#34;&#34;&#34;
+    logger.trace(&#34;Attempting zero_output&#34;)
+    try:
+        # Simpler zero sequence
+        logger.trace(&#34;Setting voltage to 0&#34;)
+        self.inst.write(&#34;:SOUR:VOLT 0&#34;)
+        time.sleep(0.1)
+        logger.trace(&#34;Disabling output&#34;)
+        self.inst.write(&#34;:OUTP 0&#34;)
+        time.sleep(0.1)
+        logger.trace(&#34;zero_output completed successfully&#34;)
+    except Exception as e:
+        logger.error(f&#34;Error during zero_output: {e}&#34;)
+        try:
+            logger.trace(&#34;Attempting emergency output disable&#34;)
+            self.inst.write(&#34;:OUTP 0&#34;)  # One last try to disable output
+            logger.trace(&#34;Emergency disable successful&#34;)
+        except Exception as e2:
+            logger.error(f&#34;Emergency disable failed: {e2}&#34;)</code></pre>
+</details>
+<div class="desc"><p>Safely return output to zero.</p>
+<p>Ramps the output to zero and disables it.</p></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="qscope.device.device.Device" href="device.html#qscope.device.device.Device">Device</a></b></code>:
+<ul class="hlist">
+<li><code><a title="qscope.device.device.Device.get_roles" href="device.html#qscope.device.device.Device.get_roles">get_roles</a></code></li>
+<li><code><a title="qscope.device.device.Device.has_role" href="device.html#qscope.device.device.Device.has_role">has_role</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="qscope.device.SMU2450.TriggerConfig"><code class="flex name class">
+<span>class <span class="ident">TriggerConfig</span></span>
+<span>(</span><span>source: Literal['external', 'timer', 'manual'] = 'external',<br>edge: <a title="qscope.device.SMU2450.TriggerEdge" href="#qscope.device.SMU2450.TriggerEdge">TriggerEdge</a> = TriggerEdge.RISING,<br>pin: int = 3,<br>delay: float = 0.0,<br>timeout: float = 1.0,<br>high_value: float = 0.0,<br>low_value: float = 0.0,<br>count: int = 1,<br>resistance: float = 20.0)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass
+class TriggerConfig:
+    &#34;&#34;&#34;Configuration for SMU triggering and digital I/O.
+    
+    Attributes
+    ----------
+    source : Literal[&#34;external&#34;, &#34;timer&#34;, &#34;manual&#34;]
+        Trigger source selection
+    edge : TriggerEdge
+        Trigger edge direction for external trigger
+    pin : int
+        Digital I/O pin number (1-6) for external trigger
+    delay : float
+        Delay after trigger before action (seconds)
+    timeout : float
+        Time to wait for trigger before timeout (seconds)
+    high_value : float
+        Value to output when triggered (current/voltage depending on mode)
+    low_value : float
+        Value to output when not triggered
+    count : int
+        Number of trigger cycles to execute (0 for infinite)
+    resistance : float
+        Resistance value for voltage-to-current calculations (ohms)
+    &#34;&#34;&#34;
+    source: Literal[&#34;external&#34;, &#34;timer&#34;, &#34;manual&#34;] = &#34;external&#34;
+    edge: TriggerEdge = TriggerEdge.RISING
+    pin: int = 3
+    delay: float = 0.0
+    timeout: float = 1.0
+    high_value: float = 0.0
+    low_value: float = 0.0
+    count: int = 1
+    resistance: float = 20.0  # Default resistance for calculations
+
+    def __post_init__(self):
+        &#34;&#34;&#34;Validate configuration immediately after initialization.&#34;&#34;&#34;
+        self.validate()
+
+    def validate(self) -&gt; None:
+        &#34;&#34;&#34;Validate trigger configuration.&#34;&#34;&#34;
+        validators = {
+            &#34;pin&#34;: (1 &lt;= self.pin &lt;= 6, &#34;Digital I/O pin must be between 1 and 6&#34;),
+            &#34;delay&#34;: (self.delay &gt;= 0, &#34;Trigger delay cannot be negative&#34;),
+            &#34;timeout&#34;: (self.timeout &gt; 0, &#34;Trigger timeout must be positive&#34;),
+            &#34;count&#34;: (self.count &gt;= 0, &#34;Trigger count cannot be negative&#34;)
+        }
+        
+        # Check all validation rules
+        for param, (valid, message) in validators.items():
+            if not valid:
+                raise ValueError(f&#34;{message} (got {getattr(self, param)})&#34;)</code></pre>
+</details>
+<div class="desc"><p>Configuration for SMU triggering and digital I/O.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>source</code></strong> :&ensp;<code>Literal["external", "timer", "manual"]</code></dt>
+<dd>Trigger source selection</dd>
+<dt><strong><code>edge</code></strong> :&ensp;<code><a title="qscope.device.SMU2450.TriggerEdge" href="#qscope.device.SMU2450.TriggerEdge">TriggerEdge</a></code></dt>
+<dd>Trigger edge direction for external trigger</dd>
+<dt><strong><code>pin</code></strong> :&ensp;<code>int</code></dt>
+<dd>Digital I/O pin number (1-6) for external trigger</dd>
+<dt><strong><code>delay</code></strong> :&ensp;<code>float</code></dt>
+<dd>Delay after trigger before action (seconds)</dd>
+<dt><strong><code>timeout</code></strong> :&ensp;<code>float</code></dt>
+<dd>Time to wait for trigger before timeout (seconds)</dd>
+<dt><strong><code>high_value</code></strong> :&ensp;<code>float</code></dt>
+<dd>Value to output when triggered (current/voltage depending on mode)</dd>
+<dt><strong><code>low_value</code></strong> :&ensp;<code>float</code></dt>
+<dd>Value to output when not triggered</dd>
+<dt><strong><code>count</code></strong> :&ensp;<code>int</code></dt>
+<dd>Number of trigger cycles to execute (0 for infinite)</dd>
+<dt><strong><code>resistance</code></strong> :&ensp;<code>float</code></dt>
+<dd>Resistance value for voltage-to-current calculations (ohms)</dd>
+</dl></div>
+<h3>Instance variables</h3>
+<dl>
+<dt id="qscope.device.SMU2450.TriggerConfig.count"><code class="name">var <span class="ident">count</span> : int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.SMU2450.TriggerConfig.delay"><code class="name">var <span class="ident">delay</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.SMU2450.TriggerConfig.edge"><code class="name">var <span class="ident">edge</span> : <a title="qscope.device.SMU2450.TriggerEdge" href="#qscope.device.SMU2450.TriggerEdge">TriggerEdge</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.SMU2450.TriggerConfig.high_value"><code class="name">var <span class="ident">high_value</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.SMU2450.TriggerConfig.low_value"><code class="name">var <span class="ident">low_value</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.SMU2450.TriggerConfig.pin"><code class="name">var <span class="ident">pin</span> : int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.SMU2450.TriggerConfig.resistance"><code class="name">var <span class="ident">resistance</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.SMU2450.TriggerConfig.source"><code class="name">var <span class="ident">source</span> : Literal['external', 'timer', 'manual']</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.SMU2450.TriggerConfig.timeout"><code class="name">var <span class="ident">timeout</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.device.SMU2450.TriggerConfig.validate"><code class="name flex">
+<span>def <span class="ident">validate</span></span>(<span>self) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def validate(self) -&gt; None:
+    &#34;&#34;&#34;Validate trigger configuration.&#34;&#34;&#34;
+    validators = {
+        &#34;pin&#34;: (1 &lt;= self.pin &lt;= 6, &#34;Digital I/O pin must be between 1 and 6&#34;),
+        &#34;delay&#34;: (self.delay &gt;= 0, &#34;Trigger delay cannot be negative&#34;),
+        &#34;timeout&#34;: (self.timeout &gt; 0, &#34;Trigger timeout must be positive&#34;),
+        &#34;count&#34;: (self.count &gt;= 0, &#34;Trigger count cannot be negative&#34;)
+    }
+    
+    # Check all validation rules
+    for param, (valid, message) in validators.items():
+        if not valid:
+            raise ValueError(f&#34;{message} (got {getattr(self, param)})&#34;)</code></pre>
+</details>
+<div class="desc"><p>Validate trigger configuration.</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.device.SMU2450.TriggerEdge"><code class="flex name class">
+<span>class <span class="ident">TriggerEdge</span></span>
+<span>(</span><span>*args, **kwds)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class TriggerEdge(Enum):
+    &#34;&#34;&#34;Trigger edge direction.&#34;&#34;&#34;
+    RISING = auto()
+    FALLING = auto()
+    EITHER = auto()</code></pre>
+</details>
+<div class="desc"><p>Trigger edge direction.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>enum.Enum</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="qscope.device.SMU2450.TriggerEdge.EITHER"><code class="name">var <span class="ident">EITHER</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.SMU2450.TriggerEdge.FALLING"><code class="name">var <span class="ident">FALLING</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.SMU2450.TriggerEdge.RISING"><code class="name">var <span class="ident">RISING</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<form>
+<input id="lunr-search" name="q" placeholder="🔎 Search ..." aria-label="Search"
+disabled minlength="2">
+</form>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.css" integrity="sha512-b+T2i3P45i1LZM7I00Ci5QquB9szqaxu+uuk5TUSGjZQ4w4n+qujQiIuvTv2BxE7WCGQCifNMksyKILDiHzsOg==" crossorigin>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.js" integrity="sha512-2B9/byNV1KKRm5nQ2RLViPFD6U4dUjDGwuW1GU+ImJh8YinPU9Zlq1GzdTMO+G2ROrB5o1qasJBy1ttYz0wCug==" crossorigin></script>
+<style>
+.modal-dialog iframe {
+width: 100vw;
+height: calc(100vh - 80px);
+}
+@media screen and (min-width: 700px) {
+.modal-dialog iframe {
+width: 70vw;
+height: 80vh;
+}
+}
+.modal-dialog .tingle-modal-box {width: auto;}
+.modal-dialog .tingle-modal-box__content {padding: 0;}
+</style>
+<script>
+const input = document.getElementById('lunr-search');
+input.disabled = false;
+input.form.addEventListener('submit', (ev) => {
+ev.preventDefault();
+const url = new URL(window.location);
+url.searchParams.set('q', input.value);
+history.replaceState({}, null, url.toString());
+search(input.value);
+});
+const query = new URL(window.location).searchParams.get('q');
+if (query)
+search(query);
+function search(query) {
+const url = '../../doc-search.html#' + encodeURIComponent(query);
+new tingle.modal({
+cssClass: ['modal-dialog'],
+onClose: () => {
+const url = new URL(window.location);
+url.searchParams.delete('q');
+history.replaceState({}, null, url.toString());
+setTimeout(() => input.focus(), 100);
+}
+}).setContent('<iframe src="' + url + '"></iframe>').open();
+}
+</script>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="qscope.device" href="index.html">qscope.device</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="qscope.device.SMU2450.SMU2450" href="#qscope.device.SMU2450.SMU2450">SMU2450</a></code></h4>
+<ul class="">
+<li><code><a title="qscope.device.SMU2450.SMU2450.abort" href="#qscope.device.SMU2450.SMU2450.abort">abort</a></code></li>
+<li><code><a title="qscope.device.SMU2450.SMU2450.check_compliance" href="#qscope.device.SMU2450.SMU2450.check_compliance">check_compliance</a></code></li>
+<li><code><a title="qscope.device.SMU2450.SMU2450.close" href="#qscope.device.SMU2450.SMU2450.close">close</a></code></li>
+<li><code><a title="qscope.device.SMU2450.SMU2450.configure" href="#qscope.device.SMU2450.SMU2450.configure">configure</a></code></li>
+<li><code><a title="qscope.device.SMU2450.SMU2450.configure_digital_io" href="#qscope.device.SMU2450.SMU2450.configure_digital_io">configure_digital_io</a></code></li>
+<li><code><a title="qscope.device.SMU2450.SMU2450.configure_trigger" href="#qscope.device.SMU2450.SMU2450.configure_trigger">configure_trigger</a></code></li>
+<li><code><a title="qscope.device.SMU2450.SMU2450.get_all_attrs" href="#qscope.device.SMU2450.SMU2450.get_all_attrs">get_all_attrs</a></code></li>
+<li><code><a title="qscope.device.SMU2450.SMU2450.get_auto_zero" href="#qscope.device.SMU2450.SMU2450.get_auto_zero">get_auto_zero</a></code></li>
+<li><code><a title="qscope.device.SMU2450.SMU2450.get_compliance_limit" href="#qscope.device.SMU2450.SMU2450.get_compliance_limit">get_compliance_limit</a></code></li>
+<li><code><a title="qscope.device.SMU2450.SMU2450.get_current" href="#qscope.device.SMU2450.SMU2450.get_current">get_current</a></code></li>
+<li><code><a title="qscope.device.SMU2450.SMU2450.get_mode" href="#qscope.device.SMU2450.SMU2450.get_mode">get_mode</a></code></li>
+<li><code><a title="qscope.device.SMU2450.SMU2450.get_mode_state" href="#qscope.device.SMU2450.SMU2450.get_mode_state">get_mode_state</a></code></li>
+<li><code><a title="qscope.device.SMU2450.SMU2450.get_nplc" href="#qscope.device.SMU2450.SMU2450.get_nplc">get_nplc</a></code></li>
+<li><code><a title="qscope.device.SMU2450.SMU2450.get_output_enabled" href="#qscope.device.SMU2450.SMU2450.get_output_enabled">get_output_enabled</a></code></li>
+<li><code><a title="qscope.device.SMU2450.SMU2450.get_output_state" href="#qscope.device.SMU2450.SMU2450.get_output_state">get_output_state</a></code></li>
+<li><code><a title="qscope.device.SMU2450.SMU2450.get_ranges" href="#qscope.device.SMU2450.SMU2450.get_ranges">get_ranges</a></code></li>
+<li><code><a title="qscope.device.SMU2450.SMU2450.get_source_delay" href="#qscope.device.SMU2450.SMU2450.get_source_delay">get_source_delay</a></code></li>
+<li><code><a title="qscope.device.SMU2450.SMU2450.get_trigger_state" href="#qscope.device.SMU2450.SMU2450.get_trigger_state">get_trigger_state</a></code></li>
+<li><code><a title="qscope.device.SMU2450.SMU2450.get_voltage" href="#qscope.device.SMU2450.SMU2450.get_voltage">get_voltage</a></code></li>
+<li><code><a title="qscope.device.SMU2450.SMU2450.is_remote" href="#qscope.device.SMU2450.SMU2450.is_remote">is_remote</a></code></li>
+<li><code><a title="qscope.device.SMU2450.SMU2450.is_responding" href="#qscope.device.SMU2450.SMU2450.is_responding">is_responding</a></code></li>
+<li><code><a title="qscope.device.SMU2450.SMU2450.measure_iv_curve" href="#qscope.device.SMU2450.SMU2450.measure_iv_curve">measure_iv_curve</a></code></li>
+<li><code><a title="qscope.device.SMU2450.SMU2450.open" href="#qscope.device.SMU2450.SMU2450.open">open</a></code></li>
+<li><code><a title="qscope.device.SMU2450.SMU2450.set_compliance" href="#qscope.device.SMU2450.SMU2450.set_compliance">set_compliance</a></code></li>
+<li><code><a title="qscope.device.SMU2450.SMU2450.set_current" href="#qscope.device.SMU2450.SMU2450.set_current">set_current</a></code></li>
+<li><code><a title="qscope.device.SMU2450.SMU2450.set_local" href="#qscope.device.SMU2450.SMU2450.set_local">set_local</a></code></li>
+<li><code><a title="qscope.device.SMU2450.SMU2450.set_mode" href="#qscope.device.SMU2450.SMU2450.set_mode">set_mode</a></code></li>
+<li><code><a title="qscope.device.SMU2450.SMU2450.set_output_state" href="#qscope.device.SMU2450.SMU2450.set_output_state">set_output_state</a></code></li>
+<li><code><a title="qscope.device.SMU2450.SMU2450.set_voltage" href="#qscope.device.SMU2450.SMU2450.set_voltage">set_voltage</a></code></li>
+<li><code><a title="qscope.device.SMU2450.SMU2450.start_trigger_model" href="#qscope.device.SMU2450.SMU2450.start_trigger_model">start_trigger_model</a></code></li>
+<li><code><a title="qscope.device.SMU2450.SMU2450.stop_trigger_model" href="#qscope.device.SMU2450.SMU2450.stop_trigger_model">stop_trigger_model</a></code></li>
+<li><code><a title="qscope.device.SMU2450.SMU2450.wait_for_trigger" href="#qscope.device.SMU2450.SMU2450.wait_for_trigger">wait_for_trigger</a></code></li>
+<li><code><a title="qscope.device.SMU2450.SMU2450.zero_output" href="#qscope.device.SMU2450.SMU2450.zero_output">zero_output</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.device.SMU2450.TriggerConfig" href="#qscope.device.SMU2450.TriggerConfig">TriggerConfig</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.device.SMU2450.TriggerConfig.count" href="#qscope.device.SMU2450.TriggerConfig.count">count</a></code></li>
+<li><code><a title="qscope.device.SMU2450.TriggerConfig.delay" href="#qscope.device.SMU2450.TriggerConfig.delay">delay</a></code></li>
+<li><code><a title="qscope.device.SMU2450.TriggerConfig.edge" href="#qscope.device.SMU2450.TriggerConfig.edge">edge</a></code></li>
+<li><code><a title="qscope.device.SMU2450.TriggerConfig.high_value" href="#qscope.device.SMU2450.TriggerConfig.high_value">high_value</a></code></li>
+<li><code><a title="qscope.device.SMU2450.TriggerConfig.low_value" href="#qscope.device.SMU2450.TriggerConfig.low_value">low_value</a></code></li>
+<li><code><a title="qscope.device.SMU2450.TriggerConfig.pin" href="#qscope.device.SMU2450.TriggerConfig.pin">pin</a></code></li>
+<li><code><a title="qscope.device.SMU2450.TriggerConfig.resistance" href="#qscope.device.SMU2450.TriggerConfig.resistance">resistance</a></code></li>
+<li><code><a title="qscope.device.SMU2450.TriggerConfig.source" href="#qscope.device.SMU2450.TriggerConfig.source">source</a></code></li>
+<li><code><a title="qscope.device.SMU2450.TriggerConfig.timeout" href="#qscope.device.SMU2450.TriggerConfig.timeout">timeout</a></code></li>
+<li><code><a title="qscope.device.SMU2450.TriggerConfig.validate" href="#qscope.device.SMU2450.TriggerConfig.validate">validate</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.device.SMU2450.TriggerEdge" href="#qscope.device.SMU2450.TriggerEdge">TriggerEdge</a></code></h4>
+<ul class="">
+<li><code><a title="qscope.device.SMU2450.TriggerEdge.EITHER" href="#qscope.device.SMU2450.TriggerEdge.EITHER">EITHER</a></code></li>
+<li><code><a title="qscope.device.SMU2450.TriggerEdge.FALLING" href="#qscope.device.SMU2450.TriggerEdge.FALLING">FALLING</a></code></li>
+<li><code><a title="qscope.device.SMU2450.TriggerEdge.RISING" href="#qscope.device.SMU2450.TriggerEdge.RISING">RISING</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,609 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.6">
+<title>qscope.gui.qmeas.settings_defs API documentation</title>
+<meta name="description" content="">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}#lunr-search{width:100%;font-size:1em;padding:6px 9px 5px 9px;border:1px solid silver}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes: true } });</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML" integrity="sha256-kZafAc6mZvK3W3v1pHOcUix30OHQN6pU/NO2oFkqZVw=" crossorigin></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>qscope.gui.qmeas.settings_defs</code></h1>
+</header>
+<section id="section-intro">
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="qscope.gui.qmeas.settings_defs.confirm_high_power"><code class="name flex">
+<span>def <span class="ident">confirm_high_power</span></span>(<span>) ‑> bool</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def confirm_high_power() -&gt; bool:
+    &#34;&#34;&#34;Confirm if user wants to use high RF power&#34;&#34;&#34;
+    from PyQt6.QtWidgets import QMessageBox
+
+    msg = QMessageBox()
+    msg.setIcon(QMessageBox.Icon.Warning)
+    msg.setText(&#34;High RF power selected&#34;)
+    msg.setInformativeText(&#34;Are you sure you want to use power &gt; 0 dBm?&#34;)
+    msg.setStandardButtons(
+        QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No
+    )
+    return msg.exec() == QMessageBox.StandardButton.Yes</code></pre>
+</details>
+<div class="desc"><p>Confirm if user wants to use high RF power</p></div>
+</dd>
+<dt id="qscope.gui.qmeas.settings_defs.confirm_long_duration"><code class="name flex">
+<span>def <span class="ident">confirm_long_duration</span></span>(<span>) ‑> bool</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def confirm_long_duration() -&gt; bool:
+    &#34;&#34;&#34;Confirm if user wants to use long laser duration&#34;&#34;&#34;
+    from PyQt6.QtWidgets import QMessageBox
+
+    msg = QMessageBox()
+    msg.setIcon(QMessageBox.Icon.Warning)
+    msg.setText(&#34;Long laser duration selected&#34;)
+    msg.setInformativeText(&#34;Are you sure you want to use duration &gt; 1ms?&#34;)
+    msg.setStandardButtons(
+        QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No
+    )
+    return msg.exec() == QMessageBox.StandardButton.Yes</code></pre>
+</details>
+<div class="desc"><p>Confirm if user wants to use long laser duration</p></div>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="qscope.gui.qmeas.settings_defs.MeasurementSettings"><code class="flex name class">
+<span>class <span class="ident">MeasurementSettings</span></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class MeasurementSettings:
+    &#34;&#34;&#34;Comprehensive settings definitions for quantum measurements&#34;&#34;&#34;
+
+    # Measurement Control Settings
+    num_averages: WidgetConfig[int] = WidgetConfig(
+        name=&#34;num_averages&#34;,
+        widget_type=WidgetType.INT,
+        default=1,
+        min_value=1,
+        max_value=10000,
+    )
+
+    stop_after_sweeps: WidgetConfig[int] = WidgetConfig(
+        name=&#34;stop_after_sweeps&#34;,
+        widget_type=WidgetType.INT,
+        default=121,
+        min_value=1,
+        max_value=1000,
+    )
+
+    save_after_sweeps: WidgetConfig[int] = WidgetConfig(
+        name=&#34;save_after_sweeps&#34;,
+        widget_type=WidgetType.INT,
+        default=41,
+        min_value=1,
+        max_value=1000,
+    )
+
+    # Measurement Type Settings
+    measurement_type: WidgetConfig[str] = WidgetConfig(
+        name=&#34;measurement_type&#34;,
+        widget_type=WidgetType.CHOICE,
+        default=&#34;CW ODMR&#34;,
+        choices=[
+            &#34;Mock Measurement&#34;,
+            &#34;CW ODMR&#34;,
+            &#34;Pulsed ODMR&#34;,
+            &#34;Rabi&#34;,
+            &#34;Ramsey&#34;,
+            &#34;Spin Echo&#34;,
+            &#34;CPMG&#34;,
+            &#34;XYN&#34;,
+            &#34;T1&#34;,
+        ],
+    )
+
+    ref_mode: WidgetConfig[str] = WidgetConfig(
+        name=&#34;ref_mode&#34;,
+        widget_type=WidgetType.CHOICE,
+        default=&#34;No RF&#34;,
+        choices=[
+            &#34;No Reference&#34;,
+            &#34;No RF&#34;,
+            &#34;Frequency Modulated&#34;,
+            &#34;π pulse at the end&#34;,
+            &#34;π pulse at the start&#34;,
+        ],
+    )
+
+    list_mode: WidgetConfig[str] = WidgetConfig(
+        name=&#34;list_mode&#34;,
+        widget_type=WidgetType.CHOICE,
+        default=&#34;Linear (center, range)&#34;,
+        choices=[
+            &#34;Linear (min, max)&#34;,
+            &#34;Linear (center, range)&#34;,
+            &#34;Guassian (center, FWHM)&#34;,
+        ],
+    )
+
+    # Frequency Settings
+    start_freq: WidgetConfig[float] = WidgetConfig(
+        name=&#34;start_freq&#34;,
+        widget_type=WidgetType.FLOAT,
+        default=2770.0,
+        min_value=1000.0,
+        max_value=10000.0,
+        transform=lambda x: round(x, 3),
+    )
+
+    stop_freq: WidgetConfig[float] = WidgetConfig(
+        name=&#34;stop_freq&#34;,
+        widget_type=WidgetType.FLOAT,
+        default=2970.0,
+        min_value=1000.0,
+        max_value=10000.0,
+        transform=lambda x: round(x, 3),
+    )
+
+    num_points: WidgetConfig[int] = WidgetConfig(
+        name=&#34;num_points&#34;,
+        widget_type=WidgetType.INT,
+        default=100,
+        min_value=2,
+        max_value=10000,
+    )
+
+    freq_center: WidgetConfig[float] = WidgetConfig(
+        name=&#34;freq_center&#34;,
+        widget_type=WidgetType.FLOAT,
+        default=2870.0,
+        min_value=1000.0,
+        max_value=10000.0,
+        transform=lambda x: round(x, 3),
+    )
+
+    freq_range: WidgetConfig[float] = WidgetConfig(
+        name=&#34;freq_range&#34;,
+        widget_type=WidgetType.FLOAT,
+        default=200.0,
+        min_value=0.1,
+        max_value=1000.0,
+        transform=lambda x: round(x, 2),
+    )
+
+    freq_mod: WidgetConfig[float] = WidgetConfig(
+        name=&#34;freq_mod&#34;,
+        widget_type=WidgetType.FLOAT,
+        default=20.0,
+        min_value=0.0,
+        max_value=10000.0,
+        transform=lambda x: round(x, 3),
+    )
+
+    # Time Settings
+    min_time: WidgetConfig[float] = WidgetConfig(
+        name=&#34;min_time&#34;,
+        widget_type=WidgetType.FLOAT,
+        default=0.0,
+        min_value=0.0,
+        max_value=1000000.0,
+    )
+
+    max_time: WidgetConfig[float] = WidgetConfig(
+        name=&#34;max_time&#34;,
+        widget_type=WidgetType.FLOAT,
+        default=1000.0,
+        min_value=0.0,
+        max_value=10000000.0,
+    )
+
+    time_center: WidgetConfig[float] = WidgetConfig(
+        name=&#34;time_center&#34;,
+        widget_type=WidgetType.FLOAT,
+        default=500.0,
+        min_value=0.0,
+        max_value=1000000.0,
+    )
+
+    time_range: WidgetConfig[float] = WidgetConfig(
+        name=&#34;time_range&#34;,
+        widget_type=WidgetType.FLOAT,
+        default=1000.0,
+        min_value=0.0,
+        max_value=1000000.0,
+    )
+
+    # RF Settings
+    rf_power: WidgetConfig[float] = WidgetConfig(
+        name=&#34;rf_power&#34;,
+        widget_type=WidgetType.FLOAT,
+        default=-40.0,
+        min_value=-60.0,
+        max_value=20.0,
+        transform=lambda x: round(x, 1),
+        validator=lambda x: x &lt;= 0 or confirm_high_power(),
+    )
+
+    rf_freq: WidgetConfig[float] = WidgetConfig(
+        name=&#34;rf_freq&#34;,
+        widget_type=WidgetType.FLOAT,
+        default=2870.0,
+        min_value=1000.0,
+        max_value=10000.0,
+        transform=lambda x: round(x, 3),
+    )
+
+    rf_duration: WidgetConfig[int] = WidgetConfig(
+        name=&#34;rf_duration&#34;,
+        widget_type=WidgetType.INT,
+        default=100,
+        min_value=0,
+        max_value=10000,
+    )
+
+    rf_delay: WidgetConfig[int] = WidgetConfig(
+        name=&#34;rf_delay&#34;,
+        widget_type=WidgetType.INT,
+        default=50,
+        min_value=0,
+        max_value=1000000,
+    )
+
+    # Pulse Sequence Settings
+    pi_pulse: WidgetConfig[int] = WidgetConfig(
+        name=&#34;pi_pulse&#34;,
+        widget_type=WidgetType.INT,
+        default=200,
+        min_value=0,
+        max_value=100000,
+    )
+
+    pi_2_pulse: WidgetConfig[int] = WidgetConfig(
+        name=&#34;pi_2_pulse&#34;,
+        widget_type=WidgetType.INT,
+        default=100,
+        min_value=0,
+        max_value=100000,
+    )
+
+    n_pulses: WidgetConfig[int] = WidgetConfig(
+        name=&#34;n_pulses&#34;,
+        widget_type=WidgetType.INT,
+        default=1,
+        min_value=0,
+        max_value=100000,
+    )
+
+    # Laser Settings
+    laser_duration: WidgetConfig[int] = WidgetConfig(
+        name=&#34;laser_duration&#34;,
+        widget_type=WidgetType.INT,
+        default=10000,
+        min_value=0,
+        max_value=10000000,
+        transform=lambda x: x - (x % 10),  # Round to nearest 10
+        validator=lambda x: x &lt;= 5000000 or confirm_long_duration(),
+    )
+
+    laser_delay: WidgetConfig[int] = WidgetConfig(
+        name=&#34;laser_delay&#34;,
+        widget_type=WidgetType.INT,
+        default=340,
+        min_value=0,
+        max_value=1000000,
+    )
+
+    def get_widget_config(self, name: str) -&gt; Optional[WidgetConfig]:
+        &#34;&#34;&#34;Get widget configuration by name&#34;&#34;&#34;
+        return getattr(self, name, None)
+
+    def validate_all(self) -&gt; Dict[str, bool]:
+        &#34;&#34;&#34;Validate all settings&#34;&#34;&#34;
+        results = {}
+        for field_name, field_value in self.__dataclass_fields__.items():
+            if isinstance(field_value.default, WidgetConfig):
+                config = field_value.default
+                value = getattr(self, field_name, None)
+                results[field_name] = config.validate(value)
+        return results</code></pre>
+</details>
+<div class="desc"><p>Comprehensive settings definitions for quantum measurements</p></div>
+<h3>Class variables</h3>
+<dl>
+<dt id="qscope.gui.qmeas.settings_defs.MeasurementSettings.freq_center"><code class="name">var <span class="ident">freq_center</span> : <a title="qscope.gui.widgets.config.WidgetConfig" href="../widgets/config.html#qscope.gui.widgets.config.WidgetConfig">WidgetConfig</a>[float]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.settings_defs.MeasurementSettings.freq_mod"><code class="name">var <span class="ident">freq_mod</span> : <a title="qscope.gui.widgets.config.WidgetConfig" href="../widgets/config.html#qscope.gui.widgets.config.WidgetConfig">WidgetConfig</a>[float]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.settings_defs.MeasurementSettings.freq_range"><code class="name">var <span class="ident">freq_range</span> : <a title="qscope.gui.widgets.config.WidgetConfig" href="../widgets/config.html#qscope.gui.widgets.config.WidgetConfig">WidgetConfig</a>[float]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.settings_defs.MeasurementSettings.laser_delay"><code class="name">var <span class="ident">laser_delay</span> : <a title="qscope.gui.widgets.config.WidgetConfig" href="../widgets/config.html#qscope.gui.widgets.config.WidgetConfig">WidgetConfig</a>[int]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.settings_defs.MeasurementSettings.laser_duration"><code class="name">var <span class="ident">laser_duration</span> : <a title="qscope.gui.widgets.config.WidgetConfig" href="../widgets/config.html#qscope.gui.widgets.config.WidgetConfig">WidgetConfig</a>[int]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.settings_defs.MeasurementSettings.list_mode"><code class="name">var <span class="ident">list_mode</span> : <a title="qscope.gui.widgets.config.WidgetConfig" href="../widgets/config.html#qscope.gui.widgets.config.WidgetConfig">WidgetConfig</a>[str]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.settings_defs.MeasurementSettings.max_time"><code class="name">var <span class="ident">max_time</span> : <a title="qscope.gui.widgets.config.WidgetConfig" href="../widgets/config.html#qscope.gui.widgets.config.WidgetConfig">WidgetConfig</a>[float]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.settings_defs.MeasurementSettings.measurement_type"><code class="name">var <span class="ident">measurement_type</span> : <a title="qscope.gui.widgets.config.WidgetConfig" href="../widgets/config.html#qscope.gui.widgets.config.WidgetConfig">WidgetConfig</a>[str]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.settings_defs.MeasurementSettings.min_time"><code class="name">var <span class="ident">min_time</span> : <a title="qscope.gui.widgets.config.WidgetConfig" href="../widgets/config.html#qscope.gui.widgets.config.WidgetConfig">WidgetConfig</a>[float]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.settings_defs.MeasurementSettings.n_pulses"><code class="name">var <span class="ident">n_pulses</span> : <a title="qscope.gui.widgets.config.WidgetConfig" href="../widgets/config.html#qscope.gui.widgets.config.WidgetConfig">WidgetConfig</a>[int]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.settings_defs.MeasurementSettings.num_averages"><code class="name">var <span class="ident">num_averages</span> : <a title="qscope.gui.widgets.config.WidgetConfig" href="../widgets/config.html#qscope.gui.widgets.config.WidgetConfig">WidgetConfig</a>[int]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.settings_defs.MeasurementSettings.num_points"><code class="name">var <span class="ident">num_points</span> : <a title="qscope.gui.widgets.config.WidgetConfig" href="../widgets/config.html#qscope.gui.widgets.config.WidgetConfig">WidgetConfig</a>[int]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.settings_defs.MeasurementSettings.pi_2_pulse"><code class="name">var <span class="ident">pi_2_pulse</span> : <a title="qscope.gui.widgets.config.WidgetConfig" href="../widgets/config.html#qscope.gui.widgets.config.WidgetConfig">WidgetConfig</a>[int]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.settings_defs.MeasurementSettings.pi_pulse"><code class="name">var <span class="ident">pi_pulse</span> : <a title="qscope.gui.widgets.config.WidgetConfig" href="../widgets/config.html#qscope.gui.widgets.config.WidgetConfig">WidgetConfig</a>[int]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.settings_defs.MeasurementSettings.ref_mode"><code class="name">var <span class="ident">ref_mode</span> : <a title="qscope.gui.widgets.config.WidgetConfig" href="../widgets/config.html#qscope.gui.widgets.config.WidgetConfig">WidgetConfig</a>[str]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.settings_defs.MeasurementSettings.rf_delay"><code class="name">var <span class="ident">rf_delay</span> : <a title="qscope.gui.widgets.config.WidgetConfig" href="../widgets/config.html#qscope.gui.widgets.config.WidgetConfig">WidgetConfig</a>[int]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.settings_defs.MeasurementSettings.rf_duration"><code class="name">var <span class="ident">rf_duration</span> : <a title="qscope.gui.widgets.config.WidgetConfig" href="../widgets/config.html#qscope.gui.widgets.config.WidgetConfig">WidgetConfig</a>[int]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.settings_defs.MeasurementSettings.rf_freq"><code class="name">var <span class="ident">rf_freq</span> : <a title="qscope.gui.widgets.config.WidgetConfig" href="../widgets/config.html#qscope.gui.widgets.config.WidgetConfig">WidgetConfig</a>[float]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.settings_defs.MeasurementSettings.rf_power"><code class="name">var <span class="ident">rf_power</span> : <a title="qscope.gui.widgets.config.WidgetConfig" href="../widgets/config.html#qscope.gui.widgets.config.WidgetConfig">WidgetConfig</a>[float]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.settings_defs.MeasurementSettings.save_after_sweeps"><code class="name">var <span class="ident">save_after_sweeps</span> : <a title="qscope.gui.widgets.config.WidgetConfig" href="../widgets/config.html#qscope.gui.widgets.config.WidgetConfig">WidgetConfig</a>[int]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.settings_defs.MeasurementSettings.start_freq"><code class="name">var <span class="ident">start_freq</span> : <a title="qscope.gui.widgets.config.WidgetConfig" href="../widgets/config.html#qscope.gui.widgets.config.WidgetConfig">WidgetConfig</a>[float]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.settings_defs.MeasurementSettings.stop_after_sweeps"><code class="name">var <span class="ident">stop_after_sweeps</span> : <a title="qscope.gui.widgets.config.WidgetConfig" href="../widgets/config.html#qscope.gui.widgets.config.WidgetConfig">WidgetConfig</a>[int]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.settings_defs.MeasurementSettings.stop_freq"><code class="name">var <span class="ident">stop_freq</span> : <a title="qscope.gui.widgets.config.WidgetConfig" href="../widgets/config.html#qscope.gui.widgets.config.WidgetConfig">WidgetConfig</a>[float]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.settings_defs.MeasurementSettings.time_center"><code class="name">var <span class="ident">time_center</span> : <a title="qscope.gui.widgets.config.WidgetConfig" href="../widgets/config.html#qscope.gui.widgets.config.WidgetConfig">WidgetConfig</a>[float]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.settings_defs.MeasurementSettings.time_range"><code class="name">var <span class="ident">time_range</span> : <a title="qscope.gui.widgets.config.WidgetConfig" href="../widgets/config.html#qscope.gui.widgets.config.WidgetConfig">WidgetConfig</a>[float]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.gui.qmeas.settings_defs.MeasurementSettings.get_widget_config"><code class="name flex">
+<span>def <span class="ident">get_widget_config</span></span>(<span>self, name: str) ‑> <a title="qscope.gui.widgets.config.WidgetConfig" href="../widgets/config.html#qscope.gui.widgets.config.WidgetConfig">WidgetConfig</a> | None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_widget_config(self, name: str) -&gt; Optional[WidgetConfig]:
+    &#34;&#34;&#34;Get widget configuration by name&#34;&#34;&#34;
+    return getattr(self, name, None)</code></pre>
+</details>
+<div class="desc"><p>Get widget configuration by name</p></div>
+</dd>
+<dt id="qscope.gui.qmeas.settings_defs.MeasurementSettings.validate_all"><code class="name flex">
+<span>def <span class="ident">validate_all</span></span>(<span>self) ‑> Dict[str, bool]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def validate_all(self) -&gt; Dict[str, bool]:
+    &#34;&#34;&#34;Validate all settings&#34;&#34;&#34;
+    results = {}
+    for field_name, field_value in self.__dataclass_fields__.items():
+        if isinstance(field_value.default, WidgetConfig):
+            config = field_value.default
+            value = getattr(self, field_name, None)
+            results[field_name] = config.validate(value)
+    return results</code></pre>
+</details>
+<div class="desc"><p>Validate all settings</p></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<form>
+<input id="lunr-search" name="q" placeholder="🔎 Search ..." aria-label="Search"
+disabled minlength="2">
+</form>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.css" integrity="sha512-b+T2i3P45i1LZM7I00Ci5QquB9szqaxu+uuk5TUSGjZQ4w4n+qujQiIuvTv2BxE7WCGQCifNMksyKILDiHzsOg==" crossorigin>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.js" integrity="sha512-2B9/byNV1KKRm5nQ2RLViPFD6U4dUjDGwuW1GU+ImJh8YinPU9Zlq1GzdTMO+G2ROrB5o1qasJBy1ttYz0wCug==" crossorigin></script>
+<style>
+.modal-dialog iframe {
+width: 100vw;
+height: calc(100vh - 80px);
+}
+@media screen and (min-width: 700px) {
+.modal-dialog iframe {
+width: 70vw;
+height: 80vh;
+}
+}
+.modal-dialog .tingle-modal-box {width: auto;}
+.modal-dialog .tingle-modal-box__content {padding: 0;}
+</style>
+<script>
+const input = document.getElementById('lunr-search');
+input.disabled = false;
+input.form.addEventListener('submit', (ev) => {
+ev.preventDefault();
+const url = new URL(window.location);
+url.searchParams.set('q', input.value);
+history.replaceState({}, null, url.toString());
+search(input.value);
+});
+const query = new URL(window.location).searchParams.get('q');
+if (query)
+search(query);
+function search(query) {
+const url = '../../../doc-search.html#' + encodeURIComponent(query);
+new tingle.modal({
+cssClass: ['modal-dialog'],
+onClose: () => {
+const url = new URL(window.location);
+url.searchParams.delete('q');
+history.replaceState({}, null, url.toString());
+setTimeout(() => input.focus(), 100);
+}
+}).setContent('<iframe src="' + url + '"></iframe>').open();
+}
+</script>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="qscope.gui.qmeas" href="index.html">qscope.gui.qmeas</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="qscope.gui.qmeas.settings_defs.confirm_high_power" href="#qscope.gui.qmeas.settings_defs.confirm_high_power">confirm_high_power</a></code></li>
+<li><code><a title="qscope.gui.qmeas.settings_defs.confirm_long_duration" href="#qscope.gui.qmeas.settings_defs.confirm_long_duration">confirm_long_duration</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="qscope.gui.qmeas.settings_defs.MeasurementSettings" href="#qscope.gui.qmeas.settings_defs.MeasurementSettings">MeasurementSettings</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.gui.qmeas.settings_defs.MeasurementSettings.freq_center" href="#qscope.gui.qmeas.settings_defs.MeasurementSettings.freq_center">freq_center</a></code></li>
+<li><code><a title="qscope.gui.qmeas.settings_defs.MeasurementSettings.freq_mod" href="#qscope.gui.qmeas.settings_defs.MeasurementSettings.freq_mod">freq_mod</a></code></li>
+<li><code><a title="qscope.gui.qmeas.settings_defs.MeasurementSettings.freq_range" href="#qscope.gui.qmeas.settings_defs.MeasurementSettings.freq_range">freq_range</a></code></li>
+<li><code><a title="qscope.gui.qmeas.settings_defs.MeasurementSettings.get_widget_config" href="#qscope.gui.qmeas.settings_defs.MeasurementSettings.get_widget_config">get_widget_config</a></code></li>
+<li><code><a title="qscope.gui.qmeas.settings_defs.MeasurementSettings.laser_delay" href="#qscope.gui.qmeas.settings_defs.MeasurementSettings.laser_delay">laser_delay</a></code></li>
+<li><code><a title="qscope.gui.qmeas.settings_defs.MeasurementSettings.laser_duration" href="#qscope.gui.qmeas.settings_defs.MeasurementSettings.laser_duration">laser_duration</a></code></li>
+<li><code><a title="qscope.gui.qmeas.settings_defs.MeasurementSettings.list_mode" href="#qscope.gui.qmeas.settings_defs.MeasurementSettings.list_mode">list_mode</a></code></li>
+<li><code><a title="qscope.gui.qmeas.settings_defs.MeasurementSettings.max_time" href="#qscope.gui.qmeas.settings_defs.MeasurementSettings.max_time">max_time</a></code></li>
+<li><code><a title="qscope.gui.qmeas.settings_defs.MeasurementSettings.measurement_type" href="#qscope.gui.qmeas.settings_defs.MeasurementSettings.measurement_type">measurement_type</a></code></li>
+<li><code><a title="qscope.gui.qmeas.settings_defs.MeasurementSettings.min_time" href="#qscope.gui.qmeas.settings_defs.MeasurementSettings.min_time">min_time</a></code></li>
+<li><code><a title="qscope.gui.qmeas.settings_defs.MeasurementSettings.n_pulses" href="#qscope.gui.qmeas.settings_defs.MeasurementSettings.n_pulses">n_pulses</a></code></li>
+<li><code><a title="qscope.gui.qmeas.settings_defs.MeasurementSettings.num_averages" href="#qscope.gui.qmeas.settings_defs.MeasurementSettings.num_averages">num_averages</a></code></li>
+<li><code><a title="qscope.gui.qmeas.settings_defs.MeasurementSettings.num_points" href="#qscope.gui.qmeas.settings_defs.MeasurementSettings.num_points">num_points</a></code></li>
+<li><code><a title="qscope.gui.qmeas.settings_defs.MeasurementSettings.pi_2_pulse" href="#qscope.gui.qmeas.settings_defs.MeasurementSettings.pi_2_pulse">pi_2_pulse</a></code></li>
+<li><code><a title="qscope.gui.qmeas.settings_defs.MeasurementSettings.pi_pulse" href="#qscope.gui.qmeas.settings_defs.MeasurementSettings.pi_pulse">pi_pulse</a></code></li>
+<li><code><a title="qscope.gui.qmeas.settings_defs.MeasurementSettings.ref_mode" href="#qscope.gui.qmeas.settings_defs.MeasurementSettings.ref_mode">ref_mode</a></code></li>
+<li><code><a title="qscope.gui.qmeas.settings_defs.MeasurementSettings.rf_delay" href="#qscope.gui.qmeas.settings_defs.MeasurementSettings.rf_delay">rf_delay</a></code></li>
+<li><code><a title="qscope.gui.qmeas.settings_defs.MeasurementSettings.rf_duration" href="#qscope.gui.qmeas.settings_defs.MeasurementSettings.rf_duration">rf_duration</a></code></li>
+<li><code><a title="qscope.gui.qmeas.settings_defs.MeasurementSettings.rf_freq" href="#qscope.gui.qmeas.settings_defs.MeasurementSettings.rf_freq">rf_freq</a></code></li>
+<li><code><a title="qscope.gui.qmeas.settings_defs.MeasurementSettings.rf_power" href="#qscope.gui.qmeas.settings_defs.MeasurementSettings.rf_power">rf_power</a></code></li>
+<li><code><a title="qscope.gui.qmeas.settings_defs.MeasurementSettings.save_after_sweeps" href="#qscope.gui.qmeas.settings_defs.MeasurementSettings.save_after_sweeps">save_after_sweeps</a></code></li>
+<li><code><a title="qscope.gui.qmeas.settings_defs.MeasurementSettings.start_freq" href="#qscope.gui.qmeas.settings_defs.MeasurementSettings.start_freq">start_freq</a></code></li>
+<li><code><a title="qscope.gui.qmeas.settings_defs.MeasurementSettings.stop_after_sweeps" href="#qscope.gui.qmeas.settings_defs.MeasurementSettings.stop_after_sweeps">stop_after_sweeps</a></code></li>
+<li><code><a title="qscope.gui.qmeas.settings_defs.MeasurementSettings.stop_freq" href="#qscope.gui.qmeas.settings_defs.MeasurementSettings.stop_freq">stop_freq</a></code></li>
+<li><code><a title="qscope.gui.qmeas.settings_defs.MeasurementSettings.time_center" href="#qscope.gui.qmeas.settings_defs.MeasurementSettings.time_center">time_center</a></code></li>
+<li><code><a title="qscope.gui.qmeas.settings_defs.MeasurementSettings.time_range" href="#qscope.gui.qmeas.settings_defs.MeasurementSettings.time_range">time_range</a></code></li>
+<li><code><a title="qscope.gui.qmeas.settings_defs.MeasurementSettings.validate_all" href="#qscope.gui.qmeas.settings_defs.MeasurementSettings.validate_all">validate_all</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
+</footer>
+</body>
+</html>

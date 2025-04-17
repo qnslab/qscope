@@ -1,0 +1,670 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.6">
+<title>qscope.gui.menu.notes API documentation</title>
+<meta name="description" content="">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}#lunr-search{width:100%;font-size:1em;padding:6px 9px 5px 9px;border:1px solid silver}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes: true } });</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML" integrity="sha256-kZafAc6mZvK3W3v1pHOcUix30OHQN6pU/NO2oFkqZVw=" crossorigin></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>qscope.gui.menu.notes</code></h1>
+</header>
+<section id="section-intro">
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="qscope.gui.menu.notes.MarkdownHighlighter"><code class="flex name class">
+<span>class <span class="ident">MarkdownHighlighter</span></span>
+<span>(</span><span>document)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class MarkdownHighlighter(QSyntaxHighlighter):
+    def __init__(self, document):
+        super().__init__(document)
+        self.highlighting_rules = []
+
+        # Header format
+        header_format = QTextCharFormat()
+        header_format.setForeground(QColor(&#34;#59b6e6&#34;))  # Blue
+        header_format.setFontWeight(QFont.Weight.Bold)
+        pattern = QRegularExpression(&#34;^(#+)\\s.*$&#34;)
+        self.highlighting_rules.append((pattern, header_format))
+
+        # Bold format (using double stars)
+        bold_format = QTextCharFormat()
+        bold_format.setForeground(QColor(&#34;#FF0000&#34;))  # Red
+        bold_format.setFontWeight(QFont.Weight.Bold)
+        pattern = QRegularExpression(r&#34;\*\*(.*?)\*\*&#34;)
+        self.highlighting_rules.append((pattern, bold_format))
+
+        # Bold format (using double underscores)
+        bold_format_underscore = QTextCharFormat()
+        bold_format_underscore.setForeground(QColor(&#34;#FF0000&#34;))  # Red
+        bold_format_underscore.setFontWeight(QFont.Weight.Bold)
+        pattern = QRegularExpression(r&#34;__(.*?)__&#34;)
+        self.highlighting_rules.append((pattern, bold_format_underscore))
+
+        # Italic format (using single stars)
+        italic_format = QTextCharFormat()
+        italic_format.setForeground(QColor(&#34;#008000&#34;))  # Green
+        italic_format.setFontItalic(True)
+        pattern = QRegularExpression(r&#34;\*(.*?)\*&#34;)
+        self.highlighting_rules.append((pattern, italic_format))
+
+        # Italic format (using single underscores)
+        italic_format_underscore = QTextCharFormat()
+        italic_format_underscore.setForeground(QColor(&#34;#008000&#34;))  # Green
+        italic_format_underscore.setFontItalic(True)
+        pattern = QRegularExpression(r&#34;_(.*?)_&#34;)
+        self.highlighting_rules.append((pattern, italic_format_underscore))
+
+        # Code format
+        code_format = QTextCharFormat()
+        code_format.setForeground(QColor(&#34;#A52A2A&#34;))  # Brown
+        code_format.setFontFamily(&#34;Courier&#34;)
+        pattern = QRegularExpression(&#34;`([^`]*)`&#34;)
+        self.highlighting_rules.append((pattern, code_format))
+
+        # Link format
+        link_format = QTextCharFormat()
+        link_format.setForeground(QColor(&#34;#59b6e6&#34;))  # Blue
+        pattern = QRegularExpression(r&#34;\[.*?\]\(.*?\)&#34;)
+        self.highlighting_rules.append((pattern, link_format))
+
+    def highlightBlock(self, text):
+        for pattern, fmt in self.highlighting_rules:
+            match = pattern.globalMatch(text)
+            while match.hasNext():
+                m = match.next()
+                self.setFormat(m.capturedStart(), m.capturedLength(), fmt)</code></pre>
+</details>
+<div class="desc"><p>QSyntaxHighlighter(parent: Optional[QTextDocument])
+QSyntaxHighlighter(parent: Optional[QObject])</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>PyQt6.QtGui.QSyntaxHighlighter</li>
+<li>PyQt6.QtCore.QObject</li>
+<li>PyQt6.sip.wrapper</li>
+<li>PyQt6.sip.simplewrapper</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.gui.menu.notes.MarkdownHighlighter.highlightBlock"><code class="name flex">
+<span>def <span class="ident">highlightBlock</span></span>(<span>self, text)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def highlightBlock(self, text):
+    for pattern, fmt in self.highlighting_rules:
+        match = pattern.globalMatch(text)
+        while match.hasNext():
+            m = match.next()
+            self.setFormat(m.capturedStart(), m.capturedLength(), fmt)</code></pre>
+</details>
+<div class="desc"><p>highlightBlock(self, text: Optional[str])</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.gui.menu.notes.NotesMenu"><code class="flex name class">
+<span>class <span class="ident">NotesMenu</span></span>
+<span>(</span><span>parent: MainWindow, menuBar: QMenuBar)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class NotesMenu(QMenu):
+    def __init__(self, parent: MainWindow, menuBar: QMenuBar):
+        super().__init__()
+        self.parent = parent
+        self._create_notes_menu(menuBar)
+        self.notes_window = None
+
+    def _create_notes_menu(self, menuBar):
+        notes_menu = menuBar.addMenu(&#34;&amp;Notes&#34;)
+
+        open_notes_action = QAction(&#34;&amp;Open Notes&#34;, self.parent)
+        open_notes_action.triggered.connect(self._open_notes)
+
+        notes_menu.addAction(open_notes_action)
+        return notes_menu
+
+    def _open_notes(self):
+        if self.notes_window is None:
+            self.notes_window = NotesWindow(self.parent)
+        self.notes_window.show()
+
+    def get_notes(self) -&gt; str:
+        # Return notes from notes window only if it is open
+        if self.notes_window is not None and self.notes_window.isVisible():
+            return self.notes_window.get_notes()
+        return &#34;&#34;</code></pre>
+</details>
+<div class="desc"><p>QMenu(parent: Optional[QWidget] = None)
+QMenu(title: Optional[str], parent: Optional[QWidget] = None)</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>PyQt6.QtWidgets.QMenu</li>
+<li>PyQt6.QtWidgets.QWidget</li>
+<li>PyQt6.QtCore.QObject</li>
+<li>PyQt6.sip.wrapper</li>
+<li>PyQt6.QtGui.QPaintDevice</li>
+<li>PyQt6.sip.simplewrapper</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.gui.menu.notes.NotesMenu.get_notes"><code class="name flex">
+<span>def <span class="ident">get_notes</span></span>(<span>self) ‑> str</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_notes(self) -&gt; str:
+    # Return notes from notes window only if it is open
+    if self.notes_window is not None and self.notes_window.isVisible():
+        return self.notes_window.get_notes()
+    return &#34;&#34;</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.gui.menu.notes.NotesWindow"><code class="flex name class">
+<span>class <span class="ident">NotesWindow</span></span>
+<span>(</span><span>parent: MainWindow)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class NotesWindow(QMainWindow):
+    def __init__(self, parent: MainWindow):
+        super().__init__(parent)
+        self.parent = parent
+        self.setWindowTitle(&#34;Notes&#34;)
+
+        # Initialize settings manager
+        self.settings = GUISettings(self, &#34;NOTES&#34;)
+
+        # Create central widget and layout
+        central_widget = QWidget()
+        layout = QVBoxLayout(central_widget)
+
+        # Create toolbar
+        toolbar = QToolBar()
+        toolbar.setMovable(False)
+        self.addToolBar(toolbar)
+
+        # Save Server Action
+        save_server_action = QAction(&#34;Save on Server&#34;, self)
+        save_server_action.setShortcut(QKeySequence.StandardKey.Save)
+        save_server_action.setStatusTip(
+            &#34;Save notes on the server with current project name&#34;
+        )
+        save_server_action.triggered.connect(self._save_notes_server)
+        toolbar.addAction(save_server_action)
+
+        # Save Local Action
+        save_local_action = QAction(&#34;Save Local&#34;, self)
+        save_local_action.setShortcut(QKeySequence.StandardKey.SaveAs)
+        save_local_action.setStatusTip(&#34;Save notes locally on this computer&#34;)
+        save_local_action.triggered.connect(self._save_notes_local)
+        toolbar.addAction(save_local_action)
+
+        # Clear Action
+        clear_action = QAction(&#34;Clear&#34;, self)
+        clear_action.setShortcut(&#34;Ctrl+C&#34;)
+        clear_action.setStatusTip(&#34;Clear all text from the notes window&#34;)
+        clear_action.triggered.connect(self._clear_notes)
+        toolbar.addAction(clear_action)
+
+        # Add separator in toolbar
+        toolbar.addSeparator()
+
+        # Font chooser action
+        font_action = QAction(&#34;Font...&#34;, self)
+        font_action.setStatusTip(&#34;Change the font family and size&#34;)
+        font_action.triggered.connect(self._choose_font)
+        toolbar.addAction(font_action)
+
+        # Font size combo box in toolbar
+        self.font_size_combo = QuComboBox()
+        self.font_size_combo.addItems(
+            [f&#34;{size}pt&#34; for size in [8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24]]
+        )
+        self.font_size_combo.currentTextChanged.connect(
+            lambda x: self._change_font_size(int(x.replace(&#34;pt&#34;, &#34;&#34;)))
+        )
+        toolbar.addWidget(self.font_size_combo)
+
+        # Create text edit with markdown highlighting
+        self.text_edit = QTextEdit()
+        self.text_edit.append(&#34;# Notes\n\n&#34;)
+
+        # Set object name for settings
+        self.font_size_combo.setObjectName(&#34;font_size_combo&#34;)
+
+        self.load_font_preferences()
+        self.highlighter = MarkdownHighlighter(self.text_edit.document())
+
+        # Add zoom shortcuts
+        zoom_in_action = QAction(&#34;Increase Font Size&#34;, self)
+        zoom_in_action.setShortcut(QKeySequence.StandardKey.ZoomIn)
+        zoom_in_action.triggered.connect(self._increase_font_size)
+        self.addAction(zoom_in_action)
+
+        zoom_out_action = QAction(&#34;Decrease Font Size&#34;, self)
+        zoom_out_action.setShortcut(QKeySequence.StandardKey.ZoomOut)
+        zoom_out_action.triggered.connect(self._decrease_font_size)
+        self.addAction(zoom_out_action)
+
+        layout.addWidget(self.text_edit)
+        self.setCentralWidget(central_widget)
+        self.resize(600, 400)
+
+        # Add status bar
+        self.statusBar().show()
+
+    def _save_notes_server(self):
+        &#34;&#34;&#34;Save notes using connection manager&#34;&#34;&#34;
+        if not self.parent.connection_manager.is_connected():
+            QMessageBox.warning(self, &#34;Warning&#34;, &#34;Not connected to server&#34;)
+            return
+
+        try:
+            # Get project name from status bar
+            project_name = self.parent.get_project_name()
+            if not project_name:
+                show_warning(&#34;Please set a project name in the status bar&#34;)
+                return
+
+                # Get current notes text
+            notes_text = self.text_edit.toPlainText()
+
+            if not notes_text.strip():
+                show_warning(&#34;No notes to save&#34;)
+                return
+
+                # Save notes through connection manager
+            self.parent.connection_manager.save_notes(project_name, notes_text)
+            self.statusBar().showMessage(&#34;Notes saved on server successfully&#34;, 3000)
+            logger.info(&#34;Notes saved on server successfully&#34;)
+
+        except Exception as e:
+            error_msg = f&#34;Error saving notes: {str(e)}&#34;
+            QMessageBox.critical(self, &#34;Error&#34;, error_msg)
+            logger.error(error_msg)
+
+    def _save_notes_local(self):
+        &#34;&#34;&#34;Save notes locally with file chooser&#34;&#34;&#34;
+        notes_text = self.text_edit.toPlainText()
+
+        if not notes_text.strip():
+            QMessageBox.warning(self, &#34;Warning&#34;, &#34;No notes to save&#34;)
+            return
+
+        try:
+            # Open file dialog
+            file_path, _ = QFileDialog.getSaveFileName(
+                self,
+                &#34;Save Notes Locally&#34;,
+                &#34;&#34;,
+                &#34;Markdown Files (*.md);;Text Files (*.txt);;All Files (*)&#34;,
+            )
+
+            if file_path:
+                with open(file_path, &#34;w&#34;) as f:
+                    f.write(notes_text)
+                self.statusBar().showMessage(
+                    f&#34;Notes saved locally to {file_path}&#34;, 3000
+                )
+                logger.info(f&#34;Notes saved locally to {file_path}&#34;)
+
+        except Exception as e:
+            error_msg = f&#34;Error saving notes locally: {str(e)}&#34;
+            QMessageBox.critical(self, &#34;Error&#34;, error_msg)
+            logger.error(error_msg)
+
+    def _clear_notes(self):
+        &#34;&#34;&#34;Clear the text edit after confirmation&#34;&#34;&#34;
+        if self.text_edit.toPlainText().strip():
+            reply = QMessageBox.question(
+                self,
+                &#34;Clear Notes&#34;,
+                &#34;Are you sure you want to clear all notes?&#34;,
+                QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No,
+                QMessageBox.StandardButton.No,
+            )
+
+            if reply == QMessageBox.StandardButton.Yes:
+                self.text_edit.clear()
+                self.statusBar().showMessage(&#34;Notes cleared&#34;, 3000)
+                logger.info(&#34;Notes cleared&#34;)
+
+    def get_notes(self) -&gt; str:
+        return self.text_edit.toPlainText()
+
+    def has_notes(self) -&gt; bool:
+        return bool(self.text_edit.toPlainText().strip())
+
+    def _choose_font(self):
+        &#34;&#34;&#34;Open font dialog and update font&#34;&#34;&#34;
+        current = self.text_edit.font()
+        font, ok = QFontDialog.getFont(current, self)
+        if ok:
+            self.text_edit.setFont(font)
+            self.save_font_preferences()
+            self.statusBar().showMessage(
+                f&#34;Font updated to {font.family()} {font.pointSize()}pt&#34;, 3000
+            )
+
+    def _change_font_size(self, size):
+        &#34;&#34;&#34;Change the font size of the text edit&#34;&#34;&#34;
+        font = self.text_edit.font()
+        font.setPointSize(size)
+        self.text_edit.setFont(font)
+        self.save_font_preferences()
+        self.statusBar().showMessage(f&#34;Font size changed to {size}pt&#34;, 3000)
+
+    def _increase_font_size(self):
+        &#34;&#34;&#34;Increase font size by 1pt&#34;&#34;&#34;
+        font = self.text_edit.font()
+        current_size = font.pointSize()
+        new_size = current_size + 1
+        font.setPointSize(new_size)
+        self.text_edit.setFont(font)
+        self.save_font_preferences()
+        # Update combo box
+        size_idx = self.font_size_combo.findText(f&#34;{new_size}pt&#34;)
+        if size_idx &gt;= 0:
+            self.font_size_combo.setCurrentIndex(size_idx)
+        self.statusBar().showMessage(f&#34;Font size increased to {new_size}pt&#34;, 3000)
+
+    def _decrease_font_size(self):
+        &#34;&#34;&#34;Decrease font size by 1pt&#34;&#34;&#34;
+        font = self.text_edit.font()
+        current_size = font.pointSize()
+        if current_size &gt; 6:  # Prevent too small fonts
+            new_size = current_size - 1
+            font.setPointSize(new_size)
+            self.text_edit.setFont(font)
+            self.save_font_preferences()
+            # Update combo box
+            size_idx = self.font_size_combo.findText(f&#34;{new_size}pt&#34;)
+            if size_idx &gt;= 0:
+                self.font_size_combo.setCurrentIndex(size_idx)
+            self.statusBar().showMessage(f&#34;Font size decreased to {new_size}pt&#34;, 3000)
+
+    def save_font_preferences(self):
+        &#34;&#34;&#34;Save current font preferences&#34;&#34;&#34;
+        font = self.text_edit.font()
+        config = self.settings.make_config()
+        config = self.settings.add_section(config, &#34;NOTES&#34;)
+        config[&#34;NOTES&#34;][&#34;font_family&#34;] = font.family()
+        config[&#34;NOTES&#34;][&#34;font_size&#34;] = str(font.pointSize())
+        self.settings.save_config(config)
+
+    def load_font_preferences(self):
+        &#34;&#34;&#34;Load saved font preferences or use defaults&#34;&#34;&#34;
+        # Create default settings if they don&#39;t exist
+        if not self.settings.prev_state_ini.exists():
+            config = self.settings.make_config()
+            config[&#34;NOTES&#34;] = {&#34;font_family&#34;: &#34;Courier New&#34;, &#34;font_size&#34;: &#34;10&#34;}
+            self.settings.save_config(config)
+
+        self.settings.config.read(self.settings.prev_state_ini)
+        try:
+            family = self.settings.config.get(
+                &#34;NOTES&#34;, &#34;font_family&#34;, fallback=&#34;Courier New&#34;
+            )
+            size = self.settings.config.getint(&#34;NOTES&#34;, &#34;font_size&#34;, fallback=10)
+        except Exception as e:
+            logger.error(f&#34;Error loading font preferences: {e}&#34;)
+            family = &#34;Courier New&#34;
+            size = 10
+
+        font = QFont(family, size)
+        self.text_edit.setFont(font)
+
+        # Update font size combo box
+        size_idx = self.font_size_combo.findText(f&#34;{size}pt&#34;)
+        if size_idx &gt;= 0:
+            self.font_size_combo.setCurrentIndex(size_idx)
+
+    def get_notes(self) -&gt; str:
+        return self.text_edit.toPlainText()</code></pre>
+</details>
+<div class="desc"><p>QMainWindow(parent: Optional[QWidget] = None, flags: Qt.WindowType = Qt.WindowFlags())</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>PyQt6.QtWidgets.QMainWindow</li>
+<li>PyQt6.QtWidgets.QWidget</li>
+<li>PyQt6.QtCore.QObject</li>
+<li>PyQt6.sip.wrapper</li>
+<li>PyQt6.QtGui.QPaintDevice</li>
+<li>PyQt6.sip.simplewrapper</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.gui.menu.notes.NotesWindow.get_notes"><code class="name flex">
+<span>def <span class="ident">get_notes</span></span>(<span>self) ‑> str</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_notes(self) -&gt; str:
+    return self.text_edit.toPlainText()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.menu.notes.NotesWindow.has_notes"><code class="name flex">
+<span>def <span class="ident">has_notes</span></span>(<span>self) ‑> bool</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def has_notes(self) -&gt; bool:
+    return bool(self.text_edit.toPlainText().strip())</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.menu.notes.NotesWindow.load_font_preferences"><code class="name flex">
+<span>def <span class="ident">load_font_preferences</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def load_font_preferences(self):
+    &#34;&#34;&#34;Load saved font preferences or use defaults&#34;&#34;&#34;
+    # Create default settings if they don&#39;t exist
+    if not self.settings.prev_state_ini.exists():
+        config = self.settings.make_config()
+        config[&#34;NOTES&#34;] = {&#34;font_family&#34;: &#34;Courier New&#34;, &#34;font_size&#34;: &#34;10&#34;}
+        self.settings.save_config(config)
+
+    self.settings.config.read(self.settings.prev_state_ini)
+    try:
+        family = self.settings.config.get(
+            &#34;NOTES&#34;, &#34;font_family&#34;, fallback=&#34;Courier New&#34;
+        )
+        size = self.settings.config.getint(&#34;NOTES&#34;, &#34;font_size&#34;, fallback=10)
+    except Exception as e:
+        logger.error(f&#34;Error loading font preferences: {e}&#34;)
+        family = &#34;Courier New&#34;
+        size = 10
+
+    font = QFont(family, size)
+    self.text_edit.setFont(font)
+
+    # Update font size combo box
+    size_idx = self.font_size_combo.findText(f&#34;{size}pt&#34;)
+    if size_idx &gt;= 0:
+        self.font_size_combo.setCurrentIndex(size_idx)</code></pre>
+</details>
+<div class="desc"><p>Load saved font preferences or use defaults</p></div>
+</dd>
+<dt id="qscope.gui.menu.notes.NotesWindow.save_font_preferences"><code class="name flex">
+<span>def <span class="ident">save_font_preferences</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def save_font_preferences(self):
+    &#34;&#34;&#34;Save current font preferences&#34;&#34;&#34;
+    font = self.text_edit.font()
+    config = self.settings.make_config()
+    config = self.settings.add_section(config, &#34;NOTES&#34;)
+    config[&#34;NOTES&#34;][&#34;font_family&#34;] = font.family()
+    config[&#34;NOTES&#34;][&#34;font_size&#34;] = str(font.pointSize())
+    self.settings.save_config(config)</code></pre>
+</details>
+<div class="desc"><p>Save current font preferences</p></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<form>
+<input id="lunr-search" name="q" placeholder="🔎 Search ..." aria-label="Search"
+disabled minlength="2">
+</form>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.css" integrity="sha512-b+T2i3P45i1LZM7I00Ci5QquB9szqaxu+uuk5TUSGjZQ4w4n+qujQiIuvTv2BxE7WCGQCifNMksyKILDiHzsOg==" crossorigin>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.js" integrity="sha512-2B9/byNV1KKRm5nQ2RLViPFD6U4dUjDGwuW1GU+ImJh8YinPU9Zlq1GzdTMO+G2ROrB5o1qasJBy1ttYz0wCug==" crossorigin></script>
+<style>
+.modal-dialog iframe {
+width: 100vw;
+height: calc(100vh - 80px);
+}
+@media screen and (min-width: 700px) {
+.modal-dialog iframe {
+width: 70vw;
+height: 80vh;
+}
+}
+.modal-dialog .tingle-modal-box {width: auto;}
+.modal-dialog .tingle-modal-box__content {padding: 0;}
+</style>
+<script>
+const input = document.getElementById('lunr-search');
+input.disabled = false;
+input.form.addEventListener('submit', (ev) => {
+ev.preventDefault();
+const url = new URL(window.location);
+url.searchParams.set('q', input.value);
+history.replaceState({}, null, url.toString());
+search(input.value);
+});
+const query = new URL(window.location).searchParams.get('q');
+if (query)
+search(query);
+function search(query) {
+const url = '../../../doc-search.html#' + encodeURIComponent(query);
+new tingle.modal({
+cssClass: ['modal-dialog'],
+onClose: () => {
+const url = new URL(window.location);
+url.searchParams.delete('q');
+history.replaceState({}, null, url.toString());
+setTimeout(() => input.focus(), 100);
+}
+}).setContent('<iframe src="' + url + '"></iframe>').open();
+}
+</script>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="qscope.gui.menu" href="index.html">qscope.gui.menu</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="qscope.gui.menu.notes.MarkdownHighlighter" href="#qscope.gui.menu.notes.MarkdownHighlighter">MarkdownHighlighter</a></code></h4>
+<ul class="">
+<li><code><a title="qscope.gui.menu.notes.MarkdownHighlighter.highlightBlock" href="#qscope.gui.menu.notes.MarkdownHighlighter.highlightBlock">highlightBlock</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.gui.menu.notes.NotesMenu" href="#qscope.gui.menu.notes.NotesMenu">NotesMenu</a></code></h4>
+<ul class="">
+<li><code><a title="qscope.gui.menu.notes.NotesMenu.get_notes" href="#qscope.gui.menu.notes.NotesMenu.get_notes">get_notes</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.gui.menu.notes.NotesWindow" href="#qscope.gui.menu.notes.NotesWindow">NotesWindow</a></code></h4>
+<ul class="">
+<li><code><a title="qscope.gui.menu.notes.NotesWindow.get_notes" href="#qscope.gui.menu.notes.NotesWindow.get_notes">get_notes</a></code></li>
+<li><code><a title="qscope.gui.menu.notes.NotesWindow.has_notes" href="#qscope.gui.menu.notes.NotesWindow.has_notes">has_notes</a></code></li>
+<li><code><a title="qscope.gui.menu.notes.NotesWindow.load_font_preferences" href="#qscope.gui.menu.notes.NotesWindow.load_font_preferences">load_font_preferences</a></code></li>
+<li><code><a title="qscope.gui.menu.notes.NotesWindow.save_font_preferences" href="#qscope.gui.menu.notes.NotesWindow.save_font_preferences">save_font_preferences</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,1288 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.6">
+<title>qscope.gui.main_window API documentation</title>
+<meta name="description" content="">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}#lunr-search{width:100%;font-size:1em;padding:6px 9px 5px 9px;border:1px solid silver}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes: true } });</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML" integrity="sha256-kZafAc6mZvK3W3v1pHOcUix30OHQN6pU/NO2oFkqZVw=" crossorigin></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>qscope.gui.main_window</code></h1>
+</header>
+<section id="section-intro">
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="qscope.gui.main_window.MainWindow"><code class="flex name class">
+<span>class <span class="ident">MainWindow</span></span>
+<span>(</span><span>system_name: str | None = None,<br>auto_connect: bool = True,<br>host: str = '',<br>msg_port: str = '')</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class MainWindow(QMainWindow):
+    # Create a signal to emit data from the listener thread
+    # new_data_signal = QtCore.pyqtSignal(dict, name=&#34;new_data_signal&#34;)
+    notif_signal = QtCore.pyqtSignal(Notification, name=&#34;new_meas_signal&#34;)
+    new_video_signal = QtCore.pyqtSignal(list, name=&#34;new_video_signal&#34;)
+
+    connection_manager: ConnectionManager
+
+    rolling_meas_window: int = 1
+    rolling_meas_idxs: list[int]
+    rolling_meas_sig_array: np.ndarray[float]
+    rolling_meas_ref_array: np.ndarray[float]
+
+    def __init__(
+        self,
+        system_name: Optional[str] = None,
+        auto_connect: bool = True,
+        host: str = &#34;&#34;,
+        msg_port: str = &#34;&#34;,
+    ):
+        super().__init__()
+
+        self.connection_manager = ConnectionManager()
+        self._connect(system_name, auto_connect, host, msg_port)
+        
+        # Flag to track frame processing status
+        self.processing_frame = False
+
+        # Make a window object
+        self.setWindowTitle(&#34;QScope GUI&#34;)
+        self.setGeometry(0, 0, 1700, 950)
+
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        icon_path = os.path.join(script_dir, &#34;icon.png&#34;)
+        self.setWindowIcon(QIcon(icon_path))
+
+        # detect if the OS is windows and set the style to dark
+        scheme = QGuiApplication.styleHints().colorScheme()
+        if scheme == Qt.ColorScheme.Dark:
+            set_matplotlib_style(&#34;dark&#34;)
+        else:
+            set_matplotlib_style(&#34;light&#34;)
+
+        self.close_signal = False
+
+        # create the menu bar
+        self._create_menu_bar()
+
+        # Add a tab widget with tabs for different settings in the GUI
+        self.tabs = QTabWidget(self)
+        self.setCentralWidget(self.tabs)
+
+        # set the central widget so that the tabs are the main part of the window
+        self.tabs.setTabPosition(QTabWidget.TabPosition.West)
+
+        # Add the tabs to the tab widget
+        self.tab1, self.tab2, self.tab3, self.tab4 = (
+            QWidget(self.tabs),
+            QWidget(self.tabs),
+            QWidget(self.tabs),
+            QWidget(self.tabs),
+        )
+
+        self.tabs.addTab(self.tab1, &#34;Video&#34;)
+        self.tabs.addTab(self.tab2, &#34;Measurements&#34;)
+        self.tabs.addTab(self.tab3, &#34;Electrical&#34;)
+        self.tabs.addTab(self.tab4, &#34;Temperature&#34;)
+
+        # set the font to be bold
+        self.tabs.tabBar().setStyleSheet(&#34;font-weight: bold; font-size: 12pt;&#34;)
+
+        # self.tabs.tabBar().setFont(QFont(&#34;sans-serif&#34;, 12))
+
+        # Initialize data storage variables
+        self.frame = np.random.rand(512, 512)
+        self.roi_img = np.random.rand(10, 10)
+        self.x_pixel = 0
+        self.y_pixel = 0
+        self.roi_x_range = 10
+        self.roi_y_range = 10
+
+        # Initialize the tabs
+        init_video_tab(self, self.tab1)
+        init_measurement_tab(self, self.tab2)
+
+        if self.connection_manager.is_connected():
+            self.start_notif_listener_thread()
+            self.start_video_listener_thread()
+
+        self.clock = QElapsedTimer()
+        self.clock.start()
+
+        self.clock_meas = QElapsedTimer()
+        self.clock_meas.start()
+
+        # Create the quit action
+        quit_action_1 = QAction(&#34;Quit&#34;, self)
+        quit_action_1.setShortcut(QKeySequence.StandardKey.Quit)
+        quit_action_1.triggered.connect(self.closedown)
+        self.addAction(quit_action_1)
+        quit_action_2 = QAction(&#34;Close&#34;, self)
+        quit_action_2.setShortcut(QKeySequence.StandardKey.Close)
+        quit_action_2.triggered.connect(self.closedown)
+        self.addAction(quit_action_2)
+
+        # Create the status bar
+        self.statusBar = qscope.gui.menu.QScopeStatusBar(self)
+        self.setStatusBar(self.statusBar)
+
+        if self.connection_manager.is_connected():
+            self.statusBar.set_server_status(&#34;Connected&#34;)
+            self.statusBar.set_hw_status(&#34;Initialized&#34;)
+        else:
+            self.statusBar.set_server_status(&#34;Not connected&#34;)
+            self.statusBar.set_hw_status(&#34;Not initialized&#34;)
+
+    def _connect(
+        self,
+        system_name: Optional[str],
+        auto_connect: bool = True,
+        host: str = &#34;&#34;,
+        msg_port: str = &#34;&#34;,
+    ):
+        if auto_connect:
+            logger.info(&#34;Attempting to find local running server.&#34;)
+            try:
+                # try local server QUICKLY
+                self.connection_manager.connect(timeout=0.1, request_retries=1)
+                if system_name:  # check it matches request sys etc.
+                    client_sync = self.connection_manager.client_sync
+                    if client_sync.system_name.lower() != system_name.lower():
+                        show_warning(
+                            &#34;Local running system is wrong system: &#34;
+                            + f&#34;{client_sync.system_name.lower()} vs&#34;
+                            + f&#34;{system_name.lower()}.\n&#34;
+                            + f&#34;Continuing with local running system.&#34;
+                        )
+                if self.connection_manager.client_sync.version != qscope.__version__:
+                    show_warning(
+                        &#34;Server and client versions are different: &#34;
+                        + f&#34;{self.connection_manager.client_sync.version} vs &#34;
+                        f&#34;{qscope.__version__}&#34;
+                    )
+                if self.connection_manager.is_connected():
+                    self.connection_manager.startup()  # will do nothing if already started up
+                logger.info(&#34;Connected to local running server.&#34;)
+                return
+            except:
+                logger.info(&#34;Failed to find local running server.&#34;)
+                pass  # meh
+        if system_name:
+            logger.info(&#34;Attempting to start local server.&#34;)
+            try:
+                self.connection_manager.start_local_server(
+                    system_name=system_name,
+                    log_to_file=True,
+                    log_level=&#34;DEBUG&#34;,
+                )
+                self.connection_manager.connect()
+                if self.connection_manager.client_sync.version != qscope.__version__:
+                    show_warning(
+                        &#34;Server and client versions are different: &#34;
+                        + f&#34;{self.connection_manager.client_sync.version} vs &#34;
+                        f&#34;{qscope.__version__}&#34;
+                    )
+                self.connection_manager.startup()
+                self.connection_manager.ping() # test that server responds
+                
+                logger.info(&#34;Connected to background server.&#34;)
+            except:
+                raise RuntimeError(
+                    &#34;Error starting bg server: {}&#34;, format_error_response()
+                )
+
+    def closedown(self):
+        &#34;&#34;&#34;Close the window and clean up resources&#34;&#34;&#34;
+        event = QCloseEvent()
+        self.closeEvent(event)
+        self.close()
+
+    def closeEvent(self, event):
+        &#34;&#34;&#34;Handle the window close event to clean up resources.&#34;&#34;&#34;
+        self.close_signal = True
+        
+        # Give threads a moment to notice the close signal
+        time.sleep(0.2)
+
+        # Close connection manager if it exists
+        if hasattr(self, &#34;connection_manager&#34;):
+            # TODO when stable swap these two. (user may want to connect to running instance)
+            # (will need buttons to disconnect/connect then)
+            self.connection_manager.stop_server()
+            # self.connection_manager.disconnect()
+
+    def handle_save(self):
+        &#34;&#34;&#34;Handle Save action based on current tab&#34;&#34;&#34;
+        current_tab = self.tabs.currentWidget()
+
+        try:
+            if current_tab == self.tab2:  # Measurements tab
+                if hasattr(self, &#34;meas_id&#34;):
+                    # Simulate clicking the save measurement button
+                    self.meas_opts.save_measurement_button.click()
+                else:
+                    show_warning(&#34;No measurement data to save&#34;)
+            elif current_tab == self.tab1:  # Video tab
+                # Simulate clicking the camera save button
+                self.cam_opts.save_image_button.click()
+        except Exception as e:
+            show_warning(f&#34;Error during save operation: {str(e)}&#34;)
+
+    def handle_save_as(self):
+        &#34;&#34;&#34;Handle Save As action based on current tab&#34;&#34;&#34;
+        current_tab = self.tabs.currentWidget()
+
+        try:
+            if current_tab == self.tab2:  # Measurements tab
+                if hasattr(self, &#34;meas_id&#34;):
+                    # Simulate clicking the (qmeas) save image button
+                    self.meas_opts.save_image_button.click()
+                else:
+                    show_warning(&#34;No measurement data to save&#34;)
+        except Exception as e:
+            show_warning(f&#34;Error during save-as operation: {str(e)}&#34;)
+
+    # Make a menu bar
+    def _create_menu_bar(self):
+        menuBar = QMenuBar(self)
+        self.setMenuBar(menuBar)
+        menuBar.setNativeMenuBar(False)
+
+        # Add keyboard shortcuts without menu items
+        saveAction = QAction(&#34;Save&#34;, self)
+        saveAction.setShortcut(QKeySequence.StandardKey.Save)
+        saveAction.triggered.connect(self.handle_save)
+        self.addAction(saveAction)
+
+        saveAsAction = QAction(&#34;Save All&#34;, self)
+        saveAsAction.setShortcut(QKeySequence.StandardKey.SaveAs)
+        saveAsAction.triggered.connect(self.handle_save_as)
+        self.addAction(saveAsAction)
+
+        # Settings menu
+        self.SettingsMenu = qscope.gui.menu.SettingsMenu(self, menuBar)
+
+        # Server menu
+        self.ServerMenu = qscope.gui.menu.ServerMenu(self, menuBar)
+
+        # Notes menu
+        self.NotesMenu = qscope.gui.menu.NotesMenu(self, menuBar)
+
+        # Help menu
+        self.HelpMenu = qscope.gui.menu.HelpMenu(self, menuBar)
+
+    ### Listener Threads ###
+
+    # Listener for the measurement tab
+    def notif_socket_thread(self):
+        &#34;&#34;&#34;Start the listener thread and connect signal to slot&#34;&#34;&#34;
+        old_data = None
+        
+        while not self.close_signal:
+            try:
+                socket = self.connection_manager.get_notification_socket()
+                msg = socket.recv()
+                notif = Notification.from_msgpack(msg)
+                self.notif_signal.emit(notif)
+                asyncio.run(asyncio.sleep(0.01))
+            except zmq.error.ContextTerminated:
+                # Context was terminated, exit gracefully
+                logger.info(&#34;ZMQ context terminated, stopping notification thread&#34;)
+                break
+            except zmq.error.ZMQError as e:
+                # Handle other ZMQ errors
+                logger.debug(f&#34;ZMQ error in notification thread: {e}&#34;)
+                # Small sleep to prevent tight loop if errors persist
+                time.sleep(0.1)
+            except Exception as e:
+                logger.exception(f&#34;Unexpected error in notification thread: {e}&#34;)
+                # Small sleep to prevent tight loop if errors persist
+                time.sleep(0.1)
+
+    def start_notif_listener_thread(self):
+        &#34;&#34;&#34;Start the listener thread and connect signal to slot&#34;&#34;&#34;
+
+        self.listener_thread = threading.Thread(target=self.notif_socket_thread)
+        self.listener_thread.daemon = True
+        self.listener_thread.start()
+        self.notif_signal.connect(self.handle_new_notif)
+
+    def handle_new_notif(self, notif):
+        &#34;&#34;&#34;Update the measurement data&#34;&#34;&#34;
+
+        match notif.type:
+            case NewMeasurement.type:
+                # set the measurement ID
+                self.meas_id = notif.meas_id
+                self.meas_opts.meas_id_indicator.setText(self.meas_id)
+
+            case MeasurementUpdate.type:
+                # Update the measurement state
+
+                self.meas_id = notif.meas_id
+                self.meas_opts.meas_id_indicator.setText(self.meas_id)
+
+                self.update_meas_state(notif.new_state)
+
+            case RollingAvgSweepUpdate.type:
+                self.rolling_meas_idxs = notif.sweep_idxs
+                self.rolling_meas_sig_array = notif.sweep_ysig
+                self.rolling_meas_ref_array = notif.sweep_yref
+
+                # TODO we need a util normalisation function
+                # Use the normalisation for the line plot
+                match self.line_figure_opts.plot_norm_dropdown.currentText():
+                    case &#34;None&#34;:
+                        data_frame = self.rolling_meas_sig_array
+                    case &#34;Subtract&#34;:
+                        data_frame = (
+                            self.rolling_meas_sig_array - self.rolling_meas_ref_array
+                        )
+                    case &#34;Divide&#34;:
+                        data_frame = (
+                            self.rolling_meas_sig_array / self.rolling_meas_ref_array
+                        )
+                    case &#34;Normalise&#34;:
+                        data_frame = 100 * (
+                            1
+                            - self.rolling_meas_sig_array / self.rolling_meas_ref_array
+                        )
+                    case _:
+                        data_frame = self.rolling_meas_sig_array
+
+                self.rolling_img_figure.update_data(
+                    data_frame, self.rolling_meas_idxs, notif.sweep_x
+                )
+
+                if self.line_figure_opts.real_time_button.isChecked():
+                    # update the real-time plot
+                    self.meas_line_figure.set_data(
+                        notif.sweep_x,
+                        notif.rolling_meas_sig_array[-1, :],
+                        notif.rolling_meas_ref_array[-1, :],
+                    )
+
+            case SweepUpdate.type:
+                elapsed_time = self.clock_meas.elapsed()
+
+                # Make the realtime data from the averaged data
+                if notif.nsweeps == 0:
+                    # first sweep of measurements, no previous data
+                    self.previous_sweep_data = notif.sweep_data.copy()
+                    self.previous_sweep_data[1] = self.previous_sweep_data[1] * 0
+                    self.previous_sweep_data[2] = self.previous_sweep_data[2] * 0
+
+                if notif.sweep_progress == 0.0 and notif.nsweeps &gt; 1:
+                    # Update the previous sweep data if the sweep is finished and convert it to a sum of the data
+                    self.previous_sweep_data = notif.sweep_data * notif.nsweeps
+
+                # Define the realtime data
+                self.realtime_x = notif.sweep_data[0]
+                self.realtime_y = (notif.nsweeps + 1) * notif.sweep_data[
+                    1
+                ] - self.previous_sweep_data[1]
+                self.realtime_y_ref = (notif.nsweeps + 1) * notif.sweep_data[
+                    2
+                ] - self.previous_sweep_data[2]
+
+                # Remove the elements that are not in the current sweep
+                indices = len(self.realtime_x) * notif.sweep_progress / 100
+                self.realtime_x = self.realtime_x[: int(indices)]
+                self.realtime_y = self.realtime_y[: int(indices)]
+                self.realtime_y_ref = self.realtime_y_ref[: int(indices)]
+
+                if elapsed_time &gt; 50:  # 50ms refresh rate.
+                    self.meas_id = notif.meas_id
+                    self.meas_opts.meas_id_indicator.setText(self.meas_id)
+                    # Update the number of sweeps
+                    self.meas_opts.ith_loop.setValue(notif.nsweeps)
+
+                    # check if the sweep full sweep has finished and send force fit if true
+                    if notif.sweep_progress == 0.0:
+                        force_fit = True
+                    else:
+                        force_fit = False
+
+                    # update the sweep percentage
+                    self.meas_opts.sweep_progress.setValue(int(notif.sweep_progress))
+
+                    # update the realtime data
+                    self.meas_line_figure.update_realtime_data(
+                        self.realtime_x,
+                        self.realtime_y,
+                        self.realtime_y_ref,
+                    )
+
+                    # update the sweep data
+                    self.meas_line_figure.set_data(
+                        notif.sweep_data[0],
+                        notif.sweep_data[1],
+                        notif.sweep_data[2],
+                        force_fit=force_fit,
+                    )
+
+                    self.clock_meas.restart()
+
+                    if (
+                        notif.nsweeps &gt;= self.meas_opts.stop_after_sweeps_idx.value()
+                        and self.meas_opts.stop_after_sweeps.isChecked()
+                    ):
+                        # tell the server to stop the measurement at the end of the sweep
+                        qscope.server.stop_measurement(self.client, notif.meas_id)
+
+                    if (
+                        notif.nsweeps &gt;= self.meas_opts.save_after_sweeps_idx.value()
+                        and self.meas_opts.save_after_sweeps.isChecked()
+                    ):
+                        # Check if the number of sweeps is an integer multiple of the save after sweeps idx
+                        if (
+                            notif.nsweeps % self.meas_opts.save_after_sweeps_idx.value()
+                            == 0
+                        ):
+                            # save the measurement data
+                            qscope.server.measurement_save_sweep(
+                                self.client, notif.meas_id, self.get_project_name()
+                            )
+
+            case MeasurementFrame.type:
+                self.meas_id = notif.meas_id
+                self.meas_opts.meas_id_indicator.setText(self.meas_id)
+                # Update the measurement frame (sig_frame, ref_frame)
+                self.frame_figure.update_data(notif.sig_frame, notif.ref_frame)
+
+            case SaveFullComplete.type:
+                # just update the button
+                self.meas_opts.save_image_button.setStyleSheet(&#34;background-color: None&#34;)
+                self.meas_opts.save_image_button.setChecked(False)
+
+    def update_meas_state(self, state):
+        &#34;&#34;&#34;Update the measurement state&#34;&#34;&#34;
+        self.meas_opts.state_indicator.setText(state)
+        if state == MEAS_STATE.RUNNING:
+            # Change the background color of the state label to green
+            self.meas_opts.state_indicator.setStyleSheet(&#34;background-color: green&#34;)
+        elif (
+            state == MEAS_STATE.PAUSED
+            or state == MEAS_STATE.PREPARING
+            or state == MEAS_STATE.AWAITING_START
+        ):
+            self.meas_opts.state_indicator.setStyleSheet(&#34;background-color: red&#34;)
+        else:
+            self.meas_opts.state_indicator.setStyleSheet(&#34;background-color: None&#34;)
+
+    # Listener for the video tab
+    def video_socket_thread(self):
+        &#34;&#34;&#34;Start the listener thread and connect signal to slot&#34;&#34;&#34;
+        old_data = None
+        frame_buffer = []
+        MAX_BUFFER_SIZE = 10  # Maximum number of frames to buffer
+        
+        while not self.close_signal:
+            try:
+                socket = self.connection_manager.get_stream_socket()
+                
+                # Check if we&#39;re falling behind (buffer getting too full)
+                if len(frame_buffer) &gt; MAX_BUFFER_SIZE:
+                    # Drop oldest frames, keeping only the most recent ones
+                    frames_to_keep = MAX_BUFFER_SIZE // 2
+                    frame_buffer = frame_buffer[-frames_to_keep:]
+                    logger.debug(f&#34;Client falling behind, dropped {MAX_BUFFER_SIZE - frames_to_keep} frames&#34;)
+                
+                # Non-blocking receive with timeout
+                try:
+                    new_data = socket.recv_multipart(flags=zmq.NOBLOCK)
+                    frame_buffer.append(new_data)
+                except zmq.Again:
+                    # No data available, sleep a bit
+                    time.sleep(0.01)
+                    
+                # If we have frames and we&#39;re not currently processing one, emit the newest
+                if frame_buffer and not self.processing_frame:
+                    self.processing_frame = True
+                    self.new_video_signal.emit(frame_buffer.pop(0))
+                    
+            except zmq.error.ContextTerminated:
+                # Context was terminated, exit gracefully
+                logger.info(&#34;ZMQ context terminated, stopping video thread&#34;)
+                break
+            except zmq.error.ZMQError as e:
+                # Handle other ZMQ errors
+                logger.debug(f&#34;ZMQ error in video thread: {e}&#34;)
+                time.sleep(0.1)
+            except Exception as e:
+                logger.exception(f&#34;Unexpected error in video thread: {e}&#34;)
+                time.sleep(0.1)
+
+    def start_video_listener_thread(self):
+        &#34;&#34;&#34;Start the listener thread and connect signal to slot&#34;&#34;&#34;
+        import threading
+
+        # Use lists instead of numpy arrays for better append performance
+        self.timetrace_data = []
+        self.timetrace_time = []
+
+        self.listener_thread = threading.Thread(target=self.video_socket_thread)
+        self.listener_thread.daemon = True
+        self.listener_thread.start()
+        self.new_video_signal.connect(self.handle_new_video_frame)
+
+    def handle_new_video_frame(self, message):
+        &#34;&#34;&#34;Update the video&#34;&#34;&#34;
+        try:
+            header, frame = message
+            assert header == b&#34;video&#34;
+            frame = pickle.loads(frame)
+            # frame = np.frombuffer(frame, dtype=np.uint16).reshape(2048, 2048) # FIXME
+            
+            # track the sum of the frames for the mpl
+            # Use list append instead of np.append for better performance
+            self.timetrace_data.append(np.sum(frame))
+            self.timetrace_time.append(
+                len(self.timetrace_data) * self.cam_opts.exposure_time_input.value()
+            )
+            
+            # Downsample when we exceed the maximum points
+            MAX_POINTS = 1000  # Target maximum number of points
+            if len(self.timetrace_data) &gt; MAX_POINTS * 1.2:  # Add some hysteresis
+                # Calculate the decimation factor needed
+                decimation_factor = len(self.timetrace_data) // (MAX_POINTS // 2)
+                
+                # Use every Nth point to maintain even time steps
+                self.timetrace_data = self.timetrace_data[::decimation_factor]
+                self.timetrace_time = self.timetrace_time[::decimation_factor]
+                
+                logger.debug(f&#34;Downsampled time trace data with factor {decimation_factor}, new size: {len(self.timetrace_data)}&#34;)
+            
+            elapsed_time = self.clock.elapsed()
+            
+            if elapsed_time &gt; 50:  # 50ms refresh rate.
+                # First update the timetrace figure (faster operation)
+                # Convert to numpy arrays only when needed for plotting
+                self.video_timetrace_fig.fast_update(
+                    np.array(self.timetrace_time), 
+                    np.array(self.timetrace_data)
+                )
+                
+                # Then update the video figure (slower operation)
+                self.video_fig.update_data(frame)
+                
+                self.clock.restart()
+        finally:
+            # Signal that we&#39;re done processing this frame
+            self.processing_frame = False
+
+    def get_project_name(self) -&gt; str:
+        return self.statusBar.get_project_tag()
+
+    def get_notes(self) -&gt; str:
+        return self.NotesMenu.get_notes()
+
+    def show_status_msg(self, msg: str, msecs=10000):
+        self.statusBar.showMessage(msg, msecs)</code></pre>
+</details>
+<div class="desc"><p>QMainWindow(parent: Optional[QWidget] = None, flags: Qt.WindowType = Qt.WindowFlags())</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>PyQt6.QtWidgets.QMainWindow</li>
+<li>PyQt6.QtWidgets.QWidget</li>
+<li>PyQt6.QtCore.QObject</li>
+<li>PyQt6.sip.wrapper</li>
+<li>PyQt6.QtGui.QPaintDevice</li>
+<li>PyQt6.sip.simplewrapper</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="qscope.gui.main_window.MainWindow.connection_manager"><code class="name">var <span class="ident">connection_manager</span> : <a title="qscope.server.connection_manager.ConnectionManager" href="../server/connection_manager.html#qscope.server.connection_manager.ConnectionManager">ConnectionManager</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.main_window.MainWindow.rolling_meas_idxs"><code class="name">var <span class="ident">rolling_meas_idxs</span> : list[int]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.main_window.MainWindow.rolling_meas_ref_array"><code class="name">var <span class="ident">rolling_meas_ref_array</span> : numpy.ndarray[float]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.main_window.MainWindow.rolling_meas_sig_array"><code class="name">var <span class="ident">rolling_meas_sig_array</span> : numpy.ndarray[float]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.main_window.MainWindow.rolling_meas_window"><code class="name">var <span class="ident">rolling_meas_window</span> : int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.gui.main_window.MainWindow.closeEvent"><code class="name flex">
+<span>def <span class="ident">closeEvent</span></span>(<span>self, event)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def closeEvent(self, event):
+    &#34;&#34;&#34;Handle the window close event to clean up resources.&#34;&#34;&#34;
+    self.close_signal = True
+    
+    # Give threads a moment to notice the close signal
+    time.sleep(0.2)
+
+    # Close connection manager if it exists
+    if hasattr(self, &#34;connection_manager&#34;):
+        # TODO when stable swap these two. (user may want to connect to running instance)
+        # (will need buttons to disconnect/connect then)
+        self.connection_manager.stop_server()
+        # self.connection_manager.disconnect()</code></pre>
+</details>
+<div class="desc"><p>Handle the window close event to clean up resources.</p></div>
+</dd>
+<dt id="qscope.gui.main_window.MainWindow.closedown"><code class="name flex">
+<span>def <span class="ident">closedown</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def closedown(self):
+    &#34;&#34;&#34;Close the window and clean up resources&#34;&#34;&#34;
+    event = QCloseEvent()
+    self.closeEvent(event)
+    self.close()</code></pre>
+</details>
+<div class="desc"><p>Close the window and clean up resources</p></div>
+</dd>
+<dt id="qscope.gui.main_window.MainWindow.get_notes"><code class="name flex">
+<span>def <span class="ident">get_notes</span></span>(<span>self) ‑> str</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_notes(self) -&gt; str:
+    return self.NotesMenu.get_notes()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.main_window.MainWindow.get_project_name"><code class="name flex">
+<span>def <span class="ident">get_project_name</span></span>(<span>self) ‑> str</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_project_name(self) -&gt; str:
+    return self.statusBar.get_project_tag()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.main_window.MainWindow.handle_new_notif"><code class="name flex">
+<span>def <span class="ident">handle_new_notif</span></span>(<span>self, notif)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def handle_new_notif(self, notif):
+    &#34;&#34;&#34;Update the measurement data&#34;&#34;&#34;
+
+    match notif.type:
+        case NewMeasurement.type:
+            # set the measurement ID
+            self.meas_id = notif.meas_id
+            self.meas_opts.meas_id_indicator.setText(self.meas_id)
+
+        case MeasurementUpdate.type:
+            # Update the measurement state
+
+            self.meas_id = notif.meas_id
+            self.meas_opts.meas_id_indicator.setText(self.meas_id)
+
+            self.update_meas_state(notif.new_state)
+
+        case RollingAvgSweepUpdate.type:
+            self.rolling_meas_idxs = notif.sweep_idxs
+            self.rolling_meas_sig_array = notif.sweep_ysig
+            self.rolling_meas_ref_array = notif.sweep_yref
+
+            # TODO we need a util normalisation function
+            # Use the normalisation for the line plot
+            match self.line_figure_opts.plot_norm_dropdown.currentText():
+                case &#34;None&#34;:
+                    data_frame = self.rolling_meas_sig_array
+                case &#34;Subtract&#34;:
+                    data_frame = (
+                        self.rolling_meas_sig_array - self.rolling_meas_ref_array
+                    )
+                case &#34;Divide&#34;:
+                    data_frame = (
+                        self.rolling_meas_sig_array / self.rolling_meas_ref_array
+                    )
+                case &#34;Normalise&#34;:
+                    data_frame = 100 * (
+                        1
+                        - self.rolling_meas_sig_array / self.rolling_meas_ref_array
+                    )
+                case _:
+                    data_frame = self.rolling_meas_sig_array
+
+            self.rolling_img_figure.update_data(
+                data_frame, self.rolling_meas_idxs, notif.sweep_x
+            )
+
+            if self.line_figure_opts.real_time_button.isChecked():
+                # update the real-time plot
+                self.meas_line_figure.set_data(
+                    notif.sweep_x,
+                    notif.rolling_meas_sig_array[-1, :],
+                    notif.rolling_meas_ref_array[-1, :],
+                )
+
+        case SweepUpdate.type:
+            elapsed_time = self.clock_meas.elapsed()
+
+            # Make the realtime data from the averaged data
+            if notif.nsweeps == 0:
+                # first sweep of measurements, no previous data
+                self.previous_sweep_data = notif.sweep_data.copy()
+                self.previous_sweep_data[1] = self.previous_sweep_data[1] * 0
+                self.previous_sweep_data[2] = self.previous_sweep_data[2] * 0
+
+            if notif.sweep_progress == 0.0 and notif.nsweeps &gt; 1:
+                # Update the previous sweep data if the sweep is finished and convert it to a sum of the data
+                self.previous_sweep_data = notif.sweep_data * notif.nsweeps
+
+            # Define the realtime data
+            self.realtime_x = notif.sweep_data[0]
+            self.realtime_y = (notif.nsweeps + 1) * notif.sweep_data[
+                1
+            ] - self.previous_sweep_data[1]
+            self.realtime_y_ref = (notif.nsweeps + 1) * notif.sweep_data[
+                2
+            ] - self.previous_sweep_data[2]
+
+            # Remove the elements that are not in the current sweep
+            indices = len(self.realtime_x) * notif.sweep_progress / 100
+            self.realtime_x = self.realtime_x[: int(indices)]
+            self.realtime_y = self.realtime_y[: int(indices)]
+            self.realtime_y_ref = self.realtime_y_ref[: int(indices)]
+
+            if elapsed_time &gt; 50:  # 50ms refresh rate.
+                self.meas_id = notif.meas_id
+                self.meas_opts.meas_id_indicator.setText(self.meas_id)
+                # Update the number of sweeps
+                self.meas_opts.ith_loop.setValue(notif.nsweeps)
+
+                # check if the sweep full sweep has finished and send force fit if true
+                if notif.sweep_progress == 0.0:
+                    force_fit = True
+                else:
+                    force_fit = False
+
+                # update the sweep percentage
+                self.meas_opts.sweep_progress.setValue(int(notif.sweep_progress))
+
+                # update the realtime data
+                self.meas_line_figure.update_realtime_data(
+                    self.realtime_x,
+                    self.realtime_y,
+                    self.realtime_y_ref,
+                )
+
+                # update the sweep data
+                self.meas_line_figure.set_data(
+                    notif.sweep_data[0],
+                    notif.sweep_data[1],
+                    notif.sweep_data[2],
+                    force_fit=force_fit,
+                )
+
+                self.clock_meas.restart()
+
+                if (
+                    notif.nsweeps &gt;= self.meas_opts.stop_after_sweeps_idx.value()
+                    and self.meas_opts.stop_after_sweeps.isChecked()
+                ):
+                    # tell the server to stop the measurement at the end of the sweep
+                    qscope.server.stop_measurement(self.client, notif.meas_id)
+
+                if (
+                    notif.nsweeps &gt;= self.meas_opts.save_after_sweeps_idx.value()
+                    and self.meas_opts.save_after_sweeps.isChecked()
+                ):
+                    # Check if the number of sweeps is an integer multiple of the save after sweeps idx
+                    if (
+                        notif.nsweeps % self.meas_opts.save_after_sweeps_idx.value()
+                        == 0
+                    ):
+                        # save the measurement data
+                        qscope.server.measurement_save_sweep(
+                            self.client, notif.meas_id, self.get_project_name()
+                        )
+
+        case MeasurementFrame.type:
+            self.meas_id = notif.meas_id
+            self.meas_opts.meas_id_indicator.setText(self.meas_id)
+            # Update the measurement frame (sig_frame, ref_frame)
+            self.frame_figure.update_data(notif.sig_frame, notif.ref_frame)
+
+        case SaveFullComplete.type:
+            # just update the button
+            self.meas_opts.save_image_button.setStyleSheet(&#34;background-color: None&#34;)
+            self.meas_opts.save_image_button.setChecked(False)</code></pre>
+</details>
+<div class="desc"><p>Update the measurement data</p></div>
+</dd>
+<dt id="qscope.gui.main_window.MainWindow.handle_new_video_frame"><code class="name flex">
+<span>def <span class="ident">handle_new_video_frame</span></span>(<span>self, message)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def handle_new_video_frame(self, message):
+    &#34;&#34;&#34;Update the video&#34;&#34;&#34;
+    try:
+        header, frame = message
+        assert header == b&#34;video&#34;
+        frame = pickle.loads(frame)
+        # frame = np.frombuffer(frame, dtype=np.uint16).reshape(2048, 2048) # FIXME
+        
+        # track the sum of the frames for the mpl
+        # Use list append instead of np.append for better performance
+        self.timetrace_data.append(np.sum(frame))
+        self.timetrace_time.append(
+            len(self.timetrace_data) * self.cam_opts.exposure_time_input.value()
+        )
+        
+        # Downsample when we exceed the maximum points
+        MAX_POINTS = 1000  # Target maximum number of points
+        if len(self.timetrace_data) &gt; MAX_POINTS * 1.2:  # Add some hysteresis
+            # Calculate the decimation factor needed
+            decimation_factor = len(self.timetrace_data) // (MAX_POINTS // 2)
+            
+            # Use every Nth point to maintain even time steps
+            self.timetrace_data = self.timetrace_data[::decimation_factor]
+            self.timetrace_time = self.timetrace_time[::decimation_factor]
+            
+            logger.debug(f&#34;Downsampled time trace data with factor {decimation_factor}, new size: {len(self.timetrace_data)}&#34;)
+        
+        elapsed_time = self.clock.elapsed()
+        
+        if elapsed_time &gt; 50:  # 50ms refresh rate.
+            # First update the timetrace figure (faster operation)
+            # Convert to numpy arrays only when needed for plotting
+            self.video_timetrace_fig.fast_update(
+                np.array(self.timetrace_time), 
+                np.array(self.timetrace_data)
+            )
+            
+            # Then update the video figure (slower operation)
+            self.video_fig.update_data(frame)
+            
+            self.clock.restart()
+    finally:
+        # Signal that we&#39;re done processing this frame
+        self.processing_frame = False</code></pre>
+</details>
+<div class="desc"><p>Update the video</p></div>
+</dd>
+<dt id="qscope.gui.main_window.MainWindow.handle_save"><code class="name flex">
+<span>def <span class="ident">handle_save</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def handle_save(self):
+    &#34;&#34;&#34;Handle Save action based on current tab&#34;&#34;&#34;
+    current_tab = self.tabs.currentWidget()
+
+    try:
+        if current_tab == self.tab2:  # Measurements tab
+            if hasattr(self, &#34;meas_id&#34;):
+                # Simulate clicking the save measurement button
+                self.meas_opts.save_measurement_button.click()
+            else:
+                show_warning(&#34;No measurement data to save&#34;)
+        elif current_tab == self.tab1:  # Video tab
+            # Simulate clicking the camera save button
+            self.cam_opts.save_image_button.click()
+    except Exception as e:
+        show_warning(f&#34;Error during save operation: {str(e)}&#34;)</code></pre>
+</details>
+<div class="desc"><p>Handle Save action based on current tab</p></div>
+</dd>
+<dt id="qscope.gui.main_window.MainWindow.handle_save_as"><code class="name flex">
+<span>def <span class="ident">handle_save_as</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def handle_save_as(self):
+    &#34;&#34;&#34;Handle Save As action based on current tab&#34;&#34;&#34;
+    current_tab = self.tabs.currentWidget()
+
+    try:
+        if current_tab == self.tab2:  # Measurements tab
+            if hasattr(self, &#34;meas_id&#34;):
+                # Simulate clicking the (qmeas) save image button
+                self.meas_opts.save_image_button.click()
+            else:
+                show_warning(&#34;No measurement data to save&#34;)
+    except Exception as e:
+        show_warning(f&#34;Error during save-as operation: {str(e)}&#34;)</code></pre>
+</details>
+<div class="desc"><p>Handle Save As action based on current tab</p></div>
+</dd>
+<dt id="qscope.gui.main_window.MainWindow.new_video_signal"><code class="name flex">
+<span>def <span class="ident">new_video_signal</span></span>(<span>...)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>pyqtSignal(*types, name: str = &hellip;, revision: int = &hellip;, arguments: Sequence = &hellip;) -&gt; PYQT_SIGNAL</p>
+<p>types is normally a sequence of individual types.
+Each type is either a
+type object or a string that is the name of a C++ type.
+Alternatively
+each type could itself be a sequence of types each describing a different
+overloaded signal.
+name is the optional C++ name of the signal.
+If it is not specified then
+the name of the class attribute that is bound to the signal is used.
+revision is the optional revision of the signal that is exported to QML.
+If it is not specified then 0 is used.
+arguments is the optional sequence of the names of the signal's arguments.</p></div>
+</dd>
+<dt id="qscope.gui.main_window.MainWindow.notif_signal"><code class="name flex">
+<span>def <span class="ident">notif_signal</span></span>(<span>...)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>pyqtSignal(*types, name: str = &hellip;, revision: int = &hellip;, arguments: Sequence = &hellip;) -&gt; PYQT_SIGNAL</p>
+<p>types is normally a sequence of individual types.
+Each type is either a
+type object or a string that is the name of a C++ type.
+Alternatively
+each type could itself be a sequence of types each describing a different
+overloaded signal.
+name is the optional C++ name of the signal.
+If it is not specified then
+the name of the class attribute that is bound to the signal is used.
+revision is the optional revision of the signal that is exported to QML.
+If it is not specified then 0 is used.
+arguments is the optional sequence of the names of the signal's arguments.</p></div>
+</dd>
+<dt id="qscope.gui.main_window.MainWindow.notif_socket_thread"><code class="name flex">
+<span>def <span class="ident">notif_socket_thread</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def notif_socket_thread(self):
+    &#34;&#34;&#34;Start the listener thread and connect signal to slot&#34;&#34;&#34;
+    old_data = None
+    
+    while not self.close_signal:
+        try:
+            socket = self.connection_manager.get_notification_socket()
+            msg = socket.recv()
+            notif = Notification.from_msgpack(msg)
+            self.notif_signal.emit(notif)
+            asyncio.run(asyncio.sleep(0.01))
+        except zmq.error.ContextTerminated:
+            # Context was terminated, exit gracefully
+            logger.info(&#34;ZMQ context terminated, stopping notification thread&#34;)
+            break
+        except zmq.error.ZMQError as e:
+            # Handle other ZMQ errors
+            logger.debug(f&#34;ZMQ error in notification thread: {e}&#34;)
+            # Small sleep to prevent tight loop if errors persist
+            time.sleep(0.1)
+        except Exception as e:
+            logger.exception(f&#34;Unexpected error in notification thread: {e}&#34;)
+            # Small sleep to prevent tight loop if errors persist
+            time.sleep(0.1)</code></pre>
+</details>
+<div class="desc"><p>Start the listener thread and connect signal to slot</p></div>
+</dd>
+<dt id="qscope.gui.main_window.MainWindow.show_status_msg"><code class="name flex">
+<span>def <span class="ident">show_status_msg</span></span>(<span>self, msg: str, msecs=10000)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def show_status_msg(self, msg: str, msecs=10000):
+    self.statusBar.showMessage(msg, msecs)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.main_window.MainWindow.start_notif_listener_thread"><code class="name flex">
+<span>def <span class="ident">start_notif_listener_thread</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def start_notif_listener_thread(self):
+    &#34;&#34;&#34;Start the listener thread and connect signal to slot&#34;&#34;&#34;
+
+    self.listener_thread = threading.Thread(target=self.notif_socket_thread)
+    self.listener_thread.daemon = True
+    self.listener_thread.start()
+    self.notif_signal.connect(self.handle_new_notif)</code></pre>
+</details>
+<div class="desc"><p>Start the listener thread and connect signal to slot</p></div>
+</dd>
+<dt id="qscope.gui.main_window.MainWindow.start_video_listener_thread"><code class="name flex">
+<span>def <span class="ident">start_video_listener_thread</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def start_video_listener_thread(self):
+    &#34;&#34;&#34;Start the listener thread and connect signal to slot&#34;&#34;&#34;
+    import threading
+
+    # Use lists instead of numpy arrays for better append performance
+    self.timetrace_data = []
+    self.timetrace_time = []
+
+    self.listener_thread = threading.Thread(target=self.video_socket_thread)
+    self.listener_thread.daemon = True
+    self.listener_thread.start()
+    self.new_video_signal.connect(self.handle_new_video_frame)</code></pre>
+</details>
+<div class="desc"><p>Start the listener thread and connect signal to slot</p></div>
+</dd>
+<dt id="qscope.gui.main_window.MainWindow.update_meas_state"><code class="name flex">
+<span>def <span class="ident">update_meas_state</span></span>(<span>self, state)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update_meas_state(self, state):
+    &#34;&#34;&#34;Update the measurement state&#34;&#34;&#34;
+    self.meas_opts.state_indicator.setText(state)
+    if state == MEAS_STATE.RUNNING:
+        # Change the background color of the state label to green
+        self.meas_opts.state_indicator.setStyleSheet(&#34;background-color: green&#34;)
+    elif (
+        state == MEAS_STATE.PAUSED
+        or state == MEAS_STATE.PREPARING
+        or state == MEAS_STATE.AWAITING_START
+    ):
+        self.meas_opts.state_indicator.setStyleSheet(&#34;background-color: red&#34;)
+    else:
+        self.meas_opts.state_indicator.setStyleSheet(&#34;background-color: None&#34;)</code></pre>
+</details>
+<div class="desc"><p>Update the measurement state</p></div>
+</dd>
+<dt id="qscope.gui.main_window.MainWindow.video_socket_thread"><code class="name flex">
+<span>def <span class="ident">video_socket_thread</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def video_socket_thread(self):
+    &#34;&#34;&#34;Start the listener thread and connect signal to slot&#34;&#34;&#34;
+    old_data = None
+    frame_buffer = []
+    MAX_BUFFER_SIZE = 10  # Maximum number of frames to buffer
+    
+    while not self.close_signal:
+        try:
+            socket = self.connection_manager.get_stream_socket()
+            
+            # Check if we&#39;re falling behind (buffer getting too full)
+            if len(frame_buffer) &gt; MAX_BUFFER_SIZE:
+                # Drop oldest frames, keeping only the most recent ones
+                frames_to_keep = MAX_BUFFER_SIZE // 2
+                frame_buffer = frame_buffer[-frames_to_keep:]
+                logger.debug(f&#34;Client falling behind, dropped {MAX_BUFFER_SIZE - frames_to_keep} frames&#34;)
+            
+            # Non-blocking receive with timeout
+            try:
+                new_data = socket.recv_multipart(flags=zmq.NOBLOCK)
+                frame_buffer.append(new_data)
+            except zmq.Again:
+                # No data available, sleep a bit
+                time.sleep(0.01)
+                
+            # If we have frames and we&#39;re not currently processing one, emit the newest
+            if frame_buffer and not self.processing_frame:
+                self.processing_frame = True
+                self.new_video_signal.emit(frame_buffer.pop(0))
+                
+        except zmq.error.ContextTerminated:
+            # Context was terminated, exit gracefully
+            logger.info(&#34;ZMQ context terminated, stopping video thread&#34;)
+            break
+        except zmq.error.ZMQError as e:
+            # Handle other ZMQ errors
+            logger.debug(f&#34;ZMQ error in video thread: {e}&#34;)
+            time.sleep(0.1)
+        except Exception as e:
+            logger.exception(f&#34;Unexpected error in video thread: {e}&#34;)
+            time.sleep(0.1)</code></pre>
+</details>
+<div class="desc"><p>Start the listener thread and connect signal to slot</p></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<form>
+<input id="lunr-search" name="q" placeholder="🔎 Search ..." aria-label="Search"
+disabled minlength="2">
+</form>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.css" integrity="sha512-b+T2i3P45i1LZM7I00Ci5QquB9szqaxu+uuk5TUSGjZQ4w4n+qujQiIuvTv2BxE7WCGQCifNMksyKILDiHzsOg==" crossorigin>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.js" integrity="sha512-2B9/byNV1KKRm5nQ2RLViPFD6U4dUjDGwuW1GU+ImJh8YinPU9Zlq1GzdTMO+G2ROrB5o1qasJBy1ttYz0wCug==" crossorigin></script>
+<style>
+.modal-dialog iframe {
+width: 100vw;
+height: calc(100vh - 80px);
+}
+@media screen and (min-width: 700px) {
+.modal-dialog iframe {
+width: 70vw;
+height: 80vh;
+}
+}
+.modal-dialog .tingle-modal-box {width: auto;}
+.modal-dialog .tingle-modal-box__content {padding: 0;}
+</style>
+<script>
+const input = document.getElementById('lunr-search');
+input.disabled = false;
+input.form.addEventListener('submit', (ev) => {
+ev.preventDefault();
+const url = new URL(window.location);
+url.searchParams.set('q', input.value);
+history.replaceState({}, null, url.toString());
+search(input.value);
+});
+const query = new URL(window.location).searchParams.get('q');
+if (query)
+search(query);
+function search(query) {
+const url = '../../doc-search.html#' + encodeURIComponent(query);
+new tingle.modal({
+cssClass: ['modal-dialog'],
+onClose: () => {
+const url = new URL(window.location);
+url.searchParams.delete('q');
+history.replaceState({}, null, url.toString());
+setTimeout(() => input.focus(), 100);
+}
+}).setContent('<iframe src="' + url + '"></iframe>').open();
+}
+</script>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="qscope.gui" href="index.html">qscope.gui</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="qscope.gui.main_window.MainWindow" href="#qscope.gui.main_window.MainWindow">MainWindow</a></code></h4>
+<ul class="">
+<li><code><a title="qscope.gui.main_window.MainWindow.closeEvent" href="#qscope.gui.main_window.MainWindow.closeEvent">closeEvent</a></code></li>
+<li><code><a title="qscope.gui.main_window.MainWindow.closedown" href="#qscope.gui.main_window.MainWindow.closedown">closedown</a></code></li>
+<li><code><a title="qscope.gui.main_window.MainWindow.connection_manager" href="#qscope.gui.main_window.MainWindow.connection_manager">connection_manager</a></code></li>
+<li><code><a title="qscope.gui.main_window.MainWindow.get_notes" href="#qscope.gui.main_window.MainWindow.get_notes">get_notes</a></code></li>
+<li><code><a title="qscope.gui.main_window.MainWindow.get_project_name" href="#qscope.gui.main_window.MainWindow.get_project_name">get_project_name</a></code></li>
+<li><code><a title="qscope.gui.main_window.MainWindow.handle_new_notif" href="#qscope.gui.main_window.MainWindow.handle_new_notif">handle_new_notif</a></code></li>
+<li><code><a title="qscope.gui.main_window.MainWindow.handle_new_video_frame" href="#qscope.gui.main_window.MainWindow.handle_new_video_frame">handle_new_video_frame</a></code></li>
+<li><code><a title="qscope.gui.main_window.MainWindow.handle_save" href="#qscope.gui.main_window.MainWindow.handle_save">handle_save</a></code></li>
+<li><code><a title="qscope.gui.main_window.MainWindow.handle_save_as" href="#qscope.gui.main_window.MainWindow.handle_save_as">handle_save_as</a></code></li>
+<li><code><a title="qscope.gui.main_window.MainWindow.new_video_signal" href="#qscope.gui.main_window.MainWindow.new_video_signal">new_video_signal</a></code></li>
+<li><code><a title="qscope.gui.main_window.MainWindow.notif_signal" href="#qscope.gui.main_window.MainWindow.notif_signal">notif_signal</a></code></li>
+<li><code><a title="qscope.gui.main_window.MainWindow.notif_socket_thread" href="#qscope.gui.main_window.MainWindow.notif_socket_thread">notif_socket_thread</a></code></li>
+<li><code><a title="qscope.gui.main_window.MainWindow.rolling_meas_idxs" href="#qscope.gui.main_window.MainWindow.rolling_meas_idxs">rolling_meas_idxs</a></code></li>
+<li><code><a title="qscope.gui.main_window.MainWindow.rolling_meas_ref_array" href="#qscope.gui.main_window.MainWindow.rolling_meas_ref_array">rolling_meas_ref_array</a></code></li>
+<li><code><a title="qscope.gui.main_window.MainWindow.rolling_meas_sig_array" href="#qscope.gui.main_window.MainWindow.rolling_meas_sig_array">rolling_meas_sig_array</a></code></li>
+<li><code><a title="qscope.gui.main_window.MainWindow.rolling_meas_window" href="#qscope.gui.main_window.MainWindow.rolling_meas_window">rolling_meas_window</a></code></li>
+<li><code><a title="qscope.gui.main_window.MainWindow.show_status_msg" href="#qscope.gui.main_window.MainWindow.show_status_msg">show_status_msg</a></code></li>
+<li><code><a title="qscope.gui.main_window.MainWindow.start_notif_listener_thread" href="#qscope.gui.main_window.MainWindow.start_notif_listener_thread">start_notif_listener_thread</a></code></li>
+<li><code><a title="qscope.gui.main_window.MainWindow.start_video_listener_thread" href="#qscope.gui.main_window.MainWindow.start_video_listener_thread">start_video_listener_thread</a></code></li>
+<li><code><a title="qscope.gui.main_window.MainWindow.update_meas_state" href="#qscope.gui.main_window.MainWindow.update_meas_state">update_meas_state</a></code></li>
+<li><code><a title="qscope.gui.main_window.MainWindow.video_socket_thread" href="#qscope.gui.main_window.MainWindow.video_socket_thread">video_socket_thread</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
+</footer>
+</body>
+</html>

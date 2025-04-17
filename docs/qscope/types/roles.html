@@ -1,0 +1,862 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.6">
+<title>qscope.types.roles API documentation</title>
+<meta name="description" content="Device role definitions and base classes …">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}#lunr-search{width:100%;font-size:1em;padding:6px 9px 5px 9px;border:1px solid silver}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes: true } });</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML" integrity="sha256-kZafAc6mZvK3W3v1pHOcUix30OHQN6pU/NO2oFkqZVw=" crossorigin></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>qscope.types.roles</code></h1>
+</header>
+<section id="section-intro">
+<p>Device role definitions and base classes.</p>
+<p>This module defines the role system that connects devices to their interfaces and
+ensures they implement required protocols. The role system is the core of device
+abstraction in QScope.</p>
+<h2 id="the-role-system">The Role System</h2>
+<p>The role system consists of three parts:</p>
+<ol>
+<li>Protocols (protocols.py) - Define required methods for each role</li>
+<li>Interfaces (interfaces.py) - Provide type-safe access to role functionality</li>
+<li>Roles (this file) - Connect devices to interfaces and validate protocols</li>
+</ol>
+<h2 id="example-system-flow">Example System Flow</h2>
+<ol>
+<li>
+<p>Device implements protocol methods:
+<code>python
+class MyRFDevice(Device):
+def set_freq(self, freq: float) -&gt; None: ...
+def set_power(self, power: float) -&gt; None: ...</code></p>
+</li>
+<li>
+<p>Role specifies required protocol:
+<code>python
+class PrimaryRFSource(DeviceRole[RFSourceProtocol]):
+interface_class = RFSourceInterface</code></p>
+</li>
+<li>
+<p>System validates and provides interface:
+```python
+# Validates MyRFDevice implements RFSourceProtocol
+system.add_device_with_role(MyRFDevice(), PRIMARY_RF)</p>
+</li>
+</ol>
+<p># Returns RFSourceInterface wrapping MyRFDevice
+rf = system.get_device_by_role(PRIMARY_RF)
+```</p>
+<h2 id="benefits">Benefits</h2>
+<ul>
+<li>Type Safety: Mypy checks protocol implementation</li>
+<li>Runtime Validation: System verifies devices implement required methods</li>
+<li>Clean API: Interfaces provide clear access to role functionality</li>
+<li>Flexibility: Devices can implement multiple roles</li>
+<li>Testability: Mock devices can easily implement protocols</li>
+</ul>
+<h2 id="see-also">See Also</h2>
+<dl>
+<dt><code>protocols.py</code></dt>
+<dd>Protocol definitions</dd>
+<dt><code>interfaces.py</code></dt>
+<dd>Interface implementations</dd>
+</dl>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="qscope.types.roles.DeviceRole"><code class="flex name class">
+<span>class <span class="ident">DeviceRole</span></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class DeviceRole(Generic[D]):
+    &#34;&#34;&#34;Base class for device roles.
+    
+    A DeviceRole defines an abstract capability that a device can fulfill.
+    It connects concrete device implementations to abstract interfaces,
+    allowing the system to work with devices through a consistent API
+    regardless of the specific hardware.
+    
+    Each role:
+    1. Specifies a protocol that devices must implement
+    2. Provides an interface class for accessing device functionality
+    3. Validates that devices can fulfill the role requirements
+    
+    Type Parameters
+    --------------
+    D : Type[Device]
+        The device protocol type that can fulfill this role
+        
+    Examples
+    --------
+    Defining a new role:
+    
+    ```python
+    class TemperatureController(DeviceRole[TempControlProtocol]):
+        interface_class = TempControlInterface
+    ```
+    
+    Using a role in a system:
+    
+    ```python
+    # Add device with role
+    system.add_device_with_role(my_temp_controller, TEMP_CONTROL)
+    
+    # Get interface for role
+    temp = system.get_device_by_role(TEMP_CONTROL)
+    temp.set_temperature(25.0)  # Use interface methods
+    ```
+    &#34;&#34;&#34;
+    interface_class: Type[RoleInterface] = None
+
+    def __init__(self) -&gt; None:
+        # Get the type argument (will be a ForwardRef or actual type)
+        self.required_type = get_args(self.__class__.__orig_bases__[0])[0]
+
+    def get_interface(self, device: Device) -&gt; RoleInterface:
+        &#34;&#34;&#34;Get the interface implementation for this role.
+
+        Parameters
+        ----------
+        device : Device
+            Device to wrap with interface
+
+        Returns
+        -------
+        RoleInterface
+            Role-specific interface implementation
+
+        Raises
+        ------
+        NotImplementedError
+            If role doesn&#39;t define an interface class
+        &#34;&#34;&#34;
+        if not self.interface_class:
+            raise NotImplementedError(&#34;Role must define interface_class&#34;)
+        return self.interface_class(device)
+
+    def validate_device_type(self, device_class: type[&#34;Device&#34;]) -&gt; tuple[bool, str]:
+        &#34;&#34;&#34;Validate if a device class can fulfill this role.
+        
+        This method checks if a device class implements all the methods required by
+        the protocol associated with this role. It handles both runtime protocol
+        checking and forward references to protocol classes.
+
+        Parameters
+        ----------
+        device_class : type[Device]
+            The device class to validate
+
+        Returns
+        -------
+        tuple[bool, str]
+            A tuple containing:
+            - is_valid (bool): True if the device can fulfill this role
+            - error_message (str): Empty string if valid, otherwise an error message
+            
+        Notes
+        -----
+        Validation works in two ways:
+        1. For ForwardRef protocols: Checks if the protocol name appears in the device&#39;s class hierarchy
+        2. For runtime protocols: Checks if the device implements all required methods
+        &#34;&#34;&#34;
+        from typing import ForwardRef
+
+        from qscope.types.validation import _get_base_classes
+
+        # Handle ForwardRef
+        if isinstance(self.required_type, ForwardRef):
+            # Check if required type name appears in device&#39;s class hierarchy
+            base_classes = _get_base_classes(device_class)
+            if self.required_type.__forward_arg__ not in base_classes:
+                return False, (
+                    f&#34;Role {self} requires device type {self.required_type.__forward_arg__}, &#34;
+                    f&#34;got {device_class.__name__}&#34;
+                )
+        else:
+            # Check if device class implements required protocol methods
+            missing_methods = []
+            for method_name in self.required_type.__annotations__:
+                if not hasattr(device_class, method_name):
+                    missing_methods.append(method_name)
+        
+            if missing_methods:
+                return False, (
+                    f&#34;Role {self} requires device implementing {self.required_type.__name__}, &#34;
+                    f&#34;but {device_class.__name__} is missing methods: {&#39;, &#39;.join(missing_methods)}&#34;
+                )
+        return True, &#34;&#34;
+
+    def __str__(self) -&gt; str:
+        # Find the singleton instance name by looking through module globals
+        for name, value in globals().items():
+            if isinstance(value, DeviceRole) and value is self:
+                return name
+        # Fallback to class name if singleton not found
+        return f&#34;{self.__class__.__name__}&#34;
+
+    def __repr__(self) -&gt; str:
+        return f&#34;{self.__class__.__name__}()&#34;
+
+    def __eq__(self, other: object) -&gt; bool:
+        if not isinstance(other, DeviceRole):
+            return NotImplemented
+        return type(self) == type(other)
+
+    def __hash__(self) -&gt; int:
+        return hash(type(self))</code></pre>
+</details>
+<div class="desc"><p>Base class for device roles.</p>
+<p>A DeviceRole defines an abstract capability that a device can fulfill.
+It connects concrete device implementations to abstract interfaces,
+allowing the system to work with devices through a consistent API
+regardless of the specific hardware.</p>
+<p>Each role:
+1. Specifies a protocol that devices must implement
+2. Provides an interface class for accessing device functionality
+3. Validates that devices can fulfill the role requirements</p>
+<h2 id="type-parameters">Type Parameters</h2>
+<p>D : Type[Device]
+The device protocol type that can fulfill this role</p>
+<h2 id="examples">Examples</h2>
+<p>Defining a new role:</p>
+<pre><code class="language-python">class TemperatureController(DeviceRole[TempControlProtocol]):
+    interface_class = TempControlInterface
+</code></pre>
+<p>Using a role in a system:</p>
+<pre><code class="language-python"># Add device with role
+system.add_device_with_role(my_temp_controller, TEMP_CONTROL)
+
+# Get interface for role
+temp = system.get_device_by_role(TEMP_CONTROL)
+temp.set_temperature(25.0)  # Use interface methods
+</code></pre></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>typing.Generic</li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="qscope.types.roles.MainCamera" href="#qscope.types.roles.MainCamera">MainCamera</a></li>
+<li><a title="qscope.types.roles.MainDigitizer" href="#qscope.types.roles.MainDigitizer">MainDigitizer</a></li>
+<li><a title="qscope.types.roles.PrimaryRFSource" href="#qscope.types.roles.PrimaryRFSource">PrimaryRFSource</a></li>
+<li><a title="qscope.types.roles.SecondaryCamera" href="#qscope.types.roles.SecondaryCamera">SecondaryCamera</a></li>
+<li><a title="qscope.types.roles.SecondaryRFSource" href="#qscope.types.roles.SecondaryRFSource">SecondaryRFSource</a></li>
+<li><a title="qscope.types.roles.SequenceGenerator" href="#qscope.types.roles.SequenceGenerator">SequenceGenerator</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="qscope.types.roles.DeviceRole.interface_class"><code class="name">var <span class="ident">interface_class</span> : Type[<a title="qscope.types.interfaces.RoleInterface" href="interfaces.html#qscope.types.interfaces.RoleInterface">RoleInterface</a>]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.types.roles.DeviceRole.get_interface"><code class="name flex">
+<span>def <span class="ident">get_interface</span></span>(<span>self, device: Device) ‑> RoleInterface</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_interface(self, device: Device) -&gt; RoleInterface:
+    &#34;&#34;&#34;Get the interface implementation for this role.
+
+    Parameters
+    ----------
+    device : Device
+        Device to wrap with interface
+
+    Returns
+    -------
+    RoleInterface
+        Role-specific interface implementation
+
+    Raises
+    ------
+    NotImplementedError
+        If role doesn&#39;t define an interface class
+    &#34;&#34;&#34;
+    if not self.interface_class:
+        raise NotImplementedError(&#34;Role must define interface_class&#34;)
+    return self.interface_class(device)</code></pre>
+</details>
+<div class="desc"><p>Get the interface implementation for this role.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>device</code></strong> :&ensp;<code>Device</code></dt>
+<dd>Device to wrap with interface</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>RoleInterface</code></dt>
+<dd>Role-specific interface implementation</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>NotImplementedError</code></dt>
+<dd>If role doesn't define an interface class</dd>
+</dl></div>
+</dd>
+<dt id="qscope.types.roles.DeviceRole.validate_device_type"><code class="name flex">
+<span>def <span class="ident">validate_device_type</span></span>(<span>self, device_class: "type['Device']") ‑> tuple[bool, str]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def validate_device_type(self, device_class: type[&#34;Device&#34;]) -&gt; tuple[bool, str]:
+    &#34;&#34;&#34;Validate if a device class can fulfill this role.
+    
+    This method checks if a device class implements all the methods required by
+    the protocol associated with this role. It handles both runtime protocol
+    checking and forward references to protocol classes.
+
+    Parameters
+    ----------
+    device_class : type[Device]
+        The device class to validate
+
+    Returns
+    -------
+    tuple[bool, str]
+        A tuple containing:
+        - is_valid (bool): True if the device can fulfill this role
+        - error_message (str): Empty string if valid, otherwise an error message
+        
+    Notes
+    -----
+    Validation works in two ways:
+    1. For ForwardRef protocols: Checks if the protocol name appears in the device&#39;s class hierarchy
+    2. For runtime protocols: Checks if the device implements all required methods
+    &#34;&#34;&#34;
+    from typing import ForwardRef
+
+    from qscope.types.validation import _get_base_classes
+
+    # Handle ForwardRef
+    if isinstance(self.required_type, ForwardRef):
+        # Check if required type name appears in device&#39;s class hierarchy
+        base_classes = _get_base_classes(device_class)
+        if self.required_type.__forward_arg__ not in base_classes:
+            return False, (
+                f&#34;Role {self} requires device type {self.required_type.__forward_arg__}, &#34;
+                f&#34;got {device_class.__name__}&#34;
+            )
+    else:
+        # Check if device class implements required protocol methods
+        missing_methods = []
+        for method_name in self.required_type.__annotations__:
+            if not hasattr(device_class, method_name):
+                missing_methods.append(method_name)
+    
+        if missing_methods:
+            return False, (
+                f&#34;Role {self} requires device implementing {self.required_type.__name__}, &#34;
+                f&#34;but {device_class.__name__} is missing methods: {&#39;, &#39;.join(missing_methods)}&#34;
+            )
+    return True, &#34;&#34;</code></pre>
+</details>
+<div class="desc"><p>Validate if a device class can fulfill this role.</p>
+<p>This method checks if a device class implements all the methods required by
+the protocol associated with this role. It handles both runtime protocol
+checking and forward references to protocol classes.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>device_class</code></strong> :&ensp;<code>type[Device]</code></dt>
+<dd>The device class to validate</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>tuple[bool, str]</code></dt>
+<dd>A tuple containing:
+- is_valid (bool): True if the device can fulfill this role
+- error_message (str): Empty string if valid, otherwise an error message</dd>
+</dl>
+<h2 id="notes">Notes</h2>
+<p>Validation works in two ways:
+1. For ForwardRef protocols: Checks if the protocol name appears in the device's class hierarchy
+2. For runtime protocols: Checks if the device implements all required methods</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.types.roles.MainCamera"><code class="flex name class">
+<span>class <span class="ident">MainCamera</span></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class MainCamera(DeviceRole[CameraProtocol]):
+    &#34;&#34;&#34;Primary camera role for main imaging and measurements.&#34;&#34;&#34;
+    interface_class = CameraInterface</code></pre>
+</details>
+<div class="desc"><p>Primary camera role for main imaging and measurements.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.roles.DeviceRole" href="#qscope.types.roles.DeviceRole">DeviceRole</a></li>
+<li>typing.Generic</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="qscope.types.roles.MainCamera.interface_class"><code class="name">var <span class="ident">interface_class</span> : Type[<a title="qscope.types.interfaces.RoleInterface" href="interfaces.html#qscope.types.interfaces.RoleInterface">RoleInterface</a>]</code></dt>
+<dd>
+<div class="desc"><p>Interface for camera functionality.</p>
+<p>This interface provides methods for controlling scientific cameras
+and retrieving image data. It wraps a device implementing CameraProtocol
+and provides a clean, type-safe API for camera operations.</p>
+<p>Typical usage:</p>
+<pre><code class="language-python"># Get camera interface from system
+camera = system.get_device_by_role(MAIN_CAMERA)
+
+# Configure camera
+camera.set_exposure_time(0.1)  # 100ms exposure
+camera.set_hardware_binning((2, 2))  # 2x2 binning
+
+# Take an image
+image = camera.take_snapshot()
+
+# Get image dimensions
+width, height = camera.get_frame_shape()
+</code></pre></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="qscope.types.roles.DeviceRole" href="#qscope.types.roles.DeviceRole">DeviceRole</a></b></code>:
+<ul class="hlist">
+<li><code><a title="qscope.types.roles.DeviceRole.get_interface" href="#qscope.types.roles.DeviceRole.get_interface">get_interface</a></code></li>
+<li><code><a title="qscope.types.roles.DeviceRole.validate_device_type" href="#qscope.types.roles.DeviceRole.validate_device_type">validate_device_type</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="qscope.types.roles.MainDigitizer"><code class="flex name class">
+<span>class <span class="ident">MainDigitizer</span></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class MainDigitizer(DeviceRole[DigitizerProtocol]):
+    &#34;&#34;&#34;Digitizer role for data acquisition.&#34;&#34;&#34;
+    interface_class = DigitizerInterface</code></pre>
+</details>
+<div class="desc"><p>Digitizer role for data acquisition.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.roles.DeviceRole" href="#qscope.types.roles.DeviceRole">DeviceRole</a></li>
+<li>typing.Generic</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="qscope.types.roles.MainDigitizer.interface_class"><code class="name">var <span class="ident">interface_class</span> : Type[<a title="qscope.types.interfaces.RoleInterface" href="interfaces.html#qscope.types.interfaces.RoleInterface">RoleInterface</a>]</code></dt>
+<dd>
+<div class="desc"><p>Interface for digitizer functionality.</p>
+<p>This interface provides methods for configuring and controlling data
+acquisition devices. It wraps a device implementing DigitizerProtocol
+and provides a clean, type-safe API for digitizer operations.</p>
+<p>Typical usage:</p>
+<pre><code class="language-python"># Get digitizer interface from system
+digitizer = system.get_device_by_role(MAIN_DIGITIZER)
+
+# Configure channels
+digitizer.configure_channels([0, 1], [5.0, 2.0], [&quot;DC&quot;, &quot;AC&quot;])
+
+# Start streaming acquisition
+digitizer.start_streaming(1e-6, 1000)
+
+# Get acquired data
+times, (ch0_data, ch1_data) = digitizer.get_data()
+
+# Stop acquisition
+digitizer.stop_streaming()
+</code></pre></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="qscope.types.roles.DeviceRole" href="#qscope.types.roles.DeviceRole">DeviceRole</a></b></code>:
+<ul class="hlist">
+<li><code><a title="qscope.types.roles.DeviceRole.get_interface" href="#qscope.types.roles.DeviceRole.get_interface">get_interface</a></code></li>
+<li><code><a title="qscope.types.roles.DeviceRole.validate_device_type" href="#qscope.types.roles.DeviceRole.validate_device_type">validate_device_type</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="qscope.types.roles.PrimaryRFSource"><code class="flex name class">
+<span>class <span class="ident">PrimaryRFSource</span></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class PrimaryRFSource(DeviceRole[RFSourceProtocol]):
+    &#34;&#34;&#34;Primary RF source role for main RF control.&#34;&#34;&#34;
+    interface_class = RFSourceInterface</code></pre>
+</details>
+<div class="desc"><p>Primary RF source role for main RF control.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.roles.DeviceRole" href="#qscope.types.roles.DeviceRole">DeviceRole</a></li>
+<li>typing.Generic</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="qscope.types.roles.PrimaryRFSource.interface_class"><code class="name">var <span class="ident">interface_class</span> : Type[<a title="qscope.types.interfaces.RoleInterface" href="interfaces.html#qscope.types.interfaces.RoleInterface">RoleInterface</a>]</code></dt>
+<dd>
+<div class="desc"><p>Interface for RF source functionality.</p>
+<p>This interface provides methods for controlling RF signal generators
+used in spectroscopy and control applications. It wraps a device
+implementing RFSourceProtocol and provides a clean, type-safe API
+for RF source operations.</p>
+<p>Typical usage:</p>
+<pre><code class="language-python"># Get RF source interface from system
+rf = system.get_device_by_role(PRIMARY_RF)
+
+# Configure RF output
+rf.set_freq(2870.0)  # 2.87 GHz
+rf.set_power(-10.0)  # -10 dBm
+rf.set_state(True)   # Turn on output
+
+# Configure a frequency sweep
+freqs = np.linspace(2800, 2900, 101)  # MHz
+rf.set_freq_list(freqs, step_time=0.05)  # 50ms per point
+</code></pre></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="qscope.types.roles.DeviceRole" href="#qscope.types.roles.DeviceRole">DeviceRole</a></b></code>:
+<ul class="hlist">
+<li><code><a title="qscope.types.roles.DeviceRole.get_interface" href="#qscope.types.roles.DeviceRole.get_interface">get_interface</a></code></li>
+<li><code><a title="qscope.types.roles.DeviceRole.validate_device_type" href="#qscope.types.roles.DeviceRole.validate_device_type">validate_device_type</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="qscope.types.roles.SecondaryCamera"><code class="flex name class">
+<span>class <span class="ident">SecondaryCamera</span></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class SecondaryCamera(DeviceRole[CameraProtocol]):
+    &#34;&#34;&#34;Secondary/auxiliary camera role for additional imaging tasks.&#34;&#34;&#34;
+    interface_class = CameraInterface</code></pre>
+</details>
+<div class="desc"><p>Secondary/auxiliary camera role for additional imaging tasks.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.roles.DeviceRole" href="#qscope.types.roles.DeviceRole">DeviceRole</a></li>
+<li>typing.Generic</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="qscope.types.roles.SecondaryCamera.interface_class"><code class="name">var <span class="ident">interface_class</span> : Type[<a title="qscope.types.interfaces.RoleInterface" href="interfaces.html#qscope.types.interfaces.RoleInterface">RoleInterface</a>]</code></dt>
+<dd>
+<div class="desc"><p>Interface for camera functionality.</p>
+<p>This interface provides methods for controlling scientific cameras
+and retrieving image data. It wraps a device implementing CameraProtocol
+and provides a clean, type-safe API for camera operations.</p>
+<p>Typical usage:</p>
+<pre><code class="language-python"># Get camera interface from system
+camera = system.get_device_by_role(MAIN_CAMERA)
+
+# Configure camera
+camera.set_exposure_time(0.1)  # 100ms exposure
+camera.set_hardware_binning((2, 2))  # 2x2 binning
+
+# Take an image
+image = camera.take_snapshot()
+
+# Get image dimensions
+width, height = camera.get_frame_shape()
+</code></pre></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="qscope.types.roles.DeviceRole" href="#qscope.types.roles.DeviceRole">DeviceRole</a></b></code>:
+<ul class="hlist">
+<li><code><a title="qscope.types.roles.DeviceRole.get_interface" href="#qscope.types.roles.DeviceRole.get_interface">get_interface</a></code></li>
+<li><code><a title="qscope.types.roles.DeviceRole.validate_device_type" href="#qscope.types.roles.DeviceRole.validate_device_type">validate_device_type</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="qscope.types.roles.SecondaryRFSource"><code class="flex name class">
+<span>class <span class="ident">SecondaryRFSource</span></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class SecondaryRFSource(DeviceRole[RFSourceProtocol]):
+    &#34;&#34;&#34;Secondary RF source role for additional RF tasks.&#34;&#34;&#34;
+    interface_class = RFSourceInterface</code></pre>
+</details>
+<div class="desc"><p>Secondary RF source role for additional RF tasks.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.roles.DeviceRole" href="#qscope.types.roles.DeviceRole">DeviceRole</a></li>
+<li>typing.Generic</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="qscope.types.roles.SecondaryRFSource.interface_class"><code class="name">var <span class="ident">interface_class</span> : Type[<a title="qscope.types.interfaces.RoleInterface" href="interfaces.html#qscope.types.interfaces.RoleInterface">RoleInterface</a>]</code></dt>
+<dd>
+<div class="desc"><p>Interface for RF source functionality.</p>
+<p>This interface provides methods for controlling RF signal generators
+used in spectroscopy and control applications. It wraps a device
+implementing RFSourceProtocol and provides a clean, type-safe API
+for RF source operations.</p>
+<p>Typical usage:</p>
+<pre><code class="language-python"># Get RF source interface from system
+rf = system.get_device_by_role(PRIMARY_RF)
+
+# Configure RF output
+rf.set_freq(2870.0)  # 2.87 GHz
+rf.set_power(-10.0)  # -10 dBm
+rf.set_state(True)   # Turn on output
+
+# Configure a frequency sweep
+freqs = np.linspace(2800, 2900, 101)  # MHz
+rf.set_freq_list(freqs, step_time=0.05)  # 50ms per point
+</code></pre></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="qscope.types.roles.DeviceRole" href="#qscope.types.roles.DeviceRole">DeviceRole</a></b></code>:
+<ul class="hlist">
+<li><code><a title="qscope.types.roles.DeviceRole.get_interface" href="#qscope.types.roles.DeviceRole.get_interface">get_interface</a></code></li>
+<li><code><a title="qscope.types.roles.DeviceRole.validate_device_type" href="#qscope.types.roles.DeviceRole.validate_device_type">validate_device_type</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="qscope.types.roles.SequenceGenerator"><code class="flex name class">
+<span>class <span class="ident">SequenceGenerator</span></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class SequenceGenerator(DeviceRole[SeqGenProtocol]):
+    &#34;&#34;&#34;Sequence generator role for timing and pulse control.&#34;&#34;&#34;
+    interface_class = SeqGenInterface</code></pre>
+</details>
+<div class="desc"><p>Sequence generator role for timing and pulse control.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.roles.DeviceRole" href="#qscope.types.roles.DeviceRole">DeviceRole</a></li>
+<li>typing.Generic</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="qscope.types.roles.SequenceGenerator.interface_class"><code class="name">var <span class="ident">interface_class</span> : Type[<a title="qscope.types.interfaces.RoleInterface" href="interfaces.html#qscope.types.interfaces.RoleInterface">RoleInterface</a>]</code></dt>
+<dd>
+<div class="desc"><p>Interface for sequence generator functionality.</p>
+<p>This interface provides methods for controlling sequence generators
+used for timing and pulse control in quantum experiments. It wraps
+a device implementing SeqGenProtocol and provides a clean, type-safe
+API for sequence generator operations.</p>
+<p>Sequence generators typically control:
+- Precise timing of experimental events
+- Digital output patterns
+- Trigger signals for other instruments
+- Synchronization of multiple devices</p>
+<p>Typical usage:</p>
+<pre><code class="language-python"># Get sequence generator interface from system
+seq_gen = system.get_device_by_role(SEQUENCE_GEN)
+
+# Load a sequence with parameters
+seq_gen.load_seq(&quot;rabi&quot;, pulse_length=100e-9, wait_time=5e-6)
+
+# Start the sequence
+seq_gen.start()
+
+# Later, stop the sequence
+seq_gen.stop()
+</code></pre></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="qscope.types.roles.DeviceRole" href="#qscope.types.roles.DeviceRole">DeviceRole</a></b></code>:
+<ul class="hlist">
+<li><code><a title="qscope.types.roles.DeviceRole.get_interface" href="#qscope.types.roles.DeviceRole.get_interface">get_interface</a></code></li>
+<li><code><a title="qscope.types.roles.DeviceRole.validate_device_type" href="#qscope.types.roles.DeviceRole.validate_device_type">validate_device_type</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<form>
+<input id="lunr-search" name="q" placeholder="🔎 Search ..." aria-label="Search"
+disabled minlength="2">
+</form>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.css" integrity="sha512-b+T2i3P45i1LZM7I00Ci5QquB9szqaxu+uuk5TUSGjZQ4w4n+qujQiIuvTv2BxE7WCGQCifNMksyKILDiHzsOg==" crossorigin>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.js" integrity="sha512-2B9/byNV1KKRm5nQ2RLViPFD6U4dUjDGwuW1GU+ImJh8YinPU9Zlq1GzdTMO+G2ROrB5o1qasJBy1ttYz0wCug==" crossorigin></script>
+<style>
+.modal-dialog iframe {
+width: 100vw;
+height: calc(100vh - 80px);
+}
+@media screen and (min-width: 700px) {
+.modal-dialog iframe {
+width: 70vw;
+height: 80vh;
+}
+}
+.modal-dialog .tingle-modal-box {width: auto;}
+.modal-dialog .tingle-modal-box__content {padding: 0;}
+</style>
+<script>
+const input = document.getElementById('lunr-search');
+input.disabled = false;
+input.form.addEventListener('submit', (ev) => {
+ev.preventDefault();
+const url = new URL(window.location);
+url.searchParams.set('q', input.value);
+history.replaceState({}, null, url.toString());
+search(input.value);
+});
+const query = new URL(window.location).searchParams.get('q');
+if (query)
+search(query);
+function search(query) {
+const url = '../../doc-search.html#' + encodeURIComponent(query);
+new tingle.modal({
+cssClass: ['modal-dialog'],
+onClose: () => {
+const url = new URL(window.location);
+url.searchParams.delete('q');
+history.replaceState({}, null, url.toString());
+setTimeout(() => input.focus(), 100);
+}
+}).setContent('<iframe src="' + url + '"></iframe>').open();
+}
+</script>
+<div class="toc">
+<ul>
+<li><a href="#the-role-system">The Role System</a></li>
+<li><a href="#example-system-flow">Example System Flow</a></li>
+<li><a href="#benefits">Benefits</a></li>
+<li><a href="#see-also">See Also</a></li>
+</ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="qscope.types" href="index.html">qscope.types</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="qscope.types.roles.DeviceRole" href="#qscope.types.roles.DeviceRole">DeviceRole</a></code></h4>
+<ul class="">
+<li><code><a title="qscope.types.roles.DeviceRole.get_interface" href="#qscope.types.roles.DeviceRole.get_interface">get_interface</a></code></li>
+<li><code><a title="qscope.types.roles.DeviceRole.interface_class" href="#qscope.types.roles.DeviceRole.interface_class">interface_class</a></code></li>
+<li><code><a title="qscope.types.roles.DeviceRole.validate_device_type" href="#qscope.types.roles.DeviceRole.validate_device_type">validate_device_type</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.roles.MainCamera" href="#qscope.types.roles.MainCamera">MainCamera</a></code></h4>
+<ul class="">
+<li><code><a title="qscope.types.roles.MainCamera.interface_class" href="#qscope.types.roles.MainCamera.interface_class">interface_class</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.roles.MainDigitizer" href="#qscope.types.roles.MainDigitizer">MainDigitizer</a></code></h4>
+<ul class="">
+<li><code><a title="qscope.types.roles.MainDigitizer.interface_class" href="#qscope.types.roles.MainDigitizer.interface_class">interface_class</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.roles.PrimaryRFSource" href="#qscope.types.roles.PrimaryRFSource">PrimaryRFSource</a></code></h4>
+<ul class="">
+<li><code><a title="qscope.types.roles.PrimaryRFSource.interface_class" href="#qscope.types.roles.PrimaryRFSource.interface_class">interface_class</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.roles.SecondaryCamera" href="#qscope.types.roles.SecondaryCamera">SecondaryCamera</a></code></h4>
+<ul class="">
+<li><code><a title="qscope.types.roles.SecondaryCamera.interface_class" href="#qscope.types.roles.SecondaryCamera.interface_class">interface_class</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.roles.SecondaryRFSource" href="#qscope.types.roles.SecondaryRFSource">SecondaryRFSource</a></code></h4>
+<ul class="">
+<li><code><a title="qscope.types.roles.SecondaryRFSource.interface_class" href="#qscope.types.roles.SecondaryRFSource.interface_class">interface_class</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.roles.SequenceGenerator" href="#qscope.types.roles.SequenceGenerator">SequenceGenerator</a></code></h4>
+<ul class="">
+<li><code><a title="qscope.types.roles.SequenceGenerator.interface_class" href="#qscope.types.roles.SequenceGenerator.interface_class">interface_class</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
+</footer>
+</body>
+</html>

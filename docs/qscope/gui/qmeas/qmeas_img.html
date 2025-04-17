@@ -1,0 +1,1660 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.6">
+<title>qscope.gui.qmeas.qmeas_img API documentation</title>
+<meta name="description" content="">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}#lunr-search{width:100%;font-size:1em;padding:6px 9px 5px 9px;border:1px solid silver}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes: true } });</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML" integrity="sha256-kZafAc6mZvK3W3v1pHOcUix30OHQN6pU/NO2oFkqZVw=" crossorigin></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>qscope.gui.qmeas.qmeas_img</code></h1>
+</header>
+<section id="section-intro">
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="qscope.gui.qmeas.qmeas_img.QImageAOIOpts"><code class="flex name class">
+<span>class <span class="ident">QImageAOIOpts</span></span>
+<span>(</span><span>parent, target_figure, aoi_zoom_figure, title='Image AOI options')</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class QImageAOIOpts(QGroupBox):
+    &#34;&#34;&#34;
+    Class to hold the options for
+    selecting an area of interest on a figure,
+    plotting the rectangle for this region,
+    and selected the zoomed in image.
+    &#34;&#34;&#34;
+
+    def __init__(
+        self, parent, target_figure, aoi_zoom_figure, title=&#34;Image AOI options&#34;
+    ):
+        super().__init__(title)
+        self.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.setStyleSheet(&#34;QGroupBox { font-weight: bold; }&#34;)
+
+        self.parent = parent
+        self.target_figure = target_figure
+        self.canvas = target_figure.canvas
+        self.fig = target_figure.fig
+        self.ax = self.fig.axes[0]
+        self.aoi_zoom_fig = aoi_zoom_figure
+        self.rect = None
+
+        # add the gui elements
+        # self.img_aoi_label = QLabel(&#34;Image AOI options&#34;)
+        # self.img_aoi_label.setStyleSheet(&#34;font-size: 14px; font-weight: bold;&#34;)
+        # self.img_aoi_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
+        # Create a horizontal layout for the buttons
+        self.button_row = QHBoxLayout()
+
+        self.use_aoi_button = QPushButton(&#34;Use AOI&#34;)
+        self.use_aoi_button.setCheckable(True)
+
+        self.square_aoi_button = QPushButton(&#34;Square AOI&#34;)
+        self.square_aoi_button.setCheckable(True)
+        self.square_aoi_button.setToolTip(&#34;Force AOI selection to be square&#34;)
+        self.square_aoi_button.clicked.connect(self.on_square_button_clicked)
+
+        self.button_row.addWidget(self.use_aoi_button)
+        self.button_row.addWidget(self.square_aoi_button)
+
+        # Current pixel
+        self.aoi_pt_label = QLabel(&#34;Selected pixel x,y:&#34;)
+        self.aoi_x_pt_input = QDoubleSpinBox()
+        self.aoi_x_pt_input.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.aoi_x_pt_input.setRange(1, 10000)
+        self.aoi_x_pt_input.setValue(25)
+        self.aoi_x_pt_input.setSingleStep(1)
+        self.aoi_x_pt_input.setDecimals(0)
+        self.aoi_x_pt = 25
+
+        self.aoi_y_pt_input = QDoubleSpinBox()
+        self.aoi_y_pt_input.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.aoi_y_pt_input.setRange(1, 10000)
+        self.aoi_y_pt_input.setValue(25)
+        self.aoi_y_pt_input.setSingleStep(1)
+        self.aoi_y_pt_input.setDecimals(0)
+        self.aoi_y_pt = 25
+
+        # Make a row that contains the x and y pts
+        self.aoi_pt_row = QHBoxLayout()
+        self.aoi_pt_row.addWidget(self.aoi_pt_label)
+        self.aoi_pt_row.addWidget(self.aoi_x_pt_input)
+        self.aoi_pt_row.addWidget(self.aoi_y_pt_input)
+
+        # Pixel range
+        self.aoi_range_label = QLabel(&#34;AOI range x,y:&#34;)
+        self.aoi_x_range_input = QDoubleSpinBox()
+        self.aoi_x_range_input.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.aoi_x_range_input.setRange(1, 10000)
+        self.aoi_x_range_input.setValue(20)
+        self.aoi_x_range_input.setSingleStep(1)
+        self.aoi_x_range_input.setDecimals(0)
+        self.aoi_x_range = 20
+
+        self.aoi_y_range_input = QDoubleSpinBox()
+        self.aoi_y_range_input.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.aoi_y_range_input.setRange(1, 10000)
+        self.aoi_y_range_input.setValue(20)
+        self.aoi_y_range_input.setSingleStep(1)
+        self.aoi_y_range_input.setDecimals(0)
+        self.aoi_y_range = 20
+
+        # Make a row that contains the x and y range inputs
+        self.aoi_range_row = QHBoxLayout()
+        self.aoi_range_row.addWidget(self.aoi_range_label)
+        self.aoi_range_row.addWidget(self.aoi_x_range_input)
+        self.aoi_range_row.addWidget(self.aoi_y_range_input)
+
+        # Add drag operation variables
+        self.dragging = False
+        self.start_point = None
+        self.current_point = None
+        self.temp_rect = None
+
+        # Add debounce timer for drawing
+        self.draw_timer = QTimer()
+        self.draw_timer.setSingleShot(True)
+        self.draw_timer.setInterval(50)  # 50ms debounce
+        self.draw_timer.timeout.connect(self.update_temp_rectangle)
+
+        # Connect the buttons to the callback functions
+        self.use_aoi_button.clicked.connect(self.use_aoi_click)
+        self.aoi_x_range_input.textChanged.connect(self.aoi_range_changed)
+        self.aoi_y_range_input.textChanged.connect(self.aoi_range_changed)
+        self.aoi_x_pt_input.textChanged.connect(self.aoi_pt_changed)
+        self.aoi_y_pt_input.textChanged.connect(self.aoi_pt_changed)
+
+        # Connect mouse events for drag selection
+        self.canvas.mpl_connect(&#34;button_press_event&#34;, self.on_mouse_press)
+        self.canvas.mpl_connect(&#34;motion_notify_event&#34;, self.on_mouse_move)
+        self.canvas.mpl_connect(&#34;button_release_event&#34;, self.on_mouse_release)
+
+        # Add the widgets to the layout and add a boarder to the widget
+        self.layout = QVBoxLayout()
+        # self.layout.addWidget(self.img_aoi_label)
+        self.layout.addLayout(self.button_row)
+        self.layout.addLayout(self.aoi_pt_row)
+        self.layout.addLayout(self.aoi_range_row)
+        self.layout.addStretch()
+
+        self.setLayout(self.layout)
+
+    def use_aoi_click(self):
+        &#34;&#34;&#34;Callback for the use_roi_button click event&#34;&#34;&#34;
+        if hasattr(self.parent, &#34;meas_id&#34;):
+            if self.use_aoi_button.isChecked():
+                # change the background color of the button to blue
+                self.use_aoi_button.setStyleSheet(&#34;background-color: blue&#34;)
+                # send the current aoi to the server
+                aoi_tuple = (
+                    self.aoi_y_pt - self.aoi_y_range // 2,
+                    self.aoi_x_pt - self.aoi_x_range // 2,
+                    self.aoi_y_pt + self.aoi_y_range // 2,
+                    self.aoi_x_pt + self.aoi_x_range // 2,
+                )
+                self.parent.connection_manager.measurement_set_aoi(
+                    self.parent.meas_id, aoi_tuple
+                )
+            else:
+                self.use_aoi_button.setStyleSheet(&#34;background-color: None&#34;)
+                # if self.rect is not None:
+                #     self.rect.remove()
+                #     self.rect = None
+                #     self.canvas.draw()
+
+                # set the AOI to be the full image
+                camera_shape = self.target_figure.sig_frame.shape
+                # Define the AOI as the full image with the centre pixel
+                aoi_tuple = (0, 0, camera_shape[1], camera_shape[0])
+                # aoi_tuple = None
+                self.parent.connection_manager.measurement_set_aoi(
+                    self.parent.meas_id, aoi_tuple
+                )
+
+    def aoi_range_changed(self):
+        logger.critical(&#34;HERE&#34;)
+        try:
+            self.aoi_x_range = int(self.aoi_x_range_input.text())
+            self.aoi_y_range = int(self.aoi_y_range_input.text())
+
+            # Only enforce square if values are different
+            if (
+                self.square_aoi_button.isChecked()
+                and self.aoi_x_range != self.aoi_y_range
+            ):
+                size = max(self.aoi_x_range, self.aoi_y_range)
+                self.aoi_x_range = size
+                self.aoi_y_range = size
+                self.aoi_x_range_input.setValue(size)
+                self.aoi_y_range_input.setValue(size)
+
+        except ValueError:
+            self.aoi_x_range = 10
+            self.aoi_y_range = 10
+
+        if self.aoi_x_pt is not None and self.aoi_y_pt is not None:
+            self.on_aoi_click(event=None)
+
+    def aoi_pt_changed(self):
+        try:
+            self.aoi_x_pt = int(self.aoi_x_pt_input.text())
+            self.aoi_y_pt = int(self.aoi_y_pt_input.text())
+        except ValueError:
+            self.aoi_x_pt = 25
+            self.aoi_y_pt = 25
+
+        if self.aoi_x_pt is not None and self.aoi_y_pt is not None:
+            self.on_aoi_click(event=None)
+
+    def on_aoi_click(self, event):
+        &#34;&#34;&#34;Handle AOI selection via click or after drag completion.&#34;&#34;&#34;
+        if event is None:
+            x, y = self.aoi_x_pt, self.aoi_y_pt
+            width = self.aoi_x_range
+            height = self.aoi_y_range
+        elif event.inaxes:
+            x = int(event.xdata)
+            y = int(event.ydata)
+            self.x_pixel = x
+            self.y_pixel = y
+            width = self.aoi_x_range
+            height = self.aoi_y_range
+
+            self.aoi_x_pt_input.setValue(x)
+            self.aoi_y_pt_input.setValue(y)
+
+        # Remove existing rectangle if present
+        if self.rect is not None:
+            try:
+                self.rect.remove()
+            except ValueError:
+                show_warning(self, &#34;Rectangle already removed&#34;)
+
+        # Create new rectangle centered on selection point
+        self.rect = plt.Rectangle(
+            (x - width // 2, y - height // 2),
+            width,
+            height,
+            edgecolor=&#34;red&#34;,
+            facecolor=&#34;none&#34;,
+        )
+        self.canvas.axes.add_patch(self.rect)
+        self.canvas.draw()
+
+        # update the roi image
+        aoi_image = self.target_figure.img[
+            y - self.aoi_y_range // 2 : y + self.aoi_y_range // 2,
+            x - self.aoi_x_range // 2 : x + self.aoi_x_range // 2,
+        ]
+
+        # update the figure extent
+        x_min = x - self.aoi_x_range // 2
+        x_max = x + self.aoi_x_range // 2
+        y_min = y - self.aoi_y_range // 2
+        y_max = y + self.aoi_y_range // 2
+
+        # Ensure minimum size difference to avoid singular transformation
+        if x_min == x_max:
+            x_max += 1
+        if y_min == y_max:
+            y_max += 1
+
+        self.aoi_zoom_fig.plot.set_extent([x_min, x_max, y_max, y_min])
+
+        # Update the region canvas
+        self.aoi_zoom_fig.update_plot(img=aoi_image)
+
+        # auto-use aoi
+        if not self.use_aoi_button.isChecked():
+            self.use_aoi_button.click()
+
+    def on_mouse_press(self, event):
+        &#34;&#34;&#34;Handle mouse press event to start AOI selection.&#34;&#34;&#34;
+        if not event.inaxes:
+            return
+
+        if event.button == 1:  # Left click
+            self.start_point = (int(event.xdata), int(event.ydata))
+            self.dragging = False  # Don&#39;t start dragging immediately
+        elif event.button == 3:  # Right click
+            # Remove AOI rectangle if it exists
+            if self.rect is not None:
+                self.rect.remove()
+                self.rect = None
+                self.canvas.draw()
+
+            # Uncheck and trigger the use_aoi_button
+            if self.use_aoi_button.isChecked():
+                self.use_aoi_button.clicked.emit()
+                self.use_aoi_button.setChecked(False)
+
+    def update_temp_rectangle(self):
+        &#34;&#34;&#34;Update the temporary rectangle with debounced drawing.&#34;&#34;&#34;
+        if self.temp_rect is not None and self.current_point is not None:
+            w = abs(self.current_point[0] - self.start_point[0])
+            h = abs(self.current_point[1] - self.start_point[1])
+
+            # Make square if square AOI button is checked
+            if self.square_aoi_button.isChecked():
+                size = max(w, h)
+                w = h = size
+
+            # Calculate position based on drag direction
+            if self.current_point[0] &lt; self.start_point[0]:
+                x = self.start_point[0] - w
+            else:
+                x = self.start_point[0]
+
+            if self.current_point[1] &lt; self.start_point[1]:
+                y = self.start_point[1] - h
+            else:
+                y = self.start_point[1]
+
+            self.temp_rect.set_bounds(x, y, w, h)
+            self.canvas.draw()
+
+    def on_mouse_move(self, event):
+        &#34;&#34;&#34;Update rectangle while dragging with debounced drawing.&#34;&#34;&#34;
+        if event.button == 1 and self.start_point:
+            # Start dragging if mouse moves while button is held
+            if not self.dragging:
+                self.dragging = True
+                # Initialize temporary rectangle
+                if self.rect is not None:
+                    self.rect.remove()
+                    self.rect = None
+                self.temp_rect = plt.Rectangle(
+                    self.start_point,
+                    0,
+                    0,
+                    edgecolor=&#34;red&#34;,
+                    facecolor=&#34;none&#34;,
+                    linestyle=&#34;--&#34;,
+                )
+                self.ax.add_patch(self.temp_rect)
+
+            # Only update current_point if mouse is inside axes
+            if event.inaxes:
+                self.current_point = (int(event.xdata), int(event.ydata))
+                # Restart the debounce timer
+                self.draw_timer.start()
+
+    def on_mouse_release(self, event):
+        &#34;&#34;&#34;Finalize AOI selection on mouse release.&#34;&#34;&#34;
+        if event.button == 3:  # Right click
+            return  # Already handled in on_mouse_press
+
+        if self.dragging:
+            # Handle drag operation completion
+            self.dragging = False
+
+            # Clean up temporary rectangle regardless of where release happened
+            if self.temp_rect is not None:
+                self.temp_rect.remove()
+                self.temp_rect = None
+                self.canvas.draw()
+
+            # Only process the selection if release happened inside axes
+            if not event.inaxes:
+                # Restore previous AOI by triggering redraw
+                self.on_aoi_click(None)
+                return
+
+            end_point = (int(event.xdata), int(event.ydata))
+
+            # Calculate AOI parameters from drag
+            x1, y1 = self.start_point
+            x2, y2 = end_point
+
+            center_x = round((x1 + x2) / 2)  # Regular division with rounding
+            center_y = round((y1 + y2) / 2)  # Regular division with rounding
+            width = max(abs(x2 - x1), 1)  # Ensure minimum width of 1
+            height = max(abs(y2 - y1), 1)  # Ensure minimum height of 1
+
+            if self.square_aoi_button.isChecked():
+                size = max(width, height)
+                width = height = size
+
+            # Block signals to prevent interference from aoi_range_changed
+            self.aoi_x_range_input.blockSignals(True)
+            self.aoi_y_range_input.blockSignals(True)
+            self.aoi_x_pt_input.blockSignals(True)
+            self.aoi_y_pt_input.blockSignals(True)
+
+            # Update spinboxes with the actual drawn dimensions
+            self.aoi_x_pt_input.setValue(center_x)
+            self.aoi_y_pt_input.setValue(center_y)
+            self.aoi_x_range_input.setValue(width)
+            self.aoi_y_range_input.setValue(height)
+
+            # Update stored values directly
+            self.aoi_x_pt = center_x
+            self.aoi_y_pt = center_y
+            self.aoi_x_range = width
+            self.aoi_y_range = height
+
+            self.aoi_x_range_input.blockSignals(False)
+            self.aoi_y_range_input.blockSignals(False)
+            self.aoi_x_pt_input.blockSignals(False)
+            self.aoi_y_pt_input.blockSignals(False)
+
+        else:
+            # Handle single click - use current AOI size centered on click point
+            self.aoi_x_pt_input.setValue(int(event.xdata))
+            self.aoi_y_pt_input.setValue(int(event.ydata))
+
+        # Draw final rectangle and update AOI
+        self.on_aoi_click(None)
+        self.canvas.draw()
+
+        # Reset state
+        self.start_point = None
+        self.current_point = None
+
+    def on_square_button_clicked(self):
+        &#34;&#34;&#34;Handle square AOI button click by making current AOI square.&#34;&#34;&#34;
+        if self.square_aoi_button.isChecked():
+            # Get current dimensions
+            width = self.aoi_x_range
+            height = self.aoi_y_range
+
+            # Make square using larger dimension
+            size = max(width, height)
+
+            # Update the spinboxes which will trigger redraw
+            self.aoi_x_range_input.setValue(size)
+            self.aoi_y_range_input.setValue(size)</code></pre>
+</details>
+<div class="desc"><p>Class to hold the options for
+selecting an area of interest on a figure,
+plotting the rectangle for this region,
+and selected the zoomed in image.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>PyQt6.QtWidgets.QGroupBox</li>
+<li>PyQt6.QtWidgets.QWidget</li>
+<li>PyQt6.QtCore.QObject</li>
+<li>PyQt6.sip.wrapper</li>
+<li>PyQt6.QtGui.QPaintDevice</li>
+<li>PyQt6.sip.simplewrapper</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.gui.qmeas.qmeas_img.QImageAOIOpts.aoi_pt_changed"><code class="name flex">
+<span>def <span class="ident">aoi_pt_changed</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def aoi_pt_changed(self):
+    try:
+        self.aoi_x_pt = int(self.aoi_x_pt_input.text())
+        self.aoi_y_pt = int(self.aoi_y_pt_input.text())
+    except ValueError:
+        self.aoi_x_pt = 25
+        self.aoi_y_pt = 25
+
+    if self.aoi_x_pt is not None and self.aoi_y_pt is not None:
+        self.on_aoi_click(event=None)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.qmeas_img.QImageAOIOpts.aoi_range_changed"><code class="name flex">
+<span>def <span class="ident">aoi_range_changed</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def aoi_range_changed(self):
+    logger.critical(&#34;HERE&#34;)
+    try:
+        self.aoi_x_range = int(self.aoi_x_range_input.text())
+        self.aoi_y_range = int(self.aoi_y_range_input.text())
+
+        # Only enforce square if values are different
+        if (
+            self.square_aoi_button.isChecked()
+            and self.aoi_x_range != self.aoi_y_range
+        ):
+            size = max(self.aoi_x_range, self.aoi_y_range)
+            self.aoi_x_range = size
+            self.aoi_y_range = size
+            self.aoi_x_range_input.setValue(size)
+            self.aoi_y_range_input.setValue(size)
+
+    except ValueError:
+        self.aoi_x_range = 10
+        self.aoi_y_range = 10
+
+    if self.aoi_x_pt is not None and self.aoi_y_pt is not None:
+        self.on_aoi_click(event=None)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.qmeas_img.QImageAOIOpts.on_aoi_click"><code class="name flex">
+<span>def <span class="ident">on_aoi_click</span></span>(<span>self, event)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def on_aoi_click(self, event):
+    &#34;&#34;&#34;Handle AOI selection via click or after drag completion.&#34;&#34;&#34;
+    if event is None:
+        x, y = self.aoi_x_pt, self.aoi_y_pt
+        width = self.aoi_x_range
+        height = self.aoi_y_range
+    elif event.inaxes:
+        x = int(event.xdata)
+        y = int(event.ydata)
+        self.x_pixel = x
+        self.y_pixel = y
+        width = self.aoi_x_range
+        height = self.aoi_y_range
+
+        self.aoi_x_pt_input.setValue(x)
+        self.aoi_y_pt_input.setValue(y)
+
+    # Remove existing rectangle if present
+    if self.rect is not None:
+        try:
+            self.rect.remove()
+        except ValueError:
+            show_warning(self, &#34;Rectangle already removed&#34;)
+
+    # Create new rectangle centered on selection point
+    self.rect = plt.Rectangle(
+        (x - width // 2, y - height // 2),
+        width,
+        height,
+        edgecolor=&#34;red&#34;,
+        facecolor=&#34;none&#34;,
+    )
+    self.canvas.axes.add_patch(self.rect)
+    self.canvas.draw()
+
+    # update the roi image
+    aoi_image = self.target_figure.img[
+        y - self.aoi_y_range // 2 : y + self.aoi_y_range // 2,
+        x - self.aoi_x_range // 2 : x + self.aoi_x_range // 2,
+    ]
+
+    # update the figure extent
+    x_min = x - self.aoi_x_range // 2
+    x_max = x + self.aoi_x_range // 2
+    y_min = y - self.aoi_y_range // 2
+    y_max = y + self.aoi_y_range // 2
+
+    # Ensure minimum size difference to avoid singular transformation
+    if x_min == x_max:
+        x_max += 1
+    if y_min == y_max:
+        y_max += 1
+
+    self.aoi_zoom_fig.plot.set_extent([x_min, x_max, y_max, y_min])
+
+    # Update the region canvas
+    self.aoi_zoom_fig.update_plot(img=aoi_image)
+
+    # auto-use aoi
+    if not self.use_aoi_button.isChecked():
+        self.use_aoi_button.click()</code></pre>
+</details>
+<div class="desc"><p>Handle AOI selection via click or after drag completion.</p></div>
+</dd>
+<dt id="qscope.gui.qmeas.qmeas_img.QImageAOIOpts.on_mouse_move"><code class="name flex">
+<span>def <span class="ident">on_mouse_move</span></span>(<span>self, event)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def on_mouse_move(self, event):
+    &#34;&#34;&#34;Update rectangle while dragging with debounced drawing.&#34;&#34;&#34;
+    if event.button == 1 and self.start_point:
+        # Start dragging if mouse moves while button is held
+        if not self.dragging:
+            self.dragging = True
+            # Initialize temporary rectangle
+            if self.rect is not None:
+                self.rect.remove()
+                self.rect = None
+            self.temp_rect = plt.Rectangle(
+                self.start_point,
+                0,
+                0,
+                edgecolor=&#34;red&#34;,
+                facecolor=&#34;none&#34;,
+                linestyle=&#34;--&#34;,
+            )
+            self.ax.add_patch(self.temp_rect)
+
+        # Only update current_point if mouse is inside axes
+        if event.inaxes:
+            self.current_point = (int(event.xdata), int(event.ydata))
+            # Restart the debounce timer
+            self.draw_timer.start()</code></pre>
+</details>
+<div class="desc"><p>Update rectangle while dragging with debounced drawing.</p></div>
+</dd>
+<dt id="qscope.gui.qmeas.qmeas_img.QImageAOIOpts.on_mouse_press"><code class="name flex">
+<span>def <span class="ident">on_mouse_press</span></span>(<span>self, event)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def on_mouse_press(self, event):
+    &#34;&#34;&#34;Handle mouse press event to start AOI selection.&#34;&#34;&#34;
+    if not event.inaxes:
+        return
+
+    if event.button == 1:  # Left click
+        self.start_point = (int(event.xdata), int(event.ydata))
+        self.dragging = False  # Don&#39;t start dragging immediately
+    elif event.button == 3:  # Right click
+        # Remove AOI rectangle if it exists
+        if self.rect is not None:
+            self.rect.remove()
+            self.rect = None
+            self.canvas.draw()
+
+        # Uncheck and trigger the use_aoi_button
+        if self.use_aoi_button.isChecked():
+            self.use_aoi_button.clicked.emit()
+            self.use_aoi_button.setChecked(False)</code></pre>
+</details>
+<div class="desc"><p>Handle mouse press event to start AOI selection.</p></div>
+</dd>
+<dt id="qscope.gui.qmeas.qmeas_img.QImageAOIOpts.on_mouse_release"><code class="name flex">
+<span>def <span class="ident">on_mouse_release</span></span>(<span>self, event)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def on_mouse_release(self, event):
+    &#34;&#34;&#34;Finalize AOI selection on mouse release.&#34;&#34;&#34;
+    if event.button == 3:  # Right click
+        return  # Already handled in on_mouse_press
+
+    if self.dragging:
+        # Handle drag operation completion
+        self.dragging = False
+
+        # Clean up temporary rectangle regardless of where release happened
+        if self.temp_rect is not None:
+            self.temp_rect.remove()
+            self.temp_rect = None
+            self.canvas.draw()
+
+        # Only process the selection if release happened inside axes
+        if not event.inaxes:
+            # Restore previous AOI by triggering redraw
+            self.on_aoi_click(None)
+            return
+
+        end_point = (int(event.xdata), int(event.ydata))
+
+        # Calculate AOI parameters from drag
+        x1, y1 = self.start_point
+        x2, y2 = end_point
+
+        center_x = round((x1 + x2) / 2)  # Regular division with rounding
+        center_y = round((y1 + y2) / 2)  # Regular division with rounding
+        width = max(abs(x2 - x1), 1)  # Ensure minimum width of 1
+        height = max(abs(y2 - y1), 1)  # Ensure minimum height of 1
+
+        if self.square_aoi_button.isChecked():
+            size = max(width, height)
+            width = height = size
+
+        # Block signals to prevent interference from aoi_range_changed
+        self.aoi_x_range_input.blockSignals(True)
+        self.aoi_y_range_input.blockSignals(True)
+        self.aoi_x_pt_input.blockSignals(True)
+        self.aoi_y_pt_input.blockSignals(True)
+
+        # Update spinboxes with the actual drawn dimensions
+        self.aoi_x_pt_input.setValue(center_x)
+        self.aoi_y_pt_input.setValue(center_y)
+        self.aoi_x_range_input.setValue(width)
+        self.aoi_y_range_input.setValue(height)
+
+        # Update stored values directly
+        self.aoi_x_pt = center_x
+        self.aoi_y_pt = center_y
+        self.aoi_x_range = width
+        self.aoi_y_range = height
+
+        self.aoi_x_range_input.blockSignals(False)
+        self.aoi_y_range_input.blockSignals(False)
+        self.aoi_x_pt_input.blockSignals(False)
+        self.aoi_y_pt_input.blockSignals(False)
+
+    else:
+        # Handle single click - use current AOI size centered on click point
+        self.aoi_x_pt_input.setValue(int(event.xdata))
+        self.aoi_y_pt_input.setValue(int(event.ydata))
+
+    # Draw final rectangle and update AOI
+    self.on_aoi_click(None)
+    self.canvas.draw()
+
+    # Reset state
+    self.start_point = None
+    self.current_point = None</code></pre>
+</details>
+<div class="desc"><p>Finalize AOI selection on mouse release.</p></div>
+</dd>
+<dt id="qscope.gui.qmeas.qmeas_img.QImageAOIOpts.on_square_button_clicked"><code class="name flex">
+<span>def <span class="ident">on_square_button_clicked</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def on_square_button_clicked(self):
+    &#34;&#34;&#34;Handle square AOI button click by making current AOI square.&#34;&#34;&#34;
+    if self.square_aoi_button.isChecked():
+        # Get current dimensions
+        width = self.aoi_x_range
+        height = self.aoi_y_range
+
+        # Make square using larger dimension
+        size = max(width, height)
+
+        # Update the spinboxes which will trigger redraw
+        self.aoi_x_range_input.setValue(size)
+        self.aoi_y_range_input.setValue(size)</code></pre>
+</details>
+<div class="desc"><p>Handle square AOI button click by making current AOI square.</p></div>
+</dd>
+<dt id="qscope.gui.qmeas.qmeas_img.QImageAOIOpts.update_temp_rectangle"><code class="name flex">
+<span>def <span class="ident">update_temp_rectangle</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update_temp_rectangle(self):
+    &#34;&#34;&#34;Update the temporary rectangle with debounced drawing.&#34;&#34;&#34;
+    if self.temp_rect is not None and self.current_point is not None:
+        w = abs(self.current_point[0] - self.start_point[0])
+        h = abs(self.current_point[1] - self.start_point[1])
+
+        # Make square if square AOI button is checked
+        if self.square_aoi_button.isChecked():
+            size = max(w, h)
+            w = h = size
+
+        # Calculate position based on drag direction
+        if self.current_point[0] &lt; self.start_point[0]:
+            x = self.start_point[0] - w
+        else:
+            x = self.start_point[0]
+
+        if self.current_point[1] &lt; self.start_point[1]:
+            y = self.start_point[1] - h
+        else:
+            y = self.start_point[1]
+
+        self.temp_rect.set_bounds(x, y, w, h)
+        self.canvas.draw()</code></pre>
+</details>
+<div class="desc"><p>Update the temporary rectangle with debounced drawing.</p></div>
+</dd>
+<dt id="qscope.gui.qmeas.qmeas_img.QImageAOIOpts.use_aoi_click"><code class="name flex">
+<span>def <span class="ident">use_aoi_click</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def use_aoi_click(self):
+    &#34;&#34;&#34;Callback for the use_roi_button click event&#34;&#34;&#34;
+    if hasattr(self.parent, &#34;meas_id&#34;):
+        if self.use_aoi_button.isChecked():
+            # change the background color of the button to blue
+            self.use_aoi_button.setStyleSheet(&#34;background-color: blue&#34;)
+            # send the current aoi to the server
+            aoi_tuple = (
+                self.aoi_y_pt - self.aoi_y_range // 2,
+                self.aoi_x_pt - self.aoi_x_range // 2,
+                self.aoi_y_pt + self.aoi_y_range // 2,
+                self.aoi_x_pt + self.aoi_x_range // 2,
+            )
+            self.parent.connection_manager.measurement_set_aoi(
+                self.parent.meas_id, aoi_tuple
+            )
+        else:
+            self.use_aoi_button.setStyleSheet(&#34;background-color: None&#34;)
+            # if self.rect is not None:
+            #     self.rect.remove()
+            #     self.rect = None
+            #     self.canvas.draw()
+
+            # set the AOI to be the full image
+            camera_shape = self.target_figure.sig_frame.shape
+            # Define the AOI as the full image with the centre pixel
+            aoi_tuple = (0, 0, camera_shape[1], camera_shape[0])
+            # aoi_tuple = None
+            self.parent.connection_manager.measurement_set_aoi(
+                self.parent.meas_id, aoi_tuple
+            )</code></pre>
+</details>
+<div class="desc"><p>Callback for the use_roi_button click event</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.gui.qmeas.qmeas_img.QImageFigure"><code class="flex name class">
+<span>class <span class="ident">QImageFigure</span></span>
+<span>(</span><span>parent, cbar_type='horizontal')</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class QImageFigure(QWidget):
+    def __init__(self, parent, cbar_type=&#34;horizontal&#34;):
+        super().__init__()
+
+        self.parent = parent
+        self.cbar_type = cbar_type
+        self.cbar = None
+
+        self.canvas = MplCanvas(self, width=3, height=4, dpi=100)
+        self.canvas.setStatusTip(
+            &#34;Left click/drag to select AOI, right click to remove.&#34;
+        )
+
+        self.ax = self.canvas.axes
+        self.fig = self.canvas.figure
+
+        self.sig_frame = np.random.rand(512, 512) + 1
+        self.sig_frame_to_plt = self.sig_frame.copy()
+        self.ref_frame = np.random.rand(512, 512) + 0.8
+        self.ref_frame_to_plt = self.ref_frame.copy()
+        self.img = np.random.rand(512, 512)
+
+        self.norm_type = &#34;signal&#34;
+
+        self.bin_x = 1
+        self.bin_y = 1
+
+        self.init_plot(self.img)
+
+        self.rect = None
+
+    def init_plot(self, img=None):
+        if img is not None:
+            self.img = img
+
+        # clear the figure
+        self.ax.clear()
+        if self.cbar is not None:
+            try:
+                self.cbar.remove()
+                del self.cbar
+                self.cbar = None
+            except:
+                pass
+
+        # make the plot
+        self.plot = self.ax.imshow(
+            self.img,
+            # cmap=&#34;viridis&#34;,
+            cmap=Colormap(&#34;seaborn:mako&#34;).to_mpl(),
+            origin=&#34;upper&#34;,
+            extent=[0, self.img.shape[1], self.img.shape[0], 0],
+        )
+
+        self.ax.set_xlabel(&#34;X (pixels)&#34;, fontsize=9)
+        self.ax.set_ylabel(&#34;Y (pixels)&#34;, fontsize=9)
+        # set the ticks size
+        self.ax.tick_params(axis=&#34;x&#34;, labelsize=8, direction=&#34;in&#34;)
+        self.ax.tick_params(axis=&#34;y&#34;, labelsize=8, direction=&#34;in&#34;)
+
+        # make the figure have a tight layout
+        # self.fig.tight_layout()
+        self.fig.get_layout_engine().set(w_pad=0, h_pad=0.2)
+
+        # # set the axis color
+        if self.cbar is None:
+            if self.cbar_type == &#34;horizontal&#34;:
+                # self.cbar = self.fig.colorbar(
+                #     mappable=self.plot,
+                #     orientation=&#34;horizontal&#34;,
+                #     location=&#34;top&#34;,
+                #     aspect=25,
+                # )
+                self.cbar = add_colorbar(
+                    self.plot,
+                    self.fig,
+                    self.ax,
+                    aspect=25,
+                    orientation=&#34;horizontal&#34;,
+                    location=&#34;top&#34;,
+                    labelpad=5,
+                )
+                self.cbar.ax.tick_params(axis=&#34;x&#34;, labelsize=8, direction=&#34;in&#34;)
+                # self.cbar.set_label(&#34;Intensity (cps)&#34;, fontsize=9)
+            else:
+                # self.cbar = self.fig.colorbar(
+                #     mappable=self.plot,
+                #     orientation=&#34;vertical&#34;,
+                #     location=&#34;right&#34;,
+                #     aspect=25,
+                # )
+                # self.cbar.ax.tick_params(axis=&#34;y&#34;)
+                self.cbar = add_colorbar(
+                    self.plot,
+                    self.fig,
+                    self.ax,
+                    aspect=25,
+                    orientation=&#34;vertical&#34;,
+                    labelpad=5,
+                )
+                # self.cbar.set_label(&#34;Intensity (cps)&#34;, rotation=270, fontsize=9)
+                self.cbar.ax.tick_params(axis=&#34;y&#34;, labelsize=8, direction=&#34;in&#34;)
+
+    def set_normalisation(self, norm_type):
+        self.norm_type = norm_type.lower()
+        if self.norm_type == &#34;signal&#34;:
+            self.img = self.sig_frame_to_plt
+        elif self.norm_type == &#34;reference&#34;:
+            self.img = self.ref_frame_to_plt
+        elif self.norm_type == &#34;subtract&#34;:
+            self.img = self.sig_frame_to_plt - self.ref_frame_to_plt
+        elif self.norm_type == &#34;divide&#34;:
+            self.img = self.sig_frame_to_plt / self.ref_frame_to_plt
+        elif self.norm_type == &#34;normalise (%)&#34;:
+            self.img = 100 * self.sig_frame_to_plt / self.ref_frame_to_plt
+        else:
+            self.img = self.sig_frame_to_plt
+
+        self.update_plot()
+
+    def update_data(self, sig_frame, ref_frame):
+        # apply the requested binning
+        # if self.bin_x &gt; 1 or self.bin_y &gt; 1:
+        sig_frame_to_plt = (
+            sig_frame.reshape(
+                sig_frame.shape[0] // self.bin_y,
+                self.bin_y,
+                sig_frame.shape[1] // self.bin_x,
+                self.bin_x,
+            )
+            .mean(3)
+            .mean(1)
+        )
+        ref_frame_to_plt = (
+            ref_frame.reshape(
+                ref_frame.shape[0] // self.bin_y,
+                self.bin_y,
+                ref_frame.shape[1] // self.bin_x,
+                self.bin_x,
+            )
+            .mean(3)
+            .mean(1)
+        )
+        # update the plot extent
+        self.plot.set_extent(
+            [0, sig_frame_to_plt.shape[1], sig_frame_to_plt.shape[0], 0]
+        )
+        self.sig_frame_to_plt = sig_frame_to_plt
+        self.ref_frame_to_plt = ref_frame_to_plt
+        self.set_normalisation(self.norm_type)
+        self.update_plot()
+
+    def update_plot(self, img=None, *args, **kwargs):
+        if img is None:
+            img = self.img
+        else:
+            self.img = img
+        self.plot.set_data(img)
+        self.plot.autoscale()
+        self.canvas.draw()
+
+    def set_binning(self, bin_x, bin_y):
+        self.bin_x = bin_x
+        self.bin_y = bin_y
+        # update the plots tick labels
+        self.update_data(self.sig_frame, self.ref_frame)
+
+    def set_cmap(self, cmap):
+        self.plot.set_cmap(cmap)
+        self.update_plot()</code></pre>
+</details>
+<div class="desc"><p>QWidget(parent: Optional[QWidget] = None, flags: Qt.WindowType = Qt.WindowFlags())</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>PyQt6.QtWidgets.QWidget</li>
+<li>PyQt6.QtCore.QObject</li>
+<li>PyQt6.sip.wrapper</li>
+<li>PyQt6.QtGui.QPaintDevice</li>
+<li>PyQt6.sip.simplewrapper</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.gui.qmeas.qmeas_img.QImageFigure.init_plot"><code class="name flex">
+<span>def <span class="ident">init_plot</span></span>(<span>self, img=None)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def init_plot(self, img=None):
+    if img is not None:
+        self.img = img
+
+    # clear the figure
+    self.ax.clear()
+    if self.cbar is not None:
+        try:
+            self.cbar.remove()
+            del self.cbar
+            self.cbar = None
+        except:
+            pass
+
+    # make the plot
+    self.plot = self.ax.imshow(
+        self.img,
+        # cmap=&#34;viridis&#34;,
+        cmap=Colormap(&#34;seaborn:mako&#34;).to_mpl(),
+        origin=&#34;upper&#34;,
+        extent=[0, self.img.shape[1], self.img.shape[0], 0],
+    )
+
+    self.ax.set_xlabel(&#34;X (pixels)&#34;, fontsize=9)
+    self.ax.set_ylabel(&#34;Y (pixels)&#34;, fontsize=9)
+    # set the ticks size
+    self.ax.tick_params(axis=&#34;x&#34;, labelsize=8, direction=&#34;in&#34;)
+    self.ax.tick_params(axis=&#34;y&#34;, labelsize=8, direction=&#34;in&#34;)
+
+    # make the figure have a tight layout
+    # self.fig.tight_layout()
+    self.fig.get_layout_engine().set(w_pad=0, h_pad=0.2)
+
+    # # set the axis color
+    if self.cbar is None:
+        if self.cbar_type == &#34;horizontal&#34;:
+            # self.cbar = self.fig.colorbar(
+            #     mappable=self.plot,
+            #     orientation=&#34;horizontal&#34;,
+            #     location=&#34;top&#34;,
+            #     aspect=25,
+            # )
+            self.cbar = add_colorbar(
+                self.plot,
+                self.fig,
+                self.ax,
+                aspect=25,
+                orientation=&#34;horizontal&#34;,
+                location=&#34;top&#34;,
+                labelpad=5,
+            )
+            self.cbar.ax.tick_params(axis=&#34;x&#34;, labelsize=8, direction=&#34;in&#34;)
+            # self.cbar.set_label(&#34;Intensity (cps)&#34;, fontsize=9)
+        else:
+            # self.cbar = self.fig.colorbar(
+            #     mappable=self.plot,
+            #     orientation=&#34;vertical&#34;,
+            #     location=&#34;right&#34;,
+            #     aspect=25,
+            # )
+            # self.cbar.ax.tick_params(axis=&#34;y&#34;)
+            self.cbar = add_colorbar(
+                self.plot,
+                self.fig,
+                self.ax,
+                aspect=25,
+                orientation=&#34;vertical&#34;,
+                labelpad=5,
+            )
+            # self.cbar.set_label(&#34;Intensity (cps)&#34;, rotation=270, fontsize=9)
+            self.cbar.ax.tick_params(axis=&#34;y&#34;, labelsize=8, direction=&#34;in&#34;)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.qmeas_img.QImageFigure.set_binning"><code class="name flex">
+<span>def <span class="ident">set_binning</span></span>(<span>self, bin_x, bin_y)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_binning(self, bin_x, bin_y):
+    self.bin_x = bin_x
+    self.bin_y = bin_y
+    # update the plots tick labels
+    self.update_data(self.sig_frame, self.ref_frame)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.qmeas_img.QImageFigure.set_cmap"><code class="name flex">
+<span>def <span class="ident">set_cmap</span></span>(<span>self, cmap)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_cmap(self, cmap):
+    self.plot.set_cmap(cmap)
+    self.update_plot()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.qmeas_img.QImageFigure.set_normalisation"><code class="name flex">
+<span>def <span class="ident">set_normalisation</span></span>(<span>self, norm_type)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_normalisation(self, norm_type):
+    self.norm_type = norm_type.lower()
+    if self.norm_type == &#34;signal&#34;:
+        self.img = self.sig_frame_to_plt
+    elif self.norm_type == &#34;reference&#34;:
+        self.img = self.ref_frame_to_plt
+    elif self.norm_type == &#34;subtract&#34;:
+        self.img = self.sig_frame_to_plt - self.ref_frame_to_plt
+    elif self.norm_type == &#34;divide&#34;:
+        self.img = self.sig_frame_to_plt / self.ref_frame_to_plt
+    elif self.norm_type == &#34;normalise (%)&#34;:
+        self.img = 100 * self.sig_frame_to_plt / self.ref_frame_to_plt
+    else:
+        self.img = self.sig_frame_to_plt
+
+    self.update_plot()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.qmeas_img.QImageFigure.update_data"><code class="name flex">
+<span>def <span class="ident">update_data</span></span>(<span>self, sig_frame, ref_frame)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update_data(self, sig_frame, ref_frame):
+    # apply the requested binning
+    # if self.bin_x &gt; 1 or self.bin_y &gt; 1:
+    sig_frame_to_plt = (
+        sig_frame.reshape(
+            sig_frame.shape[0] // self.bin_y,
+            self.bin_y,
+            sig_frame.shape[1] // self.bin_x,
+            self.bin_x,
+        )
+        .mean(3)
+        .mean(1)
+    )
+    ref_frame_to_plt = (
+        ref_frame.reshape(
+            ref_frame.shape[0] // self.bin_y,
+            self.bin_y,
+            ref_frame.shape[1] // self.bin_x,
+            self.bin_x,
+        )
+        .mean(3)
+        .mean(1)
+    )
+    # update the plot extent
+    self.plot.set_extent(
+        [0, sig_frame_to_plt.shape[1], sig_frame_to_plt.shape[0], 0]
+    )
+    self.sig_frame_to_plt = sig_frame_to_plt
+    self.ref_frame_to_plt = ref_frame_to_plt
+    self.set_normalisation(self.norm_type)
+    self.update_plot()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.qmeas_img.QImageFigure.update_plot"><code class="name flex">
+<span>def <span class="ident">update_plot</span></span>(<span>self, img=None, *args, **kwargs)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update_plot(self, img=None, *args, **kwargs):
+    if img is None:
+        img = self.img
+    else:
+        self.img = img
+    self.plot.set_data(img)
+    self.plot.autoscale()
+    self.canvas.draw()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.gui.qmeas.qmeas_img.QImageFigureOpts"><code class="flex name class">
+<span>class <span class="ident">QImageFigureOpts</span></span>
+<span>(</span><span>parent, target_figure, aoi_zoom_figure=None, title='Image plot options')</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class QImageFigureOpts(QGroupBox):
+    def __init__(
+        self, parent, target_figure, aoi_zoom_figure=None, title=&#34;Image plot options&#34;
+    ):
+        super().__init__(title, parent)
+        self.parent = parent
+        self.figure = target_figure
+        self.aoi_zoom_figure = aoi_zoom_figure
+        self.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.setStyleSheet(&#34;QGroupBox { font-weight: bold; }&#34;)
+
+        # self.img_plot_label = QLabel(&#34;Image Plot options&#34;)
+        # self.img_plot_label.setStyleSheet(&#34;font-size: 14px; font-weight: bold;&#34;)
+        # self.img_plot_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
+        # add a dropdown menu for the frame normalisation options
+        self.frame_norm_label = QLabel(&#34;Normalisation&#34;)
+        self.frame_norm_dropdown = QuComboBox()
+        # self.frame_norm_dropdown.setEditable(True)
+        # self.frame_norm_dropdown.lineEdit().setReadOnly(True)
+        # self.frame_norm_dropdown.lineEdit().setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.frame_norm_dropdown.addItem(&#34;Signal&#34;)
+        self.frame_norm_dropdown.addItem(&#34;Reference&#34;)
+        self.frame_norm_dropdown.addItem(&#34;Subtract&#34;)
+        self.frame_norm_dropdown.addItem(&#34;Divide&#34;)
+
+        # add a row for the frame normalisation options
+        self.norm_row = QHBoxLayout()
+        self.norm_row.addWidget(self.frame_norm_label)
+        self.norm_row.addWidget(self.frame_norm_dropdown)
+
+        # add a dropdown menu for the colourmap that change it&#39;s items based on the cmap style
+        self.cmap_label = QLabel(&#34;colour map&#34;)
+        self.cmap_dropdown = QuComboBox()
+        # self.cmap_dropdown.setEditable(True)
+        # self.cmap_dropdown.lineEdit().setReadOnly(True)
+        # self.cmap_dropdown.lineEdit().setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.cmap_dropdown.addItem(&#34;seaborn:mako&#34;)
+        self.cmap_dropdown.addItem(&#34;viridis&#34;)
+        self.cmap_dropdown.addItem(&#34;plasma&#34;)
+        self.cmap_dropdown.addItem(&#34;inferno&#34;)
+        self.cmap_dropdown.addItem(&#34;magma&#34;)
+        self.cmap_dropdown.addItem(&#34;cividis&#34;)
+        self.cmap_dropdown.insertSeparator(6)
+        self.cmap_dropdown.addItems(
+            [&#34;Greys_r&#34;, &#34;Bone&#34;, &#34;Blues&#34;, &#34;Greens&#34;, &#34;Oranges&#34;, &#34;Reds&#34;]
+        )
+        self.cmap_dropdown.insertSeparator(13)
+        self.cmap_dropdown.addItems(
+            [
+                &#34;PuOr&#34;,
+                &#34;RdGy&#34;,
+                &#34;RdBu&#34;,
+                &#34;Spectral&#34;,
+                &#34;coolwarm&#34;,
+                &#34;bwr&#34;,
+                &#34;seismic&#34;,
+            ]
+        )
+
+        # Make the widget element
+        self.cmap_row = QHBoxLayout()
+        self.cmap_row.addWidget(self.cmap_label)
+        self.cmap_row.addWidget(self.cmap_dropdown)
+
+        # add a edit box for the frame number
+        self.frame_idx_label = QLabel(&#34;Frame to plot:&#34;)
+        self.frame_idx_input = QDoubleSpinBox()
+        self.frame_idx_input.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.frame_idx_input.setRange(0, 10000)
+        self.frame_idx_input.setValue(0)
+        self.frame_idx_input.setSingleStep(1)
+        self.frame_idx_input.setDecimals(0)
+
+        self.frame_idx_row = QHBoxLayout()
+        self.frame_idx_row.addWidget(self.frame_idx_label)
+        self.frame_idx_row.addWidget(self.frame_idx_input)
+
+        # add input boxes for binning in x and y
+        self.binning_x_label = QLabel(&#34;Binning x, y:&#34;)
+        self.binning_x_input = QDoubleSpinBox()
+        self.binning_x_input.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.binning_x_input.setRange(1, 8)
+        self.binning_x_input.setValue(1)
+        self.binning_x_input.setSingleStep(1)
+        self.binning_x_input.setDecimals(0)
+
+        self.binning_y_input = QDoubleSpinBox()
+        self.binning_y_input.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.binning_y_input.setRange(1, 8)
+        self.binning_y_input.setValue(1)
+        self.binning_y_input.setSingleStep(1)
+        self.binning_y_input.setDecimals(0)
+
+        self.binning_row = QHBoxLayout()
+        self.binning_row.addWidget(self.binning_x_label)
+        self.binning_row.addWidget(self.binning_x_input)
+        self.binning_row.addWidget(self.binning_y_input)
+
+        # add the frame plot options to the frame plot layout
+        self.layout = QVBoxLayout()
+        # self.layout.addWidget(self.img_plot_label)
+        self.layout.addLayout(self.norm_row)
+        self.layout.addLayout(self.cmap_row)
+        self.layout.addLayout(self.frame_idx_row)
+        self.layout.addLayout(self.binning_row)
+        self.layout.addStretch()
+
+        self.setLayout(self.layout)
+
+        # connect the dropdowns to the callback functions
+        self.frame_norm_dropdown.currentIndexChanged.connect(self.set_normalisation)
+
+        self.cmap_dropdown.currentIndexChanged.connect(self.select_cmap_type)
+
+        self.frame_idx_input.valueChanged.connect(self.frame_idx_changed)
+
+        self.binning_x_input.valueChanged.connect(self.binning_changed)
+        self.binning_y_input.valueChanged.connect(self.binning_changed)
+
+    def binning_changed(self):
+        bin_x = int(self.binning_x_input.text())
+        bin_y = int(self.binning_y_input.text())
+        # check that the binning is valid
+        if bin_x &lt; 1 or bin_y &lt; 1:
+            show_warning(self, &#34;Binning must be greater than 0&#34;)
+            return
+
+        # check that if data can be binned by the requested amount,
+        # i.e. the data shape is divisible by the binning
+        if (
+            self.figure.sig_frame.shape[0] % bin_y != 0
+            or self.figure.sig_frame.shape[1] % bin_x != 0
+        ):
+            show_warning(self, &#34;Data shape not divisible by binning&#34;)
+            return
+
+        # update the plots binning
+        self.figure.set_binning(bin_x, bin_y)
+        self.aoi_zoom_figure.update_data(
+            self.figure.sig_frame_to_plt, self.figure.ref_frame_to_plt
+        )
+        # self.img_aoi_opts.on_aoi_click(event=None)
+
+    def frame_idx_changed(self):
+        # check that the frame index is valid
+        if self.frame_idx_input.value() &lt; 0:
+            return
+        try:
+            self.parent.connection_manager.measurement_set_frame_num(
+                self.parent.meas_id, int(self.frame_idx_input.value())
+            )
+        except:
+            logger.warning(&#34;Frame idx change invalid, resetting to zero&#34;)
+            self.parent.connection_manager.measurement_set_frame_num(
+                self.parent.meas_id, int(0)
+            )
+            self.frame_idx_input.setValue(0)
+
+    def select_cmap_type(self):
+        &#34;&#34;&#34;Callback for the cmap_dropdown currentIndexChanged event&#34;&#34;&#34;
+
+        # update the plots
+        if self.cmap_dropdown.currentText() != &#34;&#34; or None:
+            # if hasattr(self, &#39;figure&#39;):
+            # self.figure.set_cmap(self.cmap_dropdown.currentText())
+            # if hasattr(self, &#39;aoi_zoom_figure&#39;):
+            # self.aoi_zoom_figure.set_cmap(self.cmap_dropdown.currentText())
+
+            colormap = Colormap(self.cmap_dropdown.currentText())
+            self.figure.set_cmap(colormap.to_mpl())
+            self.aoi_zoom_figure.set_cmap(colormap.to_mpl())
+
+    def set_normalisation(self):
+        norm_type = self.frame_norm_dropdown.currentText()
+        self.figure.set_normalisation(norm_type)
+        self.aoi_zoom_figure.set_normalisation(norm_type)</code></pre>
+</details>
+<div class="desc"><p>QGroupBox(parent: Optional[QWidget] = None)
+QGroupBox(title: Optional[str], parent: Optional[QWidget] = None)</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>PyQt6.QtWidgets.QGroupBox</li>
+<li>PyQt6.QtWidgets.QWidget</li>
+<li>PyQt6.QtCore.QObject</li>
+<li>PyQt6.sip.wrapper</li>
+<li>PyQt6.QtGui.QPaintDevice</li>
+<li>PyQt6.sip.simplewrapper</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.gui.qmeas.qmeas_img.QImageFigureOpts.binning_changed"><code class="name flex">
+<span>def <span class="ident">binning_changed</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def binning_changed(self):
+    bin_x = int(self.binning_x_input.text())
+    bin_y = int(self.binning_y_input.text())
+    # check that the binning is valid
+    if bin_x &lt; 1 or bin_y &lt; 1:
+        show_warning(self, &#34;Binning must be greater than 0&#34;)
+        return
+
+    # check that if data can be binned by the requested amount,
+    # i.e. the data shape is divisible by the binning
+    if (
+        self.figure.sig_frame.shape[0] % bin_y != 0
+        or self.figure.sig_frame.shape[1] % bin_x != 0
+    ):
+        show_warning(self, &#34;Data shape not divisible by binning&#34;)
+        return
+
+    # update the plots binning
+    self.figure.set_binning(bin_x, bin_y)
+    self.aoi_zoom_figure.update_data(
+        self.figure.sig_frame_to_plt, self.figure.ref_frame_to_plt
+    )
+    # self.img_aoi_opts.on_aoi_click(event=None)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.qmeas_img.QImageFigureOpts.frame_idx_changed"><code class="name flex">
+<span>def <span class="ident">frame_idx_changed</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def frame_idx_changed(self):
+    # check that the frame index is valid
+    if self.frame_idx_input.value() &lt; 0:
+        return
+    try:
+        self.parent.connection_manager.measurement_set_frame_num(
+            self.parent.meas_id, int(self.frame_idx_input.value())
+        )
+    except:
+        logger.warning(&#34;Frame idx change invalid, resetting to zero&#34;)
+        self.parent.connection_manager.measurement_set_frame_num(
+            self.parent.meas_id, int(0)
+        )
+        self.frame_idx_input.setValue(0)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.qmeas_img.QImageFigureOpts.select_cmap_type"><code class="name flex">
+<span>def <span class="ident">select_cmap_type</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def select_cmap_type(self):
+    &#34;&#34;&#34;Callback for the cmap_dropdown currentIndexChanged event&#34;&#34;&#34;
+
+    # update the plots
+    if self.cmap_dropdown.currentText() != &#34;&#34; or None:
+        # if hasattr(self, &#39;figure&#39;):
+        # self.figure.set_cmap(self.cmap_dropdown.currentText())
+        # if hasattr(self, &#39;aoi_zoom_figure&#39;):
+        # self.aoi_zoom_figure.set_cmap(self.cmap_dropdown.currentText())
+
+        colormap = Colormap(self.cmap_dropdown.currentText())
+        self.figure.set_cmap(colormap.to_mpl())
+        self.aoi_zoom_figure.set_cmap(colormap.to_mpl())</code></pre>
+</details>
+<div class="desc"><p>Callback for the cmap_dropdown currentIndexChanged event</p></div>
+</dd>
+<dt id="qscope.gui.qmeas.qmeas_img.QImageFigureOpts.set_normalisation"><code class="name flex">
+<span>def <span class="ident">set_normalisation</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_normalisation(self):
+    norm_type = self.frame_norm_dropdown.currentText()
+    self.figure.set_normalisation(norm_type)
+    self.aoi_zoom_figure.set_normalisation(norm_type)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<form>
+<input id="lunr-search" name="q" placeholder="🔎 Search ..." aria-label="Search"
+disabled minlength="2">
+</form>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.css" integrity="sha512-b+T2i3P45i1LZM7I00Ci5QquB9szqaxu+uuk5TUSGjZQ4w4n+qujQiIuvTv2BxE7WCGQCifNMksyKILDiHzsOg==" crossorigin>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.js" integrity="sha512-2B9/byNV1KKRm5nQ2RLViPFD6U4dUjDGwuW1GU+ImJh8YinPU9Zlq1GzdTMO+G2ROrB5o1qasJBy1ttYz0wCug==" crossorigin></script>
+<style>
+.modal-dialog iframe {
+width: 100vw;
+height: calc(100vh - 80px);
+}
+@media screen and (min-width: 700px) {
+.modal-dialog iframe {
+width: 70vw;
+height: 80vh;
+}
+}
+.modal-dialog .tingle-modal-box {width: auto;}
+.modal-dialog .tingle-modal-box__content {padding: 0;}
+</style>
+<script>
+const input = document.getElementById('lunr-search');
+input.disabled = false;
+input.form.addEventListener('submit', (ev) => {
+ev.preventDefault();
+const url = new URL(window.location);
+url.searchParams.set('q', input.value);
+history.replaceState({}, null, url.toString());
+search(input.value);
+});
+const query = new URL(window.location).searchParams.get('q');
+if (query)
+search(query);
+function search(query) {
+const url = '../../../doc-search.html#' + encodeURIComponent(query);
+new tingle.modal({
+cssClass: ['modal-dialog'],
+onClose: () => {
+const url = new URL(window.location);
+url.searchParams.delete('q');
+history.replaceState({}, null, url.toString());
+setTimeout(() => input.focus(), 100);
+}
+}).setContent('<iframe src="' + url + '"></iframe>').open();
+}
+</script>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="qscope.gui.qmeas" href="index.html">qscope.gui.qmeas</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="qscope.gui.qmeas.qmeas_img.QImageAOIOpts" href="#qscope.gui.qmeas.qmeas_img.QImageAOIOpts">QImageAOIOpts</a></code></h4>
+<ul class="">
+<li><code><a title="qscope.gui.qmeas.qmeas_img.QImageAOIOpts.aoi_pt_changed" href="#qscope.gui.qmeas.qmeas_img.QImageAOIOpts.aoi_pt_changed">aoi_pt_changed</a></code></li>
+<li><code><a title="qscope.gui.qmeas.qmeas_img.QImageAOIOpts.aoi_range_changed" href="#qscope.gui.qmeas.qmeas_img.QImageAOIOpts.aoi_range_changed">aoi_range_changed</a></code></li>
+<li><code><a title="qscope.gui.qmeas.qmeas_img.QImageAOIOpts.on_aoi_click" href="#qscope.gui.qmeas.qmeas_img.QImageAOIOpts.on_aoi_click">on_aoi_click</a></code></li>
+<li><code><a title="qscope.gui.qmeas.qmeas_img.QImageAOIOpts.on_mouse_move" href="#qscope.gui.qmeas.qmeas_img.QImageAOIOpts.on_mouse_move">on_mouse_move</a></code></li>
+<li><code><a title="qscope.gui.qmeas.qmeas_img.QImageAOIOpts.on_mouse_press" href="#qscope.gui.qmeas.qmeas_img.QImageAOIOpts.on_mouse_press">on_mouse_press</a></code></li>
+<li><code><a title="qscope.gui.qmeas.qmeas_img.QImageAOIOpts.on_mouse_release" href="#qscope.gui.qmeas.qmeas_img.QImageAOIOpts.on_mouse_release">on_mouse_release</a></code></li>
+<li><code><a title="qscope.gui.qmeas.qmeas_img.QImageAOIOpts.on_square_button_clicked" href="#qscope.gui.qmeas.qmeas_img.QImageAOIOpts.on_square_button_clicked">on_square_button_clicked</a></code></li>
+<li><code><a title="qscope.gui.qmeas.qmeas_img.QImageAOIOpts.update_temp_rectangle" href="#qscope.gui.qmeas.qmeas_img.QImageAOIOpts.update_temp_rectangle">update_temp_rectangle</a></code></li>
+<li><code><a title="qscope.gui.qmeas.qmeas_img.QImageAOIOpts.use_aoi_click" href="#qscope.gui.qmeas.qmeas_img.QImageAOIOpts.use_aoi_click">use_aoi_click</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.gui.qmeas.qmeas_img.QImageFigure" href="#qscope.gui.qmeas.qmeas_img.QImageFigure">QImageFigure</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.gui.qmeas.qmeas_img.QImageFigure.init_plot" href="#qscope.gui.qmeas.qmeas_img.QImageFigure.init_plot">init_plot</a></code></li>
+<li><code><a title="qscope.gui.qmeas.qmeas_img.QImageFigure.set_binning" href="#qscope.gui.qmeas.qmeas_img.QImageFigure.set_binning">set_binning</a></code></li>
+<li><code><a title="qscope.gui.qmeas.qmeas_img.QImageFigure.set_cmap" href="#qscope.gui.qmeas.qmeas_img.QImageFigure.set_cmap">set_cmap</a></code></li>
+<li><code><a title="qscope.gui.qmeas.qmeas_img.QImageFigure.set_normalisation" href="#qscope.gui.qmeas.qmeas_img.QImageFigure.set_normalisation">set_normalisation</a></code></li>
+<li><code><a title="qscope.gui.qmeas.qmeas_img.QImageFigure.update_data" href="#qscope.gui.qmeas.qmeas_img.QImageFigure.update_data">update_data</a></code></li>
+<li><code><a title="qscope.gui.qmeas.qmeas_img.QImageFigure.update_plot" href="#qscope.gui.qmeas.qmeas_img.QImageFigure.update_plot">update_plot</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.gui.qmeas.qmeas_img.QImageFigureOpts" href="#qscope.gui.qmeas.qmeas_img.QImageFigureOpts">QImageFigureOpts</a></code></h4>
+<ul class="">
+<li><code><a title="qscope.gui.qmeas.qmeas_img.QImageFigureOpts.binning_changed" href="#qscope.gui.qmeas.qmeas_img.QImageFigureOpts.binning_changed">binning_changed</a></code></li>
+<li><code><a title="qscope.gui.qmeas.qmeas_img.QImageFigureOpts.frame_idx_changed" href="#qscope.gui.qmeas.qmeas_img.QImageFigureOpts.frame_idx_changed">frame_idx_changed</a></code></li>
+<li><code><a title="qscope.gui.qmeas.qmeas_img.QImageFigureOpts.select_cmap_type" href="#qscope.gui.qmeas.qmeas_img.QImageFigureOpts.select_cmap_type">select_cmap_type</a></code></li>
+<li><code><a title="qscope.gui.qmeas.qmeas_img.QImageFigureOpts.set_normalisation" href="#qscope.gui.qmeas.qmeas_img.QImageFigureOpts.set_normalisation">set_normalisation</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
+</footer>
+</body>
+</html>

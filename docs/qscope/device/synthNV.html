@@ -1,0 +1,1158 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.6">
+<title>qscope.device.synthNV API documentation</title>
+<meta name="description" content="">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}#lunr-search{width:100%;font-size:1em;padding:6px 9px 5px 9px;border:1px solid silver}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes: true } });</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML" integrity="sha256-kZafAc6mZvK3W3v1pHOcUix30OHQN6pU/NO2oFkqZVw=" crossorigin></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>qscope.device.synthNV</code></h1>
+</header>
+<section id="section-intro">
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="qscope.device.synthNV.SynthNV"><code class="flex name class">
+<span>class <span class="ident">SynthNV</span></span>
+<span>(</span><span>port: str)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class SynthNV(Device):
+    connected = False
+    port: str  # &#34;COM3&#34; etc., com port for the windfreak
+    required_config = {&#34;port&#34;: str}
+
+    def __init__(self, port: str):
+        super().__init__(port=port)
+        self.port = port
+
+        self.cmd_wait = (
+            10e-6  # time (s) to wait after sending a command to the windfreak
+        )
+
+        # set the default values
+        self._freq = 2870
+        self._power = -30
+
+    def open(self) -&gt; tuple[bool, str]:
+        &#34;&#34;&#34;
+        Opens the serial port connection to the RF source.
+
+        If the port is already opened, it will be closed and opened again.
+        If the connection is successful, the `rf` attribute will be set to the opened serial port.
+
+        Returns:
+            None: If an unknown error occurs while opening the serial port.
+        &#34;&#34;&#34;
+        try:
+            self.rf = serial.Serial(self.port)
+            logger.info(&#34;Connected to RF source: windfreak on port {}&#34;, self.port)
+        except serial.serialutil.SerialException:
+            logger.exception(&#34;Error opening winfreak serial port.&#34;)
+            self.connected = False
+            return (
+                False,
+                f&#34;Error opening winfreak serial port: {format_error_response()}&#34;,
+            )
+        except IOError:
+            try:
+                self.rf = serial.Serial(self.port)
+                # self.rf.open()
+                logger.info(&#34;Connected to RF source: windfreak on port: {}&#34;, self.port)
+            except:
+                logger.exception(&#34;Error opening winfreak serial port.&#34;)
+                self.connected = False
+                return (
+                    False,
+                    f&#34;Error opening winfreak serial port: {format_error_response()}&#34;,
+                )
+        # save this port info so later we check if connected is still made
+        ports = get_hw_ports()
+        self.port_info = [
+            portinfo for port, portinfo in ports.items() if self.port in port
+        ][0]
+        self.connected = True
+        return True, &#34;Connected to RF source: windfreak on port &#34; + self.port
+
+    def close(self):
+        &#34;&#34;&#34;
+        Closes the connection to the RF device.
+        &#34;&#34;&#34;
+        if self.is_connected():
+            self.rf.close()
+
+    def reconnect(self):
+        if self.is_connected():
+            self.rf.close()
+            self.rf = serial.Serial(self.port)
+
+    def is_connected(self) -&gt; bool:
+        hw_port_info = get_hw_ports()
+        return (
+            self.port in hw_port_info
+            and self.port_info == hw_port_info[self.port] if hasattr(self, &#34;port_info&#34;) else False
+            and self.connected
+        )
+
+    def _get_version(self):  # untested
+        self.rf.write(b&#34;+&#34;)
+        time.sleep(self.cmd_wait)
+        return int(self.rf.read_all())
+
+    def start_fm_mod(self, freq):
+        &#34;&#34;&#34;
+        Start frequency modulation.
+
+        Args:
+            freq (float): Frequency in Hz.
+        &#34;&#34;&#34;
+        self.write_command(&#34;&lt;100&gt;&#34; + str(freq) + &#34;,100;0/1y9&#34;)
+
+    def stop_fm_mod(self):
+        &#34;&#34;&#34;
+        Stops the frequency modulation (FM) modulation.
+
+        This method sends the command &#39;/0y3&#39; to stop the FM modulation.
+
+        Parameters:
+            None
+
+        Returns:
+            None
+        &#34;&#34;&#34;
+        self.write_command(&#34;/0y3&#34;)
+
+    ###################################################################
+    # set/get
+    ###################################################################
+    # NOTE we never really need the &#39;gets&#39; here. Superfluous
+
+    def get_freq(self):
+        self.rf.read_all()
+        self.rf.write(b&#34;f?&#34;)
+        time.sleep(self.cmd_wait)
+        self._freq = float(self.rf.read_all())
+        return self._freq
+
+    def set_freq(self, freq):
+        # freq in MHz
+        logger.debug(&#34;Setting frequency to {} type {}&#34;, freq, type(freq))
+        self.write_command(&#34;f&#34; + str(freq))
+        time.sleep(self.cmd_wait)
+        self._freq = freq
+
+    def get_power(self):
+        self.rf.read_all()
+        self.rf.write(b&#34;&amp;0w&#34;)
+        time.sleep(3 * self.cmd_wait)
+        self._power = self.rf.read_all()
+        # convert from bytes to string
+        # self._power = self._power.decode(&#34;utf-8&#34;)
+        return self._power
+
+    def set_power(self, power):
+        logger.debug(&#34;Setting power to {} type {}&#34;, power, type(power))
+        # power in dBm
+        self.write_command(&#34;W&#34; + str(power))
+        time.sleep(self.cmd_wait)
+        self._power = power
+
+    def get_state(self):
+        self.rf.read_all()
+        self.rf.write(b&#34;E?&#34;)
+        time.sleep(self.cmd_wait)
+        self._output = int(self.rf.read_all())
+        return self._output
+
+    def set_state(self, state):
+        if state == 1 or state == True:
+            self.rf.write(b&#34;E1h1&#34;)
+            logger.debug(&#34;Setting output to ON&#34;)
+        else:
+            self.rf.write(b&#34;E0h0&#34;)
+            logger.debug(&#34;Setting output to OFF&#34;)
+        time.sleep(self.cmd_wait)
+        self._output = state
+
+    # change name?
+    # def query(self, command):
+    #     self.rf.read_all()
+    #     self.rf.write(bytes(command, &#34;utf-8&#34;))
+    #     time.sleep(500 * self.cmd_wait)
+    #     return self.rf.read_all()
+
+    ###################################################################
+    # queries
+    ###################################################################
+
+    def poll_device_attrs(self):
+        &#34;&#34;&#34;
+        Retrieves all attributes from the device.
+
+        This method reads all attributes from the device by sending a command and
+        waiting for the device to respond. It then parses the response and returns
+        a dictionary of the attributes.
+
+        Returns:
+            dict: A dictionary containing the attributes of the device.
+        &#34;&#34;&#34;
+        self.rf.read_all()
+        self.rf.write(b&#34;e?&#34;)
+        # long wait to make sure the device has time to respond
+        time.sleep(20 * self.cmd_wait)
+        logger.info(&#34;Asking winfreak synthNV for all attributes&#34;)
+        current_status = self.rf.read_until(expected=b&#34;EOM.&#34;)
+        # break the string into lines
+        lines = (current_status).decode(&#34;ascii&#34;).split(&#34;\n&#34;)
+        # Make into a dictionary of the attributes
+        attr_dict = dict()
+        for line in lines:
+            if line[1] == &#34;)&#34;:
+                attr_dict[line[0]] = line[2::]
+        logger.info(&#34;SynthNV attrs: {}&#34;, attr_dict)
+        return attr_dict
+
+    ###################################################################
+    # Sweep functions
+    ###################################################################
+
+    def set_freq_list(self, rf_freqs: Sequence, step_time=0.1):
+        self.set_f_table(rf_freqs, self._power, step_time)
+        return rf_freqs
+
+    def set_f_table(self, freq_list, power, step_time=0.1):
+        # command is &#39;@fap&#39; @ frequency a power
+        # set the windfreak delay to default
+        command = &#34;&#34;
+        # Add the sweep mode to tabular command
+        command += &#34;X1&#34;
+        # Add the frequency list
+        for i in range(len(freq_list)):
+            if i &lt; 10:
+                command += (
+                    &#34;L0&#34;
+                    + str(i)
+                    + &#34;f&#34;
+                    + str(freq_list[i])
+                    + &#34;L0&#34;
+                    + str(i)
+                    + &#34;a&#34;
+                    + str(power)
+                )
+            else:
+                command += (
+                    &#34;L&#34;
+                    + str(i)
+                    + &#34;f&#34;
+                    + str(freq_list[i])
+                    + &#34;L&#34;
+                    + str(i)
+                    + &#34;a&#34;
+                    + str(power)
+                )
+        # Add the last frequency to the end of the list
+        command += (
+            &#34;L&#34;
+            + str(len(freq_list))
+            + &#34;f&#34;
+            + str(0)
+            + &#34;L&#34;
+            + str(len(freq_list))
+            + &#34;a&#34;
+            + str(0)
+        )
+
+        # Add command to make the sweep from the start of the table
+        command += &#34;^1&#34;
+        # FIXME: Set the stepping time to equal the camera trigger time.
+        # define the step timming
+        command += &#34;t&#34; + str(step_time * 1e3)  # convert to ms
+
+        # Don&#39;t sweep automatically
+        command += &#34;g0&#34;
+        # set sweep mode to continuous
+        command += &#34;c1&#34;
+        # set trigger to step
+        command += &#34;y2&#34;
+        # Turn the output on
+        command += &#34;E1h1&#34;
+
+        # return command
+        self.write_command(command)
+
+    def set_trigger(self, mode=2):
+        &#34;&#34;&#34;
+        Sets the trigger mode for the Windfreak SynthNV device.
+
+        Parameters:
+            trigger (int): The trigger mode to set. Valid values are:
+                - 0: Software trigger
+                - 1: Sweep trigger
+                - 2: Step trigger
+                - 3: Hold all trigger
+
+        Returns:
+            None
+        &#34;&#34;&#34;
+        self.write_command(&#34;y&#34; + str(mode))
+
+    def start_sweep(self):
+        &#34;&#34;&#34;
+        Starts the sweep run.
+
+        This method sends a command to start the sweep run on the Windfreak SynthNV device.
+
+        Parameters:
+            None
+
+        Returns:
+            None
+        &#34;&#34;&#34;
+        # g) Sweep run (on=1 / off=0) 0
+        self.write_command(&#34;g0y2&#34;)
+
+    def reset_sweep(self):
+        &#34;&#34;&#34;
+        Resets the sweep settings of the Windfreak SynthNV device.
+        &#34;&#34;&#34;
+        self.write_command(&#34;g0y2&#34;)
+
+    def stop_sweep(self):
+        &#34;&#34;&#34;
+        Stops the sweep run.
+
+        This method sends a command to stop the sweep run of the Windfreak SynthNV device.
+
+        Parameters:
+            None
+
+        Returns:
+            None
+        &#34;&#34;&#34;
+        # g) Sweep run (on=1 / off=0) 0
+        self.write_command(&#34;g0E0h0&#34;)
+
+    ###################################################################
+    # Utility functions
+    ###################################################################
+
+    def write_command(self, command):
+        &#34;&#34;&#34;
+        Writes a string command to the serial port after converting it into a byte command.
+
+        Args:
+            command (str): The command to be written to the serial port.
+
+        Returns:
+            None
+        &#34;&#34;&#34;
+        self.rf.write(bytes(command, &#34;utf-8&#34;))
+        time.sleep(self.cmd_wait)</code></pre>
+</details>
+<div class="desc"><p>Base class for all hardware devices in QScope.</p>
+<p>The Device class provides the foundation for hardware abstraction in QScope.
+Specific device implementations inherit from this class and implement the
+methods required by their intended roles.</p>
+<p>A device can fulfill multiple roles if it implements all required methods
+for those roles. The system validates role compatibility at runtime.</p>
+<h2 id="device-architecture">Device Architecture</h2>
+<p>Devices are part of QScope's hardware abstraction layer:</p>
+<ol>
+<li>Base Device Class (this class)</li>
+<li>Provides configuration validation</li>
+<li>Manages role assignments</li>
+<li>Handles connection state</li>
+<li>
+<p>Defines required methods</p>
+</li>
+<li>
+<p>Device Implementations</p>
+</li>
+<li>Inherit from Device</li>
+<li>Implement protocol methods for specific roles</li>
+<li>Provide hardware-specific functionality</li>
+<li>
+<p>Can implement multiple protocols</p>
+</li>
+<li>
+<p>System Integration</p>
+</li>
+<li>Devices are added to systems with specific roles</li>
+<li>System validates that devices implement required protocols</li>
+<li>Devices are accessed through role interfaces</li>
+</ol>
+<h2 id="required-methods">Required Methods</h2>
+<p>All device implementations must override these methods:</p>
+<ul>
+<li>open(): Connect to the hardware</li>
+<li>close(): Disconnect from the hardware</li>
+<li>is_connected(): Check connection status</li>
+</ul>
+<p>In addition, devices must implement all methods required by the
+protocols of the roles they intend to fulfill.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>required_config</code></strong> :&ensp;<code>dict[str, Type]</code></dt>
+<dd>Required configuration parameters and their types</dd>
+<dt><strong><code>_roles</code></strong> :&ensp;<code>Set[DeviceRole[Device]]</code></dt>
+<dd>Set of roles this device fulfills</dd>
+</dl>
+<h2 id="examples">Examples</h2>
+<p>Creating a new device implementation:</p>
+<pre><code class="language-python">class MyRFSource(Device):
+    required_config = {
+        &quot;visa_addr&quot;: str,
+        &quot;max_power&quot;: float
+    }
+
+    def __init__(self, **config_kwargs):
+        super().__init__(**config_kwargs)
+        self.connected = False
+
+    def open(self) -&gt; tuple[bool, str]:
+        # Implementation for connecting to hardware
+        self.connected = True
+        return True, &quot;Connected successfully&quot;
+
+    def close(self):
+        # Implementation for disconnecting
+        self.connected = False
+
+    def is_connected(self) -&gt; bool:
+        return self.connected
+
+    # Implement methods required by RFSourceProtocol
+    def set_freq(self, freq: float) -&gt; None:
+        # Implementation
+        pass
+
+    def set_power(self, power: float) -&gt; None:
+        # Implementation
+        pass
+</code></pre>
+<p>Using the device with a role:</p>
+<pre><code class="language-python"># Create device instance
+rf = MyRFSource(visa_addr=&quot;TCPIP0::192.168.1.1::INSTR&quot;, max_power=20.0)
+
+# Add to system with role
+system.add_device_with_role(rf, PRIMARY_RF)
+</code></pre>
+<h2 id="see-also">See Also</h2>
+<dl>
+<dt><code><a title="qscope.types.protocols" href="../types/protocols.html">qscope.types.protocols</a></code></dt>
+<dd>Protocol definitions</dd>
+<dt><code><a title="qscope.types.roles" href="../types/roles.html">qscope.types.roles</a></code></dt>
+<dd>Role definitions</dd>
+<dt><code><a title="qscope.types.interfaces" href="../types/interfaces.html">qscope.types.interfaces</a></code></dt>
+<dd>Interface implementations</dd>
+<dt><code><a title="qscope.system" href="../system/index.html">qscope.system</a></code></dt>
+<dd>System implementation</dd>
+</dl></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.device.device.Device" href="device.html#qscope.device.device.Device">Device</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="qscope.device.synthNV.SynthNV.connected"><code class="name">var <span class="ident">connected</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.synthNV.SynthNV.port"><code class="name">var <span class="ident">port</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.synthNV.SynthNV.required_config"><code class="name">var <span class="ident">required_config</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.device.synthNV.SynthNV.close"><code class="name flex">
+<span>def <span class="ident">close</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def close(self):
+    &#34;&#34;&#34;
+    Closes the connection to the RF device.
+    &#34;&#34;&#34;
+    if self.is_connected():
+        self.rf.close()</code></pre>
+</details>
+<div class="desc"><p>Closes the connection to the RF device.</p></div>
+</dd>
+<dt id="qscope.device.synthNV.SynthNV.get_freq"><code class="name flex">
+<span>def <span class="ident">get_freq</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_freq(self):
+    self.rf.read_all()
+    self.rf.write(b&#34;f?&#34;)
+    time.sleep(self.cmd_wait)
+    self._freq = float(self.rf.read_all())
+    return self._freq</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.synthNV.SynthNV.get_power"><code class="name flex">
+<span>def <span class="ident">get_power</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_power(self):
+    self.rf.read_all()
+    self.rf.write(b&#34;&amp;0w&#34;)
+    time.sleep(3 * self.cmd_wait)
+    self._power = self.rf.read_all()
+    # convert from bytes to string
+    # self._power = self._power.decode(&#34;utf-8&#34;)
+    return self._power</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.synthNV.SynthNV.get_state"><code class="name flex">
+<span>def <span class="ident">get_state</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_state(self):
+    self.rf.read_all()
+    self.rf.write(b&#34;E?&#34;)
+    time.sleep(self.cmd_wait)
+    self._output = int(self.rf.read_all())
+    return self._output</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.synthNV.SynthNV.is_connected"><code class="name flex">
+<span>def <span class="ident">is_connected</span></span>(<span>self) ‑> bool</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def is_connected(self) -&gt; bool:
+    hw_port_info = get_hw_ports()
+    return (
+        self.port in hw_port_info
+        and self.port_info == hw_port_info[self.port] if hasattr(self, &#34;port_info&#34;) else False
+        and self.connected
+    )</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.synthNV.SynthNV.open"><code class="name flex">
+<span>def <span class="ident">open</span></span>(<span>self) ‑> tuple[bool, str]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def open(self) -&gt; tuple[bool, str]:
+    &#34;&#34;&#34;
+    Opens the serial port connection to the RF source.
+
+    If the port is already opened, it will be closed and opened again.
+    If the connection is successful, the `rf` attribute will be set to the opened serial port.
+
+    Returns:
+        None: If an unknown error occurs while opening the serial port.
+    &#34;&#34;&#34;
+    try:
+        self.rf = serial.Serial(self.port)
+        logger.info(&#34;Connected to RF source: windfreak on port {}&#34;, self.port)
+    except serial.serialutil.SerialException:
+        logger.exception(&#34;Error opening winfreak serial port.&#34;)
+        self.connected = False
+        return (
+            False,
+            f&#34;Error opening winfreak serial port: {format_error_response()}&#34;,
+        )
+    except IOError:
+        try:
+            self.rf = serial.Serial(self.port)
+            # self.rf.open()
+            logger.info(&#34;Connected to RF source: windfreak on port: {}&#34;, self.port)
+        except:
+            logger.exception(&#34;Error opening winfreak serial port.&#34;)
+            self.connected = False
+            return (
+                False,
+                f&#34;Error opening winfreak serial port: {format_error_response()}&#34;,
+            )
+    # save this port info so later we check if connected is still made
+    ports = get_hw_ports()
+    self.port_info = [
+        portinfo for port, portinfo in ports.items() if self.port in port
+    ][0]
+    self.connected = True
+    return True, &#34;Connected to RF source: windfreak on port &#34; + self.port</code></pre>
+</details>
+<div class="desc"><p>Opens the serial port connection to the RF source.</p>
+<p>If the port is already opened, it will be closed and opened again.
+If the connection is successful, the <code>rf</code> attribute will be set to the opened serial port.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>If an unknown error occurs while opening the serial port.</dd>
+</dl></div>
+</dd>
+<dt id="qscope.device.synthNV.SynthNV.poll_device_attrs"><code class="name flex">
+<span>def <span class="ident">poll_device_attrs</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def poll_device_attrs(self):
+    &#34;&#34;&#34;
+    Retrieves all attributes from the device.
+
+    This method reads all attributes from the device by sending a command and
+    waiting for the device to respond. It then parses the response and returns
+    a dictionary of the attributes.
+
+    Returns:
+        dict: A dictionary containing the attributes of the device.
+    &#34;&#34;&#34;
+    self.rf.read_all()
+    self.rf.write(b&#34;e?&#34;)
+    # long wait to make sure the device has time to respond
+    time.sleep(20 * self.cmd_wait)
+    logger.info(&#34;Asking winfreak synthNV for all attributes&#34;)
+    current_status = self.rf.read_until(expected=b&#34;EOM.&#34;)
+    # break the string into lines
+    lines = (current_status).decode(&#34;ascii&#34;).split(&#34;\n&#34;)
+    # Make into a dictionary of the attributes
+    attr_dict = dict()
+    for line in lines:
+        if line[1] == &#34;)&#34;:
+            attr_dict[line[0]] = line[2::]
+    logger.info(&#34;SynthNV attrs: {}&#34;, attr_dict)
+    return attr_dict</code></pre>
+</details>
+<div class="desc"><p>Retrieves all attributes from the device.</p>
+<p>This method reads all attributes from the device by sending a command and
+waiting for the device to respond. It then parses the response and returns
+a dictionary of the attributes.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dict</code></dt>
+<dd>A dictionary containing the attributes of the device.</dd>
+</dl></div>
+</dd>
+<dt id="qscope.device.synthNV.SynthNV.reconnect"><code class="name flex">
+<span>def <span class="ident">reconnect</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def reconnect(self):
+    if self.is_connected():
+        self.rf.close()
+        self.rf = serial.Serial(self.port)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.synthNV.SynthNV.reset_sweep"><code class="name flex">
+<span>def <span class="ident">reset_sweep</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def reset_sweep(self):
+    &#34;&#34;&#34;
+    Resets the sweep settings of the Windfreak SynthNV device.
+    &#34;&#34;&#34;
+    self.write_command(&#34;g0y2&#34;)</code></pre>
+</details>
+<div class="desc"><p>Resets the sweep settings of the Windfreak SynthNV device.</p></div>
+</dd>
+<dt id="qscope.device.synthNV.SynthNV.set_f_table"><code class="name flex">
+<span>def <span class="ident">set_f_table</span></span>(<span>self, freq_list, power, step_time=0.1)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_f_table(self, freq_list, power, step_time=0.1):
+    # command is &#39;@fap&#39; @ frequency a power
+    # set the windfreak delay to default
+    command = &#34;&#34;
+    # Add the sweep mode to tabular command
+    command += &#34;X1&#34;
+    # Add the frequency list
+    for i in range(len(freq_list)):
+        if i &lt; 10:
+            command += (
+                &#34;L0&#34;
+                + str(i)
+                + &#34;f&#34;
+                + str(freq_list[i])
+                + &#34;L0&#34;
+                + str(i)
+                + &#34;a&#34;
+                + str(power)
+            )
+        else:
+            command += (
+                &#34;L&#34;
+                + str(i)
+                + &#34;f&#34;
+                + str(freq_list[i])
+                + &#34;L&#34;
+                + str(i)
+                + &#34;a&#34;
+                + str(power)
+            )
+    # Add the last frequency to the end of the list
+    command += (
+        &#34;L&#34;
+        + str(len(freq_list))
+        + &#34;f&#34;
+        + str(0)
+        + &#34;L&#34;
+        + str(len(freq_list))
+        + &#34;a&#34;
+        + str(0)
+    )
+
+    # Add command to make the sweep from the start of the table
+    command += &#34;^1&#34;
+    # FIXME: Set the stepping time to equal the camera trigger time.
+    # define the step timming
+    command += &#34;t&#34; + str(step_time * 1e3)  # convert to ms
+
+    # Don&#39;t sweep automatically
+    command += &#34;g0&#34;
+    # set sweep mode to continuous
+    command += &#34;c1&#34;
+    # set trigger to step
+    command += &#34;y2&#34;
+    # Turn the output on
+    command += &#34;E1h1&#34;
+
+    # return command
+    self.write_command(command)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.synthNV.SynthNV.set_freq"><code class="name flex">
+<span>def <span class="ident">set_freq</span></span>(<span>self, freq)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_freq(self, freq):
+    # freq in MHz
+    logger.debug(&#34;Setting frequency to {} type {}&#34;, freq, type(freq))
+    self.write_command(&#34;f&#34; + str(freq))
+    time.sleep(self.cmd_wait)
+    self._freq = freq</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.synthNV.SynthNV.set_freq_list"><code class="name flex">
+<span>def <span class="ident">set_freq_list</span></span>(<span>self, rf_freqs: Sequence, step_time=0.1)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_freq_list(self, rf_freqs: Sequence, step_time=0.1):
+    self.set_f_table(rf_freqs, self._power, step_time)
+    return rf_freqs</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.synthNV.SynthNV.set_power"><code class="name flex">
+<span>def <span class="ident">set_power</span></span>(<span>self, power)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_power(self, power):
+    logger.debug(&#34;Setting power to {} type {}&#34;, power, type(power))
+    # power in dBm
+    self.write_command(&#34;W&#34; + str(power))
+    time.sleep(self.cmd_wait)
+    self._power = power</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.synthNV.SynthNV.set_state"><code class="name flex">
+<span>def <span class="ident">set_state</span></span>(<span>self, state)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_state(self, state):
+    if state == 1 or state == True:
+        self.rf.write(b&#34;E1h1&#34;)
+        logger.debug(&#34;Setting output to ON&#34;)
+    else:
+        self.rf.write(b&#34;E0h0&#34;)
+        logger.debug(&#34;Setting output to OFF&#34;)
+    time.sleep(self.cmd_wait)
+    self._output = state</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.synthNV.SynthNV.set_trigger"><code class="name flex">
+<span>def <span class="ident">set_trigger</span></span>(<span>self, mode=2)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_trigger(self, mode=2):
+    &#34;&#34;&#34;
+    Sets the trigger mode for the Windfreak SynthNV device.
+
+    Parameters:
+        trigger (int): The trigger mode to set. Valid values are:
+            - 0: Software trigger
+            - 1: Sweep trigger
+            - 2: Step trigger
+            - 3: Hold all trigger
+
+    Returns:
+        None
+    &#34;&#34;&#34;
+    self.write_command(&#34;y&#34; + str(mode))</code></pre>
+</details>
+<div class="desc"><p>Sets the trigger mode for the Windfreak SynthNV device.</p>
+<h2 id="parameters">Parameters</h2>
+<p>trigger (int): The trigger mode to set. Valid values are:
+- 0: Software trigger
+- 1: Sweep trigger
+- 2: Step trigger
+- 3: Hold all trigger</p>
+<h2 id="returns">Returns</h2>
+<p>None</p></div>
+</dd>
+<dt id="qscope.device.synthNV.SynthNV.start_fm_mod"><code class="name flex">
+<span>def <span class="ident">start_fm_mod</span></span>(<span>self, freq)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def start_fm_mod(self, freq):
+    &#34;&#34;&#34;
+    Start frequency modulation.
+
+    Args:
+        freq (float): Frequency in Hz.
+    &#34;&#34;&#34;
+    self.write_command(&#34;&lt;100&gt;&#34; + str(freq) + &#34;,100;0/1y9&#34;)</code></pre>
+</details>
+<div class="desc"><p>Start frequency modulation.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>freq</code></strong> :&ensp;<code>float</code></dt>
+<dd>Frequency in Hz.</dd>
+</dl></div>
+</dd>
+<dt id="qscope.device.synthNV.SynthNV.start_sweep"><code class="name flex">
+<span>def <span class="ident">start_sweep</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def start_sweep(self):
+    &#34;&#34;&#34;
+    Starts the sweep run.
+
+    This method sends a command to start the sweep run on the Windfreak SynthNV device.
+
+    Parameters:
+        None
+
+    Returns:
+        None
+    &#34;&#34;&#34;
+    # g) Sweep run (on=1 / off=0) 0
+    self.write_command(&#34;g0y2&#34;)</code></pre>
+</details>
+<div class="desc"><p>Starts the sweep run.</p>
+<p>This method sends a command to start the sweep run on the Windfreak SynthNV device.</p>
+<h2 id="parameters">Parameters</h2>
+<p>None</p>
+<h2 id="returns">Returns</h2>
+<p>None</p></div>
+</dd>
+<dt id="qscope.device.synthNV.SynthNV.stop_fm_mod"><code class="name flex">
+<span>def <span class="ident">stop_fm_mod</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def stop_fm_mod(self):
+    &#34;&#34;&#34;
+    Stops the frequency modulation (FM) modulation.
+
+    This method sends the command &#39;/0y3&#39; to stop the FM modulation.
+
+    Parameters:
+        None
+
+    Returns:
+        None
+    &#34;&#34;&#34;
+    self.write_command(&#34;/0y3&#34;)</code></pre>
+</details>
+<div class="desc"><p>Stops the frequency modulation (FM) modulation.</p>
+<p>This method sends the command '/0y3' to stop the FM modulation.</p>
+<h2 id="parameters">Parameters</h2>
+<p>None</p>
+<h2 id="returns">Returns</h2>
+<p>None</p></div>
+</dd>
+<dt id="qscope.device.synthNV.SynthNV.stop_sweep"><code class="name flex">
+<span>def <span class="ident">stop_sweep</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def stop_sweep(self):
+    &#34;&#34;&#34;
+    Stops the sweep run.
+
+    This method sends a command to stop the sweep run of the Windfreak SynthNV device.
+
+    Parameters:
+        None
+
+    Returns:
+        None
+    &#34;&#34;&#34;
+    # g) Sweep run (on=1 / off=0) 0
+    self.write_command(&#34;g0E0h0&#34;)</code></pre>
+</details>
+<div class="desc"><p>Stops the sweep run.</p>
+<p>This method sends a command to stop the sweep run of the Windfreak SynthNV device.</p>
+<h2 id="parameters">Parameters</h2>
+<p>None</p>
+<h2 id="returns">Returns</h2>
+<p>None</p></div>
+</dd>
+<dt id="qscope.device.synthNV.SynthNV.write_command"><code class="name flex">
+<span>def <span class="ident">write_command</span></span>(<span>self, command)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def write_command(self, command):
+    &#34;&#34;&#34;
+    Writes a string command to the serial port after converting it into a byte command.
+
+    Args:
+        command (str): The command to be written to the serial port.
+
+    Returns:
+        None
+    &#34;&#34;&#34;
+    self.rf.write(bytes(command, &#34;utf-8&#34;))
+    time.sleep(self.cmd_wait)</code></pre>
+</details>
+<div class="desc"><p>Writes a string command to the serial port after converting it into a byte command.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>command</code></strong> :&ensp;<code>str</code></dt>
+<dd>The command to be written to the serial port.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>None</p></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="qscope.device.device.Device" href="device.html#qscope.device.device.Device">Device</a></b></code>:
+<ul class="hlist">
+<li><code><a title="qscope.device.device.Device.get_all_attrs" href="device.html#qscope.device.device.Device.get_all_attrs">get_all_attrs</a></code></li>
+<li><code><a title="qscope.device.device.Device.get_roles" href="device.html#qscope.device.device.Device.get_roles">get_roles</a></code></li>
+<li><code><a title="qscope.device.device.Device.has_role" href="device.html#qscope.device.device.Device.has_role">has_role</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<form>
+<input id="lunr-search" name="q" placeholder="🔎 Search ..." aria-label="Search"
+disabled minlength="2">
+</form>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.css" integrity="sha512-b+T2i3P45i1LZM7I00Ci5QquB9szqaxu+uuk5TUSGjZQ4w4n+qujQiIuvTv2BxE7WCGQCifNMksyKILDiHzsOg==" crossorigin>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.js" integrity="sha512-2B9/byNV1KKRm5nQ2RLViPFD6U4dUjDGwuW1GU+ImJh8YinPU9Zlq1GzdTMO+G2ROrB5o1qasJBy1ttYz0wCug==" crossorigin></script>
+<style>
+.modal-dialog iframe {
+width: 100vw;
+height: calc(100vh - 80px);
+}
+@media screen and (min-width: 700px) {
+.modal-dialog iframe {
+width: 70vw;
+height: 80vh;
+}
+}
+.modal-dialog .tingle-modal-box {width: auto;}
+.modal-dialog .tingle-modal-box__content {padding: 0;}
+</style>
+<script>
+const input = document.getElementById('lunr-search');
+input.disabled = false;
+input.form.addEventListener('submit', (ev) => {
+ev.preventDefault();
+const url = new URL(window.location);
+url.searchParams.set('q', input.value);
+history.replaceState({}, null, url.toString());
+search(input.value);
+});
+const query = new URL(window.location).searchParams.get('q');
+if (query)
+search(query);
+function search(query) {
+const url = '../../doc-search.html#' + encodeURIComponent(query);
+new tingle.modal({
+cssClass: ['modal-dialog'],
+onClose: () => {
+const url = new URL(window.location);
+url.searchParams.delete('q');
+history.replaceState({}, null, url.toString());
+setTimeout(() => input.focus(), 100);
+}
+}).setContent('<iframe src="' + url + '"></iframe>').open();
+}
+</script>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="qscope.device" href="index.html">qscope.device</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="qscope.device.synthNV.SynthNV" href="#qscope.device.synthNV.SynthNV">SynthNV</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.device.synthNV.SynthNV.close" href="#qscope.device.synthNV.SynthNV.close">close</a></code></li>
+<li><code><a title="qscope.device.synthNV.SynthNV.connected" href="#qscope.device.synthNV.SynthNV.connected">connected</a></code></li>
+<li><code><a title="qscope.device.synthNV.SynthNV.get_freq" href="#qscope.device.synthNV.SynthNV.get_freq">get_freq</a></code></li>
+<li><code><a title="qscope.device.synthNV.SynthNV.get_power" href="#qscope.device.synthNV.SynthNV.get_power">get_power</a></code></li>
+<li><code><a title="qscope.device.synthNV.SynthNV.get_state" href="#qscope.device.synthNV.SynthNV.get_state">get_state</a></code></li>
+<li><code><a title="qscope.device.synthNV.SynthNV.is_connected" href="#qscope.device.synthNV.SynthNV.is_connected">is_connected</a></code></li>
+<li><code><a title="qscope.device.synthNV.SynthNV.open" href="#qscope.device.synthNV.SynthNV.open">open</a></code></li>
+<li><code><a title="qscope.device.synthNV.SynthNV.poll_device_attrs" href="#qscope.device.synthNV.SynthNV.poll_device_attrs">poll_device_attrs</a></code></li>
+<li><code><a title="qscope.device.synthNV.SynthNV.port" href="#qscope.device.synthNV.SynthNV.port">port</a></code></li>
+<li><code><a title="qscope.device.synthNV.SynthNV.reconnect" href="#qscope.device.synthNV.SynthNV.reconnect">reconnect</a></code></li>
+<li><code><a title="qscope.device.synthNV.SynthNV.required_config" href="#qscope.device.synthNV.SynthNV.required_config">required_config</a></code></li>
+<li><code><a title="qscope.device.synthNV.SynthNV.reset_sweep" href="#qscope.device.synthNV.SynthNV.reset_sweep">reset_sweep</a></code></li>
+<li><code><a title="qscope.device.synthNV.SynthNV.set_f_table" href="#qscope.device.synthNV.SynthNV.set_f_table">set_f_table</a></code></li>
+<li><code><a title="qscope.device.synthNV.SynthNV.set_freq" href="#qscope.device.synthNV.SynthNV.set_freq">set_freq</a></code></li>
+<li><code><a title="qscope.device.synthNV.SynthNV.set_freq_list" href="#qscope.device.synthNV.SynthNV.set_freq_list">set_freq_list</a></code></li>
+<li><code><a title="qscope.device.synthNV.SynthNV.set_power" href="#qscope.device.synthNV.SynthNV.set_power">set_power</a></code></li>
+<li><code><a title="qscope.device.synthNV.SynthNV.set_state" href="#qscope.device.synthNV.SynthNV.set_state">set_state</a></code></li>
+<li><code><a title="qscope.device.synthNV.SynthNV.set_trigger" href="#qscope.device.synthNV.SynthNV.set_trigger">set_trigger</a></code></li>
+<li><code><a title="qscope.device.synthNV.SynthNV.start_fm_mod" href="#qscope.device.synthNV.SynthNV.start_fm_mod">start_fm_mod</a></code></li>
+<li><code><a title="qscope.device.synthNV.SynthNV.start_sweep" href="#qscope.device.synthNV.SynthNV.start_sweep">start_sweep</a></code></li>
+<li><code><a title="qscope.device.synthNV.SynthNV.stop_fm_mod" href="#qscope.device.synthNV.SynthNV.stop_fm_mod">stop_fm_mod</a></code></li>
+<li><code><a title="qscope.device.synthNV.SynthNV.stop_sweep" href="#qscope.device.synthNV.SynthNV.stop_sweep">stop_sweep</a></code></li>
+<li><code><a title="qscope.device.synthNV.SynthNV.write_command" href="#qscope.device.synthNV.SynthNV.write_command">write_command</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
+</footer>
+</body>
+</html>

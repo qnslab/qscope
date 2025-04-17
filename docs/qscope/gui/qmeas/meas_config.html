@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.6">
+<title>qscope.gui.qmeas.meas_config API documentation</title>
+<meta name="description" content="">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}#lunr-search{width:100%;font-size:1em;padding:6px 9px 5px 9px;border:1px solid silver}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes: true } });</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML" integrity="sha256-kZafAc6mZvK3W3v1pHOcUix30OHQN6pU/NO2oFkqZVw=" crossorigin></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>qscope.gui.qmeas.meas_config</code></h1>
+</header>
+<section id="section-intro">
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="qscope.gui.qmeas.meas_config.get_measurement_config"><code class="name flex">
+<span>def <span class="ident">get_measurement_config</span></span>(<span>gui_handle,<br>meas_config_class: Type[<a title="qscope.types.config.MeasurementConfig" href="../../types/config.html#qscope.types.config.MeasurementConfig">MeasurementConfig</a>],<br>meas_class: Type[<a title="qscope.meas.measurement.Measurement" href="../../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a>],<br>sweep_x: numpy.ndarray) ‑> <a title="qscope.types.config.MeasurementConfig" href="../../types/config.html#qscope.types.config.MeasurementConfig">MeasurementConfig</a></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_measurement_config(
+    gui_handle,
+    meas_config_class: Type[qscope.meas.MeasurementConfig],
+    meas_class: Type[qscope.meas.Measurement],
+    sweep_x: np.ndarray,
+) -&gt; qscope.meas.MeasurementConfig:
+    # meas classes are wrapped by a decorator, so this is the only way to get attrs.
+    # available_ref_modes = meas_class.__bases__[0].__dict__.get(
+    #     &#34;available_ref_modes&#34;
+    # )
+    available_ref_modes = meas_class.available_ref_modes
+
+    ref_mode = gui_handle.meas_opts.ref_mode_dropdown.currentText()
+    conversion_dict = {
+        &#34;&#34;: &#34;&#34;,
+        &#34;No RF&#34;: &#34;no_rf&#34;,
+        &#34;Frequency Modulated&#34;: &#34;fmod&#34;,
+        &#34;No Reference&#34;: &#34;no_ref&#34;,
+        &#34;π at end&#34;: &#34;π at end&#34;,
+        &#34;π at start&#34;: &#34;π at start&#34;,
+        &#34;-π/2 at end&#34;: &#34;-π/2 at end&#34;,
+        &#34;3π/2 at end&#34;: &#34;3π/2 at end&#34;,
+    }
+    ref_mode = conversion_dict[ref_mode]
+
+    if ref_mode not in available_ref_modes:
+        show_critial_error(
+            f&#34;Invalid reference mode: {ref_mode}, must be one of: {available_ref_modes}&#34;
+        )
+        gui_handle.meas_opts.start_measurement_button.setChecked(False)
+        gui_handle.meas_opts.stop_measurement_button.setStyleSheet(
+            &#34;background-color: None&#34;
+        )
+        return None
+
+    # TODO remove all passing of the time a frequency values. The sweep_x value should be passed instead.
+
+    # Get the dictionary of the GUI settings
+    config_dict = {
+        # General settings
+        &#34;ref_mode&#34;: ref_mode,
+        &#34;avg_per_point&#34;: int(gui_handle.meas_opts.num_averages_input.value()),
+        &#34;fmod_freq&#34;: gui_handle.meas_opts.freq_mod_input.value(),
+        # Camera settings
+        &#34;exposure_time&#34;: gui_handle.cam_opts.exposure_time_input.value(),
+        &#34;frame_shape&#34;: (
+            gui_handle.cam_opts.image_size_x_input.value(),
+            gui_handle.cam_opts.image_size_y_input.value(),
+        ),
+        &#34;hardware_binning&#34;: (1, 1),  # FIXME
+        # &#34;camera_trig_time&#34;: 10e-3, # Not needed should be set by the system
+        # Sweep
+        &#34;sweep_x&#34;: sweep_x,
+        # Laser settings
+        &#34;laser_delay&#34;: gui_handle.meas_opts.laser_delay_input.value() * 1e-9,
+        &#34;laser_dur&#34;: gui_handle.meas_opts.laser_dur_input.value() * 1e-9,
+        &#34;laser_to_rf_delay&#34;: 0,  # FIXME
+        # RF settings
+        &#34;rf_pow&#34;: gui_handle.meas_opts.rf_power_input.value(),
+        &#34;rf_freq&#34;: gui_handle.meas_opts.rf_freq_input.value(),
+        &#34;rf_dur&#34;: gui_handle.meas_opts.rf_duration_input.value() * 1e-9,
+        &#34;rf_delay&#34;: gui_handle.meas_opts.rf_delay_input.value() * 1e-9,
+        &#34;pi_dur&#34;: gui_handle.meas_opts.pi_pulse_input.value() * 1e-9,
+        &#34;pi_2_dur&#34;: gui_handle.meas_opts.pi_2_pulse_input.value() * 1e-9,
+        # test data params
+        &#34;peak_contrasts&#34;: (-0.4, -0.4),
+        &#34;peak_widths&#34;: (18, 22),
+        &#34;bg_zeeman&#34;: 0.0,
+        &#34;ft_zeeman&#34;: 50.0,
+        &#34;ft_width_dif&#34;: 5.0,
+        &#34;ft_height_dif&#34;: -0.004,
+        &#34;ft_centre&#34;: (None, None),
+        &#34;ft_rad&#34;: None,
+        &#34;ft_linewidth&#34;: 4.0,
+        &#34;noise_sigma&#34;: 500.0,
+    }
+
+    # FIXME delete
+    logger.info(
+        &#34;RF POWER: &#34;
+        + str(gui_handle.meas_opts.rf_power_input.value())
+        + &#34; of type: &#34;
+        + str(type(gui_handle.meas_opts.rf_power_input.value()))
+    )
+
+    logger.info(&#34;CONFIG DICT: &#34; + str(config_dict))
+
+    # Make a new dict that only contains the attributes of the config class
+    config_dict = {
+        key: config_dict[key]
+        for key in config_dict
+        if key in meas_config_class.__dataclass_fields__.keys()
+    }
+
+    return meas_config_class(**config_dict)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<form>
+<input id="lunr-search" name="q" placeholder="🔎 Search ..." aria-label="Search"
+disabled minlength="2">
+</form>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.css" integrity="sha512-b+T2i3P45i1LZM7I00Ci5QquB9szqaxu+uuk5TUSGjZQ4w4n+qujQiIuvTv2BxE7WCGQCifNMksyKILDiHzsOg==" crossorigin>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.js" integrity="sha512-2B9/byNV1KKRm5nQ2RLViPFD6U4dUjDGwuW1GU+ImJh8YinPU9Zlq1GzdTMO+G2ROrB5o1qasJBy1ttYz0wCug==" crossorigin></script>
+<style>
+.modal-dialog iframe {
+width: 100vw;
+height: calc(100vh - 80px);
+}
+@media screen and (min-width: 700px) {
+.modal-dialog iframe {
+width: 70vw;
+height: 80vh;
+}
+}
+.modal-dialog .tingle-modal-box {width: auto;}
+.modal-dialog .tingle-modal-box__content {padding: 0;}
+</style>
+<script>
+const input = document.getElementById('lunr-search');
+input.disabled = false;
+input.form.addEventListener('submit', (ev) => {
+ev.preventDefault();
+const url = new URL(window.location);
+url.searchParams.set('q', input.value);
+history.replaceState({}, null, url.toString());
+search(input.value);
+});
+const query = new URL(window.location).searchParams.get('q');
+if (query)
+search(query);
+function search(query) {
+const url = '../../../doc-search.html#' + encodeURIComponent(query);
+new tingle.modal({
+cssClass: ['modal-dialog'],
+onClose: () => {
+const url = new URL(window.location);
+url.searchParams.delete('q');
+history.replaceState({}, null, url.toString());
+setTimeout(() => input.focus(), 100);
+}
+}).setContent('<iframe src="' + url + '"></iframe>').open();
+}
+</script>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="qscope.gui.qmeas" href="index.html">qscope.gui.qmeas</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="qscope.gui.qmeas.meas_config.get_measurement_config" href="#qscope.gui.qmeas.meas_config.get_measurement_config">get_measurement_config</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
+</footer>
+</body>
+</html>

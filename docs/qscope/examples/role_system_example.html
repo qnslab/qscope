@@ -1,0 +1,708 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.6">
+<title>qscope.examples.role_system_example API documentation</title>
+<meta name="description" content="Example demonstrating the QScope role system architecture …">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>qscope.examples.role_system_example</code></h1>
+</header>
+<section id="section-intro">
+<p>Example demonstrating the QScope role system architecture.</p>
+<p>This example shows how the role system connects protocols, interfaces, roles, and devices
+to provide a flexible hardware abstraction layer. It includes:</p>
+<ol>
+<li>Creating a new protocol</li>
+<li>Creating a new interface</li>
+<li>Creating a new role</li>
+<li>Implementing a device for the role</li>
+<li>Using the device through the role interface</li>
+</ol>
+<p>The role system allows for hardware abstraction, making it possible to
+swap device implementations without changing measurement code.</p>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="qscope.examples.role_system_example.main"><code class="name flex">
+<span>def <span class="ident">main</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def main():
+    &#34;&#34;&#34;Demonstrate the role system in action.&#34;&#34;&#34;
+    # Import system classes
+    from qscope.system import System
+    from qscope.system.base_config import SystemConfig
+    
+    # Create a simple system config
+    sys_config = SystemConfig(
+        system_name=&#34;example_system&#34;,
+        system_type=System  # Pass the System class itself
+    )
+    
+    # Create a system with the config
+    system = System(sys_config)
+    
+    # Create device instance
+    motor = MockMotorController()
+    
+    # Add device with role
+    system.add_device_with_role(motor, MOTOR_CONTROLLER)
+    
+    # Get device by role (returns interface)
+    motor_controller = system.get_device_by_role(MOTOR_CONTROLLER)
+    
+    # Use interface methods
+    motor_controller.home()
+    motor_controller.move_to_position(10.5)
+    current_position = motor_controller.get_position()
+    print(f&#34;Current position: {current_position} mm&#34;)
+    
+    # This is the key benefit: measurements work with roles, not specific devices
+    # We could replace MockMotorController with a real hardware implementation
+    # without changing any of the code that uses it</code></pre>
+</details>
+<div class="desc"><p>Demonstrate the role system in action.</p></div>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="qscope.examples.role_system_example.MockMotorController"><code class="flex name class">
+<span>class <span class="ident">MockMotorController</span></span>
+<span>(</span><span>**config_kwargs)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class MockMotorController(Device):
+    &#34;&#34;&#34;Mock implementation of a motor controller.
+    
+    This class provides a simulated motor controller for testing
+    and demonstration purposes. It implements the MotorControllerProtocol
+    and can be used with the MotorController role.
+    &#34;&#34;&#34;
+    
+    def __init__(self, **config_kwargs):
+        &#34;&#34;&#34;Initialize the mock motor controller.
+        
+        Parameters
+        ----------
+        **config_kwargs
+            Configuration parameters
+        &#34;&#34;&#34;
+        super().__init__(**config_kwargs)
+        self._connected = False
+        self._position = 0.0
+    
+    def open(self) -&gt; tuple[bool, str]:
+        &#34;&#34;&#34;Connect to the device.
+        
+        Returns
+        -------
+        tuple[bool, str]
+            Success status and message
+        &#34;&#34;&#34;
+        self._connected = True
+        return True, &#34;Connected to mock motor controller&#34;
+    
+    def close(self):
+        &#34;&#34;&#34;Disconnect from the device.&#34;&#34;&#34;
+        self._connected = False
+    
+    def is_connected(self) -&gt; bool:
+        &#34;&#34;&#34;Check if the device is connected.
+        
+        Returns
+        -------
+        bool
+            True if connected, False otherwise
+        &#34;&#34;&#34;
+        return self._connected
+    
+    # Implement MotorControllerProtocol methods
+    def move_to_position(self, position: float) -&gt; None:
+        &#34;&#34;&#34;Move to the specified position.
+        
+        Parameters
+        ----------
+        position : float
+            Target position in mm
+        &#34;&#34;&#34;
+        print(f&#34;Moving to position {position} mm&#34;)
+        self._position = position
+    
+    def get_position(self) -&gt; float:
+        &#34;&#34;&#34;Get the current position.
+        
+        Returns
+        -------
+        float
+            Current position in mm
+        &#34;&#34;&#34;
+        return self._position
+    
+    def home(self) -&gt; None:
+        &#34;&#34;&#34;Move to the home position.&#34;&#34;&#34;
+        print(&#34;Homing motor&#34;)
+        self._position = 0.0</code></pre>
+</details>
+<div class="desc"><p>Mock implementation of a motor controller.</p>
+<p>This class provides a simulated motor controller for testing
+and demonstration purposes. It implements the MotorControllerProtocol
+and can be used with the MotorController role.</p>
+<p>Initialize the mock motor controller.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>**config_kwargs</code></strong></dt>
+<dd>Configuration parameters</dd>
+</dl></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.device.device.Device" href="../device/device.html#qscope.device.device.Device">Device</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.examples.role_system_example.MockMotorController.close"><code class="name flex">
+<span>def <span class="ident">close</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def close(self):
+    &#34;&#34;&#34;Disconnect from the device.&#34;&#34;&#34;
+    self._connected = False</code></pre>
+</details>
+<div class="desc"><p>Disconnect from the device.</p></div>
+</dd>
+<dt id="qscope.examples.role_system_example.MockMotorController.get_position"><code class="name flex">
+<span>def <span class="ident">get_position</span></span>(<span>self) ‑> float</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_position(self) -&gt; float:
+    &#34;&#34;&#34;Get the current position.
+    
+    Returns
+    -------
+    float
+        Current position in mm
+    &#34;&#34;&#34;
+    return self._position</code></pre>
+</details>
+<div class="desc"><p>Get the current position.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>float</code></dt>
+<dd>Current position in mm</dd>
+</dl></div>
+</dd>
+<dt id="qscope.examples.role_system_example.MockMotorController.home"><code class="name flex">
+<span>def <span class="ident">home</span></span>(<span>self) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def home(self) -&gt; None:
+    &#34;&#34;&#34;Move to the home position.&#34;&#34;&#34;
+    print(&#34;Homing motor&#34;)
+    self._position = 0.0</code></pre>
+</details>
+<div class="desc"><p>Move to the home position.</p></div>
+</dd>
+<dt id="qscope.examples.role_system_example.MockMotorController.is_connected"><code class="name flex">
+<span>def <span class="ident">is_connected</span></span>(<span>self) ‑> bool</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def is_connected(self) -&gt; bool:
+    &#34;&#34;&#34;Check if the device is connected.
+    
+    Returns
+    -------
+    bool
+        True if connected, False otherwise
+    &#34;&#34;&#34;
+    return self._connected</code></pre>
+</details>
+<div class="desc"><p>Check if the device is connected.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>bool</code></dt>
+<dd>True if connected, False otherwise</dd>
+</dl></div>
+</dd>
+<dt id="qscope.examples.role_system_example.MockMotorController.move_to_position"><code class="name flex">
+<span>def <span class="ident">move_to_position</span></span>(<span>self, position: float) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def move_to_position(self, position: float) -&gt; None:
+    &#34;&#34;&#34;Move to the specified position.
+    
+    Parameters
+    ----------
+    position : float
+        Target position in mm
+    &#34;&#34;&#34;
+    print(f&#34;Moving to position {position} mm&#34;)
+    self._position = position</code></pre>
+</details>
+<div class="desc"><p>Move to the specified position.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>position</code></strong> :&ensp;<code>float</code></dt>
+<dd>Target position in mm</dd>
+</dl></div>
+</dd>
+<dt id="qscope.examples.role_system_example.MockMotorController.open"><code class="name flex">
+<span>def <span class="ident">open</span></span>(<span>self) ‑> tuple[bool, str]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def open(self) -&gt; tuple[bool, str]:
+    &#34;&#34;&#34;Connect to the device.
+    
+    Returns
+    -------
+    tuple[bool, str]
+        Success status and message
+    &#34;&#34;&#34;
+    self._connected = True
+    return True, &#34;Connected to mock motor controller&#34;</code></pre>
+</details>
+<div class="desc"><p>Connect to the device.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>tuple[bool, str]</code></dt>
+<dd>Success status and message</dd>
+</dl></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="qscope.device.device.Device" href="../device/device.html#qscope.device.device.Device">Device</a></b></code>:
+<ul class="hlist">
+<li><code><a title="qscope.device.device.Device.get_all_attrs" href="../device/device.html#qscope.device.device.Device.get_all_attrs">get_all_attrs</a></code></li>
+<li><code><a title="qscope.device.device.Device.get_roles" href="../device/device.html#qscope.device.device.Device.get_roles">get_roles</a></code></li>
+<li><code><a title="qscope.device.device.Device.has_role" href="../device/device.html#qscope.device.device.Device.has_role">has_role</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="qscope.examples.role_system_example.MotorController"><code class="flex name class">
+<span>class <span class="ident">MotorController</span></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class MotorController(DeviceRole[MotorControllerProtocol]):
+    &#34;&#34;&#34;Role for motor controller devices.
+    
+    This role represents devices that can control motorized stages
+    or positioners. Devices fulfilling this role must implement
+    the MotorControllerProtocol.
+    &#34;&#34;&#34;
+    interface_class = MotorControllerInterface</code></pre>
+</details>
+<div class="desc"><p>Role for motor controller devices.</p>
+<p>This role represents devices that can control motorized stages
+or positioners. Devices fulfilling this role must implement
+the MotorControllerProtocol.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.roles.DeviceRole" href="../types/roles.html#qscope.types.roles.DeviceRole">DeviceRole</a></li>
+<li>typing.Generic</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="qscope.examples.role_system_example.MotorController.interface_class"><code class="name">var <span class="ident">interface_class</span> : Type[<a title="qscope.types.interfaces.RoleInterface" href="../types/interfaces.html#qscope.types.interfaces.RoleInterface">RoleInterface</a>]</code></dt>
+<dd>
+<div class="desc"><p>Interface for motor controller devices.</p>
+<p>This interface provides methods for controlling motorized stages
+or positioners. It wraps a device implementing MotorControllerProtocol
+and provides a clean, type-safe API for motor control operations.</p></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="qscope.types.roles.DeviceRole" href="../types/roles.html#qscope.types.roles.DeviceRole">DeviceRole</a></b></code>:
+<ul class="hlist">
+<li><code><a title="qscope.types.roles.DeviceRole.get_interface" href="../types/roles.html#qscope.types.roles.DeviceRole.get_interface">get_interface</a></code></li>
+<li><code><a title="qscope.types.roles.DeviceRole.validate_device_type" href="../types/roles.html#qscope.types.roles.DeviceRole.validate_device_type">validate_device_type</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="qscope.examples.role_system_example.MotorControllerInterface"><code class="flex name class">
+<span>class <span class="ident">MotorControllerInterface</span></span>
+<span>(</span><span>device: <a title="qscope.examples.role_system_example.MotorControllerProtocol" href="#qscope.examples.role_system_example.MotorControllerProtocol">MotorControllerProtocol</a>)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class MotorControllerInterface(RoleInterface):
+    &#34;&#34;&#34;Interface for motor controller devices.
+    
+    This interface provides methods for controlling motorized stages
+    or positioners. It wraps a device implementing MotorControllerProtocol
+    and provides a clean, type-safe API for motor control operations.
+    &#34;&#34;&#34;
+    
+    def __init__(self, device: MotorControllerProtocol):
+        &#34;&#34;&#34;Initialize the motor controller interface.
+        
+        Parameters
+        ----------
+        device : MotorControllerProtocol
+            Device implementing the MotorControllerProtocol
+        &#34;&#34;&#34;
+        super().__init__(device)
+    
+    def move_to_position(self, position: float) -&gt; None:
+        &#34;&#34;&#34;Move motor to specified position.
+        
+        Parameters
+        ----------
+        position : float
+            Target position in mm
+        &#34;&#34;&#34;
+        return self._device.move_to_position(position)
+    
+    def get_position(self) -&gt; float:
+        &#34;&#34;&#34;Get current motor position.
+        
+        Returns
+        -------
+        float
+            Current position in mm
+        &#34;&#34;&#34;
+        return self._device.get_position()
+    
+    def home(self) -&gt; None:
+        &#34;&#34;&#34;Move motor to home position.&#34;&#34;&#34;
+        return self._device.home()</code></pre>
+</details>
+<div class="desc"><p>Interface for motor controller devices.</p>
+<p>This interface provides methods for controlling motorized stages
+or positioners. It wraps a device implementing MotorControllerProtocol
+and provides a clean, type-safe API for motor control operations.</p>
+<p>Initialize the motor controller interface.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>device</code></strong> :&ensp;<code><a title="qscope.examples.role_system_example.MotorControllerProtocol" href="#qscope.examples.role_system_example.MotorControllerProtocol">MotorControllerProtocol</a></code></dt>
+<dd>Device implementing the MotorControllerProtocol</dd>
+</dl></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.interfaces.RoleInterface" href="../types/interfaces.html#qscope.types.interfaces.RoleInterface">RoleInterface</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.examples.role_system_example.MotorControllerInterface.get_position"><code class="name flex">
+<span>def <span class="ident">get_position</span></span>(<span>self) ‑> float</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_position(self) -&gt; float:
+    &#34;&#34;&#34;Get current motor position.
+    
+    Returns
+    -------
+    float
+        Current position in mm
+    &#34;&#34;&#34;
+    return self._device.get_position()</code></pre>
+</details>
+<div class="desc"><p>Get current motor position.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>float</code></dt>
+<dd>Current position in mm</dd>
+</dl></div>
+</dd>
+<dt id="qscope.examples.role_system_example.MotorControllerInterface.home"><code class="name flex">
+<span>def <span class="ident">home</span></span>(<span>self) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def home(self) -&gt; None:
+    &#34;&#34;&#34;Move motor to home position.&#34;&#34;&#34;
+    return self._device.home()</code></pre>
+</details>
+<div class="desc"><p>Move motor to home position.</p></div>
+</dd>
+<dt id="qscope.examples.role_system_example.MotorControllerInterface.move_to_position"><code class="name flex">
+<span>def <span class="ident">move_to_position</span></span>(<span>self, position: float) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def move_to_position(self, position: float) -&gt; None:
+    &#34;&#34;&#34;Move motor to specified position.
+    
+    Parameters
+    ----------
+    position : float
+        Target position in mm
+    &#34;&#34;&#34;
+    return self._device.move_to_position(position)</code></pre>
+</details>
+<div class="desc"><p>Move motor to specified position.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>position</code></strong> :&ensp;<code>float</code></dt>
+<dd>Target position in mm</dd>
+</dl></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.examples.role_system_example.MotorControllerProtocol"><code class="flex name class">
+<span>class <span class="ident">MotorControllerProtocol</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@runtime_checkable
+class MotorControllerProtocol(Protocol):
+    &#34;&#34;&#34;Protocol for motor controller devices.
+    
+    This protocol defines the methods required for devices that control
+    motorized stages or positioners. Devices implementing this protocol
+    can be used with the MotorController role.
+    &#34;&#34;&#34;
+    
+    def move_to_position(self, position: float) -&gt; None:
+        &#34;&#34;&#34;Move to the specified position.
+        
+        Parameters
+        ----------
+        position : float
+            Target position in mm
+        &#34;&#34;&#34;
+        ...
+    
+    def get_position(self) -&gt; float:
+        &#34;&#34;&#34;Get the current position.
+        
+        Returns
+        -------
+        float
+            Current position in mm
+        &#34;&#34;&#34;
+        ...
+    
+    def home(self) -&gt; None:
+        &#34;&#34;&#34;Move to the home position.&#34;&#34;&#34;
+        ...</code></pre>
+</details>
+<div class="desc"><p>Protocol for motor controller devices.</p>
+<p>This protocol defines the methods required for devices that control
+motorized stages or positioners. Devices implementing this protocol
+can be used with the MotorController role.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>typing.Protocol</li>
+<li>typing.Generic</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.examples.role_system_example.MotorControllerProtocol.get_position"><code class="name flex">
+<span>def <span class="ident">get_position</span></span>(<span>self) ‑> float</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_position(self) -&gt; float:
+    &#34;&#34;&#34;Get the current position.
+    
+    Returns
+    -------
+    float
+        Current position in mm
+    &#34;&#34;&#34;
+    ...</code></pre>
+</details>
+<div class="desc"><p>Get the current position.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>float</code></dt>
+<dd>Current position in mm</dd>
+</dl></div>
+</dd>
+<dt id="qscope.examples.role_system_example.MotorControllerProtocol.home"><code class="name flex">
+<span>def <span class="ident">home</span></span>(<span>self) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def home(self) -&gt; None:
+    &#34;&#34;&#34;Move to the home position.&#34;&#34;&#34;
+    ...</code></pre>
+</details>
+<div class="desc"><p>Move to the home position.</p></div>
+</dd>
+<dt id="qscope.examples.role_system_example.MotorControllerProtocol.move_to_position"><code class="name flex">
+<span>def <span class="ident">move_to_position</span></span>(<span>self, position: float) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def move_to_position(self, position: float) -&gt; None:
+    &#34;&#34;&#34;Move to the specified position.
+    
+    Parameters
+    ----------
+    position : float
+        Target position in mm
+    &#34;&#34;&#34;
+    ...</code></pre>
+</details>
+<div class="desc"><p>Move to the specified position.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>position</code></strong> :&ensp;<code>float</code></dt>
+<dd>Target position in mm</dd>
+</dl></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="qscope.examples" href="index.html">qscope.examples</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="qscope.examples.role_system_example.main" href="#qscope.examples.role_system_example.main">main</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="qscope.examples.role_system_example.MockMotorController" href="#qscope.examples.role_system_example.MockMotorController">MockMotorController</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.examples.role_system_example.MockMotorController.close" href="#qscope.examples.role_system_example.MockMotorController.close">close</a></code></li>
+<li><code><a title="qscope.examples.role_system_example.MockMotorController.get_position" href="#qscope.examples.role_system_example.MockMotorController.get_position">get_position</a></code></li>
+<li><code><a title="qscope.examples.role_system_example.MockMotorController.home" href="#qscope.examples.role_system_example.MockMotorController.home">home</a></code></li>
+<li><code><a title="qscope.examples.role_system_example.MockMotorController.is_connected" href="#qscope.examples.role_system_example.MockMotorController.is_connected">is_connected</a></code></li>
+<li><code><a title="qscope.examples.role_system_example.MockMotorController.move_to_position" href="#qscope.examples.role_system_example.MockMotorController.move_to_position">move_to_position</a></code></li>
+<li><code><a title="qscope.examples.role_system_example.MockMotorController.open" href="#qscope.examples.role_system_example.MockMotorController.open">open</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.examples.role_system_example.MotorController" href="#qscope.examples.role_system_example.MotorController">MotorController</a></code></h4>
+<ul class="">
+<li><code><a title="qscope.examples.role_system_example.MotorController.interface_class" href="#qscope.examples.role_system_example.MotorController.interface_class">interface_class</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.examples.role_system_example.MotorControllerInterface" href="#qscope.examples.role_system_example.MotorControllerInterface">MotorControllerInterface</a></code></h4>
+<ul class="">
+<li><code><a title="qscope.examples.role_system_example.MotorControllerInterface.get_position" href="#qscope.examples.role_system_example.MotorControllerInterface.get_position">get_position</a></code></li>
+<li><code><a title="qscope.examples.role_system_example.MotorControllerInterface.home" href="#qscope.examples.role_system_example.MotorControllerInterface.home">home</a></code></li>
+<li><code><a title="qscope.examples.role_system_example.MotorControllerInterface.move_to_position" href="#qscope.examples.role_system_example.MotorControllerInterface.move_to_position">move_to_position</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.examples.role_system_example.MotorControllerProtocol" href="#qscope.examples.role_system_example.MotorControllerProtocol">MotorControllerProtocol</a></code></h4>
+<ul class="">
+<li><code><a title="qscope.examples.role_system_example.MotorControllerProtocol.get_position" href="#qscope.examples.role_system_example.MotorControllerProtocol.get_position">get_position</a></code></li>
+<li><code><a title="qscope.examples.role_system_example.MotorControllerProtocol.home" href="#qscope.examples.role_system_example.MotorControllerProtocol.home">home</a></code></li>
+<li><code><a title="qscope.examples.role_system_example.MotorControllerProtocol.move_to_position" href="#qscope.examples.role_system_example.MotorControllerProtocol.move_to_position">move_to_position</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
+</footer>
+</body>
+</html>

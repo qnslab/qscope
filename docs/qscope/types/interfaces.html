@@ -1,0 +1,1365 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.6">
+<title>qscope.types.interfaces API documentation</title>
+<meta name="description" content="Role interfaces that wrap devices and provide role-specific functionality …">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}#lunr-search{width:100%;font-size:1em;padding:6px 9px 5px 9px;border:1px solid silver}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes: true } });</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML" integrity="sha256-kZafAc6mZvK3W3v1pHOcUix30OHQN6pU/NO2oFkqZVw=" crossorigin></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>qscope.types.interfaces</code></h1>
+</header>
+<section id="section-intro">
+<p>Role interfaces that wrap devices and provide role-specific functionality.</p>
+<p>This module defines interface classes that wrap devices and provide role-specific
+access to their functionality. Interfaces ensure type safety and provide a clean API
+for accessing device capabilities through roles.</p>
+<h2 id="the-interface-pattern">The Interface Pattern</h2>
+<p>Interfaces serve several purposes:</p>
+<ol>
+<li>Type Safety - They ensure devices implement required protocols</li>
+<li>API Consistency - They provide a standard way to access role-specific functionality</li>
+<li>Abstraction - They hide device implementation details</li>
+<li>Documentation - They clearly specify the methods available for each role</li>
+</ol>
+<h2 id="interface-architecture-in-qscope">Interface Architecture In Qscope</h2>
+<p>Interfaces are a key component of QScope's hardware abstraction layer:</p>
+<ol>
+<li>Base Interface (RoleInterface)</li>
+<li>Provides common functionality for all interfaces</li>
+<li>Wraps a device instance</li>
+<li>
+<p>Serves as the foundation for role-specific interfaces</p>
+</li>
+<li>
+<p>Role-Specific Interfaces</p>
+</li>
+<li>Inherit from RoleInterface</li>
+<li>Provide methods specific to their role</li>
+<li>Add documentation, type hints, and parameter validation</li>
+<li>
+<p>Can add additional logic beyond simple device method calls</p>
+</li>
+<li>
+<p>System Integration</p>
+</li>
+<li>System.get_device_by_role() returns the appropriate interface</li>
+<li>Measurements work with interfaces, not raw devices</li>
+<li>Interface methods call the underlying device methods</li>
+</ol>
+<h2 id="interface-implementation-pattern">Interface Implementation Pattern</h2>
+<p>Each interface follows a consistent pattern:</p>
+<ol>
+<li>Constructor accepts a device implementing the corresponding protocol</li>
+<li>Methods match protocol methods but add documentation and type hints</li>
+<li>Method implementations call the corresponding device methods</li>
+<li>Additional logic can be added for parameter validation or processing</li>
+</ol>
+<p>This pattern ensures that interfaces provide a consistent, well-documented API
+while delegating actual implementation to the device.</p>
+<h2 id="example">Example</h2>
+<p>Using a device through its role interface:</p>
+<pre><code># Get device by role - returns appropriate interface
+rf_source = system.get_device_by_role(PRIMARY_RF)
+
+# Use interface methods - type safe and well documented
+rf_source.set_freq(2.5)  # MHz
+rf_source.set_power(-10)  # dBm
+
+# Interface ensures device implements required methods
+rf_source.set_state(True)
+</code></pre>
+<p>The interface pattern allows devices to be used safely through their roles while
+maintaining type checking and providing clear documentation.</p>
+<h2 id="creating-a-new-interface">Creating A New Interface</h2>
+<p>To create a new interface:</p>
+<ol>
+<li>Define a protocol in protocols.py</li>
+<li>Create an interface class that inherits from RoleInterface</li>
+<li>Accept a device implementing the protocol in the constructor</li>
+<li>Implement methods that call the corresponding device methods</li>
+<li>Add comprehensive documentation and type hints</li>
+</ol>
+<p>Example:</p>
+<pre><code>class MyNewInterface(RoleInterface):
+    def __init__(self, device: MyNewProtocol):
+        super().__init__(device)
+
+    def do_something(self, param: int) -&gt; str:
+        '''Do something with the device.
+
+        Parameters
+        ----------
+        param : int
+            Description of parameter
+
+        Returns
+        -------
+        str
+            Description of return value
+        '''
+        return self._device.do_something(param)
+</code></pre>
+<h2 id="see-also">See Also</h2>
+<dl>
+<dt><code><a title="qscope.types.protocols" href="protocols.html">qscope.types.protocols</a></code></dt>
+<dd>Protocol definitions</dd>
+<dt><code><a title="qscope.types.roles" href="roles.html">qscope.types.roles</a></code></dt>
+<dd>Role definitions and validation</dd>
+<dt><code><a title="qscope.device" href="../device/index.html">qscope.device</a></code></dt>
+<dd>Device implementations</dd>
+</dl>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="qscope.types.interfaces.CameraInterface"><code class="flex name class">
+<span>class <span class="ident">CameraInterface</span></span>
+<span>(</span><span>device: CameraProtocol)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class CameraInterface(RoleInterface):
+    &#34;&#34;&#34;Interface for camera functionality.
+    
+    This interface provides methods for controlling scientific cameras
+    and retrieving image data. It wraps a device implementing CameraProtocol
+    and provides a clean, type-safe API for camera operations.
+    
+    Typical usage:
+    ```python
+    # Get camera interface from system
+    camera = system.get_device_by_role(MAIN_CAMERA)
+    
+    # Configure camera
+    camera.set_exposure_time(0.1)  # 100ms exposure
+    camera.set_hardware_binning((2, 2))  # 2x2 binning
+    
+    # Take an image
+    image = camera.take_snapshot()
+    
+    # Get image dimensions
+    width, height = camera.get_frame_shape()
+    ```
+    &#34;&#34;&#34;
+    
+    def __init__(self, device: CameraProtocol):
+        &#34;&#34;&#34;Initialize the camera interface.
+        
+        Parameters
+        ----------
+        device : CameraProtocol
+            Device implementing the CameraProtocol
+        &#34;&#34;&#34;
+        super().__init__(device)
+        
+    def take_snapshot(self) -&gt; np.ndarray:
+        &#34;&#34;&#34;Take a single image.
+        
+        Returns
+        -------
+        np.ndarray
+            2D numpy array containing the image data
+        &#34;&#34;&#34;
+        return self._device.take_snapshot()
+        
+    def set_exposure_time(self, value: float) -&gt; None:
+        &#34;&#34;&#34;Set exposure time in seconds.
+        
+        Parameters
+        ----------
+        value : float
+            Exposure time in seconds
+        &#34;&#34;&#34;
+        return self._device.set_exposure_time(value)
+        
+    def get_frame_shape(self) -&gt; tuple[int, int]:
+        &#34;&#34;&#34;Get current frame dimensions.
+        
+        Returns
+        -------
+        tuple[int, int]
+            Frame dimensions as (width, height) in pixels
+        &#34;&#34;&#34;
+        return self._device.get_frame_shape()
+        
+    def set_hardware_binning(self, binning: tuple[int, int]) -&gt; tuple[int, int]:
+        &#34;&#34;&#34;Set hardware binning factors.
+        
+        Parameters
+        ----------
+        binning : tuple[int, int]
+            Binning factors as (horizontal, vertical)
+            
+        Returns
+        -------
+        tuple[int, int]
+            Actual binning factors applied
+        &#34;&#34;&#34;
+        return self._device.set_hardware_binning(binning)</code></pre>
+</details>
+<div class="desc"><p>Interface for camera functionality.</p>
+<p>This interface provides methods for controlling scientific cameras
+and retrieving image data. It wraps a device implementing CameraProtocol
+and provides a clean, type-safe API for camera operations.</p>
+<p>Typical usage:</p>
+<pre><code class="language-python"># Get camera interface from system
+camera = system.get_device_by_role(MAIN_CAMERA)
+
+# Configure camera
+camera.set_exposure_time(0.1)  # 100ms exposure
+camera.set_hardware_binning((2, 2))  # 2x2 binning
+
+# Take an image
+image = camera.take_snapshot()
+
+# Get image dimensions
+width, height = camera.get_frame_shape()
+</code></pre>
+<p>Initialize the camera interface.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>device</code></strong> :&ensp;<code>CameraProtocol</code></dt>
+<dd>Device implementing the CameraProtocol</dd>
+</dl></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.interfaces.RoleInterface" href="#qscope.types.interfaces.RoleInterface">RoleInterface</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.types.interfaces.CameraInterface.get_frame_shape"><code class="name flex">
+<span>def <span class="ident">get_frame_shape</span></span>(<span>self) ‑> tuple[int, int]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_frame_shape(self) -&gt; tuple[int, int]:
+    &#34;&#34;&#34;Get current frame dimensions.
+    
+    Returns
+    -------
+    tuple[int, int]
+        Frame dimensions as (width, height) in pixels
+    &#34;&#34;&#34;
+    return self._device.get_frame_shape()</code></pre>
+</details>
+<div class="desc"><p>Get current frame dimensions.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>tuple[int, int]</code></dt>
+<dd>Frame dimensions as (width, height) in pixels</dd>
+</dl></div>
+</dd>
+<dt id="qscope.types.interfaces.CameraInterface.set_exposure_time"><code class="name flex">
+<span>def <span class="ident">set_exposure_time</span></span>(<span>self, value: float) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_exposure_time(self, value: float) -&gt; None:
+    &#34;&#34;&#34;Set exposure time in seconds.
+    
+    Parameters
+    ----------
+    value : float
+        Exposure time in seconds
+    &#34;&#34;&#34;
+    return self._device.set_exposure_time(value)</code></pre>
+</details>
+<div class="desc"><p>Set exposure time in seconds.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>value</code></strong> :&ensp;<code>float</code></dt>
+<dd>Exposure time in seconds</dd>
+</dl></div>
+</dd>
+<dt id="qscope.types.interfaces.CameraInterface.set_hardware_binning"><code class="name flex">
+<span>def <span class="ident">set_hardware_binning</span></span>(<span>self, binning: tuple[int, int]) ‑> tuple[int, int]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_hardware_binning(self, binning: tuple[int, int]) -&gt; tuple[int, int]:
+    &#34;&#34;&#34;Set hardware binning factors.
+    
+    Parameters
+    ----------
+    binning : tuple[int, int]
+        Binning factors as (horizontal, vertical)
+        
+    Returns
+    -------
+    tuple[int, int]
+        Actual binning factors applied
+    &#34;&#34;&#34;
+    return self._device.set_hardware_binning(binning)</code></pre>
+</details>
+<div class="desc"><p>Set hardware binning factors.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>binning</code></strong> :&ensp;<code>tuple[int, int]</code></dt>
+<dd>Binning factors as (horizontal, vertical)</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>tuple[int, int]</code></dt>
+<dd>Actual binning factors applied</dd>
+</dl></div>
+</dd>
+<dt id="qscope.types.interfaces.CameraInterface.take_snapshot"><code class="name flex">
+<span>def <span class="ident">take_snapshot</span></span>(<span>self) ‑> numpy.ndarray</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def take_snapshot(self) -&gt; np.ndarray:
+    &#34;&#34;&#34;Take a single image.
+    
+    Returns
+    -------
+    np.ndarray
+        2D numpy array containing the image data
+    &#34;&#34;&#34;
+    return self._device.take_snapshot()</code></pre>
+</details>
+<div class="desc"><p>Take a single image.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>np.ndarray</code></dt>
+<dd>2D numpy array containing the image data</dd>
+</dl></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.types.interfaces.DigitizerInterface"><code class="flex name class">
+<span>class <span class="ident">DigitizerInterface</span></span>
+<span>(</span><span>device: DigitizerProtocol)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class DigitizerInterface(RoleInterface):
+    &#34;&#34;&#34;Interface for digitizer functionality.
+    
+    This interface provides methods for configuring and controlling data
+    acquisition devices. It wraps a device implementing DigitizerProtocol
+    and provides a clean, type-safe API for digitizer operations.
+    
+    Typical usage:
+    ```python
+    # Get digitizer interface from system
+    digitizer = system.get_device_by_role(MAIN_DIGITIZER)
+    
+    # Configure channels
+    digitizer.configure_channels([0, 1], [5.0, 2.0], [&#34;DC&#34;, &#34;AC&#34;])
+    
+    # Start streaming acquisition
+    digitizer.start_streaming(1e-6, 1000)
+    
+    # Get acquired data
+    times, (ch0_data, ch1_data) = digitizer.get_data()
+    
+    # Stop acquisition
+    digitizer.stop_streaming()
+    ```
+    &#34;&#34;&#34;
+    
+    def __init__(self, device: DigitizerProtocol):
+        &#34;&#34;&#34;Initialize the digitizer interface.
+        
+        Parameters
+        ----------
+        device : DigitizerProtocol
+            Device implementing the DigitizerProtocol
+        &#34;&#34;&#34;
+        super().__init__(device)
+        
+    def configure_channels(
+        self,
+        channels: List[int],
+        ranges: List[Union[float, str]],
+        coupling: Optional[List[str]] = None
+    ) -&gt; None:
+        &#34;&#34;&#34;Configure input channels.
+        
+        Parameters
+        ----------
+        channels : List[int]
+            List of channel indices to configure
+        ranges : List[Union[float, str]]
+            List of voltage ranges for each channel
+        coupling : Optional[List[str]], optional
+            List of coupling modes (&#39;AC&#39; or &#39;DC&#39;) for each channel
+        &#34;&#34;&#34;
+        return self._device.configure_channels(channels, ranges, coupling)
+        
+    def start_streaming(
+        self,
+        sample_interval_s: float,
+        buffer_size: int,
+        num_buffers: Optional[int] = None,
+        trigger_enabled: bool = False,
+        trigger_channel: Optional[int] = None,
+        trigger_threshold: Optional[float] = None,
+        trigger_direction: str = &#34;RISING&#34;,
+        trigger_delay: float = 0.0,
+    ) -&gt; None:
+        &#34;&#34;&#34;Start streaming data acquisition.
+        
+        Parameters
+        ----------
+        sample_interval_s : float
+            Time between samples in seconds
+        buffer_size : int
+            Number of samples per buffer
+        num_buffers : Optional[int], optional
+            Number of buffers to use, by default None
+        trigger_enabled : bool, optional
+            Whether to use hardware triggering, by default False
+        trigger_channel : Optional[int], optional
+            Channel to use for triggering, by default None
+        trigger_threshold : Optional[float], optional
+            Voltage threshold for trigger, by default None
+        trigger_direction : str, optional
+            Trigger direction (&#39;RISING&#39;, &#39;FALLING&#39;), by default &#34;RISING&#34;
+        trigger_delay : float, optional
+            Delay after trigger in seconds, by default 0.0
+        &#34;&#34;&#34;
+        return self._device.start_streaming(
+            sample_interval_s,
+            buffer_size,
+            num_buffers,
+            trigger_enabled,
+            trigger_channel,
+            trigger_threshold,
+            trigger_direction,
+            trigger_delay
+        )
+        
+    def stop_streaming(self) -&gt; None:
+        &#34;&#34;&#34;Stop streaming data acquisition.&#34;&#34;&#34;
+        return self._device.stop_streaming()
+        
+    def get_data(
+        self, 
+        timeout: float = 10.0
+    ) -&gt; Tuple[np.ndarray, Tuple[np.ndarray, ...]]:
+        &#34;&#34;&#34;Get acquired data from all enabled channels.
+        
+        Parameters
+        ----------
+        timeout : float, optional
+            Maximum time to wait for data in seconds, by default 10.0
+            
+        Returns
+        -------
+        Tuple[np.ndarray, Tuple[np.ndarray, ...]]
+            Tuple containing:
+            - Time array (np.ndarray)
+            - Tuple of channel data arrays (one np.ndarray per channel)
+        &#34;&#34;&#34;
+        return self._device.get_data(timeout)</code></pre>
+</details>
+<div class="desc"><p>Interface for digitizer functionality.</p>
+<p>This interface provides methods for configuring and controlling data
+acquisition devices. It wraps a device implementing DigitizerProtocol
+and provides a clean, type-safe API for digitizer operations.</p>
+<p>Typical usage:</p>
+<pre><code class="language-python"># Get digitizer interface from system
+digitizer = system.get_device_by_role(MAIN_DIGITIZER)
+
+# Configure channels
+digitizer.configure_channels([0, 1], [5.0, 2.0], [&quot;DC&quot;, &quot;AC&quot;])
+
+# Start streaming acquisition
+digitizer.start_streaming(1e-6, 1000)
+
+# Get acquired data
+times, (ch0_data, ch1_data) = digitizer.get_data()
+
+# Stop acquisition
+digitizer.stop_streaming()
+</code></pre>
+<p>Initialize the digitizer interface.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>device</code></strong> :&ensp;<code>DigitizerProtocol</code></dt>
+<dd>Device implementing the DigitizerProtocol</dd>
+</dl></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.interfaces.RoleInterface" href="#qscope.types.interfaces.RoleInterface">RoleInterface</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.types.interfaces.DigitizerInterface.configure_channels"><code class="name flex">
+<span>def <span class="ident">configure_channels</span></span>(<span>self,<br>channels: List[int],<br>ranges: List[Union[float, str]],<br>coupling: Optional[List[str]] = None) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def configure_channels(
+    self,
+    channels: List[int],
+    ranges: List[Union[float, str]],
+    coupling: Optional[List[str]] = None
+) -&gt; None:
+    &#34;&#34;&#34;Configure input channels.
+    
+    Parameters
+    ----------
+    channels : List[int]
+        List of channel indices to configure
+    ranges : List[Union[float, str]]
+        List of voltage ranges for each channel
+    coupling : Optional[List[str]], optional
+        List of coupling modes (&#39;AC&#39; or &#39;DC&#39;) for each channel
+    &#34;&#34;&#34;
+    return self._device.configure_channels(channels, ranges, coupling)</code></pre>
+</details>
+<div class="desc"><p>Configure input channels.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>channels</code></strong> :&ensp;<code>List[int]</code></dt>
+<dd>List of channel indices to configure</dd>
+<dt><strong><code>ranges</code></strong> :&ensp;<code>List[Union[float, str]]</code></dt>
+<dd>List of voltage ranges for each channel</dd>
+<dt><strong><code>coupling</code></strong> :&ensp;<code>Optional[List[str]]</code>, optional</dt>
+<dd>List of coupling modes ('AC' or 'DC') for each channel</dd>
+</dl></div>
+</dd>
+<dt id="qscope.types.interfaces.DigitizerInterface.get_data"><code class="name flex">
+<span>def <span class="ident">get_data</span></span>(<span>self, timeout: float = 10.0) ‑> Tuple[numpy.ndarray, Tuple[numpy.ndarray, ...]]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_data(
+    self, 
+    timeout: float = 10.0
+) -&gt; Tuple[np.ndarray, Tuple[np.ndarray, ...]]:
+    &#34;&#34;&#34;Get acquired data from all enabled channels.
+    
+    Parameters
+    ----------
+    timeout : float, optional
+        Maximum time to wait for data in seconds, by default 10.0
+        
+    Returns
+    -------
+    Tuple[np.ndarray, Tuple[np.ndarray, ...]]
+        Tuple containing:
+        - Time array (np.ndarray)
+        - Tuple of channel data arrays (one np.ndarray per channel)
+    &#34;&#34;&#34;
+    return self._device.get_data(timeout)</code></pre>
+</details>
+<div class="desc"><p>Get acquired data from all enabled channels.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>timeout</code></strong> :&ensp;<code>float</code>, optional</dt>
+<dd>Maximum time to wait for data in seconds, by default 10.0</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Tuple[np.ndarray, Tuple[np.ndarray, &hellip;]]</code></dt>
+<dd>Tuple containing:
+- Time array (np.ndarray)
+- Tuple of channel data arrays (one np.ndarray per channel)</dd>
+</dl></div>
+</dd>
+<dt id="qscope.types.interfaces.DigitizerInterface.start_streaming"><code class="name flex">
+<span>def <span class="ident">start_streaming</span></span>(<span>self,<br>sample_interval_s: float,<br>buffer_size: int,<br>num_buffers: Optional[int] = None,<br>trigger_enabled: bool = False,<br>trigger_channel: Optional[int] = None,<br>trigger_threshold: Optional[float] = None,<br>trigger_direction: str = 'RISING',<br>trigger_delay: float = 0.0) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def start_streaming(
+    self,
+    sample_interval_s: float,
+    buffer_size: int,
+    num_buffers: Optional[int] = None,
+    trigger_enabled: bool = False,
+    trigger_channel: Optional[int] = None,
+    trigger_threshold: Optional[float] = None,
+    trigger_direction: str = &#34;RISING&#34;,
+    trigger_delay: float = 0.0,
+) -&gt; None:
+    &#34;&#34;&#34;Start streaming data acquisition.
+    
+    Parameters
+    ----------
+    sample_interval_s : float
+        Time between samples in seconds
+    buffer_size : int
+        Number of samples per buffer
+    num_buffers : Optional[int], optional
+        Number of buffers to use, by default None
+    trigger_enabled : bool, optional
+        Whether to use hardware triggering, by default False
+    trigger_channel : Optional[int], optional
+        Channel to use for triggering, by default None
+    trigger_threshold : Optional[float], optional
+        Voltage threshold for trigger, by default None
+    trigger_direction : str, optional
+        Trigger direction (&#39;RISING&#39;, &#39;FALLING&#39;), by default &#34;RISING&#34;
+    trigger_delay : float, optional
+        Delay after trigger in seconds, by default 0.0
+    &#34;&#34;&#34;
+    return self._device.start_streaming(
+        sample_interval_s,
+        buffer_size,
+        num_buffers,
+        trigger_enabled,
+        trigger_channel,
+        trigger_threshold,
+        trigger_direction,
+        trigger_delay
+    )</code></pre>
+</details>
+<div class="desc"><p>Start streaming data acquisition.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>sample_interval_s</code></strong> :&ensp;<code>float</code></dt>
+<dd>Time between samples in seconds</dd>
+<dt><strong><code>buffer_size</code></strong> :&ensp;<code>int</code></dt>
+<dd>Number of samples per buffer</dd>
+<dt><strong><code>num_buffers</code></strong> :&ensp;<code>Optional[int]</code>, optional</dt>
+<dd>Number of buffers to use, by default None</dd>
+<dt><strong><code>trigger_enabled</code></strong> :&ensp;<code>bool</code>, optional</dt>
+<dd>Whether to use hardware triggering, by default False</dd>
+<dt><strong><code>trigger_channel</code></strong> :&ensp;<code>Optional[int]</code>, optional</dt>
+<dd>Channel to use for triggering, by default None</dd>
+<dt><strong><code>trigger_threshold</code></strong> :&ensp;<code>Optional[float]</code>, optional</dt>
+<dd>Voltage threshold for trigger, by default None</dd>
+<dt><strong><code>trigger_direction</code></strong> :&ensp;<code>str</code>, optional</dt>
+<dd>Trigger direction ('RISING', 'FALLING'), by default "RISING"</dd>
+<dt><strong><code>trigger_delay</code></strong> :&ensp;<code>float</code>, optional</dt>
+<dd>Delay after trigger in seconds, by default 0.0</dd>
+</dl></div>
+</dd>
+<dt id="qscope.types.interfaces.DigitizerInterface.stop_streaming"><code class="name flex">
+<span>def <span class="ident">stop_streaming</span></span>(<span>self) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def stop_streaming(self) -&gt; None:
+    &#34;&#34;&#34;Stop streaming data acquisition.&#34;&#34;&#34;
+    return self._device.stop_streaming()</code></pre>
+</details>
+<div class="desc"><p>Stop streaming data acquisition.</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.types.interfaces.RFSourceInterface"><code class="flex name class">
+<span>class <span class="ident">RFSourceInterface</span></span>
+<span>(</span><span>device: RFSourceProtocol)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class RFSourceInterface(RoleInterface):
+    &#34;&#34;&#34;Interface for RF source functionality.
+    
+    This interface provides methods for controlling RF signal generators
+    used in spectroscopy and control applications. It wraps a device
+    implementing RFSourceProtocol and provides a clean, type-safe API
+    for RF source operations.
+    
+    Typical usage:
+    ```python
+    # Get RF source interface from system
+    rf = system.get_device_by_role(PRIMARY_RF)
+    
+    # Configure RF output
+    rf.set_freq(2870.0)  # 2.87 GHz
+    rf.set_power(-10.0)  # -10 dBm
+    rf.set_state(True)   # Turn on output
+    
+    # Configure a frequency sweep
+    freqs = np.linspace(2800, 2900, 101)  # MHz
+    rf.set_freq_list(freqs, step_time=0.05)  # 50ms per point
+    ```
+    &#34;&#34;&#34;
+    
+    def __init__(self, device: RFSourceProtocol):
+        &#34;&#34;&#34;Initialize the RF source interface.
+        
+        Parameters
+        ----------
+        device : RFSourceProtocol
+            Device implementing the RFSourceProtocol
+        &#34;&#34;&#34;
+        super().__init__(device)
+        
+    def set_freq(self, freq: float) -&gt; None:
+        &#34;&#34;&#34;Set RF frequency in MHz.
+        
+        Parameters
+        ----------
+        freq : float
+            Frequency in MHz
+        &#34;&#34;&#34;
+        return self._device.set_freq(freq)
+        
+    def set_power(self, power: float) -&gt; None:
+        &#34;&#34;&#34;Set RF power in dBm.
+        
+        Parameters
+        ----------
+        power : float
+            Power in dBm
+        &#34;&#34;&#34;
+        return self._device.set_power(power)
+        
+    def set_state(self, state: bool) -&gt; None:
+        &#34;&#34;&#34;Set RF output state.
+        
+        Parameters
+        ----------
+        state : bool
+            True to enable output, False to disable
+        &#34;&#34;&#34;
+        return self._device.set_state(state)
+        
+    def set_freq_list(
+        self, 
+        rf_freqs: Sequence[float], 
+        step_time: float = 0.1
+    ) -&gt; Sequence[float]:
+        &#34;&#34;&#34;Configure frequency sweep.
+        
+        Parameters
+        ----------
+        rf_freqs : Sequence[float]
+            List of frequencies in MHz
+        step_time : float, optional
+            Dwell time at each frequency in seconds, by default 0.1
+            
+        Returns
+        -------
+        Sequence[float]
+            Actual frequencies set (may differ slightly from requested)
+        &#34;&#34;&#34;
+        return self._device.set_freq_list(rf_freqs, step_time)</code></pre>
+</details>
+<div class="desc"><p>Interface for RF source functionality.</p>
+<p>This interface provides methods for controlling RF signal generators
+used in spectroscopy and control applications. It wraps a device
+implementing RFSourceProtocol and provides a clean, type-safe API
+for RF source operations.</p>
+<p>Typical usage:</p>
+<pre><code class="language-python"># Get RF source interface from system
+rf = system.get_device_by_role(PRIMARY_RF)
+
+# Configure RF output
+rf.set_freq(2870.0)  # 2.87 GHz
+rf.set_power(-10.0)  # -10 dBm
+rf.set_state(True)   # Turn on output
+
+# Configure a frequency sweep
+freqs = np.linspace(2800, 2900, 101)  # MHz
+rf.set_freq_list(freqs, step_time=0.05)  # 50ms per point
+</code></pre>
+<p>Initialize the RF source interface.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>device</code></strong> :&ensp;<code>RFSourceProtocol</code></dt>
+<dd>Device implementing the RFSourceProtocol</dd>
+</dl></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.interfaces.RoleInterface" href="#qscope.types.interfaces.RoleInterface">RoleInterface</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.types.interfaces.RFSourceInterface.set_freq"><code class="name flex">
+<span>def <span class="ident">set_freq</span></span>(<span>self, freq: float) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_freq(self, freq: float) -&gt; None:
+    &#34;&#34;&#34;Set RF frequency in MHz.
+    
+    Parameters
+    ----------
+    freq : float
+        Frequency in MHz
+    &#34;&#34;&#34;
+    return self._device.set_freq(freq)</code></pre>
+</details>
+<div class="desc"><p>Set RF frequency in MHz.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>freq</code></strong> :&ensp;<code>float</code></dt>
+<dd>Frequency in MHz</dd>
+</dl></div>
+</dd>
+<dt id="qscope.types.interfaces.RFSourceInterface.set_freq_list"><code class="name flex">
+<span>def <span class="ident">set_freq_list</span></span>(<span>self, rf_freqs: Sequence[float], step_time: float = 0.1) ‑> Sequence[float]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_freq_list(
+    self, 
+    rf_freqs: Sequence[float], 
+    step_time: float = 0.1
+) -&gt; Sequence[float]:
+    &#34;&#34;&#34;Configure frequency sweep.
+    
+    Parameters
+    ----------
+    rf_freqs : Sequence[float]
+        List of frequencies in MHz
+    step_time : float, optional
+        Dwell time at each frequency in seconds, by default 0.1
+        
+    Returns
+    -------
+    Sequence[float]
+        Actual frequencies set (may differ slightly from requested)
+    &#34;&#34;&#34;
+    return self._device.set_freq_list(rf_freqs, step_time)</code></pre>
+</details>
+<div class="desc"><p>Configure frequency sweep.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>rf_freqs</code></strong> :&ensp;<code>Sequence[float]</code></dt>
+<dd>List of frequencies in MHz</dd>
+<dt><strong><code>step_time</code></strong> :&ensp;<code>float</code>, optional</dt>
+<dd>Dwell time at each frequency in seconds, by default 0.1</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Sequence[float]</code></dt>
+<dd>Actual frequencies set (may differ slightly from requested)</dd>
+</dl></div>
+</dd>
+<dt id="qscope.types.interfaces.RFSourceInterface.set_power"><code class="name flex">
+<span>def <span class="ident">set_power</span></span>(<span>self, power: float) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_power(self, power: float) -&gt; None:
+    &#34;&#34;&#34;Set RF power in dBm.
+    
+    Parameters
+    ----------
+    power : float
+        Power in dBm
+    &#34;&#34;&#34;
+    return self._device.set_power(power)</code></pre>
+</details>
+<div class="desc"><p>Set RF power in dBm.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>power</code></strong> :&ensp;<code>float</code></dt>
+<dd>Power in dBm</dd>
+</dl></div>
+</dd>
+<dt id="qscope.types.interfaces.RFSourceInterface.set_state"><code class="name flex">
+<span>def <span class="ident">set_state</span></span>(<span>self, state: bool) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_state(self, state: bool) -&gt; None:
+    &#34;&#34;&#34;Set RF output state.
+    
+    Parameters
+    ----------
+    state : bool
+        True to enable output, False to disable
+    &#34;&#34;&#34;
+    return self._device.set_state(state)</code></pre>
+</details>
+<div class="desc"><p>Set RF output state.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>state</code></strong> :&ensp;<code>bool</code></dt>
+<dd>True to enable output, False to disable</dd>
+</dl></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.types.interfaces.RoleInterface"><code class="flex name class">
+<span>class <span class="ident">RoleInterface</span></span>
+<span>(</span><span>device: Device)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class RoleInterface:
+    &#34;&#34;&#34;Base class for role-specific interfaces.
+    
+    Role interfaces wrap devices and provide a clean, type-safe API for
+    accessing role-specific functionality. Each role has a corresponding
+    interface class that defines the methods available for that role.
+    
+    Interfaces serve as an abstraction layer between measurements and
+    device implementations, allowing measurements to work with roles
+    rather than specific devices.
+    
+    Attributes
+    ----------
+    _device : Device
+        The wrapped device instance
+        
+    Examples
+    --------
+    Creating a custom interface:
+    
+    ```python
+    class MyCustomInterface(RoleInterface):
+        def __init__(self, device: MyProtocol):
+            super().__init__(device)
+            
+        def do_something(self, param: int) -&gt; str:
+            # Call device method with additional logic
+            result = self._device.do_something(param)
+            return f&#34;Processed: {result}&#34;
+    ```
+    
+    Using an interface:
+    
+    ```python
+    # Get interface from system
+    my_device = system.get_device_by_role(MY_ROLE)
+    
+    # Use interface methods
+    result = my_device.do_something(42)
+    ```
+    &#34;&#34;&#34;
+    
+    def __init__(self, device: Device):
+        self._device = device</code></pre>
+</details>
+<div class="desc"><p>Base class for role-specific interfaces.</p>
+<p>Role interfaces wrap devices and provide a clean, type-safe API for
+accessing role-specific functionality. Each role has a corresponding
+interface class that defines the methods available for that role.</p>
+<p>Interfaces serve as an abstraction layer between measurements and
+device implementations, allowing measurements to work with roles
+rather than specific devices.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>_device</code></strong> :&ensp;<code>Device</code></dt>
+<dd>The wrapped device instance</dd>
+</dl>
+<h2 id="examples">Examples</h2>
+<p>Creating a custom interface:</p>
+<pre><code class="language-python">class MyCustomInterface(RoleInterface):
+    def __init__(self, device: MyProtocol):
+        super().__init__(device)
+
+    def do_something(self, param: int) -&gt; str:
+        # Call device method with additional logic
+        result = self._device.do_something(param)
+        return f&quot;Processed: {result}&quot;
+</code></pre>
+<p>Using an interface:</p>
+<pre><code class="language-python"># Get interface from system
+my_device = system.get_device_by_role(MY_ROLE)
+
+# Use interface methods
+result = my_device.do_something(42)
+</code></pre></div>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="qscope.types.interfaces.CameraInterface" href="#qscope.types.interfaces.CameraInterface">CameraInterface</a></li>
+<li><a title="qscope.types.interfaces.DigitizerInterface" href="#qscope.types.interfaces.DigitizerInterface">DigitizerInterface</a></li>
+<li><a title="qscope.types.interfaces.RFSourceInterface" href="#qscope.types.interfaces.RFSourceInterface">RFSourceInterface</a></li>
+<li><a title="qscope.types.interfaces.SeqGenInterface" href="#qscope.types.interfaces.SeqGenInterface">SeqGenInterface</a></li>
+</ul>
+</dd>
+<dt id="qscope.types.interfaces.SeqGenInterface"><code class="flex name class">
+<span>class <span class="ident">SeqGenInterface</span></span>
+<span>(</span><span>device: SeqGenProtocol)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class SeqGenInterface(RoleInterface):
+    &#34;&#34;&#34;Interface for sequence generator functionality.
+    
+    This interface provides methods for controlling sequence generators
+    used for timing and pulse control in quantum experiments. It wraps
+    a device implementing SeqGenProtocol and provides a clean, type-safe
+    API for sequence generator operations.
+    
+    Sequence generators typically control:
+    - Precise timing of experimental events
+    - Digital output patterns
+    - Trigger signals for other instruments
+    - Synchronization of multiple devices
+    
+    Typical usage:
+    ```python
+    # Get sequence generator interface from system
+    seq_gen = system.get_device_by_role(SEQUENCE_GEN)
+    
+    # Load a sequence with parameters
+    seq_gen.load_seq(&#34;rabi&#34;, pulse_length=100e-9, wait_time=5e-6)
+    
+    # Start the sequence
+    seq_gen.start()
+    
+    # Later, stop the sequence
+    seq_gen.stop()
+    ```
+    &#34;&#34;&#34;
+    
+    def __init__(self, device: SeqGenProtocol):
+        &#34;&#34;&#34;Initialize the sequence generator interface.
+        
+        Parameters
+        ----------
+        device : SeqGenProtocol
+            Device implementing the SeqGenProtocol
+        &#34;&#34;&#34;
+        super().__init__(device)
+        
+    def load_seq(self, seq_name: str, **seq_kwargs) -&gt; None:
+        &#34;&#34;&#34;Load a sequence.
+        
+        Parameters
+        ----------
+        seq_name : str
+            Name of the sequence to load
+        **seq_kwargs
+            Additional keyword arguments specific to the sequence
+        &#34;&#34;&#34;
+        return self._device.load_seq(seq_name, **seq_kwargs)
+        
+    def start(self) -&gt; None:
+        &#34;&#34;&#34;Start sequence generation.
+        
+        Begins executing the loaded sequence.
+        &#34;&#34;&#34;
+        return self._device.start()
+        
+    def stop(self) -&gt; None:
+        &#34;&#34;&#34;Stop sequence generation.
+        
+        Halts the currently running sequence.
+        &#34;&#34;&#34;
+        return self._device.stop()
+        
+    def reset(self) -&gt; None:
+        &#34;&#34;&#34;Reset sequence generator.
+        
+        Returns the sequence generator to its initial state.
+        &#34;&#34;&#34;
+        return self._device.reset()</code></pre>
+</details>
+<div class="desc"><p>Interface for sequence generator functionality.</p>
+<p>This interface provides methods for controlling sequence generators
+used for timing and pulse control in quantum experiments. It wraps
+a device implementing SeqGenProtocol and provides a clean, type-safe
+API for sequence generator operations.</p>
+<p>Sequence generators typically control:
+- Precise timing of experimental events
+- Digital output patterns
+- Trigger signals for other instruments
+- Synchronization of multiple devices</p>
+<p>Typical usage:</p>
+<pre><code class="language-python"># Get sequence generator interface from system
+seq_gen = system.get_device_by_role(SEQUENCE_GEN)
+
+# Load a sequence with parameters
+seq_gen.load_seq(&quot;rabi&quot;, pulse_length=100e-9, wait_time=5e-6)
+
+# Start the sequence
+seq_gen.start()
+
+# Later, stop the sequence
+seq_gen.stop()
+</code></pre>
+<p>Initialize the sequence generator interface.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>device</code></strong> :&ensp;<code>SeqGenProtocol</code></dt>
+<dd>Device implementing the SeqGenProtocol</dd>
+</dl></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.interfaces.RoleInterface" href="#qscope.types.interfaces.RoleInterface">RoleInterface</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.types.interfaces.SeqGenInterface.load_seq"><code class="name flex">
+<span>def <span class="ident">load_seq</span></span>(<span>self, seq_name: str, **seq_kwargs) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def load_seq(self, seq_name: str, **seq_kwargs) -&gt; None:
+    &#34;&#34;&#34;Load a sequence.
+    
+    Parameters
+    ----------
+    seq_name : str
+        Name of the sequence to load
+    **seq_kwargs
+        Additional keyword arguments specific to the sequence
+    &#34;&#34;&#34;
+    return self._device.load_seq(seq_name, **seq_kwargs)</code></pre>
+</details>
+<div class="desc"><p>Load a sequence.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>seq_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>Name of the sequence to load</dd>
+<dt><strong><code>**seq_kwargs</code></strong></dt>
+<dd>Additional keyword arguments specific to the sequence</dd>
+</dl></div>
+</dd>
+<dt id="qscope.types.interfaces.SeqGenInterface.reset"><code class="name flex">
+<span>def <span class="ident">reset</span></span>(<span>self) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def reset(self) -&gt; None:
+    &#34;&#34;&#34;Reset sequence generator.
+    
+    Returns the sequence generator to its initial state.
+    &#34;&#34;&#34;
+    return self._device.reset()</code></pre>
+</details>
+<div class="desc"><p>Reset sequence generator.</p>
+<p>Returns the sequence generator to its initial state.</p></div>
+</dd>
+<dt id="qscope.types.interfaces.SeqGenInterface.start"><code class="name flex">
+<span>def <span class="ident">start</span></span>(<span>self) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def start(self) -&gt; None:
+    &#34;&#34;&#34;Start sequence generation.
+    
+    Begins executing the loaded sequence.
+    &#34;&#34;&#34;
+    return self._device.start()</code></pre>
+</details>
+<div class="desc"><p>Start sequence generation.</p>
+<p>Begins executing the loaded sequence.</p></div>
+</dd>
+<dt id="qscope.types.interfaces.SeqGenInterface.stop"><code class="name flex">
+<span>def <span class="ident">stop</span></span>(<span>self) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def stop(self) -&gt; None:
+    &#34;&#34;&#34;Stop sequence generation.
+    
+    Halts the currently running sequence.
+    &#34;&#34;&#34;
+    return self._device.stop()</code></pre>
+</details>
+<div class="desc"><p>Stop sequence generation.</p>
+<p>Halts the currently running sequence.</p></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<form>
+<input id="lunr-search" name="q" placeholder="🔎 Search ..." aria-label="Search"
+disabled minlength="2">
+</form>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.css" integrity="sha512-b+T2i3P45i1LZM7I00Ci5QquB9szqaxu+uuk5TUSGjZQ4w4n+qujQiIuvTv2BxE7WCGQCifNMksyKILDiHzsOg==" crossorigin>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.js" integrity="sha512-2B9/byNV1KKRm5nQ2RLViPFD6U4dUjDGwuW1GU+ImJh8YinPU9Zlq1GzdTMO+G2ROrB5o1qasJBy1ttYz0wCug==" crossorigin></script>
+<style>
+.modal-dialog iframe {
+width: 100vw;
+height: calc(100vh - 80px);
+}
+@media screen and (min-width: 700px) {
+.modal-dialog iframe {
+width: 70vw;
+height: 80vh;
+}
+}
+.modal-dialog .tingle-modal-box {width: auto;}
+.modal-dialog .tingle-modal-box__content {padding: 0;}
+</style>
+<script>
+const input = document.getElementById('lunr-search');
+input.disabled = false;
+input.form.addEventListener('submit', (ev) => {
+ev.preventDefault();
+const url = new URL(window.location);
+url.searchParams.set('q', input.value);
+history.replaceState({}, null, url.toString());
+search(input.value);
+});
+const query = new URL(window.location).searchParams.get('q');
+if (query)
+search(query);
+function search(query) {
+const url = '../../doc-search.html#' + encodeURIComponent(query);
+new tingle.modal({
+cssClass: ['modal-dialog'],
+onClose: () => {
+const url = new URL(window.location);
+url.searchParams.delete('q');
+history.replaceState({}, null, url.toString());
+setTimeout(() => input.focus(), 100);
+}
+}).setContent('<iframe src="' + url + '"></iframe>').open();
+}
+</script>
+<div class="toc">
+<ul>
+<li><a href="#the-interface-pattern">The Interface Pattern</a></li>
+<li><a href="#interface-architecture-in-qscope">Interface Architecture in QScope</a></li>
+<li><a href="#interface-implementation-pattern">Interface Implementation Pattern</a></li>
+<li><a href="#example">Example</a></li>
+<li><a href="#creating-a-new-interface">Creating a New Interface</a></li>
+<li><a href="#see-also">See Also</a></li>
+</ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="qscope.types" href="index.html">qscope.types</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="qscope.types.interfaces.CameraInterface" href="#qscope.types.interfaces.CameraInterface">CameraInterface</a></code></h4>
+<ul class="">
+<li><code><a title="qscope.types.interfaces.CameraInterface.get_frame_shape" href="#qscope.types.interfaces.CameraInterface.get_frame_shape">get_frame_shape</a></code></li>
+<li><code><a title="qscope.types.interfaces.CameraInterface.set_exposure_time" href="#qscope.types.interfaces.CameraInterface.set_exposure_time">set_exposure_time</a></code></li>
+<li><code><a title="qscope.types.interfaces.CameraInterface.set_hardware_binning" href="#qscope.types.interfaces.CameraInterface.set_hardware_binning">set_hardware_binning</a></code></li>
+<li><code><a title="qscope.types.interfaces.CameraInterface.take_snapshot" href="#qscope.types.interfaces.CameraInterface.take_snapshot">take_snapshot</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.interfaces.DigitizerInterface" href="#qscope.types.interfaces.DigitizerInterface">DigitizerInterface</a></code></h4>
+<ul class="">
+<li><code><a title="qscope.types.interfaces.DigitizerInterface.configure_channels" href="#qscope.types.interfaces.DigitizerInterface.configure_channels">configure_channels</a></code></li>
+<li><code><a title="qscope.types.interfaces.DigitizerInterface.get_data" href="#qscope.types.interfaces.DigitizerInterface.get_data">get_data</a></code></li>
+<li><code><a title="qscope.types.interfaces.DigitizerInterface.start_streaming" href="#qscope.types.interfaces.DigitizerInterface.start_streaming">start_streaming</a></code></li>
+<li><code><a title="qscope.types.interfaces.DigitizerInterface.stop_streaming" href="#qscope.types.interfaces.DigitizerInterface.stop_streaming">stop_streaming</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.interfaces.RFSourceInterface" href="#qscope.types.interfaces.RFSourceInterface">RFSourceInterface</a></code></h4>
+<ul class="">
+<li><code><a title="qscope.types.interfaces.RFSourceInterface.set_freq" href="#qscope.types.interfaces.RFSourceInterface.set_freq">set_freq</a></code></li>
+<li><code><a title="qscope.types.interfaces.RFSourceInterface.set_freq_list" href="#qscope.types.interfaces.RFSourceInterface.set_freq_list">set_freq_list</a></code></li>
+<li><code><a title="qscope.types.interfaces.RFSourceInterface.set_power" href="#qscope.types.interfaces.RFSourceInterface.set_power">set_power</a></code></li>
+<li><code><a title="qscope.types.interfaces.RFSourceInterface.set_state" href="#qscope.types.interfaces.RFSourceInterface.set_state">set_state</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.interfaces.RoleInterface" href="#qscope.types.interfaces.RoleInterface">RoleInterface</a></code></h4>
+</li>
+<li>
+<h4><code><a title="qscope.types.interfaces.SeqGenInterface" href="#qscope.types.interfaces.SeqGenInterface">SeqGenInterface</a></code></h4>
+<ul class="">
+<li><code><a title="qscope.types.interfaces.SeqGenInterface.load_seq" href="#qscope.types.interfaces.SeqGenInterface.load_seq">load_seq</a></code></li>
+<li><code><a title="qscope.types.interfaces.SeqGenInterface.reset" href="#qscope.types.interfaces.SeqGenInterface.reset">reset</a></code></li>
+<li><code><a title="qscope.types.interfaces.SeqGenInterface.start" href="#qscope.types.interfaces.SeqGenInterface.start">start</a></code></li>
+<li><code><a title="qscope.types.interfaces.SeqGenInterface.stop" href="#qscope.types.interfaces.SeqGenInterface.stop">stop</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,988 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.6">
+<title>qscope.types.protocols API documentation</title>
+<meta name="description" content="Device role protocols defining required methods for each role …">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}#lunr-search{width:100%;font-size:1em;padding:6px 9px 5px 9px;border:1px solid silver}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes: true } });</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML" integrity="sha256-kZafAc6mZvK3W3v1pHOcUix30OHQN6pU/NO2oFkqZVw=" crossorigin></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>qscope.types.protocols</code></h1>
+</header>
+<section id="section-intro">
+<p>Device role protocols defining required methods for each role.</p>
+<p>This module defines the protocol classes that specify the required methods for each device role.
+Protocols act as interfaces that devices must implement to fulfill specific roles.</p>
+<h2 id="the-protocol-pattern">The Protocol Pattern</h2>
+<p>Instead of using inheritance to define device capabilities, we use protocols to specify
+required methods. This allows for:</p>
+<ol>
+<li>Duck typing - devices only need to implement required methods</li>
+<li>Multiple roles - devices can implement multiple protocols</li>
+<li>Type safety - mypy can check protocol compliance</li>
+<li>Runtime validation - @runtime_checkable allows isinstance() checks</li>
+</ol>
+<h2 id="protocol-based-architecture">Protocol-Based Architecture</h2>
+<p>QScope uses a protocol-based architecture for hardware abstraction:</p>
+<ol>
+<li>Protocols (this module)</li>
+<li>Define method signatures required for each role</li>
+<li>Use Python's typing.Protocol for static type checking</li>
+<li>Use @runtime_checkable for dynamic validation</li>
+<li>
+<p>Each protocol represents a specific device capability</p>
+</li>
+<li>
+<p>Devices (qscope.device)</p>
+</li>
+<li>Implement protocol methods with hardware-specific code</li>
+<li>Can implement multiple protocols</li>
+<li>
+<p>Don't need to inherit from protocol classes</p>
+</li>
+<li>
+<p>Roles (qscope.types.roles)</p>
+</li>
+<li>Connect protocols to interfaces</li>
+<li>Validate that devices implement required methods</li>
+<li>
+<p>Provide singleton instances for system configuration</p>
+</li>
+<li>
+<p>Interfaces (qscope.types.interfaces)</p>
+</li>
+<li>Wrap devices implementing protocols</li>
+<li>Provide clean, documented API for accessing functionality</li>
+<li>Add type safety and additional logic when needed</li>
+</ol>
+<h2 id="benefits-of-protocol-based-design">Benefits of Protocol-Based Design</h2>
+<ul>
+<li>Flexibility: Devices can implement multiple roles</li>
+<li>Testability: Easy to create mock devices for testing</li>
+<li>Type Safety: Static checking with mypy</li>
+<li>Runtime Validation: Verify protocol compliance at runtime</li>
+<li>Clean API: Interfaces provide consistent access patterns</li>
+<li>Separation of Concerns: Devices focus on hardware, interfaces on API</li>
+</ul>
+<h2 id="example">Example</h2>
+<p>To create a device that can act as an RF source:</p>
+<pre><code>class MyRFDevice(Device):
+    def set_freq(self, freq: float) -&gt; None:
+        # Implementation
+        pass
+
+    def set_power(self, power: float) -&gt; None:
+        # Implementation
+        pass
+
+    # ... implement other RFSourceProtocol methods
+
+# Later, in system configuration:
+system.add_device_with_role(MyRFDevice(), PRIMARY_RF)
+</code></pre>
+<p>The system will validate that MyRFDevice implements all required RFSourceProtocol methods.</p>
+<h2 id="see-also">See Also</h2>
+<dl>
+<dt><code><a title="qscope.types.roles" href="roles.html">qscope.types.roles</a></code></dt>
+<dd>Role definitions and validation</dd>
+<dt><code><a title="qscope.types.interfaces" href="interfaces.html">qscope.types.interfaces</a></code></dt>
+<dd>Interface implementations</dd>
+<dt><code><a title="qscope.device" href="../device/index.html">qscope.device</a></code></dt>
+<dd>Device implementations</dd>
+</dl>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="qscope.types.protocols.CameraProtocol"><code class="flex name class">
+<span>class <span class="ident">CameraProtocol</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@runtime_checkable
+class CameraProtocol(Protocol):
+    &#34;&#34;&#34;Methods required for camera functionality.
+    
+    This protocol defines the interface for scientific cameras used in imaging
+    and spectroscopy applications. Camera implementations must provide methods
+    for controlling exposure, acquisition modes, ROI settings, and retrieving
+    image data.
+    
+    Implementations must support:
+    - Single frame acquisition
+    - Continuous video mode
+    - Hardware triggering
+    - ROI and binning configuration
+    - Various shutter and readout modes
+    &#34;&#34;&#34;
+    
+    take_snapshot: Callable[[], np.ndarray]
+    &#34;&#34;&#34;Capture a single image and return it as a numpy array.
+    
+    Returns:
+    - 2D numpy array containing the image data
+    &#34;&#34;&#34;
+    
+    set_exposure_time: Callable[[float], None]
+    &#34;&#34;&#34;Set the exposure time in seconds.&#34;&#34;&#34;
+    
+    get_frame_shape: Callable[[], tuple[int, int]]
+    &#34;&#34;&#34;Get the current frame dimensions (width, height) in pixels.&#34;&#34;&#34;
+    
+    set_hardware_binning: Callable[[tuple[int, int]], tuple[int, int]]
+    &#34;&#34;&#34;Set hardware binning factors and return the actual values set.
+    
+    Parameters:
+    - binning: Tuple of (horizontal, vertical) binning factors
+    
+    Returns:
+    - Tuple of actual (horizontal, vertical) binning factors applied
+    &#34;&#34;&#34;
+    
+    get_readout_time: Callable[[], float]
+    &#34;&#34;&#34;Get the camera readout time in seconds.&#34;&#34;&#34;
+    
+    get_all_seq_frames: Callable[[], List[np.ndarray]]
+    &#34;&#34;&#34;Get all frames from a sequence acquisition as a list of arrays.&#34;&#34;&#34;
+    
+    setup_acquisition: Callable[[str, int], None]
+    &#34;&#34;&#34;Configure acquisition mode and frame count.
+    
+    Parameters:
+    - mode: Acquisition mode (&#39;SINGLE&#39;, &#39;SEQUENCE&#39;, &#39;CONTINUOUS&#39;)
+    - nframes: Number of frames to acquire (for SEQUENCE mode)
+    &#34;&#34;&#34;
+    
+    start_acquisition: Callable[[], None]
+    &#34;&#34;&#34;Start the configured acquisition.&#34;&#34;&#34;
+    
+    stop_acquisition: Callable[[], None]
+    &#34;&#34;&#34;Stop the current acquisition.&#34;&#34;&#34;
+    
+    clear_acquisition: Callable[[], None]
+    &#34;&#34;&#34;Clear any pending acquisition and free resources.&#34;&#34;&#34;
+    
+    get_trigger_time: Callable[[], float]
+    &#34;&#34;&#34;Get the trigger response time in seconds.&#34;&#34;&#34;
+    
+    set_trigger_mode: Callable[[str], None]
+    &#34;&#34;&#34;Set the trigger mode (&#39;INTERNAL&#39;, &#39;EXTERNAL&#39;, &#39;SOFTWARE&#39;, etc.).&#34;&#34;&#34;
+    
+    set_shutter_mode: Callable[[str], None]
+    &#34;&#34;&#34;Set the shutter mode (&#39;GLOBAL&#39;, &#39;ROLLING&#39;, etc.).&#34;&#34;&#34;
+    
+    get_shutter_mode: Callable[[], str]
+    &#34;&#34;&#34;Get the current shutter mode.&#34;&#34;&#34;
+    
+    get_roi: Callable[[], Tuple[int, int, int, int]]
+    &#34;&#34;&#34;Get the current ROI as (x_min, x_max, y_min, y_max).&#34;&#34;&#34;
+    
+    set_roi: Callable[[int, int, int, int], None]
+    &#34;&#34;&#34;Set the ROI using (x_min, x_max, y_min, y_max).&#34;&#34;&#34;
+    
+    get_hardware_binning: Callable[[], Tuple[int, int]]
+    &#34;&#34;&#34;Get the current hardware binning factors (horizontal, vertical).&#34;&#34;&#34;
+    
+    set_hardware_binning: Callable[[int, int], None]
+    &#34;&#34;&#34;Set hardware binning factors (horizontal, vertical).&#34;&#34;&#34;
+    
+    get_frame_shape: Callable[[], Tuple[int, int]]
+    &#34;&#34;&#34;Get the current frame dimensions (width, height) in pixels.&#34;&#34;&#34;
+    
+    set_frame_shape: Callable[[int, int], None]
+    &#34;&#34;&#34;Set the frame dimensions (width, height) in pixels.&#34;&#34;&#34;
+    
+    update_data_size: Callable[[], Tuple[int, int]]
+    &#34;&#34;&#34;Update and return the current data dimensions after settings changes.&#34;&#34;&#34;
+    
+    get_data_size: Callable[[], Tuple[int, int]]
+    &#34;&#34;&#34;Get the current data dimensions (width, height) in pixels.&#34;&#34;&#34;
+    
+    get_exposure_time: Callable[[], float]
+    &#34;&#34;&#34;Get the current exposure time in seconds.&#34;&#34;&#34;
+    
+    set_exposure_time: Callable[[float], None]
+    &#34;&#34;&#34;Set the exposure time in seconds.&#34;&#34;&#34;
+    
+    wait_for_frame: Callable[[], None]
+    &#34;&#34;&#34;Wait for the next frame to be available.&#34;&#34;&#34;
+    
+    start_video: Callable[[], None]
+    &#34;&#34;&#34;Start continuous video acquisition.&#34;&#34;&#34;
+    
+    stop_video: Callable[[], None]
+    &#34;&#34;&#34;Stop continuous video acquisition.&#34;&#34;&#34;</code></pre>
+</details>
+<div class="desc"><p>Methods required for camera functionality.</p>
+<p>This protocol defines the interface for scientific cameras used in imaging
+and spectroscopy applications. Camera implementations must provide methods
+for controlling exposure, acquisition modes, ROI settings, and retrieving
+image data.</p>
+<p>Implementations must support:
+- Single frame acquisition
+- Continuous video mode
+- Hardware triggering
+- ROI and binning configuration
+- Various shutter and readout modes</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>typing.Protocol</li>
+<li>typing.Generic</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="qscope.types.protocols.CameraProtocol.clear_acquisition"><code class="name">var <span class="ident">clear_acquisition</span> : Callable[[], None]</code></dt>
+<dd>
+<div class="desc"><p>Clear any pending acquisition and free resources.</p></div>
+</dd>
+<dt id="qscope.types.protocols.CameraProtocol.get_all_seq_frames"><code class="name">var <span class="ident">get_all_seq_frames</span> : Callable[[], List[numpy.ndarray]]</code></dt>
+<dd>
+<div class="desc"><p>Get all frames from a sequence acquisition as a list of arrays.</p></div>
+</dd>
+<dt id="qscope.types.protocols.CameraProtocol.get_data_size"><code class="name">var <span class="ident">get_data_size</span> : Callable[[], Tuple[int, int]]</code></dt>
+<dd>
+<div class="desc"><p>Get the current data dimensions (width, height) in pixels.</p></div>
+</dd>
+<dt id="qscope.types.protocols.CameraProtocol.get_exposure_time"><code class="name">var <span class="ident">get_exposure_time</span> : Callable[[], float]</code></dt>
+<dd>
+<div class="desc"><p>Get the current exposure time in seconds.</p></div>
+</dd>
+<dt id="qscope.types.protocols.CameraProtocol.get_frame_shape"><code class="name">var <span class="ident">get_frame_shape</span> : Callable[[], Tuple[int, int]]</code></dt>
+<dd>
+<div class="desc"><p>Get the current frame dimensions (width, height) in pixels.</p></div>
+</dd>
+<dt id="qscope.types.protocols.CameraProtocol.get_hardware_binning"><code class="name">var <span class="ident">get_hardware_binning</span> : Callable[[], Tuple[int, int]]</code></dt>
+<dd>
+<div class="desc"><p>Get the current hardware binning factors (horizontal, vertical).</p></div>
+</dd>
+<dt id="qscope.types.protocols.CameraProtocol.get_readout_time"><code class="name">var <span class="ident">get_readout_time</span> : Callable[[], float]</code></dt>
+<dd>
+<div class="desc"><p>Get the camera readout time in seconds.</p></div>
+</dd>
+<dt id="qscope.types.protocols.CameraProtocol.get_roi"><code class="name">var <span class="ident">get_roi</span> : Callable[[], Tuple[int, int, int, int]]</code></dt>
+<dd>
+<div class="desc"><p>Get the current ROI as (x_min, x_max, y_min, y_max).</p></div>
+</dd>
+<dt id="qscope.types.protocols.CameraProtocol.get_shutter_mode"><code class="name">var <span class="ident">get_shutter_mode</span> : Callable[[], str]</code></dt>
+<dd>
+<div class="desc"><p>Get the current shutter mode.</p></div>
+</dd>
+<dt id="qscope.types.protocols.CameraProtocol.get_trigger_time"><code class="name">var <span class="ident">get_trigger_time</span> : Callable[[], float]</code></dt>
+<dd>
+<div class="desc"><p>Get the trigger response time in seconds.</p></div>
+</dd>
+<dt id="qscope.types.protocols.CameraProtocol.set_exposure_time"><code class="name">var <span class="ident">set_exposure_time</span> : Callable[[float], None]</code></dt>
+<dd>
+<div class="desc"><p>Set the exposure time in seconds.</p></div>
+</dd>
+<dt id="qscope.types.protocols.CameraProtocol.set_frame_shape"><code class="name">var <span class="ident">set_frame_shape</span> : Callable[[int, int], None]</code></dt>
+<dd>
+<div class="desc"><p>Set the frame dimensions (width, height) in pixels.</p></div>
+</dd>
+<dt id="qscope.types.protocols.CameraProtocol.set_hardware_binning"><code class="name">var <span class="ident">set_hardware_binning</span> : Callable[[int, int], None]</code></dt>
+<dd>
+<div class="desc"><p>Set hardware binning factors (horizontal, vertical).</p></div>
+</dd>
+<dt id="qscope.types.protocols.CameraProtocol.set_roi"><code class="name">var <span class="ident">set_roi</span> : Callable[[int, int, int, int], None]</code></dt>
+<dd>
+<div class="desc"><p>Set the ROI using (x_min, x_max, y_min, y_max).</p></div>
+</dd>
+<dt id="qscope.types.protocols.CameraProtocol.set_shutter_mode"><code class="name">var <span class="ident">set_shutter_mode</span> : Callable[[str], None]</code></dt>
+<dd>
+<div class="desc"><p>Set the shutter mode ('GLOBAL', 'ROLLING', etc.).</p></div>
+</dd>
+<dt id="qscope.types.protocols.CameraProtocol.set_trigger_mode"><code class="name">var <span class="ident">set_trigger_mode</span> : Callable[[str], None]</code></dt>
+<dd>
+<div class="desc"><p>Set the trigger mode ('INTERNAL', 'EXTERNAL', 'SOFTWARE', etc.).</p></div>
+</dd>
+<dt id="qscope.types.protocols.CameraProtocol.setup_acquisition"><code class="name">var <span class="ident">setup_acquisition</span> : Callable[[str, int], None]</code></dt>
+<dd>
+<div class="desc"><p>Configure acquisition mode and frame count.</p>
+<p>Parameters:
+- mode: Acquisition mode ('SINGLE', 'SEQUENCE', 'CONTINUOUS')
+- nframes: Number of frames to acquire (for SEQUENCE mode)</p></div>
+</dd>
+<dt id="qscope.types.protocols.CameraProtocol.start_acquisition"><code class="name">var <span class="ident">start_acquisition</span> : Callable[[], None]</code></dt>
+<dd>
+<div class="desc"><p>Start the configured acquisition.</p></div>
+</dd>
+<dt id="qscope.types.protocols.CameraProtocol.start_video"><code class="name">var <span class="ident">start_video</span> : Callable[[], None]</code></dt>
+<dd>
+<div class="desc"><p>Start continuous video acquisition.</p></div>
+</dd>
+<dt id="qscope.types.protocols.CameraProtocol.stop_acquisition"><code class="name">var <span class="ident">stop_acquisition</span> : Callable[[], None]</code></dt>
+<dd>
+<div class="desc"><p>Stop the current acquisition.</p></div>
+</dd>
+<dt id="qscope.types.protocols.CameraProtocol.stop_video"><code class="name">var <span class="ident">stop_video</span> : Callable[[], None]</code></dt>
+<dd>
+<div class="desc"><p>Stop continuous video acquisition.</p></div>
+</dd>
+<dt id="qscope.types.protocols.CameraProtocol.take_snapshot"><code class="name">var <span class="ident">take_snapshot</span> : Callable[[], numpy.ndarray]</code></dt>
+<dd>
+<div class="desc"><p>Capture a single image and return it as a numpy array.</p>
+<p>Returns:
+- 2D numpy array containing the image data</p></div>
+</dd>
+<dt id="qscope.types.protocols.CameraProtocol.update_data_size"><code class="name">var <span class="ident">update_data_size</span> : Callable[[], Tuple[int, int]]</code></dt>
+<dd>
+<div class="desc"><p>Update and return the current data dimensions after settings changes.</p></div>
+</dd>
+<dt id="qscope.types.protocols.CameraProtocol.wait_for_frame"><code class="name">var <span class="ident">wait_for_frame</span> : Callable[[], None]</code></dt>
+<dd>
+<div class="desc"><p>Wait for the next frame to be available.</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.types.protocols.DigitizerProtocol"><code class="flex name class">
+<span>class <span class="ident">DigitizerProtocol</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@runtime_checkable
+class DigitizerProtocol(Protocol):
+    &#34;&#34;&#34;Methods required for digitizer functionality.
+    
+    This protocol defines the interface for data acquisition devices that can
+    capture analog signals at high sample rates. Digitizers typically support
+    multiple input channels, various triggering modes, and different acquisition
+    methods (streaming vs. block capture).
+    
+    Implementations must provide methods for:
+    - Configuring input channels and ranges
+    - Setting up acquisition parameters
+    - Starting and stopping data capture
+    - Retrieving acquired data
+    - Managing hardware triggers
+    &#34;&#34;&#34;
+    
+    configure_channels: Callable[
+        [List[int], List[Union[float, str]], Optional[List[str]]], None
+    ]
+    &#34;&#34;&#34;Configure input channels with ranges and coupling.
+    
+    Parameters:
+    - channels: List of channel indices to configure
+    - ranges: List of voltage ranges for each channel
+    - coupling: Optional list of coupling modes (&#39;AC&#39; or &#39;DC&#39;)
+    &#34;&#34;&#34;
+    
+    start_streaming: Callable[
+        [float, int, Optional[int], bool, Optional[int], Optional[float], str, float], None
+    ]
+    &#34;&#34;&#34;Start continuous data streaming.
+    
+    Parameters:
+    - sample_interval_s: Time between samples in seconds
+    - buffer_size: Number of samples per buffer
+    - num_buffers: Optional number of buffers to use
+    - trigger_enabled: Whether to use hardware triggering
+    - trigger_channel: Channel to use for triggering
+    - trigger_threshold: Voltage threshold for trigger
+    - trigger_direction: Direction (&#39;RISING&#39;, &#39;FALLING&#39;, etc.)
+    - trigger_delay: Delay after trigger in seconds
+    &#34;&#34;&#34;
+    
+    stop_streaming: Callable[[], None]
+    &#34;&#34;&#34;Stop the current streaming acquisition.&#34;&#34;&#34;
+    
+    get_data: Callable[[float], Tuple[np.ndarray, Tuple[np.ndarray, ...]]]
+    &#34;&#34;&#34;Get acquired data from all enabled channels.
+    
+    Parameters:
+    - timeout: Maximum time to wait for data in seconds
+    
+    Returns:
+    - Tuple containing time array and tuple of channel data arrays
+    &#34;&#34;&#34;
+    
+    get_timebase: Callable[[], float]
+    &#34;&#34;&#34;Get the current timebase (sample interval) in seconds.&#34;&#34;&#34;
+    
+    set_downsampling: Callable[[int], None]
+    &#34;&#34;&#34;Set downsampling factor for data acquisition.&#34;&#34;&#34;
+    
+    assert_ok: Callable[[], None]
+    &#34;&#34;&#34;Check device status and raise exception if not OK.&#34;&#34;&#34;
+    
+    set_sample_interval: Callable[[float], None]
+    &#34;&#34;&#34;Set the time between samples in seconds.&#34;&#34;&#34;
+    
+    set_resolution: Callable[[int], None]
+    &#34;&#34;&#34;Set the ADC resolution in bits.&#34;&#34;&#34;
+    
+    set_trigger: Callable[[str], None]
+    &#34;&#34;&#34;Set the trigger mode (&#39;AUTO&#39;, &#39;NONE&#39;, &#39;RISING&#39;, etc.).&#34;&#34;&#34;
+    
+    start_block_capture: Callable[[int, float, int, str], None]
+    &#34;&#34;&#34;Start a single block capture.
+    
+    Parameters:
+    - pre_trigger_samples: Number of samples before trigger
+    - timebase: Sample interval in seconds
+    - post_trigger_samples: Number of samples after trigger
+    - trigger_source: Source of trigger signal
+    &#34;&#34;&#34;
+    
+    get_block_data: Callable[[], Tuple[np.ndarray, Tuple[np.ndarray, ...]]]
+    &#34;&#34;&#34;Get data from completed block capture.
+    
+    Returns:
+    - Tuple containing time array and tuple of channel data arrays
+    &#34;&#34;&#34;
+    
+    check_overflow: Callable[[], bool]
+    &#34;&#34;&#34;Check if data overflow occurred during acquisition.&#34;&#34;&#34;</code></pre>
+</details>
+<div class="desc"><p>Methods required for digitizer functionality.</p>
+<p>This protocol defines the interface for data acquisition devices that can
+capture analog signals at high sample rates. Digitizers typically support
+multiple input channels, various triggering modes, and different acquisition
+methods (streaming vs. block capture).</p>
+<p>Implementations must provide methods for:
+- Configuring input channels and ranges
+- Setting up acquisition parameters
+- Starting and stopping data capture
+- Retrieving acquired data
+- Managing hardware triggers</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>typing.Protocol</li>
+<li>typing.Generic</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="qscope.types.protocols.DigitizerProtocol.assert_ok"><code class="name">var <span class="ident">assert_ok</span> : Callable[[], None]</code></dt>
+<dd>
+<div class="desc"><p>Check device status and raise exception if not OK.</p></div>
+</dd>
+<dt id="qscope.types.protocols.DigitizerProtocol.check_overflow"><code class="name">var <span class="ident">check_overflow</span> : Callable[[], bool]</code></dt>
+<dd>
+<div class="desc"><p>Check if data overflow occurred during acquisition.</p></div>
+</dd>
+<dt id="qscope.types.protocols.DigitizerProtocol.configure_channels"><code class="name">var <span class="ident">configure_channels</span> : Callable[[List[int], List[float | str], List[str] | None], None]</code></dt>
+<dd>
+<div class="desc"><p>Configure input channels with ranges and coupling.</p>
+<p>Parameters:
+- channels: List of channel indices to configure
+- ranges: List of voltage ranges for each channel
+- coupling: Optional list of coupling modes ('AC' or 'DC')</p></div>
+</dd>
+<dt id="qscope.types.protocols.DigitizerProtocol.get_block_data"><code class="name">var <span class="ident">get_block_data</span> : Callable[[], Tuple[numpy.ndarray, Tuple[numpy.ndarray, ...]]]</code></dt>
+<dd>
+<div class="desc"><p>Get data from completed block capture.</p>
+<p>Returns:
+- Tuple containing time array and tuple of channel data arrays</p></div>
+</dd>
+<dt id="qscope.types.protocols.DigitizerProtocol.get_data"><code class="name">var <span class="ident">get_data</span> : Callable[[float], Tuple[numpy.ndarray, Tuple[numpy.ndarray, ...]]]</code></dt>
+<dd>
+<div class="desc"><p>Get acquired data from all enabled channels.</p>
+<p>Parameters:
+- timeout: Maximum time to wait for data in seconds</p>
+<p>Returns:
+- Tuple containing time array and tuple of channel data arrays</p></div>
+</dd>
+<dt id="qscope.types.protocols.DigitizerProtocol.get_timebase"><code class="name">var <span class="ident">get_timebase</span> : Callable[[], float]</code></dt>
+<dd>
+<div class="desc"><p>Get the current timebase (sample interval) in seconds.</p></div>
+</dd>
+<dt id="qscope.types.protocols.DigitizerProtocol.set_downsampling"><code class="name">var <span class="ident">set_downsampling</span> : Callable[[int], None]</code></dt>
+<dd>
+<div class="desc"><p>Set downsampling factor for data acquisition.</p></div>
+</dd>
+<dt id="qscope.types.protocols.DigitizerProtocol.set_resolution"><code class="name">var <span class="ident">set_resolution</span> : Callable[[int], None]</code></dt>
+<dd>
+<div class="desc"><p>Set the ADC resolution in bits.</p></div>
+</dd>
+<dt id="qscope.types.protocols.DigitizerProtocol.set_sample_interval"><code class="name">var <span class="ident">set_sample_interval</span> : Callable[[float], None]</code></dt>
+<dd>
+<div class="desc"><p>Set the time between samples in seconds.</p></div>
+</dd>
+<dt id="qscope.types.protocols.DigitizerProtocol.set_trigger"><code class="name">var <span class="ident">set_trigger</span> : Callable[[str], None]</code></dt>
+<dd>
+<div class="desc"><p>Set the trigger mode ('AUTO', 'NONE', 'RISING', etc.).</p></div>
+</dd>
+<dt id="qscope.types.protocols.DigitizerProtocol.start_block_capture"><code class="name">var <span class="ident">start_block_capture</span> : Callable[[int, float, int, str], None]</code></dt>
+<dd>
+<div class="desc"><p>Start a single block capture.</p>
+<p>Parameters:
+- pre_trigger_samples: Number of samples before trigger
+- timebase: Sample interval in seconds
+- post_trigger_samples: Number of samples after trigger
+- trigger_source: Source of trigger signal</p></div>
+</dd>
+<dt id="qscope.types.protocols.DigitizerProtocol.start_streaming"><code class="name">var <span class="ident">start_streaming</span> : Callable[[float, int, int | None, bool, int | None, float | None, str, float], None]</code></dt>
+<dd>
+<div class="desc"><p>Start continuous data streaming.</p>
+<p>Parameters:
+- sample_interval_s: Time between samples in seconds
+- buffer_size: Number of samples per buffer
+- num_buffers: Optional number of buffers to use
+- trigger_enabled: Whether to use hardware triggering
+- trigger_channel: Channel to use for triggering
+- trigger_threshold: Voltage threshold for trigger
+- trigger_direction: Direction ('RISING', 'FALLING', etc.)
+- trigger_delay: Delay after trigger in seconds</p></div>
+</dd>
+<dt id="qscope.types.protocols.DigitizerProtocol.stop_streaming"><code class="name">var <span class="ident">stop_streaming</span> : Callable[[], None]</code></dt>
+<dd>
+<div class="desc"><p>Stop the current streaming acquisition.</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.types.protocols.RFSourceProtocol"><code class="flex name class">
+<span>class <span class="ident">RFSourceProtocol</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@runtime_checkable
+class RFSourceProtocol(Protocol):
+    &#34;&#34;&#34;Methods required for RF source functionality.
+    
+    This protocol defines the interface for RF signal generators used in
+    spectroscopy and control applications. RF sources must provide methods
+    for controlling frequency, power, output state, and frequency sweeps.
+    
+    Implementations must support:
+    - Single frequency generation
+    - Frequency sweeps and lists
+    - Power control
+    - Output state control
+    - Triggering options
+    - Modulation capabilities
+    &#34;&#34;&#34;
+    
+    set_freq: Callable[[float], None]
+    &#34;&#34;&#34;Set the output frequency in MHz.&#34;&#34;&#34;
+    
+    get_freq: Callable[[], float]
+    &#34;&#34;&#34;Get the current output frequency in MHz.&#34;&#34;&#34;
+    
+    set_power: Callable[[float], None]
+    &#34;&#34;&#34;Set the output power in dBm.&#34;&#34;&#34;
+    
+    get_power: Callable[[], float]
+    &#34;&#34;&#34;Get the current output power in dBm.&#34;&#34;&#34;
+    
+    set_state: Callable[[bool], None]
+    &#34;&#34;&#34;Set the RF output state (on/off).&#34;&#34;&#34;
+    
+    get_state: Callable[[], bool]
+    &#34;&#34;&#34;Get the current RF output state (on/off).&#34;&#34;&#34;
+    
+    set_freq_list: Callable[[Sequence[float], float], Sequence[float]]
+    &#34;&#34;&#34;Configure a frequency list for stepped sweeps.
+    
+    Parameters:
+    - frequencies: Sequence of frequencies in MHz
+    - step_time: Dwell time at each frequency in seconds
+    
+    Returns:
+    - Sequence of actual frequencies set (may differ slightly from requested)
+    &#34;&#34;&#34;
+    
+    set_f_table: Callable[[Sequence[float], Sequence[float]], None]
+    &#34;&#34;&#34;Configure a frequency table with corresponding power levels.
+    
+    Parameters:
+    - frequencies: Sequence of frequencies in MHz
+    - powers: Sequence of power levels in dBm
+    &#34;&#34;&#34;
+    
+    reconnect: Callable[[], None]
+    &#34;&#34;&#34;Attempt to reconnect to the device if connection was lost.&#34;&#34;&#34;
+    
+    start_fm_mod: Callable[[], None]
+    &#34;&#34;&#34;Start frequency modulation.&#34;&#34;&#34;
+    
+    stop_fm_mod: Callable[[], None]
+    &#34;&#34;&#34;Stop frequency modulation.&#34;&#34;&#34;
+    
+    set_trigger: Callable[[str], None]
+    &#34;&#34;&#34;Set the trigger mode for frequency sweeps.&#34;&#34;&#34;
+    
+    start_sweep: Callable[[], None]
+    &#34;&#34;&#34;Start a frequency sweep using the configured frequency list.&#34;&#34;&#34;
+    
+    reset_sweep: Callable[[], None]
+    &#34;&#34;&#34;Reset the sweep to the first frequency in the list.&#34;&#34;&#34;
+    
+    stop_sweep: Callable[[], None]
+    &#34;&#34;&#34;Stop the current frequency sweep.&#34;&#34;&#34;</code></pre>
+</details>
+<div class="desc"><p>Methods required for RF source functionality.</p>
+<p>This protocol defines the interface for RF signal generators used in
+spectroscopy and control applications. RF sources must provide methods
+for controlling frequency, power, output state, and frequency sweeps.</p>
+<p>Implementations must support:
+- Single frequency generation
+- Frequency sweeps and lists
+- Power control
+- Output state control
+- Triggering options
+- Modulation capabilities</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>typing.Protocol</li>
+<li>typing.Generic</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="qscope.types.protocols.RFSourceProtocol.get_freq"><code class="name">var <span class="ident">get_freq</span> : Callable[[], float]</code></dt>
+<dd>
+<div class="desc"><p>Get the current output frequency in MHz.</p></div>
+</dd>
+<dt id="qscope.types.protocols.RFSourceProtocol.get_power"><code class="name">var <span class="ident">get_power</span> : Callable[[], float]</code></dt>
+<dd>
+<div class="desc"><p>Get the current output power in dBm.</p></div>
+</dd>
+<dt id="qscope.types.protocols.RFSourceProtocol.get_state"><code class="name">var <span class="ident">get_state</span> : Callable[[], bool]</code></dt>
+<dd>
+<div class="desc"><p>Get the current RF output state (on/off).</p></div>
+</dd>
+<dt id="qscope.types.protocols.RFSourceProtocol.reconnect"><code class="name">var <span class="ident">reconnect</span> : Callable[[], None]</code></dt>
+<dd>
+<div class="desc"><p>Attempt to reconnect to the device if connection was lost.</p></div>
+</dd>
+<dt id="qscope.types.protocols.RFSourceProtocol.reset_sweep"><code class="name">var <span class="ident">reset_sweep</span> : Callable[[], None]</code></dt>
+<dd>
+<div class="desc"><p>Reset the sweep to the first frequency in the list.</p></div>
+</dd>
+<dt id="qscope.types.protocols.RFSourceProtocol.set_f_table"><code class="name">var <span class="ident">set_f_table</span> : Callable[[Sequence[float], Sequence[float]], None]</code></dt>
+<dd>
+<div class="desc"><p>Configure a frequency table with corresponding power levels.</p>
+<p>Parameters:
+- frequencies: Sequence of frequencies in MHz
+- powers: Sequence of power levels in dBm</p></div>
+</dd>
+<dt id="qscope.types.protocols.RFSourceProtocol.set_freq"><code class="name">var <span class="ident">set_freq</span> : Callable[[float], None]</code></dt>
+<dd>
+<div class="desc"><p>Set the output frequency in MHz.</p></div>
+</dd>
+<dt id="qscope.types.protocols.RFSourceProtocol.set_freq_list"><code class="name">var <span class="ident">set_freq_list</span> : Callable[[Sequence[float], float], Sequence[float]]</code></dt>
+<dd>
+<div class="desc"><p>Configure a frequency list for stepped sweeps.</p>
+<p>Parameters:
+- frequencies: Sequence of frequencies in MHz
+- step_time: Dwell time at each frequency in seconds</p>
+<p>Returns:
+- Sequence of actual frequencies set (may differ slightly from requested)</p></div>
+</dd>
+<dt id="qscope.types.protocols.RFSourceProtocol.set_power"><code class="name">var <span class="ident">set_power</span> : Callable[[float], None]</code></dt>
+<dd>
+<div class="desc"><p>Set the output power in dBm.</p></div>
+</dd>
+<dt id="qscope.types.protocols.RFSourceProtocol.set_state"><code class="name">var <span class="ident">set_state</span> : Callable[[bool], None]</code></dt>
+<dd>
+<div class="desc"><p>Set the RF output state (on/off).</p></div>
+</dd>
+<dt id="qscope.types.protocols.RFSourceProtocol.set_trigger"><code class="name">var <span class="ident">set_trigger</span> : Callable[[str], None]</code></dt>
+<dd>
+<div class="desc"><p>Set the trigger mode for frequency sweeps.</p></div>
+</dd>
+<dt id="qscope.types.protocols.RFSourceProtocol.start_fm_mod"><code class="name">var <span class="ident">start_fm_mod</span> : Callable[[], None]</code></dt>
+<dd>
+<div class="desc"><p>Start frequency modulation.</p></div>
+</dd>
+<dt id="qscope.types.protocols.RFSourceProtocol.start_sweep"><code class="name">var <span class="ident">start_sweep</span> : Callable[[], None]</code></dt>
+<dd>
+<div class="desc"><p>Start a frequency sweep using the configured frequency list.</p></div>
+</dd>
+<dt id="qscope.types.protocols.RFSourceProtocol.stop_fm_mod"><code class="name">var <span class="ident">stop_fm_mod</span> : Callable[[], None]</code></dt>
+<dd>
+<div class="desc"><p>Stop frequency modulation.</p></div>
+</dd>
+<dt id="qscope.types.protocols.RFSourceProtocol.stop_sweep"><code class="name">var <span class="ident">stop_sweep</span> : Callable[[], None]</code></dt>
+<dd>
+<div class="desc"><p>Stop the current frequency sweep.</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.types.protocols.SeqGenProtocol"><code class="flex name class">
+<span>class <span class="ident">SeqGenProtocol</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@runtime_checkable
+class SeqGenProtocol(Protocol):
+    &#34;&#34;&#34;Methods required for sequence generator functionality.
+    
+    This protocol defines the interface for sequence generators used for
+    timing and pulse control in quantum experiments. Sequence generators
+    must provide methods for loading, starting, stopping, and resetting
+    pulse sequences.
+    
+    Sequence generators typically control:
+    - Precise timing of experimental events
+    - Digital output patterns
+    - Trigger signals for other instruments
+    - Synchronization of multiple devices
+    
+    Examples of sequence generators include:
+    - SpinCore PulseBlaster
+    - Arbitrary waveform generators
+    - FPGA-based timing controllers
+    &#34;&#34;&#34;
+    
+    load_seq: Callable[[str, ...], None]
+    &#34;&#34;&#34;Load a named sequence with optional parameters.
+    
+    Parameters:
+    - seq_name: Name of the sequence to load
+    - Additional keyword arguments specific to the sequence
+    &#34;&#34;&#34;
+    
+    start: Callable[[], None]
+    &#34;&#34;&#34;Start the loaded sequence.&#34;&#34;&#34;
+    
+    stop: Callable[[], None]
+    &#34;&#34;&#34;Stop the currently running sequence.&#34;&#34;&#34;
+    
+    reset: Callable[[], None]
+    &#34;&#34;&#34;Reset the sequence generator to its initial state.&#34;&#34;&#34;</code></pre>
+</details>
+<div class="desc"><p>Methods required for sequence generator functionality.</p>
+<p>This protocol defines the interface for sequence generators used for
+timing and pulse control in quantum experiments. Sequence generators
+must provide methods for loading, starting, stopping, and resetting
+pulse sequences.</p>
+<p>Sequence generators typically control:
+- Precise timing of experimental events
+- Digital output patterns
+- Trigger signals for other instruments
+- Synchronization of multiple devices</p>
+<p>Examples of sequence generators include:
+- SpinCore PulseBlaster
+- Arbitrary waveform generators
+- FPGA-based timing controllers</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>typing.Protocol</li>
+<li>typing.Generic</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="qscope.types.protocols.SeqGenProtocol.load_seq"><code class="name">var <span class="ident">load_seq</span> : Callable[[str, ...], None]</code></dt>
+<dd>
+<div class="desc"><p>Load a named sequence with optional parameters.</p>
+<p>Parameters:
+- seq_name: Name of the sequence to load
+- Additional keyword arguments specific to the sequence</p></div>
+</dd>
+<dt id="qscope.types.protocols.SeqGenProtocol.reset"><code class="name">var <span class="ident">reset</span> : Callable[[], None]</code></dt>
+<dd>
+<div class="desc"><p>Reset the sequence generator to its initial state.</p></div>
+</dd>
+<dt id="qscope.types.protocols.SeqGenProtocol.start"><code class="name">var <span class="ident">start</span> : Callable[[], None]</code></dt>
+<dd>
+<div class="desc"><p>Start the loaded sequence.</p></div>
+</dd>
+<dt id="qscope.types.protocols.SeqGenProtocol.stop"><code class="name">var <span class="ident">stop</span> : Callable[[], None]</code></dt>
+<dd>
+<div class="desc"><p>Stop the currently running sequence.</p></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<form>
+<input id="lunr-search" name="q" placeholder="🔎 Search ..." aria-label="Search"
+disabled minlength="2">
+</form>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.css" integrity="sha512-b+T2i3P45i1LZM7I00Ci5QquB9szqaxu+uuk5TUSGjZQ4w4n+qujQiIuvTv2BxE7WCGQCifNMksyKILDiHzsOg==" crossorigin>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.js" integrity="sha512-2B9/byNV1KKRm5nQ2RLViPFD6U4dUjDGwuW1GU+ImJh8YinPU9Zlq1GzdTMO+G2ROrB5o1qasJBy1ttYz0wCug==" crossorigin></script>
+<style>
+.modal-dialog iframe {
+width: 100vw;
+height: calc(100vh - 80px);
+}
+@media screen and (min-width: 700px) {
+.modal-dialog iframe {
+width: 70vw;
+height: 80vh;
+}
+}
+.modal-dialog .tingle-modal-box {width: auto;}
+.modal-dialog .tingle-modal-box__content {padding: 0;}
+</style>
+<script>
+const input = document.getElementById('lunr-search');
+input.disabled = false;
+input.form.addEventListener('submit', (ev) => {
+ev.preventDefault();
+const url = new URL(window.location);
+url.searchParams.set('q', input.value);
+history.replaceState({}, null, url.toString());
+search(input.value);
+});
+const query = new URL(window.location).searchParams.get('q');
+if (query)
+search(query);
+function search(query) {
+const url = '../../doc-search.html#' + encodeURIComponent(query);
+new tingle.modal({
+cssClass: ['modal-dialog'],
+onClose: () => {
+const url = new URL(window.location);
+url.searchParams.delete('q');
+history.replaceState({}, null, url.toString());
+setTimeout(() => input.focus(), 100);
+}
+}).setContent('<iframe src="' + url + '"></iframe>').open();
+}
+</script>
+<div class="toc">
+<ul>
+<li><a href="#the-protocol-pattern">The Protocol Pattern</a></li>
+<li><a href="#protocol-based-architecture">Protocol-Based Architecture</a></li>
+<li><a href="#benefits-of-protocol-based-design">Benefits of Protocol-Based Design</a></li>
+<li><a href="#example">Example</a></li>
+<li><a href="#see-also">See Also</a></li>
+</ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="qscope.types" href="index.html">qscope.types</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="qscope.types.protocols.CameraProtocol" href="#qscope.types.protocols.CameraProtocol">CameraProtocol</a></code></h4>
+<ul class="">
+<li><code><a title="qscope.types.protocols.CameraProtocol.clear_acquisition" href="#qscope.types.protocols.CameraProtocol.clear_acquisition">clear_acquisition</a></code></li>
+<li><code><a title="qscope.types.protocols.CameraProtocol.get_all_seq_frames" href="#qscope.types.protocols.CameraProtocol.get_all_seq_frames">get_all_seq_frames</a></code></li>
+<li><code><a title="qscope.types.protocols.CameraProtocol.get_data_size" href="#qscope.types.protocols.CameraProtocol.get_data_size">get_data_size</a></code></li>
+<li><code><a title="qscope.types.protocols.CameraProtocol.get_exposure_time" href="#qscope.types.protocols.CameraProtocol.get_exposure_time">get_exposure_time</a></code></li>
+<li><code><a title="qscope.types.protocols.CameraProtocol.get_frame_shape" href="#qscope.types.protocols.CameraProtocol.get_frame_shape">get_frame_shape</a></code></li>
+<li><code><a title="qscope.types.protocols.CameraProtocol.get_hardware_binning" href="#qscope.types.protocols.CameraProtocol.get_hardware_binning">get_hardware_binning</a></code></li>
+<li><code><a title="qscope.types.protocols.CameraProtocol.get_readout_time" href="#qscope.types.protocols.CameraProtocol.get_readout_time">get_readout_time</a></code></li>
+<li><code><a title="qscope.types.protocols.CameraProtocol.get_roi" href="#qscope.types.protocols.CameraProtocol.get_roi">get_roi</a></code></li>
+<li><code><a title="qscope.types.protocols.CameraProtocol.get_shutter_mode" href="#qscope.types.protocols.CameraProtocol.get_shutter_mode">get_shutter_mode</a></code></li>
+<li><code><a title="qscope.types.protocols.CameraProtocol.get_trigger_time" href="#qscope.types.protocols.CameraProtocol.get_trigger_time">get_trigger_time</a></code></li>
+<li><code><a title="qscope.types.protocols.CameraProtocol.set_exposure_time" href="#qscope.types.protocols.CameraProtocol.set_exposure_time">set_exposure_time</a></code></li>
+<li><code><a title="qscope.types.protocols.CameraProtocol.set_frame_shape" href="#qscope.types.protocols.CameraProtocol.set_frame_shape">set_frame_shape</a></code></li>
+<li><code><a title="qscope.types.protocols.CameraProtocol.set_hardware_binning" href="#qscope.types.protocols.CameraProtocol.set_hardware_binning">set_hardware_binning</a></code></li>
+<li><code><a title="qscope.types.protocols.CameraProtocol.set_roi" href="#qscope.types.protocols.CameraProtocol.set_roi">set_roi</a></code></li>
+<li><code><a title="qscope.types.protocols.CameraProtocol.set_shutter_mode" href="#qscope.types.protocols.CameraProtocol.set_shutter_mode">set_shutter_mode</a></code></li>
+<li><code><a title="qscope.types.protocols.CameraProtocol.set_trigger_mode" href="#qscope.types.protocols.CameraProtocol.set_trigger_mode">set_trigger_mode</a></code></li>
+<li><code><a title="qscope.types.protocols.CameraProtocol.setup_acquisition" href="#qscope.types.protocols.CameraProtocol.setup_acquisition">setup_acquisition</a></code></li>
+<li><code><a title="qscope.types.protocols.CameraProtocol.start_acquisition" href="#qscope.types.protocols.CameraProtocol.start_acquisition">start_acquisition</a></code></li>
+<li><code><a title="qscope.types.protocols.CameraProtocol.start_video" href="#qscope.types.protocols.CameraProtocol.start_video">start_video</a></code></li>
+<li><code><a title="qscope.types.protocols.CameraProtocol.stop_acquisition" href="#qscope.types.protocols.CameraProtocol.stop_acquisition">stop_acquisition</a></code></li>
+<li><code><a title="qscope.types.protocols.CameraProtocol.stop_video" href="#qscope.types.protocols.CameraProtocol.stop_video">stop_video</a></code></li>
+<li><code><a title="qscope.types.protocols.CameraProtocol.take_snapshot" href="#qscope.types.protocols.CameraProtocol.take_snapshot">take_snapshot</a></code></li>
+<li><code><a title="qscope.types.protocols.CameraProtocol.update_data_size" href="#qscope.types.protocols.CameraProtocol.update_data_size">update_data_size</a></code></li>
+<li><code><a title="qscope.types.protocols.CameraProtocol.wait_for_frame" href="#qscope.types.protocols.CameraProtocol.wait_for_frame">wait_for_frame</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.protocols.DigitizerProtocol" href="#qscope.types.protocols.DigitizerProtocol">DigitizerProtocol</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.types.protocols.DigitizerProtocol.assert_ok" href="#qscope.types.protocols.DigitizerProtocol.assert_ok">assert_ok</a></code></li>
+<li><code><a title="qscope.types.protocols.DigitizerProtocol.check_overflow" href="#qscope.types.protocols.DigitizerProtocol.check_overflow">check_overflow</a></code></li>
+<li><code><a title="qscope.types.protocols.DigitizerProtocol.configure_channels" href="#qscope.types.protocols.DigitizerProtocol.configure_channels">configure_channels</a></code></li>
+<li><code><a title="qscope.types.protocols.DigitizerProtocol.get_block_data" href="#qscope.types.protocols.DigitizerProtocol.get_block_data">get_block_data</a></code></li>
+<li><code><a title="qscope.types.protocols.DigitizerProtocol.get_data" href="#qscope.types.protocols.DigitizerProtocol.get_data">get_data</a></code></li>
+<li><code><a title="qscope.types.protocols.DigitizerProtocol.get_timebase" href="#qscope.types.protocols.DigitizerProtocol.get_timebase">get_timebase</a></code></li>
+<li><code><a title="qscope.types.protocols.DigitizerProtocol.set_downsampling" href="#qscope.types.protocols.DigitizerProtocol.set_downsampling">set_downsampling</a></code></li>
+<li><code><a title="qscope.types.protocols.DigitizerProtocol.set_resolution" href="#qscope.types.protocols.DigitizerProtocol.set_resolution">set_resolution</a></code></li>
+<li><code><a title="qscope.types.protocols.DigitizerProtocol.set_sample_interval" href="#qscope.types.protocols.DigitizerProtocol.set_sample_interval">set_sample_interval</a></code></li>
+<li><code><a title="qscope.types.protocols.DigitizerProtocol.set_trigger" href="#qscope.types.protocols.DigitizerProtocol.set_trigger">set_trigger</a></code></li>
+<li><code><a title="qscope.types.protocols.DigitizerProtocol.start_block_capture" href="#qscope.types.protocols.DigitizerProtocol.start_block_capture">start_block_capture</a></code></li>
+<li><code><a title="qscope.types.protocols.DigitizerProtocol.start_streaming" href="#qscope.types.protocols.DigitizerProtocol.start_streaming">start_streaming</a></code></li>
+<li><code><a title="qscope.types.protocols.DigitizerProtocol.stop_streaming" href="#qscope.types.protocols.DigitizerProtocol.stop_streaming">stop_streaming</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.protocols.RFSourceProtocol" href="#qscope.types.protocols.RFSourceProtocol">RFSourceProtocol</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.types.protocols.RFSourceProtocol.get_freq" href="#qscope.types.protocols.RFSourceProtocol.get_freq">get_freq</a></code></li>
+<li><code><a title="qscope.types.protocols.RFSourceProtocol.get_power" href="#qscope.types.protocols.RFSourceProtocol.get_power">get_power</a></code></li>
+<li><code><a title="qscope.types.protocols.RFSourceProtocol.get_state" href="#qscope.types.protocols.RFSourceProtocol.get_state">get_state</a></code></li>
+<li><code><a title="qscope.types.protocols.RFSourceProtocol.reconnect" href="#qscope.types.protocols.RFSourceProtocol.reconnect">reconnect</a></code></li>
+<li><code><a title="qscope.types.protocols.RFSourceProtocol.reset_sweep" href="#qscope.types.protocols.RFSourceProtocol.reset_sweep">reset_sweep</a></code></li>
+<li><code><a title="qscope.types.protocols.RFSourceProtocol.set_f_table" href="#qscope.types.protocols.RFSourceProtocol.set_f_table">set_f_table</a></code></li>
+<li><code><a title="qscope.types.protocols.RFSourceProtocol.set_freq" href="#qscope.types.protocols.RFSourceProtocol.set_freq">set_freq</a></code></li>
+<li><code><a title="qscope.types.protocols.RFSourceProtocol.set_freq_list" href="#qscope.types.protocols.RFSourceProtocol.set_freq_list">set_freq_list</a></code></li>
+<li><code><a title="qscope.types.protocols.RFSourceProtocol.set_power" href="#qscope.types.protocols.RFSourceProtocol.set_power">set_power</a></code></li>
+<li><code><a title="qscope.types.protocols.RFSourceProtocol.set_state" href="#qscope.types.protocols.RFSourceProtocol.set_state">set_state</a></code></li>
+<li><code><a title="qscope.types.protocols.RFSourceProtocol.set_trigger" href="#qscope.types.protocols.RFSourceProtocol.set_trigger">set_trigger</a></code></li>
+<li><code><a title="qscope.types.protocols.RFSourceProtocol.start_fm_mod" href="#qscope.types.protocols.RFSourceProtocol.start_fm_mod">start_fm_mod</a></code></li>
+<li><code><a title="qscope.types.protocols.RFSourceProtocol.start_sweep" href="#qscope.types.protocols.RFSourceProtocol.start_sweep">start_sweep</a></code></li>
+<li><code><a title="qscope.types.protocols.RFSourceProtocol.stop_fm_mod" href="#qscope.types.protocols.RFSourceProtocol.stop_fm_mod">stop_fm_mod</a></code></li>
+<li><code><a title="qscope.types.protocols.RFSourceProtocol.stop_sweep" href="#qscope.types.protocols.RFSourceProtocol.stop_sweep">stop_sweep</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.protocols.SeqGenProtocol" href="#qscope.types.protocols.SeqGenProtocol">SeqGenProtocol</a></code></h4>
+<ul class="">
+<li><code><a title="qscope.types.protocols.SeqGenProtocol.load_seq" href="#qscope.types.protocols.SeqGenProtocol.load_seq">load_seq</a></code></li>
+<li><code><a title="qscope.types.protocols.SeqGenProtocol.reset" href="#qscope.types.protocols.SeqGenProtocol.reset">reset</a></code></li>
+<li><code><a title="qscope.types.protocols.SeqGenProtocol.start" href="#qscope.types.protocols.SeqGenProtocol.start">start</a></code></li>
+<li><code><a title="qscope.types.protocols.SeqGenProtocol.stop" href="#qscope.types.protocols.SeqGenProtocol.stop">stop</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
+</footer>
+</body>
+</html>

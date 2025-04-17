@@ -1,0 +1,1077 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.6">
+<title>qscope.types.config API documentation</title>
+<meta name="description" content="Configuration types for measurements and devices.">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}#lunr-search{width:100%;font-size:1em;padding:6px 9px 5px 9px;border:1px solid silver}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes: true } });</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML" integrity="sha256-kZafAc6mZvK3W3v1pHOcUix30OHQN6pU/NO2oFkqZVw=" crossorigin></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>qscope.types.config</code></h1>
+</header>
+<section id="section-intro">
+<p>Configuration types for measurements and devices.</p>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="qscope.types.config.CameraConfig"><code class="flex name class">
+<span>class <span class="ident">CameraConfig</span></span>
+<span>(</span><span>*,<br>meas_type: str,<br>save_name: str,<br>ref_mode: str,<br>sweep_x: numpy.ndarray,<br>exposure_time: float,<br>frame_shape: tuple[int, int],<br>hardware_binning: tuple[int, int],<br>avg_per_point: int)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass(kw_only=True, repr=False)
+class CameraConfig(MeasurementConfig):
+    &#34;&#34;&#34;Configuration for camera-based measurements.&#34;&#34;&#34;
+
+    exposure_time: float
+    frame_shape: tuple[int, int]
+    hardware_binning: tuple[int, int]
+    avg_per_point: int</code></pre>
+</details>
+<div class="desc"><p>Configuration for camera-based measurements.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.config.MeasurementConfig" href="#qscope.types.config.MeasurementConfig">MeasurementConfig</a></li>
+<li>mashumaro.mixins.dict.DataClassDictMixin</li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="qscope.types.config.MockSGAndorESRConfig" href="#qscope.types.config.MockSGAndorESRConfig">MockSGAndorESRConfig</a></li>
+<li><a title="qscope.types.config.SGAndorCWESRConfig" href="#qscope.types.config.SGAndorCWESRConfig">SGAndorCWESRConfig</a></li>
+<li><a title="qscope.types.config.SGAndorPESRConfig" href="#qscope.types.config.SGAndorPESRConfig">SGAndorPESRConfig</a></li>
+<li><a title="qscope.types.config.SGAndorRabiConfig" href="#qscope.types.config.SGAndorRabiConfig">SGAndorRabiConfig</a></li>
+<li><a title="qscope.types.config.SGAndorRamseyConfig" href="#qscope.types.config.SGAndorRamseyConfig">SGAndorRamseyConfig</a></li>
+<li><a title="qscope.types.config.SGAndorSpinEchoConfig" href="#qscope.types.config.SGAndorSpinEchoConfig">SGAndorSpinEchoConfig</a></li>
+<li><a title="qscope.types.config.SGAndorT1Config" href="#qscope.types.config.SGAndorT1Config">SGAndorT1Config</a></li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="qscope.types.config.CameraConfig.from_dict"><code class="name flex">
+<span>def <span class="ident">from_dict</span></span>(<span>d, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="qscope.types.config.CameraConfig.avg_per_point"><code class="name">var <span class="ident">avg_per_point</span> : int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.config.CameraConfig.exposure_time"><code class="name">var <span class="ident">exposure_time</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.config.CameraConfig.frame_shape"><code class="name">var <span class="ident">frame_shape</span> : tuple[int, int]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.config.CameraConfig.hardware_binning"><code class="name">var <span class="ident">hardware_binning</span> : tuple[int, int]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.types.config.CameraConfig.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.types.config.MeasurementConfig"><code class="flex name class">
+<span>class <span class="ident">MeasurementConfig</span></span>
+<span>(</span><span>*, meas_type: str, save_name: str, ref_mode: str, sweep_x: numpy.ndarray)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass(kw_only=True, repr=False)
+class MeasurementConfig(DataClassDictMixin):
+    &#34;&#34;&#34;Base configuration for measurements.
+
+    To be subclassed for each measurement type.
+    Provide all the parameters you require here as attributes.
+    &#34;&#34;&#34;
+
+    class Config(BaseConfig):
+        discriminator = Discriminator(
+            field=&#34;meas_type&#34;,
+            include_subtypes=True,
+        )
+
+    meas_type: str
+    save_name: str  # REQUIRED per-type
+    ref_mode: str
+    sweep_x: np.ndarray = field(metadata={&#34;serialize&#34;: tuple, &#34;deserialize&#34;: np.array})
+
+    def __repr__(self):
+        msg = self.__class__.__name__ + &#34;(&#34;
+        for i, (field, val) in enumerate(self.__dict__.items()):
+            if i not in (0, len(self.__dict__)):
+                msg += &#34;, &#34;
+            if isinstance(val, np.ndarray):
+                msg += f&#34;{field}=&lt;Array&gt;&#34;
+            else:
+                msg += f&#34;{field}={getattr(self, field)}&#34;
+        return msg + &#34;)&#34;</code></pre>
+</details>
+<div class="desc"><p>Base configuration for measurements.</p>
+<p>To be subclassed for each measurement type.
+Provide all the parameters you require here as attributes.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>mashumaro.mixins.dict.DataClassDictMixin</li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="qscope.types.config.CameraConfig" href="#qscope.types.config.CameraConfig">CameraConfig</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="qscope.types.config.MeasurementConfig.Config"><code class="name">var <span class="ident">Config</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Static methods</h3>
+<dl>
+<dt id="qscope.types.config.MeasurementConfig.from_dict"><code class="name flex">
+<span>def <span class="ident">from_dict</span></span>(<span>d, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="qscope.types.config.MeasurementConfig.meas_type"><code class="name">var <span class="ident">meas_type</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.config.MeasurementConfig.ref_mode"><code class="name">var <span class="ident">ref_mode</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.config.MeasurementConfig.save_name"><code class="name">var <span class="ident">save_name</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.config.MeasurementConfig.sweep_x"><code class="name">var <span class="ident">sweep_x</span> : numpy.ndarray</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.types.config.MeasurementConfig.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.types.config.MockSGAndorESRConfig"><code class="flex name class">
+<span>class <span class="ident">MockSGAndorESRConfig</span></span>
+<span>(</span><span>*,<br>meas_type: str = 'MockSGAndorESR',<br>save_name: str = 'ESR',<br>ref_mode: str,<br>sweep_x: numpy.ndarray,<br>exposure_time: float,<br>frame_shape: tuple[int, int],<br>hardware_binning: tuple[int, int],<br>avg_per_point: int,<br>rf_delay: float,<br>rf_pow: float,<br>rf_dur: float,<br>laser_delay: float,<br>laser_dur: float,<br>laser_to_rf_delay: float,<br>peak_contrasts: tuple[float, float],<br>peak_widths: tuple[float, float],<br>bg_zeeman: float,<br>ft_zeeman: float,<br>ft_width_dif: float,<br>ft_height_dif: float,<br>ft_centre: tuple[int | None, int | None],<br>ft_rad: int | None,<br>ft_linewidth: int,<br>noise_sigma: float)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass(kw_only=True, repr=False)
+class MockSGAndorESRConfig(CameraConfig):
+    &#34;&#34;&#34;Configuration for mock ESR measurements.&#34;&#34;&#34;
+
+    meas_type: str = &#34;MockSGAndorESR&#34;
+    save_name: str = &#34;ESR&#34;
+    rf_delay: float
+    rf_pow: float
+    rf_dur: float
+    laser_delay: float
+    laser_dur: float
+    laser_to_rf_delay: float
+    # test data params
+    peak_contrasts: tuple[float, float]
+    peak_widths: tuple[float, float]
+    bg_zeeman: float
+    ft_zeeman: float
+    ft_width_dif: float
+    ft_height_dif: float
+    ft_centre: tuple[int | None, int | None]
+    ft_rad: int | None
+    ft_linewidth: int
+    noise_sigma: float</code></pre>
+</details>
+<div class="desc"><p>Configuration for mock ESR measurements.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.config.CameraConfig" href="#qscope.types.config.CameraConfig">CameraConfig</a></li>
+<li><a title="qscope.types.config.MeasurementConfig" href="#qscope.types.config.MeasurementConfig">MeasurementConfig</a></li>
+<li>mashumaro.mixins.dict.DataClassDictMixin</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="qscope.types.config.MockSGAndorESRConfig.from_dict"><code class="name flex">
+<span>def <span class="ident">from_dict</span></span>(<span>d, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="qscope.types.config.MockSGAndorESRConfig.bg_zeeman"><code class="name">var <span class="ident">bg_zeeman</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.config.MockSGAndorESRConfig.ft_centre"><code class="name">var <span class="ident">ft_centre</span> : tuple[int | None, int | None]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.config.MockSGAndorESRConfig.ft_height_dif"><code class="name">var <span class="ident">ft_height_dif</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.config.MockSGAndorESRConfig.ft_linewidth"><code class="name">var <span class="ident">ft_linewidth</span> : int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.config.MockSGAndorESRConfig.ft_rad"><code class="name">var <span class="ident">ft_rad</span> : int | None</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.config.MockSGAndorESRConfig.ft_width_dif"><code class="name">var <span class="ident">ft_width_dif</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.config.MockSGAndorESRConfig.ft_zeeman"><code class="name">var <span class="ident">ft_zeeman</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.config.MockSGAndorESRConfig.laser_delay"><code class="name">var <span class="ident">laser_delay</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.config.MockSGAndorESRConfig.laser_dur"><code class="name">var <span class="ident">laser_dur</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.config.MockSGAndorESRConfig.laser_to_rf_delay"><code class="name">var <span class="ident">laser_to_rf_delay</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.config.MockSGAndorESRConfig.meas_type"><code class="name">var <span class="ident">meas_type</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.config.MockSGAndorESRConfig.noise_sigma"><code class="name">var <span class="ident">noise_sigma</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.config.MockSGAndorESRConfig.peak_contrasts"><code class="name">var <span class="ident">peak_contrasts</span> : tuple[float, float]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.config.MockSGAndorESRConfig.peak_widths"><code class="name">var <span class="ident">peak_widths</span> : tuple[float, float]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.config.MockSGAndorESRConfig.rf_delay"><code class="name">var <span class="ident">rf_delay</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.config.MockSGAndorESRConfig.rf_dur"><code class="name">var <span class="ident">rf_dur</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.config.MockSGAndorESRConfig.rf_pow"><code class="name">var <span class="ident">rf_pow</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.config.MockSGAndorESRConfig.save_name"><code class="name">var <span class="ident">save_name</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.types.config.MockSGAndorESRConfig.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.types.config.SGAndorCWESRConfig"><code class="flex name class">
+<span>class <span class="ident">SGAndorCWESRConfig</span></span>
+<span>(</span><span>*,<br>meas_type: str = 'SGAndorCWESR',<br>save_name: str = 'ESR',<br>ref_mode: str,<br>sweep_x: numpy.ndarray,<br>exposure_time: float,<br>frame_shape: tuple[int, int],<br>hardware_binning: tuple[int, int],<br>avg_per_point: int,<br>fmod_freq: float,<br>rf_pow: float,<br>laser_delay: float)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass(kw_only=True, repr=False)
+class SGAndorCWESRConfig(CameraConfig):
+    &#34;&#34;&#34;Configuration for CW ESR measurements.&#34;&#34;&#34;
+
+    meas_type: str = &#34;SGAndorCWESR&#34;
+    save_name: str = &#34;ESR&#34;
+    avg_per_point: int
+    fmod_freq: float
+    rf_pow: float
+    laser_delay: float</code></pre>
+</details>
+<div class="desc"><p>Configuration for CW ESR measurements.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.config.CameraConfig" href="#qscope.types.config.CameraConfig">CameraConfig</a></li>
+<li><a title="qscope.types.config.MeasurementConfig" href="#qscope.types.config.MeasurementConfig">MeasurementConfig</a></li>
+<li>mashumaro.mixins.dict.DataClassDictMixin</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="qscope.types.config.SGAndorCWESRConfig.from_dict"><code class="name flex">
+<span>def <span class="ident">from_dict</span></span>(<span>d, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="qscope.types.config.SGAndorCWESRConfig.avg_per_point"><code class="name">var <span class="ident">avg_per_point</span> : int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.config.SGAndorCWESRConfig.fmod_freq"><code class="name">var <span class="ident">fmod_freq</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.config.SGAndorCWESRConfig.laser_delay"><code class="name">var <span class="ident">laser_delay</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.config.SGAndorCWESRConfig.meas_type"><code class="name">var <span class="ident">meas_type</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.config.SGAndorCWESRConfig.rf_pow"><code class="name">var <span class="ident">rf_pow</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.config.SGAndorCWESRConfig.save_name"><code class="name">var <span class="ident">save_name</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.types.config.SGAndorCWESRConfig.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.types.config.SGAndorPESRConfig"><code class="flex name class">
+<span>class <span class="ident">SGAndorPESRConfig</span></span>
+<span>(</span><span>*,<br>meas_type: str = 'SGAndorPESR',<br>save_name: str = 'ESR',<br>ref_mode: str,<br>sweep_x: numpy.ndarray,<br>exposure_time: float,<br>frame_shape: tuple[int, int],<br>hardware_binning: tuple[int, int],<br>avg_per_point: int,<br>fmod_freq: float,<br>rf_delay: float,<br>rf_pow: float,<br>rf_dur: float,<br>laser_delay: float,<br>laser_dur: float,<br>laser_to_rf_delay: float)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass(kw_only=True, repr=False)
+class SGAndorPESRConfig(CameraConfig):
+    &#34;&#34;&#34;Configuration for pulsed ESR measurements.&#34;&#34;&#34;
+
+    meas_type: str = &#34;SGAndorPESR&#34;
+    save_name: str = &#34;ESR&#34;
+    avg_per_point: int
+    fmod_freq: float
+    rf_delay: float
+    rf_pow: float
+    rf_dur: float
+    laser_delay: float
+    laser_dur: float
+    laser_to_rf_delay: float</code></pre>
+</details>
+<div class="desc"><p>Configuration for pulsed ESR measurements.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.config.CameraConfig" href="#qscope.types.config.CameraConfig">CameraConfig</a></li>
+<li><a title="qscope.types.config.MeasurementConfig" href="#qscope.types.config.MeasurementConfig">MeasurementConfig</a></li>
+<li>mashumaro.mixins.dict.DataClassDictMixin</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="qscope.types.config.SGAndorPESRConfig.from_dict"><code class="name flex">
+<span>def <span class="ident">from_dict</span></span>(<span>d, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="qscope.types.config.SGAndorPESRConfig.avg_per_point"><code class="name">var <span class="ident">avg_per_point</span> : int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.config.SGAndorPESRConfig.fmod_freq"><code class="name">var <span class="ident">fmod_freq</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.config.SGAndorPESRConfig.laser_delay"><code class="name">var <span class="ident">laser_delay</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.config.SGAndorPESRConfig.laser_dur"><code class="name">var <span class="ident">laser_dur</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.config.SGAndorPESRConfig.laser_to_rf_delay"><code class="name">var <span class="ident">laser_to_rf_delay</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.config.SGAndorPESRConfig.meas_type"><code class="name">var <span class="ident">meas_type</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.config.SGAndorPESRConfig.rf_delay"><code class="name">var <span class="ident">rf_delay</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.config.SGAndorPESRConfig.rf_dur"><code class="name">var <span class="ident">rf_dur</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.config.SGAndorPESRConfig.rf_pow"><code class="name">var <span class="ident">rf_pow</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.config.SGAndorPESRConfig.save_name"><code class="name">var <span class="ident">save_name</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.types.config.SGAndorPESRConfig.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.types.config.SGAndorRabiConfig"><code class="flex name class">
+<span>class <span class="ident">SGAndorRabiConfig</span></span>
+<span>(</span><span>*,<br>meas_type: str = 'SGAndorRabi',<br>save_name: str = 'Rabi',<br>ref_mode: str,<br>sweep_x: numpy.ndarray,<br>exposure_time: float,<br>frame_shape: tuple[int, int],<br>hardware_binning: tuple[int, int],<br>avg_per_point: int,<br>laser_dur: float,<br>rf_dur: float,<br>laser_delay: float,<br>rf_delay: float,<br>rf_pow: float,<br>rf_freq: float)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass(kw_only=True, repr=False)
+class SGAndorRabiConfig(CameraConfig):
+    &#34;&#34;&#34;Configuration for Rabi measurements.&#34;&#34;&#34;
+
+    meas_type: str = &#34;SGAndorRabi&#34;
+    save_name: str = &#34;Rabi&#34;
+    avg_per_point: int
+    laser_dur: float
+    rf_dur: float
+    laser_delay: float
+    rf_delay: float
+    rf_pow: float
+    rf_freq: float</code></pre>
+</details>
+<div class="desc"><p>Configuration for Rabi measurements.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.config.CameraConfig" href="#qscope.types.config.CameraConfig">CameraConfig</a></li>
+<li><a title="qscope.types.config.MeasurementConfig" href="#qscope.types.config.MeasurementConfig">MeasurementConfig</a></li>
+<li>mashumaro.mixins.dict.DataClassDictMixin</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="qscope.types.config.SGAndorRabiConfig.from_dict"><code class="name flex">
+<span>def <span class="ident">from_dict</span></span>(<span>d, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="qscope.types.config.SGAndorRabiConfig.avg_per_point"><code class="name">var <span class="ident">avg_per_point</span> : int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.config.SGAndorRabiConfig.laser_delay"><code class="name">var <span class="ident">laser_delay</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.config.SGAndorRabiConfig.laser_dur"><code class="name">var <span class="ident">laser_dur</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.config.SGAndorRabiConfig.meas_type"><code class="name">var <span class="ident">meas_type</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.config.SGAndorRabiConfig.rf_delay"><code class="name">var <span class="ident">rf_delay</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.config.SGAndorRabiConfig.rf_dur"><code class="name">var <span class="ident">rf_dur</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.config.SGAndorRabiConfig.rf_freq"><code class="name">var <span class="ident">rf_freq</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.config.SGAndorRabiConfig.rf_pow"><code class="name">var <span class="ident">rf_pow</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.config.SGAndorRabiConfig.save_name"><code class="name">var <span class="ident">save_name</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.types.config.SGAndorRabiConfig.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.types.config.SGAndorRamseyConfig"><code class="flex name class">
+<span>class <span class="ident">SGAndorRamseyConfig</span></span>
+<span>(</span><span>*,<br>meas_type: str = 'SGAndorRamsey',<br>save_name: str = 'Ramsey',<br>ref_mode: str,<br>sweep_x: numpy.ndarray,<br>exposure_time: float,<br>frame_shape: tuple[int, int],<br>hardware_binning: tuple[int, int],<br>avg_per_point: int,<br>laser_dur: float,<br>pi_dur: float,<br>pi_2_dur: float,<br>laser_delay: float,<br>rf_delay: float,<br>rf_pow: float,<br>rf_freq: float)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass(kw_only=True, repr=False)
+class SGAndorRamseyConfig(CameraConfig):
+    &#34;&#34;&#34;Configuration for Ramsey measurements.&#34;&#34;&#34;
+
+    meas_type: str = &#34;SGAndorRamsey&#34;
+    save_name: str = &#34;Ramsey&#34;
+    laser_dur: float
+    pi_dur: float
+    pi_2_dur: float
+    laser_delay: float
+    rf_delay: float
+    rf_pow: float
+    rf_freq: float</code></pre>
+</details>
+<div class="desc"><p>Configuration for Ramsey measurements.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.config.CameraConfig" href="#qscope.types.config.CameraConfig">CameraConfig</a></li>
+<li><a title="qscope.types.config.MeasurementConfig" href="#qscope.types.config.MeasurementConfig">MeasurementConfig</a></li>
+<li>mashumaro.mixins.dict.DataClassDictMixin</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="qscope.types.config.SGAndorRamseyConfig.from_dict"><code class="name flex">
+<span>def <span class="ident">from_dict</span></span>(<span>d, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="qscope.types.config.SGAndorRamseyConfig.laser_delay"><code class="name">var <span class="ident">laser_delay</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.config.SGAndorRamseyConfig.laser_dur"><code class="name">var <span class="ident">laser_dur</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.config.SGAndorRamseyConfig.meas_type"><code class="name">var <span class="ident">meas_type</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.config.SGAndorRamseyConfig.pi_2_dur"><code class="name">var <span class="ident">pi_2_dur</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.config.SGAndorRamseyConfig.pi_dur"><code class="name">var <span class="ident">pi_dur</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.config.SGAndorRamseyConfig.rf_delay"><code class="name">var <span class="ident">rf_delay</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.config.SGAndorRamseyConfig.rf_freq"><code class="name">var <span class="ident">rf_freq</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.config.SGAndorRamseyConfig.rf_pow"><code class="name">var <span class="ident">rf_pow</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.config.SGAndorRamseyConfig.save_name"><code class="name">var <span class="ident">save_name</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.types.config.SGAndorRamseyConfig.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.types.config.SGAndorSpinEchoConfig"><code class="flex name class">
+<span>class <span class="ident">SGAndorSpinEchoConfig</span></span>
+<span>(</span><span>*,<br>meas_type: str = 'SGAndorSpinEcho',<br>save_name: str = 'SpinEcho',<br>ref_mode: str,<br>sweep_x: numpy.ndarray,<br>exposure_time: float,<br>frame_shape: tuple[int, int],<br>hardware_binning: tuple[int, int],<br>avg_per_point: int,<br>laser_dur: float,<br>pi_dur: float,<br>pi_2_dur: float,<br>laser_delay: float,<br>rf_delay: float,<br>rf_pow: float,<br>rf_freq: float)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass(kw_only=True, repr=False)
+class SGAndorSpinEchoConfig(CameraConfig):
+    &#34;&#34;&#34;Configuration for spin echo measurements.&#34;&#34;&#34;
+
+    meas_type: str = &#34;SGAndorSpinEcho&#34;
+    save_name: str = &#34;SpinEcho&#34;
+    laser_dur: float
+    pi_dur: float
+    pi_2_dur: float
+    laser_delay: float
+    rf_delay: float
+    rf_pow: float
+    rf_freq: float</code></pre>
+</details>
+<div class="desc"><p>Configuration for spin echo measurements.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.config.CameraConfig" href="#qscope.types.config.CameraConfig">CameraConfig</a></li>
+<li><a title="qscope.types.config.MeasurementConfig" href="#qscope.types.config.MeasurementConfig">MeasurementConfig</a></li>
+<li>mashumaro.mixins.dict.DataClassDictMixin</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="qscope.types.config.SGAndorSpinEchoConfig.from_dict"><code class="name flex">
+<span>def <span class="ident">from_dict</span></span>(<span>d, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="qscope.types.config.SGAndorSpinEchoConfig.laser_delay"><code class="name">var <span class="ident">laser_delay</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.config.SGAndorSpinEchoConfig.laser_dur"><code class="name">var <span class="ident">laser_dur</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.config.SGAndorSpinEchoConfig.meas_type"><code class="name">var <span class="ident">meas_type</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.config.SGAndorSpinEchoConfig.pi_2_dur"><code class="name">var <span class="ident">pi_2_dur</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.config.SGAndorSpinEchoConfig.pi_dur"><code class="name">var <span class="ident">pi_dur</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.config.SGAndorSpinEchoConfig.rf_delay"><code class="name">var <span class="ident">rf_delay</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.config.SGAndorSpinEchoConfig.rf_freq"><code class="name">var <span class="ident">rf_freq</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.config.SGAndorSpinEchoConfig.rf_pow"><code class="name">var <span class="ident">rf_pow</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.config.SGAndorSpinEchoConfig.save_name"><code class="name">var <span class="ident">save_name</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.types.config.SGAndorSpinEchoConfig.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.types.config.SGAndorT1Config"><code class="flex name class">
+<span>class <span class="ident">SGAndorT1Config</span></span>
+<span>(</span><span>*,<br>meas_type: str = 'SGAndorT1',<br>save_name: str = 'T1',<br>ref_mode: str,<br>sweep_x: numpy.ndarray,<br>exposure_time: float,<br>frame_shape: tuple[int, int],<br>hardware_binning: tuple[int, int],<br>avg_per_point: int,<br>laser_dur: float,<br>pi_dur: float,<br>laser_delay: float,<br>rf_delay: float,<br>rf_pow: float,<br>rf_freq: float)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass(kw_only=True, repr=False)
+class SGAndorT1Config(CameraConfig):
+    &#34;&#34;&#34;Configuration for T1 measurements.&#34;&#34;&#34;
+
+    meas_type: str = &#34;SGAndorT1&#34;
+    save_name: str = &#34;T1&#34;
+    laser_dur: float
+    pi_dur: float
+    laser_delay: float
+    rf_delay: float
+    rf_pow: float
+    rf_freq: float</code></pre>
+</details>
+<div class="desc"><p>Configuration for T1 measurements.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.config.CameraConfig" href="#qscope.types.config.CameraConfig">CameraConfig</a></li>
+<li><a title="qscope.types.config.MeasurementConfig" href="#qscope.types.config.MeasurementConfig">MeasurementConfig</a></li>
+<li>mashumaro.mixins.dict.DataClassDictMixin</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="qscope.types.config.SGAndorT1Config.from_dict"><code class="name flex">
+<span>def <span class="ident">from_dict</span></span>(<span>d, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="qscope.types.config.SGAndorT1Config.laser_delay"><code class="name">var <span class="ident">laser_delay</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.config.SGAndorT1Config.laser_dur"><code class="name">var <span class="ident">laser_dur</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.config.SGAndorT1Config.meas_type"><code class="name">var <span class="ident">meas_type</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.config.SGAndorT1Config.pi_dur"><code class="name">var <span class="ident">pi_dur</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.config.SGAndorT1Config.rf_delay"><code class="name">var <span class="ident">rf_delay</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.config.SGAndorT1Config.rf_freq"><code class="name">var <span class="ident">rf_freq</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.config.SGAndorT1Config.rf_pow"><code class="name">var <span class="ident">rf_pow</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.config.SGAndorT1Config.save_name"><code class="name">var <span class="ident">save_name</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.types.config.SGAndorT1Config.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<form>
+<input id="lunr-search" name="q" placeholder="🔎 Search ..." aria-label="Search"
+disabled minlength="2">
+</form>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.css" integrity="sha512-b+T2i3P45i1LZM7I00Ci5QquB9szqaxu+uuk5TUSGjZQ4w4n+qujQiIuvTv2BxE7WCGQCifNMksyKILDiHzsOg==" crossorigin>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.js" integrity="sha512-2B9/byNV1KKRm5nQ2RLViPFD6U4dUjDGwuW1GU+ImJh8YinPU9Zlq1GzdTMO+G2ROrB5o1qasJBy1ttYz0wCug==" crossorigin></script>
+<style>
+.modal-dialog iframe {
+width: 100vw;
+height: calc(100vh - 80px);
+}
+@media screen and (min-width: 700px) {
+.modal-dialog iframe {
+width: 70vw;
+height: 80vh;
+}
+}
+.modal-dialog .tingle-modal-box {width: auto;}
+.modal-dialog .tingle-modal-box__content {padding: 0;}
+</style>
+<script>
+const input = document.getElementById('lunr-search');
+input.disabled = false;
+input.form.addEventListener('submit', (ev) => {
+ev.preventDefault();
+const url = new URL(window.location);
+url.searchParams.set('q', input.value);
+history.replaceState({}, null, url.toString());
+search(input.value);
+});
+const query = new URL(window.location).searchParams.get('q');
+if (query)
+search(query);
+function search(query) {
+const url = '../../doc-search.html#' + encodeURIComponent(query);
+new tingle.modal({
+cssClass: ['modal-dialog'],
+onClose: () => {
+const url = new URL(window.location);
+url.searchParams.delete('q');
+history.replaceState({}, null, url.toString());
+setTimeout(() => input.focus(), 100);
+}
+}).setContent('<iframe src="' + url + '"></iframe>').open();
+}
+</script>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="qscope.types" href="index.html">qscope.types</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="qscope.types.config.CameraConfig" href="#qscope.types.config.CameraConfig">CameraConfig</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.types.config.CameraConfig.avg_per_point" href="#qscope.types.config.CameraConfig.avg_per_point">avg_per_point</a></code></li>
+<li><code><a title="qscope.types.config.CameraConfig.exposure_time" href="#qscope.types.config.CameraConfig.exposure_time">exposure_time</a></code></li>
+<li><code><a title="qscope.types.config.CameraConfig.frame_shape" href="#qscope.types.config.CameraConfig.frame_shape">frame_shape</a></code></li>
+<li><code><a title="qscope.types.config.CameraConfig.from_dict" href="#qscope.types.config.CameraConfig.from_dict">from_dict</a></code></li>
+<li><code><a title="qscope.types.config.CameraConfig.hardware_binning" href="#qscope.types.config.CameraConfig.hardware_binning">hardware_binning</a></code></li>
+<li><code><a title="qscope.types.config.CameraConfig.to_dict" href="#qscope.types.config.CameraConfig.to_dict">to_dict</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.config.MeasurementConfig" href="#qscope.types.config.MeasurementConfig">MeasurementConfig</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.types.config.MeasurementConfig.Config" href="#qscope.types.config.MeasurementConfig.Config">Config</a></code></li>
+<li><code><a title="qscope.types.config.MeasurementConfig.from_dict" href="#qscope.types.config.MeasurementConfig.from_dict">from_dict</a></code></li>
+<li><code><a title="qscope.types.config.MeasurementConfig.meas_type" href="#qscope.types.config.MeasurementConfig.meas_type">meas_type</a></code></li>
+<li><code><a title="qscope.types.config.MeasurementConfig.ref_mode" href="#qscope.types.config.MeasurementConfig.ref_mode">ref_mode</a></code></li>
+<li><code><a title="qscope.types.config.MeasurementConfig.save_name" href="#qscope.types.config.MeasurementConfig.save_name">save_name</a></code></li>
+<li><code><a title="qscope.types.config.MeasurementConfig.sweep_x" href="#qscope.types.config.MeasurementConfig.sweep_x">sweep_x</a></code></li>
+<li><code><a title="qscope.types.config.MeasurementConfig.to_dict" href="#qscope.types.config.MeasurementConfig.to_dict">to_dict</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.config.MockSGAndorESRConfig" href="#qscope.types.config.MockSGAndorESRConfig">MockSGAndorESRConfig</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.types.config.MockSGAndorESRConfig.bg_zeeman" href="#qscope.types.config.MockSGAndorESRConfig.bg_zeeman">bg_zeeman</a></code></li>
+<li><code><a title="qscope.types.config.MockSGAndorESRConfig.from_dict" href="#qscope.types.config.MockSGAndorESRConfig.from_dict">from_dict</a></code></li>
+<li><code><a title="qscope.types.config.MockSGAndorESRConfig.ft_centre" href="#qscope.types.config.MockSGAndorESRConfig.ft_centre">ft_centre</a></code></li>
+<li><code><a title="qscope.types.config.MockSGAndorESRConfig.ft_height_dif" href="#qscope.types.config.MockSGAndorESRConfig.ft_height_dif">ft_height_dif</a></code></li>
+<li><code><a title="qscope.types.config.MockSGAndorESRConfig.ft_linewidth" href="#qscope.types.config.MockSGAndorESRConfig.ft_linewidth">ft_linewidth</a></code></li>
+<li><code><a title="qscope.types.config.MockSGAndorESRConfig.ft_rad" href="#qscope.types.config.MockSGAndorESRConfig.ft_rad">ft_rad</a></code></li>
+<li><code><a title="qscope.types.config.MockSGAndorESRConfig.ft_width_dif" href="#qscope.types.config.MockSGAndorESRConfig.ft_width_dif">ft_width_dif</a></code></li>
+<li><code><a title="qscope.types.config.MockSGAndorESRConfig.ft_zeeman" href="#qscope.types.config.MockSGAndorESRConfig.ft_zeeman">ft_zeeman</a></code></li>
+<li><code><a title="qscope.types.config.MockSGAndorESRConfig.laser_delay" href="#qscope.types.config.MockSGAndorESRConfig.laser_delay">laser_delay</a></code></li>
+<li><code><a title="qscope.types.config.MockSGAndorESRConfig.laser_dur" href="#qscope.types.config.MockSGAndorESRConfig.laser_dur">laser_dur</a></code></li>
+<li><code><a title="qscope.types.config.MockSGAndorESRConfig.laser_to_rf_delay" href="#qscope.types.config.MockSGAndorESRConfig.laser_to_rf_delay">laser_to_rf_delay</a></code></li>
+<li><code><a title="qscope.types.config.MockSGAndorESRConfig.meas_type" href="#qscope.types.config.MockSGAndorESRConfig.meas_type">meas_type</a></code></li>
+<li><code><a title="qscope.types.config.MockSGAndorESRConfig.noise_sigma" href="#qscope.types.config.MockSGAndorESRConfig.noise_sigma">noise_sigma</a></code></li>
+<li><code><a title="qscope.types.config.MockSGAndorESRConfig.peak_contrasts" href="#qscope.types.config.MockSGAndorESRConfig.peak_contrasts">peak_contrasts</a></code></li>
+<li><code><a title="qscope.types.config.MockSGAndorESRConfig.peak_widths" href="#qscope.types.config.MockSGAndorESRConfig.peak_widths">peak_widths</a></code></li>
+<li><code><a title="qscope.types.config.MockSGAndorESRConfig.rf_delay" href="#qscope.types.config.MockSGAndorESRConfig.rf_delay">rf_delay</a></code></li>
+<li><code><a title="qscope.types.config.MockSGAndorESRConfig.rf_dur" href="#qscope.types.config.MockSGAndorESRConfig.rf_dur">rf_dur</a></code></li>
+<li><code><a title="qscope.types.config.MockSGAndorESRConfig.rf_pow" href="#qscope.types.config.MockSGAndorESRConfig.rf_pow">rf_pow</a></code></li>
+<li><code><a title="qscope.types.config.MockSGAndorESRConfig.save_name" href="#qscope.types.config.MockSGAndorESRConfig.save_name">save_name</a></code></li>
+<li><code><a title="qscope.types.config.MockSGAndorESRConfig.to_dict" href="#qscope.types.config.MockSGAndorESRConfig.to_dict">to_dict</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.config.SGAndorCWESRConfig" href="#qscope.types.config.SGAndorCWESRConfig">SGAndorCWESRConfig</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.types.config.SGAndorCWESRConfig.avg_per_point" href="#qscope.types.config.SGAndorCWESRConfig.avg_per_point">avg_per_point</a></code></li>
+<li><code><a title="qscope.types.config.SGAndorCWESRConfig.fmod_freq" href="#qscope.types.config.SGAndorCWESRConfig.fmod_freq">fmod_freq</a></code></li>
+<li><code><a title="qscope.types.config.SGAndorCWESRConfig.from_dict" href="#qscope.types.config.SGAndorCWESRConfig.from_dict">from_dict</a></code></li>
+<li><code><a title="qscope.types.config.SGAndorCWESRConfig.laser_delay" href="#qscope.types.config.SGAndorCWESRConfig.laser_delay">laser_delay</a></code></li>
+<li><code><a title="qscope.types.config.SGAndorCWESRConfig.meas_type" href="#qscope.types.config.SGAndorCWESRConfig.meas_type">meas_type</a></code></li>
+<li><code><a title="qscope.types.config.SGAndorCWESRConfig.rf_pow" href="#qscope.types.config.SGAndorCWESRConfig.rf_pow">rf_pow</a></code></li>
+<li><code><a title="qscope.types.config.SGAndorCWESRConfig.save_name" href="#qscope.types.config.SGAndorCWESRConfig.save_name">save_name</a></code></li>
+<li><code><a title="qscope.types.config.SGAndorCWESRConfig.to_dict" href="#qscope.types.config.SGAndorCWESRConfig.to_dict">to_dict</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.config.SGAndorPESRConfig" href="#qscope.types.config.SGAndorPESRConfig">SGAndorPESRConfig</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.types.config.SGAndorPESRConfig.avg_per_point" href="#qscope.types.config.SGAndorPESRConfig.avg_per_point">avg_per_point</a></code></li>
+<li><code><a title="qscope.types.config.SGAndorPESRConfig.fmod_freq" href="#qscope.types.config.SGAndorPESRConfig.fmod_freq">fmod_freq</a></code></li>
+<li><code><a title="qscope.types.config.SGAndorPESRConfig.from_dict" href="#qscope.types.config.SGAndorPESRConfig.from_dict">from_dict</a></code></li>
+<li><code><a title="qscope.types.config.SGAndorPESRConfig.laser_delay" href="#qscope.types.config.SGAndorPESRConfig.laser_delay">laser_delay</a></code></li>
+<li><code><a title="qscope.types.config.SGAndorPESRConfig.laser_dur" href="#qscope.types.config.SGAndorPESRConfig.laser_dur">laser_dur</a></code></li>
+<li><code><a title="qscope.types.config.SGAndorPESRConfig.laser_to_rf_delay" href="#qscope.types.config.SGAndorPESRConfig.laser_to_rf_delay">laser_to_rf_delay</a></code></li>
+<li><code><a title="qscope.types.config.SGAndorPESRConfig.meas_type" href="#qscope.types.config.SGAndorPESRConfig.meas_type">meas_type</a></code></li>
+<li><code><a title="qscope.types.config.SGAndorPESRConfig.rf_delay" href="#qscope.types.config.SGAndorPESRConfig.rf_delay">rf_delay</a></code></li>
+<li><code><a title="qscope.types.config.SGAndorPESRConfig.rf_dur" href="#qscope.types.config.SGAndorPESRConfig.rf_dur">rf_dur</a></code></li>
+<li><code><a title="qscope.types.config.SGAndorPESRConfig.rf_pow" href="#qscope.types.config.SGAndorPESRConfig.rf_pow">rf_pow</a></code></li>
+<li><code><a title="qscope.types.config.SGAndorPESRConfig.save_name" href="#qscope.types.config.SGAndorPESRConfig.save_name">save_name</a></code></li>
+<li><code><a title="qscope.types.config.SGAndorPESRConfig.to_dict" href="#qscope.types.config.SGAndorPESRConfig.to_dict">to_dict</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.config.SGAndorRabiConfig" href="#qscope.types.config.SGAndorRabiConfig">SGAndorRabiConfig</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.types.config.SGAndorRabiConfig.avg_per_point" href="#qscope.types.config.SGAndorRabiConfig.avg_per_point">avg_per_point</a></code></li>
+<li><code><a title="qscope.types.config.SGAndorRabiConfig.from_dict" href="#qscope.types.config.SGAndorRabiConfig.from_dict">from_dict</a></code></li>
+<li><code><a title="qscope.types.config.SGAndorRabiConfig.laser_delay" href="#qscope.types.config.SGAndorRabiConfig.laser_delay">laser_delay</a></code></li>
+<li><code><a title="qscope.types.config.SGAndorRabiConfig.laser_dur" href="#qscope.types.config.SGAndorRabiConfig.laser_dur">laser_dur</a></code></li>
+<li><code><a title="qscope.types.config.SGAndorRabiConfig.meas_type" href="#qscope.types.config.SGAndorRabiConfig.meas_type">meas_type</a></code></li>
+<li><code><a title="qscope.types.config.SGAndorRabiConfig.rf_delay" href="#qscope.types.config.SGAndorRabiConfig.rf_delay">rf_delay</a></code></li>
+<li><code><a title="qscope.types.config.SGAndorRabiConfig.rf_dur" href="#qscope.types.config.SGAndorRabiConfig.rf_dur">rf_dur</a></code></li>
+<li><code><a title="qscope.types.config.SGAndorRabiConfig.rf_freq" href="#qscope.types.config.SGAndorRabiConfig.rf_freq">rf_freq</a></code></li>
+<li><code><a title="qscope.types.config.SGAndorRabiConfig.rf_pow" href="#qscope.types.config.SGAndorRabiConfig.rf_pow">rf_pow</a></code></li>
+<li><code><a title="qscope.types.config.SGAndorRabiConfig.save_name" href="#qscope.types.config.SGAndorRabiConfig.save_name">save_name</a></code></li>
+<li><code><a title="qscope.types.config.SGAndorRabiConfig.to_dict" href="#qscope.types.config.SGAndorRabiConfig.to_dict">to_dict</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.config.SGAndorRamseyConfig" href="#qscope.types.config.SGAndorRamseyConfig">SGAndorRamseyConfig</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.types.config.SGAndorRamseyConfig.from_dict" href="#qscope.types.config.SGAndorRamseyConfig.from_dict">from_dict</a></code></li>
+<li><code><a title="qscope.types.config.SGAndorRamseyConfig.laser_delay" href="#qscope.types.config.SGAndorRamseyConfig.laser_delay">laser_delay</a></code></li>
+<li><code><a title="qscope.types.config.SGAndorRamseyConfig.laser_dur" href="#qscope.types.config.SGAndorRamseyConfig.laser_dur">laser_dur</a></code></li>
+<li><code><a title="qscope.types.config.SGAndorRamseyConfig.meas_type" href="#qscope.types.config.SGAndorRamseyConfig.meas_type">meas_type</a></code></li>
+<li><code><a title="qscope.types.config.SGAndorRamseyConfig.pi_2_dur" href="#qscope.types.config.SGAndorRamseyConfig.pi_2_dur">pi_2_dur</a></code></li>
+<li><code><a title="qscope.types.config.SGAndorRamseyConfig.pi_dur" href="#qscope.types.config.SGAndorRamseyConfig.pi_dur">pi_dur</a></code></li>
+<li><code><a title="qscope.types.config.SGAndorRamseyConfig.rf_delay" href="#qscope.types.config.SGAndorRamseyConfig.rf_delay">rf_delay</a></code></li>
+<li><code><a title="qscope.types.config.SGAndorRamseyConfig.rf_freq" href="#qscope.types.config.SGAndorRamseyConfig.rf_freq">rf_freq</a></code></li>
+<li><code><a title="qscope.types.config.SGAndorRamseyConfig.rf_pow" href="#qscope.types.config.SGAndorRamseyConfig.rf_pow">rf_pow</a></code></li>
+<li><code><a title="qscope.types.config.SGAndorRamseyConfig.save_name" href="#qscope.types.config.SGAndorRamseyConfig.save_name">save_name</a></code></li>
+<li><code><a title="qscope.types.config.SGAndorRamseyConfig.to_dict" href="#qscope.types.config.SGAndorRamseyConfig.to_dict">to_dict</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.config.SGAndorSpinEchoConfig" href="#qscope.types.config.SGAndorSpinEchoConfig">SGAndorSpinEchoConfig</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.types.config.SGAndorSpinEchoConfig.from_dict" href="#qscope.types.config.SGAndorSpinEchoConfig.from_dict">from_dict</a></code></li>
+<li><code><a title="qscope.types.config.SGAndorSpinEchoConfig.laser_delay" href="#qscope.types.config.SGAndorSpinEchoConfig.laser_delay">laser_delay</a></code></li>
+<li><code><a title="qscope.types.config.SGAndorSpinEchoConfig.laser_dur" href="#qscope.types.config.SGAndorSpinEchoConfig.laser_dur">laser_dur</a></code></li>
+<li><code><a title="qscope.types.config.SGAndorSpinEchoConfig.meas_type" href="#qscope.types.config.SGAndorSpinEchoConfig.meas_type">meas_type</a></code></li>
+<li><code><a title="qscope.types.config.SGAndorSpinEchoConfig.pi_2_dur" href="#qscope.types.config.SGAndorSpinEchoConfig.pi_2_dur">pi_2_dur</a></code></li>
+<li><code><a title="qscope.types.config.SGAndorSpinEchoConfig.pi_dur" href="#qscope.types.config.SGAndorSpinEchoConfig.pi_dur">pi_dur</a></code></li>
+<li><code><a title="qscope.types.config.SGAndorSpinEchoConfig.rf_delay" href="#qscope.types.config.SGAndorSpinEchoConfig.rf_delay">rf_delay</a></code></li>
+<li><code><a title="qscope.types.config.SGAndorSpinEchoConfig.rf_freq" href="#qscope.types.config.SGAndorSpinEchoConfig.rf_freq">rf_freq</a></code></li>
+<li><code><a title="qscope.types.config.SGAndorSpinEchoConfig.rf_pow" href="#qscope.types.config.SGAndorSpinEchoConfig.rf_pow">rf_pow</a></code></li>
+<li><code><a title="qscope.types.config.SGAndorSpinEchoConfig.save_name" href="#qscope.types.config.SGAndorSpinEchoConfig.save_name">save_name</a></code></li>
+<li><code><a title="qscope.types.config.SGAndorSpinEchoConfig.to_dict" href="#qscope.types.config.SGAndorSpinEchoConfig.to_dict">to_dict</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.config.SGAndorT1Config" href="#qscope.types.config.SGAndorT1Config">SGAndorT1Config</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.types.config.SGAndorT1Config.from_dict" href="#qscope.types.config.SGAndorT1Config.from_dict">from_dict</a></code></li>
+<li><code><a title="qscope.types.config.SGAndorT1Config.laser_delay" href="#qscope.types.config.SGAndorT1Config.laser_delay">laser_delay</a></code></li>
+<li><code><a title="qscope.types.config.SGAndorT1Config.laser_dur" href="#qscope.types.config.SGAndorT1Config.laser_dur">laser_dur</a></code></li>
+<li><code><a title="qscope.types.config.SGAndorT1Config.meas_type" href="#qscope.types.config.SGAndorT1Config.meas_type">meas_type</a></code></li>
+<li><code><a title="qscope.types.config.SGAndorT1Config.pi_dur" href="#qscope.types.config.SGAndorT1Config.pi_dur">pi_dur</a></code></li>
+<li><code><a title="qscope.types.config.SGAndorT1Config.rf_delay" href="#qscope.types.config.SGAndorT1Config.rf_delay">rf_delay</a></code></li>
+<li><code><a title="qscope.types.config.SGAndorT1Config.rf_freq" href="#qscope.types.config.SGAndorT1Config.rf_freq">rf_freq</a></code></li>
+<li><code><a title="qscope.types.config.SGAndorT1Config.rf_pow" href="#qscope.types.config.SGAndorT1Config.rf_pow">rf_pow</a></code></li>
+<li><code><a title="qscope.types.config.SGAndorT1Config.save_name" href="#qscope.types.config.SGAndorT1Config.save_name">save_name</a></code></li>
+<li><code><a title="qscope.types.config.SGAndorT1Config.to_dict" href="#qscope.types.config.SGAndorT1Config.to_dict">to_dict</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
+</footer>
+</body>
+</html>

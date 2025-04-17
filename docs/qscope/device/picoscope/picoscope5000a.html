@@ -1,0 +1,719 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.6">
+<title>qscope.device.picoscope.picoscope5000a API documentation</title>
+<meta name="description" content="">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}#lunr-search{width:100%;font-size:1em;padding:6px 9px 5px 9px;border:1px solid silver}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes: true } });</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML" integrity="sha256-kZafAc6mZvK3W3v1pHOcUix30OHQN6pU/NO2oFkqZVw=" crossorigin></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>qscope.device.picoscope.picoscope5000a</code></h1>
+</header>
+<section id="section-intro">
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="qscope.device.picoscope.picoscope5000a.Picoscope5000a"><code class="flex name class">
+<span>class <span class="ident">Picoscope5000a</span></span>
+<span>(</span><span>**config_kwargs)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Picoscope5000a(Picoscope):
+    &#34;&#34;&#34;Implementation for PicoScope 5000a series devices.&#34;&#34;&#34;
+
+    # Valid voltage ranges for 5000a series
+    VOLTAGE_RANGES = {
+        0.01: &#34;PS5000A_10MV&#34;,
+        0.02: &#34;PS5000A_20MV&#34;,
+        0.05: &#34;PS5000A_50MV&#34;,
+        0.1: &#34;PS5000A_100MV&#34;,
+        0.2: &#34;PS5000A_200MV&#34;,
+        0.5: &#34;PS5000A_500MV&#34;,
+        1.0: &#34;PS5000A_1V&#34;,
+        2.0: &#34;PS5000A_2V&#34;,
+        5.0: &#34;PS5000A_5V&#34;,
+        10.0: &#34;PS5000A_10V&#34;,
+        20.0: &#34;PS5000A_20V&#34;,
+    }
+
+    def __init__(self, **config_kwargs):
+        &#34;&#34;&#34;Initialize Picoscope 5000a series device.
+        
+        Raises
+        ------
+        PicoSDKImportError
+            If PicoSDK cannot be imported or is not properly installed
+        &#34;&#34;&#34;
+        if not PICOSDK_AVAILABLE:
+            raise PicoSDKImportError(
+                &#34;PicoSDK not available - cannot initialize Picoscope5000a&#34;
+            )
+        
+        try:
+            # First try importing the base picosdk
+            import picosdk
+            # Some versions may not have __version__
+            version = getattr(picosdk, &#39;__version__&#39;, &#39;unknown&#39;)
+            logger.debug(&#34;Found PicoSDK (version: {})&#34;, version)
+            
+            # Then import the specific model&#39;s module
+            ps_module = importlib.import_module(&#34;picosdk.ps5000a&#34;)
+            logger.debug(&#34;Successfully imported ps5000a module&#34;)
+            
+            # Try accessing the ps5000a attribute
+            if not hasattr(ps_module, &#39;ps5000a&#39;):
+                raise ImportError(&#34;ps5000a module does not contain ps5000a attribute&#34;)
+                
+            self._ps = ps_module.ps5000a
+            logger.debug(&#34;Successfully initialized ps5000a interface&#34;)
+            
+        except ImportError as e:
+            raise PicoSDKImportError(
+                f&#34;Failed to properly import PicoSDK: {str(e)}\n&#34;
+                &#34;Please ensure PicoSDK is installed correctly:\n&#34;
+                &#34;1. pip install picosdk\n&#34;
+                &#34;2. Install Pico Technology SDK from https://www.picotech.com/downloads&#34;
+            ) from e
+        
+        # Set downsampling mode before calling parent constructor
+        self._downsampling_mode = self._ps.PS5000A_RATIO_MODE[&#34;PS5000A_RATIO_MODE_NONE&#34;]
+        
+        # Call parent constructor
+        super().__init__(**config_kwargs)
+
+    def open(self) -&gt; None:
+        &#34;&#34;&#34;Initialize connection to 5000a series scope.&#34;&#34;&#34;
+        if not self._resolution:
+            raise ValueError(&#34;Resolution must be set before opening device&#34;)
+
+        self._chandle = ctypes.c_int16()
+        res = self._resolution_to_enum(self._resolution)
+
+        status = self._ps.ps5000aOpenUnit(ctypes.byref(self._chandle), None, res)
+        self._handle_power_status(status)
+
+    def _set_channel(self, channel_id: int, enabled: bool, coupling: int | str, rang: str | float,
+                     offset: float) -&gt; None:
+        &#34;&#34;&#34;Set up input channel.
+        
+        Parameters
+        ----------
+        channel_id : int
+            Channel number (0=A, 1=B, etc)
+        enabled : bool
+            Enable/disable channel
+        coupling : str
+            Coupling type (&#39;AC&#39; or &#39;DC&#39;)
+        rang : str | float
+            Voltage range identifier or value in volts
+        offset : float
+            Analog offset in volts
+        &#34;&#34;&#34;
+        # Convert range to string if float provided
+        range_str = (
+            self.VOLTAGE_RANGES[rang]
+            if isinstance(rang, float)
+            else rang
+        )
+        
+        # Ensure coupling is uppercase
+        coupling = coupling.upper()
+        
+        status = self._ps.ps5000aSetChannel(
+            self._chandle,
+            self._get_channel(channel_id),
+            int(enabled),
+            self._ps.PS5000A_COUPLING[f&#34;PS5000A_{coupling}&#34;],
+            self._ps.PS5000A_RANGE[range_str],
+            offset
+        )
+        return status  # Make sure we return the status
+
+    def _get_channel_range(self, channel: int) -&gt; str:
+        try:
+            range_str = self._channel_ranges[channel]
+        except KeyError:
+            raise ValueError(f&#34;Channel {channel} not configured, does not have range.&#34;)
+        return self._ps.PS5000A_RANGE[range_str]
+
+    def _get_channel(self, ch: int) -&gt; int:
+        return self._ps.PS5000A_CHANNEL[f&#34;PS5000A_CHANNEL_{chr(65 + ch)}&#34;]
+
+    def _read_max_value(self) -&gt; Tuple[int, int, ctypes.c_int16]:
+        maxADC = ctypes.c_int16()
+        status = self._ps.ps5000aMaximumValue(self._chandle, ctypes.byref(maxADC))
+        value = maxADC.value
+        return status, value, maxADC
+
+    def _set_simple_trigger(self, ch: int, threshold: int, direction: str, delay: float,
+                            autotrigger: float):
+        status = self._ps.ps5000aSetSimpleTrigger(
+            self._chandle,
+            1,  # enable
+            self._get_channel(ch),
+            threshold,
+            self._ps.PS5000A_THRESHOLD_DIRECTION[f&#34;PS5000A_{direction}&#34;],
+            int(delay),  # delay --&gt;&gt;&gt; see docs for calculation, using timebase
+            int(autotrigger * 1e3), # autotrigger in milliseconds
+        )
+        self.assert_ok(status)
+        self._status[&#34;setTrigger&#34;] = status
+
+    def _stop(self):
+        self._ps.ps5000aStop(self._chandle)
+
+    def _run_streaming(self, sample_interval_s: float, buffer_size: int, num_buffers: int,
+                       trigger_enabled: bool = False,
+                       ):
+        # Convert sample interval to microseconds
+        interval_us = int(sample_interval_s * 1e6)
+        interval = ctypes.c_int32(interval_us)
+
+        total_samples = buffer_size
+        if num_buffers is not None:
+            total_samples *= num_buffers
+
+        status = self._ps.ps5000aRunStreaming(
+            self._chandle,
+            ctypes.byref(interval),
+            self._ps.PS5000A_TIME_UNITS[&#34;PS5000A_US&#34;],
+            buffer_size if trigger_enabled else 0,  # maxPreTriggerSamples
+            total_samples,
+            1 if num_buffers else 0,  # autoStopOn
+            1,  # downsampleRatio
+            self._ps.PS5000A_RATIO_MODE[&#34;PS5000A_RATIO_MODE_NONE&#34;],
+            buffer_size,
+        )
+        return status
+
+    def _get_info(self):
+        variant = ctypes.create_string_buffer(8)
+        serial = ctypes.create_string_buffer(16)
+        hw_version = ctypes.c_int16()
+
+        status = self._ps.ps5000aGetUnitInfo(
+                self._chandle, variant, 8, None, self._ps.PICO_INFO[&#34;PICO_VARIANT_INFO&#34;]
+            )
+        self.assert_ok(status)
+        status = self._ps.ps5000aGetUnitInfo(
+                self._chandle,
+                serial,
+                16,
+                None,
+                self._ps.PICO_INFO[&#34;PICO_BATCH_AND_SERIAL&#34;],
+            )
+        self.assert_ok(status)
+        status = self._ps.ps5000aGetUnitInfo(
+                self._chandle,
+                hw_version,
+                2,
+                None,
+                self._ps.PICO_INFO[&#34;PICO_HARDWARE_VERSION&#34;],
+            )
+        self.assert_ok(status)
+
+        return variant.value.decode(), serial.value.decode(), hw_version.value
+
+    def get_timebase(
+        self, desired_interval: float, num_samples: int
+    ) -&gt; tuple[int, float]:
+        &#34;&#34;&#34;Calculate optimal timebase for desired sample interval.
+
+        Parameters
+        ----------
+        desired_interval : float
+            Desired time between samples in seconds
+        num_samples : int
+            Number of samples to capture
+
+        Returns
+        -------
+        tuple[int, float]
+            Tuple containing:
+            - Timebase index
+            - Actual sampling interval in seconds
+        &#34;&#34;&#34;
+        # Query device for available timebases
+        timebase_val = 0
+        interval = ctypes.c_float()
+        max_samples = ctypes.c_int32()
+
+        while True:
+            timebase = ctypes.c_uint32(timebase_val)
+            status = self._ps.ps5000aGetTimebase2(
+                self._chandle,
+                timebase,
+                ctypes.c_int32(num_samples),
+                ctypes.byref(interval),
+                ctypes.byref(max_samples),  # maxSamples
+                ctypes.c_uint32(0),  # segmentIndex
+            )
+
+            if status == 0:  # PICO_OK
+                actual_interval = interval.value * 1e-9  # Convert from nanoseconds
+                if actual_interval &gt;= desired_interval:
+                    return timebase_val, actual_interval
+
+            timebase_val += 1
+
+    def _setup_memory_segments(self, num_blocks: int):
+        # Set up memory segments
+        status = self._ps.ps5000aMemorySegments(
+            self._chandle,
+            num_blocks,
+            ctypes.byref(ctypes.c_int32()),  # max_samples
+        )
+        self.assert_ok(status)
+
+    def _run_block(self, num_samples: int, timebase: int, pre_trigger_samples: int = 0):
+        timeIndisposedMs = ctypes.c_int32()
+        status = self._ps.ps5000aRunBlock(
+            self._chandle,
+            pre_trigger_samples,  # pre-trigger samples
+            num_samples - pre_trigger_samples,  # post-trigger samples
+            ctypes.c_uint32(timebase),  # timebase needs to stay uint32
+            ctypes.byref(timeIndisposedMs),  # time indisposed ms
+            0,  # segment index
+            None,  # lpReady callback
+            None,  # pParameter
+        )
+        self.assert_ok(status)
+
+    def _set_num_caps(self, num_blocks: int):
+        # Set number of captures
+        status = self._ps.ps5000aSetNoOfCaptures(self._chandle, num_blocks)
+        self.assert_ok(status)
+
+    def set_downsampling(self, mode: str, downsample_ratio: int) -&gt; None:
+        &#34;&#34;&#34;Configure hardware downsampling.
+
+        Parameters
+        ----------
+        mode : str
+            Downsampling mode (&#39;NONE&#39;, &#39;AVERAGE&#39;, &#39;DECIMATE&#39;, &#39;MIN_MAX&#39;)
+        downsample_ratio : int
+            Number of samples to combine
+        &#34;&#34;&#34;
+        mode_map = {
+            &#34;NONE&#34;: &#34;PS5000A_RATIO_MODE_NONE&#34;,
+            &#34;AVERAGE&#34;: &#34;PS5000A_RATIO_MODE_AVERAGE&#34;,
+            &#34;DECIMATE&#34;: &#34;PS5000A_RATIO_MODE_DECIMATE&#34;,
+            &#34;MIN_MAX&#34;: &#34;PS5000A_RATIO_MODE_AGGREGATE&#34;,
+        }
+
+        if mode not in mode_map:
+            raise ValueError(
+                f&#34;Invalid downsampling mode. Must be one of {list(mode_map.keys())}&#34;
+            )
+
+        self._downsampling_mode = self._ps.PS5000A_RATIO_MODE[mode_map[mode]]
+        self._downsampling_ratio = downsample_ratio
+
+    def _wait_for_capture(self, timeout_s):
+        ready = ctypes.c_int16(0)
+        check = 0
+        while ready.value == 0:
+            status = self._ps.ps5000aIsReady(self._chandle, ctypes.byref(ready))
+            time.sleep(0.01)
+            check += 1
+            if check &gt;= timeout_s / 0.01:  # Timeout after ~1s default second
+                raise TimeoutError(&#34;Block capture timeout&#34;)
+
+    def _get_num_caps(self):
+        # Get number of captures completed
+        captures = ctypes.c_uint32()
+        status = self._ps.ps5000aGetNoOfCaptures(self._chandle, ctypes.byref(captures))
+        self.assert_ok(status)
+        return captures
+
+    def _set_data_buffer(self, ch, downsampled_samples, samples_per_segment, segment):
+        status = self._ps.ps5000aSetDataBuffer(
+            self._chandle,
+            self._ps.PS5000A_CHANNEL[f&#34;PS5000A_CHANNEL_{chr(65 + ch)}&#34;],
+            self._buffers[ch][
+            segment * samples_per_segment: (segment + 1)
+                                           * samples_per_segment
+            ].ctypes.data_as(ctypes.POINTER(ctypes.c_int16)),
+            downsampled_samples,
+            segment,
+            self._downsampling_mode,
+        )
+        self.assert_ok(status)
+
+    def _get_values_bulk(self, captures, downsampled_samples):
+        # Get captured data using rapid block mode with downsampling
+        max_samples = ctypes.c_uint32(downsampled_samples)
+        overflow = ctypes.c_int16()
+        status = self._ps.ps5000aGetValuesBulk(
+            self._chandle,
+            ctypes.byref(max_samples),
+            0,  # fromSegmentIndex
+            captures.value - 1,  # toSegmentIndex
+            ctypes.c_uint32(self._downsampling_ratio),
+            self._downsampling_mode,
+            ctypes.byref(overflow),
+        )
+        self.assert_ok(status)
+
+    def _get_stream(self, timeout, total_samples):
+        start_time = time.time()
+        while self._next_sample &lt; total_samples and not self._auto_stop_outer:
+            if time.time() - start_time &gt; timeout:
+                logger.error(&#34;Data acquisition timed out after {} seconds&#34;, timeout)
+                raise TimeoutError(
+                    f&#34;Data acquisition timed out after {timeout} seconds&#34;
+                )
+
+            self._was_called_back = False
+            status = self._ps.ps5000aGetStreamingLatestValues(
+                self._chandle, self._c_callback, None
+            )
+            if not self._was_called_back:
+                # If no data ready, wait briefly before trying again
+                time.sleep(0.01)
+
+    def _setup_buffers_streaming(self, channels: list[int]) -&gt; None:
+        &#34;&#34;&#34;Set up data buffers for streaming.
+
+        Parameters
+        ----------
+        channels : list[int]
+            List of channel numbers to set up buffers for
+        &#34;&#34;&#34;
+        logger.trace(&#34;Setting up buffers for channels: {}&#34;, channels)
+        total_samples = self._buffer_size
+        if self._num_buffers is not None:
+            total_samples *= self._num_buffers
+
+        # Create buffers for each channel
+        for ch in channels:
+            # Buffer for current segment
+            self._buffer_max[ch] = np.zeros(shape=self._buffer_size, dtype=np.int16)
+            # Buffer for complete capture
+            self._buffers[ch] = np.zeros(shape=total_samples, dtype=np.int16)
+
+            logger.trace(
+                &#34;Allocating buffer for channel {}: size={}&#34;, ch, self._buffer_size
+            )
+            # Register buffers with driver
+            status = self._ps.ps5000aSetDataBuffers(
+                self._chandle,
+                self._ps.PS5000A_CHANNEL[f&#34;PS5000A_CHANNEL_{chr(65 + ch)}&#34;],
+                self._buffer_max[ch].ctypes.data_as(ctypes.POINTER(ctypes.c_int16)),
+                None,
+                self._buffer_size,
+                0,  # segment index
+                self._ps.PS5000A_RATIO_MODE[&#34;PS5000A_RATIO_MODE_NONE&#34;],
+            )
+            self.assert_ok(status)
+            self._status[f&#34;setDataBuffers{chr(65 + ch)}&#34;] = status
+
+    def _setup_block_buffers(
+        self, channels: list[int], num_samples: int, num_blocks: int
+    ) -&gt; None:
+        &#34;&#34;&#34;Set up data buffers for block mode capture.
+
+        Parameters
+        ----------
+        channels : list[int]
+            List of channel numbers to set up buffers for
+        num_samples : int
+            Number of samples per block
+        num_blocks : int
+            Number of blocks to capture
+        &#34;&#34;&#34;
+        logger.trace(&#34;Setting up block mode buffers for channels: {}&#34;, channels)
+
+        # Calculate downsampled buffer size
+        downsampled_samples = num_samples // self._downsampling_ratio
+
+        # Create buffers for each channel
+        for ch in channels:
+            # Buffer for complete capture
+            self._buffers[ch] = np.zeros(
+                shape=downsampled_samples * num_blocks, dtype=np.int16
+            )
+
+            # Register buffer with driver
+            status = self._ps.ps5000aSetDataBuffer(
+                self._chandle,
+                self._ps.PS5000A_CHANNEL[f&#34;PS5000A_CHANNEL_{chr(65 + ch)}&#34;],
+                self._buffers[ch].ctypes.data_as(ctypes.POINTER(ctypes.c_int16)),
+                downsampled_samples,
+                0,  # segment index
+                self._downsampling_mode,  # Use configured downsampling mode
+            )
+            self.assert_ok(status)
+
+    def _config_signal_generator(self, config: SignalConfig) -&gt; None:
+        &#34;&#34;&#34;Configure built-in signal generator without starting it.
+        
+        Parameters
+        ----------
+        config : SignalConfig
+            Signal configuration object
+            
+        Raises
+        ------
+        ValueError
+            If frequency is outside valid range for the selected wave type
+        &#34;&#34;&#34;
+        # Define frequency limits
+        MIN_FREQUENCY = 0.03  # Hz
+        MAX_FREQUENCY = 20_000_000  # 20 MHz
+        
+        # square wave (see enPS5000AWaveType), DO NOT USE `picoEnum.PICO_WAVE_TYPE`
+        wave_type = ctypes.c_int32(1) 
+        
+        if not MIN_FREQUENCY &lt;= config.frequency &lt;= MAX_FREQUENCY:
+            raise ValueError(
+                f&#34;Frequency {config.frequency} Hz is outside valid range for this wave: &#34;
+                f&#34;({MIN_FREQUENCY} Hz to {MAX_FREQUENCY} Hz)&#34;
+            )
+        
+        # Convert voltages to microvolts and ensure they&#39;re integers
+        offset_mv = int(config.offset * 1_000_000)  # Plain integer
+        amplitude_mv = int(config.amplitude * 1_000_000)  # Plain integer
+
+        # Configure with software trigger
+        status = self._ps.ps5000aSetSigGenBuiltInV2(
+            self._chandle,
+            offset_mv,
+            amplitude_mv,
+            wave_type,
+            config.frequency,
+            config.frequency,
+            0.0,
+            0.0,
+            picoEnum.PICO_SWEEP_TYPE[&#34;PICO_UP&#34;],
+            0,
+            0,
+            0,
+            picoEnum.PICO_SIGGEN_TRIG_TYPE[&#34;PICO_SIGGEN_GATE_HIGH&#34;],
+            picoEnum.PICO_SIGGEN_TRIG_SOURCE[&#34;PICO_SIGGEN_SOFT_TRIG&#34;], 
+            0
+        )
+        self.assert_ok(status)
+        
+        logger.debug(&#34;Signal generator configured with software trigger&#34;)
+
+    def _start_signal_generator(self) -&gt; None:
+        &#34;&#34;&#34;Start the previously configured signal generator using software trigger.&#34;&#34;&#34;
+        # Use ps5000aSigGenSoftwareControl to trigger the signal generator
+        status = self._ps.ps5000aSigGenSoftwareControl(
+            self._chandle,
+            1  # Set to 1 to start the signal generator
+        )
+        self.assert_ok(status)
+        logger.debug(&#34;Signal generator started via software trigger&#34;)    
+
+    def _stop_signal_generator(self) -&gt; None:
+        &#34;&#34;&#34;Stop running sig gen (gate off).&#34;&#34;&#34;
+        # Use ps5000aSigGenSoftwareControl to trigger the signal generator
+        status = self._ps.ps5000aSigGenSoftwareControl(
+            self._chandle,
+            0  # Set to 0 to stop the signal generator
+        )
+        self.assert_ok(status)
+        logger.debug(&#34;Signal generator stopped via software trigger&#34;)
+
+    def _config_start_signal_generator(self, config: SignalConfig) -&gt; None:
+        &#34;&#34;&#34;Configure and immediately start the signal generator.
+        
+        Parameters
+        ----------
+        config : SignalConfig
+            Signal configuration object
+            
+        Raises
+        ------
+        ValueError
+            If frequency is outside valid range for the selected wave type
+        &#34;&#34;&#34;
+        self._config_signal_generator(config)
+        self._start_signal_generator()</code></pre>
+</details>
+<div class="desc"><p>Implementation for PicoScope 5000a series devices.</p>
+<p>Initialize Picoscope 5000a series device.</p>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>PicoSDKImportError</code></dt>
+<dd>If PicoSDK cannot be imported or is not properly installed</dd>
+</dl></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.device.picoscope.picoscope.Picoscope" href="picoscope.html#qscope.device.picoscope.picoscope.Picoscope">Picoscope</a></li>
+<li><a title="qscope.device.device.Device" href="../device.html#qscope.device.device.Device">Device</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.device.picoscope.picoscope5000a.Picoscope5000a.open"><code class="name flex">
+<span>def <span class="ident">open</span></span>(<span>self) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def open(self) -&gt; None:
+    &#34;&#34;&#34;Initialize connection to 5000a series scope.&#34;&#34;&#34;
+    if not self._resolution:
+        raise ValueError(&#34;Resolution must be set before opening device&#34;)
+
+    self._chandle = ctypes.c_int16()
+    res = self._resolution_to_enum(self._resolution)
+
+    status = self._ps.ps5000aOpenUnit(ctypes.byref(self._chandle), None, res)
+    self._handle_power_status(status)</code></pre>
+</details>
+<div class="desc"><p>Initialize connection to 5000a series scope.</p></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="qscope.device.picoscope.picoscope.Picoscope" href="picoscope.html#qscope.device.picoscope.picoscope.Picoscope">Picoscope</a></b></code>:
+<ul class="hlist">
+<li><code><a title="qscope.device.picoscope.picoscope.Picoscope.VOLTAGE_RANGES" href="picoscope.html#qscope.device.picoscope.picoscope.Picoscope.VOLTAGE_RANGES">VOLTAGE_RANGES</a></code></li>
+<li><code><a title="qscope.device.picoscope.picoscope.Picoscope.assert_ok" href="picoscope.html#qscope.device.picoscope.picoscope.Picoscope.assert_ok">assert_ok</a></code></li>
+<li><code><a title="qscope.device.picoscope.picoscope.Picoscope.check_overflow" href="picoscope.html#qscope.device.picoscope.picoscope.Picoscope.check_overflow">check_overflow</a></code></li>
+<li><code><a title="qscope.device.picoscope.picoscope.Picoscope.close" href="picoscope.html#qscope.device.picoscope.picoscope.Picoscope.close">close</a></code></li>
+<li><code><a title="qscope.device.picoscope.picoscope.Picoscope.config_signal_generator" href="picoscope.html#qscope.device.picoscope.picoscope.Picoscope.config_signal_generator">config_signal_generator</a></code></li>
+<li><code><a title="qscope.device.picoscope.picoscope.Picoscope.config_start_signal_generator" href="picoscope.html#qscope.device.picoscope.picoscope.Picoscope.config_start_signal_generator">config_start_signal_generator</a></code></li>
+<li><code><a title="qscope.device.picoscope.picoscope.Picoscope.configure_channels" href="picoscope.html#qscope.device.picoscope.picoscope.Picoscope.configure_channels">configure_channels</a></code></li>
+<li><code><a title="qscope.device.picoscope.picoscope.Picoscope.get_all_attrs" href="../device.html#qscope.device.device.Device.get_all_attrs">get_all_attrs</a></code></li>
+<li><code><a title="qscope.device.picoscope.picoscope.Picoscope.get_block_data" href="picoscope.html#qscope.device.picoscope.picoscope.Picoscope.get_block_data">get_block_data</a></code></li>
+<li><code><a title="qscope.device.picoscope.picoscope.Picoscope.get_data" href="picoscope.html#qscope.device.picoscope.picoscope.Picoscope.get_data">get_data</a></code></li>
+<li><code><a title="qscope.device.picoscope.picoscope.Picoscope.get_device_info" href="picoscope.html#qscope.device.picoscope.picoscope.Picoscope.get_device_info">get_device_info</a></code></li>
+<li><code><a title="qscope.device.picoscope.picoscope.Picoscope.get_roles" href="../device.html#qscope.device.device.Device.get_roles">get_roles</a></code></li>
+<li><code><a title="qscope.device.picoscope.picoscope.Picoscope.get_timebase" href="picoscope.html#qscope.device.picoscope.picoscope.Picoscope.get_timebase">get_timebase</a></code></li>
+<li><code><a title="qscope.device.picoscope.picoscope.Picoscope.has_role" href="../device.html#qscope.device.device.Device.has_role">has_role</a></code></li>
+<li><code><a title="qscope.device.picoscope.picoscope.Picoscope.is_responding" href="picoscope.html#qscope.device.picoscope.picoscope.Picoscope.is_responding">is_responding</a></code></li>
+<li><code><a title="qscope.device.picoscope.picoscope.Picoscope.set_downsampling" href="picoscope.html#qscope.device.picoscope.picoscope.Picoscope.set_downsampling">set_downsampling</a></code></li>
+<li><code><a title="qscope.device.picoscope.picoscope.Picoscope.set_resolution" href="picoscope.html#qscope.device.picoscope.picoscope.Picoscope.set_resolution">set_resolution</a></code></li>
+<li><code><a title="qscope.device.picoscope.picoscope.Picoscope.set_sample_interval" href="picoscope.html#qscope.device.picoscope.picoscope.Picoscope.set_sample_interval">set_sample_interval</a></code></li>
+<li><code><a title="qscope.device.picoscope.picoscope.Picoscope.set_trigger" href="picoscope.html#qscope.device.picoscope.picoscope.Picoscope.set_trigger">set_trigger</a></code></li>
+<li><code><a title="qscope.device.picoscope.picoscope.Picoscope.start_block_capture" href="picoscope.html#qscope.device.picoscope.picoscope.Picoscope.start_block_capture">start_block_capture</a></code></li>
+<li><code><a title="qscope.device.picoscope.picoscope.Picoscope.start_signal_generator" href="picoscope.html#qscope.device.picoscope.picoscope.Picoscope.start_signal_generator">start_signal_generator</a></code></li>
+<li><code><a title="qscope.device.picoscope.picoscope.Picoscope.start_streaming" href="picoscope.html#qscope.device.picoscope.picoscope.Picoscope.start_streaming">start_streaming</a></code></li>
+<li><code><a title="qscope.device.picoscope.picoscope.Picoscope.stop_signal_generator" href="picoscope.html#qscope.device.picoscope.picoscope.Picoscope.stop_signal_generator">stop_signal_generator</a></code></li>
+<li><code><a title="qscope.device.picoscope.picoscope.Picoscope.stop_streaming" href="picoscope.html#qscope.device.picoscope.picoscope.Picoscope.stop_streaming">stop_streaming</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<form>
+<input id="lunr-search" name="q" placeholder="🔎 Search ..." aria-label="Search"
+disabled minlength="2">
+</form>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.css" integrity="sha512-b+T2i3P45i1LZM7I00Ci5QquB9szqaxu+uuk5TUSGjZQ4w4n+qujQiIuvTv2BxE7WCGQCifNMksyKILDiHzsOg==" crossorigin>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.js" integrity="sha512-2B9/byNV1KKRm5nQ2RLViPFD6U4dUjDGwuW1GU+ImJh8YinPU9Zlq1GzdTMO+G2ROrB5o1qasJBy1ttYz0wCug==" crossorigin></script>
+<style>
+.modal-dialog iframe {
+width: 100vw;
+height: calc(100vh - 80px);
+}
+@media screen and (min-width: 700px) {
+.modal-dialog iframe {
+width: 70vw;
+height: 80vh;
+}
+}
+.modal-dialog .tingle-modal-box {width: auto;}
+.modal-dialog .tingle-modal-box__content {padding: 0;}
+</style>
+<script>
+const input = document.getElementById('lunr-search');
+input.disabled = false;
+input.form.addEventListener('submit', (ev) => {
+ev.preventDefault();
+const url = new URL(window.location);
+url.searchParams.set('q', input.value);
+history.replaceState({}, null, url.toString());
+search(input.value);
+});
+const query = new URL(window.location).searchParams.get('q');
+if (query)
+search(query);
+function search(query) {
+const url = '../../../doc-search.html#' + encodeURIComponent(query);
+new tingle.modal({
+cssClass: ['modal-dialog'],
+onClose: () => {
+const url = new URL(window.location);
+url.searchParams.delete('q');
+history.replaceState({}, null, url.toString());
+setTimeout(() => input.focus(), 100);
+}
+}).setContent('<iframe src="' + url + '"></iframe>').open();
+}
+</script>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="qscope.device.picoscope" href="index.html">qscope.device.picoscope</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="qscope.device.picoscope.picoscope5000a.Picoscope5000a" href="#qscope.device.picoscope.picoscope5000a.Picoscope5000a">Picoscope5000a</a></code></h4>
+<ul class="">
+<li><code><a title="qscope.device.picoscope.picoscope5000a.Picoscope5000a.open" href="#qscope.device.picoscope.picoscope5000a.Picoscope5000a.open">open</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
+</footer>
+</body>
+</html>

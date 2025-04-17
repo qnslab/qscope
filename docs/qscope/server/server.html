@@ -1,0 +1,2322 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.6">
+<title>qscope.server.server API documentation</title>
+<meta name="description" content="Server implementation of the client-server interface …">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}#lunr-search{width:100%;font-size:1em;padding:6px 9px 5px 9px;border:1px solid silver}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes: true } });</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML" integrity="sha256-kZafAc6mZvK3W3v1pHOcUix30OHQN6pU/NO2oFkqZVw=" crossorigin></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>qscope.server.server</code></h1>
+</header>
+<section id="section-intro">
+<p>Server implementation of the client-server interface.</p>
+<p>The server uses a decorator-based framework to maintain correspondence with client methods:</p>
+<ol>
+<li>Each handler method is decorated with @handler to specify which client methods it handles</li>
+<li>The handler decorator adds the mapping to the central protocol registry</li>
+<li>Handler methods receive the server connection, system state, and client request</li>
+<li>Handlers use the _send_response helper to reply to clients</li>
+<li>The request_router maps incoming requests to the appropriate handler</li>
+</ol>
+<p>This framework ensures that:
+- Every handler explicitly declares which client methods it supports
+- The mapping between handlers and clients is maintained in a central registry
+- Protocol violations are caught through validation
+- Responses are properly routed back to clients</p>
+<p>The protocol correspondence can be validated using:
+assert_valid_handler_client_correspondence()</p>
+<p>See types.py for the protocol definitions and client.py for the client side.</p>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="qscope.server.server.client_handler"><code class="name flex">
+<span>async def <span class="ident">client_handler</span></span>(<span>server_connection: <a title="qscope.types.ServerConnection" href="../types/index.html#qscope.types.ServerConnection">ServerConnection</a>,<br>system: <a title="qscope.system.system.System" href="../system/system.html#qscope.system.system.System">System</a>,<br>measurements: dict[str, <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a>])</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">async def client_handler(
+    server_connection: ServerConnection,
+    system: qscope.system.System,
+    measurements: dict[str, qscope.meas.Measurement],
+):
+    # Add shutdown flag if it doesn&#39;t exist
+    if not hasattr(server_connection, &#34;shutdown_requested&#34;):
+        server_connection.shutdown_requested = False
+        
+    while not server_connection.shutdown_requested:
+        # bit hacky: would be nicer to have a round-robin between notifs &amp; msgs...
+
+        # clear some items from notif_queue
+        chunk = 0
+        while not server_connection.notif_queue.empty():
+            chunk += 1
+            if chunk &gt; 10:
+                break  # limit to 10 notifs per loop, also need to check for msgs
+            notif: Notification = server_connection.notif_queue.get_nowait()
+            try:
+                # below is rather loquacious
+                logger.trace(&#34;*NOTIF* (server-&gt;): {}&#34;, notif)
+                await server_connection.notif_socket.send(notif.to_msgpack())
+            except Exception:
+                logger.exception(&#34;ERROR SENDING NOTIF {}.&#34;, notif)
+
+        # check for requests on the msg socket
+        try:
+            (
+                req_identity,
+                empty,
+                req,
+            ) = await server_connection.msg_socket.recv_multipart(zmq.NOBLOCK)
+        except zmq.error.Again:
+            await asyncio.sleep(0)
+            continue
+        # if msg recv&#39;d, convert bytes to object
+        try:
+            request = Request.from_msgpack(req)
+        except Exception:
+            logger.exception(&#34;Request unpacking error:&#34;)
+            await _send_response(
+                server_connection,
+                req_identity,
+                ErrorResponse(value=format_error_response()),
+            )
+            continue
+
+        # now handle the request
+        try:
+            await request_router(
+                server_connection, req_identity, system, measurements, request
+            )
+        except Exception:
+            logger.exception(&#34;Uncaught error in request_router.&#34;)
+            await _send_response(
+                server_connection,
+                req_identity,
+                ErrorResponse(value=format_error_response()),
+            )
+            
+    # After exiting the loop due to shutdown
+    logger.info(&#34;Client handler exiting due to shutdown request&#34;)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.server.server.get_router_map"><code class="name flex">
+<span>def <span class="ident">get_router_map</span></span>(<span>) ‑> dict[str, typing.Callable[[<a title="qscope.types.ServerConnection" href="../types/index.html#qscope.types.ServerConnection">ServerConnection</a>, bytes, <a title="qscope.system.system.System" href="../system/system.html#qscope.system.system.System">System</a>, dict[str, <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a>], <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a> | None, <a title="qscope.types.messages.Request" href="../types/messages.html#qscope.types.messages.Request">Request</a>], typing.Awaitable[None]]]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_router_map() -&gt; dict[
+    str,
+    Callable[
+        [
+            ServerConnection,
+            bytes,
+            qscope.system.System,
+            dict[str, qscope.meas.Measurement],
+            qscope.meas.Measurement | None,
+            Request,
+        ],
+        Awaitable[None],
+    ],
+]:
+    return {
+        CONSTS.COMMS.PING: handle_ping,
+        CONSTS.COMMS.SHUTDOWN: handle_shutdown,
+        CONSTS.COMMS.ECHO: handle_echo,
+        CONSTS.COMMS.GET_SERVER_LOG_PATH: handle_get_server_log_path,
+        CONSTS.COMMS.STARTUP: handle_startup,
+        CONSTS.COMMS.PACKDOWN: handle_packdown,
+        CONSTS.COMMS.GET_ALL_MEAS_INFO: handle_get_all_meas_info,
+        CONSTS.COMMS.GET_OTHER_PORTS: handle_get_other_ports,
+        CONSTS.COMMS.CLIENT_SYNC: handle_client_sync,
+        CONSTS.COMMS.IS_STREAMING: handle_is_streaming,
+        CONSTS.COMMS.GET_DEVICE_LOCKS: handle_get_device_locks,
+        CONSTS.COMMS.SAVE_LATEST_STREAM: handle_save_latest_stream,
+        CONSTS.COMMS.SAVE_NOTES: handle_save_notes,
+        # MEAS
+        CONSTS.MEAS.GET_STATE: handle_get_measurement_state,
+        CONSTS.MEAS.GET_INFO: handle_get_meas_info,
+        CONSTS.MEAS.GET_FRAME: handle_get_frame_measurement,
+        CONSTS.MEAS.GET_SWEEP: handle_get_sweep_measurement,
+        CONSTS.MEAS.ADD: handle_add_measurement,
+        CONSTS.MEAS.START: handle_start_measurement,
+        CONSTS.MEAS.STOP: handle_stop_measurement,
+        CONSTS.MEAS.PAUSE: handle_pause_measurement,
+        CONSTS.MEAS.CLOSE: handle_close_measurement,
+        CONSTS.MEAS.SET_AOI: handle_set_aoi_measurement,
+        CONSTS.MEAS.SET_FRAME_NUM: handle_set_frame_num_measurement,
+        CONSTS.MEAS.SET_ROLLING_AVG_WINDOW: handle_set_rolling_avg_window_measurement,
+        CONSTS.MEAS.SET_ROLLING_AVG_MAX_SWEEPS: handle_set_rolling_avg_max_sweeps_measurement,
+        CONSTS.MEAS.SAVE_SWEEP: handle_save_sweep_measurement,
+        CONSTS.MEAS.SAVE_SWEEP_W_FIT: handle_save_sweep_w_fit_measurement,
+        CONSTS.MEAS.SAVE_FULL_DATA: handle_save_full_data_measurement,
+        # CAM
+        CONSTS.CAM.SET_CAMERA_PARAMS: handle_set_camera_params,
+        CONSTS.CAM.TAKE_SNAPSHOT: handle_take_snapshot,
+        CONSTS.CAM.TAKE_AND_SAVE_SNAPSHOT: handle_take_and_save_snapshot,
+        CONSTS.CAM.GET_FRAME_SHAPE: handle_get_frame_shape,
+        CONSTS.CAM.START_VIDEO: handle_start_video,
+        CONSTS.CAM.STOP_VIDEO: handle_stop_video,
+        # SEQ GEN
+        CONSTS.SEQGEN.LASER_OUTPUT: handle_laser_output,
+        CONSTS.SEQGEN.LASER_RF_OUTPUT: handle_laser_rf_output,
+        CONSTS.SEQGEN.RF_OUTPUT: handle_rf_output,
+    }</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.server.server.get_servers_dir"><code class="name flex">
+<span>def <span class="ident">get_servers_dir</span></span>(<span>) ‑> pathlib.Path</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_servers_dir() -&gt; Path:
+    &#34;&#34;&#34;Get the directory for storing server PID files.&#34;&#34;&#34;
+    base_dir = Path.home() / &#34;.qscope&#34;
+    servers_dir = base_dir / &#34;running_servers&#34;
+    servers_dir.mkdir(parents=True, exist_ok=True)
+    return servers_dir</code></pre>
+</details>
+<div class="desc"><p>Get the directory for storing server PID files.</p></div>
+</dd>
+<dt id="qscope.server.server.handle_add_measurement"><code class="name flex">
+<span>async def <span class="ident">handle_add_measurement</span></span>(<span>server_connection: <a title="qscope.types.ServerConnection" href="../types/index.html#qscope.types.ServerConnection">ServerConnection</a>,<br>req_identity: bytes,<br>system: <a title="qscope.system.system.System" href="../system/system.html#qscope.system.system.System">System</a>,<br>measurements: dict[str, <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a>],<br>measurement: <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a> | None,<br>request: <a title="qscope.types.messages.Request" href="../types/messages.html#qscope.types.messages.Request">Request</a>)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@handler(
+    CONSTS.MEAS.ADD,
+    &#34;add_measurement&#34;,
+    system_types=(SGSystem, SGCameraSystem),
+)
+async def handle_add_measurement(
+    server_connection: ServerConnection,
+    req_identity: bytes,
+    system: qscope.system.System,
+    measurements: dict[str, qscope.meas.Measurement],
+    measurement: Optional[qscope.meas.Measurement],
+    request: Request,
+):
+    handles: qscope.server.client.add_measurement
+    try:
+        config = qscope.meas.MeasurementConfig.from_dict(request.params)
+    except Exception:
+        logger.exception(&#34;Error unpacking measurement config.&#34;)
+        await _send_response(
+            server_connection,
+            req_identity,
+            ErrorResponse(value=format_error_response()),
+        )
+        return
+    try:
+        meas_map = get_all_subclasses_map(qscope.meas.Measurement)
+        meas = meas_map.get(request.params[&#34;meas_type&#34;], None)
+        if meas is None:
+            logger.error(&#34;Unknown measurement type: {}&#34;, request.params[&#34;meas_type&#34;])
+            await _send_response(
+                server_connection,
+                req_identity,
+                ErrorResponse(value=format_error_response()),
+            )
+            return
+            # can we avoid raising an error here? Try just continuing.
+            # raise CommsError(
+            #     f&#34;Unknown measurement type: {request.params[&#39;meas_type&#39;]}&#34;
+            # )
+        else:
+            meas = meas(system, config, server_connection.notif_queue)
+        meas_id = meas.get_meas_id()
+        system.add_bg_meas_task(
+            meas_id, asyncio.create_task(meas.state_machine())
+        )  # run in bg
+        await asyncio.sleep(0)  # let above task start
+        measurements[meas_id] = meas
+        await _send_response(
+            server_connection, req_identity, MsgResponse(value=meas_id)
+        )
+        logger.info(&#34;Added measurement {}.&#34;, meas_id)
+    except Exception:
+        logger.exception(&#34;Error adding {}.&#34;, request.params[&#34;meas_type&#34;])
+        await _send_response(
+            server_connection,
+            req_identity,
+            ErrorResponse(value=format_error_response()),
+        )</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.server.server.handle_client_sync"><code class="name flex">
+<span>async def <span class="ident">handle_client_sync</span></span>(<span>server_connection: <a title="qscope.types.ServerConnection" href="../types/index.html#qscope.types.ServerConnection">ServerConnection</a>,<br>req_identity: bytes,<br>system: <a title="qscope.system.system.System" href="../system/system.html#qscope.system.system.System">System</a>,<br>measurements: dict[str, <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a>],<br>measurement: <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a> | None,<br>request: <a title="qscope.types.messages.Request" href="../types/messages.html#qscope.types.messages.Request">Request</a>)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@handler(CONSTS.COMMS.CLIENT_SYNC, &#34;client_sync&#34;)
+async def handle_client_sync(
+    server_connection: ServerConnection,
+    req_identity: bytes,
+    system: qscope.system.System,
+    measurements: dict[str, qscope.meas.Measurement],
+    measurement: Optional[qscope.meas.Measurement],
+    request: Request,
+):
+    handles: qscope.server.client.client_sync
+    await _send_response(
+        server_connection,
+        req_identity,
+        ClientSyncResponse(
+            system_type=system.__class__.__name__,
+            system_name=system.system_name,
+            is_streaming=system.streaming,
+            all_meas_info={k: v.get_info() for k, v in measurements.items()},
+            sys_metadata=system.get_metadata(),
+            version=qscope.__version__,
+            value=None,
+        ),
+    )</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.server.server.handle_close_measurement"><code class="name flex">
+<span>async def <span class="ident">handle_close_measurement</span></span>(<span>server_connection: <a title="qscope.types.ServerConnection" href="../types/index.html#qscope.types.ServerConnection">ServerConnection</a>,<br>req_identity: bytes,<br>system: <a title="qscope.system.system.System" href="../system/system.html#qscope.system.system.System">System</a>,<br>measurements: dict[str, <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a>],<br>measurement: <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a> | None,<br>request: <a title="qscope.types.messages.Request" href="../types/messages.html#qscope.types.messages.Request">Request</a>)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@handler(
+    CONSTS.MEAS.CLOSE,
+    &#34;close_measurement_nowait&#34;,
+    &#34;close_measurement_wait&#34;,
+    system_types=(SGSystem, SGCameraSystem),
+)
+async def handle_close_measurement(
+    server_connection: ServerConnection,
+    req_identity: bytes,
+    system: qscope.system.System,
+    measurements: dict[str, qscope.meas.Measurement],
+    measurement: Optional[qscope.meas.Measurement],
+    request: Request,
+):
+    handles: (
+        qscope.server.client.close_measurement_wait
+        | qscope.server.client.close_measurement_nowait
+    )
+    if await _check_meas_ok(server_connection, req_identity, measurement):
+        # this del tasks stuff is probably a bit OTT, but just to be sure
+        meas_id = measurement.get_meas_id()
+        try:
+            measurement.close()
+        except PleaseWait:
+            await _send_response(
+                server_connection,
+                req_identity,
+                PleaseWaitResponse(value=&#34;Wait then try again.&#34;),
+            )
+            return
+        except Exception:
+            await _send_response(
+                server_connection,
+                req_identity,
+                ErrorResponse(value=format_error_response()),
+            )
+            return
+        _unlock_devices(server_connection, measurement.get_description())
+        system._bg_meas_tasks[meas_id].cancel()
+        del system._bg_meas_tasks[meas_id]
+        del measurements[meas_id]
+        del measurement
+        await _send_response(
+            server_connection,
+            req_identity,
+            MsgResponse(value=f&#34;Closed measurement {meas_id}.&#34;),
+        )
+        logger.info(&#34;Closed measurement {}.&#34;, meas_id)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.server.server.handle_echo"><code class="name flex">
+<span>async def <span class="ident">handle_echo</span></span>(<span>server_connection: <a title="qscope.types.ServerConnection" href="../types/index.html#qscope.types.ServerConnection">ServerConnection</a>,<br>req_identity: bytes,<br>system: <a title="qscope.system.system.System" href="../system/system.html#qscope.system.system.System">System</a>,<br>measurements: dict[str, <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a>],<br>measurement: <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a> | None,<br>request: <a title="qscope.types.messages.Request" href="../types/messages.html#qscope.types.messages.Request">Request</a>)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@handler(CONSTS.COMMS.ECHO, &#34;echo&#34;)
+async def handle_echo(
+    server_connection: ServerConnection,
+    req_identity: bytes,
+    system: qscope.system.System,
+    measurements: dict[str, qscope.meas.Measurement],
+    measurement: Optional[qscope.meas.Measurement],
+    request: Request,
+):
+    handles: qscope.server.client.echo
+    await _send_response(
+        server_connection, req_identity, MsgResponse(value=request.params[&#34;msg&#34;])
+    )</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.server.server.handle_get_all_meas_info"><code class="name flex">
+<span>async def <span class="ident">handle_get_all_meas_info</span></span>(<span>server_connection: <a title="qscope.types.ServerConnection" href="../types/index.html#qscope.types.ServerConnection">ServerConnection</a>,<br>req_identity: bytes,<br>system: <a title="qscope.system.system.System" href="../system/system.html#qscope.system.system.System">System</a>,<br>measurements: dict[str, <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a>],<br>measurement: <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a> | None,<br>request: <a title="qscope.types.messages.Request" href="../types/messages.html#qscope.types.messages.Request">Request</a>)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@handler(CONSTS.COMMS.GET_ALL_MEAS_INFO, &#34;get_all_meas_info&#34;)
+async def handle_get_all_meas_info(
+    server_connection: ServerConnection,
+    req_identity: bytes,
+    system: qscope.system.System,
+    measurements: dict[str, qscope.meas.Measurement],
+    measurement: Optional[qscope.meas.Measurement],
+    request: Request,
+):
+    handles: qscope.server.client.get_all_meas_info
+    try:
+        meas_info = {k: v.get_info() for k, v in measurements.items()}
+        await _send_response(
+            server_connection, req_identity, DictResponse(value=meas_info)
+        )
+    except Exception:
+        await _send_response(
+            server_connection,
+            req_identity,
+            ErrorResponse(value=format_error_response()),
+        )</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.server.server.handle_get_device_locks"><code class="name flex">
+<span>async def <span class="ident">handle_get_device_locks</span></span>(<span>server_connection: <a title="qscope.types.ServerConnection" href="../types/index.html#qscope.types.ServerConnection">ServerConnection</a>,<br>req_identity: bytes,<br>system: <a title="qscope.system.system.System" href="../system/system.html#qscope.system.system.System">System</a>,<br>measurements: dict[str, <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a>],<br>measurement: <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a> | None,<br>request: <a title="qscope.types.messages.Request" href="../types/messages.html#qscope.types.messages.Request">Request</a>)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@handler(CONSTS.COMMS.GET_DEVICE_LOCKS, &#34;get_device_locks&#34;)
+async def handle_get_device_locks(
+    server_connection: ServerConnection,
+    req_identity: bytes,
+    system: qscope.system.System,
+    measurements: dict[str, qscope.meas.Measurement],
+    measurement: Optional[qscope.meas.Measurement],
+    request: Request,
+):
+    &#34;&#34;&#34;Handle request for current device locks.
+
+    Returns dictionary mapping device types to their lock information.
+    &#34;&#34;&#34;
+    handles: qscope.server.client.get_device_locks
+    try:
+        dev_locks = server_connection.device_locks
+        dev_lock_map = {str(k): astuple(v) for k, v in dev_locks.items()}
+        await _send_response(
+            server_connection,
+            req_identity,
+            DictResponse(value=dev_lock_map),
+        )
+    except Exception:
+        await _send_response(
+            server_connection,
+            req_identity,
+            ErrorResponse(value=format_error_response()),
+        )</code></pre>
+</details>
+<div class="desc"><p>Handle request for current device locks.</p>
+<p>Returns dictionary mapping device types to their lock information.</p></div>
+</dd>
+<dt id="qscope.server.server.handle_get_frame_measurement"><code class="name flex">
+<span>async def <span class="ident">handle_get_frame_measurement</span></span>(<span>server_connection: <a title="qscope.types.ServerConnection" href="../types/index.html#qscope.types.ServerConnection">ServerConnection</a>,<br>req_identity: bytes,<br>system: <a title="qscope.system.system.System" href="../system/system.html#qscope.system.system.System">System</a>,<br>measurements: dict[str, <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a>],<br>measurement: <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a> | None,<br>request: <a title="qscope.types.messages.Request" href="../types/messages.html#qscope.types.messages.Request">Request</a>)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@handler(
+    CONSTS.MEAS.GET_FRAME,
+    &#34;measurement_get_frame&#34;,
+    &#34;measurement_get_frame_shape&#34;,
+    system_types=(SGCameraSystem,),
+    roles=(MAIN_CAMERA,),
+)
+async def handle_get_frame_measurement(
+    server_connection: ServerConnection,
+    req_identity: bytes,
+    system: qscope.system.System,
+    measurements: dict[str, qscope.meas.Measurement],
+    measurement: Optional[qscope.meas.Measurement],
+    request: Request,
+):
+    handles: qscope.server.client.measurement_get_frame
+    if await _check_meas_ok(server_connection, req_identity, measurement):
+        frame = measurement.get_frame(
+            frame_type=request.params[&#34;frame_type&#34;],
+            frame_num=request.params[&#34;frame_num&#34;],
+        )
+        await _send_response(
+            server_connection, req_identity, ArrayResponse(value=frame)
+        )</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.server.server.handle_get_frame_shape"><code class="name flex">
+<span>async def <span class="ident">handle_get_frame_shape</span></span>(<span>server_connection: <a title="qscope.types.ServerConnection" href="../types/index.html#qscope.types.ServerConnection">ServerConnection</a>,<br>req_identity: bytes,<br>system: <a title="qscope.system.system.System" href="../system/system.html#qscope.system.system.System">System</a>,<br>measurements: dict[str, <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a>],<br>measurement: <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a> | None,<br>request: <a title="qscope.types.messages.Request" href="../types/messages.html#qscope.types.messages.Request">Request</a>)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@handler(
+    CONSTS.CAM.GET_FRAME_SHAPE,
+    &#34;camera_get_frame_shape&#34;,
+    system_types=(SGCameraSystem,),
+    roles=(MAIN_CAMERA,),
+)
+async def handle_get_frame_shape(
+    server_connection: ServerConnection,
+    req_identity: bytes,
+    system: qscope.system.System,
+    measurements: dict[str, qscope.meas.Measurement],
+    measurement: Optional[qscope.meas.Measurement],
+    request: Request,
+):
+    handles: qscope.server.client.camera_get_frame_shape
+    if not isinstance(system, (qscope.system.SGCameraSystem,)):
+        logger.error(
+            &#34;{} err: System is not a camera system.&#34;, CONSTS.CAM.GET_FRAME_SHAPE
+        )
+        await _send_response(
+            server_connection,
+            req_identity,
+            ErrorResponse(value=&#34;System is not a camera system.&#34;),
+        )
+    await _send_response(
+        server_connection, req_identity, Shape2DResponse(value=system.get_frame_shape())
+    )</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.server.server.handle_get_meas_info"><code class="name flex">
+<span>async def <span class="ident">handle_get_meas_info</span></span>(<span>server_connection: <a title="qscope.types.ServerConnection" href="../types/index.html#qscope.types.ServerConnection">ServerConnection</a>,<br>req_identity: bytes,<br>system: <a title="qscope.system.system.System" href="../system/system.html#qscope.system.system.System">System</a>,<br>measurements: dict[str, <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a>],<br>measurement: <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a> | None,<br>request: <a title="qscope.types.messages.Request" href="../types/messages.html#qscope.types.messages.Request">Request</a>)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@handler(
+    CONSTS.MEAS.GET_INFO,
+    &#34;measurement_get_info&#34;,
+    system_types=(SGSystem, SGCameraSystem),
+)
+async def handle_get_meas_info(
+    server_connection: ServerConnection,
+    req_identity: bytes,
+    system: qscope.system.System,
+    measurements: dict[str, qscope.meas.Measurement],
+    measurement: Optional[qscope.meas.Measurement],
+    request: Request,
+):
+    handles: qscope.server.client.measurement_get_info
+    if await _check_meas_ok(server_connection, req_identity, measurement):
+        meas_info: dict = measurement.get_info()
+        await _send_response(
+            server_connection, req_identity, DictResponse(value=meas_info)
+        )</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.server.server.handle_get_measurement_state"><code class="name flex">
+<span>async def <span class="ident">handle_get_measurement_state</span></span>(<span>server_connection: <a title="qscope.types.ServerConnection" href="../types/index.html#qscope.types.ServerConnection">ServerConnection</a>,<br>req_identity: bytes,<br>system: <a title="qscope.system.system.System" href="../system/system.html#qscope.system.system.System">System</a>,<br>measurements: dict[str, <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a>],<br>measurement: <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a> | None,<br>request: <a title="qscope.types.messages.Request" href="../types/messages.html#qscope.types.messages.Request">Request</a>)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@handler(
+    CONSTS.MEAS.GET_STATE,
+    &#34;measurement_get_state&#34;,
+    &#34;measurement_is_stopped&#34;,
+    system_types=(SGSystem, SGCameraSystem),
+)
+async def handle_get_measurement_state(
+    server_connection: ServerConnection,
+    req_identity: bytes,
+    system: qscope.system.System,
+    measurements: dict[str, qscope.meas.Measurement],
+    measurement: Optional[qscope.meas.Measurement],
+    request: Request,
+):
+    handles: qscope.server.client.measurement_get_state
+    if await _check_meas_ok(server_connection, req_identity, measurement):
+        await _send_response(
+            server_connection, req_identity, ValueResponse(value=measurement.state)
+        )</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.server.server.handle_get_other_ports"><code class="name flex">
+<span>async def <span class="ident">handle_get_other_ports</span></span>(<span>server_connection: <a title="qscope.types.ServerConnection" href="../types/index.html#qscope.types.ServerConnection">ServerConnection</a>,<br>req_identity: bytes,<br>system: <a title="qscope.system.system.System" href="../system/system.html#qscope.system.system.System">System</a>,<br>measurements: dict[str, <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a>],<br>measurement: <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a> | None,<br>request: <a title="qscope.types.messages.Request" href="../types/messages.html#qscope.types.messages.Request">Request</a>)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@handler(CONSTS.COMMS.GET_OTHER_PORTS, &#34;get_other_ports&#34;)
+async def handle_get_other_ports(
+    server_connection: ServerConnection,
+    req_identity: bytes,
+    system: qscope.system.System,
+    measurements: dict[str, qscope.meas.Measurement],
+    measurement: Optional[qscope.meas.Measurement],
+    request: Request,
+):
+    handles: qscope.server.client.get_other_ports
+    await _send_response(
+        server_connection,
+        req_identity,
+        TupleResponse(
+            value=(
+                server_connection.notif_port,
+                server_connection.stream_port,
+            ),
+        ),
+    )</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.server.server.handle_get_server_log_path"><code class="name flex">
+<span>async def <span class="ident">handle_get_server_log_path</span></span>(<span>server_connection: <a title="qscope.types.ServerConnection" href="../types/index.html#qscope.types.ServerConnection">ServerConnection</a>,<br>req_identity: bytes,<br>system: <a title="qscope.system.system.System" href="../system/system.html#qscope.system.system.System">System</a>,<br>measurements: dict[str, <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a>],<br>measurement: <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a> | None,<br>request: <a title="qscope.types.messages.Request" href="../types/messages.html#qscope.types.messages.Request">Request</a>)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@handler(CONSTS.COMMS.GET_SERVER_LOG_PATH, &#34;get_server_log_path&#34;)
+async def handle_get_server_log_path(
+    server_connection: ServerConnection,
+    req_identity: bytes,
+    system: qscope.system.System,
+    measurements: dict[str, qscope.meas.Measurement],
+    measurement: Optional[qscope.meas.Measurement],
+    request: Request,
+):
+    handles: qscope.server.client.get_server_log_path
+    log_path = qscope.util.get_log_filename()
+    logger.info(&#34;Server log path: {}&#34;, log_path)
+    await _send_response(server_connection, req_identity, ValueResponse(value=log_path))</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.server.server.handle_get_sweep_measurement"><code class="name flex">
+<span>async def <span class="ident">handle_get_sweep_measurement</span></span>(<span>server_connection: <a title="qscope.types.ServerConnection" href="../types/index.html#qscope.types.ServerConnection">ServerConnection</a>,<br>req_identity: bytes,<br>system: <a title="qscope.system.system.System" href="../system/system.html#qscope.system.system.System">System</a>,<br>measurements: dict[str, <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a>],<br>measurement: <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a> | None,<br>request: <a title="qscope.types.messages.Request" href="../types/messages.html#qscope.types.messages.Request">Request</a>)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@handler(
+    CONSTS.MEAS.GET_SWEEP,
+    &#34;measurement_get_sweep&#34;,
+    system_types=(SGSystem, SGCameraSystem),
+)
+async def handle_get_sweep_measurement(
+    server_connection: ServerConnection,
+    req_identity: bytes,
+    system: qscope.system.System,
+    measurements: dict[str, qscope.meas.Measurement],
+    measurement: Optional[qscope.meas.Measurement],
+    request: Request,
+):
+    handles: qscope.server.client.measurement_get_sweep
+    if await _check_meas_ok(server_connection, req_identity, measurement):
+        sweep = measurement.get_sweep()
+        await _send_response(
+            server_connection, req_identity, ArrayResponse(value=sweep)
+        )</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.server.server.handle_is_streaming"><code class="name flex">
+<span>async def <span class="ident">handle_is_streaming</span></span>(<span>server_connection: <a title="qscope.types.ServerConnection" href="../types/index.html#qscope.types.ServerConnection">ServerConnection</a>,<br>req_identity: bytes,<br>system: <a title="qscope.system.system.System" href="../system/system.html#qscope.system.system.System">System</a>,<br>measurements: dict[str, <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a>],<br>measurement: <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a> | None,<br>request: <a title="qscope.types.messages.Request" href="../types/messages.html#qscope.types.messages.Request">Request</a>)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@handler(CONSTS.COMMS.IS_STREAMING, &#34;is_streaming&#34;)
+async def handle_is_streaming(
+    server_connection: ServerConnection,
+    req_identity: bytes,
+    system: qscope.system.System,
+    measurements: dict[str, qscope.meas.Measurement],
+    measurement: Optional[qscope.meas.Measurement],
+    request: Request,
+):
+    handles: qscope.server.client.is_streaming
+    await _send_response(
+        server_connection, req_identity, ValueResponse(value=system.streaming)
+    )</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.server.server.handle_laser_output"><code class="name flex">
+<span>async def <span class="ident">handle_laser_output</span></span>(<span>server_connection: <a title="qscope.types.ServerConnection" href="../types/index.html#qscope.types.ServerConnection">ServerConnection</a>,<br>req_identity: bytes,<br>system: <a title="qscope.system.system.System" href="../system/system.html#qscope.system.system.System">System</a>,<br>measurements: dict[str, <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a>],<br>measurement: <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a> | None,<br>request: <a title="qscope.types.messages.Request" href="../types/messages.html#qscope.types.messages.Request">Request</a>)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@handler(
+    CONSTS.SEQGEN.LASER_OUTPUT,
+    &#34;set_laser_output&#34;,
+    system_types=(SGSystem,),
+    roles=(SEQUENCE_GEN, PRIMARY_RF),
+)
+async def handle_laser_output(
+    server_connection: ServerConnection,
+    req_identity: bytes,
+    system: qscope.system.System,
+    measurements: dict[str, qscope.meas.Measurement],
+    measurement: Optional[qscope.meas.Measurement],
+    request: Request,
+):
+    handles: qscope.server.client.set_laser_output
+    if _check_devices_available(
+        server_connection, (SEQUENCE_GEN, PRIMARY_RF), &#34;laser_output&#34;
+    ):
+        try:
+            state = request.params[&#34;state&#34;]
+            if state:
+                _lock_devices(
+                    server_connection,
+                    (SEQUENCE_GEN, PRIMARY_RF),
+                    &#34;laser_output&#34;,
+                    &#34;laser_output&#34;,
+                )
+            else:
+                _unlock_devices(server_connection, &#34;laser_output&#34;)
+            system.set_laser_output(state)
+            await _send_response(
+                server_connection,
+                req_identity,
+                MsgResponse(value=&#34;Laser output changed.&#34;),
+            )
+        except Exception:
+            await _send_response(
+                server_connection,
+                req_identity,
+                ErrorResponse(value=format_error_response()),
+            )</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.server.server.handle_laser_rf_output"><code class="name flex">
+<span>async def <span class="ident">handle_laser_rf_output</span></span>(<span>server_connection: <a title="qscope.types.ServerConnection" href="../types/index.html#qscope.types.ServerConnection">ServerConnection</a>,<br>req_identity: bytes,<br>system: <a title="qscope.system.system.System" href="../system/system.html#qscope.system.system.System">System</a>,<br>measurements: dict[str, <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a>],<br>measurement: <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a> | None,<br>request: <a title="qscope.types.messages.Request" href="../types/messages.html#qscope.types.messages.Request">Request</a>)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@handler(
+    CONSTS.SEQGEN.LASER_RF_OUTPUT,
+    &#34;set_laser_rf_output&#34;,
+    system_types=(SGSystem,),
+    roles=(SEQUENCE_GEN, PRIMARY_RF),
+)
+async def handle_laser_rf_output(
+    server_connection: ServerConnection,
+    req_identity: bytes,
+    system: qscope.system.System,
+    measurements: dict[str, qscope.meas.Measurement],
+    measurement: Optional[qscope.meas.Measurement],
+    request: Request,
+):
+    handles: qscope.server.client.set_laser_rf_output
+    # FIXME: Ignore hardware lock for now but should check if a measurement is running that
+    # is not just the video stream.
+    # if await hardware_lock_ok(server_connection, req_identity, request):
+    if _check_devices_available(server_connection, (SEQUENCE_GEN,), &#34;laser_rf_ouput&#34;):
+        try:
+            state = request.params[&#34;state&#34;]
+            if state:
+                _lock_devices(
+                    server_connection,
+                    (SEQUENCE_GEN,),
+                    &#34;laser_rf_ouput&#34;,
+                    &#34;laser_rf_ouput&#34;,
+                )
+            else:
+                _unlock_devices(server_connection, &#34;laser_rf_output&#34;)
+            system.set_laser_rf_output(
+                state, request.params[&#34;freq&#34;], request.params[&#34;power&#34;]
+            )
+            await _send_response(
+                server_connection,
+                req_identity,
+                MsgResponse(value=&#34;Laser output changed.&#34;),
+            )
+        except Exception:
+            await _send_response(
+                server_connection,
+                req_identity,
+                ErrorResponse(value=format_error_response()),
+            )</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.server.server.handle_packdown"><code class="name flex">
+<span>async def <span class="ident">handle_packdown</span></span>(<span>server_connection: <a title="qscope.types.ServerConnection" href="../types/index.html#qscope.types.ServerConnection">ServerConnection</a>,<br>req_identity: bytes,<br>system: <a title="qscope.system.system.System" href="../system/system.html#qscope.system.system.System">System</a>,<br>measurements: dict[str, <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a>],<br>measurement: <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a> | None,<br>request: <a title="qscope.types.messages.Request" href="../types/messages.html#qscope.types.messages.Request">Request</a>)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@handler(CONSTS.COMMS.PACKDOWN, &#34;packdown&#34;)
+async def handle_packdown(
+    server_connection: ServerConnection,
+    req_identity: bytes,
+    system: qscope.system.System,
+    measurements: dict[str, qscope.meas.Measurement],
+    measurement: Optional[qscope.meas.Measurement],
+    request: Request,
+):
+    handles: qscope.server.client.packdown
+    try:
+        if not system.hardware_started_up:
+            logger.info(&#34;System not started up, nothing to pack down.&#34;)
+            await _send_response(
+                server_connection,
+                req_identity,
+                MsgResponse(value=&#34;System not started.&#34;),
+            )
+            return
+
+        # NOTE is this what we want? I think it makes sense.
+        if len(measurements):
+            logger.info(&#34;Packdown requested: closing unclosed measurements.&#34;)
+            for meas_id, meas in measurements.items():
+                try:
+                    if meas.state not in [&#34;paused&#34;, &#34;finished&#34;]:
+                        meas.stop_now()
+                    while True:
+                        try:
+                            meas.close()
+                            break
+                        except PleaseWait:
+                            await asyncio.sleep(0)
+                except Exception:
+                    logger.exception(&#34;Error closing {}, continuing.&#34;, meas_id)
+        logger.info(&#34;Attempting to packdown server system.&#34;)
+        system.packdown()
+        await _send_response(
+            server_connection, req_identity, MsgResponse(value=&#34;System packed down..&#34;)
+        )
+    except Exception:
+        await _send_response(
+            server_connection,
+            req_identity,
+            ErrorResponse(value=format_error_response()),
+        )</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.server.server.handle_pause_measurement"><code class="name flex">
+<span>async def <span class="ident">handle_pause_measurement</span></span>(<span>server_connection: <a title="qscope.types.ServerConnection" href="../types/index.html#qscope.types.ServerConnection">ServerConnection</a>,<br>req_identity: bytes,<br>system: <a title="qscope.system.system.System" href="../system/system.html#qscope.system.system.System">System</a>,<br>measurements: dict[str, <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a>],<br>measurement: <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a> | None,<br>request: <a title="qscope.types.messages.Request" href="../types/messages.html#qscope.types.messages.Request">Request</a>)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@handler(
+    CONSTS.MEAS.PAUSE,
+    &#34;pause_endsweep_measurement&#34;,
+    system_types=(SGSystem, SGCameraSystem),
+)
+async def handle_pause_measurement(
+    server_connection: ServerConnection,
+    req_identity: bytes,
+    system: qscope.system.System,
+    measurements: dict[str, qscope.meas.Measurement],
+    measurement: Optional[qscope.meas.Measurement],
+    request: Request,
+):
+    handles: qscope.server.client.pause_endsweep_measurement
+    if await _check_meas_ok(server_connection, req_identity, measurement):
+        measurement.pause_endsweep()
+        await _send_response(
+            server_connection,
+            req_identity,
+            MsgResponse(value=f&#34;Paused measurement {measurement.get_description()}.&#34;),
+        )
+        _unlock_devices(server_connection, measurement.get_description())</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.server.server.handle_ping"><code class="name flex">
+<span>async def <span class="ident">handle_ping</span></span>(<span>server_connection: <a title="qscope.types.ServerConnection" href="../types/index.html#qscope.types.ServerConnection">ServerConnection</a>,<br>req_identity: bytes,<br>system: <a title="qscope.system.system.System" href="../system/system.html#qscope.system.system.System">System</a>,<br>measurements: dict[str, <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a>],<br>measurement: <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a> | None,<br>request: <a title="qscope.types.messages.Request" href="../types/messages.html#qscope.types.messages.Request">Request</a>)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@handler(CONSTS.COMMS.PING, &#34;ping&#34;)  # No system or role requirements for basic comms
+async def handle_ping(
+    server_connection: ServerConnection,
+    req_identity: bytes,
+    system: qscope.system.System,
+    measurements: dict[str, qscope.meas.Measurement],
+    measurement: Optional[qscope.meas.Measurement],
+    request: Request,
+):
+    &#34;&#34;&#34;Handle ping request from client.&#34;&#34;&#34;
+    handles: qscope.server.client.ping
+    await _send_response(
+        server_connection, req_identity, MsgResponse(value=CONSTS.COMMS.PONG)
+    )</code></pre>
+</details>
+<div class="desc"><p>Handle ping request from client.</p></div>
+</dd>
+<dt id="qscope.server.server.handle_rf_output"><code class="name flex">
+<span>async def <span class="ident">handle_rf_output</span></span>(<span>server_connection: <a title="qscope.types.ServerConnection" href="../types/index.html#qscope.types.ServerConnection">ServerConnection</a>,<br>req_identity: bytes,<br>system: <a title="qscope.system.system.System" href="../system/system.html#qscope.system.system.System">System</a>,<br>measurements: dict[str, <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a>],<br>measurement: <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a> | None,<br>request: <a title="qscope.types.messages.Request" href="../types/messages.html#qscope.types.messages.Request">Request</a>)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@handler(
+    CONSTS.SEQGEN.RF_OUTPUT,
+    &#34;set_rf_output&#34;,
+    system_types=(SGSystem,),
+    roles=(SEQUENCE_GEN, PRIMARY_RF),
+)
+async def handle_rf_output(
+    server_connection: ServerConnection,
+    req_identity: bytes,
+    system: qscope.system.System,
+    measurements: dict[str, qscope.meas.Measurement],
+    measurement: Optional[qscope.meas.Measurement],
+    request: Request,
+):
+    handles: qscope.server.client.set_rf_output
+
+    if _check_devices_available(
+        server_connection,
+        (
+            SEQUENCE_GEN,
+            PRIMARY_RF,
+        ),
+        &#34;rf_output&#34;,
+    ):
+        try:
+            state = request.params[&#34;state&#34;]
+            if state:
+                _lock_devices(
+                    server_connection,
+                    (
+                        SEQUENCE_GEN,
+                        PRIMARY_RF,
+                    ),
+                    &#34;rf_output&#34;,
+                    &#34;rf_output&#34;,
+                )
+            else:
+                _unlock_devices(server_connection, &#34;rf_output&#34;)
+            system.set_rf_output(state, request.params[&#34;freq&#34;], request.params[&#34;power&#34;])
+            await _send_response(
+                server_connection, req_identity, MsgResponse(value=&#34;RF output changed.&#34;)
+            )
+        except Exception:
+            await _send_response(
+                server_connection,
+                req_identity,
+                ErrorResponse(value=format_error_response()),
+            )</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.server.server.handle_save_full_data_measurement"><code class="name flex">
+<span>async def <span class="ident">handle_save_full_data_measurement</span></span>(<span>server_connection: <a title="qscope.types.ServerConnection" href="../types/index.html#qscope.types.ServerConnection">ServerConnection</a>,<br>req_identity: bytes,<br>system: <a title="qscope.system.system.System" href="../system/system.html#qscope.system.system.System">System</a>,<br>measurements: dict[str, <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a>],<br>measurement: <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a> | None,<br>request: <a title="qscope.types.messages.Request" href="../types/messages.html#qscope.types.messages.Request">Request</a>)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@handler(
+    CONSTS.MEAS.SAVE_FULL_DATA,
+    &#34;measurement_save_full_data&#34;,
+    system_types=(SGSystem, SGCameraSystem),
+)
+async def handle_save_full_data_measurement(
+    server_connection: ServerConnection,
+    req_identity: bytes,
+    system: qscope.system.System,
+    measurements: dict[str, qscope.meas.Measurement],
+    measurement: Optional[qscope.meas.Measurement],
+    request: Request,
+):
+    &#34;&#34;&#34;Handle request to save full measurement data.
+
+    Creates an async task to monitor measurement state and save when complete.
+    Returns immediately with a message to monitor for SaveFullComplete.
+    &#34;&#34;&#34;
+    handles: qscope.server.client.measurement_save_full_data
+
+    if not await _check_meas_ok(server_connection, req_identity, measurement):
+        return
+
+    async def save_task():
+        # wait for end-of-sweep/paused etc. to save
+        while measurement.state == MEAS_STATE.RUNNING:
+            await asyncio.sleep(0)
+
+        try:
+            # Save the data
+            save_path = qscope.util.save_full_data(
+                system,
+                measurement,
+                request.params[&#34;project_name&#34;],
+                request.params[&#34;notes&#34;],
+            )
+
+            # Notify client of completion
+            server_connection.notif_queue.put_nowait(
+                SaveFullComplete(meas_id=measurement.get_meas_id(), save_path=save_path)
+            )
+        except Exception:
+            logger.exception(&#34;Error in save task&#34;)
+
+    # Start the save task
+    asyncio.create_task(save_task())
+
+    # Return immediately
+    await _send_response(
+        server_connection,
+        req_identity,
+        MsgResponse(
+            value=&#34;Save task started, monitor for `SaveFullComplete` `Notification`.&#34;
+        ),
+    )</code></pre>
+</details>
+<div class="desc"><p>Handle request to save full measurement data.</p>
+<p>Creates an async task to monitor measurement state and save when complete.
+Returns immediately with a message to monitor for SaveFullComplete.</p></div>
+</dd>
+<dt id="qscope.server.server.handle_save_latest_stream"><code class="name flex">
+<span>async def <span class="ident">handle_save_latest_stream</span></span>(<span>server_connection: <a title="qscope.types.ServerConnection" href="../types/index.html#qscope.types.ServerConnection">ServerConnection</a>,<br>req_identity: bytes,<br>system: <a title="qscope.system.system.System" href="../system/system.html#qscope.system.system.System">System</a>,<br>measurements: dict[str, <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a>],<br>measurement: <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a> | None,<br>request: <a title="qscope.types.messages.Request" href="../types/messages.html#qscope.types.messages.Request">Request</a>)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@handler(CONSTS.COMMS.SAVE_LATEST_STREAM, &#34;save_latest_stream&#34;)
+async def handle_save_latest_stream(
+    server_connection: ServerConnection,
+    req_identity: bytes,
+    system: qscope.system.System,
+    measurements: dict[str, qscope.meas.Measurement],
+    measurement: Optional[qscope.meas.Measurement],
+    request: Request,
+):
+    &#34;&#34;&#34;Handle request to save the latest stream frame.
+
+    Saves the latest frame from the video stream to a file.
+    &#34;&#34;&#34;
+    handles: qscope.server.client.save_latest_stream
+    if not system.streaming:
+        await _send_response(
+            server_connection,
+            req_identity,
+            ErrorResponse(value=&#34;System is not streaming.&#34;),
+        )
+        return
+    try:
+        last_stream = server_connection.get_last_stream_chunk()
+        if last_stream is None:
+            await _send_response(
+                server_connection,
+                req_identity,
+                ErrorResponse(value=&#34;No stream data available.&#34;),
+            )
+            return
+        stream_ttrace = server_connection.get_stream_time_trace()
+        path = qscope.util.save_latest_stream(
+            system,
+            request.params[&#34;project_name&#34;],
+            last_stream,
+            stream_ttrace,
+            request.params[&#34;color_map&#34;],
+            request.params[&#34;notes&#34;],
+        )
+        await _send_response(
+            server_connection,
+            req_identity,
+            MsgResponse(value=path),
+        )
+    except Exception:
+        await _send_response(
+            server_connection,
+            req_identity,
+            ErrorResponse(value=format_error_response()),
+        )</code></pre>
+</details>
+<div class="desc"><p>Handle request to save the latest stream frame.</p>
+<p>Saves the latest frame from the video stream to a file.</p></div>
+</dd>
+<dt id="qscope.server.server.handle_save_notes"><code class="name flex">
+<span>async def <span class="ident">handle_save_notes</span></span>(<span>server_connection: <a title="qscope.types.ServerConnection" href="../types/index.html#qscope.types.ServerConnection">ServerConnection</a>,<br>req_identity: bytes,<br>system: <a title="qscope.system.system.System" href="../system/system.html#qscope.system.system.System">System</a>,<br>measurements: dict[str, <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a>],<br>measurement: <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a> | None,<br>request: <a title="qscope.types.messages.Request" href="../types/messages.html#qscope.types.messages.Request">Request</a>)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@handler(CONSTS.COMMS.SAVE_NOTES, &#34;save_notes&#34;)
+async def handle_save_notes(
+    server_connection: ServerConnection,
+    req_identity: bytes,
+    system: qscope.system.System,
+    measurements: dict[str, qscope.meas.Measurement],
+    measurement: Optional[qscope.meas.Measurement],
+    request: Request,
+):
+    &#34;&#34;&#34;Handle request to save the notes as markdown on server side.&#34;&#34;&#34;
+    handles: qscope.server.client.save_notes
+    try:
+        path = qscope.util.save_notes(
+            system, request.params[&#34;project_name&#34;], request.params[&#34;notes&#34;]
+        )
+        await _send_response(
+            server_connection,
+            req_identity,
+            MsgResponse(value=path),
+        )
+    except Exception:
+        await _send_response(
+            server_connection,
+            req_identity,
+            ErrorResponse(value=format_error_response()),
+        )</code></pre>
+</details>
+<div class="desc"><p>Handle request to save the notes as markdown on server side.</p></div>
+</dd>
+<dt id="qscope.server.server.handle_save_sweep_measurement"><code class="name flex">
+<span>async def <span class="ident">handle_save_sweep_measurement</span></span>(<span>server_connection: <a title="qscope.types.ServerConnection" href="../types/index.html#qscope.types.ServerConnection">ServerConnection</a>,<br>req_identity: bytes,<br>system: <a title="qscope.system.system.System" href="../system/system.html#qscope.system.system.System">System</a>,<br>measurements: dict[str, <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a>],<br>measurement: <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a> | None,<br>request: <a title="qscope.types.messages.Request" href="../types/messages.html#qscope.types.messages.Request">Request</a>)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@handler(
+    CONSTS.MEAS.SAVE_SWEEP,
+    &#34;measurement_save_sweep&#34;,
+    system_types=(SGSystem, SGCameraSystem),
+)
+async def handle_save_sweep_measurement(
+    server_connection: ServerConnection,
+    req_identity: bytes,
+    system: qscope.system.System,
+    measurements: dict[str, qscope.meas.Measurement],
+    measurement: Optional[qscope.meas.Measurement],
+    request: Request,
+):
+    handles: qscope.server.client.measurement_save_sweep
+    if await _check_meas_ok(server_connection, req_identity, measurement):
+        path = qscope.util.save_sweep(
+            system, measurement, request.params[&#34;project_name&#34;], request.params[&#34;notes&#34;]
+        )
+        await _send_response(server_connection, req_identity, MsgResponse(value=path))</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.server.server.handle_save_sweep_w_fit_measurement"><code class="name flex">
+<span>async def <span class="ident">handle_save_sweep_w_fit_measurement</span></span>(<span>server_connection: <a title="qscope.types.ServerConnection" href="../types/index.html#qscope.types.ServerConnection">ServerConnection</a>,<br>req_identity: bytes,<br>system: <a title="qscope.system.system.System" href="../system/system.html#qscope.system.system.System">System</a>,<br>measurements: dict[str, <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a>],<br>measurement: <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a> | None,<br>request: <a title="qscope.types.messages.Request" href="../types/messages.html#qscope.types.messages.Request">Request</a>)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@handler(
+    CONSTS.MEAS.SAVE_SWEEP_W_FIT,
+    &#34;measurement_save_sweep_w_fit&#34;,
+    system_types=(SGSystem, SGCameraSystem),
+)
+async def handle_save_sweep_w_fit_measurement(
+    server_connection: ServerConnection,
+    req_identity: bytes,
+    system: qscope.system.System,
+    measurements: dict[str, qscope.meas.Measurement],
+    measurement: Optional[qscope.meas.Measurement],
+    request: Request,
+):
+    handles: qscope.server.client.measurement_save_sweep_w_fit
+    if await _check_meas_ok(server_connection, req_identity, measurement):
+        path = qscope.util.save_sweep_w_fit(
+            system,
+            measurement,
+            request.params[&#34;project_name&#34;],
+            request.params[&#34;xdata&#34;],
+            request.params[&#34;ydata&#34;],
+            request.params[&#34;xfit&#34;],
+            request.params[&#34;yfit&#34;],
+            request.params[&#34;fit_results&#34;],
+            request.params[&#34;color_map&#34;],
+            request.params[&#34;notes&#34;],
+        )
+        await _send_response(server_connection, req_identity, MsgResponse(value=path))</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.server.server.handle_set_aoi_measurement"><code class="name flex">
+<span>async def <span class="ident">handle_set_aoi_measurement</span></span>(<span>server_connection: <a title="qscope.types.ServerConnection" href="../types/index.html#qscope.types.ServerConnection">ServerConnection</a>,<br>req_identity: bytes,<br>system: <a title="qscope.system.system.System" href="../system/system.html#qscope.system.system.System">System</a>,<br>measurements: dict[str, <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a>],<br>measurement: <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a> | None,<br>request: <a title="qscope.types.messages.Request" href="../types/messages.html#qscope.types.messages.Request">Request</a>)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@handler(
+    CONSTS.MEAS.SET_AOI,
+    &#34;measurement_set_aoi&#34;,
+    system_types=(SGCameraSystem,),
+    roles=(MAIN_CAMERA,),
+)
+async def handle_set_aoi_measurement(
+    server_connection: ServerConnection,
+    req_identity: bytes,
+    system: qscope.system.System,
+    measurements: dict[str, qscope.meas.Measurement],
+    measurement: Optional[qscope.meas.Measurement],
+    request: Request,
+):
+    handles: qscope.server.client.measurement_set_aoi
+    if await _check_meas_ok(server_connection, req_identity, measurement):
+        try:
+            measurement.set_aoi(request.params[&#34;aoi&#34;])
+            await _send_response(
+                server_connection,
+                req_identity,
+                MsgResponse(value=f&#34;AOI set to {request.params[&#39;aoi&#39;]}.&#34;),
+            )
+        except Exception:
+            await _send_response(
+                server_connection,
+                req_identity,
+                ErrorResponse(value=&#34;Error setting AOI: &#34; + format_error_response()),
+            )</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.server.server.handle_set_camera_params"><code class="name flex">
+<span>async def <span class="ident">handle_set_camera_params</span></span>(<span>server_connection: <a title="qscope.types.ServerConnection" href="../types/index.html#qscope.types.ServerConnection">ServerConnection</a>,<br>req_identity: bytes,<br>system: <a title="qscope.system.system.System" href="../system/system.html#qscope.system.system.System">System</a>,<br>measurements: dict[str, <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a>],<br>measurement: <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a> | None,<br>request: <a title="qscope.types.messages.Request" href="../types/messages.html#qscope.types.messages.Request">Request</a>)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@handler(
+    CONSTS.CAM.SET_CAMERA_PARAMS,
+    &#34;camera_set_params&#34;,
+    system_types=(SGCameraSystem,),
+    roles=(MAIN_CAMERA,),
+)
+async def handle_set_camera_params(
+    server_connection: ServerConnection,
+    req_identity: bytes,
+    system: qscope.system.System,
+    measurements: dict[str, qscope.meas.Measurement],
+    measurement: Optional[qscope.meas.Measurement],
+    request: Request,
+):
+    handles: qscope.server.client.camera_set_params
+    available, error_msg = _check_devices_available(
+        server_connection, (MAIN_CAMERA,), &#34;camera_params&#34;
+    )
+    if available:
+        if not isinstance(system, (qscope.system.SGCameraSystem,)):
+            logger.error(&#34;System is not a camera system.&#34;)
+            await _send_response(
+                server_connection,
+                req_identity,
+                MsgResponse(value=&#34;System is not a camera system.&#34;),
+            )
+        try:
+            system.set_camera_params(**request.params)
+            await _send_response(
+                server_connection,
+                req_identity,
+                MsgResponse(value=f&#34;Set camera parameters: &#34; + str(request.params)),
+            )
+        except Exception:
+            await _send_response(
+                server_connection,
+                req_identity,
+                ErrorResponse(
+                    value=&#34;Error setting camera parameters: &#34; + format_error_response()
+                ),
+            )</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.server.server.handle_set_frame_num_measurement"><code class="name flex">
+<span>async def <span class="ident">handle_set_frame_num_measurement</span></span>(<span>server_connection: <a title="qscope.types.ServerConnection" href="../types/index.html#qscope.types.ServerConnection">ServerConnection</a>,<br>req_identity: bytes,<br>system: <a title="qscope.system.system.System" href="../system/system.html#qscope.system.system.System">System</a>,<br>measurements: dict[str, <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a>],<br>measurement: <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a> | None,<br>request: <a title="qscope.types.messages.Request" href="../types/messages.html#qscope.types.messages.Request">Request</a>)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@handler(
+    CONSTS.MEAS.SET_FRAME_NUM,
+    &#34;measurement_set_frame_num&#34;,
+    system_types=(SGCameraSystem,),
+    roles=(MAIN_CAMERA,),
+)
+async def handle_set_frame_num_measurement(
+    server_connection: ServerConnection,
+    req_identity: bytes,
+    system: qscope.system.System,
+    measurements: dict[str, qscope.meas.Measurement],
+    measurement: Optional[qscope.meas.Measurement],
+    request: Request,
+):
+    handles: qscope.server.client.measurement_set_frame_num
+    if await _check_meas_ok(server_connection, req_identity, measurement):
+        if not system.has_camera():
+            await _send_response(
+                server_connection,
+                req_identity,
+                ErrorResponse(value=&#34;System does not have a camera.&#34;),
+            )
+        else:
+            try:
+                measurement.set_frame_num(request.params[&#34;frame_num&#34;])
+                await _send_response(
+                    server_connection,
+                    req_identity,
+                    MsgResponse(
+                        value=f&#34;Frame number set to {request.params[&#39;frame_num&#39;]}.&#34;
+                    ),
+                )
+            except Exception as e:
+                await _send_response(
+                    server_connection,
+                    req_identity,
+                    ErrorResponse(value=&#34;Error setting frame number: &#34; + str(e)),
+                )</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.server.server.handle_set_rolling_avg_max_sweeps_measurement"><code class="name flex">
+<span>async def <span class="ident">handle_set_rolling_avg_max_sweeps_measurement</span></span>(<span>server_connection: <a title="qscope.types.ServerConnection" href="../types/index.html#qscope.types.ServerConnection">ServerConnection</a>,<br>req_identity: bytes,<br>system: <a title="qscope.system.system.System" href="../system/system.html#qscope.system.system.System">System</a>,<br>measurements: dict[str, <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a>],<br>measurement: <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a> | None,<br>request: <a title="qscope.types.messages.Request" href="../types/messages.html#qscope.types.messages.Request">Request</a>)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@handler(
+    CONSTS.MEAS.SET_ROLLING_AVG_MAX_SWEEPS,
+    &#34;measurement_set_rolling_avg_max_sweeps&#34;,
+    system_types=(SGSystem,),
+)
+async def handle_set_rolling_avg_max_sweeps_measurement(
+    server_connection: ServerConnection,
+    req_identity: bytes,
+    system: qscope.system.System,
+    measurements: dict[str, qscope.meas.Measurement],
+    measurement: Optional[qscope.meas.Measurement],
+    request: Request,
+):
+    handles: qscope.server.client.measurement_set_rolling_avg_max_sweeps
+    if await _check_meas_ok(server_connection, req_identity, measurement):
+        try:
+            measurement.set_rolling_avg_window(request.params[&#34;max_sweeps&#34;])
+            await _send_response(
+                server_connection,
+                req_identity,
+                MsgResponse(
+                    value=f&#34;RA max sweeps set to {request.params[&#39;max_sweeps&#39;]}.&#34;
+                ),
+            )
+        except Exception:
+            await _send_response(
+                server_connection,
+                req_identity,
+                ErrorResponse(
+                    value=&#34;Error setting RW max sweeps: &#34; + format_error_response()
+                ),
+            )</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.server.server.handle_set_rolling_avg_window_measurement"><code class="name flex">
+<span>async def <span class="ident">handle_set_rolling_avg_window_measurement</span></span>(<span>server_connection: <a title="qscope.types.ServerConnection" href="../types/index.html#qscope.types.ServerConnection">ServerConnection</a>,<br>req_identity: bytes,<br>system: <a title="qscope.system.system.System" href="../system/system.html#qscope.system.system.System">System</a>,<br>measurements: dict[str, <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a>],<br>measurement: <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a> | None,<br>request: <a title="qscope.types.messages.Request" href="../types/messages.html#qscope.types.messages.Request">Request</a>)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@handler(
+    CONSTS.MEAS.SET_ROLLING_AVG_WINDOW,
+    &#34;measurement_set_rolling_avg_window&#34;,
+    system_types=(SGSystem, SGCameraSystem),
+)
+async def handle_set_rolling_avg_window_measurement(
+    server_connection: ServerConnection,
+    req_identity: bytes,
+    system: qscope.system.System,
+    measurements: dict[str, qscope.meas.Measurement],
+    measurement: Optional[qscope.meas.Measurement],
+    request: Request,
+):
+    handles: qscope.server.client.measurement_set_rolling_avg_window
+    if await _check_meas_ok(server_connection, req_identity, measurement):
+        try:
+            measurement.set_rolling_avg_window(request.params[&#34;window&#34;])
+            await _send_response(
+                server_connection,
+                req_identity,
+                MsgResponse(value=f&#34;RA window set to {request.params[&#39;window&#39;]}.&#34;),
+            )
+        except Exception:
+            await _send_response(
+                server_connection,
+                req_identity,
+                ErrorResponse(
+                    value=&#34;Error setting RW window: &#34; + format_error_response()
+                ),
+            )</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.server.server.handle_shutdown"><code class="name flex">
+<span>async def <span class="ident">handle_shutdown</span></span>(<span>server_connection: <a title="qscope.types.ServerConnection" href="../types/index.html#qscope.types.ServerConnection">ServerConnection</a>,<br>req_identity: bytes,<br>system: <a title="qscope.system.system.System" href="../system/system.html#qscope.system.system.System">System</a>,<br>measurements: dict[str, <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a>],<br>measurement: <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a> | None,<br>request: <a title="qscope.types.messages.Request" href="../types/messages.html#qscope.types.messages.Request">Request</a>)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@handler(
+    CONSTS.COMMS.SHUTDOWN, &#34;shutdown_server&#34;
+)  # No requirements - should work for all systems
+async def handle_shutdown(
+    server_connection: ServerConnection,
+    req_identity: bytes,
+    system: qscope.system.System,
+    measurements: dict[str, qscope.meas.Measurement],
+    measurement: Optional[qscope.meas.Measurement],
+    request: Request,
+):
+    handles: qscope.server.client.shutdown_server
+    logger.info(&#34;Shutting down all measurements.&#34;)
+    for meas_id, meas in measurements.items():
+        try:
+            if meas.state not in [&#34;paused&#34;, &#34;finished&#34;]:
+                meas.stop_now()
+            while True:
+                try:
+                    meas.close()
+                    break
+                except PleaseWait:
+                    await asyncio.sleep(0)
+        except Exception:
+            logger.exception(&#34;Error closing {}, continuing.&#34;, meas_id)
+    logger.info(
+        &#34;Shutting down server: you may want to kill server &#34;
+        + &#34;subprocess with the `kill_bg_server` method.&#34;
+    )
+    system.packdown()
+    
+    # Add shutdown flag to server_connection
+    server_connection.shutdown_requested = True
+    
+    await _send_response(
+        server_connection, req_identity, MsgResponse(value=&#34;Shutting down&#34;)
+    )
+    logger.info(&#34;Closing connection.&#34;)
+    # Increase sleep time to give client more time to process the response and close its sockets
+    await asyncio.sleep(3)  # Increased from 1 to 3 seconds
+    
+    # Close sockets with LINGER=0
+    for socket in [
+        server_connection.msg_socket,
+        server_connection.notif_socket,
+        server_connection.stream_socket,
+    ]:
+        try:
+            socket.setsockopt(zmq.LINGER, 0)
+            socket.close()
+        except Exception as e:
+            logger.warning(f&#34;Error closing socket: {e}&#34;)
+            
+    # Try to terminate the ZMQ context if available
+    try:
+        if hasattr(server_connection, &#39;context&#39;):
+            server_connection.context.term()
+    except Exception as e:
+        logger.warning(f&#34;Error terminating ZMQ context: {e}&#34;)
+            
+    logger.info(&#34;Closing down server logger.&#34;)
+    logger.remove()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.server.server.handle_start_measurement"><code class="name flex">
+<span>async def <span class="ident">handle_start_measurement</span></span>(<span>server_connection: <a title="qscope.types.ServerConnection" href="../types/index.html#qscope.types.ServerConnection">ServerConnection</a>,<br>req_identity: bytes,<br>system: <a title="qscope.system.system.System" href="../system/system.html#qscope.system.system.System">System</a>,<br>measurements: dict[str, <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a>],<br>measurement: <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a>,<br>request: <a title="qscope.types.messages.Request" href="../types/messages.html#qscope.types.messages.Request">Request</a>)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@handler(
+    CONSTS.MEAS.START,
+    &#34;start_measurement_nowait&#34;,
+    &#34;start_measurement_wait&#34;,
+    system_types=(SGSystem, SGCameraSystem),
+)
+async def handle_start_measurement(
+    server_connection: ServerConnection,
+    req_identity: bytes,
+    system: qscope.system.System,
+    measurements: dict[str, qscope.meas.Measurement],
+    measurement: qscope.meas.Measurement,
+    request: Request,
+):
+    handles: (
+        qscope.server.client.start_measurement_wait
+        | qscope.server.client.start_measurement_nowait
+    )
+    if not await _check_meas_ok(server_connection, req_identity, measurement):
+        return
+
+    required_roles = measurement.get_hardware_requirements().device_roles
+    available, error_msg = _check_devices_available(
+        server_connection, required_roles, measurement.get_description()
+    )
+
+    if not available:
+        await _send_response(
+            server_connection, req_identity, ErrorResponse(value=error_msg)
+        )
+        return
+
+    try:
+        _lock_devices(
+            server_connection,
+            required_roles,
+            measurement.get_description(),
+            f&#34;measurement {measurement.__class__.__name__}&#34;,
+        )
+        measurement.start()
+        await _send_response(
+            server_connection,
+            req_identity,
+            MsgResponse(value=f&#34;Started measurement {measurement.get_description()}.&#34;),
+        )
+    except PleaseWait:
+        await _send_response(
+            server_connection,
+            req_identity,
+            PleaseWaitResponse(value=&#34;Wait then try again.&#34;),
+        )
+        return
+    except Exception:
+        await _send_response(
+            server_connection,
+            req_identity,
+            ErrorResponse(value=format_error_response()),
+        )</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.server.server.handle_start_video"><code class="name flex">
+<span>async def <span class="ident">handle_start_video</span></span>(<span>server_connection: <a title="qscope.types.ServerConnection" href="../types/index.html#qscope.types.ServerConnection">ServerConnection</a>,<br>req_identity: bytes,<br>system: <a title="qscope.system.system.System" href="../system/system.html#qscope.system.system.System">System</a>,<br>measurements: dict[str, <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a>],<br>measurement: <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a> | None,<br>request: <a title="qscope.types.messages.Request" href="../types/messages.html#qscope.types.messages.Request">Request</a>)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@handler(
+    CONSTS.CAM.START_VIDEO,
+    &#34;camera_start_video&#34;,
+    system_types=(SGCameraSystem,),
+    roles=(MAIN_CAMERA,),
+)
+async def handle_start_video(
+    server_connection: ServerConnection,
+    req_identity: bytes,
+    system: qscope.system.System,
+    measurements: dict[str, qscope.meas.Measurement],
+    measurement: Optional[qscope.meas.Measurement],
+    request: Request,
+):
+    if not isinstance(system, (qscope.system.SGCameraSystem,)):
+        logger.error(&#34;{} err: System is not a camera system.&#34;, CONSTS.CAM.START_VIDEO)
+        await _send_response(
+            server_connection,
+            req_identity,
+            MsgResponse(value=&#34;System is not a camera system.&#34;),
+        )
+        return
+
+    available, error_msg = _check_devices_available(
+        server_connection, (MAIN_CAMERA,), &#34;video_stream&#34;
+    )
+
+    if not available:
+        await _send_response(
+            server_connection, req_identity, ErrorResponse(value=error_msg)
+        )
+        return
+
+    try:
+        _lock_devices(server_connection, (MAIN_CAMERA,), &#34;video_stream&#34;, &#34;video stream&#34;)
+        await system.start_stream(
+            server_connection,
+            typ=&#34;video&#34;,
+        )
+        await _send_response(
+            server_connection,
+            req_identity,
+            MsgResponse(value=&#34;Started video.&#34;),
+        )
+        server_connection.notif_queue.put_nowait(NewStream(stream_type=&#34;video&#34;))
+    except Exception:
+        await _send_response(
+            server_connection,
+            req_identity,
+            ErrorResponse(value=format_error_response()),
+        )</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.server.server.handle_startup"><code class="name flex">
+<span>async def <span class="ident">handle_startup</span></span>(<span>server_connection: <a title="qscope.types.ServerConnection" href="../types/index.html#qscope.types.ServerConnection">ServerConnection</a>,<br>req_identity: bytes,<br>system: <a title="qscope.system.system.System" href="../system/system.html#qscope.system.system.System">System</a>,<br>measurements: dict[str, <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a>],<br>measurement: <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a> | None,<br>request: <a title="qscope.types.messages.Request" href="../types/messages.html#qscope.types.messages.Request">Request</a>)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@handler(CONSTS.COMMS.STARTUP, &#34;startup&#34;)
+async def handle_startup(
+    server_connection: ServerConnection,
+    req_identity: bytes,
+    system: qscope.system.System,
+    measurements: dict[str, qscope.meas.Measurement],
+    measurement: Optional[qscope.meas.Measurement],
+    request: Request,
+):
+    handles: qscope.server.client.startup
+    try:
+        if not system.hardware_started_up:
+            logger.info(&#34;Attempting to startup server system.&#34;)
+            dev_status = system.startup()
+            await _send_response(
+                server_connection, req_identity, DictResponse(value=dev_status)
+            )
+        else:
+            logger.info(&#34;System already started up.&#34;)
+            await _send_response(
+                server_connection,
+                req_identity,
+                DictResponse(value=system.device_status),
+            )
+    except Exception:
+        await _send_response(
+            server_connection,
+            req_identity,
+            ErrorResponse(value=format_error_response()),
+        )</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.server.server.handle_stop_measurement"><code class="name flex">
+<span>async def <span class="ident">handle_stop_measurement</span></span>(<span>server_connection: <a title="qscope.types.ServerConnection" href="../types/index.html#qscope.types.ServerConnection">ServerConnection</a>,<br>req_identity: bytes,<br>system: <a title="qscope.system.system.System" href="../system/system.html#qscope.system.system.System">System</a>,<br>measurements: dict[str, <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a>],<br>measurement: <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a> | None,<br>request: <a title="qscope.types.messages.Request" href="../types/messages.html#qscope.types.messages.Request">Request</a>)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@handler(CONSTS.MEAS.STOP, &#34;stop_measurement&#34;)
+async def handle_stop_measurement(
+    server_connection: ServerConnection,
+    req_identity: bytes,
+    system: qscope.system.System,
+    measurements: dict[str, qscope.meas.Measurement],
+    measurement: Optional[qscope.meas.Measurement],
+    request: Request,
+):
+    handles: qscope.server.client.stop_measurement
+    if await _check_meas_ok(server_connection, req_identity, measurement):
+        logger.info(&#34;Attempting to stop measurement.&#34;)
+        try:
+            measurement.stop_now()
+            _unlock_devices(server_connection, measurement.get_description())
+            await _send_response(
+                server_connection,
+                req_identity,
+                MsgResponse(value=&#34;Measurement stopped.&#34;),
+            )
+        except Exception:
+            await _send_response(
+                server_connection,
+                req_identity,
+                ErrorResponse(value=format_error_response()),
+            )</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.server.server.handle_stop_video"><code class="name flex">
+<span>async def <span class="ident">handle_stop_video</span></span>(<span>server_connection: <a title="qscope.types.ServerConnection" href="../types/index.html#qscope.types.ServerConnection">ServerConnection</a>,<br>req_identity: bytes,<br>system: <a title="qscope.system.system.System" href="../system/system.html#qscope.system.system.System">System</a>,<br>measurements: dict[str, <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a>],<br>measurement: <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a> | None,<br>request: <a title="qscope.types.messages.Request" href="../types/messages.html#qscope.types.messages.Request">Request</a>)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@handler(
+    CONSTS.CAM.STOP_VIDEO,
+    &#34;camera_stop_video&#34;,
+    system_types=(SGCameraSystem,),
+    roles=(MAIN_CAMERA,),
+)
+async def handle_stop_video(
+    server_connection: ServerConnection,
+    req_identity: bytes,
+    system: qscope.system.System,
+    measurements: dict[str, qscope.meas.Measurement],
+    measurement: Optional[qscope.meas.Measurement],
+    request: Request,
+):
+    if not isinstance(system, (qscope.system.SGCameraSystem,)):
+        logger.error(&#34;{} err: System is not a camera system.&#34;, CONSTS.CAM.STOP_VIDEO)
+        await _send_response(
+            server_connection,
+            req_identity,
+            MsgResponse(value=&#34;System is not a camera system.&#34;),
+        )
+    try:
+        system.stop_video()
+        _unlock_devices(server_connection, &#34;video_stream&#34;)
+        await _send_response(
+            server_connection,
+            req_identity,
+            MsgResponse(value=&#34;Stopped video.&#34;),
+        )
+    except Exception:
+        await _send_response(
+            server_connection,
+            req_identity,
+            ErrorResponse(value=format_error_response()),
+        )</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.server.server.handle_take_and_save_snapshot"><code class="name flex">
+<span>async def <span class="ident">handle_take_and_save_snapshot</span></span>(<span>server_connection: <a title="qscope.types.ServerConnection" href="../types/index.html#qscope.types.ServerConnection">ServerConnection</a>,<br>req_identity: bytes,<br>system: <a title="qscope.system.system.System" href="../system/system.html#qscope.system.system.System">System</a>,<br>measurements: dict[str, <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a>],<br>measurement: <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a> | None,<br>request: <a title="qscope.types.messages.Request" href="../types/messages.html#qscope.types.messages.Request">Request</a>)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@handler(
+    CONSTS.CAM.TAKE_AND_SAVE_SNAPSHOT,
+    &#34;camera_take_and_save_snapshot&#34;,
+    system_types=(SGCameraSystem,),
+    roles=(MAIN_CAMERA,),
+)
+async def handle_take_and_save_snapshot(
+    server_connection: ServerConnection,
+    req_identity: bytes,
+    system: qscope.system.System,
+    measurements: dict[str, qscope.meas.Measurement],
+    measurement: Optional[qscope.meas.Measurement],
+    request: Request,
+):
+    handles: qscope.server.client.camera_take_and_save_snapshot
+    available, error_msg = _check_devices_available(
+        server_connection, (MAIN_CAMERA,), &#34;save_snapshot&#34;
+    )
+    if available:
+        if not isinstance(system, (qscope.system.SGCameraSystem,)):
+            logger.error(
+                &#34;{} err: System is not a camera system.&#34;,
+                CONSTS.CAM.TAKE_AND_SAVE_SNAPSHOT,
+            )
+            await _send_response(
+                server_connection,
+                req_identity,
+                MsgResponse(value=&#34;System is not a camera system.&#34;),
+            )
+        try:
+            frame = system.take_snapshot()
+            path = qscope.util.save_snapshot(
+                system, request.params[&#34;project_name&#34;], frame, request.params[&#34;notes&#34;]
+            )
+            await _send_response(
+                server_connection, req_identity, MsgResponse(value=path)
+            )
+        except Exception:
+            await _send_response(
+                server_connection,
+                req_identity,
+                ErrorResponse(value=format_error_response()),
+            )</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.server.server.handle_take_snapshot"><code class="name flex">
+<span>async def <span class="ident">handle_take_snapshot</span></span>(<span>server_connection: <a title="qscope.types.ServerConnection" href="../types/index.html#qscope.types.ServerConnection">ServerConnection</a>,<br>req_identity: bytes,<br>system: <a title="qscope.system.system.System" href="../system/system.html#qscope.system.system.System">System</a>,<br>measurements: dict[str, <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a>],<br>measurement: <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a> | None,<br>request: <a title="qscope.types.messages.Request" href="../types/messages.html#qscope.types.messages.Request">Request</a>)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@handler(
+    CONSTS.CAM.TAKE_SNAPSHOT,
+    &#34;camera_take_snapshot&#34;,
+    system_types=(SGCameraSystem,),
+    roles=(MAIN_CAMERA,),
+)
+async def handle_take_snapshot(
+    server_connection: ServerConnection,
+    req_identity: bytes,
+    system: qscope.system.System,
+    measurements: dict[str, qscope.meas.Measurement],
+    measurement: Optional[qscope.meas.Measurement],
+    request: Request,
+):
+    handles: qscope.server.client.camera_take_snapshot
+    available, error_msg = _check_devices_available(
+        server_connection, (MAIN_CAMERA,), &#34;snapshot&#34;
+    )
+    if available:
+        if not isinstance(system, (qscope.system.SGCameraSystem,)):
+            logger.error(
+                &#34;{} err: System is not a camera system.&#34;, CONSTS.CAM.TAKE_SNAPSHOT
+            )
+            await _send_response(
+                server_connection,
+                req_identity,
+                MsgResponse(value=&#34;System is not a camera system.&#34;),
+            )
+        try:
+            frame = system.take_snapshot()
+            await _send_response(
+                server_connection, req_identity, ArrayResponse(value=frame)
+            )
+        except Exception:
+            await _send_response(
+                server_connection,
+                req_identity,
+                ErrorResponse(value=format_error_response()),
+            )</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.server.server.handler"><code class="name flex">
+<span>def <span class="ident">handler</span></span>(<span>command: str,<br>*client_methods: str,<br>system_types: tuple[typing.Type[<a title="qscope.system.system.System" href="../system/system.html#qscope.system.system.System">System</a>], ...] = (),<br>roles: tuple[<a title="qscope.types.roles.DeviceRole" href="../types/roles.html#qscope.types.roles.DeviceRole">DeviceRole</a>, ...] = ()) ‑> Callable[[Callable[..., Awaitable[None]]], Callable[[<a title="qscope.types.ServerConnection" href="../types/index.html#qscope.types.ServerConnection">ServerConnection</a>, bytes, <a title="qscope.system.system.System" href="../system/system.html#qscope.system.system.System">System</a>, dict[str, <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a>], <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a> | None, <a title="qscope.types.messages.Request" href="../types/messages.html#qscope.types.messages.Request">Request</a>], Awaitable[None]]]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def handler(
+    command: str,
+    *client_methods: str,
+    system_types: tuple[Type[System], ...] = (),
+    roles: tuple[DeviceRole, ...] = (),
+) -&gt; Callable[
+    [Callable[..., Awaitable[None]]],
+    Callable[
+        [
+            ServerConnection,
+            bytes,
+            System,
+            dict[str, Measurement],
+            Optional[Measurement],
+            Request,
+        ],
+        Awaitable[None],
+    ],
+]:
+    &#34;&#34;&#34;Decorator that registers a server handler and its client methods.
+
+    Args:
+        command: The command string that identifies this handler
+        *client_methods: Names of client methods that use this handler
+        system_types: Required system types
+        roles: Required device roles
+
+    Returns:
+        Decorated handler function
+
+    Example:
+        @handler(
+            CONSTS.SEQGEN.LASER_RF_OUTPUT,
+            &#34;set_laser_rf_output&#34;,
+            system_types=(SGSystem,),
+            roles=(DeviceRoles.SEQUENCE_GEN, DeviceRoles.PRIMARY_RF)
+        )
+        async def handle_laser_rf_output(...):
+            ...
+    &#34;&#34;&#34;
+
+    def decorator(
+        func: Callable[..., Awaitable[None]],
+    ) -&gt; Callable[
+        [
+            ServerConnection,
+            bytes,
+            System,
+            dict[str, Measurement],
+            Optional[Measurement],
+            Request,
+        ],
+        Awaitable[None],
+    ]:
+        HANDLER_REGISTRY[command] = HandlerInfo(
+            handler_func=func,
+            client_methods=list(client_methods),
+            command=command,
+            system_types=system_types,
+            required_roles=roles,
+        )
+
+        @wraps(func)
+        async def wrapper(
+            server_connection: ServerConnection,
+            req_identity: bytes,
+            system: System,  # Type checking will be done at runtime
+            measurements: dict[str, Measurement],
+            measurement: Optional[Measurement],
+            request: Request,
+        ) -&gt; Awaitable[None]:
+            # Validate system type
+            if system_types and not isinstance(system, system_types):
+                await _send_response(
+                    server_connection,
+                    req_identity,
+                    ErrorResponse(
+                        value=f&#34;Operation requires one of these system types: &#34;
+                        f&#34;{[t.__name__ for t in system_types]}, &#34;
+                        f&#34;got {type(system).__name__}&#34;
+                    ),
+                )
+                return
+
+            # Validate required roles
+            if roles:
+                missing_roles = []
+                for role in roles:
+                    if not system.has_device_role(role):
+                        missing_roles.append(role)
+
+                if missing_roles:
+                    await _send_response(
+                        server_connection,
+                        req_identity,
+                        ErrorResponse(
+                            value=f&#34;Operation requires device roles: {&#39;, &#39;.join(missing_roles)}&#34;
+                        ),
+                    )
+                    return
+
+            await func(
+                server_connection,
+                req_identity,
+                system,
+                measurements,
+                measurement,
+                request,
+            )
+
+        return wrapper
+
+    return decorator</code></pre>
+</details>
+<div class="desc"><p>Decorator that registers a server handler and its client methods.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>command</code></strong></dt>
+<dd>The command string that identifies this handler</dd>
+<dt><strong><code>*client_methods</code></strong></dt>
+<dd>Names of client methods that use this handler</dd>
+<dt><strong><code>system_types</code></strong></dt>
+<dd>Required system types</dd>
+<dt><strong><code>roles</code></strong></dt>
+<dd>Required device roles</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>Decorated handler function</p>
+<h2 id="example">Example</h2>
+<p>@handler(
+CONSTS.SEQGEN.LASER_RF_OUTPUT,
+"set_laser_rf_output",
+system_types=(SGSystem,),
+roles=(DeviceRoles.SEQUENCE_GEN, DeviceRoles.PRIMARY_RF)
+)
+async def handle_laser_rf_output(&hellip;):
+&hellip;</p></div>
+</dd>
+<dt id="qscope.server.server.register_server"><code class="name flex">
+<span>def <span class="ident">register_server</span></span>(<span>host: str, ports: tuple[int, int, int]) ‑> pathlib.Path</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def register_server(host: str, ports: tuple[int, int, int]) -&gt; Path:
+    &#34;&#34;&#34;Register a running server in the PID directory.&#34;&#34;&#34;
+    pid = os.getpid()
+    timestamp = datetime.now().strftime(&#34;%Y-%m-%d_%H:%M:%S&#34;)
+
+    server_info = {
+        &#34;pid&#34;: pid,
+        &#34;timestamp&#34;: timestamp,
+        &#34;host&#34;: host,
+        &#34;ports&#34;: {&#34;msg&#34;: ports[0], &#34;notif&#34;: ports[1], &#34;stream&#34;: ports[2]},
+    }
+
+    pid_file = get_servers_dir() / f&#34;server_{pid}.json&#34;
+    with pid_file.open(&#34;w&#34;) as f:
+        json.dump(server_info, f, indent=2)
+
+    return pid_file</code></pre>
+</details>
+<div class="desc"><p>Register a running server in the PID directory.</p></div>
+</dd>
+<dt id="qscope.server.server.request_router"><code class="name flex">
+<span>async def <span class="ident">request_router</span></span>(<span>server_connection: <a title="qscope.types.ServerConnection" href="../types/index.html#qscope.types.ServerConnection">ServerConnection</a>,<br>req_identity: bytes,<br>system: <a title="qscope.system.system.System" href="../system/system.html#qscope.system.system.System">System</a>,<br>measurements: dict[str, <a title="qscope.meas.measurement.Measurement" href="../meas/measurement.html#qscope.meas.measurement.Measurement">Measurement</a>],<br>request: <a title="qscope.types.messages.Request" href="../types/messages.html#qscope.types.messages.Request">Request</a>)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">async def request_router(
+    server_connection: ServerConnection,
+    req_identity: bytes,
+    system: qscope.system.System,
+    measurements: dict[str, qscope.meas.Measurement],
+    request: Request,
+):
+    logger.debug(&#34;*REQUEST* (server&lt;-): {}&#34;, request)
+
+    # first get applicable Measurement object if needed
+    measurement = None
+    if (
+        request.command.startswith(&#34;CONSTS.MEAS.&#34;)
+        and request.command != CONSTS.MEAS.ADD
+    ):
+        try:
+            measurement = measurements[request.params[&#34;meas_id&#34;]]
+        except KeyError:
+            logger.error(
+                &#34;No measurement matching meas_id: {}, currently operating: {}&#34;,
+                request.params[&#34;meas_id&#34;],
+                measurements.keys(),
+            )
+            pass  # stay as None
+
+    try:
+        handler_func = get_router_map()[request.command]
+        await handler_func(
+            server_connection, req_identity, system, measurements, measurement, request
+        )
+    except KeyError:
+        logger.error(&#34;Unknown request: {}&#34;, request.command)
+        await _send_response(
+            server_connection,
+            req_identity,
+            ErrorResponse(value=f&#34;Unknown request: {request.command}&#34;),
+        )</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.server.server.start_server"><code class="name flex">
+<span>async def <span class="ident">start_server</span></span>(<span>system_name: str,<br>host: str = '127.0.0.1',<br>msg_port: int = 8850,<br>notif_port: int = 8851,<br>stream_port: int = 8852,<br>log_to_file: bool = True,<br>log_to_stdout: bool = False,<br>log_path: str = '',<br>clear_prev_log: bool = True,<br>log_level: str = 'INFO')</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">async def start_server(
+    system_name: str,
+    host: str = DEFAULT_HOST_ADDR,
+    msg_port: int = DEFAULT_PORT,
+    notif_port: int = DEFAULT_PORT + 1,
+    stream_port: int = DEFAULT_PORT + 2,
+    log_to_file: bool = True,
+    log_to_stdout: bool = False,
+    log_path: str = &#34;&#34;,
+    clear_prev_log: bool = True,
+    log_level: str = DEFAULT_LOGLEVEL,
+):
+    kill_qscope_servers()  # only one server per machine at a time!
+
+    # Format: &#34;Qscope Server (2024-01-20 15:30:45)&#34;
+    timestamp = datetime.now().strftime(&#34;%Y-%m-%d_%H:%M:%S&#34;)
+    setproctitle(f&#34;qscope-server_{timestamp}&#34;)
+
+    pid_file = register_server(host, (msg_port, notif_port, stream_port))
+
+    qscope.util.start_server_log(
+        log_to_file=log_to_file,
+        log_to_stdout=log_to_stdout,
+        log_path=log_path,
+        clear_prev=clear_prev_log,
+        log_level=log_level,
+    )
+
+    logger.info(&#34;Starting msg server on {}:{}&#34;, host, msg_port)
+
+    system_config = qscope.system.get_system_config(str(system_name).lower())
+    if system_config is None:
+        logger.error(&#34;System {} not found.&#34;, system_name.lower())
+        raise ValueError(f&#34;System {system_name.lower()} not found.&#34;)
+
+    systyp = system_config.system_type  # Get system type from config
+
+    logger.info(
+        &#34;Opening a system of type {} and system type {}&#34;,
+        system_name,
+        systyp.__class__.__name__,
+    )
+    system = systyp(system_config)
+
+    try:
+        context = zmq.asyncio.Context()
+        msg_socket = context.socket(zmq.ROUTER)
+        msg_socket.bind(f&#34;tcp://{host}:{msg_port}&#34;)  # bind on server side
+        notif_socket = context.socket(zmq.PUB)
+        notif_socket.bind(f&#34;tcp://{host}:{notif_port}&#34;)
+        stream_socket = context.socket(zmq.PUB)
+        stream_socket.bind(f&#34;tcp://{host}:{stream_port}&#34;)
+        server_connection = ServerConnection(
+            msg_socket=msg_socket,
+            notif_socket=notif_socket,
+            stream_socket=stream_socket,
+            host=host,
+            msg_port=msg_port,
+            notif_port=notif_port,
+            stream_port=stream_port,
+            notif_queue=asyncio.Queue(),
+        )
+    except Exception as e:
+        logger.exception(&#34;Error opening server-side connection.&#34;)
+        raise e
+    try:
+        await client_handler(server_connection, system, dict())
+    finally:
+        if pid_file and pid_file.exists():
+            try:
+                pid_file.unlink()
+            except:
+                pass</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<form>
+<input id="lunr-search" name="q" placeholder="🔎 Search ..." aria-label="Search"
+disabled minlength="2">
+</form>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.css" integrity="sha512-b+T2i3P45i1LZM7I00Ci5QquB9szqaxu+uuk5TUSGjZQ4w4n+qujQiIuvTv2BxE7WCGQCifNMksyKILDiHzsOg==" crossorigin>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.js" integrity="sha512-2B9/byNV1KKRm5nQ2RLViPFD6U4dUjDGwuW1GU+ImJh8YinPU9Zlq1GzdTMO+G2ROrB5o1qasJBy1ttYz0wCug==" crossorigin></script>
+<style>
+.modal-dialog iframe {
+width: 100vw;
+height: calc(100vh - 80px);
+}
+@media screen and (min-width: 700px) {
+.modal-dialog iframe {
+width: 70vw;
+height: 80vh;
+}
+}
+.modal-dialog .tingle-modal-box {width: auto;}
+.modal-dialog .tingle-modal-box__content {padding: 0;}
+</style>
+<script>
+const input = document.getElementById('lunr-search');
+input.disabled = false;
+input.form.addEventListener('submit', (ev) => {
+ev.preventDefault();
+const url = new URL(window.location);
+url.searchParams.set('q', input.value);
+history.replaceState({}, null, url.toString());
+search(input.value);
+});
+const query = new URL(window.location).searchParams.get('q');
+if (query)
+search(query);
+function search(query) {
+const url = '../../doc-search.html#' + encodeURIComponent(query);
+new tingle.modal({
+cssClass: ['modal-dialog'],
+onClose: () => {
+const url = new URL(window.location);
+url.searchParams.delete('q');
+history.replaceState({}, null, url.toString());
+setTimeout(() => input.focus(), 100);
+}
+}).setContent('<iframe src="' + url + '"></iframe>').open();
+}
+</script>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="qscope.server" href="index.html">qscope.server</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="qscope.server.server.client_handler" href="#qscope.server.server.client_handler">client_handler</a></code></li>
+<li><code><a title="qscope.server.server.get_router_map" href="#qscope.server.server.get_router_map">get_router_map</a></code></li>
+<li><code><a title="qscope.server.server.get_servers_dir" href="#qscope.server.server.get_servers_dir">get_servers_dir</a></code></li>
+<li><code><a title="qscope.server.server.handle_add_measurement" href="#qscope.server.server.handle_add_measurement">handle_add_measurement</a></code></li>
+<li><code><a title="qscope.server.server.handle_client_sync" href="#qscope.server.server.handle_client_sync">handle_client_sync</a></code></li>
+<li><code><a title="qscope.server.server.handle_close_measurement" href="#qscope.server.server.handle_close_measurement">handle_close_measurement</a></code></li>
+<li><code><a title="qscope.server.server.handle_echo" href="#qscope.server.server.handle_echo">handle_echo</a></code></li>
+<li><code><a title="qscope.server.server.handle_get_all_meas_info" href="#qscope.server.server.handle_get_all_meas_info">handle_get_all_meas_info</a></code></li>
+<li><code><a title="qscope.server.server.handle_get_device_locks" href="#qscope.server.server.handle_get_device_locks">handle_get_device_locks</a></code></li>
+<li><code><a title="qscope.server.server.handle_get_frame_measurement" href="#qscope.server.server.handle_get_frame_measurement">handle_get_frame_measurement</a></code></li>
+<li><code><a title="qscope.server.server.handle_get_frame_shape" href="#qscope.server.server.handle_get_frame_shape">handle_get_frame_shape</a></code></li>
+<li><code><a title="qscope.server.server.handle_get_meas_info" href="#qscope.server.server.handle_get_meas_info">handle_get_meas_info</a></code></li>
+<li><code><a title="qscope.server.server.handle_get_measurement_state" href="#qscope.server.server.handle_get_measurement_state">handle_get_measurement_state</a></code></li>
+<li><code><a title="qscope.server.server.handle_get_other_ports" href="#qscope.server.server.handle_get_other_ports">handle_get_other_ports</a></code></li>
+<li><code><a title="qscope.server.server.handle_get_server_log_path" href="#qscope.server.server.handle_get_server_log_path">handle_get_server_log_path</a></code></li>
+<li><code><a title="qscope.server.server.handle_get_sweep_measurement" href="#qscope.server.server.handle_get_sweep_measurement">handle_get_sweep_measurement</a></code></li>
+<li><code><a title="qscope.server.server.handle_is_streaming" href="#qscope.server.server.handle_is_streaming">handle_is_streaming</a></code></li>
+<li><code><a title="qscope.server.server.handle_laser_output" href="#qscope.server.server.handle_laser_output">handle_laser_output</a></code></li>
+<li><code><a title="qscope.server.server.handle_laser_rf_output" href="#qscope.server.server.handle_laser_rf_output">handle_laser_rf_output</a></code></li>
+<li><code><a title="qscope.server.server.handle_packdown" href="#qscope.server.server.handle_packdown">handle_packdown</a></code></li>
+<li><code><a title="qscope.server.server.handle_pause_measurement" href="#qscope.server.server.handle_pause_measurement">handle_pause_measurement</a></code></li>
+<li><code><a title="qscope.server.server.handle_ping" href="#qscope.server.server.handle_ping">handle_ping</a></code></li>
+<li><code><a title="qscope.server.server.handle_rf_output" href="#qscope.server.server.handle_rf_output">handle_rf_output</a></code></li>
+<li><code><a title="qscope.server.server.handle_save_full_data_measurement" href="#qscope.server.server.handle_save_full_data_measurement">handle_save_full_data_measurement</a></code></li>
+<li><code><a title="qscope.server.server.handle_save_latest_stream" href="#qscope.server.server.handle_save_latest_stream">handle_save_latest_stream</a></code></li>
+<li><code><a title="qscope.server.server.handle_save_notes" href="#qscope.server.server.handle_save_notes">handle_save_notes</a></code></li>
+<li><code><a title="qscope.server.server.handle_save_sweep_measurement" href="#qscope.server.server.handle_save_sweep_measurement">handle_save_sweep_measurement</a></code></li>
+<li><code><a title="qscope.server.server.handle_save_sweep_w_fit_measurement" href="#qscope.server.server.handle_save_sweep_w_fit_measurement">handle_save_sweep_w_fit_measurement</a></code></li>
+<li><code><a title="qscope.server.server.handle_set_aoi_measurement" href="#qscope.server.server.handle_set_aoi_measurement">handle_set_aoi_measurement</a></code></li>
+<li><code><a title="qscope.server.server.handle_set_camera_params" href="#qscope.server.server.handle_set_camera_params">handle_set_camera_params</a></code></li>
+<li><code><a title="qscope.server.server.handle_set_frame_num_measurement" href="#qscope.server.server.handle_set_frame_num_measurement">handle_set_frame_num_measurement</a></code></li>
+<li><code><a title="qscope.server.server.handle_set_rolling_avg_max_sweeps_measurement" href="#qscope.server.server.handle_set_rolling_avg_max_sweeps_measurement">handle_set_rolling_avg_max_sweeps_measurement</a></code></li>
+<li><code><a title="qscope.server.server.handle_set_rolling_avg_window_measurement" href="#qscope.server.server.handle_set_rolling_avg_window_measurement">handle_set_rolling_avg_window_measurement</a></code></li>
+<li><code><a title="qscope.server.server.handle_shutdown" href="#qscope.server.server.handle_shutdown">handle_shutdown</a></code></li>
+<li><code><a title="qscope.server.server.handle_start_measurement" href="#qscope.server.server.handle_start_measurement">handle_start_measurement</a></code></li>
+<li><code><a title="qscope.server.server.handle_start_video" href="#qscope.server.server.handle_start_video">handle_start_video</a></code></li>
+<li><code><a title="qscope.server.server.handle_startup" href="#qscope.server.server.handle_startup">handle_startup</a></code></li>
+<li><code><a title="qscope.server.server.handle_stop_measurement" href="#qscope.server.server.handle_stop_measurement">handle_stop_measurement</a></code></li>
+<li><code><a title="qscope.server.server.handle_stop_video" href="#qscope.server.server.handle_stop_video">handle_stop_video</a></code></li>
+<li><code><a title="qscope.server.server.handle_take_and_save_snapshot" href="#qscope.server.server.handle_take_and_save_snapshot">handle_take_and_save_snapshot</a></code></li>
+<li><code><a title="qscope.server.server.handle_take_snapshot" href="#qscope.server.server.handle_take_snapshot">handle_take_snapshot</a></code></li>
+<li><code><a title="qscope.server.server.handler" href="#qscope.server.server.handler">handler</a></code></li>
+<li><code><a title="qscope.server.server.register_server" href="#qscope.server.server.register_server">register_server</a></code></li>
+<li><code><a title="qscope.server.server.request_router" href="#qscope.server.server.request_router">request_router</a></code></li>
+<li><code><a title="qscope.server.server.start_server" href="#qscope.server.server.start_server">start_server</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
+</footer>
+</body>
+</html>

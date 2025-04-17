@@ -1,0 +1,571 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.6">
+<title>qscope.cli.mpl.base API documentation</title>
+<meta name="description" content="Shared utilities for MPL measurements.">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}#lunr-search{width:100%;font-size:1em;padding:6px 9px 5px 9px;border:1px solid silver}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes: true } });</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML" integrity="sha256-kZafAc6mZvK3W3v1pHOcUix30OHQN6pU/NO2oFkqZVw=" crossorigin></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>qscope.cli.mpl.base</code></h1>
+</header>
+<section id="section-intro">
+<p>Shared utilities for MPL measurements.</p>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="qscope.cli.mpl.base.analyze_mpl_response"><code class="name flex">
+<span>def <span class="ident">analyze_mpl_response</span></span>(<span>pl: numpy.ndarray, current: numpy.ndarray) ‑> Dict[str, float]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def analyze_mpl_response(pl: np.ndarray, current: np.ndarray) -&gt; Dict[str, float]:
+    &#34;&#34;&#34;Analyze magnetophotoluminescence (MPL) response characteristics.&#34;&#34;&#34;
+    mask = current &gt; 0.5 * np.max(current)
+    pl_high, pl_low = np.mean(pl[mask]), np.mean(pl[~mask])
+    contrast = (pl_low - pl_high) / pl_low if pl_low else 0
+    
+    return {
+        &#34;contrast&#34;: 0 if np.isnan(contrast) else contrast,
+        &#34;pl_high&#34;: 0 if np.isnan(pl_high) else pl_high,
+        &#34;pl_low&#34;: 0 if np.isnan(pl_low) else pl_low
+    }</code></pre>
+</details>
+<div class="desc"><p>Analyze magnetophotoluminescence (MPL) response characteristics.</p></div>
+</dd>
+<dt id="qscope.cli.mpl.base.configure_scope_acquisition"><code class="name flex">
+<span>def <span class="ident">configure_scope_acquisition</span></span>(<span>scope: <a title="qscope.device.picoscope.picoscope5000a.Picoscope5000a" href="../../device/picoscope/picoscope5000a.html#qscope.device.picoscope.picoscope5000a.Picoscope5000a">Picoscope5000a</a>,<br>pl_range: float,<br>pl_coupling: str,<br>use_scope_current: bool,<br>current: float = 0.0,<br>coil_resistance: float = 27.0,<br>downsample_ratio: int = 1,<br>downsample_mode: str = 'AVERAGE') ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def configure_scope_acquisition(
+    scope: Picoscope5000a,
+    pl_range: float,
+    pl_coupling: str,
+    use_scope_current: bool,
+    current: float = 0.0,
+    coil_resistance: float = 27.0,
+    downsample_ratio: int = 1,
+    downsample_mode: str = &#34;AVERAGE&#34;
+) -&gt; None:
+    &#34;&#34;&#34;Configure scope channels and acquisition parameters.
+    
+    Parameters
+    ----------
+    scope : Picoscope5000a
+        Configured picoscope instance
+    pl_range : float
+        Voltage range for PL channel
+    pl_coupling : str
+        Coupling mode for PL channel (&#34;AC&#34; or &#34;DC&#34;)
+    use_scope_current : bool
+        Whether to enable current measurement channel
+    current : float, optional
+        Peak current for range calculation, by default 0.0
+    coil_resistance : float, optional
+        Coil resistance for voltage calculation, by default 27.0
+    downsample_ratio : int, optional
+        Hardware downsampling ratio, by default 1
+    downsample_mode : str, optional
+        Downsampling mode, by default &#34;AVERAGE&#34;
+    &#34;&#34;&#34;
+    channels = [0]  # PL channel always enabled
+    ranges = [pl_range]
+    couplings = [pl_coupling]
+    
+    if use_scope_current:
+        voltage_range = current * coil_resistance * 1.2
+        channels.append(1)
+        ranges.append(voltage_range)
+        couplings.append(&#34;DC&#34;)
+    
+    # Validate all ranges at once
+    valid_ranges = {ch: min((r for r in scope.VOLTAGE_RANGES if r &gt; rng), default=None) 
+                   for ch, rng in zip(channels, ranges)}
+    
+    if not all(valid_ranges.values()):
+        invalid = [ch for ch, r in valid_ranges.items() if not r]
+        raise ValueError(f&#34;Invalid voltage range for channels {invalid}&#34;)
+        
+    scope.configure_channels(
+        channels=channels,
+        ranges=[valid_ranges[ch] for ch in channels],
+        coupling=couplings
+    )
+
+    # Configure hardware downsampling if enabled
+    if downsample_ratio &gt; 1:
+        scope.set_downsampling(
+            mode=downsample_mode, downsample_ratio=downsample_ratio
+        )
+        logger.info(
+            f&#34;Using hardware downsampling with ratio {downsample_ratio}&#34;
+        )</code></pre>
+</details>
+<div class="desc"><p>Configure scope channels and acquisition parameters.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>scope</code></strong> :&ensp;<code>Picoscope5000a</code></dt>
+<dd>Configured picoscope instance</dd>
+<dt><strong><code>pl_range</code></strong> :&ensp;<code>float</code></dt>
+<dd>Voltage range for PL channel</dd>
+<dt><strong><code>pl_coupling</code></strong> :&ensp;<code>str</code></dt>
+<dd>Coupling mode for PL channel ("AC" or "DC")</dd>
+<dt><strong><code>use_scope_current</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Whether to enable current measurement channel</dd>
+<dt><strong><code>current</code></strong> :&ensp;<code>float</code>, optional</dt>
+<dd>Peak current for range calculation, by default 0.0</dd>
+<dt><strong><code>coil_resistance</code></strong> :&ensp;<code>float</code>, optional</dt>
+<dd>Coil resistance for voltage calculation, by default 27.0</dd>
+<dt><strong><code>downsample_ratio</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>Hardware downsampling ratio, by default 1</dd>
+<dt><strong><code>downsample_mode</code></strong> :&ensp;<code>str</code>, optional</dt>
+<dd>Downsampling mode, by default "AVERAGE"</dd>
+</dl></div>
+</dd>
+<dt id="qscope.cli.mpl.base.managed_devices"><code class="name flex">
+<span>def <span class="ident">managed_devices</span></span>(<span>smu_address: str,<br>current: float,<br>coil_resistance: float,<br>additional_resistance: float = 0.0,<br>voltage_limit: float | None = None,<br>source_mode: str = 'voltage',<br>force_sourcing: bool = False,<br>nplc: float = 0.1,<br>auto_zero: bool = True,<br>source_delay: float = 0.0,<br>scope_resolution: int = 12) ‑> Generator[tuple[<a title="qscope.device.SMU2450.SMU2450" href="../../device/SMU2450.html#qscope.device.SMU2450.SMU2450">SMU2450</a>, <a title="qscope.device.picoscope.picoscope5000a.Picoscope5000a" href="../../device/picoscope/picoscope5000a.html#qscope.device.picoscope.picoscope5000a.Picoscope5000a">Picoscope5000a</a>], Any, None]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@contextmanager
+def managed_devices(
+    smu_address: str,
+    current: float,
+    coil_resistance: float,
+    additional_resistance: float = 0.0,
+    voltage_limit: Optional[float] = None,
+    source_mode: str = &#34;voltage&#34;,
+    force_sourcing: bool = False,
+    nplc: float = 0.1,
+    auto_zero: bool = True,
+    source_delay: float = 0.0,
+    scope_resolution: int = 12
+) -&gt; Generator[tuple[SMU2450, Picoscope5000a], Any, None]:
+    &#34;&#34;&#34;Context manager for device setup and cleanup.
+    
+    Parameters
+    ----------
+    smu_address : str
+        VISA address for the SMU
+    current : float
+        Peak current in amps
+    coil_resistance : float
+        Electromagnet coil resistance in ohms
+    additional_resistance : float, optional
+        Additional resistance in series with coil in ohms, by default 0.0
+    voltage_limit : float, optional
+        Maximum voltage to apply, by default None (calculated from current and resistance)
+    source_mode : str, optional
+        SMU source mode (&#34;voltage&#34; or &#34;current&#34;), by default &#34;voltage&#34;
+    force_sourcing : bool, optional
+        Force operation even when approaching SMU limits, by default False
+    nplc : float, optional
+        Number of power line cycles for SMU, by default 0.1
+    auto_zero : bool, optional
+        Enable SMU auto-zero, by default True
+    source_delay : float, optional
+        SMU source delay in seconds, by default 0.0
+    scope_resolution : int, optional
+        Scope resolution in bits, by default 12
+    &#34;&#34;&#34;
+    smu, scope = setup_devices(
+        smu_address=smu_address,
+        current=current,
+        coil_resistance=coil_resistance,
+        additional_resistance=additional_resistance,
+        voltage_limit=voltage_limit,
+        source_mode=source_mode,
+        force_sourcing=force_sourcing,
+        nplc=nplc,
+        auto_zero=auto_zero,
+        source_delay=source_delay,
+        scope_resolution=scope_resolution
+    )
+    try:
+        yield smu, scope
+    finally:
+        if smu is not None:
+            try:
+                smu.zero_output()
+                smu.close()
+            except Exception:
+                logger.exception(&#34;Error closing SMU&#34;)
+
+        if scope is not None:
+            try:
+                scope.close()
+            except Exception:
+                logger.exception(&#34;Error closing scope&#34;)</code></pre>
+</details>
+<div class="desc"><p>Context manager for device setup and cleanup.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>smu_address</code></strong> :&ensp;<code>str</code></dt>
+<dd>VISA address for the SMU</dd>
+<dt><strong><code>current</code></strong> :&ensp;<code>float</code></dt>
+<dd>Peak current in amps</dd>
+<dt><strong><code>coil_resistance</code></strong> :&ensp;<code>float</code></dt>
+<dd>Electromagnet coil resistance in ohms</dd>
+<dt><strong><code>additional_resistance</code></strong> :&ensp;<code>float</code>, optional</dt>
+<dd>Additional resistance in series with coil in ohms, by default 0.0</dd>
+<dt><strong><code>voltage_limit</code></strong> :&ensp;<code>float</code>, optional</dt>
+<dd>Maximum voltage to apply, by default None (calculated from current and resistance)</dd>
+<dt><strong><code>source_mode</code></strong> :&ensp;<code>str</code>, optional</dt>
+<dd>SMU source mode ("voltage" or "current"), by default "voltage"</dd>
+<dt><strong><code>force_sourcing</code></strong> :&ensp;<code>bool</code>, optional</dt>
+<dd>Force operation even when approaching SMU limits, by default False</dd>
+<dt><strong><code>nplc</code></strong> :&ensp;<code>float</code>, optional</dt>
+<dd>Number of power line cycles for SMU, by default 0.1</dd>
+<dt><strong><code>auto_zero</code></strong> :&ensp;<code>bool</code>, optional</dt>
+<dd>Enable SMU auto-zero, by default True</dd>
+<dt><strong><code>source_delay</code></strong> :&ensp;<code>float</code>, optional</dt>
+<dd>SMU source delay in seconds, by default 0.0</dd>
+<dt><strong><code>scope_resolution</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>Scope resolution in bits, by default 12</dd>
+</dl></div>
+</dd>
+<dt id="qscope.cli.mpl.base.setup_devices"><code class="name flex">
+<span>def <span class="ident">setup_devices</span></span>(<span>smu_address: str,<br>current: float,<br>coil_resistance: float,<br>additional_resistance: float = 0.0,<br>voltage_limit: float | None = None,<br>source_mode: str = 'voltage',<br>force_sourcing: bool = False,<br>nplc: float = 0.1,<br>auto_zero: bool = True,<br>source_delay: float = 0.0,<br>scope_resolution: int = 12) ‑> Tuple[<a title="qscope.device.SMU2450.SMU2450" href="../../device/SMU2450.html#qscope.device.SMU2450.SMU2450">SMU2450</a>, <a title="qscope.device.picoscope.picoscope5000a.Picoscope5000a" href="../../device/picoscope/picoscope5000a.html#qscope.device.picoscope.picoscope5000a.Picoscope5000a">Picoscope5000a</a>]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def setup_devices(
+    smu_address: str,
+    current: float,
+    coil_resistance: float,
+    additional_resistance: float = 0.0,
+    voltage_limit: Optional[float] = None,
+    source_mode: str = &#34;voltage&#34;,
+    force_sourcing: bool = False,
+    nplc: float = 0.1,
+    auto_zero: bool = True,
+    source_delay: float = 0.0,
+    scope_resolution: int = 12
+) -&gt; Tuple[SMU2450, Picoscope5000a]:
+    &#34;&#34;&#34;Initialize and configure measurement devices.
+    
+    Parameters
+    ----------
+    smu_address : str
+        VISA address for the SMU
+    current : float
+        Peak current in amps
+    coil_resistance : float
+        Electromagnet coil resistance in ohms
+    additional_resistance : float, optional
+        Additional resistance in series with coil in ohms, by default 0.0
+    voltage_limit : float, optional
+        Maximum voltage to apply, by default None (calculated from current and resistance)
+    source_mode : str, optional
+        SMU source mode (&#34;voltage&#34; or &#34;current&#34;), by default &#34;voltage&#34;
+    force_sourcing : bool, optional
+        Force operation even when approaching SMU limits, by default False
+    nplc : float, optional
+        Number of power line cycles for SMU, by default 0.1
+    auto_zero : bool, optional
+        Enable SMU auto-zero, by default True
+    source_delay : float, optional
+        SMU source delay in seconds, by default 0.0
+    scope_resolution : int, optional
+        Scope resolution in bits, by default 12
+    &#34;&#34;&#34;
+    # Initialize devices
+    smu = SMU2450(smu_address)
+    scope = Picoscope5000a()
+
+    # Calculate total resistance and required voltage
+    total_resistance = coil_resistance + additional_resistance
+    required_voltage = abs(current) * total_resistance
+    
+    # Safety checks before configuring SMU
+    if current &gt; SMU_MAX_CURRENT:
+        if not force_sourcing:
+            raise ValueError(f&#34;Requested current ({current}A) exceeds SMU maximum ({SMU_MAX_CURRENT}A)&#34;)
+        logger.warning(f&#34;Current limited to {SMU_MAX_CURRENT}A&#34;)
+        current = SMU_MAX_CURRENT
+        # Recalculate required voltage with limited current
+        required_voltage = abs(current) * total_resistance
+    
+    # Check if we&#39;ll exceed voltage limits in voltage mode
+    if source_mode == &#34;voltage&#34; and required_voltage &gt; SMU_MAX_VOLTAGE:
+        if not force_sourcing:
+            raise ValueError(
+                f&#34;Required voltage ({required_voltage:.2f}V) exceeds SMU maximum ({SMU_MAX_VOLTAGE}V). &#34;
+                f&#34;Consider reducing current, adding resistance, or using current sourcing mode.&#34;
+            )
+        # If forcing, limit to max voltage and warn about reduced current
+        limited_current = SMU_MAX_VOLTAGE / total_resistance
+        logger.warning(
+            f&#34;Voltage limited to {SMU_MAX_VOLTAGE}V. &#34;
+            f&#34;Maximum achievable current will be {limited_current:.3f}A instead of {current:.3f}A&#34;
+        )
+        # Adjust the current for later calculations
+        current = limited_current
+        required_voltage = SMU_MAX_VOLTAGE
+
+    # Use provided voltage limit or calculate with headroom
+    if voltage_limit is None:
+        voltage_headroom = 1.5
+        voltage_limit = min(required_voltage * voltage_headroom, SMU_MAX_VOLTAGE)
+    elif voltage_limit &gt; SMU_MAX_VOLTAGE:
+        logger.warning(f&#34;Voltage limit ({voltage_limit}V) exceeds SMU maximum ({SMU_MAX_VOLTAGE}V)&#34;)
+        voltage_limit = SMU_MAX_VOLTAGE
+
+    # Configure SMU
+    smu.open()
+    smu.configure(nplc=nplc, auto_zero=auto_zero, source_delay=source_delay)
+    
+    # Provide informative message about expected operation
+    logger.info(f&#34;Electromagnet configuration: {coil_resistance}Ω coil + {additional_resistance}Ω additional&#34;)
+    logger.info(f&#34;Target current: {current}A, Expected voltage: {required_voltage:.2f}V&#34;)
+    
+    if source_mode == &#34;current&#34;:
+        # Current sourcing mode
+        smu.set_mode(&#34;current&#34;)
+        smu._communicate(f&#34;:SOUR:CURR:RANG {current * 1.2}&#34;)
+        smu._communicate(f&#34;:SENS:VOLT:RANG {voltage_limit}&#34;)
+        smu.set_compliance(voltage_limit)
+        logger.info(f&#34;Configured SMU in current mode: {current}A, compliance: {voltage_limit}V&#34;)
+    else:
+        # Voltage sourcing mode
+        smu.set_mode(&#34;voltage&#34;)
+        smu._communicate(f&#34;:SOUR:VOLT:RANG {required_voltage * 1.2}&#34;)
+        
+        # For high currents near the maximum, use less headroom
+        if current &gt; 0.8:  # If we&#39;re near the max current
+            current_limit = min(1.05, current * 1.05)  # Use only 5% headroom
+            logger.info(f&#34;High current detected ({current:.3f}A), using reduced headroom&#34;)
+        else:
+            current_limit = current * 1.2  # Normal 20% headroom
+        
+        # First disable auto-ranging for current measurement
+        smu._communicate(&#34;:SENS:CURR:RANG:AUTO OFF&#34;)
+        
+        # For high currents, set to max range directly
+        if current &gt; 0.8:
+            smu._communicate(&#34;:SENS:CURR:RANG 1.05&#34;)
+            logger.info(&#34;Setting current measurement range to maximum (1.05A)&#34;)
+        else:
+            smu._communicate(f&#34;:SENS:CURR:RANG {current_limit}&#34;)
+        
+        # Then set current limit
+        smu.set_compliance(current_limit)
+        logger.info(f&#34;Configured SMU in voltage mode: {required_voltage}V, compliance: {current_limit}A&#34;)
+    
+    smu.set_output_state(True)
+
+    # Configure scope
+    scope.set_resolution(scope_resolution)
+    scope.open()
+
+    return smu, scope</code></pre>
+</details>
+<div class="desc"><p>Initialize and configure measurement devices.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>smu_address</code></strong> :&ensp;<code>str</code></dt>
+<dd>VISA address for the SMU</dd>
+<dt><strong><code>current</code></strong> :&ensp;<code>float</code></dt>
+<dd>Peak current in amps</dd>
+<dt><strong><code>coil_resistance</code></strong> :&ensp;<code>float</code></dt>
+<dd>Electromagnet coil resistance in ohms</dd>
+<dt><strong><code>additional_resistance</code></strong> :&ensp;<code>float</code>, optional</dt>
+<dd>Additional resistance in series with coil in ohms, by default 0.0</dd>
+<dt><strong><code>voltage_limit</code></strong> :&ensp;<code>float</code>, optional</dt>
+<dd>Maximum voltage to apply, by default None (calculated from current and resistance)</dd>
+<dt><strong><code>source_mode</code></strong> :&ensp;<code>str</code>, optional</dt>
+<dd>SMU source mode ("voltage" or "current"), by default "voltage"</dd>
+<dt><strong><code>force_sourcing</code></strong> :&ensp;<code>bool</code>, optional</dt>
+<dd>Force operation even when approaching SMU limits, by default False</dd>
+<dt><strong><code>nplc</code></strong> :&ensp;<code>float</code>, optional</dt>
+<dd>Number of power line cycles for SMU, by default 0.1</dd>
+<dt><strong><code>auto_zero</code></strong> :&ensp;<code>bool</code>, optional</dt>
+<dd>Enable SMU auto-zero, by default True</dd>
+<dt><strong><code>source_delay</code></strong> :&ensp;<code>float</code>, optional</dt>
+<dd>SMU source delay in seconds, by default 0.0</dd>
+<dt><strong><code>scope_resolution</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>Scope resolution in bits, by default 12</dd>
+</dl></div>
+</dd>
+<dt id="qscope.cli.mpl.base.setup_logging"><code class="name flex">
+<span>def <span class="ident">setup_logging</span></span>(<span>log_path: str = '',<br>clear_prev_log: bool = True,<br>log_to_file: bool = True,<br>log_to_stdout: bool = True,<br>log_level: str = 'INFO') ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def setup_logging(
+    log_path: str = &#34;&#34;,
+    clear_prev_log: bool = True,
+    log_to_file: bool = True,
+    log_to_stdout: bool = True,
+    log_level: str = DEFAULT_LOGLEVEL
+) -&gt; None:
+    &#34;&#34;&#34;Configure logging based on parameters.
+    
+    Parameters
+    ----------
+    log_path : str, optional
+        Path to log file. If empty, uses default path.
+    clear_prev_log : bool, optional
+        Whether to clear previous log file, by default True
+    log_to_file : bool, optional
+        Enable logging to file, by default True
+    log_to_stdout : bool, optional
+        Enable console logging, by default True
+    log_level : str, optional
+        Logging level (DEBUG, INFO, WARNING, ERROR), by default DEFAULT_LOGLEVEL
+    &#34;&#34;&#34;
+    from qscope.util.logging import clear_log, log_default_path_client, start_client_log
+    
+    log_path = log_path or log_default_path_client()
+    if clear_prev_log:
+        clear_log(log_path)
+        
+    start_client_log(
+        log_to_file=log_to_file,
+        log_to_stdout=log_to_stdout,
+        log_path=log_path,
+        log_level=log_level
+    )</code></pre>
+</details>
+<div class="desc"><p>Configure logging based on parameters.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>log_path</code></strong> :&ensp;<code>str</code>, optional</dt>
+<dd>Path to log file. If empty, uses default path.</dd>
+<dt><strong><code>clear_prev_log</code></strong> :&ensp;<code>bool</code>, optional</dt>
+<dd>Whether to clear previous log file, by default True</dd>
+<dt><strong><code>log_to_file</code></strong> :&ensp;<code>bool</code>, optional</dt>
+<dd>Enable logging to file, by default True</dd>
+<dt><strong><code>log_to_stdout</code></strong> :&ensp;<code>bool</code>, optional</dt>
+<dd>Enable console logging, by default True</dd>
+<dt><strong><code>log_level</code></strong> :&ensp;<code>str</code>, optional</dt>
+<dd>Logging level (DEBUG, INFO, WARNING, ERROR), by default DEFAULT_LOGLEVEL</dd>
+</dl></div>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<form>
+<input id="lunr-search" name="q" placeholder="🔎 Search ..." aria-label="Search"
+disabled minlength="2">
+</form>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.css" integrity="sha512-b+T2i3P45i1LZM7I00Ci5QquB9szqaxu+uuk5TUSGjZQ4w4n+qujQiIuvTv2BxE7WCGQCifNMksyKILDiHzsOg==" crossorigin>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.js" integrity="sha512-2B9/byNV1KKRm5nQ2RLViPFD6U4dUjDGwuW1GU+ImJh8YinPU9Zlq1GzdTMO+G2ROrB5o1qasJBy1ttYz0wCug==" crossorigin></script>
+<style>
+.modal-dialog iframe {
+width: 100vw;
+height: calc(100vh - 80px);
+}
+@media screen and (min-width: 700px) {
+.modal-dialog iframe {
+width: 70vw;
+height: 80vh;
+}
+}
+.modal-dialog .tingle-modal-box {width: auto;}
+.modal-dialog .tingle-modal-box__content {padding: 0;}
+</style>
+<script>
+const input = document.getElementById('lunr-search');
+input.disabled = false;
+input.form.addEventListener('submit', (ev) => {
+ev.preventDefault();
+const url = new URL(window.location);
+url.searchParams.set('q', input.value);
+history.replaceState({}, null, url.toString());
+search(input.value);
+});
+const query = new URL(window.location).searchParams.get('q');
+if (query)
+search(query);
+function search(query) {
+const url = '../../../doc-search.html#' + encodeURIComponent(query);
+new tingle.modal({
+cssClass: ['modal-dialog'],
+onClose: () => {
+const url = new URL(window.location);
+url.searchParams.delete('q');
+history.replaceState({}, null, url.toString());
+setTimeout(() => input.focus(), 100);
+}
+}).setContent('<iframe src="' + url + '"></iframe>').open();
+}
+</script>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="qscope.cli.mpl" href="index.html">qscope.cli.mpl</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="qscope.cli.mpl.base.analyze_mpl_response" href="#qscope.cli.mpl.base.analyze_mpl_response">analyze_mpl_response</a></code></li>
+<li><code><a title="qscope.cli.mpl.base.configure_scope_acquisition" href="#qscope.cli.mpl.base.configure_scope_acquisition">configure_scope_acquisition</a></code></li>
+<li><code><a title="qscope.cli.mpl.base.managed_devices" href="#qscope.cli.mpl.base.managed_devices">managed_devices</a></code></li>
+<li><code><a title="qscope.cli.mpl.base.setup_devices" href="#qscope.cli.mpl.base.setup_devices">setup_devices</a></code></li>
+<li><code><a title="qscope.cli.mpl.base.setup_logging" href="#qscope.cli.mpl.base.setup_logging">setup_logging</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
+</footer>
+</body>
+</html>

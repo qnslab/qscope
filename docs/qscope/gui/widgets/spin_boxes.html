@@ -1,0 +1,1078 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.6">
+<title>qscope.gui.widgets.spin_boxes API documentation</title>
+<meta name="description" content="">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}#lunr-search{width:100%;font-size:1em;padding:6px 9px 5px 9px;border:1px solid silver}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes: true } });</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML" integrity="sha256-kZafAc6mZvK3W3v1pHOcUix30OHQN6pU/NO2oFkqZVw=" crossorigin></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>qscope.gui.widgets.spin_boxes</code></h1>
+</header>
+<section id="section-intro">
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="qscope.gui.widgets.spin_boxes.QuDoubleSpinBox"><code class="flex name class">
+<span>class <span class="ident">QuDoubleSpinBox</span></span>
+<span>(</span><span>WidgetConfig)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class QuDoubleSpinBox(QDoubleSpinBox, SIPrefixMixin):
+    &#34;&#34;&#34;Wrapper class for QDoubleSpinBox with SI prefix support.&#34;&#34;&#34;
+
+    def __init__(self, WidgetConfig):
+        super().__init__()
+        self.config = WidgetConfig
+        self.default = WidgetConfig.default
+        self.setDecimals(10)  # Allow more decimal places
+        self.REVERSE_PREFIXES = {v: k for k, v in self.SI_PREFIXES.items()}
+
+    def set_value(self, value):
+        return self.config.set_value(self, value)
+
+    def get_value(self):
+        return self.config.get_value(self)
+
+    def validate(self, text: str, pos: int) -&gt; Tuple[QValidator.State, str, int]:
+        &#34;&#34;&#34;Validate input text.&#34;&#34;&#34;
+        valid_chars = set(&#34;0123456789.-&#34; + &#34;&#34;.join(self.SI_PREFIXES.keys()))
+
+        if text.count(&#34;.&#34;) &gt; 1 or (text.count(&#34;-&#34;) &gt; 0 and text[0] != &#34;-&#34;):
+            return (QValidator.State.Invalid, text, pos)
+
+        if not text:
+            return (QValidator.State.Intermediate, text, pos)
+
+        if all(c in valid_chars for c in text):
+            try:
+                self.valueFromText(text)
+                return (QValidator.State.Acceptable, text, pos)
+            except ValueError:
+                return (QValidator.State.Intermediate, text, pos)
+
+        return (QValidator.State.Invalid, text, pos)
+
+    def valueFromText(self, text: str) -&gt; float:
+        &#34;&#34;&#34;Convert text to value, handling SI prefixes.&#34;&#34;&#34;
+        text = text.strip()
+        if not text:
+            return 0.0
+
+        if text[-1] in self.SI_PREFIXES:
+            prefix = text[-1]
+            number = text[:-1]
+            if not number:
+                raise ValueError(&#34;Invalid number format&#34;)
+            try:
+                self.current_prefix = prefix
+                value = float(number) * self.SI_PREFIXES[prefix]
+                return value
+            except ValueError:
+                raise ValueError(&#34;Invalid number format&#34;)
+
+        try:
+            self.current_prefix = None
+            return float(text)
+        except ValueError:
+            raise ValueError(&#34;Invalid number format&#34;)
+
+    def keyPressEvent(self, event):
+        &#34;&#34;&#34;Handle precise value adjustments based on cursor position.&#34;&#34;&#34;
+        if event.key() in (Qt.Key.Key_Up, Qt.Key.Key_Down):
+            cursor_pos = self.lineEdit().cursorPosition()
+            text = self.lineEdit().text()
+
+            # Get the numeric part and any SI prefix
+            if text and text[-1] in self.SI_PREFIXES:
+                number = text[:-1]
+                prefix = text[-1]
+            else:
+                number = text
+                prefix = &#34;&#34;
+
+            # Find the position relative to the decimal point
+            if &#34;.&#34; in number:
+                decimal_pos = number.find(&#34;.&#34;)
+                if cursor_pos &gt; decimal_pos:
+                    # After decimal point: count positions after decimal
+                    power = -(cursor_pos - decimal_pos)
+                else:
+                    # Before decimal point: count from right to cursor
+                    power = len(number[:decimal_pos]) - cursor_pos - 1
+            else:
+                # For integers: count from right to cursor
+                power = len(number) - cursor_pos - 1
+
+            # Calculate step size based on cursor position
+            step = 10**power
+
+            # Get the current value and preserve decimal places
+            decimal_places = len(number.split(&#34;.&#34;)[-1]) if &#34;.&#34; in number else 0
+            current_value = float(number)
+
+            # Apply the step to the unscaled value
+            if event.key() == Qt.Key.Key_Up:
+                new_value = current_value + step
+            else:
+                new_value = current_value - step
+
+            # Format to preserve decimal places
+            if decimal_places &gt; 0:
+                format_str = f&#34;{{:.{decimal_places}f}}&#34;
+                new_value = float(format_str.format(new_value))
+
+            # Preserve the prefix by applying its scaling
+            if prefix:
+                new_value = new_value * self.SI_PREFIXES[prefix]
+
+            # Set the new value
+            self.setValue(new_value)
+
+            # Restore cursor position
+            self.lineEdit().setCursorPosition(cursor_pos)
+        else:
+            super().keyPressEvent(event)
+
+    def stepBy(self, steps: int):
+        &#34;&#34;&#34;Handle spinbox arrow buttons.&#34;&#34;&#34;
+        text = self.lineEdit().text()
+
+        # Get the numeric part and any SI prefix
+        if text and text[-1] in self.SI_PREFIXES:
+            number = text[:-1]
+            prefix = text[-1]
+        else:
+            number = text
+            prefix = &#34;&#34;
+
+        # Calculate step size based on rightmost digit
+        if &#34;.&#34; in number:
+            decimal_places = len(number.split(&#34;.&#34;)[-1])
+            power = -decimal_places
+        else:
+            power = 0
+
+        step = 10**power
+
+        # Get current value and apply step
+        current_value = float(number)
+        new_value = current_value + (step * steps)
+
+        # Format to preserve decimal places
+        if &#34;.&#34; in number:
+            format_str = f&#34;{{:.{decimal_places}f}}&#34;
+            new_value = float(format_str.format(new_value))
+
+        # Apply prefix scaling if needed
+        if prefix:
+            new_value = new_value * self.SI_PREFIXES[prefix]
+
+        # Set the new value
+        self.setValue(new_value)
+
+    def textFromValue(self, value: float) -&gt; str:
+        &#34;&#34;&#34;Convert value to text, maintaining SI prefix notation.&#34;&#34;&#34;
+        if value == 0:
+            return &#34;0&#34;
+
+        abs_value = abs(value)
+        exponent = int(f&#34;{abs_value:e}&#34;.split(&#34;e&#34;)[1])
+        prefix_exp = 3 * (exponent // 3)
+
+        if self.current_prefix is not None:
+            user_scale = self.SI_PREFIXES[self.current_prefix]
+            user_exp = int(f&#34;{user_scale:e}&#34;.split(&#34;e&#34;)[1])
+            if abs(user_exp - prefix_exp) &lt;= 3:
+                scaled_value = value / user_scale
+                return f&#34;{scaled_value:g}{self.current_prefix}&#34;
+
+        scale = 10**prefix_exp
+        prefix = self.REVERSE_PREFIXES.get(scale, &#34;&#34;)
+
+        if prefix:
+            scaled_value = value / scale
+            return f&#34;{scaled_value:g}{prefix}&#34;
+
+        return f&#34;{value:g}&#34;</code></pre>
+</details>
+<div class="desc"><p>Wrapper class for QDoubleSpinBox with SI prefix support.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>PyQt6.QtWidgets.QDoubleSpinBox</li>
+<li>PyQt6.QtWidgets.QAbstractSpinBox</li>
+<li>PyQt6.QtWidgets.QWidget</li>
+<li>PyQt6.QtCore.QObject</li>
+<li>PyQt6.sip.wrapper</li>
+<li>PyQt6.QtGui.QPaintDevice</li>
+<li>PyQt6.sip.simplewrapper</li>
+<li><a title="qscope.gui.widgets.spin_boxes.SIPrefixMixin" href="#qscope.gui.widgets.spin_boxes.SIPrefixMixin">SIPrefixMixin</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.gui.widgets.spin_boxes.QuDoubleSpinBox.get_value"><code class="name flex">
+<span>def <span class="ident">get_value</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_value(self):
+    return self.config.get_value(self)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.widgets.spin_boxes.QuDoubleSpinBox.keyPressEvent"><code class="name flex">
+<span>def <span class="ident">keyPressEvent</span></span>(<span>self, event)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def keyPressEvent(self, event):
+    &#34;&#34;&#34;Handle precise value adjustments based on cursor position.&#34;&#34;&#34;
+    if event.key() in (Qt.Key.Key_Up, Qt.Key.Key_Down):
+        cursor_pos = self.lineEdit().cursorPosition()
+        text = self.lineEdit().text()
+
+        # Get the numeric part and any SI prefix
+        if text and text[-1] in self.SI_PREFIXES:
+            number = text[:-1]
+            prefix = text[-1]
+        else:
+            number = text
+            prefix = &#34;&#34;
+
+        # Find the position relative to the decimal point
+        if &#34;.&#34; in number:
+            decimal_pos = number.find(&#34;.&#34;)
+            if cursor_pos &gt; decimal_pos:
+                # After decimal point: count positions after decimal
+                power = -(cursor_pos - decimal_pos)
+            else:
+                # Before decimal point: count from right to cursor
+                power = len(number[:decimal_pos]) - cursor_pos - 1
+        else:
+            # For integers: count from right to cursor
+            power = len(number) - cursor_pos - 1
+
+        # Calculate step size based on cursor position
+        step = 10**power
+
+        # Get the current value and preserve decimal places
+        decimal_places = len(number.split(&#34;.&#34;)[-1]) if &#34;.&#34; in number else 0
+        current_value = float(number)
+
+        # Apply the step to the unscaled value
+        if event.key() == Qt.Key.Key_Up:
+            new_value = current_value + step
+        else:
+            new_value = current_value - step
+
+        # Format to preserve decimal places
+        if decimal_places &gt; 0:
+            format_str = f&#34;{{:.{decimal_places}f}}&#34;
+            new_value = float(format_str.format(new_value))
+
+        # Preserve the prefix by applying its scaling
+        if prefix:
+            new_value = new_value * self.SI_PREFIXES[prefix]
+
+        # Set the new value
+        self.setValue(new_value)
+
+        # Restore cursor position
+        self.lineEdit().setCursorPosition(cursor_pos)
+    else:
+        super().keyPressEvent(event)</code></pre>
+</details>
+<div class="desc"><p>Handle precise value adjustments based on cursor position.</p></div>
+</dd>
+<dt id="qscope.gui.widgets.spin_boxes.QuDoubleSpinBox.set_value"><code class="name flex">
+<span>def <span class="ident">set_value</span></span>(<span>self, value)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_value(self, value):
+    return self.config.set_value(self, value)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.widgets.spin_boxes.QuDoubleSpinBox.stepBy"><code class="name flex">
+<span>def <span class="ident">stepBy</span></span>(<span>self, steps: int)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def stepBy(self, steps: int):
+    &#34;&#34;&#34;Handle spinbox arrow buttons.&#34;&#34;&#34;
+    text = self.lineEdit().text()
+
+    # Get the numeric part and any SI prefix
+    if text and text[-1] in self.SI_PREFIXES:
+        number = text[:-1]
+        prefix = text[-1]
+    else:
+        number = text
+        prefix = &#34;&#34;
+
+    # Calculate step size based on rightmost digit
+    if &#34;.&#34; in number:
+        decimal_places = len(number.split(&#34;.&#34;)[-1])
+        power = -decimal_places
+    else:
+        power = 0
+
+    step = 10**power
+
+    # Get current value and apply step
+    current_value = float(number)
+    new_value = current_value + (step * steps)
+
+    # Format to preserve decimal places
+    if &#34;.&#34; in number:
+        format_str = f&#34;{{:.{decimal_places}f}}&#34;
+        new_value = float(format_str.format(new_value))
+
+    # Apply prefix scaling if needed
+    if prefix:
+        new_value = new_value * self.SI_PREFIXES[prefix]
+
+    # Set the new value
+    self.setValue(new_value)</code></pre>
+</details>
+<div class="desc"><p>Handle spinbox arrow buttons.</p></div>
+</dd>
+<dt id="qscope.gui.widgets.spin_boxes.QuDoubleSpinBox.textFromValue"><code class="name flex">
+<span>def <span class="ident">textFromValue</span></span>(<span>self, value: float) ‑> str</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def textFromValue(self, value: float) -&gt; str:
+    &#34;&#34;&#34;Convert value to text, maintaining SI prefix notation.&#34;&#34;&#34;
+    if value == 0:
+        return &#34;0&#34;
+
+    abs_value = abs(value)
+    exponent = int(f&#34;{abs_value:e}&#34;.split(&#34;e&#34;)[1])
+    prefix_exp = 3 * (exponent // 3)
+
+    if self.current_prefix is not None:
+        user_scale = self.SI_PREFIXES[self.current_prefix]
+        user_exp = int(f&#34;{user_scale:e}&#34;.split(&#34;e&#34;)[1])
+        if abs(user_exp - prefix_exp) &lt;= 3:
+            scaled_value = value / user_scale
+            return f&#34;{scaled_value:g}{self.current_prefix}&#34;
+
+    scale = 10**prefix_exp
+    prefix = self.REVERSE_PREFIXES.get(scale, &#34;&#34;)
+
+    if prefix:
+        scaled_value = value / scale
+        return f&#34;{scaled_value:g}{prefix}&#34;
+
+    return f&#34;{value:g}&#34;</code></pre>
+</details>
+<div class="desc"><p>Convert value to text, maintaining SI prefix notation.</p></div>
+</dd>
+<dt id="qscope.gui.widgets.spin_boxes.QuDoubleSpinBox.validate"><code class="name flex">
+<span>def <span class="ident">validate</span></span>(<span>self, text: str, pos: int) ‑> Tuple[PyQt6.QtGui.QValidator.State, str, int]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def validate(self, text: str, pos: int) -&gt; Tuple[QValidator.State, str, int]:
+    &#34;&#34;&#34;Validate input text.&#34;&#34;&#34;
+    valid_chars = set(&#34;0123456789.-&#34; + &#34;&#34;.join(self.SI_PREFIXES.keys()))
+
+    if text.count(&#34;.&#34;) &gt; 1 or (text.count(&#34;-&#34;) &gt; 0 and text[0] != &#34;-&#34;):
+        return (QValidator.State.Invalid, text, pos)
+
+    if not text:
+        return (QValidator.State.Intermediate, text, pos)
+
+    if all(c in valid_chars for c in text):
+        try:
+            self.valueFromText(text)
+            return (QValidator.State.Acceptable, text, pos)
+        except ValueError:
+            return (QValidator.State.Intermediate, text, pos)
+
+    return (QValidator.State.Invalid, text, pos)</code></pre>
+</details>
+<div class="desc"><p>Validate input text.</p></div>
+</dd>
+<dt id="qscope.gui.widgets.spin_boxes.QuDoubleSpinBox.valueFromText"><code class="name flex">
+<span>def <span class="ident">valueFromText</span></span>(<span>self, text: str) ‑> float</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def valueFromText(self, text: str) -&gt; float:
+    &#34;&#34;&#34;Convert text to value, handling SI prefixes.&#34;&#34;&#34;
+    text = text.strip()
+    if not text:
+        return 0.0
+
+    if text[-1] in self.SI_PREFIXES:
+        prefix = text[-1]
+        number = text[:-1]
+        if not number:
+            raise ValueError(&#34;Invalid number format&#34;)
+        try:
+            self.current_prefix = prefix
+            value = float(number) * self.SI_PREFIXES[prefix]
+            return value
+        except ValueError:
+            raise ValueError(&#34;Invalid number format&#34;)
+
+    try:
+        self.current_prefix = None
+        return float(text)
+    except ValueError:
+        raise ValueError(&#34;Invalid number format&#34;)</code></pre>
+</details>
+<div class="desc"><p>Convert text to value, handling SI prefixes.</p></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="qscope.gui.widgets.spin_boxes.SIPrefixMixin" href="#qscope.gui.widgets.spin_boxes.SIPrefixMixin">SIPrefixMixin</a></b></code>:
+<ul class="hlist">
+<li><code><a title="qscope.gui.widgets.spin_boxes.SIPrefixMixin.get_prefix" href="#qscope.gui.widgets.spin_boxes.SIPrefixMixin.get_prefix">get_prefix</a></code></li>
+<li><code><a title="qscope.gui.widgets.spin_boxes.SIPrefixMixin.set_prefix" href="#qscope.gui.widgets.spin_boxes.SIPrefixMixin.set_prefix">set_prefix</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="qscope.gui.widgets.spin_boxes.QuSpinBox"><code class="flex name class">
+<span>class <span class="ident">QuSpinBox</span></span>
+<span>(</span><span>WidgetConfig)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class QuSpinBox(QSpinBox, SIPrefixMixin):
+    &#34;&#34;&#34;Wrapper class for QSpinBox with SI prefix support.&#34;&#34;&#34;
+
+    INTEGER_SI_PREFIXES = {&#34;k&#34;: 1000, &#34;M&#34;: 1000000, &#34;G&#34;: 1000000000, &#34;T&#34;: 1000000000000}
+
+    def __init__(self, WidgetConfig):
+        super().__init__()
+        self.config = WidgetConfig
+        self.default = WidgetConfig.default
+        self.SI_PREFIXES = (
+            self.INTEGER_SI_PREFIXES
+        )  # Override with integer-specific prefixes
+        self.REVERSE_PREFIXES = {v: k for k, v in self.SI_PREFIXES.items()}
+
+    def set_value(self, value):
+        return self.config.set_value(self, value)
+
+    def get_value(self):
+        return self.config.get_value(self)
+
+    def validate(self, text: str, pos: int) -&gt; Tuple[QValidator.State, str, int]:
+        &#34;&#34;&#34;Validate input text.&#34;&#34;&#34;
+        valid_chars = set(&#34;0123456789-&#34; + &#34;&#34;.join(self.SI_PREFIXES.keys()))
+
+        if text.count(&#34;-&#34;) &gt; 0 and text[0] != &#34;-&#34;:
+            return (QValidator.State.Invalid, text, pos)
+
+        if not text:
+            return (QValidator.State.Intermediate, text, pos)
+
+        if all(c in valid_chars for c in text):
+            try:
+                self.valueFromText(text)
+                return (QValidator.State.Acceptable, text, pos)
+            except ValueError:
+                return (QValidator.State.Intermediate, text, pos)
+
+        return (QValidator.State.Invalid, text, pos)
+
+    def valueFromText(self, text: str) -&gt; int:
+        &#34;&#34;&#34;Convert text to value, handling SI prefixes.&#34;&#34;&#34;
+        text = text.strip()
+        if not text:
+            return 0
+
+        if text[-1] in self.SI_PREFIXES:
+            prefix = text[-1]
+            number = text[:-1]
+            if not number:
+                raise ValueError(&#34;Invalid number format&#34;)
+            try:
+                self.current_prefix = prefix
+                value = int(float(number) * self.SI_PREFIXES[prefix])
+                return value
+            except ValueError:
+                raise ValueError(&#34;Invalid number format&#34;)
+
+        try:
+            self.current_prefix = None
+            return int(text)
+        except ValueError:
+            raise ValueError(&#34;Invalid number format&#34;)
+
+    def keyPressEvent(self, event):
+        &#34;&#34;&#34;Handle precise value adjustments based on cursor position.&#34;&#34;&#34;
+        if event.key() in (Qt.Key.Key_Up, Qt.Key.Key_Down):
+            cursor_pos = self.lineEdit().cursorPosition()
+            text = self.lineEdit().text()
+
+            # Get the numeric part and any SI prefix
+            if text and text[-1] in self.SI_PREFIXES:
+                number = text[:-1]
+                prefix = text[-1]
+            else:
+                number = text
+                prefix = &#34;&#34;
+
+            # Calculate step size based on cursor position
+            power = len(number) - cursor_pos - 1
+            if power &lt; 0:
+                power = 0
+            step = 10**power
+
+            # Get current value
+            current_value = int(number)
+
+            # Apply the step
+            if event.key() == Qt.Key.Key_Up:
+                new_value = current_value + step
+            else:
+                new_value = current_value - step
+
+            # Apply prefix scaling if needed
+            if prefix:
+                new_value = new_value * self.SI_PREFIXES[prefix]
+
+            # Set the new value
+            self.setValue(new_value)
+
+            # Restore cursor position
+            self.lineEdit().setCursorPosition(cursor_pos)
+        else:
+            super().keyPressEvent(event)
+
+    def stepBy(self, steps: int) -&gt; None:
+        &#34;&#34;&#34;Handle spinbox arrow buttons.&#34;&#34;&#34;
+        text = self.lineEdit().text()
+
+        # Get the numeric part and any SI prefix
+        if text and text[-1] in self.SI_PREFIXES:
+            number = text[:-1]
+            prefix = text[-1]
+        else:
+            number = text
+            prefix = &#34;&#34;
+
+        # Get current value
+        current_value = int(number)
+
+        # Apply the step
+        new_value = current_value + steps
+
+        # Apply prefix scaling if needed
+        if prefix:
+            new_value = new_value * self.SI_PREFIXES[prefix]
+
+        # Set the new value
+        self.setValue(new_value)
+
+    def textFromValue(self, value: int) -&gt; str:
+        &#34;&#34;&#34;Convert value to text, maintaining SI prefix notation.&#34;&#34;&#34;
+        if value == 0:
+            return &#34;0&#34;
+
+        abs_value = abs(value)
+        for scale, prefix in sorted(self.REVERSE_PREFIXES.items(), reverse=True):
+            if abs_value &gt;= scale and abs_value % (scale // 10) == 0:
+                scaled_value = value // scale
+                return f&#34;{scaled_value}{prefix}&#34;
+
+        return str(value)</code></pre>
+</details>
+<div class="desc"><p>Wrapper class for QSpinBox with SI prefix support.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>PyQt6.QtWidgets.QSpinBox</li>
+<li>PyQt6.QtWidgets.QAbstractSpinBox</li>
+<li>PyQt6.QtWidgets.QWidget</li>
+<li>PyQt6.QtCore.QObject</li>
+<li>PyQt6.sip.wrapper</li>
+<li>PyQt6.QtGui.QPaintDevice</li>
+<li>PyQt6.sip.simplewrapper</li>
+<li><a title="qscope.gui.widgets.spin_boxes.SIPrefixMixin" href="#qscope.gui.widgets.spin_boxes.SIPrefixMixin">SIPrefixMixin</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="qscope.gui.widgets.spin_boxes.QuSpinBox.INTEGER_SI_PREFIXES"><code class="name">var <span class="ident">INTEGER_SI_PREFIXES</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.gui.widgets.spin_boxes.QuSpinBox.get_value"><code class="name flex">
+<span>def <span class="ident">get_value</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_value(self):
+    return self.config.get_value(self)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.widgets.spin_boxes.QuSpinBox.keyPressEvent"><code class="name flex">
+<span>def <span class="ident">keyPressEvent</span></span>(<span>self, event)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def keyPressEvent(self, event):
+    &#34;&#34;&#34;Handle precise value adjustments based on cursor position.&#34;&#34;&#34;
+    if event.key() in (Qt.Key.Key_Up, Qt.Key.Key_Down):
+        cursor_pos = self.lineEdit().cursorPosition()
+        text = self.lineEdit().text()
+
+        # Get the numeric part and any SI prefix
+        if text and text[-1] in self.SI_PREFIXES:
+            number = text[:-1]
+            prefix = text[-1]
+        else:
+            number = text
+            prefix = &#34;&#34;
+
+        # Calculate step size based on cursor position
+        power = len(number) - cursor_pos - 1
+        if power &lt; 0:
+            power = 0
+        step = 10**power
+
+        # Get current value
+        current_value = int(number)
+
+        # Apply the step
+        if event.key() == Qt.Key.Key_Up:
+            new_value = current_value + step
+        else:
+            new_value = current_value - step
+
+        # Apply prefix scaling if needed
+        if prefix:
+            new_value = new_value * self.SI_PREFIXES[prefix]
+
+        # Set the new value
+        self.setValue(new_value)
+
+        # Restore cursor position
+        self.lineEdit().setCursorPosition(cursor_pos)
+    else:
+        super().keyPressEvent(event)</code></pre>
+</details>
+<div class="desc"><p>Handle precise value adjustments based on cursor position.</p></div>
+</dd>
+<dt id="qscope.gui.widgets.spin_boxes.QuSpinBox.set_value"><code class="name flex">
+<span>def <span class="ident">set_value</span></span>(<span>self, value)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_value(self, value):
+    return self.config.set_value(self, value)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.widgets.spin_boxes.QuSpinBox.stepBy"><code class="name flex">
+<span>def <span class="ident">stepBy</span></span>(<span>self, steps: int) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def stepBy(self, steps: int) -&gt; None:
+    &#34;&#34;&#34;Handle spinbox arrow buttons.&#34;&#34;&#34;
+    text = self.lineEdit().text()
+
+    # Get the numeric part and any SI prefix
+    if text and text[-1] in self.SI_PREFIXES:
+        number = text[:-1]
+        prefix = text[-1]
+    else:
+        number = text
+        prefix = &#34;&#34;
+
+    # Get current value
+    current_value = int(number)
+
+    # Apply the step
+    new_value = current_value + steps
+
+    # Apply prefix scaling if needed
+    if prefix:
+        new_value = new_value * self.SI_PREFIXES[prefix]
+
+    # Set the new value
+    self.setValue(new_value)</code></pre>
+</details>
+<div class="desc"><p>Handle spinbox arrow buttons.</p></div>
+</dd>
+<dt id="qscope.gui.widgets.spin_boxes.QuSpinBox.textFromValue"><code class="name flex">
+<span>def <span class="ident">textFromValue</span></span>(<span>self, value: int) ‑> str</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def textFromValue(self, value: int) -&gt; str:
+    &#34;&#34;&#34;Convert value to text, maintaining SI prefix notation.&#34;&#34;&#34;
+    if value == 0:
+        return &#34;0&#34;
+
+    abs_value = abs(value)
+    for scale, prefix in sorted(self.REVERSE_PREFIXES.items(), reverse=True):
+        if abs_value &gt;= scale and abs_value % (scale // 10) == 0:
+            scaled_value = value // scale
+            return f&#34;{scaled_value}{prefix}&#34;
+
+    return str(value)</code></pre>
+</details>
+<div class="desc"><p>Convert value to text, maintaining SI prefix notation.</p></div>
+</dd>
+<dt id="qscope.gui.widgets.spin_boxes.QuSpinBox.validate"><code class="name flex">
+<span>def <span class="ident">validate</span></span>(<span>self, text: str, pos: int) ‑> Tuple[PyQt6.QtGui.QValidator.State, str, int]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def validate(self, text: str, pos: int) -&gt; Tuple[QValidator.State, str, int]:
+    &#34;&#34;&#34;Validate input text.&#34;&#34;&#34;
+    valid_chars = set(&#34;0123456789-&#34; + &#34;&#34;.join(self.SI_PREFIXES.keys()))
+
+    if text.count(&#34;-&#34;) &gt; 0 and text[0] != &#34;-&#34;:
+        return (QValidator.State.Invalid, text, pos)
+
+    if not text:
+        return (QValidator.State.Intermediate, text, pos)
+
+    if all(c in valid_chars for c in text):
+        try:
+            self.valueFromText(text)
+            return (QValidator.State.Acceptable, text, pos)
+        except ValueError:
+            return (QValidator.State.Intermediate, text, pos)
+
+    return (QValidator.State.Invalid, text, pos)</code></pre>
+</details>
+<div class="desc"><p>Validate input text.</p></div>
+</dd>
+<dt id="qscope.gui.widgets.spin_boxes.QuSpinBox.valueFromText"><code class="name flex">
+<span>def <span class="ident">valueFromText</span></span>(<span>self, text: str) ‑> int</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def valueFromText(self, text: str) -&gt; int:
+    &#34;&#34;&#34;Convert text to value, handling SI prefixes.&#34;&#34;&#34;
+    text = text.strip()
+    if not text:
+        return 0
+
+    if text[-1] in self.SI_PREFIXES:
+        prefix = text[-1]
+        number = text[:-1]
+        if not number:
+            raise ValueError(&#34;Invalid number format&#34;)
+        try:
+            self.current_prefix = prefix
+            value = int(float(number) * self.SI_PREFIXES[prefix])
+            return value
+        except ValueError:
+            raise ValueError(&#34;Invalid number format&#34;)
+
+    try:
+        self.current_prefix = None
+        return int(text)
+    except ValueError:
+        raise ValueError(&#34;Invalid number format&#34;)</code></pre>
+</details>
+<div class="desc"><p>Convert text to value, handling SI prefixes.</p></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="qscope.gui.widgets.spin_boxes.SIPrefixMixin" href="#qscope.gui.widgets.spin_boxes.SIPrefixMixin">SIPrefixMixin</a></b></code>:
+<ul class="hlist">
+<li><code><a title="qscope.gui.widgets.spin_boxes.SIPrefixMixin.get_prefix" href="#qscope.gui.widgets.spin_boxes.SIPrefixMixin.get_prefix">get_prefix</a></code></li>
+<li><code><a title="qscope.gui.widgets.spin_boxes.SIPrefixMixin.set_prefix" href="#qscope.gui.widgets.spin_boxes.SIPrefixMixin.set_prefix">set_prefix</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="qscope.gui.widgets.spin_boxes.SIPrefixMixin"><code class="flex name class">
+<span>class <span class="ident">SIPrefixMixin</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class SIPrefixMixin:
+    &#34;&#34;&#34;Mixin class providing SI prefix functionality for spin boxes.&#34;&#34;&#34;
+
+    SI_PREFIXES: Dict[str, float] = {
+        &#34;f&#34;: 1e-15,
+        &#34;p&#34;: 1e-12,
+        &#34;n&#34;: 1e-9,
+        &#34;u&#34;: 1e-6,
+        &#34;m&#34;: 1e-3,
+        &#34;k&#34;: 1e3,
+        &#34;M&#34;: 1e6,
+        &#34;G&#34;: 1e9,
+        &#34;T&#34;: 1e12,
+    }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.current_prefix: Optional[str] = None
+        self.setKeyboardTracking(False)
+        self.valueChanged.connect(self._update_tooltip)
+
+    def _update_tooltip(self, value):
+        &#34;&#34;&#34;Update tooltip to show the actual value.&#34;&#34;&#34;
+        self.setToolTip(f&#34;Actual value: {value}&#34;)
+
+    def get_prefix(self) -&gt; Optional[str]:
+        &#34;&#34;&#34;Get the current SI prefix.&#34;&#34;&#34;
+        return self.current_prefix
+
+    def set_prefix(self, prefix: Optional[str]) -&gt; None:
+        &#34;&#34;&#34;Set the SI prefix to use for display.&#34;&#34;&#34;
+        if prefix is not None and prefix not in self.SI_PREFIXES:
+            raise ValueError(f&#34;Invalid SI prefix: {prefix}&#34;)
+        self.current_prefix = prefix
+        self.setValue(self.value())  # Trigger display update</code></pre>
+</details>
+<div class="desc"><p>Mixin class providing SI prefix functionality for spin boxes.</p></div>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="qscope.gui.widgets.spin_boxes.QuDoubleSpinBox" href="#qscope.gui.widgets.spin_boxes.QuDoubleSpinBox">QuDoubleSpinBox</a></li>
+<li><a title="qscope.gui.widgets.spin_boxes.QuSpinBox" href="#qscope.gui.widgets.spin_boxes.QuSpinBox">QuSpinBox</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="qscope.gui.widgets.spin_boxes.SIPrefixMixin.SI_PREFIXES"><code class="name">var <span class="ident">SI_PREFIXES</span> : Dict[str, float]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.gui.widgets.spin_boxes.SIPrefixMixin.get_prefix"><code class="name flex">
+<span>def <span class="ident">get_prefix</span></span>(<span>self) ‑> str | None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_prefix(self) -&gt; Optional[str]:
+    &#34;&#34;&#34;Get the current SI prefix.&#34;&#34;&#34;
+    return self.current_prefix</code></pre>
+</details>
+<div class="desc"><p>Get the current SI prefix.</p></div>
+</dd>
+<dt id="qscope.gui.widgets.spin_boxes.SIPrefixMixin.set_prefix"><code class="name flex">
+<span>def <span class="ident">set_prefix</span></span>(<span>self, prefix: str | None) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_prefix(self, prefix: Optional[str]) -&gt; None:
+    &#34;&#34;&#34;Set the SI prefix to use for display.&#34;&#34;&#34;
+    if prefix is not None and prefix not in self.SI_PREFIXES:
+        raise ValueError(f&#34;Invalid SI prefix: {prefix}&#34;)
+    self.current_prefix = prefix
+    self.setValue(self.value())  # Trigger display update</code></pre>
+</details>
+<div class="desc"><p>Set the SI prefix to use for display.</p></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<form>
+<input id="lunr-search" name="q" placeholder="🔎 Search ..." aria-label="Search"
+disabled minlength="2">
+</form>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.css" integrity="sha512-b+T2i3P45i1LZM7I00Ci5QquB9szqaxu+uuk5TUSGjZQ4w4n+qujQiIuvTv2BxE7WCGQCifNMksyKILDiHzsOg==" crossorigin>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.js" integrity="sha512-2B9/byNV1KKRm5nQ2RLViPFD6U4dUjDGwuW1GU+ImJh8YinPU9Zlq1GzdTMO+G2ROrB5o1qasJBy1ttYz0wCug==" crossorigin></script>
+<style>
+.modal-dialog iframe {
+width: 100vw;
+height: calc(100vh - 80px);
+}
+@media screen and (min-width: 700px) {
+.modal-dialog iframe {
+width: 70vw;
+height: 80vh;
+}
+}
+.modal-dialog .tingle-modal-box {width: auto;}
+.modal-dialog .tingle-modal-box__content {padding: 0;}
+</style>
+<script>
+const input = document.getElementById('lunr-search');
+input.disabled = false;
+input.form.addEventListener('submit', (ev) => {
+ev.preventDefault();
+const url = new URL(window.location);
+url.searchParams.set('q', input.value);
+history.replaceState({}, null, url.toString());
+search(input.value);
+});
+const query = new URL(window.location).searchParams.get('q');
+if (query)
+search(query);
+function search(query) {
+const url = '../../../doc-search.html#' + encodeURIComponent(query);
+new tingle.modal({
+cssClass: ['modal-dialog'],
+onClose: () => {
+const url = new URL(window.location);
+url.searchParams.delete('q');
+history.replaceState({}, null, url.toString());
+setTimeout(() => input.focus(), 100);
+}
+}).setContent('<iframe src="' + url + '"></iframe>').open();
+}
+</script>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="qscope.gui.widgets" href="index.html">qscope.gui.widgets</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="qscope.gui.widgets.spin_boxes.QuDoubleSpinBox" href="#qscope.gui.widgets.spin_boxes.QuDoubleSpinBox">QuDoubleSpinBox</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.gui.widgets.spin_boxes.QuDoubleSpinBox.get_value" href="#qscope.gui.widgets.spin_boxes.QuDoubleSpinBox.get_value">get_value</a></code></li>
+<li><code><a title="qscope.gui.widgets.spin_boxes.QuDoubleSpinBox.keyPressEvent" href="#qscope.gui.widgets.spin_boxes.QuDoubleSpinBox.keyPressEvent">keyPressEvent</a></code></li>
+<li><code><a title="qscope.gui.widgets.spin_boxes.QuDoubleSpinBox.set_value" href="#qscope.gui.widgets.spin_boxes.QuDoubleSpinBox.set_value">set_value</a></code></li>
+<li><code><a title="qscope.gui.widgets.spin_boxes.QuDoubleSpinBox.stepBy" href="#qscope.gui.widgets.spin_boxes.QuDoubleSpinBox.stepBy">stepBy</a></code></li>
+<li><code><a title="qscope.gui.widgets.spin_boxes.QuDoubleSpinBox.textFromValue" href="#qscope.gui.widgets.spin_boxes.QuDoubleSpinBox.textFromValue">textFromValue</a></code></li>
+<li><code><a title="qscope.gui.widgets.spin_boxes.QuDoubleSpinBox.validate" href="#qscope.gui.widgets.spin_boxes.QuDoubleSpinBox.validate">validate</a></code></li>
+<li><code><a title="qscope.gui.widgets.spin_boxes.QuDoubleSpinBox.valueFromText" href="#qscope.gui.widgets.spin_boxes.QuDoubleSpinBox.valueFromText">valueFromText</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.gui.widgets.spin_boxes.QuSpinBox" href="#qscope.gui.widgets.spin_boxes.QuSpinBox">QuSpinBox</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.gui.widgets.spin_boxes.QuSpinBox.INTEGER_SI_PREFIXES" href="#qscope.gui.widgets.spin_boxes.QuSpinBox.INTEGER_SI_PREFIXES">INTEGER_SI_PREFIXES</a></code></li>
+<li><code><a title="qscope.gui.widgets.spin_boxes.QuSpinBox.get_value" href="#qscope.gui.widgets.spin_boxes.QuSpinBox.get_value">get_value</a></code></li>
+<li><code><a title="qscope.gui.widgets.spin_boxes.QuSpinBox.keyPressEvent" href="#qscope.gui.widgets.spin_boxes.QuSpinBox.keyPressEvent">keyPressEvent</a></code></li>
+<li><code><a title="qscope.gui.widgets.spin_boxes.QuSpinBox.set_value" href="#qscope.gui.widgets.spin_boxes.QuSpinBox.set_value">set_value</a></code></li>
+<li><code><a title="qscope.gui.widgets.spin_boxes.QuSpinBox.stepBy" href="#qscope.gui.widgets.spin_boxes.QuSpinBox.stepBy">stepBy</a></code></li>
+<li><code><a title="qscope.gui.widgets.spin_boxes.QuSpinBox.textFromValue" href="#qscope.gui.widgets.spin_boxes.QuSpinBox.textFromValue">textFromValue</a></code></li>
+<li><code><a title="qscope.gui.widgets.spin_boxes.QuSpinBox.validate" href="#qscope.gui.widgets.spin_boxes.QuSpinBox.validate">validate</a></code></li>
+<li><code><a title="qscope.gui.widgets.spin_boxes.QuSpinBox.valueFromText" href="#qscope.gui.widgets.spin_boxes.QuSpinBox.valueFromText">valueFromText</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.gui.widgets.spin_boxes.SIPrefixMixin" href="#qscope.gui.widgets.spin_boxes.SIPrefixMixin">SIPrefixMixin</a></code></h4>
+<ul class="">
+<li><code><a title="qscope.gui.widgets.spin_boxes.SIPrefixMixin.SI_PREFIXES" href="#qscope.gui.widgets.spin_boxes.SIPrefixMixin.SI_PREFIXES">SI_PREFIXES</a></code></li>
+<li><code><a title="qscope.gui.widgets.spin_boxes.SIPrefixMixin.get_prefix" href="#qscope.gui.widgets.spin_boxes.SIPrefixMixin.get_prefix">get_prefix</a></code></li>
+<li><code><a title="qscope.gui.widgets.spin_boxes.SIPrefixMixin.set_prefix" href="#qscope.gui.widgets.spin_boxes.SIPrefixMixin.set_prefix">set_prefix</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
+</footer>
+</body>
+</html>

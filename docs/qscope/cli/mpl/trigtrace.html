@@ -1,0 +1,711 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.6">
+<title>qscope.cli.mpl.trigtrace API documentation</title>
+<meta name="description" content="Magnetophotoluminescence (MPL) triggered time trace measurements …">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}#lunr-search{width:100%;font-size:1em;padding:6px 9px 5px 9px;border:1px solid silver}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes: true } });</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML" integrity="sha256-kZafAc6mZvK3W3v1pHOcUix30OHQN6pU/NO2oFkqZVw=" crossorigin></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>qscope.cli.mpl.trigtrace</code></h1>
+</header>
+<section id="section-intro">
+<p>Magnetophotoluminescence (MPL) triggered time trace measurements.</p>
+<p>This module provides tools for measuring PL response to triggered magnetic field changes.
+The measurement uses the Picoscope's AWG to generate a clock signal that triggers
+the SMU current switching while simultaneously measuring both the clock and PL signals.</p>
+<h2 id="key-capabilities">Key Capabilities</h2>
+<ul>
+<li>Precise timing synchronization between field switching and measurement</li>
+<li>Hardware-triggered current switching for consistent timing</li>
+<li>Configurable pre-trigger capture for baseline measurements</li>
+<li>Support for averaged and real-time measurements</li>
+<li>Automated data collection and analysis</li>
+</ul>
+<h2 id="hardware-requirements">Hardware Requirements</h2>
+<ul>
+<li>Keithley 2450 SMU: Precise current control for electromagnet</li>
+<li>Picoscope: High-speed data acquisition with AWG output</li>
+<li>Photodiode: PL detection with DC/AC coupling</li>
+<li>Electromagnet: Field generation (typical R=27Ω)</li>
+</ul>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="qscope.cli.mpl.trigtrace.detrend_pl_signal"><code class="name flex">
+<span>def <span class="ident">detrend_pl_signal</span></span>(<span>time_data, pl_data, clock_data, trigger_threshold)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def detrend_pl_signal(time_data, pl_data, clock_data, trigger_threshold):
+    &#34;&#34;&#34;Remove linear trend from PL signal.
+    
+    Parameters
+    ----------
+    time_data : np.ndarray
+        Time points
+    pl_data : np.ndarray
+        PL signal data
+    clock_data : np.ndarray
+        Clock signal data
+    trigger_threshold : float
+        Threshold for clock signal edge detection
+        
+    Returns
+    -------
+    np.ndarray
+        Detrended PL signal
+    dict
+        Trend information including slope and intercept
+    &#34;&#34;&#34;
+    # Find baseline regions (when field is OFF)
+    clock_high = clock_data &gt; trigger_threshold
+    rising_edges = np.where(np.diff(clock_high.astype(int)) &gt; 0)[0]
+    
+    # Create mask for baseline points (when field is OFF)
+    baseline_mask = np.ones_like(time_data, dtype=bool)
+    
+    # Toggle state at each rising edge
+    current_on = False
+    for edge_idx in rising_edges:
+        current_on = not current_on
+        if edge_idx + 1 &lt; len(baseline_mask):
+            # When current is ON, exclude these points from baseline
+            if current_on:
+                baseline_mask[edge_idx + 1:] = False
+            else:
+                baseline_mask[edge_idx + 1:] = True
+    
+    # Fit linear trend to baseline points only
+    if np.sum(baseline_mask) &gt; 10:  # Ensure we have enough points
+        # Use polyfit to get linear trend
+        coeffs = np.polyfit(time_data[baseline_mask], pl_data[baseline_mask], 1)
+        slope, intercept = coeffs
+        
+        # Calculate trend line
+        trend = slope * time_data + intercept
+        
+        # Subtract trend from data
+        detrended_pl = pl_data - trend + pl_data[0]  # Keep the initial value
+        
+        trend_info = {
+            &#34;slope&#34;: slope,
+            &#34;intercept&#34;: intercept,
+            &#34;trend&#34;: trend,
+            &#34;method&#34;: &#34;baseline_linear&#34;
+        }
+    else:
+        # Fallback to using all points if we can&#39;t identify enough baseline points
+        coeffs = np.polyfit(time_data, pl_data, 1)
+        slope, intercept = coeffs
+        
+        # Calculate trend line
+        trend = slope * time_data + intercept
+        
+        # Subtract trend from data
+        detrended_pl = pl_data - trend + pl_data[0]  # Keep the initial value
+        
+        trend_info = {
+            &#34;slope&#34;: slope,
+            &#34;intercept&#34;: intercept,
+            &#34;trend&#34;: trend,
+            &#34;method&#34;: &#34;full_linear&#34;
+        }
+    
+    return detrended_pl, trend_info</code></pre>
+</details>
+<div class="desc"><p>Remove linear trend from PL signal.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>time_data</code></strong> :&ensp;<code>np.ndarray</code></dt>
+<dd>Time points</dd>
+<dt><strong><code>pl_data</code></strong> :&ensp;<code>np.ndarray</code></dt>
+<dd>PL signal data</dd>
+<dt><strong><code>clock_data</code></strong> :&ensp;<code>np.ndarray</code></dt>
+<dd>Clock signal data</dd>
+<dt><strong><code>trigger_threshold</code></strong> :&ensp;<code>float</code></dt>
+<dd>Threshold for clock signal edge detection</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>np.ndarray</code></dt>
+<dd>Detrended PL signal</dd>
+<dt><code>dict</code></dt>
+<dd>Trend information including slope and intercept</dd>
+</dl></div>
+</dd>
+<dt id="qscope.cli.mpl.trigtrace.get_command_string"><code class="name flex">
+<span>def <span class="ident">get_command_string</span></span>(<span>) ‑> str</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_command_string() -&gt; str:
+    &#34;&#34;&#34;Get the original command string that was used to run this script.
+    
+    Returns
+    -------
+    str
+        The full command string including all arguments
+    &#34;&#34;&#34;
+    return &#34; &#34;.join(sys.argv)</code></pre>
+</details>
+<div class="desc"><p>Get the original command string that was used to run this script.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>The full command string including all arguments</dd>
+</dl></div>
+</dd>
+<dt id="qscope.cli.mpl.trigtrace.process_results"><code class="name flex">
+<span>def <span class="ident">process_results</span></span>(<span>raw_data: Dict[str, Any] | List[Dict[str, Any]],<br>coil_resistance: float,<br>additional_resistance: float = 0.0,<br>current: float = 0.1,<br>source_mode: str = 'voltage',<br>trigger_threshold: float = 2.5,<br>fit_exponential: bool = False,<br>plot_pulses: bool = False,<br>fit_type: str = 'single',<br>detrend: bool = False) ‑> Dict[str, Any]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def process_results(
+    raw_data: Union[Dict[str, Any], List[Dict[str, Any]]],
+    coil_resistance: float,
+    additional_resistance: float = 0.0,
+    current: float = 0.1,
+    source_mode: str = &#34;voltage&#34;,
+    trigger_threshold: float = 2.5,
+    fit_exponential: bool = False,
+    plot_pulses: bool = False,
+    fit_type: str = &#34;single&#34;,
+    detrend: bool = False,
+) -&gt; Dict[str, Any]:
+    &#34;&#34;&#34;Process raw measurement data.
+
+    Parameters
+    ----------
+    raw_data : Dict[str, Any] | List[Dict[str, Any]]
+        Raw measurement data, either:
+        - Single measurement dict with time_data, clock_data, pl_data
+        - List of measurement dicts for averaging
+    coil_resistance : float
+        Electromagnet coil resistance in ohms
+    current : float, optional
+        Applied current in amps, by default 0.1
+    trigger_threshold : float, optional
+        Threshold for clock signal edge detection, by default 2.5
+    fit_exponential : bool, optional
+        Whether to fit exponential curves to transitions, by default False
+    plot_pulses : bool, optional
+        Whether to plot detailed pulse analysis, by default False
+    fit_type : str, optional
+        Type of exponential fit to use, by default &#34;single&#34;
+    detrend : bool, optional
+        Whether to remove linear trend from PL signal, by default False
+
+    Returns
+    -------
+    Dict[str, Any]
+        Processed results including:
+        - mean_time: Average time points
+        - mean_clock: Average clock signal
+        - mean_pl: Average PL signal
+        - std_pl: PL standard deviation
+        - analysis: Analysis results
+        - time_data: Raw time data (if multiple measurements)
+        - clock_data: Raw clock data (if multiple measurements)
+        - pl_data: Raw PL data (if multiple measurements)
+    &#34;&#34;&#34;
+    # Process data arrays more efficiently
+    if isinstance(raw_data, list):
+        # Stack arrays for efficient operations
+        time_data = np.stack([d[&#34;time_data&#34;] for d in raw_data])
+        clock_data = np.stack([d[&#34;clock_data&#34;] for d in raw_data])
+        pl_data = np.stack([d[&#34;pl_data&#34;] for d in raw_data])
+
+        # Calculate means and std in one pass
+        mean_time = np.mean(time_data, axis=0)
+        mean_clock = np.mean(clock_data, axis=0)
+        mean_pl = np.mean(pl_data, axis=0)
+        std_pl = np.std(pl_data, axis=0, ddof=1)  # Use sample standard deviation
+    else:
+        # Single measurement - no need for averaging
+        mean_time = np.array(raw_data[&#34;time_data&#34;])
+        mean_clock = np.array(raw_data[&#34;clock_data&#34;])
+        mean_pl = np.array(raw_data[&#34;pl_data&#34;])
+        std_pl = np.zeros_like(mean_pl)  # No std dev for single measurement
+        
+        # Reshape for consistency
+        time_data = mean_time[np.newaxis, :]
+        clock_data = mean_clock[np.newaxis, :]
+        pl_data = mean_pl[np.newaxis, :]
+
+    # Derive current from clock signal using rising edge detection
+    # Find rising edges in the clock signal
+    rising_edges = np.where(np.diff(mean_clock &gt; trigger_threshold) &gt; 0)[0]
+
+    # Initialize current array (starts OFF because we capture with pre-trigger)
+    mean_current = np.zeros_like(mean_clock)
+    
+    # Set initial state (OFF)
+    current_state = False
+
+    # Process regions between rising edges
+    for i in range(len(rising_edges)):
+        start_idx = 0 if i == 0 else rising_edges[i-1]
+        end_idx = rising_edges[i]
+        
+        # Set current value for this region
+        if current_state:
+            mean_current[start_idx:end_idx] = current
+        
+        # Toggle state for next region
+        current_state = not current_state
+
+    # Handle the final region after the last rising edge
+    if rising_edges.size &gt; 0:
+        mean_current[rising_edges[-1]:] = 0 if current_state else current
+        
+    # If no rising edges were detected, assume all ON
+    if rising_edges.size == 0:
+        mean_current[:] = current
+
+
+    # Prepare results dictionary with raw data
+    results = {
+        &#34;mean_time&#34;: mean_time,
+        &#34;mean_clock&#34;: mean_clock,
+        &#34;mean_pl&#34;: mean_pl,
+        &#34;std_pl&#34;: std_pl,
+        &#34;mean_current&#34;: mean_current,
+        &#34;time_data&#34;: time_data,
+        &#34;clock_data&#34;: clock_data,
+        &#34;pl_data&#34;: pl_data,
+    }
+    
+    # Apply detrending if requested - BEFORE analysis
+    trend_info = None
+    if detrend:
+        detrended_pl, trend_info = detrend_pl_signal(
+            mean_time, mean_pl, mean_clock, trigger_threshold
+        )
+        # Store both raw and detrended data
+        results[&#34;mean_pl_raw&#34;] = mean_pl.copy()
+        results[&#34;mean_pl&#34;] = detrended_pl
+        results[&#34;trend_info&#34;] = trend_info
+        
+        # Also detrend individual traces if available
+        if isinstance(raw_data, list) and len(raw_data) &gt; 1:
+            detrended_pl_data = np.zeros_like(results[&#34;pl_data&#34;])
+            for i in range(len(raw_data)):
+                detrended, _ = detrend_pl_signal(
+                    results[&#34;time_data&#34;][i], 
+                    results[&#34;pl_data&#34;][i], 
+                    results[&#34;clock_data&#34;][i],
+                    trigger_threshold
+                )
+                detrended_pl_data[i] = detrended
+            
+            # Store raw and detrended individual traces
+            results[&#34;pl_data_raw&#34;] = results[&#34;pl_data&#34;].copy()
+            results[&#34;pl_data&#34;] = detrended_pl_data
+            
+            # Recalculate standard deviation with detrended data
+            results[&#34;std_pl&#34;] = np.std(detrended_pl_data, axis=0, ddof=1)
+        
+        logger.info(&#34;Detrending applied - analysis will be performed on detrended data&#34;)
+
+    # Run appropriate analysis based on fit_exponential flag
+    if fit_exponential:
+        transition_analysis = MPLFitter.analyze_and_fit(
+            mean_time, results[&#34;mean_pl&#34;], mean_clock, 
+            trigger_threshold, plot_pulses, use_cache=True, fit_type=fit_type
+        )
+    else:
+        transition_analysis = MPLFitter.analyze_transitions(
+            mean_time, results[&#34;mean_pl&#34;], mean_clock, 
+            trigger_threshold, plot_pulses, use_cache=True
+        )
+    
+    # Combine with basic response analysis
+    basic_analysis = analyze_mpl_response(results[&#34;mean_pl&#34;], mean_current)
+    results[&#34;analysis&#34;] = {**basic_analysis, **transition_analysis}
+
+    return results</code></pre>
+</details>
+<div class="desc"><p>Process raw measurement data.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>raw_data</code></strong> :&ensp;<code>Dict[str, Any] | List[Dict[str, Any]]</code></dt>
+<dd>Raw measurement data, either:
+- Single measurement dict with time_data, clock_data, pl_data
+- List of measurement dicts for averaging</dd>
+<dt><strong><code>coil_resistance</code></strong> :&ensp;<code>float</code></dt>
+<dd>Electromagnet coil resistance in ohms</dd>
+<dt><strong><code>current</code></strong> :&ensp;<code>float</code>, optional</dt>
+<dd>Applied current in amps, by default 0.1</dd>
+<dt><strong><code>trigger_threshold</code></strong> :&ensp;<code>float</code>, optional</dt>
+<dd>Threshold for clock signal edge detection, by default 2.5</dd>
+<dt><strong><code>fit_exponential</code></strong> :&ensp;<code>bool</code>, optional</dt>
+<dd>Whether to fit exponential curves to transitions, by default False</dd>
+<dt><strong><code>plot_pulses</code></strong> :&ensp;<code>bool</code>, optional</dt>
+<dd>Whether to plot detailed pulse analysis, by default False</dd>
+<dt><strong><code>fit_type</code></strong> :&ensp;<code>str</code>, optional</dt>
+<dd>Type of exponential fit to use, by default "single"</dd>
+<dt><strong><code>detrend</code></strong> :&ensp;<code>bool</code>, optional</dt>
+<dd>Whether to remove linear trend from PL signal, by default False</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Dict[str, Any]</code></dt>
+<dd>Processed results including:
+- mean_time: Average time points
+- mean_clock: Average clock signal
+- mean_pl: Average PL signal
+- std_pl: PL standard deviation
+- analysis: Analysis results
+- time_data: Raw time data (if multiple measurements)
+- clock_data: Raw clock data (if multiple measurements)
+- pl_data: Raw PL data (if multiple measurements)</dd>
+</dl></div>
+</dd>
+<dt id="qscope.cli.mpl.trigtrace.save_results"><code class="name flex">
+<span>def <span class="ident">save_results</span></span>(<span>results: Dict[str, Any],<br>system_name: str,<br>project_name: str,<br>frequency: float,<br>duration: float,<br>sample_rate: float,<br>pl_range: float,<br>pl_coupling: str,<br>averages: int,<br>coil_resistance: float,<br>additional_resistance: float,<br>current: float,<br>source_mode: str,<br>voltage_limit: float | None,<br>downsample_ratio: int,<br>trigger_threshold: float,<br>detrend: bool = False,<br>no_show: bool = False) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def save_results(
+    results: Dict[str, Any],
+    system_name: str,
+    project_name: str,
+    frequency: float,
+    duration: float, 
+    sample_rate: float,
+    pl_range: float,
+    pl_coupling: str,
+    averages: int,
+    coil_resistance: float,
+    additional_resistance: float,
+    current: float,
+    source_mode: str,
+    voltage_limit: Optional[float],
+    downsample_ratio: int,
+    trigger_threshold: float,
+    detrend: bool = False,
+    no_show: bool = False
+) -&gt; None:
+    &#34;&#34;&#34;Save measurement results to file.
+    
+    Parameters
+    ----------
+    results : Dict[str, Any]
+        Processed measurement results
+    system_name : str
+        System configuration name
+    project_name : str
+        Project name for save directory
+    frequency : float
+        Signal frequency in Hz
+    duration : float
+        Measurement duration in seconds
+    sample_rate : float
+        Sample rate in Hz
+    pl_range : float
+        PL channel voltage range
+    pl_coupling : str
+        PL channel coupling
+    averages : int
+        Number of measurements averaged
+    coil_resistance : float
+        Coil resistance in ohms
+    current : float
+        Applied current in amps
+    downsample_ratio : int
+        Hardware downsampling ratio
+    trigger_threshold : float
+        Trigger threshold voltage
+    no_show : bool, optional
+        Whether to suppress plot display, by default False
+    &#34;&#34;&#34;
+    from qscope.system import System
+    from qscope.util.save import NumpyEncoder, _get_base_path
+
+    # Create system object and get base path
+    system = System(system_name)
+    base_path = _get_base_path(system, project_name, &#34;mpl_trig&#34;)
+
+    # Clean up results to remove non-serializable objects
+    def clean_for_json(obj):
+        if isinstance(obj, dict):
+            return {k: clean_for_json(v) for k, v in obj.items() 
+                   if not callable(v) and k != &#34;function&#34;}
+        elif isinstance(obj, list):
+            return [clean_for_json(item) for item in obj 
+                   if not callable(item)]
+        elif isinstance(obj, np.bool_):
+            return bool(obj)
+        else:
+            return obj
+
+    # Clean up analysis results
+    if &#34;analysis&#34; in results:
+        # Handle fit parameters specifically
+        for fit_key in [&#34;rise_fit_params&#34;, &#34;fall_fit_params&#34;]:
+            if fit_key in results[&#34;analysis&#34;]:
+                # Clean each fit parameter dict
+                if isinstance(results[&#34;analysis&#34;][fit_key], list):
+                    results[&#34;analysis&#34;][fit_key] = [
+                        clean_for_json(param) for param in results[&#34;analysis&#34;][fit_key]
+                    ]
+
+    # Prepare metadata dictionary (everything except raw data arrays)
+    metadata = {
+        &#34;timestamp&#34;: datetime.now().isoformat(),
+        &#34;command&#34;: get_command_string(),
+        &#34;parameters&#34;: {
+            &#34;frequency&#34;: frequency,
+            &#34;duration&#34;: duration,
+            &#34;sample_rate&#34;: sample_rate,
+            &#34;pl_range&#34;: pl_range,
+            &#34;pl_coupling&#34;: pl_coupling,
+            &#34;averages&#34;: averages,
+            &#34;coil_resistance&#34;: coil_resistance,
+            &#34;additional_resistance&#34;: additional_resistance,
+            &#34;total_resistance&#34;: coil_resistance + additional_resistance,
+            &#34;current&#34;: current,
+            &#34;source_mode&#34;: source_mode,
+            &#34;voltage_limit&#34;: voltage_limit,
+            &#34;trigger_threshold&#34;: trigger_threshold,
+            &#34;downsample_ratio&#34;: downsample_ratio,
+            &#34;detrend&#34;: detrend
+        },
+        &#34;analysis&#34;: clean_for_json(results[&#34;analysis&#34;]),
+        # Include processed results but not the raw data arrays
+        &#34;results&#34;: clean_for_json({
+            k: v for k, v in results.items() 
+            if k not in [&#34;time_data&#34;, &#34;clock_data&#34;, &#34;pl_data&#34;, &#34;pl_data_raw&#34;, &#34;analysis&#34;]
+            and not isinstance(v, np.ndarray)
+        }),
+    }
+    
+    # Add trend information if available
+    if &#34;trend_info&#34; in results:
+        metadata[&#34;detrending&#34;] = clean_for_json({
+            k: v for k, v in results[&#34;trend_info&#34;].items()
+            if k != &#34;trend&#34;  # Don&#39;t include the full trend array in metadata
+        })
+
+    # Save data and figure in parallel
+    def save_data():
+        # Save metadata as JSON
+        with open(f&#34;{base_path}.json&#34;, &#34;w&#34;) as f:
+            json.dump(metadata, f, indent=2, cls=NumpyEncoder)
+        
+        # Save raw data as compressed NumPy file
+        save_data = {
+            &#34;time_data&#34;: results[&#34;time_data&#34;],
+            &#34;clock_data&#34;: results[&#34;clock_data&#34;],
+            &#34;mean_time&#34;: results[&#34;mean_time&#34;],
+            &#34;mean_clock&#34;: results[&#34;mean_clock&#34;],
+            &#34;std_pl&#34;: results[&#34;std_pl&#34;]
+        }
+        
+        # Handle raw and detrended PL data
+        if &#34;mean_pl_raw&#34; in results:
+            save_data[&#34;mean_pl_raw&#34;] = results[&#34;mean_pl_raw&#34;]
+            save_data[&#34;mean_pl&#34;] = results[&#34;mean_pl&#34;]
+            if &#34;trend_info&#34; in results and &#34;trend&#34; in results[&#34;trend_info&#34;]:
+                save_data[&#34;trend&#34;] = results[&#34;trend_info&#34;][&#34;trend&#34;]
+        else:
+            save_data[&#34;mean_pl&#34;] = results[&#34;mean_pl&#34;]
+            
+        # Handle individual traces
+        if &#34;pl_data_raw&#34; in results:
+            save_data[&#34;pl_data_raw&#34;] = results[&#34;pl_data_raw&#34;]
+            save_data[&#34;pl_data&#34;] = results[&#34;pl_data&#34;]
+        else:
+            save_data[&#34;pl_data&#34;] = results[&#34;pl_data&#34;]
+            
+        np.savez_compressed(f&#34;{base_path}_raw.npz&#34;, **save_data)
+        
+        logger.debug(f&#34;Raw data saved to {base_path}_raw.npz&#34;)
+
+    def save_figure():
+        fig, _ = plot_mpl_results(
+            results=results,
+            sample_rate=sample_rate,
+            downsample_ratio=downsample_ratio,
+            current=current,
+            frequency=frequency,
+            averages=averages,
+            coil_resistance=coil_resistance,
+            trigger_threshold=trigger_threshold,
+            show_individual=True,
+            no_show=True
+        )
+        fig.savefig(f&#34;{base_path}.png&#34;, dpi=300, bbox_inches=&#34;tight&#34;)
+        plt.close(fig)
+
+    with ThreadPoolExecutor(max_workers=2) as executor:
+        data_future = executor.submit(save_data)
+        fig_future = executor.submit(save_figure)
+
+        # Wait for both to complete and check for errors
+        data_future.result()
+        fig_future.result()
+
+    logger.info(f&#34;Metadata saved to {base_path}.json&#34;)
+    logger.info(f&#34;Raw data saved to {base_path}_raw.npz&#34;)
+    logger.info(f&#34;Figure saved to {base_path}.png&#34;)</code></pre>
+</details>
+<div class="desc"><p>Save measurement results to file.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>results</code></strong> :&ensp;<code>Dict[str, Any]</code></dt>
+<dd>Processed measurement results</dd>
+<dt><strong><code>system_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>System configuration name</dd>
+<dt><strong><code>project_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>Project name for save directory</dd>
+<dt><strong><code>frequency</code></strong> :&ensp;<code>float</code></dt>
+<dd>Signal frequency in Hz</dd>
+<dt><strong><code>duration</code></strong> :&ensp;<code>float</code></dt>
+<dd>Measurement duration in seconds</dd>
+<dt><strong><code>sample_rate</code></strong> :&ensp;<code>float</code></dt>
+<dd>Sample rate in Hz</dd>
+<dt><strong><code>pl_range</code></strong> :&ensp;<code>float</code></dt>
+<dd>PL channel voltage range</dd>
+<dt><strong><code>pl_coupling</code></strong> :&ensp;<code>str</code></dt>
+<dd>PL channel coupling</dd>
+<dt><strong><code>averages</code></strong> :&ensp;<code>int</code></dt>
+<dd>Number of measurements averaged</dd>
+<dt><strong><code>coil_resistance</code></strong> :&ensp;<code>float</code></dt>
+<dd>Coil resistance in ohms</dd>
+<dt><strong><code>current</code></strong> :&ensp;<code>float</code></dt>
+<dd>Applied current in amps</dd>
+<dt><strong><code>downsample_ratio</code></strong> :&ensp;<code>int</code></dt>
+<dd>Hardware downsampling ratio</dd>
+<dt><strong><code>trigger_threshold</code></strong> :&ensp;<code>float</code></dt>
+<dd>Trigger threshold voltage</dd>
+<dt><strong><code>no_show</code></strong> :&ensp;<code>bool</code>, optional</dt>
+<dd>Whether to suppress plot display, by default False</dd>
+</dl></div>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<form>
+<input id="lunr-search" name="q" placeholder="🔎 Search ..." aria-label="Search"
+disabled minlength="2">
+</form>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.css" integrity="sha512-b+T2i3P45i1LZM7I00Ci5QquB9szqaxu+uuk5TUSGjZQ4w4n+qujQiIuvTv2BxE7WCGQCifNMksyKILDiHzsOg==" crossorigin>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.js" integrity="sha512-2B9/byNV1KKRm5nQ2RLViPFD6U4dUjDGwuW1GU+ImJh8YinPU9Zlq1GzdTMO+G2ROrB5o1qasJBy1ttYz0wCug==" crossorigin></script>
+<style>
+.modal-dialog iframe {
+width: 100vw;
+height: calc(100vh - 80px);
+}
+@media screen and (min-width: 700px) {
+.modal-dialog iframe {
+width: 70vw;
+height: 80vh;
+}
+}
+.modal-dialog .tingle-modal-box {width: auto;}
+.modal-dialog .tingle-modal-box__content {padding: 0;}
+</style>
+<script>
+const input = document.getElementById('lunr-search');
+input.disabled = false;
+input.form.addEventListener('submit', (ev) => {
+ev.preventDefault();
+const url = new URL(window.location);
+url.searchParams.set('q', input.value);
+history.replaceState({}, null, url.toString());
+search(input.value);
+});
+const query = new URL(window.location).searchParams.get('q');
+if (query)
+search(query);
+function search(query) {
+const url = '../../../doc-search.html#' + encodeURIComponent(query);
+new tingle.modal({
+cssClass: ['modal-dialog'],
+onClose: () => {
+const url = new URL(window.location);
+url.searchParams.delete('q');
+history.replaceState({}, null, url.toString());
+setTimeout(() => input.focus(), 100);
+}
+}).setContent('<iframe src="' + url + '"></iframe>').open();
+}
+</script>
+<div class="toc">
+<ul>
+<li><a href="#key-capabilities">Key Capabilities</a></li>
+<li><a href="#hardware-requirements">Hardware Requirements</a></li>
+</ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="qscope.cli.mpl" href="index.html">qscope.cli.mpl</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="qscope.cli.mpl.trigtrace.detrend_pl_signal" href="#qscope.cli.mpl.trigtrace.detrend_pl_signal">detrend_pl_signal</a></code></li>
+<li><code><a title="qscope.cli.mpl.trigtrace.get_command_string" href="#qscope.cli.mpl.trigtrace.get_command_string">get_command_string</a></code></li>
+<li><code><a title="qscope.cli.mpl.trigtrace.process_results" href="#qscope.cli.mpl.trigtrace.process_results">process_results</a></code></li>
+<li><code><a title="qscope.cli.mpl.trigtrace.save_results" href="#qscope.cli.mpl.trigtrace.save_results">save_results</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
+</footer>
+</body>
+</html>

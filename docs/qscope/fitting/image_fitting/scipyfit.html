@@ -1,0 +1,583 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.6">
+<title>qscope.fitting.image_fitting.scipyfit API documentation</title>
+<meta name="description" content="">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}#lunr-search{width:100%;font-size:1em;padding:6px 9px 5px 9px;border:1px solid silver}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes: true } });</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML" integrity="sha256-kZafAc6mZvK3W3v1pHOcUix30OHQN6pU/NO2oFkqZVw=" crossorigin></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>qscope.fitting.image_fitting.scipyfit</code></h1>
+</header>
+<section id="section-intro">
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="qscope.fitting.image_fitting.scipyfit.define_fit_model"><code class="name flex">
+<span>def <span class="ident">define_fit_model</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def define_fit_model():
+    &#34;&#34;&#34;Define (and return) fit_model object,&#34;&#34;&#34;
+    return fastmodel.LinearLorentzians(1)</code></pre>
+</details>
+<div class="desc"><p>Define (and return) fit_model object,</p></div>
+</dd>
+<dt id="qscope.fitting.image_fitting.scipyfit.fit_all_pixels_pl_scipyfit"><code class="name flex">
+<span>def <span class="ident">fit_all_pixels_pl_scipyfit</span></span>(<span>sig_norm, sweep_list, fit_model, init_guess_params, fit_optns)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def fit_all_pixels_pl_scipyfit(
+    sig_norm, sweep_list, fit_model, init_guess_params, fit_optns
+):
+    &#34;&#34;&#34;
+    Fits each pixel and returns dictionary of param_name -&gt; param_image.
+
+    Arguments
+    ---------
+    sig_norm : np array, 3D
+        Normalised meas array, shape: [sweep_list, y, x].
+    sweep_list : np array, 1D
+        Affine parameter list (e.g. tau or freq)
+    fit_model : `qdmpy.pl.model.FitModel`
+        The model we&#39;re fit to.
+
+
+    Returns
+    -------
+    fit_image_results : dict
+        Dictionary, key: param_keys, val: image (2D) of param values across FOV.
+        Also has &#39;residual&#39; as a key.
+    &#34;&#34;&#34;
+    sweep_ar = np.array(sweep_list)
+    threads = 4
+    num_pixels = np.shape(sig_norm)[1] * np.shape(sig_norm)[2]
+
+    # divide pixels by numbers of threads (workers) to use
+    chunksize = int(num_pixels / threads)
+
+    pixel_data = sig_norm
+
+    if not chunksize:
+        print(&#34;chunksize was 0, setting to 1&#34;)
+        chunksize = 1
+
+    with concurrent.futures.ProcessPoolExecutor(max_workers=threads) as executor:
+        fit_results = list(
+            tqdm(
+                executor.map(
+                    to_squares_wrapper,
+                    repeat(fit_model.residuals_scipyfit),
+                    repeat(init_guess_params),
+                    repeat(sweep_ar),
+                    pixel_generator(pixel_data),
+                    repeat(fit_optns),
+                    chunksize=chunksize,
+                ),
+                desc=&#34;pl-scipyfit&#34;,
+                ascii=True,
+                mininterval=1,
+                total=num_pixels,
+                unit=&#34; PX&#34;,
+                disable=True,
+            )
+        )
+
+    res, sigmas = get_pixel_fitting_results(
+        fit_model, fit_results, pixel_data, sweep_ar
+    )
+
+    return res, sigmas</code></pre>
+</details>
+<div class="desc"><p>Fits each pixel and returns dictionary of param_name -&gt; param_image.</p>
+<h2 id="arguments">Arguments</h2>
+<dl>
+<dt><strong><code>sig_norm</code></strong> :&ensp;<code>np array, 3D</code></dt>
+<dd>Normalised meas array, shape: [sweep_list, y, x].</dd>
+<dt><strong><code>sweep_list</code></strong> :&ensp;<code>np array, 1D</code></dt>
+<dd>Affine parameter list (e.g. tau or freq)</dd>
+<dt><strong><code>fit_model</code></strong> :&ensp;<code>qdmpy.pl.model.FitModel</code></dt>
+<dd>The model we're fit to.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>fit_image_results</code></strong> :&ensp;<code>dict</code></dt>
+<dd>Dictionary, key: param_keys, val: image (2D) of param values across FOV.
+Also has 'residual' as a key.</dd>
+</dl></div>
+</dd>
+<dt id="qscope.fitting.image_fitting.scipyfit.get_pixel_fitting_results"><code class="name flex">
+<span>def <span class="ident">get_pixel_fitting_results</span></span>(<span>fit_model, fit_results, pixel_data, sweep_list)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_pixel_fitting_results(fit_model, fit_results, pixel_data, sweep_list):
+    &#34;&#34;&#34;
+    Take the fit result data from scipyfit/gpufit and back it down to a dictionary of arrays.
+
+    Each array is 2D, representing the values for each parameter (specified by the dict key).
+
+    Arguments
+    ---------
+    fit_model : `qdmpy.pl.model.FitModel`
+        Model we&#39;re fit to.
+    fit_results : list of [(y, x), result, jac] objects
+        (see `qdmpy.pl.scipyfit.to_squares_wrapper`, or corresponding gpufit method)
+        A list of each pixel&#39;s parameter array, as well as position in image denoted by (y, x).
+    pixel_data : np array, 3D
+        Normalised meas array, shape: [sweep_list, y, x]. i.e. sig_norm.
+        May or may not already be shuffled (i.e. matches fit_results).
+    sweep_list : np array, 1D
+        Affine parameter list (e.g. tau or freq).
+
+    Returns
+    -------
+    fit_image_results : dict
+        Dictionary, key: param_keys, val: image (2D) of param values across FOV.
+        Also has &#39;residual&#39; as a key.
+    sigmas : dict
+        Dictionary, key: param_keys, val: image (2D) of param uncertainties across FOV.
+    &#34;&#34;&#34;
+
+    roi_shape = np.shape(pixel_data)[1:]
+
+    # initialise dictionary with key: val = param_name: param_units
+    fit_image_results = fit_model.get_param_odict()
+    sigmas = copy.copy(fit_image_results)
+
+    # override with correct size empty arrays using np.zeros
+    for key in fit_image_results.keys():
+        fit_image_results[key] = np.zeros((roi_shape[0], roi_shape[1])) * np.nan
+        sigmas[key] = np.zeros((roi_shape[0], roi_shape[1])) * np.nan
+
+    fit_image_results[&#34;residual_0&#34;] = np.zeros((roi_shape[0], roi_shape[1])) * np.nan
+
+    # Fill the arrays element-wise from the results function, which returns a
+    # 1D array of flattened best-fit parameters.
+    for (y, x), result, jac in fit_results:
+        filled_params = {}  # keep track of index, i.e. pos_0, for this pixel
+
+        if jac is None:  # can&#39;t fit this pixel
+            fit_image_results[&#34;residual_0&#34;][y, x] = np.nan
+            perr = np.empty(np.shape(result))
+            perr[:] = np.nan
+        else:
+            # NOTE we decide not to call each backend separately here
+            resid = fit_model.residuals_scipyfit(
+                result, sweep_list, pixel_data[:, y, x]
+            )
+            fit_image_results[&#34;residual_0&#34;][y, x] = np.sum(
+                np.abs(resid, dtype=np.float64), dtype=np.float64
+            )
+            # uncertainty (covariance matrix), copied from scipy.optimize.curve_fit (not abs. sigma)
+            _, s, vt = svd(jac, full_matrices=False)
+            threshold = np.finfo(float).eps * max(jac.shape) * s[0]
+            s = s[s &gt; threshold]
+            vt = vt[: s.size]
+            pcov = np.dot(vt.T / s**2, vt)
+            # NOTE using/assuming linear cost fn,
+            cost = 2 * 0.5 * np.sum(fit_model(result, sweep_list) ** 2)
+            s_sq = cost / (len(resid) - len(result))
+            pcov *= s_sq
+            perr = np.sqrt(np.diag(pcov))  # array of standard deviations
+
+        for param_num, param_name in enumerate(fit_model.get_param_defn()):
+            # keep track of what index we&#39;re up to, i.e. pos_1
+            if param_name not in filled_params.keys():
+                key = param_name + &#34;_0&#34;
+                filled_params[param_name] = 1
+            else:
+                key = param_name + &#34;_&#34; + str(filled_params[param_name])
+                filled_params[param_name] += 1
+
+            fit_image_results[key][y, x] = result[param_num]
+            sigmas[key][y, x] = perr[param_num]
+
+    return fit_image_results, sigmas</code></pre>
+</details>
+<div class="desc"><p>Take the fit result data from scipyfit/gpufit and back it down to a dictionary of arrays.</p>
+<p>Each array is 2D, representing the values for each parameter (specified by the dict key).</p>
+<h2 id="arguments">Arguments</h2>
+<dl>
+<dt><strong><code>fit_model</code></strong> :&ensp;<code>qdmpy.pl.model.FitModel</code></dt>
+<dd>Model we're fit to.</dd>
+<dt><strong><code>fit_results</code></strong> :&ensp;<code>list</code> of <code>[(y, x), result, jac] objects</code></dt>
+<dd>(see <code>qdmpy.pl.scipyfit.to_squares_wrapper</code>, or corresponding gpufit method)
+A list of each pixel's parameter array, as well as position in image denoted by (y, x).</dd>
+<dt><strong><code>pixel_data</code></strong> :&ensp;<code>np array, 3D</code></dt>
+<dd>Normalised meas array, shape: [sweep_list, y, x]. i.e. sig_norm.
+May or may not already be shuffled (i.e. matches fit_results).</dd>
+<dt><strong><code>sweep_list</code></strong> :&ensp;<code>np array, 1D</code></dt>
+<dd>Affine parameter list (e.g. tau or freq).</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>fit_image_results</code></strong> :&ensp;<code>dict</code></dt>
+<dd>Dictionary, key: param_keys, val: image (2D) of param values across FOV.
+Also has 'residual' as a key.</dd>
+<dt><strong><code>sigmas</code></strong> :&ensp;<code>dict</code></dt>
+<dd>Dictionary, key: param_keys, val: image (2D) of param uncertainties across FOV.</dd>
+</dl></div>
+</dd>
+<dt id="qscope.fitting.image_fitting.scipyfit.pixel_generator"><code class="name flex">
+<span>def <span class="ident">pixel_generator</span></span>(<span>our_array)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def pixel_generator(our_array):
+    &#34;&#34;&#34;
+    Simple generator to shape data as expected by to_squares_wrapper in scipy concurrent method.
+
+    Also allows us to track *where* (i.e. which pixel location) each result corresponds to.
+    See also: `qdmpy.pl.scipyfit.to_squares_wrapper`, and corresponding gpufit method.
+
+    Arguments
+    ---------
+    our_array : np array, 3D
+        Shape: [sweep_list, y, x]
+
+    Returns
+    -------
+    generator : list
+        [y, x, our_array[:, y, x]] generator (yielded)
+    &#34;&#34;&#34;
+    _, len_y, len_x = np.shape(our_array)
+    for y in range(len_y):
+        for x in range(len_x):
+            yield [y, x, our_array[:, y, x]]</code></pre>
+</details>
+<div class="desc"><p>Simple generator to shape data as expected by to_squares_wrapper in scipy concurrent method.</p>
+<p>Also allows us to track <em>where</em> (i.e. which pixel location) each result corresponds to.
+See also: <code>qdmpy.pl.scipyfit.to_squares_wrapper</code>, and corresponding gpufit method.</p>
+<h2 id="arguments">Arguments</h2>
+<dl>
+<dt><strong><code>our_array</code></strong> :&ensp;<code>np array, 3D</code></dt>
+<dd>Shape: [sweep_list, y, x]</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>generator</code></strong> :&ensp;<code>list</code></dt>
+<dd>[y, x, our_array[:, y, x]] generator (yielded)</dd>
+</dl></div>
+</dd>
+<dt id="qscope.fitting.image_fitting.scipyfit.pl_param_image"><code class="name flex">
+<span>def <span class="ident">pl_param_image</span></span>(<span>image,<br>param_name,<br>c_label,<br>errorplot=False,<br>c_map='viridis',<br>c_range=None,<br>save_plot=False,<br>dir_path=None,<br>pixel_size=1.0,<br>clear_plot=False)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def pl_param_image(
+    image,
+    param_name,
+    c_label,
+    errorplot=False,
+    c_map=&#34;viridis&#34;,
+    c_range=None,
+    save_plot=False,
+    dir_path=None,
+    pixel_size=1.0,
+    clear_plot=False,
+):
+    &#34;&#34;&#34;
+    Plots an image corresponding to a single parameter in pixel_fit_params.
+
+    Arguments
+    ---------
+    options : dict
+        Generic options dict holding all the user options.
+    fit_model : `qdmpy.pl.model.FitModel`
+        Model we&#39;re fit to.
+    pixel_fit_params : dict
+        Dictionary, key: param_keys, val: image (2D) of param values across FOV.
+    param_name : str
+        Name of parameter you want to plot, e.g. &#39;fwhm&#39;. Can also be &#39;residual&#39;.
+
+    Optional arguments
+    ------------------
+    param_number : int
+        Which version of the parameter you want. I.e. there might be 8 independent parameters
+        in the fit model called &#39;pos&#39;, each labeled &#39;pos_0&#39;, &#39;pos_1&#39; etc. Default: 0.
+    errorplot : bool
+        Default: false. Denotes that errors dict has been passed in (e.g. sigmas), so
+        ylabel &amp; save names are changed accordingly. Can&#39;t be True if param_name=&#39;residual&#39;.
+
+    Returns
+    -------
+    fig : matplotlib Figure object
+    &#34;&#34;&#34;
+
+    fig, ax = plt.subplots()
+
+    if c_range is None:
+        c_range = [np.min(image), np.max(image)]
+
+    im = ax.imshow(image, vmin=c_range[0], vmax=c_range[1], cmap=c_map)
+
+    ax.set_title(param_name)
+
+    cbar = _add_colorbar(im, fig, ax)
+    cbar.ax.set_ylabel(c_label, rotation=270)
+
+    # scalebar = ScaleBar(pixel_size)
+    # ax.add_artist(scalebar)
+    # ax.get_xaxis().set_ticks([])
+    # ax.get_yaxis().set_ticks([])
+
+    if dir_path[-1] != &#34;/&#34;:
+        dir_path = dir_path + &#34;/&#34;
+
+    if not os.path.exists(dir_path):
+        os.makedirs(dir_path)
+
+    if save_plot:
+        if errorplot:
+            path = dir_path + &#34;/&#34; + (param_name + &#34;_sigma.&#34; + &#34;.png&#34;)
+        else:
+            path = dir_path + &#34;/&#34; + (param_name + &#34;.png&#34;)
+        fig.savefig(path)
+
+        # save data
+        data_path = dir_path + &#34;data/&#34;
+        if not os.path.exists(data_path):
+            os.makedirs(data_path)
+        np.savetxt(data_path + param_name + &#34;.txt&#34;, image)
+    if clear_plot:
+        plt.close(fig)
+        return None
+    else:
+        return fig</code></pre>
+</details>
+<div class="desc"><p>Plots an image corresponding to a single parameter in pixel_fit_params.</p>
+<h2 id="arguments">Arguments</h2>
+<dl>
+<dt><strong><code>options</code></strong> :&ensp;<code>dict</code></dt>
+<dd>Generic options dict holding all the user options.</dd>
+<dt><strong><code>fit_model</code></strong> :&ensp;<code>qdmpy.pl.model.FitModel</code></dt>
+<dd>Model we're fit to.</dd>
+<dt><strong><code>pixel_fit_params</code></strong> :&ensp;<code>dict</code></dt>
+<dd>Dictionary, key: param_keys, val: image (2D) of param values across FOV.</dd>
+<dt><strong><code>param_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>Name of parameter you want to plot, e.g. 'fwhm'. Can also be 'residual'.</dd>
+</dl>
+<h2 id="optional-arguments">Optional Arguments</h2>
+<p>param_number : int
+Which version of the parameter you want. I.e. there might be 8 independent parameters
+in the fit model called 'pos', each labeled 'pos_0', 'pos_1' etc. Default: 0.
+errorplot : bool
+Default: false. Denotes that errors dict has been passed in (e.g. sigmas), so
+ylabel &amp; save names are changed accordingly. Can't be True if param_name='residual'.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>fig</code></strong> :&ensp;<code>matplotlib Figure object</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+</dd>
+<dt id="qscope.fitting.image_fitting.scipyfit.prepare_data"><code class="name flex">
+<span>def <span class="ident">prepare_data</span></span>(<span>image, smoothing, binning)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def prepare_data(image, smoothing, binning):
+    image = _smooth_image(image, smoothing)
+    image_rebinned, sig, ref, sig_norm = _rebin_image(image, binning)
+    return image_rebinned, sig, ref, sig_norm</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.fitting.image_fitting.scipyfit.to_squares_wrapper"><code class="name flex">
+<span>def <span class="ident">to_squares_wrapper</span></span>(<span>fun, p0, sweep_vec, shaped_data, fit_optns)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def to_squares_wrapper(fun, p0, sweep_vec, shaped_data, fit_optns):
+    &#34;&#34;&#34;
+    Simple wrapper of scipy.optimize.least_squares to allow us to keep track of which
+    solution is which (or where).
+
+    Arguments
+    ---------
+    fun : function
+        Function object acting as residual (fit model minus pl value)
+    p0 : np array
+        Initial guess: array of parameters
+    sweep_vec : np array
+        Array (or I guess single value, anything iterable) of affine parameter (tau/freq)
+    shaped_data : list (3 elements)
+        array returned by `qdmpy.pl.common.pixel_generator`: [y, x, sig_norm[:, y, x]]
+    fit_optns : dict
+        Other options (dict) passed to least_squares
+
+    Returns
+    -------
+    wrapped_squares : tuple
+        (y, x), least_squares(...).x, leas_squares(...).jac
+        I.e. the position of the fit result, the fit result parameters array, jacobian at solution
+    &#34;&#34;&#34;
+    # shaped_data: [y, x, pl]
+    # output: (y, x), result_params, jac
+    try:
+        fitres = least_squares(fun, p0, args=(sweep_vec, shaped_data[2]), **fit_optns)
+        fitp = fitres.x
+        fitj = fitres.jac
+    except ValueError:
+        fitp = np.empty(np.shape(p0))
+        fitj = None
+    return ((shaped_data[0], shaped_data[1]), fitp, fitj)</code></pre>
+</details>
+<div class="desc"><p>Simple wrapper of scipy.optimize.least_squares to allow us to keep track of which
+solution is which (or where).</p>
+<h2 id="arguments">Arguments</h2>
+<dl>
+<dt><strong><code>fun</code></strong> :&ensp;<code>function</code></dt>
+<dd>Function object acting as residual (fit model minus pl value)</dd>
+<dt><strong><code>p0</code></strong> :&ensp;<code>np array</code></dt>
+<dd>Initial guess: array of parameters</dd>
+<dt><strong><code>sweep_vec</code></strong> :&ensp;<code>np array</code></dt>
+<dd>Array (or I guess single value, anything iterable) of affine parameter (tau/freq)</dd>
+<dt><strong><code>shaped_data</code></strong> :&ensp;<code>list (3 elements)</code></dt>
+<dd>array returned by <code>qdmpy.pl.common.pixel_generator</code>: [y, x, sig_norm[:, y, x]]</dd>
+<dt><strong><code>fit_optns</code></strong> :&ensp;<code>dict</code></dt>
+<dd>Other options (dict) passed to least_squares</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>wrapped_squares</code></strong> :&ensp;<code>tuple</code></dt>
+<dd>(y, x), least_squares(&hellip;).x, leas_squares(&hellip;).jac
+I.e. the position of the fit result, the fit result parameters array, jacobian at solution</dd>
+</dl></div>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<form>
+<input id="lunr-search" name="q" placeholder="🔎 Search ..." aria-label="Search"
+disabled minlength="2">
+</form>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.css" integrity="sha512-b+T2i3P45i1LZM7I00Ci5QquB9szqaxu+uuk5TUSGjZQ4w4n+qujQiIuvTv2BxE7WCGQCifNMksyKILDiHzsOg==" crossorigin>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.js" integrity="sha512-2B9/byNV1KKRm5nQ2RLViPFD6U4dUjDGwuW1GU+ImJh8YinPU9Zlq1GzdTMO+G2ROrB5o1qasJBy1ttYz0wCug==" crossorigin></script>
+<style>
+.modal-dialog iframe {
+width: 100vw;
+height: calc(100vh - 80px);
+}
+@media screen and (min-width: 700px) {
+.modal-dialog iframe {
+width: 70vw;
+height: 80vh;
+}
+}
+.modal-dialog .tingle-modal-box {width: auto;}
+.modal-dialog .tingle-modal-box__content {padding: 0;}
+</style>
+<script>
+const input = document.getElementById('lunr-search');
+input.disabled = false;
+input.form.addEventListener('submit', (ev) => {
+ev.preventDefault();
+const url = new URL(window.location);
+url.searchParams.set('q', input.value);
+history.replaceState({}, null, url.toString());
+search(input.value);
+});
+const query = new URL(window.location).searchParams.get('q');
+if (query)
+search(query);
+function search(query) {
+const url = '../../../doc-search.html#' + encodeURIComponent(query);
+new tingle.modal({
+cssClass: ['modal-dialog'],
+onClose: () => {
+const url = new URL(window.location);
+url.searchParams.delete('q');
+history.replaceState({}, null, url.toString());
+setTimeout(() => input.focus(), 100);
+}
+}).setContent('<iframe src="' + url + '"></iframe>').open();
+}
+</script>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="qscope.fitting.image_fitting" href="index.html">qscope.fitting.image_fitting</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="qscope.fitting.image_fitting.scipyfit.define_fit_model" href="#qscope.fitting.image_fitting.scipyfit.define_fit_model">define_fit_model</a></code></li>
+<li><code><a title="qscope.fitting.image_fitting.scipyfit.fit_all_pixels_pl_scipyfit" href="#qscope.fitting.image_fitting.scipyfit.fit_all_pixels_pl_scipyfit">fit_all_pixels_pl_scipyfit</a></code></li>
+<li><code><a title="qscope.fitting.image_fitting.scipyfit.get_pixel_fitting_results" href="#qscope.fitting.image_fitting.scipyfit.get_pixel_fitting_results">get_pixel_fitting_results</a></code></li>
+<li><code><a title="qscope.fitting.image_fitting.scipyfit.pixel_generator" href="#qscope.fitting.image_fitting.scipyfit.pixel_generator">pixel_generator</a></code></li>
+<li><code><a title="qscope.fitting.image_fitting.scipyfit.pl_param_image" href="#qscope.fitting.image_fitting.scipyfit.pl_param_image">pl_param_image</a></code></li>
+<li><code><a title="qscope.fitting.image_fitting.scipyfit.prepare_data" href="#qscope.fitting.image_fitting.scipyfit.prepare_data">prepare_data</a></code></li>
+<li><code><a title="qscope.fitting.image_fitting.scipyfit.to_squares_wrapper" href="#qscope.fitting.image_fitting.scipyfit.to_squares_wrapper">to_squares_wrapper</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
+</footer>
+</body>
+</html>

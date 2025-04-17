@@ -1,0 +1,611 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.6">
+<title>qscope.device.device API documentation</title>
+<meta name="description" content="Device base class and hardware abstraction layer …">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}#lunr-search{width:100%;font-size:1em;padding:6px 9px 5px 9px;border:1px solid silver}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes: true } });</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML" integrity="sha256-kZafAc6mZvK3W3v1pHOcUix30OHQN6pU/NO2oFkqZVw=" crossorigin></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>qscope.device.device</code></h1>
+</header>
+<section id="section-intro">
+<p>Device base class and hardware abstraction layer.</p>
+<p>This module defines the Device base class, which is the foundation of QScope's
+hardware abstraction layer. All hardware devices in QScope inherit from this class
+and implement the methods required by their intended roles.</p>
+<p>The Device class provides:
+1. Configuration validation
+2. Role management
+3. Connection handling
+4. Attribute access</p>
+<p>Devices connect to the role system by implementing protocol methods, which are
+validated when the device is added to a system with a specific role.</p>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="qscope.device.device.Device"><code class="flex name class">
+<span>class <span class="ident">Device</span></span>
+<span>(</span><span>**config_kwargs)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Device:
+    &#34;&#34;&#34;Base class for all hardware devices in QScope.
+    
+    The Device class provides the foundation for hardware abstraction in QScope.
+    Specific device implementations inherit from this class and implement the
+    methods required by their intended roles.
+    
+    A device can fulfill multiple roles if it implements all required methods
+    for those roles. The system validates role compatibility at runtime.
+    
+    Device Architecture
+    ------------------
+    Devices are part of QScope&#39;s hardware abstraction layer:
+    
+    1. Base Device Class (this class)
+       - Provides configuration validation
+       - Manages role assignments
+       - Handles connection state
+       - Defines required methods
+    
+    2. Device Implementations
+       - Inherit from Device
+       - Implement protocol methods for specific roles
+       - Provide hardware-specific functionality
+       - Can implement multiple protocols
+    
+    3. System Integration
+       - Devices are added to systems with specific roles
+       - System validates that devices implement required protocols
+       - Devices are accessed through role interfaces
+    
+    Required Methods
+    --------------
+    All device implementations must override these methods:
+    
+    - open(): Connect to the hardware
+    - close(): Disconnect from the hardware
+    - is_connected(): Check connection status
+    
+    In addition, devices must implement all methods required by the
+    protocols of the roles they intend to fulfill.
+    
+    Attributes
+    ----------
+    required_config : dict[str, Type]
+        Required configuration parameters and their types
+    _roles : Set[DeviceRole[Device]]
+        Set of roles this device fulfills
+        
+    Examples
+    --------
+    Creating a new device implementation:
+    
+    ```python
+    class MyRFSource(Device):
+        required_config = {
+            &#34;visa_addr&#34;: str,
+            &#34;max_power&#34;: float
+        }
+        
+        def __init__(self, **config_kwargs):
+            super().__init__(**config_kwargs)
+            self.connected = False
+            
+        def open(self) -&gt; tuple[bool, str]:
+            # Implementation for connecting to hardware
+            self.connected = True
+            return True, &#34;Connected successfully&#34;
+            
+        def close(self):
+            # Implementation for disconnecting
+            self.connected = False
+            
+        def is_connected(self) -&gt; bool:
+            return self.connected
+            
+        # Implement methods required by RFSourceProtocol
+        def set_freq(self, freq: float) -&gt; None:
+            # Implementation
+            pass
+            
+        def set_power(self, power: float) -&gt; None:
+            # Implementation
+            pass
+    ```
+    
+    Using the device with a role:
+    
+    ```python
+    # Create device instance
+    rf = MyRFSource(visa_addr=&#34;TCPIP0::192.168.1.1::INSTR&#34;, max_power=20.0)
+    
+    # Add to system with role
+    system.add_device_with_role(rf, PRIMARY_RF)
+    ```
+    
+    See Also
+    --------
+    qscope.types.protocols : Protocol definitions
+    qscope.types.roles : Role definitions
+    qscope.types.interfaces : Interface implementations
+    qscope.system : System implementation
+    &#34;&#34;&#34;
+
+    required_config: dict[str, Type] = {}  # Required configuration keys
+
+    _roles: Set[DeviceRole[Device]]
+
+    def __init__(self, **config_kwargs):
+        for key, value in config_kwargs.items():
+            setattr(self, key, value)
+        for key, value in self.required_config.items():
+            if not hasattr(self, key):
+                logger.error(
+                    f&#34;Device {self.__class__.__name__} missing required config key: &#34;
+                    + f&#34;{key}&#34;
+                )
+                raise ValueError(
+                    f&#34;Device {self.__class__.__name__} missing required config &#34;
+                    + f&#34;key: {key}&#34;
+                )
+            if not isinstance(getattr(self, key), value):
+                logger.error(
+                    f&#34;Device {self.__class__.__name__} config key {key} &#34;
+                    + f&#34;has wrong type: {type(getattr(self, key))} (expected {value})&#34;
+                )
+                raise ValueError(
+                    f&#34;Device {self.__class__.__name__} config key {key} has &#34;
+                    + f&#34;wrong type: {type(getattr(self, key))} (expected {value})&#34;
+                )
+        self._roles: Set[DeviceRole[Device]] = set()  # Roles this device fulfills
+
+    def _add_role(self, role: DeviceRole[D]) -&gt; None:
+        &#34;&#34;&#34;Add a role that this device fulfills.
+
+        Note: This should only be called by System.add_device_with_role()
+
+        Parameters
+        ----------
+        role : DeviceRole[D]
+            Role to add
+        &#34;&#34;&#34;
+        self._roles.add(role)
+
+    def has_role(self, role: DeviceRole[D]) -&gt; bool:
+        &#34;&#34;&#34;Check if device fulfills a specific role.
+
+        Parameters
+        ----------
+        role : DeviceRole[D]
+            Role to check
+
+        Returns
+        -------
+        bool
+            True if device fulfills role
+        &#34;&#34;&#34;
+        return role in self._roles
+
+    def get_roles(self) -&gt; Set[DeviceRole[&#34;Device&#34;]]:
+        &#34;&#34;&#34;Get all roles this device fulfills.
+
+        Returns
+        -------
+        Set[DeviceRole[Device]]
+            Set of roles
+        &#34;&#34;&#34;
+        return self._roles.copy()
+
+    def open(self) -&gt; tuple[bool, str]:
+        raise NotImplementedError()
+
+    def close(self):
+        raise NotImplementedError()
+
+    def is_connected(self) -&gt; bool:
+        raise NotImplementedError()
+
+    def get_all_attrs(self):
+        &#34;&#34;&#34;
+        Function to return all of the managed attributes of the class
+        Managed attributes are the ones that start with a underscore
+        &#34;&#34;&#34;
+        attrs = {}
+        for key, value in self.__dict__.items():
+            # single underscore attr are managed
+            if key[0] == &#34;_&#34; and not key.startswith(f&#34;_{self.__class__.__name__}&#34;):
+                if isinstance(value, set):
+                    value = [str(role) for role in value]
+                attrs[key[1:]] = value
+        return attrs
+
+    def unroll_metadata(self):
+        # get all attributes in object and return as dict
+        return self.get_all_attrs()</code></pre>
+</details>
+<div class="desc"><p>Base class for all hardware devices in QScope.</p>
+<p>The Device class provides the foundation for hardware abstraction in QScope.
+Specific device implementations inherit from this class and implement the
+methods required by their intended roles.</p>
+<p>A device can fulfill multiple roles if it implements all required methods
+for those roles. The system validates role compatibility at runtime.</p>
+<h2 id="device-architecture">Device Architecture</h2>
+<p>Devices are part of QScope's hardware abstraction layer:</p>
+<ol>
+<li>Base Device Class (this class)</li>
+<li>Provides configuration validation</li>
+<li>Manages role assignments</li>
+<li>Handles connection state</li>
+<li>
+<p>Defines required methods</p>
+</li>
+<li>
+<p>Device Implementations</p>
+</li>
+<li>Inherit from Device</li>
+<li>Implement protocol methods for specific roles</li>
+<li>Provide hardware-specific functionality</li>
+<li>
+<p>Can implement multiple protocols</p>
+</li>
+<li>
+<p>System Integration</p>
+</li>
+<li>Devices are added to systems with specific roles</li>
+<li>System validates that devices implement required protocols</li>
+<li>Devices are accessed through role interfaces</li>
+</ol>
+<h2 id="required-methods">Required Methods</h2>
+<p>All device implementations must override these methods:</p>
+<ul>
+<li>open(): Connect to the hardware</li>
+<li>close(): Disconnect from the hardware</li>
+<li>is_connected(): Check connection status</li>
+</ul>
+<p>In addition, devices must implement all methods required by the
+protocols of the roles they intend to fulfill.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>required_config</code></strong> :&ensp;<code>dict[str, Type]</code></dt>
+<dd>Required configuration parameters and their types</dd>
+<dt><strong><code>_roles</code></strong> :&ensp;<code>Set[DeviceRole[<a title="qscope.device.device.Device" href="#qscope.device.device.Device">Device</a>]]</code></dt>
+<dd>Set of roles this device fulfills</dd>
+</dl>
+<h2 id="examples">Examples</h2>
+<p>Creating a new device implementation:</p>
+<pre><code class="language-python">class MyRFSource(Device):
+    required_config = {
+        &quot;visa_addr&quot;: str,
+        &quot;max_power&quot;: float
+    }
+
+    def __init__(self, **config_kwargs):
+        super().__init__(**config_kwargs)
+        self.connected = False
+
+    def open(self) -&gt; tuple[bool, str]:
+        # Implementation for connecting to hardware
+        self.connected = True
+        return True, &quot;Connected successfully&quot;
+
+    def close(self):
+        # Implementation for disconnecting
+        self.connected = False
+
+    def is_connected(self) -&gt; bool:
+        return self.connected
+
+    # Implement methods required by RFSourceProtocol
+    def set_freq(self, freq: float) -&gt; None:
+        # Implementation
+        pass
+
+    def set_power(self, power: float) -&gt; None:
+        # Implementation
+        pass
+</code></pre>
+<p>Using the device with a role:</p>
+<pre><code class="language-python"># Create device instance
+rf = MyRFSource(visa_addr=&quot;TCPIP0::192.168.1.1::INSTR&quot;, max_power=20.0)
+
+# Add to system with role
+system.add_device_with_role(rf, PRIMARY_RF)
+</code></pre>
+<h2 id="see-also">See Also</h2>
+<dl>
+<dt><code><a title="qscope.types.protocols" href="../types/protocols.html">qscope.types.protocols</a></code></dt>
+<dd>Protocol definitions</dd>
+<dt><code><a title="qscope.types.roles" href="../types/roles.html">qscope.types.roles</a></code></dt>
+<dd>Role definitions</dd>
+<dt><code><a title="qscope.types.interfaces" href="../types/interfaces.html">qscope.types.interfaces</a></code></dt>
+<dd>Interface implementations</dd>
+<dt><code><a title="qscope.system" href="../system/index.html">qscope.system</a></code></dt>
+<dd>System implementation</dd>
+</dl></div>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="qscope.device.SMU2450.SMU2450" href="SMU2450.html#qscope.device.SMU2450.SMU2450">SMU2450</a></li>
+<li><a title="qscope.device.andor.andor.AndorSDK3" href="andor/andor.html#qscope.device.andor.andor.AndorSDK3">AndorSDK3</a></li>
+<li><a title="qscope.device.magnet.magnet.Magnet" href="magnet/magnet.html#qscope.device.magnet.magnet.Magnet">Magnet</a></li>
+<li><a title="qscope.device.mock.mock_camera.MockCamera" href="mock/mock_camera.html#qscope.device.mock.mock_camera.MockCamera">MockCamera</a></li>
+<li><a title="qscope.device.mock.mock_rfsource.MockRFSource" href="mock/mock_rfsource.html#qscope.device.mock.mock_rfsource.MockRFSource">MockRFSource</a></li>
+<li><a title="qscope.device.mock.mock_seqgen.MockSeqGen" href="mock/mock_seqgen.html#qscope.device.mock.mock_seqgen.MockSeqGen">MockSeqGen</a></li>
+<li><a title="qscope.device.picoscope.picoscope.Picoscope" href="picoscope/picoscope.html#qscope.device.picoscope.picoscope.Picoscope">Picoscope</a></li>
+<li><a title="qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster" href="seqgen/pulseblaster/pulseblaster.html#qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster">PulseBlaster</a></li>
+<li><a title="qscope.device.smb100a.SMB100a" href="smb100a.html#qscope.device.smb100a.SMB100a">SMB100a</a></li>
+<li><a title="qscope.device.synthNV.SynthNV" href="synthNV.html#qscope.device.synthNV.SynthNV">SynthNV</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="qscope.device.device.Device.required_config"><code class="name">var <span class="ident">required_config</span> : dict[str, Type]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.device.device.Device.close"><code class="name flex">
+<span>def <span class="ident">close</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def close(self):
+    raise NotImplementedError()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.device.Device.get_all_attrs"><code class="name flex">
+<span>def <span class="ident">get_all_attrs</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_all_attrs(self):
+    &#34;&#34;&#34;
+    Function to return all of the managed attributes of the class
+    Managed attributes are the ones that start with a underscore
+    &#34;&#34;&#34;
+    attrs = {}
+    for key, value in self.__dict__.items():
+        # single underscore attr are managed
+        if key[0] == &#34;_&#34; and not key.startswith(f&#34;_{self.__class__.__name__}&#34;):
+            if isinstance(value, set):
+                value = [str(role) for role in value]
+            attrs[key[1:]] = value
+    return attrs</code></pre>
+</details>
+<div class="desc"><p>Function to return all of the managed attributes of the class
+Managed attributes are the ones that start with a underscore</p></div>
+</dd>
+<dt id="qscope.device.device.Device.get_roles"><code class="name flex">
+<span>def <span class="ident">get_roles</span></span>(<span>self) ‑> Set[DeviceRole['<a title="qscope.device.device.Device" href="#qscope.device.device.Device">Device</a>']]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_roles(self) -&gt; Set[DeviceRole[&#34;Device&#34;]]:
+    &#34;&#34;&#34;Get all roles this device fulfills.
+
+    Returns
+    -------
+    Set[DeviceRole[Device]]
+        Set of roles
+    &#34;&#34;&#34;
+    return self._roles.copy()</code></pre>
+</details>
+<div class="desc"><p>Get all roles this device fulfills.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Set[DeviceRole[<a title="qscope.device.device.Device" href="#qscope.device.device.Device">Device</a>]]</code></dt>
+<dd>Set of roles</dd>
+</dl></div>
+</dd>
+<dt id="qscope.device.device.Device.has_role"><code class="name flex">
+<span>def <span class="ident">has_role</span></span>(<span>self, role: DeviceRole[D]) ‑> bool</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def has_role(self, role: DeviceRole[D]) -&gt; bool:
+    &#34;&#34;&#34;Check if device fulfills a specific role.
+
+    Parameters
+    ----------
+    role : DeviceRole[D]
+        Role to check
+
+    Returns
+    -------
+    bool
+        True if device fulfills role
+    &#34;&#34;&#34;
+    return role in self._roles</code></pre>
+</details>
+<div class="desc"><p>Check if device fulfills a specific role.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>role</code></strong> :&ensp;<code>DeviceRole[D]</code></dt>
+<dd>Role to check</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>bool</code></dt>
+<dd>True if device fulfills role</dd>
+</dl></div>
+</dd>
+<dt id="qscope.device.device.Device.is_connected"><code class="name flex">
+<span>def <span class="ident">is_connected</span></span>(<span>self) ‑> bool</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def is_connected(self) -&gt; bool:
+    raise NotImplementedError()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.device.Device.open"><code class="name flex">
+<span>def <span class="ident">open</span></span>(<span>self) ‑> tuple[bool, str]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def open(self) -&gt; tuple[bool, str]:
+    raise NotImplementedError()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.device.Device.unroll_metadata"><code class="name flex">
+<span>def <span class="ident">unroll_metadata</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def unroll_metadata(self):
+    # get all attributes in object and return as dict
+    return self.get_all_attrs()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<form>
+<input id="lunr-search" name="q" placeholder="🔎 Search ..." aria-label="Search"
+disabled minlength="2">
+</form>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.css" integrity="sha512-b+T2i3P45i1LZM7I00Ci5QquB9szqaxu+uuk5TUSGjZQ4w4n+qujQiIuvTv2BxE7WCGQCifNMksyKILDiHzsOg==" crossorigin>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.js" integrity="sha512-2B9/byNV1KKRm5nQ2RLViPFD6U4dUjDGwuW1GU+ImJh8YinPU9Zlq1GzdTMO+G2ROrB5o1qasJBy1ttYz0wCug==" crossorigin></script>
+<style>
+.modal-dialog iframe {
+width: 100vw;
+height: calc(100vh - 80px);
+}
+@media screen and (min-width: 700px) {
+.modal-dialog iframe {
+width: 70vw;
+height: 80vh;
+}
+}
+.modal-dialog .tingle-modal-box {width: auto;}
+.modal-dialog .tingle-modal-box__content {padding: 0;}
+</style>
+<script>
+const input = document.getElementById('lunr-search');
+input.disabled = false;
+input.form.addEventListener('submit', (ev) => {
+ev.preventDefault();
+const url = new URL(window.location);
+url.searchParams.set('q', input.value);
+history.replaceState({}, null, url.toString());
+search(input.value);
+});
+const query = new URL(window.location).searchParams.get('q');
+if (query)
+search(query);
+function search(query) {
+const url = '../../doc-search.html#' + encodeURIComponent(query);
+new tingle.modal({
+cssClass: ['modal-dialog'],
+onClose: () => {
+const url = new URL(window.location);
+url.searchParams.delete('q');
+history.replaceState({}, null, url.toString());
+setTimeout(() => input.focus(), 100);
+}
+}).setContent('<iframe src="' + url + '"></iframe>').open();
+}
+</script>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="qscope.device" href="index.html">qscope.device</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="qscope.device.device.Device" href="#qscope.device.device.Device">Device</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.device.device.Device.close" href="#qscope.device.device.Device.close">close</a></code></li>
+<li><code><a title="qscope.device.device.Device.get_all_attrs" href="#qscope.device.device.Device.get_all_attrs">get_all_attrs</a></code></li>
+<li><code><a title="qscope.device.device.Device.get_roles" href="#qscope.device.device.Device.get_roles">get_roles</a></code></li>
+<li><code><a title="qscope.device.device.Device.has_role" href="#qscope.device.device.Device.has_role">has_role</a></code></li>
+<li><code><a title="qscope.device.device.Device.is_connected" href="#qscope.device.device.Device.is_connected">is_connected</a></code></li>
+<li><code><a title="qscope.device.device.Device.open" href="#qscope.device.device.Device.open">open</a></code></li>
+<li><code><a title="qscope.device.device.Device.required_config" href="#qscope.device.device.Device.required_config">required_config</a></code></li>
+<li><code><a title="qscope.device.device.Device.unroll_metadata" href="#qscope.device.device.Device.unroll_metadata">unroll_metadata</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
+</footer>
+</body>
+</html>

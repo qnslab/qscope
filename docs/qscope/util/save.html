@@ -1,0 +1,578 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.6">
+<title>qscope.util.save API documentation</title>
+<meta name="description" content="Utilities for saving measurement data and results …">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}#lunr-search{width:100%;font-size:1em;padding:6px 9px 5px 9px;border:1px solid silver}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes: true } });</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML" integrity="sha256-kZafAc6mZvK3W3v1pHOcUix30OHQN6pU/NO2oFkqZVw=" crossorigin></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>qscope.util.save</code></h1>
+</header>
+<section id="section-intro">
+<p>Utilities for saving measurement data and results.</p>
+<p>This module provides functions for saving various types of measurement data,
+including sweeps, images, and time traces. It handles:</p>
+<ul>
+<li>Directory structure and organization</li>
+<li>File naming and numbering</li>
+<li>Data formats and serialization</li>
+<li>Plot generation and saving</li>
+<li>Metadata collection and storage</li>
+</ul>
+<h2 id="directory-structure">Directory Structure</h2>
+<p>Data is saved in a hierarchical structure:
+<save_dir>/<YYYY>/<YYYY-MM>/<YYYY-MM-DD>_<project_name>/</p>
+<h2 id="directory-selection-logic">Directory Selection Logic</h2>
+<ul>
+<li>Empty project_name: Always creates/uses directory for current day</li>
+<li>Named project: Reuses most recent matching directory to keep related measurements together</li>
+</ul>
+<h2 id="file-naming">File Naming</h2>
+<p>Files within directories use 4-digit counters (0000-9999):
+<counter>_<measurement_type>.<extension></p>
+<p>Example: 0001_mpl.json, 0002_snapshot.npy</p>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="qscope.util.save.get_command_string"><code class="name flex">
+<span>def <span class="ident">get_command_string</span></span>(<span>) ‑> str</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_command_string() -&gt; str:
+    &#34;&#34;&#34;Get the original command string that was used to run this script.
+    
+    Returns
+    -------
+    str
+        The full command string including all arguments
+    &#34;&#34;&#34;
+    return &#34; &#34;.join(sys.argv)</code></pre>
+</details>
+<div class="desc"><p>Get the original command string that was used to run this script.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>The full command string including all arguments</dd>
+</dl></div>
+</dd>
+<dt id="qscope.util.save.save_full_data"><code class="name flex">
+<span>def <span class="ident">save_full_data</span></span>(<span>system: System,<br>measurement: Measurement,<br>project_name: str,<br>notes: str = '',<br>norm_type: str = 'None') ‑> str</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def save_full_data(
+    system: System,
+    measurement: Measurement,
+    project_name: str,
+    notes: str = &#34;&#34;,
+    norm_type: str = &#34;None&#34;,
+) -&gt; str:
+    base_path = _get_base_path(system, project_name, measurement)
+
+    _save_notes(base_path, notes)
+    _save_metadata(system, measurement, base_path)
+    spec_path, data_path = _save_sweep(system, measurement, base_path)
+    image_path = _save_integrated_image(system, measurement, base_path)
+    _save_overview(
+        measurement_type=measurement.get_meas_type_name(),
+        base_path=base_path,
+        spec_path=spec_path,
+        image_path=image_path,
+        meas_params=measurement.get_config_dict(),
+    )
+    _save_rolling_avg(measurement, base_path, norm_type=norm_type)
+
+    data_path = _save_full_data(measurement, base_path)
+    return data_path</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.util.save.save_latest_stream"><code class="name flex">
+<span>def <span class="ident">save_latest_stream</span></span>(<span>system: System,<br>project_name: str,<br>stream_chunk: np.ndarray,<br>stream_ttrace: list[float],<br>color_map: str,<br>notes: str = '') ‑> str</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def save_latest_stream(
+    system: System,
+    project_name: str,
+    stream_chunk: np.ndarray,
+    stream_ttrace: list[float],
+    color_map: str,
+    notes: str = &#34;&#34;,
+) -&gt; str:
+    base_path = _get_base_path(system, project_name, &#34;stream&#34;)
+    _save_notes(base_path, notes)
+    with open(base_path + &#34;_metadata.json&#34;, &#34;w&#34;) as f:
+        metadata = system.get_metadata()
+        json.dump(
+            {
+                &#34;command&#34;: get_command_string(),
+                &#34;timestamp&#34;: datetime.now().isoformat(),
+                &#34;sys_metadata&#34;: metadata
+            },
+            f,
+            cls=NumpyEncoder,
+            indent=4,
+            allow_nan=True,
+        )
+    np.save(base_path + &#34;_streamm_chunk.npy&#34;, stream_chunk)
+    np.save(base_path + &#34;_stream_ttrace.npy&#34;, stream_ttrace)
+
+    if stream_chunk.ndim == 2:
+        fig, ax = plt.subplots(figsize=(8, 4))
+        plot = ax.imshow(stream_chunk, cmap=_get_colormap(color_map), 
+                         origin=&#34;upper&#34;
+                         )
+        # Add a colorbar
+        cbar = add_colorbar(
+            plot,
+            fig,
+            ax,
+            aspect=25,
+            orientation=&#34;horizontal&#34;,
+            location=&#34;top&#34;,
+        )
+        cbar.ax.tick_params(axis=&#34;x&#34;, labelsize=8, direction=&#34;in&#34;)
+        cbar.set_label(&#34;Intensity (cps)&#34;)
+
+        fig.savefig(base_path + &#34;_stream_chunk.png&#34;)
+    else:
+        fig, ax = plt.subplots(figsize=(8, 4))
+        ax.plot(stream_chunk)
+        ax.set_xlabel(&#34;Sample #&#34;)
+        ax.set_ylabel(&#34;PL (arb. units)&#34;)
+        fig.savefig(base_path + &#34;_stream_chunk.png&#34;)
+
+    fig, ax = plt.subplots(figsize=(8, 4))
+
+    # get the correct time for the ttrace (if we find camera)
+    # Find the camera in the metadata
+    cam_keys = [key for key in metadata.keys() if &#34;camera&#34; in key.lower()]
+    if cam_keys:
+        cam_key = cam_keys[0]
+        exp_time = metadata[cam_key][&#34;exposure_time&#34;]
+        x_time = np.arange(0, len(stream_ttrace)) * exp_time
+        ax.set_xlabel(&#34;Time (s)&#34;)
+    else:
+        x_time = np.arange(0, len(stream_ttrace))
+        ax.set_xlabel(&#34;Stream #&#34;)
+
+    ax.plot(x_time, stream_ttrace)
+    ax.set_ylabel(&#34;PL (arb. units)&#34;)
+    fig.savefig(base_path + &#34;_stream_ttrace.png&#34;)
+    return base_path</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.util.save.save_notes"><code class="name flex">
+<span>def <span class="ident">save_notes</span></span>(<span>system: System, project_name: str, notes: str) ‑> str</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def save_notes(system: System, project_name: str, notes: str) -&gt; str:
+    base_path = _get_base_path(system, project_name, &#34;notes&#34;)
+    _save_notes(base_path, notes)
+    # Add metadata with command string
+    with open(base_path + &#34;_metadata.json&#34;, &#34;w&#34;) as f:
+        json.dump(
+            {
+                &#34;command&#34;: get_command_string(),
+                &#34;timestamp&#34;: datetime.now().isoformat(),
+            },
+            f,
+            cls=NumpyEncoder,
+            indent=4,
+            allow_nan=True,
+        )
+    return base_path</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.util.save.save_snapshot"><code class="name flex">
+<span>def <span class="ident">save_snapshot</span></span>(<span>system: System, project_name: str, frame: np.ndarray, notes: str = '') ‑> str</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def save_snapshot(
+    system: System, project_name: str, frame: np.ndarray, notes: str = &#34;&#34;
+) -&gt; str:
+    base_path = _get_base_path(system, project_name, &#34;snapshot&#34;)
+    _save_notes(base_path, notes)
+    np.save(base_path + &#34;.npy&#34;, frame)
+    with open(base_path + &#34;_metadata.json&#34;, &#34;w&#34;) as f:
+        json.dump(
+            {
+                &#34;command&#34;: get_command_string(),
+                &#34;timestamp&#34;: datetime.now().isoformat(),
+                &#34;sys_metadata&#34;: system.get_metadata()
+            },
+            f,
+            cls=NumpyEncoder,
+            indent=4,
+            allow_nan=True,
+        )
+    return base_path + &#34;.npy&#34;</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.util.save.save_sweep"><code class="name flex">
+<span>def <span class="ident">save_sweep</span></span>(<span>system: System,<br>measurement: Measurement,<br>project_name: str,<br>notes: str = '',<br>norm_type: str = 'None') ‑> str</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def save_sweep(
+    system: System,
+    measurement: Measurement,
+    project_name: str,
+    notes: str = &#34;&#34;,
+    norm_type: str = &#34;None&#34;,
+) -&gt; str:
+    base_path = _get_base_path(system, project_name, measurement)
+    _save_notes(base_path, notes)
+    _save_metadata(system, measurement, base_path)
+    spec_path, data_path = _save_sweep(system, measurement, base_path)
+    image_path = _save_integrated_image(system, measurement, base_path)
+    _save_overview(
+        measurement_type=measurement.get_meas_type_name(),
+        base_path=base_path,
+        spec_path=spec_path,
+        image_path=image_path,
+        meas_params=measurement.get_config_dict(),
+    )
+    _save_rolling_avg(measurement, base_path, norm_type=norm_type)
+    return data_path</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.util.save.save_sweep_w_fit"><code class="name flex">
+<span>def <span class="ident">save_sweep_w_fit</span></span>(<span>system: System,<br>measurement: Measurement,<br>project_name: str,<br>x_data: typing.Sequence,<br>y_data: typing.Sequence,<br>x_fit: typing.Sequence,<br>y_fit: typing.Sequence,<br>fit_results: str = None,<br>color_map: str = 'gray',<br>notes: str = '',<br>norm_type: str = 'None') ‑> str</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def save_sweep_w_fit(
+    system: System,
+    measurement: Measurement,
+    project_name: str,
+    x_data: typing.Sequence,
+    y_data: typing.Sequence,
+    x_fit: typing.Sequence,
+    y_fit: typing.Sequence,
+    fit_results: str = None,
+    color_map: str = &#34;gray&#34;,
+    notes: str = &#34;&#34;,
+    norm_type: str = &#34;None&#34;,
+) -&gt; str:
+    base_path = _get_base_path(system, project_name, measurement)
+    _save_notes(base_path, notes)
+    _save_metadata(system, measurement, base_path)
+    spec_path = _save_sweep(system, measurement, base_path)
+    spec_fit_path = _save_sweep_w_fit(
+        system,
+        measurement,
+        base_path,
+        {&#34;x&#34;: x_data, &#34;y&#34;: y_data, &#34;x_fit&#34;: x_fit, &#34;y_fit&#34;: y_fit},
+    )
+    image_path = _save_integrated_image(
+        system, measurement, base_path, color_map=color_map
+    )
+    image_aoi_path = _save_aoi_integrated_image(
+        system, measurement, base_path, color_map=color_map
+    )
+    _save_overview(
+        measurement_type=measurement.get_meas_type_name(),
+        base_path=base_path,
+        spec_path=spec_path[0],
+        spec_fit_path=spec_fit_path,
+        image_path=image_path,
+        image_aoi_path=image_aoi_path,
+        meas_params=measurement.get_config_dict(),
+        fit_results=fit_results,
+    )
+    _save_rolling_avg(measurement, base_path, norm_type=norm_type)
+
+    return base_path</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="qscope.util.save.NumpyEncoder"><code class="flex name class">
+<span>class <span class="ident">NumpyEncoder</span></span>
+<span>(</span><span>skipkeys=False,<br>ensure_ascii=True,<br>check_circular=True,<br>allow_nan=False,<br>sort_keys=False,<br>indent=None,<br>separators=None,<br>encoding='utf-8',<br>default=None,<br>use_decimal=True,<br>namedtuple_as_object=True,<br>tuple_as_array=True,<br>bigint_as_string=False,<br>item_sort_key=None,<br>for_json=False,<br>ignore_nan=False,<br>int_as_string_bitcount=None,<br>iterable_as_array=False)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class NumpyEncoder(json.JSONEncoder):
+    &#34;&#34;&#34;Special json encoder for numpy types&#34;&#34;&#34;
+
+    # o = an object to be encoded
+    def default(self, o):
+        if isinstance(o, np.integer):
+            return int(o)
+        if isinstance(o, np.floating):
+            return float(o)
+        if isinstance(o, np.ndarray):
+            return o.tolist()
+        return json.JSONEncoder.default(self, o)</code></pre>
+</details>
+<div class="desc"><p>Special json encoder for numpy types</p>
+<p>Constructor for JSONEncoder, with sensible defaults.</p>
+<p>If skipkeys is false, then it is a TypeError to attempt
+encoding of keys that are not str, int, long, float or None.
+If
+skipkeys is True, such items are simply skipped.</p>
+<p>If ensure_ascii is true, the output is guaranteed to be str
+objects with all incoming unicode characters escaped.
+If
+ensure_ascii is false, the output will be unicode object.</p>
+<p>If check_circular is true, then lists, dicts, and custom encoded
+objects will be checked for circular references during encoding to
+prevent an infinite recursion (which would cause an OverflowError).
+Otherwise, no such check takes place.</p>
+<p>If allow_nan is true (default: False), then out of range float
+values (nan, inf, -inf) will be serialized to
+their JavaScript equivalents (NaN, Infinity, -Infinity)
+instead of raising a ValueError. See
+ignore_nan for ECMA-262 compliant behavior.</p>
+<p>If sort_keys is true, then the output of dictionaries will be
+sorted by key; this is useful for regression tests to ensure
+that JSON serializations can be compared on a day-to-day basis.</p>
+<p>If indent is a string, then JSON array elements and object members
+will be pretty-printed with a newline followed by that string repeated
+for each level of nesting. <code>None</code> (the default) selects the most compact
+representation without any newlines. For backwards compatibility with
+versions of simplejson earlier than 2.1.0, an integer is also accepted
+and is converted to a string with that many spaces.</p>
+<p>If specified, separators should be an (item_separator, key_separator)
+tuple.
+The default is (', ', ': ') if <em>indent</em> is <code>None</code> and
+(',', ': ') otherwise.
+To get the most compact JSON representation,
+you should specify (',', ':') to eliminate whitespace.</p>
+<p>If specified, default is a function that gets called for objects
+that can't otherwise be serialized.
+It should return a JSON encodable
+version of the object or raise a <code>TypeError</code>.</p>
+<p>If encoding is not None, then all input strings will be
+transformed into unicode using that encoding prior to JSON-encoding.
+The default is UTF-8.</p>
+<p>If use_decimal is true (default: <code>True</code>), <code>decimal.Decimal</code> will
+be supported directly by the encoder. For the inverse, decode JSON
+with <code>parse_float=decimal.Decimal</code>.</p>
+<p>If namedtuple_as_object is true (the default), objects with
+<code>_asdict()</code> methods will be encoded as JSON objects.</p>
+<p>If tuple_as_array is true (the default), tuple (and subclasses) will
+be encoded as JSON arrays.</p>
+<p>If <em>iterable_as_array</em> is true (default: <code>False</code>),
+any object not in the above table that implements <code>__iter__()</code>
+will be encoded as a JSON array.</p>
+<p>If bigint_as_string is true (not the default), ints 2<strong>53 and higher
+or lower than -2</strong>53 will be encoded as strings. This is to avoid the
+rounding that happens in Javascript otherwise.</p>
+<p>If int_as_string_bitcount is a positive number (n), then int of size
+greater than or equal to 2<strong>n or lower than or equal to -2</strong>n will be
+encoded as strings.</p>
+<p>If specified, item_sort_key is a callable used to sort the items in
+each dictionary. This is useful if you want to sort items other than
+in alphabetical order by key.</p>
+<p>If for_json is true (not the default), objects with a <code>for_json()</code>
+method will use the return value of that method for encoding as JSON
+instead of the object.</p>
+<p>If <em>ignore_nan</em> is true (default: <code>False</code>), then out of range
+:class:<code>float</code> values (<code>nan</code>, <code>inf</code>, <code>-inf</code>) will be serialized
+as <code>null</code> in compliance with the ECMA-262 specification. If true,
+this will override <em>allow_nan</em>.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>simplejson.encoder.JSONEncoder</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.util.save.NumpyEncoder.default"><code class="name flex">
+<span>def <span class="ident">default</span></span>(<span>self, o)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def default(self, o):
+    if isinstance(o, np.integer):
+        return int(o)
+    if isinstance(o, np.floating):
+        return float(o)
+    if isinstance(o, np.ndarray):
+        return o.tolist()
+    return json.JSONEncoder.default(self, o)</code></pre>
+</details>
+<div class="desc"><p>Implement this method in a subclass such that it returns
+a serializable object for <code>o</code>, or calls the base implementation
+(to raise a <code>TypeError</code>).</p>
+<p>For example, to support arbitrary iterators, you could
+implement default like this::</p>
+<pre><code>def default(self, o):
+    try:
+        iterable = iter(o)
+    except TypeError:
+        pass
+    else:
+        return list(iterable)
+    return JSONEncoder.default(self, o)
+</code></pre></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<form>
+<input id="lunr-search" name="q" placeholder="🔎 Search ..." aria-label="Search"
+disabled minlength="2">
+</form>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.css" integrity="sha512-b+T2i3P45i1LZM7I00Ci5QquB9szqaxu+uuk5TUSGjZQ4w4n+qujQiIuvTv2BxE7WCGQCifNMksyKILDiHzsOg==" crossorigin>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.js" integrity="sha512-2B9/byNV1KKRm5nQ2RLViPFD6U4dUjDGwuW1GU+ImJh8YinPU9Zlq1GzdTMO+G2ROrB5o1qasJBy1ttYz0wCug==" crossorigin></script>
+<style>
+.modal-dialog iframe {
+width: 100vw;
+height: calc(100vh - 80px);
+}
+@media screen and (min-width: 700px) {
+.modal-dialog iframe {
+width: 70vw;
+height: 80vh;
+}
+}
+.modal-dialog .tingle-modal-box {width: auto;}
+.modal-dialog .tingle-modal-box__content {padding: 0;}
+</style>
+<script>
+const input = document.getElementById('lunr-search');
+input.disabled = false;
+input.form.addEventListener('submit', (ev) => {
+ev.preventDefault();
+const url = new URL(window.location);
+url.searchParams.set('q', input.value);
+history.replaceState({}, null, url.toString());
+search(input.value);
+});
+const query = new URL(window.location).searchParams.get('q');
+if (query)
+search(query);
+function search(query) {
+const url = '../../doc-search.html#' + encodeURIComponent(query);
+new tingle.modal({
+cssClass: ['modal-dialog'],
+onClose: () => {
+const url = new URL(window.location);
+url.searchParams.delete('q');
+history.replaceState({}, null, url.toString());
+setTimeout(() => input.focus(), 100);
+}
+}).setContent('<iframe src="' + url + '"></iframe>').open();
+}
+</script>
+<div class="toc">
+<ul>
+<li><a href="#directory-structure">Directory Structure</a></li>
+<li><a href="#directory-selection-logic">Directory Selection Logic</a></li>
+<li><a href="#file-naming">File Naming</a></li>
+</ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="qscope.util" href="index.html">qscope.util</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="two-column">
+<li><code><a title="qscope.util.save.get_command_string" href="#qscope.util.save.get_command_string">get_command_string</a></code></li>
+<li><code><a title="qscope.util.save.save_full_data" href="#qscope.util.save.save_full_data">save_full_data</a></code></li>
+<li><code><a title="qscope.util.save.save_latest_stream" href="#qscope.util.save.save_latest_stream">save_latest_stream</a></code></li>
+<li><code><a title="qscope.util.save.save_notes" href="#qscope.util.save.save_notes">save_notes</a></code></li>
+<li><code><a title="qscope.util.save.save_snapshot" href="#qscope.util.save.save_snapshot">save_snapshot</a></code></li>
+<li><code><a title="qscope.util.save.save_sweep" href="#qscope.util.save.save_sweep">save_sweep</a></code></li>
+<li><code><a title="qscope.util.save.save_sweep_w_fit" href="#qscope.util.save.save_sweep_w_fit">save_sweep_w_fit</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="qscope.util.save.NumpyEncoder" href="#qscope.util.save.NumpyEncoder">NumpyEncoder</a></code></h4>
+<ul class="">
+<li><code><a title="qscope.util.save.NumpyEncoder.default" href="#qscope.util.save.NumpyEncoder.default">default</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
+</footer>
+</body>
+</html>

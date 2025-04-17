@@ -1,0 +1,1871 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.6">
+<title>qscope.server API documentation</title>
+<meta name="description" content="Server-client communication module for Qscope …">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}#lunr-search{width:100%;font-size:1em;padding:6px 9px 5px 9px;border:1px solid silver}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes: true } });</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML" integrity="sha256-kZafAc6mZvK3W3v1pHOcUix30OHQN6pU/NO2oFkqZVw=" crossorigin></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>qscope.server</code></h1>
+</header>
+<section id="section-intro">
+<p>Server-client communication module for Qscope.</p>
+<p>This module provides the infrastructure for client-server communication,
+allowing multiple clients to connect to a server that manages hardware
+and measurements. It includes functions for starting and stopping servers,
+connecting clients, and sending commands.</p>
+<p>The server runs in a separate process from clients, which can be scripts
+or GUI applications. Communication uses ZeroMQ sockets for reliable
+message passing.</p>
+<h2 id="examples">Examples</h2>
+<p>Starting a server and connecting:</p>
+<pre><code class="language-python">from qscope.server import ConnectionManager
+manager = ConnectionManager()
+manager.start_local_server(&quot;mock&quot;)
+manager.connect()
+manager.startup()  # Initialize hardware
+</code></pre>
+<p>Sending commands to the server:</p>
+<pre><code class="language-python">manager.camera_start_video()
+manager.add_measurement(config)
+manager.start_measurement_wait(meas_id)
+</code></pre>
+<h2 id="see-also">See Also</h2>
+<dl>
+<dt><code><a title="qscope.server.client" href="client.html">qscope.server.client</a></code></dt>
+<dd>Client-side communication functions</dd>
+<dt><code><a title="qscope.server.server" href="server.html">qscope.server.server</a></code></dt>
+<dd>Server implementation</dd>
+<dt><code><a title="qscope.server.connection_manager" href="connection_manager.html">qscope.server.connection_manager</a></code></dt>
+<dd>Connection management class</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-submodules">Sub-modules</h2>
+<dl>
+<dt><code class="name"><a title="qscope.server.bg_killer" href="bg_killer.html">qscope.server.bg_killer</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="qscope.server.client" href="client.html">qscope.server.client</a></code></dt>
+<dd>
+<div class="desc"><p>Client implementation of the client-server interface …</p></div>
+</dd>
+<dt><code class="name"><a title="qscope.server.connection_manager" href="connection_manager.html">qscope.server.connection_manager</a></code></dt>
+<dd>
+<div class="desc"><p>Connection manager for client-side server connections …</p></div>
+</dd>
+<dt><code class="name"><a title="qscope.server.gen_cm_methods" href="gen_cm_methods.html">qscope.server.gen_cm_methods</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="qscope.server.server" href="server.html">qscope.server.server</a></code></dt>
+<dd>
+<div class="desc"><p>Server implementation of the client-server interface …</p></div>
+</dd>
+<dt><code class="name"><a title="qscope.server.server_script" href="server_script.html">qscope.server.server_script</a></code></dt>
+<dd>
+<div class="desc"><p>TODO</p></div>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="qscope.server.add_measurement"><code class="name flex">
+<span>def <span class="ident">add_measurement</span></span>(<span>client_connection: ClientConnection,<br>meas_config: MeasurementConfig,<br>request_retries: int = 3)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@command(CONSTS.MEAS.ADD, response_type=MsgResponse | ErrorResponse)
+def add_measurement(
+    client_connection: ClientConnection,
+    meas_config: MeasurementConfig,
+    request_retries: int = DEFAULT_RETRIES,
+):
+    calls: qscope.server.server.handle_add_measurement  # just for code navigation
+    # logger.warning(&#34;{{{ meas_config.to_dict(): &#34; + str(meas_config.to_dict()))
+    resp = _send_request(
+        client_connection,
+        Request(
+            CONSTS.MEAS.ADD,
+            meas_config.to_dict(),
+        ),
+        request_retries,
+    )
+    logger.info(
+        &#34;Measurement {} ({}) added.&#34;, meas_config.__class__.__name__, resp.value
+    )
+    return resp.value  # return meas_id</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.server.camera_get_frame_shape"><code class="name flex">
+<span>def <span class="ident">camera_get_frame_shape</span></span>(<span>client_connection: ClientConnection, request_retries: int = 3) ‑> tuple[int, int]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@command(CONSTS.CAM.GET_FRAME_SHAPE, response_type=Shape2DResponse | ErrorResponse)
+def camera_get_frame_shape(
+    client_connection: ClientConnection,
+    request_retries: int = DEFAULT_RETRIES,
+) -&gt; tuple[int, int]:
+    calls: qscope.server.server.handle_get_frame_shape  # just for code navigation
+    request = Request(CONSTS.CAM.GET_FRAME_SHAPE)
+    resp = _send_request(client_connection, request, request_retries)
+    return resp.value</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.server.camera_set_params"><code class="name flex">
+<span>def <span class="ident">camera_set_params</span></span>(<span>client_connection: ClientConnection,<br>exp_t: float,<br>image_size: tuple[int, int],<br>binning: tuple[int, int],<br>request_retries: int = 3)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@command(CONSTS.CAM.SET_CAMERA_PARAMS, response_type=MsgResponse | ErrorResponse)
+def camera_set_params(
+    client_connection: ClientConnection,
+    exp_t: float,
+    image_size: tuple[int, int],
+    binning: tuple[int, int],
+    request_retries: int = DEFAULT_RETRIES,
+):
+    calls: qscope.server.server.handle_set_camera_params  # just for code navigation
+    request = Request(
+        CONSTS.CAM.SET_CAMERA_PARAMS,
+        {
+            &#34;exp_t&#34;: exp_t,
+            &#34;image_size&#34;: image_size,
+            &#34;binning&#34;: binning,
+        },
+    )
+    logger.debug(request)
+    return _send_request(client_connection, request, request_retries)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.server.camera_start_video"><code class="name flex">
+<span>def <span class="ident">camera_start_video</span></span>(<span>client_connection: ClientConnection, request_retries: int = 3)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@command(CONSTS.CAM.START_VIDEO, response_type=MsgResponse | ErrorResponse)
+def camera_start_video(
+    client_connection: ClientConnection,
+    request_retries: int = DEFAULT_RETRIES,
+):
+    calls: qscope.server.server.handle_start_video  # just for code navigation
+    request = Request(CONSTS.CAM.START_VIDEO)
+    resp = _send_request(client_connection, request, request_retries)
+    return resp</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.server.camera_stop_video"><code class="name flex">
+<span>def <span class="ident">camera_stop_video</span></span>(<span>client_connection: ClientConnection, request_retries: int = 3)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@command(CONSTS.CAM.STOP_VIDEO, response_type=MsgResponse | ErrorResponse)
+def camera_stop_video(
+    client_connection: ClientConnection,
+    request_retries: int = DEFAULT_RETRIES,
+):
+    calls: qscope.server.server.handle_stop_video  # just for code navigation
+    request = Request(CONSTS.CAM.STOP_VIDEO)
+    resp = _send_request(client_connection, request, request_retries)
+    return resp</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.server.camera_take_snapshot"><code class="name flex">
+<span>def <span class="ident">camera_take_snapshot</span></span>(<span>client_connection: ClientConnection, request_retries: int = 3) ‑> numpy.ndarray</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@command(CONSTS.CAM.TAKE_SNAPSHOT, response_type=ArrayResponse | ErrorResponse)
+def camera_take_snapshot(
+    client_connection: ClientConnection, request_retries: int = DEFAULT_RETRIES
+) -&gt; np.ndarray:
+    calls: qscope.server.server.handle_take_snapshot  # just for code navigation
+    request = Request(CONSTS.CAM.TAKE_SNAPSHOT)
+    resp = _send_request(client_connection, request, request_retries)
+    return resp.value</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.server.clean_queue"><code class="name flex">
+<span>def <span class="ident">clean_queue</span></span>(<span>qu: asyncio.Queue)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def clean_queue(qu: asyncio.Queue):
+    while not qu.empty():
+        try:
+            qu.get_nowait()
+        except asyncio.QueueEmpty:
+            break</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.server.close_bg"><code class="name flex">
+<span>def <span class="ident">close_bg</span></span>(<span>proc: subprocess.Popen, client_connection: ClientConnection)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def close_bg(proc: subprocess.Popen, client_connection: ClientConnection):
+    shutdown_server(client_connection)
+    kill_bg_server(proc)
+    close_connection(client_connection)
+    shutdown_client_log()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.server.close_connection"><code class="name flex">
+<span>def <span class="ident">close_connection</span></span>(<span>client_connection: ClientConnection)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def close_connection(client_connection: ClientConnection):
+    &#34;&#34;&#34;Close the connection to the server.
+
+    Arguments
+    ---------
+    client_connection : ClientConnection
+        The connection object to close.
+    &#34;&#34;&#34;
+    logger.info(&#34;Closing connection.&#34;)
+    for socket in [
+        client_connection.msg_socket,
+        client_connection.notif_socket,
+        client_connection.stream_socket,
+    ]:
+        if isinstance(socket, zmq.Socket):
+            try:
+                socket.setsockopt(zmq.LINGER, 0)
+                socket.close()
+            except zmq.ZMQError as e:
+                logger.debug(f&#34;Error closing socket: {e}&#34;)
+    
+    # Also terminate the ZMQ context to ensure clean shutdown
+    try:
+        if hasattr(client_connection, &#39;context&#39;) and client_connection.context:
+            client_connection.context.term()
+    except Exception as e:
+        logger.debug(f&#34;Error terminating ZMQ context: {e}&#34;)</code></pre>
+</details>
+<div class="desc"><p>Close the connection to the server.</p>
+<h2 id="arguments">Arguments</h2>
+<dl>
+<dt><strong><code>client_connection</code></strong> :&ensp;<code>ClientConnection</code></dt>
+<dd>The connection object to close.</dd>
+</dl></div>
+</dd>
+<dt id="qscope.server.close_measurement_nowait"><code class="name flex">
+<span>def <span class="ident">close_measurement_nowait</span></span>(<span>client_connection: ClientConnection, meas_id: str, request_retries: int = 3) ‑> <a title="qscope.types.messages.Response" href="../types/messages.html#qscope.types.messages.Response">Response</a></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@command(
+    CONSTS.MEAS.CLOSE, response_type=MsgResponse | PleaseWaitResponse | ErrorResponse
+)
+def close_measurement_nowait(
+    client_connection: ClientConnection,
+    meas_id: str,
+    request_retries: int = DEFAULT_RETRIES,
+) -&gt; Response:
+    calls: qscope.server.server.handle_close_measurement  # just for code navigation
+    # this may raise a PleaseWaitResponse, see close_measurement_wait
+    resp = _send_request(
+        client_connection,
+        Request(CONSTS.MEAS.CLOSE, {&#34;meas_id&#34;: meas_id}),
+        request_retries,
+    )
+    return resp</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.server.close_measurement_wait"><code class="name flex">
+<span>def <span class="ident">close_measurement_wait</span></span>(<span>client_connection: ClientConnection,<br>meas_id: str,<br>request_retries: int = 3,<br>timeout: float = 5)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@command(
+    CONSTS.MEAS.CLOSE, response_type=MsgResponse | PleaseWaitResponse | ErrorResponse
+)
+def close_measurement_wait(
+    client_connection: ClientConnection,
+    meas_id: str,
+    request_retries: int = DEFAULT_RETRIES,
+    timeout: float = DEFAULT_TIMEOUT,
+):
+    calls: qscope.server.server.handle_close_measurement  # just for code navigation
+    start = time.time()
+    while time.time() - start &lt; timeout:
+        resp = close_measurement_nowait(client_connection, meas_id, request_retries)
+        if isinstance(resp, PleaseWaitResponse):
+            time.sleep(0.1)
+        elif isinstance(resp, MsgResponse):
+            return resp
+    raise TimeoutError(&#34;Close measurement timed out.&#34;)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.server.echo"><code class="name flex">
+<span>def <span class="ident">echo</span></span>(<span>client_connection: ClientConnection, msg: str, request_retries: int = 3) ‑> str</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@command(CONSTS.COMMS.ECHO, response_type=MsgResponse | ErrorResponse)
+def echo(
+    client_connection: ClientConnection,
+    msg: str,
+    request_retries: int = DEFAULT_RETRIES,
+) -&gt; str:
+    &#34;&#34;&#34;Echo a message through the server.&#34;&#34;&#34;
+    calls: qscope.server.server.handle_echo
+    resp = _send_request(
+        client_connection, Request(CONSTS.COMMS.ECHO, {&#34;msg&#34;: msg}), request_retries
+    )
+    return resp.value</code></pre>
+</details>
+<div class="desc"><p>Echo a message through the server.</p></div>
+</dd>
+<dt id="qscope.server.get_all_meas_info"><code class="name flex">
+<span>def <span class="ident">get_all_meas_info</span></span>(<span>client_connection: ClientConnection, request_retries: int = 3) ‑> dict</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@command(CONSTS.COMMS.GET_ALL_MEAS_INFO, response_type=DictResponse | ErrorResponse)
+def get_all_meas_info(
+    client_connection: ClientConnection, request_retries: int = DEFAULT_RETRIES
+) -&gt; dict:
+    &#34;&#34;&#34;Get info about all measurements.&#34;&#34;&#34;
+    calls: qscope.server.server.handle_get_all_meas_info
+    resp = _send_request(
+        client_connection, Request(CONSTS.COMMS.GET_ALL_MEAS_INFO), request_retries
+    )
+    # may want to handle dict -&gt; MeasurementConfig here? Key is &#34;meas_config&#34;
+    return resp.value</code></pre>
+</details>
+<div class="desc"><p>Get info about all measurements.</p></div>
+</dd>
+<dt id="qscope.server.get_server_log_path"><code class="name flex">
+<span>def <span class="ident">get_server_log_path</span></span>(<span>client_connection: ClientConnection, request_retries: int = 3) ‑> str</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@command(CONSTS.COMMS.GET_SERVER_LOG_PATH, response_type=ValueResponse | ErrorResponse)
+def get_server_log_path(
+    client_connection: ClientConnection, request_retries: int = DEFAULT_RETRIES
+) -&gt; str:
+    &#34;&#34;&#34;Get the server&#39;s log file path.
+
+    Parameters
+    ----------
+    client_connection : ClientConnection
+        The connection to the server
+    request_retries : int, optional
+        Number of retry attempts, by default DEFAULT_RETRIES
+
+    Returns
+    -------
+    str
+        Path to the server&#39;s log file
+    &#34;&#34;&#34;
+    calls: qscope.server.server.handle_get_server_log_path
+    resp = _send_request(
+        client_connection, Request(CONSTS.COMMS.GET_SERVER_LOG_PATH), request_retries
+    )
+    logger.info(&#34;Server log path: {}&#34;, resp.value)
+    return resp.value</code></pre>
+</details>
+<div class="desc"><p>Get the server's log file path.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>client_connection</code></strong> :&ensp;<code>ClientConnection</code></dt>
+<dd>The connection to the server</dd>
+<dt><strong><code>request_retries</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>Number of retry attempts, by default DEFAULT_RETRIES</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>Path to the server's log file</dd>
+</dl></div>
+</dd>
+<dt id="qscope.server.kill_bg_server"><code class="name flex">
+<span>def <span class="ident">kill_bg_server</span></span>(<span>proc: subprocess.Popen)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def kill_bg_server(proc: subprocess.Popen):
+    &#34;&#34;&#34;Kill a background server process.
+
+    Parameters
+    ----------
+    proc : subprocess.Popen
+        The server process handle to kill
+
+    Raises
+    ------
+    ProcessLookupError
+        If the process no longer exists
+    PermissionError
+        If the current user lacks permission to kill the process
+    subprocess.SubprocessError
+        If there are issues communicating with the subprocess
+    UnicodeDecodeError
+        If the process output cannot be decoded as UTF-8
+
+    Notes
+    -----
+    The process is forcefully terminated
+    and its stdout/stderr are captured and logged.
+    &#34;&#34;&#34;
+    logger.info(&#34;Killing server process.&#34;)
+    pid = proc.pid
+    proc.kill()
+    outs, errs = proc.communicate()
+    outs = outs.decode(&#34;utf-8&#34;)
+    errs = errs.decode(&#34;utf-8&#34;)
+    if outs:
+        logger.info(&#34;#======= Server killed, outs: =======#&#34;)
+        logger.info(outs)
+    if errs:
+        logger.error(&#34;#======= Server killed, errs: =======#&#34;)
+        logger.error(errs)
+        logger.error(&#34;PID = {}&#34;, pid)</code></pre>
+</details>
+<div class="desc"><p>Kill a background server process.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>proc</code></strong> :&ensp;<code>subprocess.Popen</code></dt>
+<dd>The server process handle to kill</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>ProcessLookupError</code></dt>
+<dd>If the process no longer exists</dd>
+<dt><code>PermissionError</code></dt>
+<dd>If the current user lacks permission to kill the process</dd>
+<dt><code>subprocess.SubprocessError</code></dt>
+<dd>If there are issues communicating with the subprocess</dd>
+<dt><code>UnicodeDecodeError</code></dt>
+<dd>If the process output cannot be decoded as UTF-8</dd>
+</dl>
+<h2 id="notes">Notes</h2>
+<p>The process is forcefully terminated
+and its stdout/stderr are captured and logged.</p></div>
+</dd>
+<dt id="qscope.server.measurement_get_frame"><code class="name flex">
+<span>def <span class="ident">measurement_get_frame</span></span>(<span>client_connection: ClientConnection,<br>meas_id: str,<br>frame_type: str = 'sig',<br>frame_num: int = 2,<br>request_retries: int = 3) ‑> numpy.ndarray</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@command(CONSTS.MEAS.GET_FRAME, response_type=ArrayResponse | ErrorResponse)
+def measurement_get_frame(
+    client_connection: ClientConnection,
+    meas_id: str,
+    frame_type: str = &#34;sig&#34;,
+    frame_num: int = 2,
+    request_retries: int = DEFAULT_RETRIES,
+) -&gt; np.ndarray:
+    calls: qscope.server.server.handle_get_frame_measurement  # just for code navigation
+    resp = _send_request(
+        client_connection,
+        Request(
+            CONSTS.MEAS.GET_FRAME,
+            {&#34;meas_id&#34;: meas_id, &#34;frame_type&#34;: frame_type, &#34;frame_num&#34;: frame_num},
+        ),
+        request_retries,
+    )
+    return resp.value</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.server.measurement_get_frame_shape"><code class="name flex">
+<span>def <span class="ident">measurement_get_frame_shape</span></span>(<span>client_connection: ClientConnection, request_retries: int = 3) ‑> tuple[int, int]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@command(CONSTS.MEAS.GET_FRAME, response_type=ArrayResponse | ErrorResponse)
+def measurement_get_frame_shape(
+    client_connection: ClientConnection,
+    request_retries: int = DEFAULT_RETRIES,
+) -&gt; tuple[int, int]:
+    calls: qscope.server.server.handle_get_frame_measurement  # just for code navigation
+    request = Request(CONSTS.MEAS.GET_FRAME_SHAPE)
+    resp = _send_request(client_connection, request, request_retries)
+    return resp.value.shape  # NOTE is this correct?</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.server.measurement_get_info"><code class="name flex">
+<span>def <span class="ident">measurement_get_info</span></span>(<span>client_connection: ClientConnection, meas_id: str, request_retries: int = 3) ‑> dict</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@command(CONSTS.MEAS.GET_INFO, response_type=DictResponse | ErrorResponse)
+def measurement_get_info(
+    client_connection: ClientConnection,
+    meas_id: str,
+    request_retries: int = DEFAULT_RETRIES,
+) -&gt; dict:
+    calls: qscope.server.server.handle_get_meas_info  # just for code navigation
+    resp = _send_request(
+        client_connection,
+        Request(CONSTS.MEAS.GET_INFO, {&#34;meas_id&#34;: meas_id}),
+        request_retries,
+    )
+    return resp.value</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.server.measurement_get_state"><code class="name flex">
+<span>def <span class="ident">measurement_get_state</span></span>(<span>client_connection: ClientConnection, meas_id: str, request_retries: int = 3) ‑> str</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@command(CONSTS.MEAS.GET_STATE, response_type=MsgResponse | ErrorResponse)
+def measurement_get_state(
+    client_connection: ClientConnection,
+    meas_id: str,
+    request_retries: int = DEFAULT_RETRIES,
+) -&gt; str:
+    calls: qscope.server.server.handle_get_measurement_state  # just for code navigation
+    resp = _send_request(
+        client_connection,
+        Request(CONSTS.MEAS.GET_STATE, {&#34;meas_id&#34;: meas_id}),
+        request_retries,
+    )
+    return resp.value</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.server.measurement_get_sweep"><code class="name flex">
+<span>def <span class="ident">measurement_get_sweep</span></span>(<span>client_connection: ClientConnection, meas_id: str, request_retries: int = 3) ‑> numpy.ndarray</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@command(CONSTS.MEAS.GET_SWEEP)
+def measurement_get_sweep(
+    client_connection: ClientConnection,
+    meas_id: str,
+    request_retries: int = DEFAULT_RETRIES,
+) -&gt; np.ndarray:
+    calls: qscope.server.server.handle_get_sweep_measurement  # just for code navigation
+    resp = _send_request(
+        client_connection,
+        Request(CONSTS.MEAS.GET_SWEEP, {&#34;meas_id&#34;: meas_id}),
+        request_retries,
+    )
+    return resp.value</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.server.measurement_is_stopped"><code class="name flex">
+<span>def <span class="ident">measurement_is_stopped</span></span>(<span>client_connection: ClientConnection, meas_id: str, request_retries: int = 3) ‑> bool</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@command(CONSTS.MEAS.GET_STATE, response_type=MsgResponse | ErrorResponse)
+def measurement_is_stopped(
+    client_connection: ClientConnection,
+    meas_id: str,
+    request_retries: int = DEFAULT_RETRIES,
+) -&gt; bool:
+    &#34;&#34;&#34;Check if a measurement is stopped.&#34;&#34;&#34;
+    calls: qscope.server.server.handle_get_measurement_state
+    resp = _send_request(
+        client_connection,
+        Request(CONSTS.MEAS.GET_STATE, {&#34;meas_id&#34;: meas_id}),
+        request_retries,
+    )
+    return resp.value not in [MEAS_STATE.RUNNING, MEAS_STATE.PAUSED]</code></pre>
+</details>
+<div class="desc"><p>Check if a measurement is stopped.</p></div>
+</dd>
+<dt id="qscope.server.measurement_save_full_data"><code class="name flex">
+<span>def <span class="ident">measurement_save_full_data</span></span>(<span>client_connection: ClientConnection,<br>meas_id: str,<br>project_name: str,<br>notes: str = '',<br>request_retries: int = 3)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@command(CONSTS.MEAS.SAVE_FULL_DATA, response_type=MsgResponse | ErrorResponse)
+def measurement_save_full_data(
+    client_connection: ClientConnection,
+    meas_id: str,
+    project_name: str,
+    notes: str = &#34;&#34;,
+    request_retries: int = DEFAULT_RETRIES,
+):
+    &#34;&#34;&#34;Request server to save full measurement data.
+
+    Server will start an async task to monitor measurement state and save when ready.
+    Listen for SaveFullComplete to know when save is complete.
+    &#34;&#34;&#34;
+    calls: (
+        qscope.server.server.handle_save_full_data_measurement
+    )  # just for code navigation
+    resp = _send_request(
+        client_connection,
+        Request(
+            CONSTS.MEAS.SAVE_FULL_DATA,
+            {&#34;meas_id&#34;: meas_id, &#34;project_name&#34;: project_name, &#34;notes&#34;: notes},
+        ),
+        request_retries,
+    )
+    return resp.value</code></pre>
+</details>
+<div class="desc"><p>Request server to save full measurement data.</p>
+<p>Server will start an async task to monitor measurement state and save when ready.
+Listen for SaveFullComplete to know when save is complete.</p></div>
+</dd>
+<dt id="qscope.server.measurement_save_sweep"><code class="name flex">
+<span>def <span class="ident">measurement_save_sweep</span></span>(<span>client_connection: ClientConnection,<br>meas_id: str,<br>project_name: str,<br>notes: str = '',<br>request_retries: int = 3)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@command(CONSTS.MEAS.SAVE_SWEEP, response_type=MsgResponse | ErrorResponse)
+def measurement_save_sweep(
+    client_connection: ClientConnection,
+    meas_id: str,
+    project_name: str,
+    notes: str = &#34;&#34;,
+    request_retries: int = DEFAULT_RETRIES,
+):
+    calls: qscope.server.server.handle_save_sweep_measurement
+
+    resp = _send_request(
+        client_connection,
+        Request(
+            CONSTS.MEAS.SAVE_SWEEP,
+            {&#34;meas_id&#34;: meas_id, &#34;project_name&#34;: project_name, &#34;notes&#34;: notes},
+        ),
+        request_retries,
+    )
+    return resp.value</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.server.measurement_save_sweep_w_fit"><code class="name flex">
+<span>def <span class="ident">measurement_save_sweep_w_fit</span></span>(<span>client_connection: ClientConnection,<br>meas_id: str,<br>project_name: str,<br>xdata: np.ndarray,<br>ydata: np.ndarray,<br>xfit: np.ndarray,<br>yfit: np.ndarray,<br>fit_results: str,<br>color_map: str = 'gray',<br>notes: str = '',<br>request_retries: int = 3)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@command(CONSTS.MEAS.SAVE_SWEEP_W_FIT, response_type=MsgResponse | ErrorResponse)
+def measurement_save_sweep_w_fit(
+    client_connection: ClientConnection,
+    meas_id: str,
+    project_name: str,
+    xdata: np.ndarray,
+    ydata: np.ndarray,
+    xfit: np.ndarray,
+    yfit: np.ndarray,
+    fit_results: str,
+    color_map: str = &#34;gray&#34;,
+    notes: str = &#34;&#34;,
+    request_retries: int = DEFAULT_RETRIES,
+):
+    calls: (
+        qscope.server.server.handle_save_sweep_w_fit_measurement
+    )  # just for code navigation
+    resp = _send_request(
+        client_connection,
+        Request(
+            CONSTS.MEAS.SAVE_SWEEP_W_FIT,
+            # FIXME change from dict to dataclass
+            {
+                &#34;meas_id&#34;: meas_id,
+                &#34;project_name&#34;: project_name,
+                &#34;xdata&#34;: xdata,
+                &#34;ydata&#34;: ydata,
+                &#34;xfit&#34;: xfit,
+                &#34;yfit&#34;: yfit,
+                &#34;fit_results&#34;: fit_results,
+                &#34;color_map&#34;: color_map,
+                &#34;notes&#34;: notes,
+            },
+        ),
+        request_retries,
+    )
+    return resp.value</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.server.measurement_set_aoi"><code class="name flex">
+<span>def <span class="ident">measurement_set_aoi</span></span>(<span>client_connection: ClientConnection,<br>meas_id: str,<br>aoi: tuple[int, int, int, int] | None,<br>request_retries: int = 3)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@command(CONSTS.MEAS.SET_AOI, response_type=MsgResponse | ErrorResponse)
+def measurement_set_aoi(
+    client_connection: ClientConnection,
+    meas_id: str,
+    aoi: tuple[int, int, int, int] | None,
+    request_retries: int = DEFAULT_RETRIES,
+):
+    calls: qscope.server.server.handle_set_aoi_measurement  # just for code navigation
+    resp = _send_request(
+        client_connection,
+        Request(
+            CONSTS.MEAS.SET_AOI,
+            {&#34;meas_id&#34;: meas_id, &#34;aoi&#34;: aoi},
+        ),
+        request_retries,
+    )
+    return resp.value</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.server.measurement_set_frame_num"><code class="name flex">
+<span>def <span class="ident">measurement_set_frame_num</span></span>(<span>client_connection: ClientConnection,<br>meas_id: str,<br>frame_num: int = 2,<br>request_retries: int = 3)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@command(CONSTS.MEAS.SET_FRAME_NUM, response_type=MsgResponse | ErrorResponse)
+def measurement_set_frame_num(
+    client_connection: ClientConnection,
+    meas_id: str,
+    frame_num: int = 2,
+    request_retries: int = DEFAULT_RETRIES,
+):
+    calls: (
+        qscope.server.server.handle_set_frame_num_measurement
+    )  # just for code navigation
+    resp = _send_request(
+        client_connection,
+        Request(
+            CONSTS.MEAS.SET_FRAME_NUM,
+            {&#34;meas_id&#34;: meas_id, &#34;frame_num&#34;: frame_num},
+        ),
+        request_retries,
+    )
+    return resp.value</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.server.measurement_set_rolling_avg_window"><code class="name flex">
+<span>def <span class="ident">measurement_set_rolling_avg_window</span></span>(<span>client_connection: ClientConnection,<br>meas_id: str,<br>window: int,<br>request_retries: int = 3)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@command(CONSTS.MEAS.SET_ROLLING_AVG_WINDOW, response_type=MsgResponse | ErrorResponse)
+def measurement_set_rolling_avg_window(
+    client_connection: ClientConnection,
+    meas_id: str,
+    window: int,
+    request_retries: int = DEFAULT_RETRIES,
+):
+    calls: (
+        qscope.server.server.handle_set_rolling_avg_window_measurement
+    )  # just for code navigation
+    resp = _send_request(
+        client_connection,
+        Request(
+            CONSTS.MEAS.SET_ROLLING_AVG_WINDOW,
+            {&#34;meas_id&#34;: meas_id, &#34;window&#34;: window},
+        ),
+        request_retries,
+    )
+    return resp.value</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.server.open_connection"><code class="name flex">
+<span>def <span class="ident">open_connection</span></span>(<span>host='127.0.0.1', msg_port=8850, timeout=5, request_retries: int = 3) ‑> tuple[<a title="qscope.types.ClientConnection" href="../types/index.html#qscope.types.ClientConnection">ClientConnection</a>, <a title="qscope.types.messages.ClientSyncResponse" href="../types/messages.html#qscope.types.messages.ClientSyncResponse">ClientSyncResponse</a>]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def open_connection(
+    host=DEFAULT_HOST_ADDR,
+    msg_port=DEFAULT_PORT,
+    timeout=DEFAULT_TIMEOUT,
+    request_retries: int = DEFAULT_RETRIES,
+) -&gt; tuple[ClientConnection, ClientSyncResponse]:
+    &#34;&#34;&#34;Establish a connection to the server with retry mechanism.
+
+    This function attempts to connect to the server, confirms the connection
+    is working, and performs initial client synchronization.
+
+    Parameters
+    ----------
+    host : str, optional
+        The host address to connect to, by default DEFAULT_HOST_ADDR
+    msg_port : int, optional
+        Port number for the message socket, by default DEFAULT_PORT
+    timeout : float, optional
+        Maximum time to wait for connection, by default DEFAULT_TIMEOUT
+    request_retries : int, optional
+        Number of retry attempts for requests, by default DEFAULT_RETRIES
+
+    Returns
+    -------
+    tuple[ClientConnection, ClientSyncResponse]
+        A tuple containing:
+        - The established client connection object
+        - The synchronization response from the server
+
+    Raises
+    ------
+    CommsError
+        If connection cannot be established or synchronization fails
+    TimeoutError
+        If connection attempts exceed the timeout period
+    zmq.ZMQError
+        If there are any ZMQ-specific errors
+    &#34;&#34;&#34;
+    t0 = timer()
+    attempts = 0
+    context = zmq.Context()
+    logger.info(&#34;Attempting initial connection to server on {}:{}.&#34;, host, msg_port)
+    while timer() - t0 &lt; timeout:
+        process_qt_events()
+
+        try:
+            msg_socket = context.socket(zmq.REQ)
+            msg_socket.connect(f&#34;tcp://{host}:{msg_port}&#34;)
+            logger.info(&#34;Initial connection appears successful&#34;)
+            break  # successful
+        except Exception as e:
+            attempts += 1
+            logger.warning(&#34;Attempt {} failed to connect with error {}&#34;, attempts, e)
+            process_qt_events()
+            time.sleep(0.05)  # Always sleep a bit to prevent tight loop
+            continue
+    else:  # timed out
+        logger.error(&#34;Connection not established.&#34;)
+        raise CommsError(&#34;Connection not established: timed out.&#34;)
+    # confirm msg connection works...
+    ms, mp = msg_socket, msg_port
+    temp_connection = ClientConnection(context, ms, ms, ms, host, mp, mp, mp)
+    ok = _confirm_connection(temp_connection, request_retries=request_retries)
+    if not ok:
+        logger.error(&#34;Bad connection - no response from server.&#34;)
+        try:
+            temp_connection.msg_socket.setsockopt(zmq.LINGER, 0)
+            temp_connection.msg_socket.close()
+        except zmq.ZMQError:
+            logger.debug(&#34;Socket already closed&#34;)
+        raise CommsError(&#34;Bad connection - no response from server.&#34;)
+    else:
+        logger.info(&#34;Initial connection confirmed, now getting other ports.&#34;)
+    # ok now grab the other ports
+    try:
+        notif_port, stream_port = get_other_ports(temp_connection, request_retries)
+        # this will re-connect to msg_port
+        client_connection = _open_connection(host, msg_port, notif_port, stream_port)
+    except Exception as e:
+        logger.exception(&#34;Error getting other ports.&#34;)
+        raise e
+    try:
+        sync_response = client_sync(client_connection, request_retries)
+        if sync_response.version != qscope.__version__:
+            logger.critical(
+                &#34;Client-server version mismatch: {} vs {}&#34;,
+                qscope.__version__,
+                sync_response.version,
+            )
+    except Exception as e:
+        logger.exception(&#34;Error during client sync.&#34;)
+        raise e
+    logger.info(&#34;Connection established on {}&#34;, host)
+    return client_connection, sync_response</code></pre>
+</details>
+<div class="desc"><p>Establish a connection to the server with retry mechanism.</p>
+<p>This function attempts to connect to the server, confirms the connection
+is working, and performs initial client synchronization.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>host</code></strong> :&ensp;<code>str</code>, optional</dt>
+<dd>The host address to connect to, by default DEFAULT_HOST_ADDR</dd>
+<dt><strong><code>msg_port</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>Port number for the message socket, by default DEFAULT_PORT</dd>
+<dt><strong><code>timeout</code></strong> :&ensp;<code>float</code>, optional</dt>
+<dd>Maximum time to wait for connection, by default DEFAULT_TIMEOUT</dd>
+<dt><strong><code>request_retries</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>Number of retry attempts for requests, by default DEFAULT_RETRIES</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>tuple[ClientConnection, ClientSyncResponse]</code></dt>
+<dd>A tuple containing:
+- The established client connection object
+- The synchronization response from the server</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>CommsError</code></dt>
+<dd>If connection cannot be established or synchronization fails</dd>
+<dt><code>TimeoutError</code></dt>
+<dd>If connection attempts exceed the timeout period</dd>
+<dt><code>zmq.ZMQError</code></dt>
+<dd>If there are any ZMQ-specific errors</dd>
+</dl></div>
+</dd>
+<dt id="qscope.server.packdown"><code class="name flex">
+<span>def <span class="ident">packdown</span></span>(<span>client_connection: ClientConnection, request_retries: int = 3) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@command(CONSTS.COMMS.PACKDOWN, response_type=MsgResponse | ErrorResponse)
+def packdown(
+    client_connection: ClientConnection, request_retries: int = DEFAULT_RETRIES
+) -&gt; None:
+    &#34;&#34;&#34;Send packdown request to server.&#34;&#34;&#34;
+    calls: qscope.server.server.handle_packdown
+    resp = _send_request(
+        client_connection, Request(CONSTS.COMMS.PACKDOWN), request_retries
+    )
+    return resp</code></pre>
+</details>
+<div class="desc"><p>Send packdown request to server.</p></div>
+</dd>
+<dt id="qscope.server.pause_endsweep_measurement"><code class="name flex">
+<span>def <span class="ident">pause_endsweep_measurement</span></span>(<span>client_connection: ClientConnection, meas_id: str, request_retries: int = 3)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@command(CONSTS.MEAS.PAUSE, response_type=MsgResponse | ErrorResponse)
+def pause_endsweep_measurement(
+    client_connection: ClientConnection,
+    meas_id: str,
+    request_retries: int = DEFAULT_RETRIES,
+):
+    calls: qscope.server.server.handle_pause_measurement  # just for code navigation
+    resp = _send_request(
+        client_connection,
+        Request(CONSTS.MEAS.PAUSE, {&#34;meas_id&#34;: meas_id}),
+        request_retries,
+    )
+    return resp</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.server.ping"><code class="name flex">
+<span>def <span class="ident">ping</span></span>(<span>client_connection: ClientConnection, request_retries: int = 3) ‑> str</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@command(CONSTS.COMMS.PING, response_type=MsgResponse | ErrorResponse)
+def ping(
+    client_connection: ClientConnection, request_retries: int = DEFAULT_RETRIES
+) -&gt; str:
+    &#34;&#34;&#34;Send ping request to server.
+
+    Parameters
+    ----------
+    client_connection : ClientConnection
+        The connection to the server
+    request_retries : int, optional
+        Number of retry attempts, by default DEFAULT_RETRIES
+
+    Returns
+    -------
+    str
+        &#34;pong&#34; if successful
+    &#34;&#34;&#34;
+    calls: qscope.server.server.handle_ping
+    try:
+        resp = _send_request(
+            client_connection, Request(CONSTS.COMMS.PING), request_retries
+        )
+        return &#34;pong&#34;
+    except Exception:
+        logger.exception(&#34;Ping failed.&#34;)
+        return &#34;-1.0&#34;</code></pre>
+</details>
+<div class="desc"><p>Send ping request to server.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>client_connection</code></strong> :&ensp;<code>ClientConnection</code></dt>
+<dd>The connection to the server</dd>
+<dt><strong><code>request_retries</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>Number of retry attempts, by default DEFAULT_RETRIES</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>"pong" if successful</dd>
+</dl></div>
+</dd>
+<dt id="qscope.server.queue_to_list"><code class="name flex">
+<span>def <span class="ident">queue_to_list</span></span>(<span>qu: asyncio.Queue, nitems: int = 10) ‑> list</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def queue_to_list(qu: asyncio.Queue, nitems: int = 10) -&gt; list:
+    lst = []
+    i = 0
+    while not qu.empty():
+        i += 1
+        if i &gt; nitems:
+            break
+        lst.append(qu.get_nowait())
+    return lst</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.server.set_laser_output"><code class="name flex">
+<span>def <span class="ident">set_laser_output</span></span>(<span>client_connection: ClientConnection, state: bool, request_retries: int = 3) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@command(CONSTS.SEQGEN.LASER_OUTPUT, response_type=MsgResponse | ErrorResponse)
+def set_laser_output(
+    client_connection: ClientConnection,
+    state: bool,
+    request_retries: int = DEFAULT_RETRIES,
+) -&gt; None:
+    &#34;&#34;&#34;Turn laser on or off.&#34;&#34;&#34;
+    calls: qscope.server.server.handle_laser_output
+    resp = _send_request(
+        client_connection,
+        Request(CONSTS.SEQGEN.LASER_OUTPUT, {&#34;state&#34;: state}),
+        request_retries,
+    )
+    return resp</code></pre>
+</details>
+<div class="desc"><p>Turn laser on or off.</p></div>
+</dd>
+<dt id="qscope.server.set_laser_rf_output"><code class="name flex">
+<span>def <span class="ident">set_laser_rf_output</span></span>(<span>client_connection: ClientConnection,<br>state: bool,<br>freq: float,<br>power: float,<br>request_retries: int = 3) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@command(CONSTS.SEQGEN.LASER_RF_OUTPUT, response_type=MsgResponse | ErrorResponse)
+def set_laser_rf_output(
+    client_connection: ClientConnection,
+    state: bool,
+    freq: float,
+    power: float,
+    request_retries: int = DEFAULT_RETRIES,
+) -&gt; None:
+    &#34;&#34;&#34;Turn laser and RF output on or off.&#34;&#34;&#34;
+    calls: qscope.server.server.handle_laser_rf_output
+    resp = _send_request(
+        client_connection,
+        Request(
+            CONSTS.SEQGEN.LASER_RF_OUTPUT,
+            {&#34;state&#34;: state, &#34;freq&#34;: freq, &#34;power&#34;: power},
+        ),
+        request_retries,
+    )
+    return resp</code></pre>
+</details>
+<div class="desc"><p>Turn laser and RF output on or off.</p></div>
+</dd>
+<dt id="qscope.server.set_rf_output"><code class="name flex">
+<span>def <span class="ident">set_rf_output</span></span>(<span>client_connection: ClientConnection,<br>state: bool,<br>freq: float,<br>power: float,<br>request_retries: int = 3) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@command(CONSTS.SEQGEN.RF_OUTPUT, response_type=MsgResponse | ErrorResponse)
+def set_rf_output(
+    client_connection: ClientConnection,
+    state: bool,
+    freq: float,
+    power: float,
+    request_retries: int = DEFAULT_RETRIES,
+) -&gt; None:
+    &#34;&#34;&#34;Turn RF output on or off.&#34;&#34;&#34;
+    calls: qscope.server.server.handle_rf_output
+    resp = _send_request(
+        client_connection,
+        Request(
+            CONSTS.SEQGEN.RF_OUTPUT, {&#34;state&#34;: state, &#34;freq&#34;: freq, &#34;power&#34;: power}
+        ),
+        request_retries,
+    )
+    return resp</code></pre>
+</details>
+<div class="desc"><p>Turn RF output on or off.</p></div>
+</dd>
+<dt id="qscope.server.shutdown_server"><code class="name flex">
+<span>def <span class="ident">shutdown_server</span></span>(<span>client_connection: ClientConnection, request_retries: int = 3) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@command(CONSTS.COMMS.SHUTDOWN, response_type=MsgResponse | ErrorResponse)
+def shutdown_server(
+    client_connection: ClientConnection, request_retries: int = DEFAULT_RETRIES
+) -&gt; None:
+    &#34;&#34;&#34;Send shutdown request to server and handle expected disconnection.
+    
+    This function sends a shutdown command to the server and expects the server
+    to close the connection afterward. It handles any connection errors that
+    may occur during this process.
+    &#34;&#34;&#34;
+    calls: qscope.server.server.handle_shutdown
+    try:
+        # Send the shutdown request with fewer retries since we expect disconnection
+        resp = _send_request(
+            client_connection, Request(CONSTS.COMMS.SHUTDOWN), 1
+        )
+        logger.info(&#34;Server shutdown initiated successfully&#34;)
+        
+        # Close all sockets with LINGER=0 to prevent hanging
+        for socket in [
+            client_connection.msg_socket,
+            client_connection.notif_socket,
+            client_connection.stream_socket,
+        ]:
+            try:
+                socket.setsockopt(zmq.LINGER, 0)
+                socket.close()
+            except:
+                pass
+        
+        # Terminate the ZMQ context to ensure clean shutdown
+        try:
+            client_connection.context.term()
+        except:
+            pass
+            
+        return resp
+    except zmq.ZMQError as e:
+        logger.info(f&#34;Expected ZMQ error during shutdown: {e}&#34;)
+        # Close sockets and terminate context even if there was an error
+        for socket in [
+            client_connection.msg_socket,
+            client_connection.notif_socket,
+            client_connection.stream_socket,
+        ]:
+            try:
+                socket.setsockopt(zmq.LINGER, 0)
+                socket.close()
+            except:
+                pass
+        
+        try:
+            client_connection.context.term()
+        except:
+            pass
+            
+        return None
+    except Exception as e:
+        logger.warning(f&#34;Unexpected error during shutdown: {e}&#34;)
+        # Still try to close sockets and terminate context
+        for socket in [
+            client_connection.msg_socket,
+            client_connection.notif_socket,
+            client_connection.stream_socket,
+        ]:
+            try:
+                socket.setsockopt(zmq.LINGER, 0)
+                socket.close()
+            except:
+                pass
+                
+        try:
+            client_connection.context.term()
+        except:
+            pass
+            
+        return None</code></pre>
+</details>
+<div class="desc"><p>Send shutdown request to server and handle expected disconnection.</p>
+<p>This function sends a shutdown command to the server and expects the server
+to close the connection afterward. It handles any connection errors that
+may occur during this process.</p></div>
+</dd>
+<dt id="qscope.server.start_bg"><code class="name flex">
+<span>def <span class="ident">start_bg</span></span>(<span>system_name: str,<br>host='127.0.0.1',<br>msg_port=8850,<br>notif_port=8851,<br>stream_port=8852,<br>server_log_path: Optional[str] = None,<br>clear_prev_log=True,<br>timeout=5,<br>request_retries: int = 3,<br>log_level: str = 'INFO') ‑> tuple[subprocess.Popen, ClientConnection, ClientSyncResponse]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def start_bg(
+    system_name: str,
+    host=DEFAULT_HOST_ADDR,
+    msg_port=DEFAULT_PORT,
+    notif_port=DEFAULT_PORT + 1,
+    stream_port=DEFAULT_PORT + 2,
+    server_log_path: Optional[str] = None,
+    clear_prev_log=True,
+    timeout=DEFAULT_TIMEOUT,
+    request_retries: int = DEFAULT_RETRIES,
+    log_level: str = DEFAULT_LOGLEVEL,
+) -&gt; tuple[
+    subprocess.Popen,
+    ClientConnection,
+    ClientSyncResponse,
+]:
+    proc = start_bg_server(
+        system_name,
+        log_path=server_log_path,
+        host=host,
+        msg_port=msg_port,
+        notif_port=notif_port,
+        stream_port=stream_port,
+        clear_prev_log=clear_prev_log,
+        log_to_file=True,  # NOTE always want this,
+        log_to_stdout=False,  # and never want this, for bg server
+        log_level=log_level,
+    )
+    logger.info(&#34;Server started on {}:{} @ pid={}&#34;, host, msg_port, proc.pid)
+    time.sleep(3)  # give server time to start (~3s required!)
+    try:
+        client_connection, client_sync = open_connection(
+            host=host,
+            msg_port=msg_port,
+            timeout=timeout,
+            request_retries=request_retries,
+        )
+    except qscope.types.CommsError:
+        kill_bg_server(proc)  # adds proc errors to client log
+        raise
+    return proc, client_connection, client_sync</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.server.start_bg_notif_listener"><code class="name flex">
+<span>def <span class="ident">start_bg_notif_listener</span></span>(<span>client_connection: ClientConnection)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def start_bg_notif_listener(client_connection: ClientConnection):
+    qu = asyncio.Queue()
+
+    async def listen(queue):
+        logger.info(&#34;Starting notification listener&#34;)
+        while True:
+            await asyncio.sleep(0.01)
+            try:
+                msg = client_connection.notif_socket.recv(flags=zmq.NOBLOCK)
+                # msg = client_connection.notif_socket.recv()
+                notif = Notification.from_msgpack(msg)
+                queue.put_nowait(notif)
+                # below is rather loquacious
+                logger.trace(&#34;*NOTIF* (client&lt;-): {}&#34;, notif)
+                await asyncio.sleep(0.01)
+            except zmq.Again:
+                pass
+            except Exception as e:
+                logger.exception(&#34;Error in notif listener.&#34;)
+                break
+
+    task = asyncio.create_task(listen(qu))
+    return task, qu</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.server.start_client_log"><code class="name flex">
+<span>def <span class="ident">start_client_log</span></span>(<span>log_to_file=True,<br>log_to_stdout=False,<br>log_path=None,<br>clear_prev=True,<br>log_level='INFO')</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def start_client_log(
+    log_to_file=True,
+    log_to_stdout=False,
+    log_path=None,
+    clear_prev=True,
+    log_level=DEFAULT_LOGLEVEL,
+):
+    if log_path is None:
+        log_path = log_default_path_client()
+    else:
+        log_path = os.path.abspath(log_path)
+
+    if clear_prev:
+        clear_log(log_path)
+
+    # first remove (default) stderr output
+    logger.remove()
+
+    # start a client logger
+    if log_to_file:
+        logger.add(log_path, level=log_level, enqueue=True, colorize=False)
+    if log_to_stdout:
+        logger.add(sys.stderr, level=log_level, enqueue=True, colorize=True)
+        logger.our_naughty_log_path_attr = log_path
+    if log_to_file:
+        logger.info(&#34;Client log started at {}&#34;, log_path)
+    else:
+        logger.info(&#34;Client log started.&#34;)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.server.start_measurement_nowait"><code class="name flex">
+<span>def <span class="ident">start_measurement_nowait</span></span>(<span>client_connection: ClientConnection, meas_id: str, request_retries: int = 3) ‑> <a title="qscope.types.messages.MsgResponse" href="../types/messages.html#qscope.types.messages.MsgResponse">MsgResponse</a> | <a title="qscope.types.messages.PleaseWaitResponse" href="../types/messages.html#qscope.types.messages.PleaseWaitResponse">PleaseWaitResponse</a></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@command(
+    CONSTS.MEAS.START, response_type=MsgResponse | PleaseWaitResponse | ErrorResponse
+)
+def start_measurement_nowait(
+    client_connection: ClientConnection,
+    meas_id: str,
+    request_retries: int = DEFAULT_RETRIES,
+) -&gt; Union[MsgResponse, PleaseWaitResponse]:
+    calls: qscope.server.server.handle_start_measurement  # just for code navigation
+    resp = _send_request(
+        client_connection,
+        Request(CONSTS.MEAS.START, {&#34;meas_id&#34;: meas_id}),
+        request_retries,
+    )
+    if not isinstance(resp, PleaseWaitResponse):
+        return resp</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.server.start_measurement_wait"><code class="name flex">
+<span>def <span class="ident">start_measurement_wait</span></span>(<span>client_connection: ClientConnection,<br>meas_id: str,<br>request_retries: int = 3,<br>timeout: float = 5)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@command(
+    CONSTS.MEAS.START, response_type=MsgResponse | PleaseWaitResponse | ErrorResponse
+)
+def start_measurement_wait(
+    client_connection: ClientConnection,
+    meas_id: str,
+    request_retries: int = DEFAULT_RETRIES,
+    timeout: float = DEFAULT_TIMEOUT,
+):
+    calls: qscope.server.server.handle_start_measurement  # just for code navigation
+    start = time.time()
+    while time.time() - start &lt; timeout:
+        resp = start_measurement_nowait(client_connection, meas_id, request_retries)
+        if isinstance(resp, PleaseWaitResponse):
+            time.sleep(0.1)
+        elif isinstance(resp, MsgResponse):
+            return resp
+    raise TimeoutError(&#34;Start measurement timed out.&#34;)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.server.start_server"><code class="name flex">
+<span>async def <span class="ident">start_server</span></span>(<span>system_name: str,<br>host: str = '127.0.0.1',<br>msg_port: int = 8850,<br>notif_port: int = 8851,<br>stream_port: int = 8852,<br>log_to_file: bool = True,<br>log_to_stdout: bool = False,<br>log_path: str = '',<br>clear_prev_log: bool = True,<br>log_level: str = 'INFO')</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">async def start_server(
+    system_name: str,
+    host: str = DEFAULT_HOST_ADDR,
+    msg_port: int = DEFAULT_PORT,
+    notif_port: int = DEFAULT_PORT + 1,
+    stream_port: int = DEFAULT_PORT + 2,
+    log_to_file: bool = True,
+    log_to_stdout: bool = False,
+    log_path: str = &#34;&#34;,
+    clear_prev_log: bool = True,
+    log_level: str = DEFAULT_LOGLEVEL,
+):
+    kill_qscope_servers()  # only one server per machine at a time!
+
+    # Format: &#34;Qscope Server (2024-01-20 15:30:45)&#34;
+    timestamp = datetime.now().strftime(&#34;%Y-%m-%d_%H:%M:%S&#34;)
+    setproctitle(f&#34;qscope-server_{timestamp}&#34;)
+
+    pid_file = register_server(host, (msg_port, notif_port, stream_port))
+
+    qscope.util.start_server_log(
+        log_to_file=log_to_file,
+        log_to_stdout=log_to_stdout,
+        log_path=log_path,
+        clear_prev=clear_prev_log,
+        log_level=log_level,
+    )
+
+    logger.info(&#34;Starting msg server on {}:{}&#34;, host, msg_port)
+
+    system_config = qscope.system.get_system_config(str(system_name).lower())
+    if system_config is None:
+        logger.error(&#34;System {} not found.&#34;, system_name.lower())
+        raise ValueError(f&#34;System {system_name.lower()} not found.&#34;)
+
+    systyp = system_config.system_type  # Get system type from config
+
+    logger.info(
+        &#34;Opening a system of type {} and system type {}&#34;,
+        system_name,
+        systyp.__class__.__name__,
+    )
+    system = systyp(system_config)
+
+    try:
+        context = zmq.asyncio.Context()
+        msg_socket = context.socket(zmq.ROUTER)
+        msg_socket.bind(f&#34;tcp://{host}:{msg_port}&#34;)  # bind on server side
+        notif_socket = context.socket(zmq.PUB)
+        notif_socket.bind(f&#34;tcp://{host}:{notif_port}&#34;)
+        stream_socket = context.socket(zmq.PUB)
+        stream_socket.bind(f&#34;tcp://{host}:{stream_port}&#34;)
+        server_connection = ServerConnection(
+            msg_socket=msg_socket,
+            notif_socket=notif_socket,
+            stream_socket=stream_socket,
+            host=host,
+            msg_port=msg_port,
+            notif_port=notif_port,
+            stream_port=stream_port,
+            notif_queue=asyncio.Queue(),
+        )
+    except Exception as e:
+        logger.exception(&#34;Error opening server-side connection.&#34;)
+        raise e
+    try:
+        await client_handler(server_connection, system, dict())
+    finally:
+        if pid_file and pid_file.exists():
+            try:
+                pid_file.unlink()
+            except:
+                pass</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.server.startup"><code class="name flex">
+<span>def <span class="ident">startup</span></span>(<span>client_connection: ClientConnection, request_retries: int = 3) ‑> tuple[bool, dict[str, dict[str, str | bool]]]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@command(CONSTS.COMMS.STARTUP, response_type=DictResponse | ErrorResponse)
+def startup(
+    client_connection: ClientConnection, request_retries: int = DEFAULT_RETRIES
+) -&gt; tuple[bool, dict[str, dict[str, str | bool]]]:
+    &#34;&#34;&#34;Start up the system on the server.&#34;&#34;&#34;
+    calls: qscope.server.server.handle_startup
+    # format of dev_status: {&#34;device_name&#34;: {&#34;status&#34;: bool, &#34;msg&#34;: str}, ...}
+    logger.info(&#34;Starting up system on server.&#34;)
+    resp = _send_request(
+        client_connection, Request(CONSTS.COMMS.STARTUP), request_retries
+    )
+    if isinstance(resp, ErrorResponse):
+        logger.exception(&#34;Error during startup.&#34;)
+        return False, {}
+    else:
+        dev_status = resp.value
+        for devname, devd in dev_status.items():
+            if not devd[&#34;status&#34;]:
+                logger.error(&#34;Device status: {}&#34;, dev_status)
+                return False, dev_status
+        logger.info(&#34;Device status: {}&#34;, dev_status)
+        logger.info(&#34;System started on server.&#34;)
+    return True, dev_status</code></pre>
+</details>
+<div class="desc"><p>Start up the system on the server.</p></div>
+</dd>
+<dt id="qscope.server.stop_measurement"><code class="name flex">
+<span>def <span class="ident">stop_measurement</span></span>(<span>client_connection: ClientConnection, meas_id: str, request_retries: int = 3) ‑> bool</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@command(CONSTS.MEAS.STOP, response_type=MsgResponse | ErrorResponse)
+def stop_measurement(
+    client_connection: ClientConnection,
+    meas_id: str,
+    request_retries: int = DEFAULT_RETRIES,
+) -&gt; bool:
+    &#34;&#34;&#34;Stop a measurement.&#34;&#34;&#34;
+    calls: qscope.server.server.handle_stop_measurement
+    _ = _send_request(
+        client_connection,
+        Request(CONSTS.MEAS.STOP, {&#34;meas_id&#34;: meas_id}),
+        request_retries,
+    )
+    logger.info(&#34;Measurement stopped.&#34;)
+    return True</code></pre>
+</details>
+<div class="desc"><p>Stop a measurement.</p></div>
+</dd>
+<dt id="qscope.server.video"><code class="name flex">
+<span>def <span class="ident">video</span></span>(<span>client_connection: ClientConnection,<br>exp_t: float,<br>image_size: tuple[int, int],<br>binning: tuple[int, int],<br>poll_interval_ms: float = 100,<br>request_retries=3)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def video(
+    client_connection: ClientConnection,
+    exp_t: float,
+    image_size: tuple[int, int],
+    binning: tuple[int, int],
+    poll_interval_ms: float = 100,
+    request_retries=DEFAULT_RETRIES,
+):
+    def _add_colorbar(im, fig, ax, aspect=20, pad_fraction=1, locator=None, **kwargs):
+        # TODO move to util
+        divider = make_axes_locatable(ax)
+        width = axes_size.AxesY(ax, aspect=1.0 / aspect)
+        pad = axes_size.Fraction(pad_fraction, width)
+        cax = divider.append_axes(&#34;right&#34;, size=width, pad=pad)
+        cbar = fig.colorbar(im, cax=cax, **kwargs)
+        if locator:
+            tick_locator = mpl.ticker.FixedLocator(locator)
+        else:
+            tick_locator = mpl.ticker.MaxNLocator(nbins=5)
+        cbar.locator = tick_locator
+        if tick_locator()[0] &lt; 0:
+            bare0 = lambda y, pos: (&#34;%+g&#34; if y &gt; 0 else &#34;%g&#34;) % y
+            cbar.formatter = mpl.ticker.FuncFormatter(bare0)
+        cbar.update_ticks()
+        cbar.ax.get_yaxis().labelpad = 15
+        cbar.ax.linewidth = 0.5
+
+        return cbar
+
+    fig, ax = plt.subplots(figsize=(10, 6))
+
+    camera_set_params(client_connection, exp_t, image_size, binning, request_retries)
+    camera_start_video(client_connection, request_retries)
+
+    # get frame shape
+    frame_shape = camera_get_frame_shape(client_connection, request_retries)
+
+    # Initialize with a blank frame
+    img = ax.imshow(np.full(frame_shape, np.nan), cmap=&#34;gray&#34;, vmin=0, origin=&#34;upper&#34;)
+    cbar = _add_colorbar(
+        img,
+        fig,
+        ax,
+    )
+    cbar.ax.set_ylabel(&#34;PL (a.u.)&#34;, rotation=270)
+
+    def update(*args):
+        try:
+            header, frame = client_connection.stream_socket.recv_multipart(
+                flags=zmq.NOBLOCK
+            )
+            assert header == &#34;video&#34;
+            frame = pickle.loads(frame)
+            img.set_array(frame)
+            vmin, vmax = np.min(frame), np.max(frame)
+            img.set_clim(vmin, vmax)
+            logger.debug(&#34;Frame received&#34;)
+        except zmq.Again:
+            logger.debug(&#34;No new frame received, try again&#34;)
+            pass  # No new frame received, try again
+
+    initialdir = os.getcwd()
+
+    # Define the save function
+    def save(event):
+        if not hasattr(save, &#34;dir&#34;):
+            save.dir = initialdir
+        root = Tk()
+        root.withdraw()  # Hide the main window
+        file_path = filedialog.asksaveasfilename(
+            initialdir=save.dir,
+            initialfile=&#34;PL_image.png&#34;,
+            defaultextension=&#34;.png&#34;,
+            filetypes=[(&#34;PNG files&#34;, &#34;*.png&#34;)],
+        )
+        if file_path:
+            frame = img.get_array()
+            fig.savefig(file_path)
+            np.savetxt(file_path.partition(&#34;.&#34;)[0] + &#34;.txt&#34;, frame)
+            save.dir = os.path.dirname(file_path)
+        root.destroy()
+
+    _ = animation.FuncAnimation(
+        fig, update, interval=poll_interval_ms, cache_frame_data=False
+    )
+
+    # Add a button widget
+    ax_save = plt.axes((0.81, 0.01, 0.1, 0.075))
+    btn_save = Button(ax_save, &#34;Save Frame&#34;)
+    btn_save.on_clicked(save)
+
+    plt.show()
+
+    camera_stop_video(client_connection, request_retries)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<form>
+<input id="lunr-search" name="q" placeholder="🔎 Search ..." aria-label="Search"
+disabled minlength="2">
+</form>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.css" integrity="sha512-b+T2i3P45i1LZM7I00Ci5QquB9szqaxu+uuk5TUSGjZQ4w4n+qujQiIuvTv2BxE7WCGQCifNMksyKILDiHzsOg==" crossorigin>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.js" integrity="sha512-2B9/byNV1KKRm5nQ2RLViPFD6U4dUjDGwuW1GU+ImJh8YinPU9Zlq1GzdTMO+G2ROrB5o1qasJBy1ttYz0wCug==" crossorigin></script>
+<style>
+.modal-dialog iframe {
+width: 100vw;
+height: calc(100vh - 80px);
+}
+@media screen and (min-width: 700px) {
+.modal-dialog iframe {
+width: 70vw;
+height: 80vh;
+}
+}
+.modal-dialog .tingle-modal-box {width: auto;}
+.modal-dialog .tingle-modal-box__content {padding: 0;}
+</style>
+<script>
+const input = document.getElementById('lunr-search');
+input.disabled = false;
+input.form.addEventListener('submit', (ev) => {
+ev.preventDefault();
+const url = new URL(window.location);
+url.searchParams.set('q', input.value);
+history.replaceState({}, null, url.toString());
+search(input.value);
+});
+const query = new URL(window.location).searchParams.get('q');
+if (query)
+search(query);
+function search(query) {
+const url = '../../doc-search.html#' + encodeURIComponent(query);
+new tingle.modal({
+cssClass: ['modal-dialog'],
+onClose: () => {
+const url = new URL(window.location);
+url.searchParams.delete('q');
+history.replaceState({}, null, url.toString());
+setTimeout(() => input.focus(), 100);
+}
+}).setContent('<iframe src="' + url + '"></iframe>').open();
+}
+</script>
+<div class="toc">
+<ul>
+<li><a href="#examples">Examples</a></li>
+<li><a href="#see-also">See Also</a></li>
+</ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="qscope" href="../index.html">qscope</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-submodules">Sub-modules</a></h3>
+<ul>
+<li><code><a title="qscope.server.bg_killer" href="bg_killer.html">qscope.server.bg_killer</a></code></li>
+<li><code><a title="qscope.server.client" href="client.html">qscope.server.client</a></code></li>
+<li><code><a title="qscope.server.connection_manager" href="connection_manager.html">qscope.server.connection_manager</a></code></li>
+<li><code><a title="qscope.server.gen_cm_methods" href="gen_cm_methods.html">qscope.server.gen_cm_methods</a></code></li>
+<li><code><a title="qscope.server.server" href="server.html">qscope.server.server</a></code></li>
+<li><code><a title="qscope.server.server_script" href="server_script.html">qscope.server.server_script</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="qscope.server.add_measurement" href="#qscope.server.add_measurement">add_measurement</a></code></li>
+<li><code><a title="qscope.server.camera_get_frame_shape" href="#qscope.server.camera_get_frame_shape">camera_get_frame_shape</a></code></li>
+<li><code><a title="qscope.server.camera_set_params" href="#qscope.server.camera_set_params">camera_set_params</a></code></li>
+<li><code><a title="qscope.server.camera_start_video" href="#qscope.server.camera_start_video">camera_start_video</a></code></li>
+<li><code><a title="qscope.server.camera_stop_video" href="#qscope.server.camera_stop_video">camera_stop_video</a></code></li>
+<li><code><a title="qscope.server.camera_take_snapshot" href="#qscope.server.camera_take_snapshot">camera_take_snapshot</a></code></li>
+<li><code><a title="qscope.server.clean_queue" href="#qscope.server.clean_queue">clean_queue</a></code></li>
+<li><code><a title="qscope.server.close_bg" href="#qscope.server.close_bg">close_bg</a></code></li>
+<li><code><a title="qscope.server.close_connection" href="#qscope.server.close_connection">close_connection</a></code></li>
+<li><code><a title="qscope.server.close_measurement_nowait" href="#qscope.server.close_measurement_nowait">close_measurement_nowait</a></code></li>
+<li><code><a title="qscope.server.close_measurement_wait" href="#qscope.server.close_measurement_wait">close_measurement_wait</a></code></li>
+<li><code><a title="qscope.server.echo" href="#qscope.server.echo">echo</a></code></li>
+<li><code><a title="qscope.server.get_all_meas_info" href="#qscope.server.get_all_meas_info">get_all_meas_info</a></code></li>
+<li><code><a title="qscope.server.get_server_log_path" href="#qscope.server.get_server_log_path">get_server_log_path</a></code></li>
+<li><code><a title="qscope.server.kill_bg_server" href="#qscope.server.kill_bg_server">kill_bg_server</a></code></li>
+<li><code><a title="qscope.server.measurement_get_frame" href="#qscope.server.measurement_get_frame">measurement_get_frame</a></code></li>
+<li><code><a title="qscope.server.measurement_get_frame_shape" href="#qscope.server.measurement_get_frame_shape">measurement_get_frame_shape</a></code></li>
+<li><code><a title="qscope.server.measurement_get_info" href="#qscope.server.measurement_get_info">measurement_get_info</a></code></li>
+<li><code><a title="qscope.server.measurement_get_state" href="#qscope.server.measurement_get_state">measurement_get_state</a></code></li>
+<li><code><a title="qscope.server.measurement_get_sweep" href="#qscope.server.measurement_get_sweep">measurement_get_sweep</a></code></li>
+<li><code><a title="qscope.server.measurement_is_stopped" href="#qscope.server.measurement_is_stopped">measurement_is_stopped</a></code></li>
+<li><code><a title="qscope.server.measurement_save_full_data" href="#qscope.server.measurement_save_full_data">measurement_save_full_data</a></code></li>
+<li><code><a title="qscope.server.measurement_save_sweep" href="#qscope.server.measurement_save_sweep">measurement_save_sweep</a></code></li>
+<li><code><a title="qscope.server.measurement_save_sweep_w_fit" href="#qscope.server.measurement_save_sweep_w_fit">measurement_save_sweep_w_fit</a></code></li>
+<li><code><a title="qscope.server.measurement_set_aoi" href="#qscope.server.measurement_set_aoi">measurement_set_aoi</a></code></li>
+<li><code><a title="qscope.server.measurement_set_frame_num" href="#qscope.server.measurement_set_frame_num">measurement_set_frame_num</a></code></li>
+<li><code><a title="qscope.server.measurement_set_rolling_avg_window" href="#qscope.server.measurement_set_rolling_avg_window">measurement_set_rolling_avg_window</a></code></li>
+<li><code><a title="qscope.server.open_connection" href="#qscope.server.open_connection">open_connection</a></code></li>
+<li><code><a title="qscope.server.packdown" href="#qscope.server.packdown">packdown</a></code></li>
+<li><code><a title="qscope.server.pause_endsweep_measurement" href="#qscope.server.pause_endsweep_measurement">pause_endsweep_measurement</a></code></li>
+<li><code><a title="qscope.server.ping" href="#qscope.server.ping">ping</a></code></li>
+<li><code><a title="qscope.server.queue_to_list" href="#qscope.server.queue_to_list">queue_to_list</a></code></li>
+<li><code><a title="qscope.server.set_laser_output" href="#qscope.server.set_laser_output">set_laser_output</a></code></li>
+<li><code><a title="qscope.server.set_laser_rf_output" href="#qscope.server.set_laser_rf_output">set_laser_rf_output</a></code></li>
+<li><code><a title="qscope.server.set_rf_output" href="#qscope.server.set_rf_output">set_rf_output</a></code></li>
+<li><code><a title="qscope.server.shutdown_server" href="#qscope.server.shutdown_server">shutdown_server</a></code></li>
+<li><code><a title="qscope.server.start_bg" href="#qscope.server.start_bg">start_bg</a></code></li>
+<li><code><a title="qscope.server.start_bg_notif_listener" href="#qscope.server.start_bg_notif_listener">start_bg_notif_listener</a></code></li>
+<li><code><a title="qscope.server.start_client_log" href="#qscope.server.start_client_log">start_client_log</a></code></li>
+<li><code><a title="qscope.server.start_measurement_nowait" href="#qscope.server.start_measurement_nowait">start_measurement_nowait</a></code></li>
+<li><code><a title="qscope.server.start_measurement_wait" href="#qscope.server.start_measurement_wait">start_measurement_wait</a></code></li>
+<li><code><a title="qscope.server.start_server" href="#qscope.server.start_server">start_server</a></code></li>
+<li><code><a title="qscope.server.startup" href="#qscope.server.startup">startup</a></code></li>
+<li><code><a title="qscope.server.stop_measurement" href="#qscope.server.stop_measurement">stop_measurement</a></code></li>
+<li><code><a title="qscope.server.video" href="#qscope.server.video">video</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
+</footer>
+</body>
+</html>

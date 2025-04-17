@@ -1,0 +1,2362 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.6">
+<title>qscope.gui.qmeas.control_opts API documentation</title>
+<meta name="description" content="">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}#lunr-search{width:100%;font-size:1em;padding:6px 9px 5px 9px;border:1px solid silver}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes: true } });</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML" integrity="sha256-kZafAc6mZvK3W3v1pHOcUix30OHQN6pU/NO2oFkqZVw=" crossorigin></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>qscope.gui.qmeas.control_opts</code></h1>
+</header>
+<section id="section-intro">
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts"><code class="flex name class">
+<span>class <span class="ident">QuantumMeasurementOpts</span></span>
+<span>(</span><span>_parent, title='Measurement Options')</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass
+class QuantumMeasurementOpts(QGroupBox):
+    START_SWEEP_LABEL = &#34;Start Sweep&#34;
+    PAUSE_SWEEP_LABEL = &#34;Pause Sweep&#34;
+    STOP_NOW_LABEL = &#34;Stop Now!&#34;
+    SAVE_SPECTRUM_LABEL = &#34;Save Spectrum&#34;
+    SAVE_DATASET_LABEL = &#34;Save Full Dataset&#34;
+    STOP_AFTER_SWEEPS_LABEL = &#34;Stop after Y sweeps&#34;
+    SAVE_AFTER_SWEEPS_LABEL = &#34;Save after X sweeps&#34;
+    MEASUREMENT_ID_LABEL = &#34;Measurement ID&#34;
+    # NUMBER_OF_SWEEPS_LABEL = &#34;Number of Sweeps&#34;
+    NUMBER_OF_AVERAGES_LABEL = &#34;# Avg. per point&#34;
+    SWEEPS_COMPLETED_LABEL = &#34;Sweeps Completed&#34;
+    CURRENT_SWEEP_LABEL = &#34;Current Sweep&#34;
+    TYPE_LABEL = &#34;Measurement Type&#34;
+    LIST_MODE_LABEL = &#34;List Mode&#34;
+    FREQUENCY_MIN_MAX_LABEL = &#34;Freq. list (MHz) [Min | Max]&#34;
+    FREQUENCY_CENTER_RANGE_LABEL = &#34;Freq. list (MHz) [Center | Range]&#34;
+    FREQUENCY_MODULATION_LABEL = &#34;Freq. Mod. (MHz)&#34;
+    NUM_POINTS_LABEL = &#34;Points [ #/sweep | Avg./pt ]:&#34;
+    Time_MIN_MAX_LABEL = &#34;Time list (ns) [Min | Max]&#34;
+    TIME_CENTER_RANGE_LABEL = &#34;Time list (ns) [Center | Range]&#34;
+    RF_SETTINGS_LABEL = &#34;RF [Freq. (MHz) | Power (dBm)]&#34;
+    RF_DURATION_LABEL = &#34;RF Duration (ns)&#34;
+    PULSE_LABEL = &#34;Pulses (ns) [π/2 | π | #]&#34;
+    # PI_PULSE_LABEL = &#34;π time (ns)&#34;
+    # PI_2_PULSE_LABEL = &#34; π/2 time (ns)&#34;
+    # NUMBER_OF_PULSES_LABEL = &#34;Number of pulses&#34;
+
+    # structure:
+    # QVBoxLayout (self.vbox) -&gt; groupboxes -&gt; layouts -&gt; widgets
+
+    def __init__(self, _parent, title=&#34;Measurement Options&#34;):
+        super().__init__(title)
+        self.parent = _parent
+        self.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.setStyleSheet(&#34;QGroupBox { font-weight: bold; }&#34;)
+
+        # Initialize settings definitions
+        self.settings = MeasurementSettings()
+        self.widgets: Dict[str, Any] = {}
+
+        self.init_ui()
+        self.connect_signals()
+        self.set_measurement_type()
+
+    def validate_settings(self) -&gt; bool:
+        &#34;&#34;&#34;Validate all current settings&#34;&#34;&#34;
+        validation_results = self.settings.validate_all()
+        if not all(validation_results.values()):
+            invalid_settings = [k for k, v in validation_results.items() if not v]
+            logger.warning(f&#34;Invalid settings: {invalid_settings}&#34;)
+            return False
+        return True
+
+    def get_current_values(self) -&gt; Dict[str, Any]:
+        &#34;&#34;&#34;Get current values of all widgets&#34;&#34;&#34;
+        values = {}
+        for field_name, field in self.settings.__dataclass_fields__.items():
+            if isinstance(field.default, WidgetConfig):
+                widget = getattr(self, f&#34;{field_name}_input&#34;, None)
+                if widget:
+                    values[field_name] = field.default.get_value(widget)
+        return values
+
+    def get_widget_config(self, name: str) -&gt; Optional[WidgetConfig]:
+        &#34;&#34;&#34;Get widget config by name&#34;&#34;&#34;
+        return getattr(self.settings, name, None)
+
+    def get_all_widget_configs(self) -&gt; Dict[str, WidgetConfig]:
+        &#34;&#34;&#34;Get all widget sysconfig&#34;&#34;&#34;
+        return {
+            k: v
+            for k, v in self.settings.__dataclass_fields__.items()
+            if isinstance(v.default, WidgetConfig)
+        }
+
+    def init_meas_ctrl_frame(self):
+        frame = QFrame()
+        vbox = QVBoxLayout()
+
+        # Create measurement control widgets from settings
+        self.stop_after_sweeps_idx = create_widget_from_config(
+            self.settings.stop_after_sweeps
+        )
+        self.save_after_sweeps_idx = create_widget_from_config(
+            self.settings.save_after_sweeps
+        )
+        self.measurement_type_dropdown = create_widget_from_config(
+            self.settings.measurement_type
+        )
+        self.ref_mode_dropdown = create_widget_from_config(self.settings.ref_mode)
+
+        # Status indicators
+        self.meas_id_label = QLabel(self.MEASUREMENT_ID_LABEL)
+        self.meas_id_indicator = QLineEdit()
+        self.meas_id_indicator.setReadOnly(True)
+        self.meas_id_indicator.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
+        self.state_indicator = QLineEdit()
+        self.state_indicator.setReadOnly(True)
+        self.state_indicator.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
+        # Control buttons
+        self.start_measurement_button = QPushButton(self.START_SWEEP_LABEL)
+        self.start_measurement_button.setCheckable(True)
+        self.pause_measurement_button = QPushButton(self.PAUSE_SWEEP_LABEL)
+        self.pause_measurement_button.setCheckable(True)
+        self.stop_measurement_button = QPushButton(self.STOP_NOW_LABEL)
+        self.stop_measurement_button.setCheckable(True)
+
+        # Save buttons
+        self.save_measurement_button = QPushButton(self.SAVE_SPECTRUM_LABEL)
+        self.save_measurement_button.setCheckable(True)
+        self.save_image_button = QPushButton(self.SAVE_DATASET_LABEL)
+        self.save_image_button.setCheckable(True)
+
+        # Layout
+        meas_info_layout = QHBoxLayout()
+        meas_info_layout.addWidget(self.meas_id_label)
+        meas_info_layout.addWidget(self.meas_id_indicator)
+        meas_info_layout.addWidget(self.state_indicator)
+
+        measurement_buttons_layout = QHBoxLayout()
+        measurement_buttons_layout.addWidget(self.start_measurement_button)
+        measurement_buttons_layout.addWidget(self.pause_measurement_button)
+        measurement_buttons_layout.addWidget(self.stop_measurement_button)
+
+        save_buttons_layout = QHBoxLayout()
+        save_buttons_layout.addWidget(self.save_measurement_button)
+        save_buttons_layout.addWidget(self.save_image_button)
+
+        vbox.addLayout(meas_info_layout)
+        vbox.addLayout(measurement_buttons_layout)
+        vbox.addLayout(save_buttons_layout)
+        frame.setLayout(vbox)
+        return frame
+
+    def init_sweep_frame(self):
+        frame = QFrame()
+        vbox = QVBoxLayout()
+
+        # self.num_sweeps_label, self.num_sweeps_input = util.get_spin_box_wdiget(
+        #     self.NUMBER_OF_SWEEPS_LABEL, default_value=50, max_value=1e4
+        # )
+
+        self.ith_loop_label = QLabel(self.SWEEPS_COMPLETED_LABEL)
+
+        self.ith_loop = QDoubleSpinBox()
+        self.ith_loop.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.ith_loop.setValue(0)
+        self.ith_loop.setDecimals(0)
+        self.ith_loop.setReadOnly(True)
+        self.ith_loop.setButtonSymbols(QAbstractSpinBox.ButtonSymbols.NoButtons)
+        self.ith_loop.setStyleSheet(&#34;background-color: black; color: white;&#34;)
+
+        self.current_sweep_label = QLabel(self.CURRENT_SWEEP_LABEL)
+        self.sweep_progress = QProgressBar()
+        self.sweep_progress.setRange(0, 100)
+        self.sweep_progress.setValue(0)
+
+        current_sweep_layout = QHBoxLayout()
+        current_sweep_layout.addWidget(self.sweep_progress, 80)
+        current_sweep_layout.addWidget(self.ith_loop, 20)
+
+        self.stop_after_sweeps = QPushButton(self.STOP_AFTER_SWEEPS_LABEL)
+        self.stop_after_sweeps.setCheckable(True)
+
+        self.stop_after_sweeps_idx = create_widget_from_config(
+            self.settings.stop_after_sweeps
+        )
+
+        self.save_after_sweeps = QPushButton(self.SAVE_AFTER_SWEEPS_LABEL)
+        self.save_after_sweeps.setCheckable(True)
+
+        self.save_after_sweeps_idx = create_widget_from_config(
+            self.settings.save_after_sweeps
+        )
+
+        sweep_stop_opts_layout = QHBoxLayout()
+        sweep_stop_opts_layout.addWidget(self.stop_after_sweeps)
+        sweep_stop_opts_layout.addWidget(self.stop_after_sweeps_idx)
+
+        sweep_save_opts_layout = QHBoxLayout()
+        sweep_save_opts_layout.addWidget(self.save_after_sweeps)
+        sweep_save_opts_layout.addWidget(self.save_after_sweeps_idx)
+
+        vbox.addLayout(sweep_save_opts_layout)
+        vbox.addLayout(sweep_stop_opts_layout)
+        vbox.addLayout(current_sweep_layout)
+        frame.setLayout(vbox)
+        return frame
+
+    def init_meas_type_frame(self):
+        frame = QFrame()
+        vbox = QVBoxLayout()
+
+        self.measurement_type_label = QLabel(self.TYPE_LABEL)
+
+        self.measurement_type_dropdown = create_widget_from_config(
+            self.settings.measurement_type
+        )
+
+        self.ref_mode_dropdown = create_widget_from_config(self.settings.ref_mode)
+
+        measurement_type_layout = QHBoxLayout()
+        measurement_type_layout.addWidget(self.measurement_type_label)
+        measurement_type_layout.addWidget(self.measurement_type_dropdown)
+        measurement_type_layout.addWidget(self.ref_mode_dropdown)
+
+        vbox.addLayout(measurement_type_layout)
+        frame.setLayout(vbox)
+        return frame
+
+    def init_sequence_frame(self):
+        frame = QFrame()
+        vbox = QVBoxLayout()
+
+        ### --------------------------- list mode settings
+
+        self.list_mode_frame = QFrame()
+        list_mode_layout = QVBoxLayout(self.list_mode_frame)
+        list_mode_layout.setSpacing(10)
+        list_mode_layout.setContentsMargins(0, 0, 0, 0)
+
+        list_mode_label = QLabel(self.LIST_MODE_LABEL)
+        self.list_mode_dropdown = create_widget_from_config(self.settings.list_mode)
+
+        util.add_row_to_layout(
+            list_mode_layout, list_mode_label, self.list_mode_dropdown
+        )
+
+        ### --------------------------- FREQ SETTINGS
+
+        #  --- Min and Max
+        self.freq_min_max_frame = QFrame()
+        freq_min_max_vbox = QHBoxLayout(self.freq_min_max_frame)
+        freq_min_max_vbox.setSpacing(10)
+        freq_min_max_vbox.setContentsMargins(0, 0, 0, 0)
+
+        self.freq_min_max_label = QLabel(self.FREQUENCY_MIN_MAX_LABEL)
+        self.start_freq_input = create_widget_from_config(self.settings.start_freq)
+        self.stop_freq_input = create_widget_from_config(self.settings.stop_freq)
+
+        util.add_row_to_layout(
+            freq_min_max_vbox,
+            self.freq_min_max_label,
+            self.start_freq_input,
+            self.stop_freq_input,
+        )
+
+        #  --- Center and range
+
+        self.freq_cen_rang_frame = QFrame()
+        freq_cen_range_vbox = QHBoxLayout(self.freq_cen_rang_frame)
+        freq_cen_range_vbox.setSpacing(10)
+        freq_cen_range_vbox.setContentsMargins(0, 0, 0, 0)
+
+        self.freq_cen_rang_label = QLabel(self.FREQUENCY_CENTER_RANGE_LABEL)
+        self.freq_center_input = create_widget_from_config(self.settings.freq_center)
+        self.freq_range_input = create_widget_from_config(self.settings.freq_range)
+
+        util.add_row_to_layout(
+            freq_cen_range_vbox,
+            self.freq_cen_rang_label,
+            self.freq_center_input,
+            self.freq_range_input,
+        )
+
+        #  --- general
+        self.freq_mod_frame = QFrame()
+        freq_vbox = QVBoxLayout(self.freq_mod_frame)
+        freq_vbox.setSpacing(0)
+        freq_vbox.setContentsMargins(0, 0, 0, 0)
+
+        self.freq_mod_label = QLabel(self.FREQUENCY_MODULATION_LABEL)
+        self.freq_mod_input = create_widget_from_config(self.settings.freq_mod)
+
+        util.add_row_to_layout(
+            freq_vbox,
+            self.freq_mod_label,
+            self.freq_mod_input,
+        )
+
+        ### --------------------------- TIME SETTINGS
+
+        #  --- Min and Max
+        self.time_min_max_frame = QFrame()
+        time_min_max_vbox = QHBoxLayout(self.time_min_max_frame)
+        time_min_max_vbox.setSpacing(10)
+        time_min_max_vbox.setContentsMargins(0, 0, 0, 0)
+
+        self.time_min_max_label = QLabel(self.Time_MIN_MAX_LABEL)
+        self.min_time_input = create_widget_from_config(self.settings.min_time)
+
+        self.max_time_input = create_widget_from_config(self.settings.max_time)
+
+        util.add_row_to_layout(
+            time_min_max_vbox,
+            self.time_min_max_label,
+            self.min_time_input,
+            self.max_time_input,
+        )
+
+        # ---- center and range
+        self.time_cen_rang_frame = QFrame()
+        time_cen_range_vbox = QHBoxLayout(self.time_cen_rang_frame)
+        time_cen_range_vbox.setSpacing(10)
+        time_cen_range_vbox.setContentsMargins(0, 0, 0, 0)
+
+        self.time_cen_rang_label = QLabel(self.TIME_CENTER_RANGE_LABEL)
+        self.time_center_input = create_widget_from_config(self.settings.time_center)
+
+        self.time_range_input = create_widget_from_config(self.settings.time_range)
+
+        util.add_row_to_layout(
+            time_cen_range_vbox,
+            self.time_cen_rang_label,
+            self.time_center_input,
+            self.time_range_input,
+        )
+
+        # --- general
+
+        self.num_pts_settings_frame = QFrame()
+        num_pt_settings_layout = QHBoxLayout(self.num_pts_settings_frame)
+        num_pt_settings_layout.setSpacing(10)
+        num_pt_settings_layout.setContentsMargins(0, 0, 0, 0)
+
+        self.num_points_label = QLabel(self.NUM_POINTS_LABEL)
+        self.num_points_input = create_widget_from_config(self.settings.num_points)
+
+        self.num_averages_label = QLabel(self.NUMBER_OF_AVERAGES_LABEL)
+        self.num_averages_input = create_widget_from_config(self.settings.num_averages)
+
+        num_pt_settings_layout.addWidget(self.num_points_label, 30)
+        num_pt_settings_layout.addWidget(self.num_points_input, 30)
+        # num_pt_settings_layout.addWidget(self.num_averages_label, 20)
+        num_pt_settings_layout.addWidget(self.num_averages_input, 30)
+
+        ### --------------------------- RF SETTINGS
+
+        self.rf_settings_frame = QFrame()
+        rf_settings_layout = QVBoxLayout(self.rf_settings_frame)
+        rf_settings_layout.setSpacing(10)
+        rf_settings_layout.setContentsMargins(0, 0, 0, 0)
+
+        self.rf_settings_label = QLabel(self.RF_SETTINGS_LABEL)
+
+        self.rf_power_input = create_widget_from_config(self.settings.rf_power)
+
+        self.rf_freq_input = create_widget_from_config(self.settings.rf_freq)
+
+        self.rf_duration_label = QLabel(self.RF_DURATION_LABEL)
+        self.rf_duration_input = create_widget_from_config(self.settings.rf_duration)
+
+        util.add_row_to_layout(
+            rf_settings_layout,
+            self.rf_settings_label,
+            self.rf_freq_input,
+            self.rf_power_input,
+        )
+
+        self.rf_duration_frame = frame_hbox_widgets(
+            [self.rf_duration_label, self.rf_duration_input]
+        )
+        rf_settings_layout.addWidget(self.rf_duration_frame)
+
+        ### --------------------------- Sequence settings
+
+        self.sequence_frame = QFrame()
+        sequence_layout = QHBoxLayout(self.sequence_frame)
+        sequence_layout.setSpacing(10)
+        sequence_layout.setContentsMargins(0, 0, 0, 0)
+
+        self.pulse_label = QLabel(self.PULSE_LABEL)
+
+        self.pi_pulse_input = create_widget_from_config(self.settings.pi_pulse)
+        self.pi_2_pulse_input = create_widget_from_config(self.settings.pi_2_pulse)
+        self.n_pulses_input = create_widget_from_config(self.settings.n_pulses)
+
+        sequence_layout.addWidget(self.pulse_label, 30)
+        sequence_layout.addWidget(self.pi_2_pulse_input, 20)
+        sequence_layout.addWidget(self.pi_pulse_input, 20)
+        sequence_layout.addWidget(self.n_pulses_input, 20)
+
+        ### Sequence timing settings
+        self.seq_timing_frame = QFrame()
+        seq_timing_layout = QHBoxLayout(self.seq_timing_frame)
+        seq_timing_layout.setSpacing(10)
+        seq_timing_layout.setContentsMargins(0, 0, 0, 0)
+
+        self.laser_opts_label = QLabel(&#34;Laser (ns) [Dur. | Delay]&#34;)
+        self.laser_dur_input = create_widget_from_config(self.settings.laser_duration)
+        self.laser_delay_input = create_widget_from_config(self.settings.laser_delay)
+
+        seq_timing_layout.addWidget(self.laser_opts_label, 30)
+        seq_timing_layout.addWidget(self.laser_dur_input, 30)
+        seq_timing_layout.addWidget(self.laser_delay_input, 30)
+
+        self.seq_rf_timing_frame = QFrame()
+        seq_rf_timing_layout = QHBoxLayout(self.seq_rf_timing_frame)
+        seq_rf_timing_layout.setSpacing(10)
+        seq_rf_timing_layout.setContentsMargins(0, 0, 0, 0)
+
+        self.rf_delay_label = QLabel(&#34;RF Delay (ns)&#34;)
+        self.rf_delay_input = create_widget_from_config(self.settings.rf_delay)
+
+        seq_rf_timing_layout.addWidget(self.rf_delay_label, 30)
+        seq_rf_timing_layout.addWidget(self.rf_delay_input, 30)
+
+        ### --------------------------- Build Layout &amp; hide frames
+
+        self.rf_duration_frame.hide()
+        self.sequence_frame.hide()
+
+        vbox.addWidget(self.list_mode_frame)
+
+        # Frequency settings
+        vbox.addWidget(self.freq_min_max_frame)
+        vbox.addWidget(self.freq_cen_rang_frame)
+
+        # Time settings
+        vbox.addWidget(self.time_min_max_frame)
+        vbox.addWidget(self.time_cen_rang_frame)
+
+        vbox.addWidget(self.num_pts_settings_frame)
+
+        vbox.addWidget(self.freq_mod_frame)
+
+        vbox.addWidget(self.rf_settings_frame)
+
+        vbox.addWidget(self.sequence_frame)
+
+        vbox.addWidget(self.seq_timing_frame)
+        vbox.addWidget(self.seq_rf_timing_frame)
+        frame.setLayout(vbox)
+        return frame
+
+    def init_ui(self):
+        &#34;&#34;&#34;Initialize the UI components.&#34;&#34;&#34;
+
+        self.vbox = QVBoxLayout()
+
+        # meas info, ctrl buttons, save buttons
+        meas_ctrl_frame = self.init_meas_ctrl_frame()
+
+        # meas type/ref mode -&gt; in it&#39;s own frame
+        meas_type_frame = self.init_meas_type_frame()
+
+        # sweep settings
+        sweep_frame = self.init_sweep_frame()
+
+        # all sequence settings
+        sequence_frame = self.init_sequence_frame()
+
+        self.vbox.addWidget(meas_ctrl_frame)
+        self.vbox.addWidget(meas_type_frame)
+        self.vbox.addWidget(sweep_frame)
+        self.vbox.addWidget(sequence_frame)
+        self.setLayout(self.vbox)
+
+        self.meas_settings = GUISettings(self, &#34;MEASUREMENT OPTS&#34;)
+        self.meas_settings.load_prev_state()
+
+    def create_row_layout(self, label, input_widget):
+        &#34;&#34;&#34;Helper method to create a row layout with a label and input widget.&#34;&#34;&#34;
+        layout = QHBoxLayout()
+        layout.addWidget(label)
+        layout.addWidget(input_widget)
+        return layout
+
+    def connect_signals(self):
+        &#34;&#34;&#34;Connect signals to their respective slots.&#34;&#34;&#34;
+        self.start_measurement_button.clicked.connect(self.start_measurement)
+        self.pause_measurement_button.clicked.connect(self.pause_measurement)
+        self.stop_measurement_button.clicked.connect(self.stop_measurement)
+        self.save_measurement_button.clicked.connect(self.save_measurement)
+        self.save_image_button.clicked.connect(self.save_image)
+        self.stop_after_sweeps.clicked.connect(self.stop_after_n_sweeps)
+        self.save_after_sweeps.clicked.connect(self.save_after_n_sweeps)
+        self.measurement_type_dropdown.currentIndexChanged.connect(
+            self.set_measurement_type
+        )
+        self.list_mode_dropdown.currentIndexChanged.connect(self.set_list_mode)
+
+    def start_measurement(self):
+        self.start_measurement_button.setStyleSheet(&#34;background-color: blue&#34;)
+
+        # check if the measurement is currently paused
+        if hasattr(self.parent, &#34;meas_id&#34;):
+            try:
+                resp = self.parent.connection_manager.measurement_get_state(
+                    self.parent.meas_id
+                )
+            except:
+                pass
+            else:
+                if resp.lower() == &#34;paused&#34;:
+                    # Resume the current measurement
+                    try:
+                        self.parent.connection_manager.start_measurement_wait(
+                            self.parent.meas_id
+                        )
+                        self.start_measurement_button.setText(&#34;Start Sweep&#34;)
+                        self.pause_measurement_button.setChecked(False)
+                        self.pause_measurement_button.setStyleSheet(
+                            &#34;background-color: None&#34;
+                        )
+                        return
+                    except Exception as e:
+                        self.reset_buttons()
+                        logger.error(f&#34;Error resuming measurement: {e}&#34;)
+                        return
+                else:
+                    # close the previous measurement
+                    if hasattr(self.parent, &#34;meas_id&#34;):
+                        try:
+                            self.parent.connection_manager.close_measurement_wait(
+                                self.parent.meas_id
+                            )
+                        except Exception as e:
+                            del self.parent.meas_id
+                            self.reset_buttons()
+
+        # Get the sweep list
+        x_list = self.get_sweep_x_list()
+
+        # TODO Update the measurement confi to be more automatic.
+        # Find the right meas class and then determine the correct config for that class.
+
+        meas_type = self.measurement_type_dropdown.currentText()
+
+        # load the config from the GUI for the selected measurement type
+        if meas_type == &#34;Mock Measurement&#34;:
+            config = get_measurement_config(
+                gui_handle=self.parent,
+                meas_config_class=MockSGAndorESRConfig,
+                meas_class=qscope.meas.MockSGAndorESR,
+                sweep_x=x_list,
+            )
+        elif meas_type == &#34;CW ODMR&#34;:
+            config = get_measurement_config(
+                gui_handle=self.parent,
+                meas_config_class=SGAndorCWESRConfig,
+                meas_class=qscope.meas.SGAndorCWESR,
+                sweep_x=x_list,
+            )
+        elif meas_type == &#34;Pulsed ODMR&#34;:
+            config = get_measurement_config(
+                gui_handle=self.parent,
+                meas_config_class=SGAndorPESRConfig,
+                meas_class=qscope.meas.SGAndorPESR,
+                sweep_x=x_list,
+            )
+        elif meas_type == &#34;Rabi&#34;:
+            config = get_measurement_config(
+                gui_handle=self.parent,
+                meas_config_class=SGAndorRabiConfig,
+                meas_class=qscope.meas.SGAndorRabi,
+                sweep_x=x_list,
+            )
+        elif meas_type == &#34;Ramsey&#34;:
+            config = get_measurement_config(
+                gui_handle=self.parent,
+                meas_config_class=SGAndorRamseyConfig,
+                meas_class=qscope.meas.SGAndorRamsey,
+                sweep_x=x_list,
+            )
+        elif meas_type == &#34;T1&#34;:
+            config = get_measurement_config(
+                gui_handle=self.parent,
+                meas_config_class=SGAndorT1Config,
+                meas_class=qscope.meas.SGAndorT1,
+                sweep_x=x_list,
+            )
+        elif meas_type == &#34;Spin Echo&#34;:
+            config = get_measurement_config(
+                gui_handle=self.parent,
+                meas_config_class=SGAndorSpinEchoConfig,
+                meas_class=qscope.meas.SGAndorSpinEcho,
+                sweep_x=x_list,
+            )
+        elif meas_type == &#34;CPMG&#34;:
+            qscope.gui.util.show_warning(&#34;Measurement type not implemented&#34;)
+            return
+        elif meas_type == &#34;XYN&#34;:
+            qscope.gui.util.show_warning(&#34;Measurement type not implemented&#34;)
+            return
+        else:
+            qscope.gui.util.show_warning(&#34;Measurement type not implemented&#34;)
+            return
+
+        if config is None:
+            return
+
+        # send the camera settings to the server
+        try:
+            self.parent.cam_opts.set_camera_settings()
+        except Exception as e:
+            self.reset_buttons()
+            show_warning(f&#34;Error setting camera settings: {e}&#34;)
+            return
+
+        # check if the laser constant on is checked
+        if self.parent.cam_opts.laser_button.isChecked():
+            # turn off the laser
+            self.parent.connection_manager.set_laser_output(False)
+            # Don&#39;t adjust the button state here as we will use it to turn the laser back on
+
+        # Prepare the measurement
+        self.meas_id = self.parent.connection_manager.add_measurement(config)
+        self.meas_info = self.parent.connection_manager.get_all_meas_info()
+
+        # Start the measurement
+        try:
+            self.parent.connection_manager.start_measurement_wait(self.meas_id)
+            self.parent.connection_manager.start_measurement_nowait(self.meas_id)
+        except Exception as e:
+            self.reset_buttons()
+            show_warning(f&#34;Error starting measurement: {e}&#34;)
+            return
+
+        # Update the line plot x-axis label
+        if meas_type in [&#34;Mock Measurement&#34;, &#34;CW ODMR&#34;, &#34;Pulsed ODMR&#34;]:
+            self.parent.meas_line_figure.set_x_label(&#34;Frequency (MHz)&#34;)
+            self.parent.meas_line_figure.set_x_multiplier(1)
+        else:
+            # Check the maximum time can scale accordingly
+            max_time = np.max(x_list)
+            if max_time &gt; 1e-3:
+                self.parent.meas_line_figure.set_x_label(&#34;Time (ms)&#34;)
+                self.parent.meas_line_figure.set_x_multiplier(1e3)
+            elif max_time &gt; 1e-6:
+                self.parent.meas_line_figure.set_x_label(&#34;Time (μs)&#34;)
+                self.parent.meas_line_figure.set_x_multiplier(1e6)
+            elif max_time &gt; 1e-9:
+                self.parent.meas_line_figure.set_x_label(&#34;Time (ns)&#34;)
+                self.parent.meas_line_figure.set_x_multiplier(1e9)
+            else:
+                self.parent.meas_line_figure.set_x_label(&#34;Time (s)&#34;)
+                self.parent.meas_line_figure.set_x_multiplier(1)
+
+    def pause_measurement(self):
+        # set the button to unchecked
+        self.pause_measurement_button.setChecked(True)
+        # reset the button colour
+        self.pause_measurement_button.setStyleSheet(&#34;background-color: red&#34;)
+
+        # change the start button to display resume if the measurement is paused
+        self.start_measurement_button.setText(&#34;Resume Sweep&#34;)
+
+        # Pause the measurement
+        try:
+            self.parent.connection_manager.pause_endsweep_measurement(self.meas_id)
+        except Exception as e:
+            self.reset_buttons()
+            show_warning(f&#34;Error pausing measurement: {e}&#34;)
+            return
+
+    def stop_measurement(self):
+        self.stop_measurement_button.setStyleSheet(&#34;background-color: red&#34;)
+
+        # Stop the measurement
+        try:
+            self.parent.connection_manager.stop_measurement(self.parent.meas_id)
+        except Exception as e:
+            self.reset_buttons()
+            show_warning(f&#34;Error stopping measurement: {e}&#34;)
+            return
+
+        # Save state when measurement stops
+        self.reset_buttons()
+
+        # check if the laser constant on is checked
+        if self.parent.cam_opts.laser_button.isChecked():
+            # turn the laser back on
+            self.parent.connection_manager.set_laser_output(True)
+
+    def save_measurement(self):
+        self.save_measurement_button.setStyleSheet(&#34;background-color: blue&#34;)
+
+        # get the current normalised data
+        xdata, ydata = self.parent.meas_line_figure.get_plot_data()
+
+        # Get the x-multiplier to convert the x-axis back into seconds
+        x_multiplier = self.parent.meas_line_figure.x_multiplier
+
+        # get the information from the fit model
+        if self.parent.line_fit_opts.fit_button.isChecked():
+            fit_x, fit_y = self.parent.line_fit_opts.FitModel.best_fit()
+            total_counts = (
+                np.nanmean(ydata)
+                * self.parent.meas_opts.ith_loop.value()
+                / self.parent.cam_opts.exposure_time_input.value()
+            )
+            fit_results = self.parent.line_fit_opts.FitModel.get_fit_results_txt(
+                total_counts
+            )
+        else:
+            fit_x, fit_y = None, None
+            fit_results = &#34;&#34;
+        path = self.parent.connection_manager.measurement_save_sweep_w_fit(
+            self.parent.meas_id,
+            self.parent.get_project_name(),
+            xdata / x_multiplier if xdata is not None else xdata,
+            ydata,
+            fit_x / x_multiplier if fit_x is not None else fit_x,
+            fit_y,
+            fit_results,
+            color_map=self.parent.frame_plot_opts.cmap_dropdown.currentText(),
+            notes=self.parent.get_notes(),
+        )
+        self.parent.show_status_msg(f&#34;Saved sweep to {path}&#34;)
+        self.save_measurement_button.setStyleSheet(&#34;background-color: None&#34;)
+        self.save_measurement_button.setChecked(False)
+
+    def save_image(self):
+        self.save_image_button.setStyleSheet(&#34;background-color: blue&#34;)
+        path = self.parent.connection_manager.measurement_save_full_data(
+            self.parent.meas_id,
+            self.parent.get_project_name(),
+            notes=self.parent.get_notes(),
+        )
+        self.parent.show_status_msg(f&#34;Saved full dataset to {path}&#34;)
+        self.save_image_button.setStyleSheet(&#34;background-color: None&#34;)
+
+    def stop_after_n_sweeps(self):
+        &#34;&#34;&#34;Stop after a specified number of sweeps.&#34;&#34;&#34;
+        if self.stop_after_sweeps.isChecked():
+            self.stop_after_sweeps.setChecked(True)
+            self.stop_after_sweeps.setStyleSheet(&#34;background-color: blue&#34;)
+        else:
+            self.stop_after_sweeps.setChecked(False)
+            self.stop_after_sweeps.setStyleSheet(&#34;background-color: None&#34;)
+
+    def save_after_n_sweeps(self):
+        &#34;&#34;&#34;Save after a specified number of sweeps.&#34;&#34;&#34;
+        if self.save_after_sweeps.isChecked():
+            self.save_after_sweeps.setChecked(True)
+            self.save_after_sweeps.setStyleSheet(&#34;background-color: blue&#34;)
+        else:
+            self.save_after_sweeps.setChecked(False)
+            self.save_after_sweeps.setStyleSheet(&#34;background-color: None&#34;)
+
+    def _freq_or_time_list_mode_type(self):
+        &#34;&#34;&#34;Return the list mode for the current measurement type&#34;&#34;&#34;
+        meas_type = self.measurement_type_dropdown.currentText()
+
+        match meas_type:
+            case &#34;Mock Measurement&#34;:
+                return &#34;freq&#34;
+            case &#34;CW ODMR&#34; | &#34;Pulsed ODMR&#34;:
+                return &#34;freq&#34;
+            case &#34;Rabi&#34; | &#34;Ramsey&#34; | &#34;Spin Echo&#34; | &#34;CPMG&#34; | &#34;XYN&#34; | &#34;T1&#34;:
+                return &#34;time&#34;
+            case _:
+                return &#34;time&#34;
+
+    def set_list_mode(self):
+        list_mode = self.list_mode_dropdown.currentText()
+
+        if self._freq_or_time_list_mode_type() == &#34;freq&#34;:
+            self.freq_mod_frame.show()
+            min_max_frame = self.freq_min_max_frame
+            cen_rang_frame = self.freq_cen_rang_frame
+            hide_frames = [self.time_min_max_frame, self.time_cen_rang_frame]
+
+        else:
+            self.freq_mod_frame.hide()
+            min_max_frame = self.time_min_max_frame
+            cen_rang_frame = self.time_cen_rang_frame
+            hide_frames = [self.freq_min_max_frame, self.freq_cen_rang_frame]
+
+        for frame in hide_frames:
+            frame.hide()
+
+        match list_mode:
+            case &#34;Linear (min, max)&#34;:
+                min_max_frame.show()
+                cen_rang_frame.hide()
+            case &#34;Linear (center, range)&#34; | &#34;Guassian (center, FWHM)&#34;:
+                min_max_frame.hide()
+                cen_rang_frame.show()
+            case _:
+                min_max_frame.hide()
+                cen_rang_frame.hide()
+
+    def get_sweep_x_list(self):
+        &#34;&#34;&#34;Return the sweep x values based on the current list mode settings&#34;&#34;&#34;
+        list_type = self._freq_or_time_list_mode_type()
+
+        if list_type == &#34;freq&#34;:
+            min_val = self.start_freq_input.value()
+            max_val = self.stop_freq_input.value()
+            num_points = int(self.num_points_input.value())
+            cen_val = self.freq_center_input.value()
+            range_val = self.freq_range_input.value()
+        else:
+            min_val = self.min_time_input.value() * 1e-9
+            max_val = self.max_time_input.value() * 1e-9
+            num_points = int(self.num_points_input.value())
+            cen_val = self.time_center_input.value()
+            range_val = self.time_range_input.value()
+
+        list_mode = self.list_mode_dropdown.currentText()
+        # NOTE DB you could also utilise `gen_multigauss_sweep_list` &amp; `gen_multicentre_sweep_list`
+        match list_mode:
+            case &#34;Linear (min, max)&#34;:
+                return gen_linear_sweep_list(min_val, max_val, num_points)
+
+            case &#34;Linear (center, range)&#34;:
+                return gen_centred_sweep_list(cen_val, range_val, num_points)
+
+            case &#34;Guassian resonance (center, FWHM)&#34;:
+                return gen_gauss_sweep_list(cen_val, range_val, num_points)
+
+            case &#34;Exponential (min, max)&#34;:
+                return gen_exp_tau_list(min_val, max_val, num_points)
+
+            case &#34;Exponential (center, range)&#34;:
+                # Define an exponential spacing for the list
+                return gen_exp_centered_list(cen_val, range_val, num_points)
+
+            case _:
+                raise ValueError(&#34;Invalid list mode&#34;)
+
+    def set_measurement_type(self):
+        measurement_type = self.measurement_type_dropdown.currentText()
+
+        self.set_list_mode()
+
+        if measurement_type == &#34;Mock Measurement&#34;:
+            self.freq_mod_frame.show()
+
+            # Disable unused settings
+            self.rf_settings_frame.hide()
+            self.rf_duration_frame.hide()
+
+        elif measurement_type == &#34;CW ODMR&#34;:
+            self.freq_mod_frame.show()
+            self.rf_settings_frame.show()
+
+            self.rf_duration_frame.hide()
+            self.sequence_frame.hide()
+            # self.pi_pulse_frame.hide()
+            # self.n_pulses_frame.hide()
+
+            # Display only the relavant reference modes
+            self.ref_mode_dropdown.clear()
+            self.ref_mode_dropdown.addItem(&#34;No RF&#34;)
+            self.ref_mode_dropdown.addItem(&#34;Frequency Modulated&#34;)
+            self.ref_mode_dropdown.addItem(&#34;&#34;)
+
+        elif measurement_type == &#34;Pulsed ODMR&#34;:
+            self.sequence_frame.hide()
+            # self.pi_pulse_frame.hide()
+            # self.n_pulses_frame.hide()
+
+            # Make sure the used settings are enabled and shown
+            self.rf_settings_frame.show()
+            self.rf_duration_frame.show()
+
+            # Display only the relavant reference modes
+            self.ref_mode_dropdown.clear()
+            self.ref_mode_dropdown.addItem(&#34;No RF&#34;)
+            self.ref_mode_dropdown.addItem(&#34;Frequency Modulated&#34;)
+            self.ref_mode_dropdown.addItem(&#34;&#34;)
+
+        elif measurement_type == &#34;Rabi&#34;:
+            # Disable unused settings
+            self.sequence_frame.hide()
+            # self.pi_pulse_frame.hide()
+            # self.n_pulses_frame.hide()
+            self.freq_mod_frame.hide()
+            self.rf_duration_frame.hide()
+
+            # Make sure the used settings are enabled and show
+            # self.rf_freq_mod_frame.show()
+            self.rf_settings_frame.show()
+
+            # Set the list mode to min max
+            self.list_mode_dropdown.setCurrentIndex(0)
+
+            # Display only the relavant reference modes
+            self.ref_mode_dropdown.clear()
+            self.ref_mode_dropdown.addItem(&#34;No RF&#34;)
+            self.ref_mode_dropdown.addItem(&#34;π pulse at the end&#34;)
+            self.ref_mode_dropdown.addItem(&#34;π pulse at the start&#34;)
+            self.ref_mode_dropdown.addItem(&#34;&#34;)
+
+        elif measurement_type == &#34;Ramsey&#34;:
+            # Make sure the used settings are enabled and shown
+            self.sequence_frame.show()
+            self.rf_settings_frame.show()
+            # self.rf_freq_mod_frame.show()
+
+            # Disable unused settings
+            self.freq_mod_frame.hide()
+            self.rf_duration_frame.hide()
+
+            # Display only the relavant reference modes
+            self.ref_mode_dropdown.clear()
+            self.ref_mode_dropdown.addItem(&#34;-π/2 at end&#34;)
+            self.ref_mode_dropdown.addItem(&#34;3π/2 at end&#34;)
+            self.ref_mode_dropdown.addItem(&#34;&#34;)
+
+        elif (
+            measurement_type == &#34;Spin Echo&#34;
+            or measurement_type == &#34;CPMG&#34;
+            or measurement_type == &#34;XYN&#34;
+        ):
+            # Disable unused settings
+            self.freq_mod_frame.hide()
+
+            # Make sure the used settings are enabled and shown
+            self.rf_settings_frame.show()
+            self.sequence_frame.show()
+            # self.pi_pulse_frame.show()
+            # self.n_pulses_frame.show()
+            # self.rf_freq_mod_frame.show()
+
+            # Display only the relavant reference modes
+            self.ref_mode_dropdown.clear()
+
+            self.ref_mode_dropdown.addItem(&#34;-π/2 at end&#34;)
+            self.ref_mode_dropdown.addItem(&#34;3π/2 at end&#34;)
+            # self.ref_mode_dropdown.addItem(&#34;&#34;)
+
+        elif measurement_type == &#34;T1&#34;:
+            # Disable unused settings
+            self.freq_mod_frame.hide()
+
+            # Make sure the used settings are enabled and shown
+            self.rf_settings_frame.show()
+            self.sequence_frame.show()
+
+            # Display only the relavant reference modes
+            self.ref_mode_dropdown.clear()
+
+            self.ref_mode_dropdown.addItem(&#34;π at start&#34;)
+            self.ref_mode_dropdown.addItem(&#34;π at end&#34;)
+            # self.ref_mode_dropdown.addItem(&#34;&#34;)
+        else:
+            # Disable unused settings
+            self.rf_settings_frame.show()
+
+    def reset_buttons(self):
+        self.start_measurement_button.setChecked(False)
+        self.pause_measurement_button.setChecked(False)
+        self.stop_measurement_button.setChecked(False)
+        self.start_measurement_button.setStyleSheet(&#34;background-color: None&#34;)
+        self.pause_measurement_button.setStyleSheet(&#34;background-color: None&#34;)
+        self.stop_measurement_button.setStyleSheet(&#34;background-color: None&#34;)
+        self.start_measurement_button.setText(&#34;Start Sweep&#34;)
+        self.ith_loop.setValue(0)
+        self.meas_id_indicator.clear()
+        self.state_indicator.clear()</code></pre>
+</details>
+<div class="desc"><p>QuantumMeasurementOpts(_parent, title='Measurement Options')</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>PyQt6.QtWidgets.QGroupBox</li>
+<li>PyQt6.QtWidgets.QWidget</li>
+<li>PyQt6.QtCore.QObject</li>
+<li>PyQt6.sip.wrapper</li>
+<li>PyQt6.QtGui.QPaintDevice</li>
+<li>PyQt6.sip.simplewrapper</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.CURRENT_SWEEP_LABEL"><code class="name">var <span class="ident">CURRENT_SWEEP_LABEL</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.FREQUENCY_CENTER_RANGE_LABEL"><code class="name">var <span class="ident">FREQUENCY_CENTER_RANGE_LABEL</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.FREQUENCY_MIN_MAX_LABEL"><code class="name">var <span class="ident">FREQUENCY_MIN_MAX_LABEL</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.FREQUENCY_MODULATION_LABEL"><code class="name">var <span class="ident">FREQUENCY_MODULATION_LABEL</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.LIST_MODE_LABEL"><code class="name">var <span class="ident">LIST_MODE_LABEL</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.MEASUREMENT_ID_LABEL"><code class="name">var <span class="ident">MEASUREMENT_ID_LABEL</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.NUMBER_OF_AVERAGES_LABEL"><code class="name">var <span class="ident">NUMBER_OF_AVERAGES_LABEL</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.NUM_POINTS_LABEL"><code class="name">var <span class="ident">NUM_POINTS_LABEL</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.PAUSE_SWEEP_LABEL"><code class="name">var <span class="ident">PAUSE_SWEEP_LABEL</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.PULSE_LABEL"><code class="name">var <span class="ident">PULSE_LABEL</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.RF_DURATION_LABEL"><code class="name">var <span class="ident">RF_DURATION_LABEL</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.RF_SETTINGS_LABEL"><code class="name">var <span class="ident">RF_SETTINGS_LABEL</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.SAVE_AFTER_SWEEPS_LABEL"><code class="name">var <span class="ident">SAVE_AFTER_SWEEPS_LABEL</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.SAVE_DATASET_LABEL"><code class="name">var <span class="ident">SAVE_DATASET_LABEL</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.SAVE_SPECTRUM_LABEL"><code class="name">var <span class="ident">SAVE_SPECTRUM_LABEL</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.START_SWEEP_LABEL"><code class="name">var <span class="ident">START_SWEEP_LABEL</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.STOP_AFTER_SWEEPS_LABEL"><code class="name">var <span class="ident">STOP_AFTER_SWEEPS_LABEL</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.STOP_NOW_LABEL"><code class="name">var <span class="ident">STOP_NOW_LABEL</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.SWEEPS_COMPLETED_LABEL"><code class="name">var <span class="ident">SWEEPS_COMPLETED_LABEL</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.TIME_CENTER_RANGE_LABEL"><code class="name">var <span class="ident">TIME_CENTER_RANGE_LABEL</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.TYPE_LABEL"><code class="name">var <span class="ident">TYPE_LABEL</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.Time_MIN_MAX_LABEL"><code class="name">var <span class="ident">Time_MIN_MAX_LABEL</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.connect_signals"><code class="name flex">
+<span>def <span class="ident">connect_signals</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def connect_signals(self):
+    &#34;&#34;&#34;Connect signals to their respective slots.&#34;&#34;&#34;
+    self.start_measurement_button.clicked.connect(self.start_measurement)
+    self.pause_measurement_button.clicked.connect(self.pause_measurement)
+    self.stop_measurement_button.clicked.connect(self.stop_measurement)
+    self.save_measurement_button.clicked.connect(self.save_measurement)
+    self.save_image_button.clicked.connect(self.save_image)
+    self.stop_after_sweeps.clicked.connect(self.stop_after_n_sweeps)
+    self.save_after_sweeps.clicked.connect(self.save_after_n_sweeps)
+    self.measurement_type_dropdown.currentIndexChanged.connect(
+        self.set_measurement_type
+    )
+    self.list_mode_dropdown.currentIndexChanged.connect(self.set_list_mode)</code></pre>
+</details>
+<div class="desc"><p>Connect signals to their respective slots.</p></div>
+</dd>
+<dt id="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.create_row_layout"><code class="name flex">
+<span>def <span class="ident">create_row_layout</span></span>(<span>self, label, input_widget)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def create_row_layout(self, label, input_widget):
+    &#34;&#34;&#34;Helper method to create a row layout with a label and input widget.&#34;&#34;&#34;
+    layout = QHBoxLayout()
+    layout.addWidget(label)
+    layout.addWidget(input_widget)
+    return layout</code></pre>
+</details>
+<div class="desc"><p>Helper method to create a row layout with a label and input widget.</p></div>
+</dd>
+<dt id="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.get_all_widget_configs"><code class="name flex">
+<span>def <span class="ident">get_all_widget_configs</span></span>(<span>self) ‑> Dict[str, <a title="qscope.gui.widgets.config.WidgetConfig" href="../widgets/config.html#qscope.gui.widgets.config.WidgetConfig">WidgetConfig</a>]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_all_widget_configs(self) -&gt; Dict[str, WidgetConfig]:
+    &#34;&#34;&#34;Get all widget sysconfig&#34;&#34;&#34;
+    return {
+        k: v
+        for k, v in self.settings.__dataclass_fields__.items()
+        if isinstance(v.default, WidgetConfig)
+    }</code></pre>
+</details>
+<div class="desc"><p>Get all widget sysconfig</p></div>
+</dd>
+<dt id="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.get_current_values"><code class="name flex">
+<span>def <span class="ident">get_current_values</span></span>(<span>self) ‑> Dict[str, Any]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_current_values(self) -&gt; Dict[str, Any]:
+    &#34;&#34;&#34;Get current values of all widgets&#34;&#34;&#34;
+    values = {}
+    for field_name, field in self.settings.__dataclass_fields__.items():
+        if isinstance(field.default, WidgetConfig):
+            widget = getattr(self, f&#34;{field_name}_input&#34;, None)
+            if widget:
+                values[field_name] = field.default.get_value(widget)
+    return values</code></pre>
+</details>
+<div class="desc"><p>Get current values of all widgets</p></div>
+</dd>
+<dt id="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.get_sweep_x_list"><code class="name flex">
+<span>def <span class="ident">get_sweep_x_list</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_sweep_x_list(self):
+    &#34;&#34;&#34;Return the sweep x values based on the current list mode settings&#34;&#34;&#34;
+    list_type = self._freq_or_time_list_mode_type()
+
+    if list_type == &#34;freq&#34;:
+        min_val = self.start_freq_input.value()
+        max_val = self.stop_freq_input.value()
+        num_points = int(self.num_points_input.value())
+        cen_val = self.freq_center_input.value()
+        range_val = self.freq_range_input.value()
+    else:
+        min_val = self.min_time_input.value() * 1e-9
+        max_val = self.max_time_input.value() * 1e-9
+        num_points = int(self.num_points_input.value())
+        cen_val = self.time_center_input.value()
+        range_val = self.time_range_input.value()
+
+    list_mode = self.list_mode_dropdown.currentText()
+    # NOTE DB you could also utilise `gen_multigauss_sweep_list` &amp; `gen_multicentre_sweep_list`
+    match list_mode:
+        case &#34;Linear (min, max)&#34;:
+            return gen_linear_sweep_list(min_val, max_val, num_points)
+
+        case &#34;Linear (center, range)&#34;:
+            return gen_centred_sweep_list(cen_val, range_val, num_points)
+
+        case &#34;Guassian resonance (center, FWHM)&#34;:
+            return gen_gauss_sweep_list(cen_val, range_val, num_points)
+
+        case &#34;Exponential (min, max)&#34;:
+            return gen_exp_tau_list(min_val, max_val, num_points)
+
+        case &#34;Exponential (center, range)&#34;:
+            # Define an exponential spacing for the list
+            return gen_exp_centered_list(cen_val, range_val, num_points)
+
+        case _:
+            raise ValueError(&#34;Invalid list mode&#34;)</code></pre>
+</details>
+<div class="desc"><p>Return the sweep x values based on the current list mode settings</p></div>
+</dd>
+<dt id="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.get_widget_config"><code class="name flex">
+<span>def <span class="ident">get_widget_config</span></span>(<span>self, name: str) ‑> <a title="qscope.gui.widgets.config.WidgetConfig" href="../widgets/config.html#qscope.gui.widgets.config.WidgetConfig">WidgetConfig</a> | None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_widget_config(self, name: str) -&gt; Optional[WidgetConfig]:
+    &#34;&#34;&#34;Get widget config by name&#34;&#34;&#34;
+    return getattr(self.settings, name, None)</code></pre>
+</details>
+<div class="desc"><p>Get widget config by name</p></div>
+</dd>
+<dt id="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.init_meas_ctrl_frame"><code class="name flex">
+<span>def <span class="ident">init_meas_ctrl_frame</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def init_meas_ctrl_frame(self):
+    frame = QFrame()
+    vbox = QVBoxLayout()
+
+    # Create measurement control widgets from settings
+    self.stop_after_sweeps_idx = create_widget_from_config(
+        self.settings.stop_after_sweeps
+    )
+    self.save_after_sweeps_idx = create_widget_from_config(
+        self.settings.save_after_sweeps
+    )
+    self.measurement_type_dropdown = create_widget_from_config(
+        self.settings.measurement_type
+    )
+    self.ref_mode_dropdown = create_widget_from_config(self.settings.ref_mode)
+
+    # Status indicators
+    self.meas_id_label = QLabel(self.MEASUREMENT_ID_LABEL)
+    self.meas_id_indicator = QLineEdit()
+    self.meas_id_indicator.setReadOnly(True)
+    self.meas_id_indicator.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
+    self.state_indicator = QLineEdit()
+    self.state_indicator.setReadOnly(True)
+    self.state_indicator.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
+    # Control buttons
+    self.start_measurement_button = QPushButton(self.START_SWEEP_LABEL)
+    self.start_measurement_button.setCheckable(True)
+    self.pause_measurement_button = QPushButton(self.PAUSE_SWEEP_LABEL)
+    self.pause_measurement_button.setCheckable(True)
+    self.stop_measurement_button = QPushButton(self.STOP_NOW_LABEL)
+    self.stop_measurement_button.setCheckable(True)
+
+    # Save buttons
+    self.save_measurement_button = QPushButton(self.SAVE_SPECTRUM_LABEL)
+    self.save_measurement_button.setCheckable(True)
+    self.save_image_button = QPushButton(self.SAVE_DATASET_LABEL)
+    self.save_image_button.setCheckable(True)
+
+    # Layout
+    meas_info_layout = QHBoxLayout()
+    meas_info_layout.addWidget(self.meas_id_label)
+    meas_info_layout.addWidget(self.meas_id_indicator)
+    meas_info_layout.addWidget(self.state_indicator)
+
+    measurement_buttons_layout = QHBoxLayout()
+    measurement_buttons_layout.addWidget(self.start_measurement_button)
+    measurement_buttons_layout.addWidget(self.pause_measurement_button)
+    measurement_buttons_layout.addWidget(self.stop_measurement_button)
+
+    save_buttons_layout = QHBoxLayout()
+    save_buttons_layout.addWidget(self.save_measurement_button)
+    save_buttons_layout.addWidget(self.save_image_button)
+
+    vbox.addLayout(meas_info_layout)
+    vbox.addLayout(measurement_buttons_layout)
+    vbox.addLayout(save_buttons_layout)
+    frame.setLayout(vbox)
+    return frame</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.init_meas_type_frame"><code class="name flex">
+<span>def <span class="ident">init_meas_type_frame</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def init_meas_type_frame(self):
+    frame = QFrame()
+    vbox = QVBoxLayout()
+
+    self.measurement_type_label = QLabel(self.TYPE_LABEL)
+
+    self.measurement_type_dropdown = create_widget_from_config(
+        self.settings.measurement_type
+    )
+
+    self.ref_mode_dropdown = create_widget_from_config(self.settings.ref_mode)
+
+    measurement_type_layout = QHBoxLayout()
+    measurement_type_layout.addWidget(self.measurement_type_label)
+    measurement_type_layout.addWidget(self.measurement_type_dropdown)
+    measurement_type_layout.addWidget(self.ref_mode_dropdown)
+
+    vbox.addLayout(measurement_type_layout)
+    frame.setLayout(vbox)
+    return frame</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.init_sequence_frame"><code class="name flex">
+<span>def <span class="ident">init_sequence_frame</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def init_sequence_frame(self):
+    frame = QFrame()
+    vbox = QVBoxLayout()
+
+    ### --------------------------- list mode settings
+
+    self.list_mode_frame = QFrame()
+    list_mode_layout = QVBoxLayout(self.list_mode_frame)
+    list_mode_layout.setSpacing(10)
+    list_mode_layout.setContentsMargins(0, 0, 0, 0)
+
+    list_mode_label = QLabel(self.LIST_MODE_LABEL)
+    self.list_mode_dropdown = create_widget_from_config(self.settings.list_mode)
+
+    util.add_row_to_layout(
+        list_mode_layout, list_mode_label, self.list_mode_dropdown
+    )
+
+    ### --------------------------- FREQ SETTINGS
+
+    #  --- Min and Max
+    self.freq_min_max_frame = QFrame()
+    freq_min_max_vbox = QHBoxLayout(self.freq_min_max_frame)
+    freq_min_max_vbox.setSpacing(10)
+    freq_min_max_vbox.setContentsMargins(0, 0, 0, 0)
+
+    self.freq_min_max_label = QLabel(self.FREQUENCY_MIN_MAX_LABEL)
+    self.start_freq_input = create_widget_from_config(self.settings.start_freq)
+    self.stop_freq_input = create_widget_from_config(self.settings.stop_freq)
+
+    util.add_row_to_layout(
+        freq_min_max_vbox,
+        self.freq_min_max_label,
+        self.start_freq_input,
+        self.stop_freq_input,
+    )
+
+    #  --- Center and range
+
+    self.freq_cen_rang_frame = QFrame()
+    freq_cen_range_vbox = QHBoxLayout(self.freq_cen_rang_frame)
+    freq_cen_range_vbox.setSpacing(10)
+    freq_cen_range_vbox.setContentsMargins(0, 0, 0, 0)
+
+    self.freq_cen_rang_label = QLabel(self.FREQUENCY_CENTER_RANGE_LABEL)
+    self.freq_center_input = create_widget_from_config(self.settings.freq_center)
+    self.freq_range_input = create_widget_from_config(self.settings.freq_range)
+
+    util.add_row_to_layout(
+        freq_cen_range_vbox,
+        self.freq_cen_rang_label,
+        self.freq_center_input,
+        self.freq_range_input,
+    )
+
+    #  --- general
+    self.freq_mod_frame = QFrame()
+    freq_vbox = QVBoxLayout(self.freq_mod_frame)
+    freq_vbox.setSpacing(0)
+    freq_vbox.setContentsMargins(0, 0, 0, 0)
+
+    self.freq_mod_label = QLabel(self.FREQUENCY_MODULATION_LABEL)
+    self.freq_mod_input = create_widget_from_config(self.settings.freq_mod)
+
+    util.add_row_to_layout(
+        freq_vbox,
+        self.freq_mod_label,
+        self.freq_mod_input,
+    )
+
+    ### --------------------------- TIME SETTINGS
+
+    #  --- Min and Max
+    self.time_min_max_frame = QFrame()
+    time_min_max_vbox = QHBoxLayout(self.time_min_max_frame)
+    time_min_max_vbox.setSpacing(10)
+    time_min_max_vbox.setContentsMargins(0, 0, 0, 0)
+
+    self.time_min_max_label = QLabel(self.Time_MIN_MAX_LABEL)
+    self.min_time_input = create_widget_from_config(self.settings.min_time)
+
+    self.max_time_input = create_widget_from_config(self.settings.max_time)
+
+    util.add_row_to_layout(
+        time_min_max_vbox,
+        self.time_min_max_label,
+        self.min_time_input,
+        self.max_time_input,
+    )
+
+    # ---- center and range
+    self.time_cen_rang_frame = QFrame()
+    time_cen_range_vbox = QHBoxLayout(self.time_cen_rang_frame)
+    time_cen_range_vbox.setSpacing(10)
+    time_cen_range_vbox.setContentsMargins(0, 0, 0, 0)
+
+    self.time_cen_rang_label = QLabel(self.TIME_CENTER_RANGE_LABEL)
+    self.time_center_input = create_widget_from_config(self.settings.time_center)
+
+    self.time_range_input = create_widget_from_config(self.settings.time_range)
+
+    util.add_row_to_layout(
+        time_cen_range_vbox,
+        self.time_cen_rang_label,
+        self.time_center_input,
+        self.time_range_input,
+    )
+
+    # --- general
+
+    self.num_pts_settings_frame = QFrame()
+    num_pt_settings_layout = QHBoxLayout(self.num_pts_settings_frame)
+    num_pt_settings_layout.setSpacing(10)
+    num_pt_settings_layout.setContentsMargins(0, 0, 0, 0)
+
+    self.num_points_label = QLabel(self.NUM_POINTS_LABEL)
+    self.num_points_input = create_widget_from_config(self.settings.num_points)
+
+    self.num_averages_label = QLabel(self.NUMBER_OF_AVERAGES_LABEL)
+    self.num_averages_input = create_widget_from_config(self.settings.num_averages)
+
+    num_pt_settings_layout.addWidget(self.num_points_label, 30)
+    num_pt_settings_layout.addWidget(self.num_points_input, 30)
+    # num_pt_settings_layout.addWidget(self.num_averages_label, 20)
+    num_pt_settings_layout.addWidget(self.num_averages_input, 30)
+
+    ### --------------------------- RF SETTINGS
+
+    self.rf_settings_frame = QFrame()
+    rf_settings_layout = QVBoxLayout(self.rf_settings_frame)
+    rf_settings_layout.setSpacing(10)
+    rf_settings_layout.setContentsMargins(0, 0, 0, 0)
+
+    self.rf_settings_label = QLabel(self.RF_SETTINGS_LABEL)
+
+    self.rf_power_input = create_widget_from_config(self.settings.rf_power)
+
+    self.rf_freq_input = create_widget_from_config(self.settings.rf_freq)
+
+    self.rf_duration_label = QLabel(self.RF_DURATION_LABEL)
+    self.rf_duration_input = create_widget_from_config(self.settings.rf_duration)
+
+    util.add_row_to_layout(
+        rf_settings_layout,
+        self.rf_settings_label,
+        self.rf_freq_input,
+        self.rf_power_input,
+    )
+
+    self.rf_duration_frame = frame_hbox_widgets(
+        [self.rf_duration_label, self.rf_duration_input]
+    )
+    rf_settings_layout.addWidget(self.rf_duration_frame)
+
+    ### --------------------------- Sequence settings
+
+    self.sequence_frame = QFrame()
+    sequence_layout = QHBoxLayout(self.sequence_frame)
+    sequence_layout.setSpacing(10)
+    sequence_layout.setContentsMargins(0, 0, 0, 0)
+
+    self.pulse_label = QLabel(self.PULSE_LABEL)
+
+    self.pi_pulse_input = create_widget_from_config(self.settings.pi_pulse)
+    self.pi_2_pulse_input = create_widget_from_config(self.settings.pi_2_pulse)
+    self.n_pulses_input = create_widget_from_config(self.settings.n_pulses)
+
+    sequence_layout.addWidget(self.pulse_label, 30)
+    sequence_layout.addWidget(self.pi_2_pulse_input, 20)
+    sequence_layout.addWidget(self.pi_pulse_input, 20)
+    sequence_layout.addWidget(self.n_pulses_input, 20)
+
+    ### Sequence timing settings
+    self.seq_timing_frame = QFrame()
+    seq_timing_layout = QHBoxLayout(self.seq_timing_frame)
+    seq_timing_layout.setSpacing(10)
+    seq_timing_layout.setContentsMargins(0, 0, 0, 0)
+
+    self.laser_opts_label = QLabel(&#34;Laser (ns) [Dur. | Delay]&#34;)
+    self.laser_dur_input = create_widget_from_config(self.settings.laser_duration)
+    self.laser_delay_input = create_widget_from_config(self.settings.laser_delay)
+
+    seq_timing_layout.addWidget(self.laser_opts_label, 30)
+    seq_timing_layout.addWidget(self.laser_dur_input, 30)
+    seq_timing_layout.addWidget(self.laser_delay_input, 30)
+
+    self.seq_rf_timing_frame = QFrame()
+    seq_rf_timing_layout = QHBoxLayout(self.seq_rf_timing_frame)
+    seq_rf_timing_layout.setSpacing(10)
+    seq_rf_timing_layout.setContentsMargins(0, 0, 0, 0)
+
+    self.rf_delay_label = QLabel(&#34;RF Delay (ns)&#34;)
+    self.rf_delay_input = create_widget_from_config(self.settings.rf_delay)
+
+    seq_rf_timing_layout.addWidget(self.rf_delay_label, 30)
+    seq_rf_timing_layout.addWidget(self.rf_delay_input, 30)
+
+    ### --------------------------- Build Layout &amp; hide frames
+
+    self.rf_duration_frame.hide()
+    self.sequence_frame.hide()
+
+    vbox.addWidget(self.list_mode_frame)
+
+    # Frequency settings
+    vbox.addWidget(self.freq_min_max_frame)
+    vbox.addWidget(self.freq_cen_rang_frame)
+
+    # Time settings
+    vbox.addWidget(self.time_min_max_frame)
+    vbox.addWidget(self.time_cen_rang_frame)
+
+    vbox.addWidget(self.num_pts_settings_frame)
+
+    vbox.addWidget(self.freq_mod_frame)
+
+    vbox.addWidget(self.rf_settings_frame)
+
+    vbox.addWidget(self.sequence_frame)
+
+    vbox.addWidget(self.seq_timing_frame)
+    vbox.addWidget(self.seq_rf_timing_frame)
+    frame.setLayout(vbox)
+    return frame</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.init_sweep_frame"><code class="name flex">
+<span>def <span class="ident">init_sweep_frame</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def init_sweep_frame(self):
+    frame = QFrame()
+    vbox = QVBoxLayout()
+
+    # self.num_sweeps_label, self.num_sweeps_input = util.get_spin_box_wdiget(
+    #     self.NUMBER_OF_SWEEPS_LABEL, default_value=50, max_value=1e4
+    # )
+
+    self.ith_loop_label = QLabel(self.SWEEPS_COMPLETED_LABEL)
+
+    self.ith_loop = QDoubleSpinBox()
+    self.ith_loop.setAlignment(Qt.AlignmentFlag.AlignCenter)
+    self.ith_loop.setValue(0)
+    self.ith_loop.setDecimals(0)
+    self.ith_loop.setReadOnly(True)
+    self.ith_loop.setButtonSymbols(QAbstractSpinBox.ButtonSymbols.NoButtons)
+    self.ith_loop.setStyleSheet(&#34;background-color: black; color: white;&#34;)
+
+    self.current_sweep_label = QLabel(self.CURRENT_SWEEP_LABEL)
+    self.sweep_progress = QProgressBar()
+    self.sweep_progress.setRange(0, 100)
+    self.sweep_progress.setValue(0)
+
+    current_sweep_layout = QHBoxLayout()
+    current_sweep_layout.addWidget(self.sweep_progress, 80)
+    current_sweep_layout.addWidget(self.ith_loop, 20)
+
+    self.stop_after_sweeps = QPushButton(self.STOP_AFTER_SWEEPS_LABEL)
+    self.stop_after_sweeps.setCheckable(True)
+
+    self.stop_after_sweeps_idx = create_widget_from_config(
+        self.settings.stop_after_sweeps
+    )
+
+    self.save_after_sweeps = QPushButton(self.SAVE_AFTER_SWEEPS_LABEL)
+    self.save_after_sweeps.setCheckable(True)
+
+    self.save_after_sweeps_idx = create_widget_from_config(
+        self.settings.save_after_sweeps
+    )
+
+    sweep_stop_opts_layout = QHBoxLayout()
+    sweep_stop_opts_layout.addWidget(self.stop_after_sweeps)
+    sweep_stop_opts_layout.addWidget(self.stop_after_sweeps_idx)
+
+    sweep_save_opts_layout = QHBoxLayout()
+    sweep_save_opts_layout.addWidget(self.save_after_sweeps)
+    sweep_save_opts_layout.addWidget(self.save_after_sweeps_idx)
+
+    vbox.addLayout(sweep_save_opts_layout)
+    vbox.addLayout(sweep_stop_opts_layout)
+    vbox.addLayout(current_sweep_layout)
+    frame.setLayout(vbox)
+    return frame</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.init_ui"><code class="name flex">
+<span>def <span class="ident">init_ui</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def init_ui(self):
+    &#34;&#34;&#34;Initialize the UI components.&#34;&#34;&#34;
+
+    self.vbox = QVBoxLayout()
+
+    # meas info, ctrl buttons, save buttons
+    meas_ctrl_frame = self.init_meas_ctrl_frame()
+
+    # meas type/ref mode -&gt; in it&#39;s own frame
+    meas_type_frame = self.init_meas_type_frame()
+
+    # sweep settings
+    sweep_frame = self.init_sweep_frame()
+
+    # all sequence settings
+    sequence_frame = self.init_sequence_frame()
+
+    self.vbox.addWidget(meas_ctrl_frame)
+    self.vbox.addWidget(meas_type_frame)
+    self.vbox.addWidget(sweep_frame)
+    self.vbox.addWidget(sequence_frame)
+    self.setLayout(self.vbox)
+
+    self.meas_settings = GUISettings(self, &#34;MEASUREMENT OPTS&#34;)
+    self.meas_settings.load_prev_state()</code></pre>
+</details>
+<div class="desc"><p>Initialize the UI components.</p></div>
+</dd>
+<dt id="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.pause_measurement"><code class="name flex">
+<span>def <span class="ident">pause_measurement</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def pause_measurement(self):
+    # set the button to unchecked
+    self.pause_measurement_button.setChecked(True)
+    # reset the button colour
+    self.pause_measurement_button.setStyleSheet(&#34;background-color: red&#34;)
+
+    # change the start button to display resume if the measurement is paused
+    self.start_measurement_button.setText(&#34;Resume Sweep&#34;)
+
+    # Pause the measurement
+    try:
+        self.parent.connection_manager.pause_endsweep_measurement(self.meas_id)
+    except Exception as e:
+        self.reset_buttons()
+        show_warning(f&#34;Error pausing measurement: {e}&#34;)
+        return</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.reset_buttons"><code class="name flex">
+<span>def <span class="ident">reset_buttons</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def reset_buttons(self):
+    self.start_measurement_button.setChecked(False)
+    self.pause_measurement_button.setChecked(False)
+    self.stop_measurement_button.setChecked(False)
+    self.start_measurement_button.setStyleSheet(&#34;background-color: None&#34;)
+    self.pause_measurement_button.setStyleSheet(&#34;background-color: None&#34;)
+    self.stop_measurement_button.setStyleSheet(&#34;background-color: None&#34;)
+    self.start_measurement_button.setText(&#34;Start Sweep&#34;)
+    self.ith_loop.setValue(0)
+    self.meas_id_indicator.clear()
+    self.state_indicator.clear()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.save_after_n_sweeps"><code class="name flex">
+<span>def <span class="ident">save_after_n_sweeps</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def save_after_n_sweeps(self):
+    &#34;&#34;&#34;Save after a specified number of sweeps.&#34;&#34;&#34;
+    if self.save_after_sweeps.isChecked():
+        self.save_after_sweeps.setChecked(True)
+        self.save_after_sweeps.setStyleSheet(&#34;background-color: blue&#34;)
+    else:
+        self.save_after_sweeps.setChecked(False)
+        self.save_after_sweeps.setStyleSheet(&#34;background-color: None&#34;)</code></pre>
+</details>
+<div class="desc"><p>Save after a specified number of sweeps.</p></div>
+</dd>
+<dt id="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.save_image"><code class="name flex">
+<span>def <span class="ident">save_image</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def save_image(self):
+    self.save_image_button.setStyleSheet(&#34;background-color: blue&#34;)
+    path = self.parent.connection_manager.measurement_save_full_data(
+        self.parent.meas_id,
+        self.parent.get_project_name(),
+        notes=self.parent.get_notes(),
+    )
+    self.parent.show_status_msg(f&#34;Saved full dataset to {path}&#34;)
+    self.save_image_button.setStyleSheet(&#34;background-color: None&#34;)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.save_measurement"><code class="name flex">
+<span>def <span class="ident">save_measurement</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def save_measurement(self):
+    self.save_measurement_button.setStyleSheet(&#34;background-color: blue&#34;)
+
+    # get the current normalised data
+    xdata, ydata = self.parent.meas_line_figure.get_plot_data()
+
+    # Get the x-multiplier to convert the x-axis back into seconds
+    x_multiplier = self.parent.meas_line_figure.x_multiplier
+
+    # get the information from the fit model
+    if self.parent.line_fit_opts.fit_button.isChecked():
+        fit_x, fit_y = self.parent.line_fit_opts.FitModel.best_fit()
+        total_counts = (
+            np.nanmean(ydata)
+            * self.parent.meas_opts.ith_loop.value()
+            / self.parent.cam_opts.exposure_time_input.value()
+        )
+        fit_results = self.parent.line_fit_opts.FitModel.get_fit_results_txt(
+            total_counts
+        )
+    else:
+        fit_x, fit_y = None, None
+        fit_results = &#34;&#34;
+    path = self.parent.connection_manager.measurement_save_sweep_w_fit(
+        self.parent.meas_id,
+        self.parent.get_project_name(),
+        xdata / x_multiplier if xdata is not None else xdata,
+        ydata,
+        fit_x / x_multiplier if fit_x is not None else fit_x,
+        fit_y,
+        fit_results,
+        color_map=self.parent.frame_plot_opts.cmap_dropdown.currentText(),
+        notes=self.parent.get_notes(),
+    )
+    self.parent.show_status_msg(f&#34;Saved sweep to {path}&#34;)
+    self.save_measurement_button.setStyleSheet(&#34;background-color: None&#34;)
+    self.save_measurement_button.setChecked(False)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.set_list_mode"><code class="name flex">
+<span>def <span class="ident">set_list_mode</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_list_mode(self):
+    list_mode = self.list_mode_dropdown.currentText()
+
+    if self._freq_or_time_list_mode_type() == &#34;freq&#34;:
+        self.freq_mod_frame.show()
+        min_max_frame = self.freq_min_max_frame
+        cen_rang_frame = self.freq_cen_rang_frame
+        hide_frames = [self.time_min_max_frame, self.time_cen_rang_frame]
+
+    else:
+        self.freq_mod_frame.hide()
+        min_max_frame = self.time_min_max_frame
+        cen_rang_frame = self.time_cen_rang_frame
+        hide_frames = [self.freq_min_max_frame, self.freq_cen_rang_frame]
+
+    for frame in hide_frames:
+        frame.hide()
+
+    match list_mode:
+        case &#34;Linear (min, max)&#34;:
+            min_max_frame.show()
+            cen_rang_frame.hide()
+        case &#34;Linear (center, range)&#34; | &#34;Guassian (center, FWHM)&#34;:
+            min_max_frame.hide()
+            cen_rang_frame.show()
+        case _:
+            min_max_frame.hide()
+            cen_rang_frame.hide()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.set_measurement_type"><code class="name flex">
+<span>def <span class="ident">set_measurement_type</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_measurement_type(self):
+    measurement_type = self.measurement_type_dropdown.currentText()
+
+    self.set_list_mode()
+
+    if measurement_type == &#34;Mock Measurement&#34;:
+        self.freq_mod_frame.show()
+
+        # Disable unused settings
+        self.rf_settings_frame.hide()
+        self.rf_duration_frame.hide()
+
+    elif measurement_type == &#34;CW ODMR&#34;:
+        self.freq_mod_frame.show()
+        self.rf_settings_frame.show()
+
+        self.rf_duration_frame.hide()
+        self.sequence_frame.hide()
+        # self.pi_pulse_frame.hide()
+        # self.n_pulses_frame.hide()
+
+        # Display only the relavant reference modes
+        self.ref_mode_dropdown.clear()
+        self.ref_mode_dropdown.addItem(&#34;No RF&#34;)
+        self.ref_mode_dropdown.addItem(&#34;Frequency Modulated&#34;)
+        self.ref_mode_dropdown.addItem(&#34;&#34;)
+
+    elif measurement_type == &#34;Pulsed ODMR&#34;:
+        self.sequence_frame.hide()
+        # self.pi_pulse_frame.hide()
+        # self.n_pulses_frame.hide()
+
+        # Make sure the used settings are enabled and shown
+        self.rf_settings_frame.show()
+        self.rf_duration_frame.show()
+
+        # Display only the relavant reference modes
+        self.ref_mode_dropdown.clear()
+        self.ref_mode_dropdown.addItem(&#34;No RF&#34;)
+        self.ref_mode_dropdown.addItem(&#34;Frequency Modulated&#34;)
+        self.ref_mode_dropdown.addItem(&#34;&#34;)
+
+    elif measurement_type == &#34;Rabi&#34;:
+        # Disable unused settings
+        self.sequence_frame.hide()
+        # self.pi_pulse_frame.hide()
+        # self.n_pulses_frame.hide()
+        self.freq_mod_frame.hide()
+        self.rf_duration_frame.hide()
+
+        # Make sure the used settings are enabled and show
+        # self.rf_freq_mod_frame.show()
+        self.rf_settings_frame.show()
+
+        # Set the list mode to min max
+        self.list_mode_dropdown.setCurrentIndex(0)
+
+        # Display only the relavant reference modes
+        self.ref_mode_dropdown.clear()
+        self.ref_mode_dropdown.addItem(&#34;No RF&#34;)
+        self.ref_mode_dropdown.addItem(&#34;π pulse at the end&#34;)
+        self.ref_mode_dropdown.addItem(&#34;π pulse at the start&#34;)
+        self.ref_mode_dropdown.addItem(&#34;&#34;)
+
+    elif measurement_type == &#34;Ramsey&#34;:
+        # Make sure the used settings are enabled and shown
+        self.sequence_frame.show()
+        self.rf_settings_frame.show()
+        # self.rf_freq_mod_frame.show()
+
+        # Disable unused settings
+        self.freq_mod_frame.hide()
+        self.rf_duration_frame.hide()
+
+        # Display only the relavant reference modes
+        self.ref_mode_dropdown.clear()
+        self.ref_mode_dropdown.addItem(&#34;-π/2 at end&#34;)
+        self.ref_mode_dropdown.addItem(&#34;3π/2 at end&#34;)
+        self.ref_mode_dropdown.addItem(&#34;&#34;)
+
+    elif (
+        measurement_type == &#34;Spin Echo&#34;
+        or measurement_type == &#34;CPMG&#34;
+        or measurement_type == &#34;XYN&#34;
+    ):
+        # Disable unused settings
+        self.freq_mod_frame.hide()
+
+        # Make sure the used settings are enabled and shown
+        self.rf_settings_frame.show()
+        self.sequence_frame.show()
+        # self.pi_pulse_frame.show()
+        # self.n_pulses_frame.show()
+        # self.rf_freq_mod_frame.show()
+
+        # Display only the relavant reference modes
+        self.ref_mode_dropdown.clear()
+
+        self.ref_mode_dropdown.addItem(&#34;-π/2 at end&#34;)
+        self.ref_mode_dropdown.addItem(&#34;3π/2 at end&#34;)
+        # self.ref_mode_dropdown.addItem(&#34;&#34;)
+
+    elif measurement_type == &#34;T1&#34;:
+        # Disable unused settings
+        self.freq_mod_frame.hide()
+
+        # Make sure the used settings are enabled and shown
+        self.rf_settings_frame.show()
+        self.sequence_frame.show()
+
+        # Display only the relavant reference modes
+        self.ref_mode_dropdown.clear()
+
+        self.ref_mode_dropdown.addItem(&#34;π at start&#34;)
+        self.ref_mode_dropdown.addItem(&#34;π at end&#34;)
+        # self.ref_mode_dropdown.addItem(&#34;&#34;)
+    else:
+        # Disable unused settings
+        self.rf_settings_frame.show()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.start_measurement"><code class="name flex">
+<span>def <span class="ident">start_measurement</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def start_measurement(self):
+    self.start_measurement_button.setStyleSheet(&#34;background-color: blue&#34;)
+
+    # check if the measurement is currently paused
+    if hasattr(self.parent, &#34;meas_id&#34;):
+        try:
+            resp = self.parent.connection_manager.measurement_get_state(
+                self.parent.meas_id
+            )
+        except:
+            pass
+        else:
+            if resp.lower() == &#34;paused&#34;:
+                # Resume the current measurement
+                try:
+                    self.parent.connection_manager.start_measurement_wait(
+                        self.parent.meas_id
+                    )
+                    self.start_measurement_button.setText(&#34;Start Sweep&#34;)
+                    self.pause_measurement_button.setChecked(False)
+                    self.pause_measurement_button.setStyleSheet(
+                        &#34;background-color: None&#34;
+                    )
+                    return
+                except Exception as e:
+                    self.reset_buttons()
+                    logger.error(f&#34;Error resuming measurement: {e}&#34;)
+                    return
+            else:
+                # close the previous measurement
+                if hasattr(self.parent, &#34;meas_id&#34;):
+                    try:
+                        self.parent.connection_manager.close_measurement_wait(
+                            self.parent.meas_id
+                        )
+                    except Exception as e:
+                        del self.parent.meas_id
+                        self.reset_buttons()
+
+    # Get the sweep list
+    x_list = self.get_sweep_x_list()
+
+    # TODO Update the measurement confi to be more automatic.
+    # Find the right meas class and then determine the correct config for that class.
+
+    meas_type = self.measurement_type_dropdown.currentText()
+
+    # load the config from the GUI for the selected measurement type
+    if meas_type == &#34;Mock Measurement&#34;:
+        config = get_measurement_config(
+            gui_handle=self.parent,
+            meas_config_class=MockSGAndorESRConfig,
+            meas_class=qscope.meas.MockSGAndorESR,
+            sweep_x=x_list,
+        )
+    elif meas_type == &#34;CW ODMR&#34;:
+        config = get_measurement_config(
+            gui_handle=self.parent,
+            meas_config_class=SGAndorCWESRConfig,
+            meas_class=qscope.meas.SGAndorCWESR,
+            sweep_x=x_list,
+        )
+    elif meas_type == &#34;Pulsed ODMR&#34;:
+        config = get_measurement_config(
+            gui_handle=self.parent,
+            meas_config_class=SGAndorPESRConfig,
+            meas_class=qscope.meas.SGAndorPESR,
+            sweep_x=x_list,
+        )
+    elif meas_type == &#34;Rabi&#34;:
+        config = get_measurement_config(
+            gui_handle=self.parent,
+            meas_config_class=SGAndorRabiConfig,
+            meas_class=qscope.meas.SGAndorRabi,
+            sweep_x=x_list,
+        )
+    elif meas_type == &#34;Ramsey&#34;:
+        config = get_measurement_config(
+            gui_handle=self.parent,
+            meas_config_class=SGAndorRamseyConfig,
+            meas_class=qscope.meas.SGAndorRamsey,
+            sweep_x=x_list,
+        )
+    elif meas_type == &#34;T1&#34;:
+        config = get_measurement_config(
+            gui_handle=self.parent,
+            meas_config_class=SGAndorT1Config,
+            meas_class=qscope.meas.SGAndorT1,
+            sweep_x=x_list,
+        )
+    elif meas_type == &#34;Spin Echo&#34;:
+        config = get_measurement_config(
+            gui_handle=self.parent,
+            meas_config_class=SGAndorSpinEchoConfig,
+            meas_class=qscope.meas.SGAndorSpinEcho,
+            sweep_x=x_list,
+        )
+    elif meas_type == &#34;CPMG&#34;:
+        qscope.gui.util.show_warning(&#34;Measurement type not implemented&#34;)
+        return
+    elif meas_type == &#34;XYN&#34;:
+        qscope.gui.util.show_warning(&#34;Measurement type not implemented&#34;)
+        return
+    else:
+        qscope.gui.util.show_warning(&#34;Measurement type not implemented&#34;)
+        return
+
+    if config is None:
+        return
+
+    # send the camera settings to the server
+    try:
+        self.parent.cam_opts.set_camera_settings()
+    except Exception as e:
+        self.reset_buttons()
+        show_warning(f&#34;Error setting camera settings: {e}&#34;)
+        return
+
+    # check if the laser constant on is checked
+    if self.parent.cam_opts.laser_button.isChecked():
+        # turn off the laser
+        self.parent.connection_manager.set_laser_output(False)
+        # Don&#39;t adjust the button state here as we will use it to turn the laser back on
+
+    # Prepare the measurement
+    self.meas_id = self.parent.connection_manager.add_measurement(config)
+    self.meas_info = self.parent.connection_manager.get_all_meas_info()
+
+    # Start the measurement
+    try:
+        self.parent.connection_manager.start_measurement_wait(self.meas_id)
+        self.parent.connection_manager.start_measurement_nowait(self.meas_id)
+    except Exception as e:
+        self.reset_buttons()
+        show_warning(f&#34;Error starting measurement: {e}&#34;)
+        return
+
+    # Update the line plot x-axis label
+    if meas_type in [&#34;Mock Measurement&#34;, &#34;CW ODMR&#34;, &#34;Pulsed ODMR&#34;]:
+        self.parent.meas_line_figure.set_x_label(&#34;Frequency (MHz)&#34;)
+        self.parent.meas_line_figure.set_x_multiplier(1)
+    else:
+        # Check the maximum time can scale accordingly
+        max_time = np.max(x_list)
+        if max_time &gt; 1e-3:
+            self.parent.meas_line_figure.set_x_label(&#34;Time (ms)&#34;)
+            self.parent.meas_line_figure.set_x_multiplier(1e3)
+        elif max_time &gt; 1e-6:
+            self.parent.meas_line_figure.set_x_label(&#34;Time (μs)&#34;)
+            self.parent.meas_line_figure.set_x_multiplier(1e6)
+        elif max_time &gt; 1e-9:
+            self.parent.meas_line_figure.set_x_label(&#34;Time (ns)&#34;)
+            self.parent.meas_line_figure.set_x_multiplier(1e9)
+        else:
+            self.parent.meas_line_figure.set_x_label(&#34;Time (s)&#34;)
+            self.parent.meas_line_figure.set_x_multiplier(1)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.stop_after_n_sweeps"><code class="name flex">
+<span>def <span class="ident">stop_after_n_sweeps</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def stop_after_n_sweeps(self):
+    &#34;&#34;&#34;Stop after a specified number of sweeps.&#34;&#34;&#34;
+    if self.stop_after_sweeps.isChecked():
+        self.stop_after_sweeps.setChecked(True)
+        self.stop_after_sweeps.setStyleSheet(&#34;background-color: blue&#34;)
+    else:
+        self.stop_after_sweeps.setChecked(False)
+        self.stop_after_sweeps.setStyleSheet(&#34;background-color: None&#34;)</code></pre>
+</details>
+<div class="desc"><p>Stop after a specified number of sweeps.</p></div>
+</dd>
+<dt id="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.stop_measurement"><code class="name flex">
+<span>def <span class="ident">stop_measurement</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def stop_measurement(self):
+    self.stop_measurement_button.setStyleSheet(&#34;background-color: red&#34;)
+
+    # Stop the measurement
+    try:
+        self.parent.connection_manager.stop_measurement(self.parent.meas_id)
+    except Exception as e:
+        self.reset_buttons()
+        show_warning(f&#34;Error stopping measurement: {e}&#34;)
+        return
+
+    # Save state when measurement stops
+    self.reset_buttons()
+
+    # check if the laser constant on is checked
+    if self.parent.cam_opts.laser_button.isChecked():
+        # turn the laser back on
+        self.parent.connection_manager.set_laser_output(True)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.validate_settings"><code class="name flex">
+<span>def <span class="ident">validate_settings</span></span>(<span>self) ‑> bool</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def validate_settings(self) -&gt; bool:
+    &#34;&#34;&#34;Validate all current settings&#34;&#34;&#34;
+    validation_results = self.settings.validate_all()
+    if not all(validation_results.values()):
+        invalid_settings = [k for k, v in validation_results.items() if not v]
+        logger.warning(f&#34;Invalid settings: {invalid_settings}&#34;)
+        return False
+    return True</code></pre>
+</details>
+<div class="desc"><p>Validate all current settings</p></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<form>
+<input id="lunr-search" name="q" placeholder="🔎 Search ..." aria-label="Search"
+disabled minlength="2">
+</form>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.css" integrity="sha512-b+T2i3P45i1LZM7I00Ci5QquB9szqaxu+uuk5TUSGjZQ4w4n+qujQiIuvTv2BxE7WCGQCifNMksyKILDiHzsOg==" crossorigin>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.js" integrity="sha512-2B9/byNV1KKRm5nQ2RLViPFD6U4dUjDGwuW1GU+ImJh8YinPU9Zlq1GzdTMO+G2ROrB5o1qasJBy1ttYz0wCug==" crossorigin></script>
+<style>
+.modal-dialog iframe {
+width: 100vw;
+height: calc(100vh - 80px);
+}
+@media screen and (min-width: 700px) {
+.modal-dialog iframe {
+width: 70vw;
+height: 80vh;
+}
+}
+.modal-dialog .tingle-modal-box {width: auto;}
+.modal-dialog .tingle-modal-box__content {padding: 0;}
+</style>
+<script>
+const input = document.getElementById('lunr-search');
+input.disabled = false;
+input.form.addEventListener('submit', (ev) => {
+ev.preventDefault();
+const url = new URL(window.location);
+url.searchParams.set('q', input.value);
+history.replaceState({}, null, url.toString());
+search(input.value);
+});
+const query = new URL(window.location).searchParams.get('q');
+if (query)
+search(query);
+function search(query) {
+const url = '../../../doc-search.html#' + encodeURIComponent(query);
+new tingle.modal({
+cssClass: ['modal-dialog'],
+onClose: () => {
+const url = new URL(window.location);
+url.searchParams.delete('q');
+history.replaceState({}, null, url.toString());
+setTimeout(() => input.focus(), 100);
+}
+}).setContent('<iframe src="' + url + '"></iframe>').open();
+}
+</script>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="qscope.gui.qmeas" href="index.html">qscope.gui.qmeas</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts" href="#qscope.gui.qmeas.control_opts.QuantumMeasurementOpts">QuantumMeasurementOpts</a></code></h4>
+<ul class="">
+<li><code><a title="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.CURRENT_SWEEP_LABEL" href="#qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.CURRENT_SWEEP_LABEL">CURRENT_SWEEP_LABEL</a></code></li>
+<li><code><a title="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.FREQUENCY_CENTER_RANGE_LABEL" href="#qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.FREQUENCY_CENTER_RANGE_LABEL">FREQUENCY_CENTER_RANGE_LABEL</a></code></li>
+<li><code><a title="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.FREQUENCY_MIN_MAX_LABEL" href="#qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.FREQUENCY_MIN_MAX_LABEL">FREQUENCY_MIN_MAX_LABEL</a></code></li>
+<li><code><a title="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.FREQUENCY_MODULATION_LABEL" href="#qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.FREQUENCY_MODULATION_LABEL">FREQUENCY_MODULATION_LABEL</a></code></li>
+<li><code><a title="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.LIST_MODE_LABEL" href="#qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.LIST_MODE_LABEL">LIST_MODE_LABEL</a></code></li>
+<li><code><a title="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.MEASUREMENT_ID_LABEL" href="#qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.MEASUREMENT_ID_LABEL">MEASUREMENT_ID_LABEL</a></code></li>
+<li><code><a title="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.NUMBER_OF_AVERAGES_LABEL" href="#qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.NUMBER_OF_AVERAGES_LABEL">NUMBER_OF_AVERAGES_LABEL</a></code></li>
+<li><code><a title="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.NUM_POINTS_LABEL" href="#qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.NUM_POINTS_LABEL">NUM_POINTS_LABEL</a></code></li>
+<li><code><a title="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.PAUSE_SWEEP_LABEL" href="#qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.PAUSE_SWEEP_LABEL">PAUSE_SWEEP_LABEL</a></code></li>
+<li><code><a title="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.PULSE_LABEL" href="#qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.PULSE_LABEL">PULSE_LABEL</a></code></li>
+<li><code><a title="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.RF_DURATION_LABEL" href="#qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.RF_DURATION_LABEL">RF_DURATION_LABEL</a></code></li>
+<li><code><a title="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.RF_SETTINGS_LABEL" href="#qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.RF_SETTINGS_LABEL">RF_SETTINGS_LABEL</a></code></li>
+<li><code><a title="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.SAVE_AFTER_SWEEPS_LABEL" href="#qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.SAVE_AFTER_SWEEPS_LABEL">SAVE_AFTER_SWEEPS_LABEL</a></code></li>
+<li><code><a title="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.SAVE_DATASET_LABEL" href="#qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.SAVE_DATASET_LABEL">SAVE_DATASET_LABEL</a></code></li>
+<li><code><a title="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.SAVE_SPECTRUM_LABEL" href="#qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.SAVE_SPECTRUM_LABEL">SAVE_SPECTRUM_LABEL</a></code></li>
+<li><code><a title="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.START_SWEEP_LABEL" href="#qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.START_SWEEP_LABEL">START_SWEEP_LABEL</a></code></li>
+<li><code><a title="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.STOP_AFTER_SWEEPS_LABEL" href="#qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.STOP_AFTER_SWEEPS_LABEL">STOP_AFTER_SWEEPS_LABEL</a></code></li>
+<li><code><a title="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.STOP_NOW_LABEL" href="#qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.STOP_NOW_LABEL">STOP_NOW_LABEL</a></code></li>
+<li><code><a title="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.SWEEPS_COMPLETED_LABEL" href="#qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.SWEEPS_COMPLETED_LABEL">SWEEPS_COMPLETED_LABEL</a></code></li>
+<li><code><a title="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.TIME_CENTER_RANGE_LABEL" href="#qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.TIME_CENTER_RANGE_LABEL">TIME_CENTER_RANGE_LABEL</a></code></li>
+<li><code><a title="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.TYPE_LABEL" href="#qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.TYPE_LABEL">TYPE_LABEL</a></code></li>
+<li><code><a title="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.Time_MIN_MAX_LABEL" href="#qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.Time_MIN_MAX_LABEL">Time_MIN_MAX_LABEL</a></code></li>
+<li><code><a title="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.connect_signals" href="#qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.connect_signals">connect_signals</a></code></li>
+<li><code><a title="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.create_row_layout" href="#qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.create_row_layout">create_row_layout</a></code></li>
+<li><code><a title="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.get_all_widget_configs" href="#qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.get_all_widget_configs">get_all_widget_configs</a></code></li>
+<li><code><a title="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.get_current_values" href="#qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.get_current_values">get_current_values</a></code></li>
+<li><code><a title="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.get_sweep_x_list" href="#qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.get_sweep_x_list">get_sweep_x_list</a></code></li>
+<li><code><a title="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.get_widget_config" href="#qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.get_widget_config">get_widget_config</a></code></li>
+<li><code><a title="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.init_meas_ctrl_frame" href="#qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.init_meas_ctrl_frame">init_meas_ctrl_frame</a></code></li>
+<li><code><a title="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.init_meas_type_frame" href="#qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.init_meas_type_frame">init_meas_type_frame</a></code></li>
+<li><code><a title="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.init_sequence_frame" href="#qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.init_sequence_frame">init_sequence_frame</a></code></li>
+<li><code><a title="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.init_sweep_frame" href="#qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.init_sweep_frame">init_sweep_frame</a></code></li>
+<li><code><a title="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.init_ui" href="#qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.init_ui">init_ui</a></code></li>
+<li><code><a title="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.pause_measurement" href="#qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.pause_measurement">pause_measurement</a></code></li>
+<li><code><a title="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.reset_buttons" href="#qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.reset_buttons">reset_buttons</a></code></li>
+<li><code><a title="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.save_after_n_sweeps" href="#qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.save_after_n_sweeps">save_after_n_sweeps</a></code></li>
+<li><code><a title="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.save_image" href="#qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.save_image">save_image</a></code></li>
+<li><code><a title="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.save_measurement" href="#qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.save_measurement">save_measurement</a></code></li>
+<li><code><a title="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.set_list_mode" href="#qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.set_list_mode">set_list_mode</a></code></li>
+<li><code><a title="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.set_measurement_type" href="#qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.set_measurement_type">set_measurement_type</a></code></li>
+<li><code><a title="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.start_measurement" href="#qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.start_measurement">start_measurement</a></code></li>
+<li><code><a title="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.stop_after_n_sweeps" href="#qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.stop_after_n_sweeps">stop_after_n_sweeps</a></code></li>
+<li><code><a title="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.stop_measurement" href="#qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.stop_measurement">stop_measurement</a></code></li>
+<li><code><a title="qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.validate_settings" href="#qscope.gui.qmeas.control_opts.QuantumMeasurementOpts.validate_settings">validate_settings</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
+</footer>
+</body>
+</html>

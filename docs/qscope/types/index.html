@@ -1,0 +1,4181 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.6">
+<title>qscope.types API documentation</title>
+<meta name="description" content="Protocol definitions, hardware abstraction, and client-server communication …">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}#lunr-search{width:100%;font-size:1em;padding:6px 9px 5px 9px;border:1px solid silver}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes: true } });</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML" integrity="sha256-kZafAc6mZvK3W3v1pHOcUix30OHQN6pU/NO2oFkqZVw=" crossorigin></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>qscope.types</code></h1>
+</header>
+<section id="section-intro">
+<p>Protocol definitions, hardware abstraction, and client-server communication.</p>
+<p>The qscope.types package forms the foundation of QScope's architecture by providing:</p>
+<ol>
+<li>
+<p>Hardware Abstraction Layer</p>
+<ul>
+<li>Protocols define required methods for device roles</li>
+<li>Interfaces provide type-safe access to device functionality</li>
+<li>Roles connect devices to their interfaces</li>
+<li>Runtime validation ensures devices implement required methods</li>
+</ul>
+</li>
+<li>
+<p>Client-Server Communication</p>
+<ul>
+<li>Message classes for requests and responses</li>
+<li>Serialization using MessagePack over ZeroMQ</li>
+<li>Type validation for communication safety</li>
+</ul>
+</li>
+<li>
+<p>Configuration</p>
+<ul>
+<li>Measurement configuration classes</li>
+<li>System configuration definitions</li>
+<li>Device configuration validation</li>
+</ul>
+</li>
+</ol>
+<h2 id="the-role-system-architecture">The Role System Architecture</h2>
+<p>The role system is the core of QScope's hardware abstraction layer:</p>
+<ol>
+<li>
+<p>Protocols (protocols.py)</p>
+<ul>
+<li>Define the methods a device must implement to fulfill a role.</li>
+</ul>
+</li>
+<li>
+<p>Interfaces (interfaces.py)</p>
+<ul>
+<li>Wrap devices and provide a clean, type-safe API for accessing functionality.</li>
+</ul>
+</li>
+<li>
+<p>Roles (roles.py)</p>
+<ul>
+<li>Connect devices to interfaces and validate protocol compliance.</li>
+</ul>
+</li>
+<li>
+<p>Devices (in qscope.device)</p>
+<ul>
+<li>Implement the methods required by protocols.</li>
+</ul>
+</li>
+</ol>
+<p>This architecture allows measurements to work with abstract roles rather than
+specific hardware implementations, making it possible to swap hardware without
+changing measurement code.</p>
+<p>Flow Example:</p>
+<p>1) Device implements protocol methods:</p>
+<pre><code class="language-python">class MyRFDevice(Device):
+   def set_freq(self, freq: float) -&gt; None: ...
+   def set_power(self, power: float) -&gt; None: ...
+</code></pre>
+<p>2) Role specifies required protocol:</p>
+<pre><code class="language-python">class PrimaryRFSource(DeviceRole[RFSourceProtocol]):
+   interface_class = RFSourceInterface
+</code></pre>
+<p>3) System validates and provides interface:</p>
+<pre><code class="language-python"># Validates MyRFDevice implements RFSourceProtocol
+system.add_device_with_role(MyRFDevice(), PRIMARY_RF)
+
+# Returns RFSourceInterface wrapping MyRFDevice
+rf = system.get_device_by_role(PRIMARY_RF)
+rf.set_freq(2870.0)  # Use interface methods
+</code></pre>
+<h2 id="examples">Examples</h2>
+<p>Creating a measurement configuration:</p>
+<pre><code class="language-python">from qscope.types import SGAndorCWESRConfig
+config = SGAndorCWESRConfig(
+    name=&quot;ESR Measurement&quot;,
+    start_freq=2.7e9,
+    stop_freq=3.0e9,
+    num_points=101
+)
+</code></pre>
+<p>Handling responses:</p>
+<pre><code class="language-python">from qscope.types import ErrorResponse
+if isinstance(response, ErrorResponse):
+    print(f&quot;Error: {response.message}&quot;)
+</code></pre>
+<h2 id="see-also">See Also</h2>
+<dl>
+<dt><code><a title="qscope.server" href="../server/index.html">qscope.server</a></code></dt>
+<dd>Server-client communication module</dd>
+<dt><code><a title="qscope.types.messages" href="messages.html">qscope.types.messages</a></code></dt>
+<dd>Message class definitions</dd>
+<dt><code><a title="qscope.types.roles" href="roles.html">qscope.types.roles</a></code></dt>
+<dd>Device role definitions</dd>
+<dt><code><a title="qscope.types.protocols" href="protocols.html">qscope.types.protocols</a></code></dt>
+<dd>Protocol definitions</dd>
+<dt><code><a title="qscope.types.interfaces" href="interfaces.html">qscope.types.interfaces</a></code></dt>
+<dd>Interface implementations</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-submodules">Sub-modules</h2>
+<dl>
+<dt><code class="name"><a title="qscope.types.commands" href="commands.html">qscope.types.commands</a></code></dt>
+<dd>
+<div class="desc"><p>Command constants for client-server communication.</p></div>
+</dd>
+<dt><code class="name"><a title="qscope.types.config" href="config.html">qscope.types.config</a></code></dt>
+<dd>
+<div class="desc"><p>Configuration types for measurements and devices.</p></div>
+</dd>
+<dt><code class="name"><a title="qscope.types.interfaces" href="interfaces.html">qscope.types.interfaces</a></code></dt>
+<dd>
+<div class="desc"><p>Role interfaces that wrap devices and provide role-specific functionality …</p></div>
+</dd>
+<dt><code class="name"><a title="qscope.types.messages" href="messages.html">qscope.types.messages</a></code></dt>
+<dd>
+<div class="desc"><p>Message types and constants for client-server communication.</p></div>
+</dd>
+<dt><code class="name"><a title="qscope.types.protocols" href="protocols.html">qscope.types.protocols</a></code></dt>
+<dd>
+<div class="desc"><p>Device role protocols defining required methods for each role …</p></div>
+</dd>
+<dt><code class="name"><a title="qscope.types.roles" href="roles.html">qscope.types.roles</a></code></dt>
+<dd>
+<div class="desc"><p>Device role definitions and base classes …</p></div>
+</dd>
+<dt><code class="name"><a title="qscope.types.validation" href="validation.html">qscope.types.validation</a></code></dt>
+<dd>
+<div class="desc"><p>Validation utilities for device roles and states …</p></div>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="qscope.types.assert_valid_handler_client_correspondence"><code class="name flex">
+<span>def <span class="ident">assert_valid_handler_client_correspondence</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def assert_valid_handler_client_correspondence():
+    &#34;&#34;&#34;Validates handler-client correspondence and raises if invalid.
+
+    Raises:
+        AssertionError: If any validation errors are found
+
+    This is the main entry point for protocol validation, typically
+    called from test.
+    &#34;&#34;&#34;
+    errors = validate_handler_client_correspondence()
+    if errors:
+        raise AssertionError(
+            &#34;Handler-client correspondence validation failed:\n&#34;
+            + &#34;\n&#34;.join(f&#34;- {err}&#34; for err in errors)
+        )</code></pre>
+</details>
+<div class="desc"><p>Validates handler-client correspondence and raises if invalid.</p>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>AssertionError</code></dt>
+<dd>If any validation errors are found</dd>
+</dl>
+<p>This is the main entry point for protocol validation, typically
+called from test.</p></div>
+</dd>
+<dt id="qscope.types.get_all_subclasses_map"><code class="name flex">
+<span>def <span class="ident">get_all_subclasses_map</span></span>(<span>cls: type) ‑> dict[slice(<class 'str'>, <class 'type'>, None)]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_all_subclasses_map(cls: type) -&gt; dict[str:type]:
+    &#34;&#34;&#34;Get all subclasses of a class recursively.&#34;&#34;&#34;
+
+    def _get_all(clas: type, subclasses: dict[str:type]):
+        if not clas.__subclasses__():
+            return subclasses
+        for subcls in clas.__subclasses__():
+            subclasses[subcls.__name__] = subcls
+            subclasses |= _get_all(subcls, subclasses)
+        return subclasses
+
+    return _get_all(cls, dict())</code></pre>
+</details>
+<div class="desc"><p>Get all subclasses of a class recursively.</p></div>
+</dd>
+<dt id="qscope.types.validate_device_role_mapping"><code class="name flex">
+<span>def <span class="ident">validate_device_role_mapping</span></span>(<span>roles: "Set['<a title="qscope.types.DeviceRole" href="#qscope.types.DeviceRole">DeviceRole</a>']",<br>device_config: "dict['<a title="qscope.types.DeviceRole" href="#qscope.types.DeviceRole">DeviceRole</a>', tuple[Type['Device'], str]]",<br>allow_missing: bool = False) ‑> tuple[bool, str]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def validate_device_role_mapping(
+    roles: Set[&#34;DeviceRole&#34;],
+    device_config: dict[&#34;DeviceRole&#34;, tuple[Type[&#34;Device&#34;], str]],
+    allow_missing: bool = False,
+) -&gt; tuple[bool, str]:
+    &#34;&#34;&#34;Validate that device roles map to actual device types.
+
+    Parameters
+    ----------
+    roles : Set[DeviceRole]
+        The roles to validate
+    device_config : dict[DeviceRole, tuple[Type[Device], str]]
+        Mapping of roles to (device_class, config) tuples
+    allow_missing : bool, optional
+        If True, missing roles are allowed, by default False
+
+    Returns
+    -------
+    tuple[bool, str]
+        (is_valid, error_message)
+    &#34;&#34;&#34;
+    for role in roles:
+        if role not in device_config:
+            if not allow_missing:
+                return False, f&#34;Missing required role: {role}&#34;
+            continue
+
+        device_class = device_config[role][0]
+        is_valid, error_msg = role.validate_device_type(device_class)
+        if not is_valid:
+            return False, error_msg
+
+    return True, &#34;&#34;</code></pre>
+</details>
+<div class="desc"><p>Validate that device roles map to actual device types.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>roles</code></strong> :&ensp;<code>Set[<a title="qscope.types.DeviceRole" href="#qscope.types.DeviceRole">DeviceRole</a>]</code></dt>
+<dd>The roles to validate</dd>
+<dt><strong><code>device_config</code></strong> :&ensp;<code>dict[<a title="qscope.types.DeviceRole" href="#qscope.types.DeviceRole">DeviceRole</a>, tuple[Type[Device], str]]</code></dt>
+<dd>Mapping of roles to (device_class, config) tuples</dd>
+<dt><strong><code>allow_missing</code></strong> :&ensp;<code>bool</code>, optional</dt>
+<dd>If True, missing roles are allowed, by default False</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>tuple[bool, str]</code></dt>
+<dd>(is_valid, error_message)</dd>
+</dl></div>
+</dd>
+<dt id="qscope.types.validate_device_states"><code class="name flex">
+<span>def <span class="ident">validate_device_states</span></span>(<span>device: Device) ‑> tuple[bool, str]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def validate_device_states(device: Device) -&gt; tuple[bool, str]:
+    &#34;&#34;&#34;Validate device state.
+
+    Parameters
+    ----------
+    device : Device
+        Device to validate
+
+    Returns
+    -------
+    tuple[bool, str]
+        (is_valid, error_message)
+    &#34;&#34;&#34;
+    if not device.is_connected():
+        return False, f&#34;Device {device.__class__.__name__} is not connected&#34;
+    return True, &#34;&#34;</code></pre>
+</details>
+<div class="desc"><p>Validate device state.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>device</code></strong> :&ensp;<code>Device</code></dt>
+<dd>Device to validate</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>tuple[bool, str]</code></dt>
+<dd>(is_valid, error_message)</dd>
+</dl></div>
+</dd>
+<dt id="qscope.types.validate_handler_client_correspondence"><code class="name flex">
+<span>def <span class="ident">validate_handler_client_correspondence</span></span>(<span>) ‑> list[str]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def validate_handler_client_correspondence() -&gt; list[str]:
+    &#34;&#34;&#34;Validates the bidirectional correspondence between handlers and client methods.
+
+    This function performs comprehensive validation of the protocol mapping between
+    server handlers and client methods. It checks:
+
+    1. All client commands (@command decorated) have matching handlers registered
+    2. All handlers (@handler decorated) have at least one client method
+    3. All declared client methods actually exist in the client module
+    4. All client methods are properly decorated with @command
+    5. Commands match between handlers and their client methods
+
+    Returns:
+        List of validation error messages, empty if all valid
+
+    The validation happens in phases:
+    1. First validates all pending commands against the handler registry
+    2. Then checks all handlers have registered client methods
+    3. Finally verifies client methods exist and are properly decorated
+
+    This function is typically called during application startup after all
+    modules are imported but before any commands are used.
+    &#34;&#34;&#34;
+    errors = []
+
+    # First validate all pending commands against handlers
+    for command, func_name in PENDING_COMMAND_VALIDATIONS:
+        if command not in HANDLER_REGISTRY:
+            errors.append(
+                f&#34;Command {command} used by {func_name} not found in handler registry&#34;
+            )
+
+    # Check all handlers have registered client methods
+    for command, info in HANDLER_REGISTRY.items():
+        if not info.client_methods:
+            errors.append(
+                f&#34;Handler {info.handler_func.__name__} for command {command}&#34;
+                + &#34; has no registered client methods&#34;
+            )
+
+    # Check all client methods exist and are properly decorated
+    import qscope.server.client as client
+
+    for command, info in HANDLER_REGISTRY.items():
+        for client_method in info.client_methods:
+            if not hasattr(client, client_method):
+                errors.append(
+                    f&#34;Client method {client_method} for command {command}&#34;
+                    + &#34; not found in client module&#34;
+                )
+                continue
+
+            func = getattr(client, client_method)
+            if not hasattr(func, &#34;_is_client_method&#34;):
+                errors.append(
+                    f&#34;Client method {client_method} is not decorated with @command&#34;
+                )
+            elif func._command != command:
+                errors.append(
+                    f&#34;Client method {client_method} uses command {func._command}&#34;
+                    + &#34; but handler registered it for {command}&#34;
+                )
+
+    return errors</code></pre>
+</details>
+<div class="desc"><p>Validates the bidirectional correspondence between handlers and client methods.</p>
+<p>This function performs comprehensive validation of the protocol mapping between
+server handlers and client methods. It checks:</p>
+<ol>
+<li>All client commands (@command decorated) have matching handlers registered</li>
+<li>All handlers (@handler decorated) have at least one client method</li>
+<li>All declared client methods actually exist in the client module</li>
+<li>All client methods are properly decorated with @command</li>
+<li>Commands match between handlers and their client methods</li>
+</ol>
+<h2 id="returns">Returns</h2>
+<p>List of validation error messages, empty if all valid
+The validation happens in phases:
+1. First validates all pending commands against the handler registry
+2. Then checks all handlers have registered client methods
+3. Finally verifies client methods exist and are properly decorated</p>
+<p>This function is typically called during application startup after all
+modules are imported but before any commands are used.</p></div>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="qscope.types.ArrayResponse"><code class="flex name class">
+<span>class <span class="ident">ArrayResponse</span></span>
+<span>(</span><span>*, type: str = 'array', value: np.ndarray = &lt;factory&gt;)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass(kw_only=True, repr=False)
+class ArrayResponse(Response):
+    type: str = &#34;array&#34;
+    value: np.ndarray = field(
+        metadata={&#34;serialize&#34;: pickle.dumps, &#34;deserialize&#34;: pickle.loads},
+        default_factory=lambda: np.array([]),
+    )</code></pre>
+</details>
+<div class="desc"><p>ArrayResponse(*, type: 'str' = 'array', value: 'np.ndarray' = <factory>)</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.messages.Response" href="messages.html#qscope.types.messages.Response">Response</a></li>
+<li><a title="qscope.types.messages.Message" href="messages.html#qscope.types.messages.Message">Message</a></li>
+<li>mashumaro.mixins.msgpack.DataClassMessagePackMixin</li>
+<li>mashumaro.mixins.dict.DataClassDictMixin</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="qscope.types.ArrayResponse.from_dict"><code class="name flex">
+<span>def <span class="ident">from_dict</span></span>(<span>d, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.ArrayResponse.from_msgpack"><code class="name flex">
+<span>def <span class="ident">from_msgpack</span></span>(<span>d, decoder=&lt;function default_decoder&gt;, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="qscope.types.ArrayResponse.type"><code class="name">var <span class="ident">type</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.ArrayResponse.value"><code class="name">var <span class="ident">value</span> : numpy.ndarray</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.types.ArrayResponse.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.ArrayResponse.to_msgpack"><code class="name flex">
+<span>def <span class="ident">to_msgpack</span></span>(<span>self, encoder=&lt;function default_encoder&gt;)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.types.CameraConfig"><code class="flex name class">
+<span>class <span class="ident">CameraConfig</span></span>
+<span>(</span><span>*,<br>meas_type: str,<br>save_name: str,<br>ref_mode: str,<br>sweep_x: numpy.ndarray,<br>exposure_time: float,<br>frame_shape: tuple[int, int],<br>hardware_binning: tuple[int, int],<br>avg_per_point: int)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass(kw_only=True, repr=False)
+class CameraConfig(MeasurementConfig):
+    &#34;&#34;&#34;Configuration for camera-based measurements.&#34;&#34;&#34;
+
+    exposure_time: float
+    frame_shape: tuple[int, int]
+    hardware_binning: tuple[int, int]
+    avg_per_point: int</code></pre>
+</details>
+<div class="desc"><p>Configuration for camera-based measurements.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.config.MeasurementConfig" href="config.html#qscope.types.config.MeasurementConfig">MeasurementConfig</a></li>
+<li>mashumaro.mixins.dict.DataClassDictMixin</li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="qscope.types.config.MockSGAndorESRConfig" href="config.html#qscope.types.config.MockSGAndorESRConfig">MockSGAndorESRConfig</a></li>
+<li><a title="qscope.types.config.SGAndorCWESRConfig" href="config.html#qscope.types.config.SGAndorCWESRConfig">SGAndorCWESRConfig</a></li>
+<li><a title="qscope.types.config.SGAndorPESRConfig" href="config.html#qscope.types.config.SGAndorPESRConfig">SGAndorPESRConfig</a></li>
+<li><a title="qscope.types.config.SGAndorRabiConfig" href="config.html#qscope.types.config.SGAndorRabiConfig">SGAndorRabiConfig</a></li>
+<li><a title="qscope.types.config.SGAndorRamseyConfig" href="config.html#qscope.types.config.SGAndorRamseyConfig">SGAndorRamseyConfig</a></li>
+<li><a title="qscope.types.config.SGAndorSpinEchoConfig" href="config.html#qscope.types.config.SGAndorSpinEchoConfig">SGAndorSpinEchoConfig</a></li>
+<li><a title="qscope.types.config.SGAndorT1Config" href="config.html#qscope.types.config.SGAndorT1Config">SGAndorT1Config</a></li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="qscope.types.CameraConfig.from_dict"><code class="name flex">
+<span>def <span class="ident">from_dict</span></span>(<span>d, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="qscope.types.CameraConfig.avg_per_point"><code class="name">var <span class="ident">avg_per_point</span> : int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.CameraConfig.exposure_time"><code class="name">var <span class="ident">exposure_time</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.CameraConfig.frame_shape"><code class="name">var <span class="ident">frame_shape</span> : tuple[int, int]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.CameraConfig.hardware_binning"><code class="name">var <span class="ident">hardware_binning</span> : tuple[int, int]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.types.CameraConfig.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.types.ClientConnection"><code class="flex name class">
+<span>class <span class="ident">ClientConnection</span></span>
+<span>(</span><span>context: zmq.Context,<br>msg_socket: zmq.Socket,<br>notif_socket: zmq.Socket,<br>stream_socket: zmq.Socket,<br>host: str,<br>msg_port: int,<br>notif_port: int,<br>stream_port: int)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass
+class ClientConnection:
+    &#34;&#34;&#34;Client-side connection information.&#34;&#34;&#34;
+
+    context: zmq.Context
+    msg_socket: zmq.Socket  # REQ socket (sync)
+    notif_socket: zmq.Socket  # SUB socket for notifications
+    stream_socket: zmq.Socket  # SUB socket for video/apd stream data
+    host: str
+    msg_port: int
+    notif_port: int
+    stream_port: int</code></pre>
+</details>
+<div class="desc"><p>Client-side connection information.</p></div>
+<h3>Instance variables</h3>
+<dl>
+<dt id="qscope.types.ClientConnection.context"><code class="name">var <span class="ident">context</span> : zmq.sugar.context.Context</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.ClientConnection.host"><code class="name">var <span class="ident">host</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.ClientConnection.msg_port"><code class="name">var <span class="ident">msg_port</span> : int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.ClientConnection.msg_socket"><code class="name">var <span class="ident">msg_socket</span> : zmq.sugar.socket.Socket</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.ClientConnection.notif_port"><code class="name">var <span class="ident">notif_port</span> : int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.ClientConnection.notif_socket"><code class="name">var <span class="ident">notif_socket</span> : zmq.sugar.socket.Socket</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.ClientConnection.stream_port"><code class="name">var <span class="ident">stream_port</span> : int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.ClientConnection.stream_socket"><code class="name">var <span class="ident">stream_socket</span> : zmq.sugar.socket.Socket</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.types.ClientSyncResponse"><code class="flex name class">
+<span>class <span class="ident">ClientSyncResponse</span></span>
+<span>(</span><span>*,<br>type: str = 'client_sync',<br>value: Any,<br>system_type: str,<br>system_name: str,<br>is_streaming: bool,<br>all_meas_info: dict,<br>sys_metadata: dict,<br>version: str)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass(kw_only=True, repr=False)
+class ClientSyncResponse(Response):
+    type: str = &#34;client_sync&#34;
+    system_type: str
+    system_name: str
+    is_streaming: bool
+    all_meas_info: dict
+    sys_metadata: dict
+    version: str</code></pre>
+</details>
+<div class="desc"><p>ClientSyncResponse(*, type: 'str' = 'client_sync', value: 'Any', system_type: 'str', system_name: 'str', is_streaming: 'bool', all_meas_info: 'dict', sys_metadata: 'dict', version: 'str')</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.messages.Response" href="messages.html#qscope.types.messages.Response">Response</a></li>
+<li><a title="qscope.types.messages.Message" href="messages.html#qscope.types.messages.Message">Message</a></li>
+<li>mashumaro.mixins.msgpack.DataClassMessagePackMixin</li>
+<li>mashumaro.mixins.dict.DataClassDictMixin</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="qscope.types.ClientSyncResponse.from_dict"><code class="name flex">
+<span>def <span class="ident">from_dict</span></span>(<span>d, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.ClientSyncResponse.from_msgpack"><code class="name flex">
+<span>def <span class="ident">from_msgpack</span></span>(<span>d, decoder=&lt;function default_decoder&gt;, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="qscope.types.ClientSyncResponse.all_meas_info"><code class="name">var <span class="ident">all_meas_info</span> : dict</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.ClientSyncResponse.is_streaming"><code class="name">var <span class="ident">is_streaming</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.ClientSyncResponse.sys_metadata"><code class="name">var <span class="ident">sys_metadata</span> : dict</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.ClientSyncResponse.system_name"><code class="name">var <span class="ident">system_name</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.ClientSyncResponse.system_type"><code class="name">var <span class="ident">system_type</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.ClientSyncResponse.type"><code class="name">var <span class="ident">type</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.ClientSyncResponse.version"><code class="name">var <span class="ident">version</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.types.ClientSyncResponse.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.ClientSyncResponse.to_msgpack"><code class="name flex">
+<span>def <span class="ident">to_msgpack</span></span>(<span>self, encoder=&lt;function default_encoder&gt;)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.types.CommsError"><code class="flex name class">
+<span>class <span class="ident">CommsError</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class CommsError(Exception):
+    &#34;&#34;&#34;Base exception for communication errors.&#34;&#34;&#34;
+
+    pass</code></pre>
+</details>
+<div class="desc"><p>Base exception for communication errors.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
+</ul>
+</dd>
+<dt id="qscope.types.DeviceLock"><code class="flex name class">
+<span>class <span class="ident">DeviceLock</span></span>
+<span>(</span><span>owner: str, description: str, timestamp: float)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass
+class DeviceLock:
+    &#34;&#34;&#34;Information about a device lock.&#34;&#34;&#34;
+
+    owner: str  # e.g. &#34;measurement_123&#34;, &#34;video_stream&#34;
+    description: str  # Human readable description of what&#39;s using it
+    timestamp: float</code></pre>
+</details>
+<div class="desc"><p>Information about a device lock.</p></div>
+<h3>Instance variables</h3>
+<dl>
+<dt id="qscope.types.DeviceLock.description"><code class="name">var <span class="ident">description</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.DeviceLock.owner"><code class="name">var <span class="ident">owner</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.DeviceLock.timestamp"><code class="name">var <span class="ident">timestamp</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.types.DeviceRole"><code class="flex name class">
+<span>class <span class="ident">DeviceRole</span></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class DeviceRole(Generic[D]):
+    &#34;&#34;&#34;Base class for device roles.
+    
+    A DeviceRole defines an abstract capability that a device can fulfill.
+    It connects concrete device implementations to abstract interfaces,
+    allowing the system to work with devices through a consistent API
+    regardless of the specific hardware.
+    
+    Each role:
+    1. Specifies a protocol that devices must implement
+    2. Provides an interface class for accessing device functionality
+    3. Validates that devices can fulfill the role requirements
+    
+    Type Parameters
+    --------------
+    D : Type[Device]
+        The device protocol type that can fulfill this role
+        
+    Examples
+    --------
+    Defining a new role:
+    
+    ```python
+    class TemperatureController(DeviceRole[TempControlProtocol]):
+        interface_class = TempControlInterface
+    ```
+    
+    Using a role in a system:
+    
+    ```python
+    # Add device with role
+    system.add_device_with_role(my_temp_controller, TEMP_CONTROL)
+    
+    # Get interface for role
+    temp = system.get_device_by_role(TEMP_CONTROL)
+    temp.set_temperature(25.0)  # Use interface methods
+    ```
+    &#34;&#34;&#34;
+    interface_class: Type[RoleInterface] = None
+
+    def __init__(self) -&gt; None:
+        # Get the type argument (will be a ForwardRef or actual type)
+        self.required_type = get_args(self.__class__.__orig_bases__[0])[0]
+
+    def get_interface(self, device: Device) -&gt; RoleInterface:
+        &#34;&#34;&#34;Get the interface implementation for this role.
+
+        Parameters
+        ----------
+        device : Device
+            Device to wrap with interface
+
+        Returns
+        -------
+        RoleInterface
+            Role-specific interface implementation
+
+        Raises
+        ------
+        NotImplementedError
+            If role doesn&#39;t define an interface class
+        &#34;&#34;&#34;
+        if not self.interface_class:
+            raise NotImplementedError(&#34;Role must define interface_class&#34;)
+        return self.interface_class(device)
+
+    def validate_device_type(self, device_class: type[&#34;Device&#34;]) -&gt; tuple[bool, str]:
+        &#34;&#34;&#34;Validate if a device class can fulfill this role.
+        
+        This method checks if a device class implements all the methods required by
+        the protocol associated with this role. It handles both runtime protocol
+        checking and forward references to protocol classes.
+
+        Parameters
+        ----------
+        device_class : type[Device]
+            The device class to validate
+
+        Returns
+        -------
+        tuple[bool, str]
+            A tuple containing:
+            - is_valid (bool): True if the device can fulfill this role
+            - error_message (str): Empty string if valid, otherwise an error message
+            
+        Notes
+        -----
+        Validation works in two ways:
+        1. For ForwardRef protocols: Checks if the protocol name appears in the device&#39;s class hierarchy
+        2. For runtime protocols: Checks if the device implements all required methods
+        &#34;&#34;&#34;
+        from typing import ForwardRef
+
+        from qscope.types.validation import _get_base_classes
+
+        # Handle ForwardRef
+        if isinstance(self.required_type, ForwardRef):
+            # Check if required type name appears in device&#39;s class hierarchy
+            base_classes = _get_base_classes(device_class)
+            if self.required_type.__forward_arg__ not in base_classes:
+                return False, (
+                    f&#34;Role {self} requires device type {self.required_type.__forward_arg__}, &#34;
+                    f&#34;got {device_class.__name__}&#34;
+                )
+        else:
+            # Check if device class implements required protocol methods
+            missing_methods = []
+            for method_name in self.required_type.__annotations__:
+                if not hasattr(device_class, method_name):
+                    missing_methods.append(method_name)
+        
+            if missing_methods:
+                return False, (
+                    f&#34;Role {self} requires device implementing {self.required_type.__name__}, &#34;
+                    f&#34;but {device_class.__name__} is missing methods: {&#39;, &#39;.join(missing_methods)}&#34;
+                )
+        return True, &#34;&#34;
+
+    def __str__(self) -&gt; str:
+        # Find the singleton instance name by looking through module globals
+        for name, value in globals().items():
+            if isinstance(value, DeviceRole) and value is self:
+                return name
+        # Fallback to class name if singleton not found
+        return f&#34;{self.__class__.__name__}&#34;
+
+    def __repr__(self) -&gt; str:
+        return f&#34;{self.__class__.__name__}()&#34;
+
+    def __eq__(self, other: object) -&gt; bool:
+        if not isinstance(other, DeviceRole):
+            return NotImplemented
+        return type(self) == type(other)
+
+    def __hash__(self) -&gt; int:
+        return hash(type(self))</code></pre>
+</details>
+<div class="desc"><p>Base class for device roles.</p>
+<p>A DeviceRole defines an abstract capability that a device can fulfill.
+It connects concrete device implementations to abstract interfaces,
+allowing the system to work with devices through a consistent API
+regardless of the specific hardware.</p>
+<p>Each role:
+1. Specifies a protocol that devices must implement
+2. Provides an interface class for accessing device functionality
+3. Validates that devices can fulfill the role requirements</p>
+<h2 id="type-parameters">Type Parameters</h2>
+<p>D : Type[Device]
+The device protocol type that can fulfill this role</p>
+<h2 id="examples">Examples</h2>
+<p>Defining a new role:</p>
+<pre><code class="language-python">class TemperatureController(DeviceRole[TempControlProtocol]):
+    interface_class = TempControlInterface
+</code></pre>
+<p>Using a role in a system:</p>
+<pre><code class="language-python"># Add device with role
+system.add_device_with_role(my_temp_controller, TEMP_CONTROL)
+
+# Get interface for role
+temp = system.get_device_by_role(TEMP_CONTROL)
+temp.set_temperature(25.0)  # Use interface methods
+</code></pre></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>typing.Generic</li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="qscope.types.roles.MainCamera" href="roles.html#qscope.types.roles.MainCamera">MainCamera</a></li>
+<li><a title="qscope.types.roles.MainDigitizer" href="roles.html#qscope.types.roles.MainDigitizer">MainDigitizer</a></li>
+<li><a title="qscope.types.roles.PrimaryRFSource" href="roles.html#qscope.types.roles.PrimaryRFSource">PrimaryRFSource</a></li>
+<li><a title="qscope.types.roles.SecondaryCamera" href="roles.html#qscope.types.roles.SecondaryCamera">SecondaryCamera</a></li>
+<li><a title="qscope.types.roles.SecondaryRFSource" href="roles.html#qscope.types.roles.SecondaryRFSource">SecondaryRFSource</a></li>
+<li><a title="qscope.types.roles.SequenceGenerator" href="roles.html#qscope.types.roles.SequenceGenerator">SequenceGenerator</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="qscope.types.DeviceRole.interface_class"><code class="name">var <span class="ident">interface_class</span> : Type[<a title="qscope.types.interfaces.RoleInterface" href="interfaces.html#qscope.types.interfaces.RoleInterface">RoleInterface</a>]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.types.DeviceRole.get_interface"><code class="name flex">
+<span>def <span class="ident">get_interface</span></span>(<span>self, device: Device) ‑> RoleInterface</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_interface(self, device: Device) -&gt; RoleInterface:
+    &#34;&#34;&#34;Get the interface implementation for this role.
+
+    Parameters
+    ----------
+    device : Device
+        Device to wrap with interface
+
+    Returns
+    -------
+    RoleInterface
+        Role-specific interface implementation
+
+    Raises
+    ------
+    NotImplementedError
+        If role doesn&#39;t define an interface class
+    &#34;&#34;&#34;
+    if not self.interface_class:
+        raise NotImplementedError(&#34;Role must define interface_class&#34;)
+    return self.interface_class(device)</code></pre>
+</details>
+<div class="desc"><p>Get the interface implementation for this role.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>device</code></strong> :&ensp;<code>Device</code></dt>
+<dd>Device to wrap with interface</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>RoleInterface</code></dt>
+<dd>Role-specific interface implementation</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>NotImplementedError</code></dt>
+<dd>If role doesn't define an interface class</dd>
+</dl></div>
+</dd>
+<dt id="qscope.types.DeviceRole.validate_device_type"><code class="name flex">
+<span>def <span class="ident">validate_device_type</span></span>(<span>self, device_class: "type['Device']") ‑> tuple[bool, str]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def validate_device_type(self, device_class: type[&#34;Device&#34;]) -&gt; tuple[bool, str]:
+    &#34;&#34;&#34;Validate if a device class can fulfill this role.
+    
+    This method checks if a device class implements all the methods required by
+    the protocol associated with this role. It handles both runtime protocol
+    checking and forward references to protocol classes.
+
+    Parameters
+    ----------
+    device_class : type[Device]
+        The device class to validate
+
+    Returns
+    -------
+    tuple[bool, str]
+        A tuple containing:
+        - is_valid (bool): True if the device can fulfill this role
+        - error_message (str): Empty string if valid, otherwise an error message
+        
+    Notes
+    -----
+    Validation works in two ways:
+    1. For ForwardRef protocols: Checks if the protocol name appears in the device&#39;s class hierarchy
+    2. For runtime protocols: Checks if the device implements all required methods
+    &#34;&#34;&#34;
+    from typing import ForwardRef
+
+    from qscope.types.validation import _get_base_classes
+
+    # Handle ForwardRef
+    if isinstance(self.required_type, ForwardRef):
+        # Check if required type name appears in device&#39;s class hierarchy
+        base_classes = _get_base_classes(device_class)
+        if self.required_type.__forward_arg__ not in base_classes:
+            return False, (
+                f&#34;Role {self} requires device type {self.required_type.__forward_arg__}, &#34;
+                f&#34;got {device_class.__name__}&#34;
+            )
+    else:
+        # Check if device class implements required protocol methods
+        missing_methods = []
+        for method_name in self.required_type.__annotations__:
+            if not hasattr(device_class, method_name):
+                missing_methods.append(method_name)
+    
+        if missing_methods:
+            return False, (
+                f&#34;Role {self} requires device implementing {self.required_type.__name__}, &#34;
+                f&#34;but {device_class.__name__} is missing methods: {&#39;, &#39;.join(missing_methods)}&#34;
+            )
+    return True, &#34;&#34;</code></pre>
+</details>
+<div class="desc"><p>Validate if a device class can fulfill this role.</p>
+<p>This method checks if a device class implements all the methods required by
+the protocol associated with this role. It handles both runtime protocol
+checking and forward references to protocol classes.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>device_class</code></strong> :&ensp;<code>type[Device]</code></dt>
+<dd>The device class to validate</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>tuple[bool, str]</code></dt>
+<dd>A tuple containing:
+- is_valid (bool): True if the device can fulfill this role
+- error_message (str): Empty string if valid, otherwise an error message</dd>
+</dl>
+<h2 id="notes">Notes</h2>
+<p>Validation works in two ways:
+1. For ForwardRef protocols: Checks if the protocol name appears in the device's class hierarchy
+2. For runtime protocols: Checks if the device implements all required methods</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.types.DictResponse"><code class="flex name class">
+<span>class <span class="ident">DictResponse</span></span>
+<span>(</span><span>*, type: str = 'dict', value: dict = &lt;factory&gt;)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass(kw_only=True, repr=False)
+class DictResponse(Response):
+    type: str = &#34;dict&#34;
+    value: dict = field(default_factory=dict)</code></pre>
+</details>
+<div class="desc"><p>DictResponse(*, type: 'str' = 'dict', value: 'dict' = <factory>)</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.messages.Response" href="messages.html#qscope.types.messages.Response">Response</a></li>
+<li><a title="qscope.types.messages.Message" href="messages.html#qscope.types.messages.Message">Message</a></li>
+<li>mashumaro.mixins.msgpack.DataClassMessagePackMixin</li>
+<li>mashumaro.mixins.dict.DataClassDictMixin</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="qscope.types.DictResponse.from_dict"><code class="name flex">
+<span>def <span class="ident">from_dict</span></span>(<span>d, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.DictResponse.from_msgpack"><code class="name flex">
+<span>def <span class="ident">from_msgpack</span></span>(<span>d, decoder=&lt;function default_decoder&gt;, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="qscope.types.DictResponse.type"><code class="name">var <span class="ident">type</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.DictResponse.value"><code class="name">var <span class="ident">value</span> : dict</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.types.DictResponse.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.DictResponse.to_msgpack"><code class="name flex">
+<span>def <span class="ident">to_msgpack</span></span>(<span>self, encoder=&lt;function default_encoder&gt;)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.types.ErrorResponse"><code class="flex name class">
+<span>class <span class="ident">ErrorResponse</span></span>
+<span>(</span><span>*, type: str = 'error', value: str = '')</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass(kw_only=True, repr=False)
+class ErrorResponse(Response):
+    type: str = &#34;error&#34;
+    value: str = &#34;&#34;</code></pre>
+</details>
+<div class="desc"><p>ErrorResponse(*, type: 'str' = 'error', value: 'str' = '')</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.messages.Response" href="messages.html#qscope.types.messages.Response">Response</a></li>
+<li><a title="qscope.types.messages.Message" href="messages.html#qscope.types.messages.Message">Message</a></li>
+<li>mashumaro.mixins.msgpack.DataClassMessagePackMixin</li>
+<li>mashumaro.mixins.dict.DataClassDictMixin</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="qscope.types.ErrorResponse.from_dict"><code class="name flex">
+<span>def <span class="ident">from_dict</span></span>(<span>d, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.ErrorResponse.from_msgpack"><code class="name flex">
+<span>def <span class="ident">from_msgpack</span></span>(<span>d, decoder=&lt;function default_decoder&gt;, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="qscope.types.ErrorResponse.type"><code class="name">var <span class="ident">type</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.ErrorResponse.value"><code class="name">var <span class="ident">value</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.types.ErrorResponse.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.ErrorResponse.to_msgpack"><code class="name flex">
+<span>def <span class="ident">to_msgpack</span></span>(<span>self, encoder=&lt;function default_encoder&gt;)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.types.HandlerInfo"><code class="flex name class">
+<span>class <span class="ident">HandlerInfo</span></span>
+<span>(</span><span>handler_func: Callable,<br>client_methods: list[str],<br>command: str,<br>system_types: tuple[Type[System], ...] = (),<br>required_roles: tuple[<a title="qscope.types.DeviceRole" href="#qscope.types.DeviceRole">DeviceRole</a>, ...] = ())</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass
+class HandlerInfo:
+    &#34;&#34;&#34;Stores the mapping between a server handler and its client methods.
+
+    Attributes:
+        handler_func: The server handler function
+        client_methods: List of client method names that use this handler
+        command: The command string that identifies this handler
+        system_types: Required system types
+        required_roles: Required device roles
+    &#34;&#34;&#34;
+
+    handler_func: Callable
+    client_methods: list[str]
+    command: str
+    system_types: tuple[Type[System], ...] = ()
+    required_roles: tuple[DeviceRole, ...] = ()</code></pre>
+</details>
+<div class="desc"><p>Stores the mapping between a server handler and its client methods.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>handler_func</code></strong></dt>
+<dd>The server handler function</dd>
+<dt><strong><code>client_methods</code></strong></dt>
+<dd>List of client method names that use this handler</dd>
+<dt><strong><code>command</code></strong></dt>
+<dd>The command string that identifies this handler</dd>
+<dt><strong><code>system_types</code></strong></dt>
+<dd>Required system types</dd>
+<dt><strong><code>required_roles</code></strong></dt>
+<dd>Required device roles</dd>
+</dl></div>
+<h3>Instance variables</h3>
+<dl>
+<dt id="qscope.types.HandlerInfo.client_methods"><code class="name">var <span class="ident">client_methods</span> : list[str]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.HandlerInfo.command"><code class="name">var <span class="ident">command</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.HandlerInfo.handler_func"><code class="name">var <span class="ident">handler_func</span> : Callable</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.HandlerInfo.required_roles"><code class="name">var <span class="ident">required_roles</span> : tuple[<a title="qscope.types.DeviceRole" href="#qscope.types.DeviceRole">DeviceRole</a>, ...]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.HandlerInfo.system_types"><code class="name">var <span class="ident">system_types</span> : tuple[Type[System], ...]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.types.MainCamera"><code class="flex name class">
+<span>class <span class="ident">MainCamera</span></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class MainCamera(DeviceRole[CameraProtocol]):
+    &#34;&#34;&#34;Primary camera role for main imaging and measurements.&#34;&#34;&#34;
+    interface_class = CameraInterface</code></pre>
+</details>
+<div class="desc"><p>Primary camera role for main imaging and measurements.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.roles.DeviceRole" href="roles.html#qscope.types.roles.DeviceRole">DeviceRole</a></li>
+<li>typing.Generic</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="qscope.types.MainCamera.interface_class"><code class="name">var <span class="ident">interface_class</span> : Type[<a title="qscope.types.interfaces.RoleInterface" href="interfaces.html#qscope.types.interfaces.RoleInterface">RoleInterface</a>]</code></dt>
+<dd>
+<div class="desc"><p>Interface for camera functionality.</p>
+<p>This interface provides methods for controlling scientific cameras
+and retrieving image data. It wraps a device implementing CameraProtocol
+and provides a clean, type-safe API for camera operations.</p>
+<p>Typical usage:</p>
+<pre><code class="language-python"># Get camera interface from system
+camera = system.get_device_by_role(MAIN_CAMERA)
+
+# Configure camera
+camera.set_exposure_time(0.1)  # 100ms exposure
+camera.set_hardware_binning((2, 2))  # 2x2 binning
+
+# Take an image
+image = camera.take_snapshot()
+
+# Get image dimensions
+width, height = camera.get_frame_shape()
+</code></pre></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="qscope.types.roles.DeviceRole" href="roles.html#qscope.types.roles.DeviceRole">DeviceRole</a></b></code>:
+<ul class="hlist">
+<li><code><a title="qscope.types.roles.DeviceRole.get_interface" href="roles.html#qscope.types.roles.DeviceRole.get_interface">get_interface</a></code></li>
+<li><code><a title="qscope.types.roles.DeviceRole.validate_device_type" href="roles.html#qscope.types.roles.DeviceRole.validate_device_type">validate_device_type</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="qscope.types.MeasurementConfig"><code class="flex name class">
+<span>class <span class="ident">MeasurementConfig</span></span>
+<span>(</span><span>*, meas_type: str, save_name: str, ref_mode: str, sweep_x: numpy.ndarray)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass(kw_only=True, repr=False)
+class MeasurementConfig(DataClassDictMixin):
+    &#34;&#34;&#34;Base configuration for measurements.
+
+    To be subclassed for each measurement type.
+    Provide all the parameters you require here as attributes.
+    &#34;&#34;&#34;
+
+    class Config(BaseConfig):
+        discriminator = Discriminator(
+            field=&#34;meas_type&#34;,
+            include_subtypes=True,
+        )
+
+    meas_type: str
+    save_name: str  # REQUIRED per-type
+    ref_mode: str
+    sweep_x: np.ndarray = field(metadata={&#34;serialize&#34;: tuple, &#34;deserialize&#34;: np.array})
+
+    def __repr__(self):
+        msg = self.__class__.__name__ + &#34;(&#34;
+        for i, (field, val) in enumerate(self.__dict__.items()):
+            if i not in (0, len(self.__dict__)):
+                msg += &#34;, &#34;
+            if isinstance(val, np.ndarray):
+                msg += f&#34;{field}=&lt;Array&gt;&#34;
+            else:
+                msg += f&#34;{field}={getattr(self, field)}&#34;
+        return msg + &#34;)&#34;</code></pre>
+</details>
+<div class="desc"><p>Base configuration for measurements.</p>
+<p>To be subclassed for each measurement type.
+Provide all the parameters you require here as attributes.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>mashumaro.mixins.dict.DataClassDictMixin</li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="qscope.types.config.CameraConfig" href="config.html#qscope.types.config.CameraConfig">CameraConfig</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="qscope.types.MeasurementConfig.Config"><code class="name">var <span class="ident">Config</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Static methods</h3>
+<dl>
+<dt id="qscope.types.MeasurementConfig.from_dict"><code class="name flex">
+<span>def <span class="ident">from_dict</span></span>(<span>d, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="qscope.types.MeasurementConfig.meas_type"><code class="name">var <span class="ident">meas_type</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.MeasurementConfig.ref_mode"><code class="name">var <span class="ident">ref_mode</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.MeasurementConfig.save_name"><code class="name">var <span class="ident">save_name</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.MeasurementConfig.sweep_x"><code class="name">var <span class="ident">sweep_x</span> : numpy.ndarray</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.types.MeasurementConfig.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.types.MeasurementFrame"><code class="flex name class">
+<span>class <span class="ident">MeasurementFrame</span></span>
+<span>(</span><span>*,<br>type: str = 'measurement_frame',<br>meas_id: str,<br>frame_num: int,<br>sig_frame: np.ndarray,<br>ref_frame: np.ndarray)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass(kw_only=True, repr=False)
+class MeasurementFrame(Notification):
+    type: str = &#34;measurement_frame&#34;
+    meas_id: str
+    frame_num: int
+    sig_frame: np.ndarray = field(
+        metadata={&#34;serialize&#34;: pickle.dumps, &#34;deserialize&#34;: pickle.loads}
+    )
+    ref_frame: np.ndarray = field(
+        metadata={&#34;serialize&#34;: pickle.dumps, &#34;deserialize&#34;: pickle.loads}
+    )</code></pre>
+</details>
+<div class="desc"><p>MeasurementFrame(*, type: 'str' = 'measurement_frame', meas_id: 'str', frame_num: 'int', sig_frame: 'np.ndarray', ref_frame: 'np.ndarray')</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.messages.Notification" href="messages.html#qscope.types.messages.Notification">Notification</a></li>
+<li><a title="qscope.types.messages.Message" href="messages.html#qscope.types.messages.Message">Message</a></li>
+<li>mashumaro.mixins.msgpack.DataClassMessagePackMixin</li>
+<li>mashumaro.mixins.dict.DataClassDictMixin</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="qscope.types.MeasurementFrame.from_dict"><code class="name flex">
+<span>def <span class="ident">from_dict</span></span>(<span>d, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.MeasurementFrame.from_msgpack"><code class="name flex">
+<span>def <span class="ident">from_msgpack</span></span>(<span>d, decoder=&lt;function default_decoder&gt;, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="qscope.types.MeasurementFrame.frame_num"><code class="name">var <span class="ident">frame_num</span> : int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.MeasurementFrame.meas_id"><code class="name">var <span class="ident">meas_id</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.MeasurementFrame.ref_frame"><code class="name">var <span class="ident">ref_frame</span> : numpy.ndarray</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.MeasurementFrame.sig_frame"><code class="name">var <span class="ident">sig_frame</span> : numpy.ndarray</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.MeasurementFrame.type"><code class="name">var <span class="ident">type</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.types.MeasurementFrame.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.MeasurementFrame.to_msgpack"><code class="name flex">
+<span>def <span class="ident">to_msgpack</span></span>(<span>self, encoder=&lt;function default_encoder&gt;)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.types.MeasurementUpdate"><code class="flex name class">
+<span>class <span class="ident">MeasurementUpdate</span></span>
+<span>(</span><span>*, type: str = 'measurement_update', meas_id: str, old_state: str, new_state: str)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass(kw_only=True, repr=False)
+class MeasurementUpdate(Notification):
+    type: str = &#34;measurement_update&#34;
+    meas_id: str
+    old_state: str
+    new_state: str</code></pre>
+</details>
+<div class="desc"><p>MeasurementUpdate(*, type: 'str' = 'measurement_update', meas_id: 'str', old_state: 'str', new_state: 'str')</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.messages.Notification" href="messages.html#qscope.types.messages.Notification">Notification</a></li>
+<li><a title="qscope.types.messages.Message" href="messages.html#qscope.types.messages.Message">Message</a></li>
+<li>mashumaro.mixins.msgpack.DataClassMessagePackMixin</li>
+<li>mashumaro.mixins.dict.DataClassDictMixin</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="qscope.types.MeasurementUpdate.from_dict"><code class="name flex">
+<span>def <span class="ident">from_dict</span></span>(<span>d, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.MeasurementUpdate.from_msgpack"><code class="name flex">
+<span>def <span class="ident">from_msgpack</span></span>(<span>d, decoder=&lt;function default_decoder&gt;, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="qscope.types.MeasurementUpdate.meas_id"><code class="name">var <span class="ident">meas_id</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.MeasurementUpdate.new_state"><code class="name">var <span class="ident">new_state</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.MeasurementUpdate.old_state"><code class="name">var <span class="ident">old_state</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.MeasurementUpdate.type"><code class="name">var <span class="ident">type</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.types.MeasurementUpdate.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.MeasurementUpdate.to_msgpack"><code class="name flex">
+<span>def <span class="ident">to_msgpack</span></span>(<span>self, encoder=&lt;function default_encoder&gt;)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.types.Message"><code class="flex name class">
+<span>class <span class="ident">Message</span></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass
+class Message(DataClassMessagePackMixin):
+    &#34;&#34;&#34;Base class for all messages.&#34;&#34;&#34;
+
+    def __repr__(self):
+        msg = self.__class__.__name__ + &#34;(&#34;
+        for i, (field, val) in enumerate(self.__dict__.items()):
+            if i not in (0, len(self.__dict__)):
+                msg += &#34;, &#34;
+            if isinstance(val, np.ndarray):
+                msg += f&#34;{field}=&lt;Array&gt;&#34;
+            else:
+                msg += f&#34;{field}={getattr(self, field)}&#34;
+        return msg + &#34;)&#34;</code></pre>
+</details>
+<div class="desc"><p>Base class for all messages.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>mashumaro.mixins.msgpack.DataClassMessagePackMixin</li>
+<li>mashumaro.mixins.dict.DataClassDictMixin</li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="qscope.types.messages.Notification" href="messages.html#qscope.types.messages.Notification">Notification</a></li>
+<li><a title="qscope.types.messages.Request" href="messages.html#qscope.types.messages.Request">Request</a></li>
+<li><a title="qscope.types.messages.Response" href="messages.html#qscope.types.messages.Response">Response</a></li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="qscope.types.Message.from_dict"><code class="name flex">
+<span>def <span class="ident">from_dict</span></span>(<span>d, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.Message.from_msgpack"><code class="name flex">
+<span>def <span class="ident">from_msgpack</span></span>(<span>d, decoder=&lt;function default_decoder&gt;, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.types.Message.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.Message.to_msgpack"><code class="name flex">
+<span>def <span class="ident">to_msgpack</span></span>(<span>self, encoder=&lt;function default_encoder&gt;)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.types.MockSGAndorESRConfig"><code class="flex name class">
+<span>class <span class="ident">MockSGAndorESRConfig</span></span>
+<span>(</span><span>*,<br>meas_type: str = 'MockSGAndorESR',<br>save_name: str = 'ESR',<br>ref_mode: str,<br>sweep_x: numpy.ndarray,<br>exposure_time: float,<br>frame_shape: tuple[int, int],<br>hardware_binning: tuple[int, int],<br>avg_per_point: int,<br>rf_delay: float,<br>rf_pow: float,<br>rf_dur: float,<br>laser_delay: float,<br>laser_dur: float,<br>laser_to_rf_delay: float,<br>peak_contrasts: tuple[float, float],<br>peak_widths: tuple[float, float],<br>bg_zeeman: float,<br>ft_zeeman: float,<br>ft_width_dif: float,<br>ft_height_dif: float,<br>ft_centre: tuple[int | None, int | None],<br>ft_rad: int | None,<br>ft_linewidth: int,<br>noise_sigma: float)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass(kw_only=True, repr=False)
+class MockSGAndorESRConfig(CameraConfig):
+    &#34;&#34;&#34;Configuration for mock ESR measurements.&#34;&#34;&#34;
+
+    meas_type: str = &#34;MockSGAndorESR&#34;
+    save_name: str = &#34;ESR&#34;
+    rf_delay: float
+    rf_pow: float
+    rf_dur: float
+    laser_delay: float
+    laser_dur: float
+    laser_to_rf_delay: float
+    # test data params
+    peak_contrasts: tuple[float, float]
+    peak_widths: tuple[float, float]
+    bg_zeeman: float
+    ft_zeeman: float
+    ft_width_dif: float
+    ft_height_dif: float
+    ft_centre: tuple[int | None, int | None]
+    ft_rad: int | None
+    ft_linewidth: int
+    noise_sigma: float</code></pre>
+</details>
+<div class="desc"><p>Configuration for mock ESR measurements.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.config.CameraConfig" href="config.html#qscope.types.config.CameraConfig">CameraConfig</a></li>
+<li><a title="qscope.types.config.MeasurementConfig" href="config.html#qscope.types.config.MeasurementConfig">MeasurementConfig</a></li>
+<li>mashumaro.mixins.dict.DataClassDictMixin</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="qscope.types.MockSGAndorESRConfig.from_dict"><code class="name flex">
+<span>def <span class="ident">from_dict</span></span>(<span>d, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="qscope.types.MockSGAndorESRConfig.bg_zeeman"><code class="name">var <span class="ident">bg_zeeman</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.MockSGAndorESRConfig.ft_centre"><code class="name">var <span class="ident">ft_centre</span> : tuple[int | None, int | None]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.MockSGAndorESRConfig.ft_height_dif"><code class="name">var <span class="ident">ft_height_dif</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.MockSGAndorESRConfig.ft_linewidth"><code class="name">var <span class="ident">ft_linewidth</span> : int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.MockSGAndorESRConfig.ft_rad"><code class="name">var <span class="ident">ft_rad</span> : int | None</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.MockSGAndorESRConfig.ft_width_dif"><code class="name">var <span class="ident">ft_width_dif</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.MockSGAndorESRConfig.ft_zeeman"><code class="name">var <span class="ident">ft_zeeman</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.MockSGAndorESRConfig.laser_delay"><code class="name">var <span class="ident">laser_delay</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.MockSGAndorESRConfig.laser_dur"><code class="name">var <span class="ident">laser_dur</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.MockSGAndorESRConfig.laser_to_rf_delay"><code class="name">var <span class="ident">laser_to_rf_delay</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.MockSGAndorESRConfig.meas_type"><code class="name">var <span class="ident">meas_type</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.MockSGAndorESRConfig.noise_sigma"><code class="name">var <span class="ident">noise_sigma</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.MockSGAndorESRConfig.peak_contrasts"><code class="name">var <span class="ident">peak_contrasts</span> : tuple[float, float]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.MockSGAndorESRConfig.peak_widths"><code class="name">var <span class="ident">peak_widths</span> : tuple[float, float]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.MockSGAndorESRConfig.rf_delay"><code class="name">var <span class="ident">rf_delay</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.MockSGAndorESRConfig.rf_dur"><code class="name">var <span class="ident">rf_dur</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.MockSGAndorESRConfig.rf_pow"><code class="name">var <span class="ident">rf_pow</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.MockSGAndorESRConfig.save_name"><code class="name">var <span class="ident">save_name</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.types.MockSGAndorESRConfig.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.types.NewMeasurement"><code class="flex name class">
+<span>class <span class="ident">NewMeasurement</span></span>
+<span>(</span><span>*, type: str = 'new_measurement', meas_id: str, meas_config: Any)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass(kw_only=True, repr=False)
+class NewMeasurement(Notification):
+    type: str = &#34;new_measurement&#34;
+    meas_id: str
+    meas_config: Any = field(
+        metadata={&#34;serialize&#34;: pickle.dumps, &#34;deserialize&#34;: pickle.loads}
+    )</code></pre>
+</details>
+<div class="desc"><p>NewMeasurement(*, type: 'str' = 'new_measurement', meas_id: 'str', meas_config: 'Any')</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.messages.Notification" href="messages.html#qscope.types.messages.Notification">Notification</a></li>
+<li><a title="qscope.types.messages.Message" href="messages.html#qscope.types.messages.Message">Message</a></li>
+<li>mashumaro.mixins.msgpack.DataClassMessagePackMixin</li>
+<li>mashumaro.mixins.dict.DataClassDictMixin</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="qscope.types.NewMeasurement.from_dict"><code class="name flex">
+<span>def <span class="ident">from_dict</span></span>(<span>d, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.NewMeasurement.from_msgpack"><code class="name flex">
+<span>def <span class="ident">from_msgpack</span></span>(<span>d, decoder=&lt;function default_decoder&gt;, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="qscope.types.NewMeasurement.meas_config"><code class="name">var <span class="ident">meas_config</span> : Any</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.NewMeasurement.meas_id"><code class="name">var <span class="ident">meas_id</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.NewMeasurement.type"><code class="name">var <span class="ident">type</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.types.NewMeasurement.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.NewMeasurement.to_msgpack"><code class="name flex">
+<span>def <span class="ident">to_msgpack</span></span>(<span>self, encoder=&lt;function default_encoder&gt;)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.types.NewStream"><code class="flex name class">
+<span>class <span class="ident">NewStream</span></span>
+<span>(</span><span>*, type: str = 'new_stream', stream_type: str)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass(kw_only=True, repr=False)
+class NewStream(Notification):
+    type: str = &#34;new_stream&#34;
+    stream_type: str</code></pre>
+</details>
+<div class="desc"><p>NewStream(*, type: 'str' = 'new_stream', stream_type: 'str')</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.messages.Notification" href="messages.html#qscope.types.messages.Notification">Notification</a></li>
+<li><a title="qscope.types.messages.Message" href="messages.html#qscope.types.messages.Message">Message</a></li>
+<li>mashumaro.mixins.msgpack.DataClassMessagePackMixin</li>
+<li>mashumaro.mixins.dict.DataClassDictMixin</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="qscope.types.NewStream.from_dict"><code class="name flex">
+<span>def <span class="ident">from_dict</span></span>(<span>d, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.NewStream.from_msgpack"><code class="name flex">
+<span>def <span class="ident">from_msgpack</span></span>(<span>d, decoder=&lt;function default_decoder&gt;, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="qscope.types.NewStream.stream_type"><code class="name">var <span class="ident">stream_type</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.NewStream.type"><code class="name">var <span class="ident">type</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.types.NewStream.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.NewStream.to_msgpack"><code class="name flex">
+<span>def <span class="ident">to_msgpack</span></span>(<span>self, encoder=&lt;function default_encoder&gt;)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.types.Notification"><code class="flex name class">
+<span>class <span class="ident">Notification</span></span>
+<span>(</span><span>*, type: str)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass(kw_only=True, repr=False)
+class Notification(Message):
+    type: str
+
+    class Config:
+        discriminator = Discriminator(field=&#34;type&#34;, include_subtypes=True)</code></pre>
+</details>
+<div class="desc"><p>Notification(*, type: 'str')</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.messages.Message" href="messages.html#qscope.types.messages.Message">Message</a></li>
+<li>mashumaro.mixins.msgpack.DataClassMessagePackMixin</li>
+<li>mashumaro.mixins.dict.DataClassDictMixin</li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="qscope.types.messages.MeasurementFrame" href="messages.html#qscope.types.messages.MeasurementFrame">MeasurementFrame</a></li>
+<li><a title="qscope.types.messages.MeasurementUpdate" href="messages.html#qscope.types.messages.MeasurementUpdate">MeasurementUpdate</a></li>
+<li><a title="qscope.types.messages.NewMeasurement" href="messages.html#qscope.types.messages.NewMeasurement">NewMeasurement</a></li>
+<li><a title="qscope.types.messages.NewStream" href="messages.html#qscope.types.messages.NewStream">NewStream</a></li>
+<li><a title="qscope.types.messages.RollingAvgSweepUpdate" href="messages.html#qscope.types.messages.RollingAvgSweepUpdate">RollingAvgSweepUpdate</a></li>
+<li><a title="qscope.types.messages.SaveFullComplete" href="messages.html#qscope.types.messages.SaveFullComplete">SaveFullComplete</a></li>
+<li><a title="qscope.types.messages.SweepUpdate" href="messages.html#qscope.types.messages.SweepUpdate">SweepUpdate</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="qscope.types.Notification.Config"><code class="name">var <span class="ident">Config</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Static methods</h3>
+<dl>
+<dt id="qscope.types.Notification.from_dict"><code class="name flex">
+<span>def <span class="ident">from_dict</span></span>(<span>d, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.Notification.from_msgpack"><code class="name flex">
+<span>def <span class="ident">from_msgpack</span></span>(<span>d, decoder=&lt;function default_decoder&gt;, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="qscope.types.Notification.type"><code class="name">var <span class="ident">type</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.types.Notification.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.Notification.to_msgpack"><code class="name flex">
+<span>def <span class="ident">to_msgpack</span></span>(<span>self, encoder=&lt;function default_encoder&gt;)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.types.PleaseWait"><code class="flex name class">
+<span>class <span class="ident">PleaseWait</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class PleaseWait(Exception):
+    &#34;&#34;&#34;Raised when an operation needs to wait before proceeding.&#34;&#34;&#34;
+
+    pass</code></pre>
+</details>
+<div class="desc"><p>Raised when an operation needs to wait before proceeding.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
+</ul>
+</dd>
+<dt id="qscope.types.PleaseWaitResponse"><code class="flex name class">
+<span>class <span class="ident">PleaseWaitResponse</span></span>
+<span>(</span><span>*, type: str = 'please_wait', value: str = '')</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass(kw_only=True, repr=False)
+class PleaseWaitResponse(Response):
+    type: str = &#34;please_wait&#34;
+    value: str = &#34;&#34;</code></pre>
+</details>
+<div class="desc"><p>PleaseWaitResponse(*, type: 'str' = 'please_wait', value: 'str' = '')</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.messages.Response" href="messages.html#qscope.types.messages.Response">Response</a></li>
+<li><a title="qscope.types.messages.Message" href="messages.html#qscope.types.messages.Message">Message</a></li>
+<li>mashumaro.mixins.msgpack.DataClassMessagePackMixin</li>
+<li>mashumaro.mixins.dict.DataClassDictMixin</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="qscope.types.PleaseWaitResponse.from_dict"><code class="name flex">
+<span>def <span class="ident">from_dict</span></span>(<span>d, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.PleaseWaitResponse.from_msgpack"><code class="name flex">
+<span>def <span class="ident">from_msgpack</span></span>(<span>d, decoder=&lt;function default_decoder&gt;, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="qscope.types.PleaseWaitResponse.type"><code class="name">var <span class="ident">type</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.PleaseWaitResponse.value"><code class="name">var <span class="ident">value</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.types.PleaseWaitResponse.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.PleaseWaitResponse.to_msgpack"><code class="name flex">
+<span>def <span class="ident">to_msgpack</span></span>(<span>self, encoder=&lt;function default_encoder&gt;)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.types.PrimaryRFSource"><code class="flex name class">
+<span>class <span class="ident">PrimaryRFSource</span></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class PrimaryRFSource(DeviceRole[RFSourceProtocol]):
+    &#34;&#34;&#34;Primary RF source role for main RF control.&#34;&#34;&#34;
+    interface_class = RFSourceInterface</code></pre>
+</details>
+<div class="desc"><p>Primary RF source role for main RF control.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.roles.DeviceRole" href="roles.html#qscope.types.roles.DeviceRole">DeviceRole</a></li>
+<li>typing.Generic</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="qscope.types.PrimaryRFSource.interface_class"><code class="name">var <span class="ident">interface_class</span> : Type[<a title="qscope.types.interfaces.RoleInterface" href="interfaces.html#qscope.types.interfaces.RoleInterface">RoleInterface</a>]</code></dt>
+<dd>
+<div class="desc"><p>Interface for RF source functionality.</p>
+<p>This interface provides methods for controlling RF signal generators
+used in spectroscopy and control applications. It wraps a device
+implementing RFSourceProtocol and provides a clean, type-safe API
+for RF source operations.</p>
+<p>Typical usage:</p>
+<pre><code class="language-python"># Get RF source interface from system
+rf = system.get_device_by_role(PRIMARY_RF)
+
+# Configure RF output
+rf.set_freq(2870.0)  # 2.87 GHz
+rf.set_power(-10.0)  # -10 dBm
+rf.set_state(True)   # Turn on output
+
+# Configure a frequency sweep
+freqs = np.linspace(2800, 2900, 101)  # MHz
+rf.set_freq_list(freqs, step_time=0.05)  # 50ms per point
+</code></pre></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="qscope.types.roles.DeviceRole" href="roles.html#qscope.types.roles.DeviceRole">DeviceRole</a></b></code>:
+<ul class="hlist">
+<li><code><a title="qscope.types.roles.DeviceRole.get_interface" href="roles.html#qscope.types.roles.DeviceRole.get_interface">get_interface</a></code></li>
+<li><code><a title="qscope.types.roles.DeviceRole.validate_device_type" href="roles.html#qscope.types.roles.DeviceRole.validate_device_type">validate_device_type</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="qscope.types.Request"><code class="flex name class">
+<span>class <span class="ident">Request</span></span>
+<span>(</span><span>command: str,<br>params: dict[str, bool | str | float | int | tuple | None] = &lt;factory&gt;)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass(repr=False)
+class Request(Message):
+    &#34;&#34;&#34;A request from client to server.
+
+    Request needs to be general (client-&gt;server) as server has no info on what type of
+    message it&#39;s getting. Requester does know what type of response to expect, so
+    that object can be specialised.
+    &#34;&#34;&#34;
+
+    command: str
+    params: dict[str, bool | str | float | int | tuple | None] = field(
+        default_factory=dict
+    )</code></pre>
+</details>
+<div class="desc"><p>A request from client to server.</p>
+<p>Request needs to be general (client-&gt;server) as server has no info on what type of
+message it's getting. Requester does know what type of response to expect, so
+that object can be specialised.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.messages.Message" href="messages.html#qscope.types.messages.Message">Message</a></li>
+<li>mashumaro.mixins.msgpack.DataClassMessagePackMixin</li>
+<li>mashumaro.mixins.dict.DataClassDictMixin</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="qscope.types.Request.from_dict"><code class="name flex">
+<span>def <span class="ident">from_dict</span></span>(<span>d, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.Request.from_msgpack"><code class="name flex">
+<span>def <span class="ident">from_msgpack</span></span>(<span>d, decoder=&lt;function default_decoder&gt;, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="qscope.types.Request.command"><code class="name">var <span class="ident">command</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.Request.params"><code class="name">var <span class="ident">params</span> : dict[str, bool | str | float | int | tuple | None]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.types.Request.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.Request.to_msgpack"><code class="name flex">
+<span>def <span class="ident">to_msgpack</span></span>(<span>self, encoder=&lt;function default_encoder&gt;)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.types.Response"><code class="flex name class">
+<span>class <span class="ident">Response</span></span>
+<span>(</span><span>*, type: str, value: Any)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass(kw_only=True, repr=False)
+class Response(Message):
+    &#34;&#34;&#34;A response from server to client&#39;s request.
+    ALL Responses have an error string, or empty if no error&#34;&#34;&#34;
+
+    type: str  # subclass to define
+    value: Any  # subclass to define
+
+    class Config:
+        discriminator = Discriminator(field=&#34;type&#34;, include_subtypes=True)</code></pre>
+</details>
+<div class="desc"><p>A response from server to client's request.
+ALL Responses have an error string, or empty if no error</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.messages.Message" href="messages.html#qscope.types.messages.Message">Message</a></li>
+<li>mashumaro.mixins.msgpack.DataClassMessagePackMixin</li>
+<li>mashumaro.mixins.dict.DataClassDictMixin</li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="qscope.types.messages.ArrayResponse" href="messages.html#qscope.types.messages.ArrayResponse">ArrayResponse</a></li>
+<li><a title="qscope.types.messages.ClientSyncResponse" href="messages.html#qscope.types.messages.ClientSyncResponse">ClientSyncResponse</a></li>
+<li><a title="qscope.types.messages.DictResponse" href="messages.html#qscope.types.messages.DictResponse">DictResponse</a></li>
+<li><a title="qscope.types.messages.ErrorResponse" href="messages.html#qscope.types.messages.ErrorResponse">ErrorResponse</a></li>
+<li><a title="qscope.types.messages.MsgResponse" href="messages.html#qscope.types.messages.MsgResponse">MsgResponse</a></li>
+<li><a title="qscope.types.messages.PleaseWaitResponse" href="messages.html#qscope.types.messages.PleaseWaitResponse">PleaseWaitResponse</a></li>
+<li><a title="qscope.types.messages.Shape2DResponse" href="messages.html#qscope.types.messages.Shape2DResponse">Shape2DResponse</a></li>
+<li><a title="qscope.types.messages.TupleResponse" href="messages.html#qscope.types.messages.TupleResponse">TupleResponse</a></li>
+<li><a title="qscope.types.messages.ValueResponse" href="messages.html#qscope.types.messages.ValueResponse">ValueResponse</a></li>
+<li><a title="qscope.types.messages.WarningResponse" href="messages.html#qscope.types.messages.WarningResponse">WarningResponse</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="qscope.types.Response.Config"><code class="name">var <span class="ident">Config</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Static methods</h3>
+<dl>
+<dt id="qscope.types.Response.from_dict"><code class="name flex">
+<span>def <span class="ident">from_dict</span></span>(<span>d, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.Response.from_msgpack"><code class="name flex">
+<span>def <span class="ident">from_msgpack</span></span>(<span>d, decoder=&lt;function default_decoder&gt;, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="qscope.types.Response.type"><code class="name">var <span class="ident">type</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.Response.value"><code class="name">var <span class="ident">value</span> : Any</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.types.Response.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.Response.to_msgpack"><code class="name flex">
+<span>def <span class="ident">to_msgpack</span></span>(<span>self, encoder=&lt;function default_encoder&gt;)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.types.RollingAvgSweepUpdate"><code class="flex name class">
+<span>class <span class="ident">RollingAvgSweepUpdate</span></span>
+<span>(</span><span>*,<br>type: str = 'rolling_avg_sweep_update',<br>meas_id: str,<br>avg_window: int,<br>aoi: tuple[int, int, int, int] | None,<br>sweep_idxs: np.ndarray,<br>sweep_x: np.ndarray,<br>sweep_ysig: np.ndarray,<br>sweep_yref: np.ndarray)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass(kw_only=True, repr=False)
+class RollingAvgSweepUpdate(Notification):
+    type: str = &#34;rolling_avg_sweep_update&#34;
+    meas_id: str
+    avg_window: int
+    aoi: tuple[int, int, int, int] | None
+    # plot will be a 2d color mesh (y, x) = (n_sweeps, n_points) [origin=upper right]
+    sweep_idxs: np.ndarray = field(
+        metadata={&#34;serialize&#34;: pickle.dumps, &#34;deserialize&#34;: pickle.loads}
+    )  # 1D array shape: n_sweeps
+    sweep_x: np.ndarray = field(
+        metadata={&#34;serialize&#34;: pickle.dumps, &#34;deserialize&#34;: pickle.loads}
+    )  # 1D array, shape: n_points
+    sweep_ysig: np.ndarray = field(
+        metadata={&#34;serialize&#34;: pickle.dumps, &#34;deserialize&#34;: pickle.loads}
+    )  # 2D array (n_sweeps, n_points)
+    sweep_yref: np.ndarray = field(
+        metadata={&#34;serialize&#34;: pickle.dumps, &#34;deserialize&#34;: pickle.loads}
+    )  # 2D array (n_sweeps, n_points)</code></pre>
+</details>
+<div class="desc"><p>RollingAvgSweepUpdate(*, type: 'str' = 'rolling_avg_sweep_update', meas_id: 'str', avg_window: 'int', aoi: 'tuple[int, int, int, int] | None', sweep_idxs: 'np.ndarray', sweep_x: 'np.ndarray', sweep_ysig: 'np.ndarray', sweep_yref: 'np.ndarray')</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.messages.Notification" href="messages.html#qscope.types.messages.Notification">Notification</a></li>
+<li><a title="qscope.types.messages.Message" href="messages.html#qscope.types.messages.Message">Message</a></li>
+<li>mashumaro.mixins.msgpack.DataClassMessagePackMixin</li>
+<li>mashumaro.mixins.dict.DataClassDictMixin</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="qscope.types.RollingAvgSweepUpdate.from_dict"><code class="name flex">
+<span>def <span class="ident">from_dict</span></span>(<span>d, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.RollingAvgSweepUpdate.from_msgpack"><code class="name flex">
+<span>def <span class="ident">from_msgpack</span></span>(<span>d, decoder=&lt;function default_decoder&gt;, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="qscope.types.RollingAvgSweepUpdate.aoi"><code class="name">var <span class="ident">aoi</span> : tuple[int, int, int, int] | None</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.RollingAvgSweepUpdate.avg_window"><code class="name">var <span class="ident">avg_window</span> : int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.RollingAvgSweepUpdate.meas_id"><code class="name">var <span class="ident">meas_id</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.RollingAvgSweepUpdate.sweep_idxs"><code class="name">var <span class="ident">sweep_idxs</span> : numpy.ndarray</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.RollingAvgSweepUpdate.sweep_x"><code class="name">var <span class="ident">sweep_x</span> : numpy.ndarray</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.RollingAvgSweepUpdate.sweep_yref"><code class="name">var <span class="ident">sweep_yref</span> : numpy.ndarray</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.RollingAvgSweepUpdate.sweep_ysig"><code class="name">var <span class="ident">sweep_ysig</span> : numpy.ndarray</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.RollingAvgSweepUpdate.type"><code class="name">var <span class="ident">type</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.types.RollingAvgSweepUpdate.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.RollingAvgSweepUpdate.to_msgpack"><code class="name flex">
+<span>def <span class="ident">to_msgpack</span></span>(<span>self, encoder=&lt;function default_encoder&gt;)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.types.SGAndorCWESRConfig"><code class="flex name class">
+<span>class <span class="ident">SGAndorCWESRConfig</span></span>
+<span>(</span><span>*,<br>meas_type: str = 'SGAndorCWESR',<br>save_name: str = 'ESR',<br>ref_mode: str,<br>sweep_x: numpy.ndarray,<br>exposure_time: float,<br>frame_shape: tuple[int, int],<br>hardware_binning: tuple[int, int],<br>avg_per_point: int,<br>fmod_freq: float,<br>rf_pow: float,<br>laser_delay: float)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass(kw_only=True, repr=False)
+class SGAndorCWESRConfig(CameraConfig):
+    &#34;&#34;&#34;Configuration for CW ESR measurements.&#34;&#34;&#34;
+
+    meas_type: str = &#34;SGAndorCWESR&#34;
+    save_name: str = &#34;ESR&#34;
+    avg_per_point: int
+    fmod_freq: float
+    rf_pow: float
+    laser_delay: float</code></pre>
+</details>
+<div class="desc"><p>Configuration for CW ESR measurements.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.config.CameraConfig" href="config.html#qscope.types.config.CameraConfig">CameraConfig</a></li>
+<li><a title="qscope.types.config.MeasurementConfig" href="config.html#qscope.types.config.MeasurementConfig">MeasurementConfig</a></li>
+<li>mashumaro.mixins.dict.DataClassDictMixin</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="qscope.types.SGAndorCWESRConfig.from_dict"><code class="name flex">
+<span>def <span class="ident">from_dict</span></span>(<span>d, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="qscope.types.SGAndorCWESRConfig.avg_per_point"><code class="name">var <span class="ident">avg_per_point</span> : int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.SGAndorCWESRConfig.fmod_freq"><code class="name">var <span class="ident">fmod_freq</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.SGAndorCWESRConfig.laser_delay"><code class="name">var <span class="ident">laser_delay</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.SGAndorCWESRConfig.meas_type"><code class="name">var <span class="ident">meas_type</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.SGAndorCWESRConfig.rf_pow"><code class="name">var <span class="ident">rf_pow</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.SGAndorCWESRConfig.save_name"><code class="name">var <span class="ident">save_name</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.types.SGAndorCWESRConfig.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.types.SGAndorPESRConfig"><code class="flex name class">
+<span>class <span class="ident">SGAndorPESRConfig</span></span>
+<span>(</span><span>*,<br>meas_type: str = 'SGAndorPESR',<br>save_name: str = 'ESR',<br>ref_mode: str,<br>sweep_x: numpy.ndarray,<br>exposure_time: float,<br>frame_shape: tuple[int, int],<br>hardware_binning: tuple[int, int],<br>avg_per_point: int,<br>fmod_freq: float,<br>rf_delay: float,<br>rf_pow: float,<br>rf_dur: float,<br>laser_delay: float,<br>laser_dur: float,<br>laser_to_rf_delay: float)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass(kw_only=True, repr=False)
+class SGAndorPESRConfig(CameraConfig):
+    &#34;&#34;&#34;Configuration for pulsed ESR measurements.&#34;&#34;&#34;
+
+    meas_type: str = &#34;SGAndorPESR&#34;
+    save_name: str = &#34;ESR&#34;
+    avg_per_point: int
+    fmod_freq: float
+    rf_delay: float
+    rf_pow: float
+    rf_dur: float
+    laser_delay: float
+    laser_dur: float
+    laser_to_rf_delay: float</code></pre>
+</details>
+<div class="desc"><p>Configuration for pulsed ESR measurements.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.config.CameraConfig" href="config.html#qscope.types.config.CameraConfig">CameraConfig</a></li>
+<li><a title="qscope.types.config.MeasurementConfig" href="config.html#qscope.types.config.MeasurementConfig">MeasurementConfig</a></li>
+<li>mashumaro.mixins.dict.DataClassDictMixin</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="qscope.types.SGAndorPESRConfig.from_dict"><code class="name flex">
+<span>def <span class="ident">from_dict</span></span>(<span>d, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="qscope.types.SGAndorPESRConfig.avg_per_point"><code class="name">var <span class="ident">avg_per_point</span> : int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.SGAndorPESRConfig.fmod_freq"><code class="name">var <span class="ident">fmod_freq</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.SGAndorPESRConfig.laser_delay"><code class="name">var <span class="ident">laser_delay</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.SGAndorPESRConfig.laser_dur"><code class="name">var <span class="ident">laser_dur</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.SGAndorPESRConfig.laser_to_rf_delay"><code class="name">var <span class="ident">laser_to_rf_delay</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.SGAndorPESRConfig.meas_type"><code class="name">var <span class="ident">meas_type</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.SGAndorPESRConfig.rf_delay"><code class="name">var <span class="ident">rf_delay</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.SGAndorPESRConfig.rf_dur"><code class="name">var <span class="ident">rf_dur</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.SGAndorPESRConfig.rf_pow"><code class="name">var <span class="ident">rf_pow</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.SGAndorPESRConfig.save_name"><code class="name">var <span class="ident">save_name</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.types.SGAndorPESRConfig.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.types.SGAndorRabiConfig"><code class="flex name class">
+<span>class <span class="ident">SGAndorRabiConfig</span></span>
+<span>(</span><span>*,<br>meas_type: str = 'SGAndorRabi',<br>save_name: str = 'Rabi',<br>ref_mode: str,<br>sweep_x: numpy.ndarray,<br>exposure_time: float,<br>frame_shape: tuple[int, int],<br>hardware_binning: tuple[int, int],<br>avg_per_point: int,<br>laser_dur: float,<br>rf_dur: float,<br>laser_delay: float,<br>rf_delay: float,<br>rf_pow: float,<br>rf_freq: float)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass(kw_only=True, repr=False)
+class SGAndorRabiConfig(CameraConfig):
+    &#34;&#34;&#34;Configuration for Rabi measurements.&#34;&#34;&#34;
+
+    meas_type: str = &#34;SGAndorRabi&#34;
+    save_name: str = &#34;Rabi&#34;
+    avg_per_point: int
+    laser_dur: float
+    rf_dur: float
+    laser_delay: float
+    rf_delay: float
+    rf_pow: float
+    rf_freq: float</code></pre>
+</details>
+<div class="desc"><p>Configuration for Rabi measurements.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.config.CameraConfig" href="config.html#qscope.types.config.CameraConfig">CameraConfig</a></li>
+<li><a title="qscope.types.config.MeasurementConfig" href="config.html#qscope.types.config.MeasurementConfig">MeasurementConfig</a></li>
+<li>mashumaro.mixins.dict.DataClassDictMixin</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="qscope.types.SGAndorRabiConfig.from_dict"><code class="name flex">
+<span>def <span class="ident">from_dict</span></span>(<span>d, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="qscope.types.SGAndorRabiConfig.avg_per_point"><code class="name">var <span class="ident">avg_per_point</span> : int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.SGAndorRabiConfig.laser_delay"><code class="name">var <span class="ident">laser_delay</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.SGAndorRabiConfig.laser_dur"><code class="name">var <span class="ident">laser_dur</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.SGAndorRabiConfig.meas_type"><code class="name">var <span class="ident">meas_type</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.SGAndorRabiConfig.rf_delay"><code class="name">var <span class="ident">rf_delay</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.SGAndorRabiConfig.rf_dur"><code class="name">var <span class="ident">rf_dur</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.SGAndorRabiConfig.rf_freq"><code class="name">var <span class="ident">rf_freq</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.SGAndorRabiConfig.rf_pow"><code class="name">var <span class="ident">rf_pow</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.SGAndorRabiConfig.save_name"><code class="name">var <span class="ident">save_name</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.types.SGAndorRabiConfig.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.types.SGAndorRamseyConfig"><code class="flex name class">
+<span>class <span class="ident">SGAndorRamseyConfig</span></span>
+<span>(</span><span>*,<br>meas_type: str = 'SGAndorRamsey',<br>save_name: str = 'Ramsey',<br>ref_mode: str,<br>sweep_x: numpy.ndarray,<br>exposure_time: float,<br>frame_shape: tuple[int, int],<br>hardware_binning: tuple[int, int],<br>avg_per_point: int,<br>laser_dur: float,<br>pi_dur: float,<br>pi_2_dur: float,<br>laser_delay: float,<br>rf_delay: float,<br>rf_pow: float,<br>rf_freq: float)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass(kw_only=True, repr=False)
+class SGAndorRamseyConfig(CameraConfig):
+    &#34;&#34;&#34;Configuration for Ramsey measurements.&#34;&#34;&#34;
+
+    meas_type: str = &#34;SGAndorRamsey&#34;
+    save_name: str = &#34;Ramsey&#34;
+    laser_dur: float
+    pi_dur: float
+    pi_2_dur: float
+    laser_delay: float
+    rf_delay: float
+    rf_pow: float
+    rf_freq: float</code></pre>
+</details>
+<div class="desc"><p>Configuration for Ramsey measurements.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.config.CameraConfig" href="config.html#qscope.types.config.CameraConfig">CameraConfig</a></li>
+<li><a title="qscope.types.config.MeasurementConfig" href="config.html#qscope.types.config.MeasurementConfig">MeasurementConfig</a></li>
+<li>mashumaro.mixins.dict.DataClassDictMixin</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="qscope.types.SGAndorRamseyConfig.from_dict"><code class="name flex">
+<span>def <span class="ident">from_dict</span></span>(<span>d, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="qscope.types.SGAndorRamseyConfig.laser_delay"><code class="name">var <span class="ident">laser_delay</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.SGAndorRamseyConfig.laser_dur"><code class="name">var <span class="ident">laser_dur</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.SGAndorRamseyConfig.meas_type"><code class="name">var <span class="ident">meas_type</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.SGAndorRamseyConfig.pi_2_dur"><code class="name">var <span class="ident">pi_2_dur</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.SGAndorRamseyConfig.pi_dur"><code class="name">var <span class="ident">pi_dur</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.SGAndorRamseyConfig.rf_delay"><code class="name">var <span class="ident">rf_delay</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.SGAndorRamseyConfig.rf_freq"><code class="name">var <span class="ident">rf_freq</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.SGAndorRamseyConfig.rf_pow"><code class="name">var <span class="ident">rf_pow</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.SGAndorRamseyConfig.save_name"><code class="name">var <span class="ident">save_name</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.types.SGAndorRamseyConfig.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.types.SGAndorSpinEchoConfig"><code class="flex name class">
+<span>class <span class="ident">SGAndorSpinEchoConfig</span></span>
+<span>(</span><span>*,<br>meas_type: str = 'SGAndorSpinEcho',<br>save_name: str = 'SpinEcho',<br>ref_mode: str,<br>sweep_x: numpy.ndarray,<br>exposure_time: float,<br>frame_shape: tuple[int, int],<br>hardware_binning: tuple[int, int],<br>avg_per_point: int,<br>laser_dur: float,<br>pi_dur: float,<br>pi_2_dur: float,<br>laser_delay: float,<br>rf_delay: float,<br>rf_pow: float,<br>rf_freq: float)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass(kw_only=True, repr=False)
+class SGAndorSpinEchoConfig(CameraConfig):
+    &#34;&#34;&#34;Configuration for spin echo measurements.&#34;&#34;&#34;
+
+    meas_type: str = &#34;SGAndorSpinEcho&#34;
+    save_name: str = &#34;SpinEcho&#34;
+    laser_dur: float
+    pi_dur: float
+    pi_2_dur: float
+    laser_delay: float
+    rf_delay: float
+    rf_pow: float
+    rf_freq: float</code></pre>
+</details>
+<div class="desc"><p>Configuration for spin echo measurements.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.config.CameraConfig" href="config.html#qscope.types.config.CameraConfig">CameraConfig</a></li>
+<li><a title="qscope.types.config.MeasurementConfig" href="config.html#qscope.types.config.MeasurementConfig">MeasurementConfig</a></li>
+<li>mashumaro.mixins.dict.DataClassDictMixin</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="qscope.types.SGAndorSpinEchoConfig.from_dict"><code class="name flex">
+<span>def <span class="ident">from_dict</span></span>(<span>d, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="qscope.types.SGAndorSpinEchoConfig.laser_delay"><code class="name">var <span class="ident">laser_delay</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.SGAndorSpinEchoConfig.laser_dur"><code class="name">var <span class="ident">laser_dur</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.SGAndorSpinEchoConfig.meas_type"><code class="name">var <span class="ident">meas_type</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.SGAndorSpinEchoConfig.pi_2_dur"><code class="name">var <span class="ident">pi_2_dur</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.SGAndorSpinEchoConfig.pi_dur"><code class="name">var <span class="ident">pi_dur</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.SGAndorSpinEchoConfig.rf_delay"><code class="name">var <span class="ident">rf_delay</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.SGAndorSpinEchoConfig.rf_freq"><code class="name">var <span class="ident">rf_freq</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.SGAndorSpinEchoConfig.rf_pow"><code class="name">var <span class="ident">rf_pow</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.SGAndorSpinEchoConfig.save_name"><code class="name">var <span class="ident">save_name</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.types.SGAndorSpinEchoConfig.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.types.SGAndorT1Config"><code class="flex name class">
+<span>class <span class="ident">SGAndorT1Config</span></span>
+<span>(</span><span>*,<br>meas_type: str = 'SGAndorT1',<br>save_name: str = 'T1',<br>ref_mode: str,<br>sweep_x: numpy.ndarray,<br>exposure_time: float,<br>frame_shape: tuple[int, int],<br>hardware_binning: tuple[int, int],<br>avg_per_point: int,<br>laser_dur: float,<br>pi_dur: float,<br>laser_delay: float,<br>rf_delay: float,<br>rf_pow: float,<br>rf_freq: float)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass(kw_only=True, repr=False)
+class SGAndorT1Config(CameraConfig):
+    &#34;&#34;&#34;Configuration for T1 measurements.&#34;&#34;&#34;
+
+    meas_type: str = &#34;SGAndorT1&#34;
+    save_name: str = &#34;T1&#34;
+    laser_dur: float
+    pi_dur: float
+    laser_delay: float
+    rf_delay: float
+    rf_pow: float
+    rf_freq: float</code></pre>
+</details>
+<div class="desc"><p>Configuration for T1 measurements.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.config.CameraConfig" href="config.html#qscope.types.config.CameraConfig">CameraConfig</a></li>
+<li><a title="qscope.types.config.MeasurementConfig" href="config.html#qscope.types.config.MeasurementConfig">MeasurementConfig</a></li>
+<li>mashumaro.mixins.dict.DataClassDictMixin</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="qscope.types.SGAndorT1Config.from_dict"><code class="name flex">
+<span>def <span class="ident">from_dict</span></span>(<span>d, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="qscope.types.SGAndorT1Config.laser_delay"><code class="name">var <span class="ident">laser_delay</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.SGAndorT1Config.laser_dur"><code class="name">var <span class="ident">laser_dur</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.SGAndorT1Config.meas_type"><code class="name">var <span class="ident">meas_type</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.SGAndorT1Config.pi_dur"><code class="name">var <span class="ident">pi_dur</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.SGAndorT1Config.rf_delay"><code class="name">var <span class="ident">rf_delay</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.SGAndorT1Config.rf_freq"><code class="name">var <span class="ident">rf_freq</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.SGAndorT1Config.rf_pow"><code class="name">var <span class="ident">rf_pow</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.SGAndorT1Config.save_name"><code class="name">var <span class="ident">save_name</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.types.SGAndorT1Config.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.types.SecondaryCamera"><code class="flex name class">
+<span>class <span class="ident">SecondaryCamera</span></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class SecondaryCamera(DeviceRole[CameraProtocol]):
+    &#34;&#34;&#34;Secondary/auxiliary camera role for additional imaging tasks.&#34;&#34;&#34;
+    interface_class = CameraInterface</code></pre>
+</details>
+<div class="desc"><p>Secondary/auxiliary camera role for additional imaging tasks.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.roles.DeviceRole" href="roles.html#qscope.types.roles.DeviceRole">DeviceRole</a></li>
+<li>typing.Generic</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="qscope.types.SecondaryCamera.interface_class"><code class="name">var <span class="ident">interface_class</span> : Type[<a title="qscope.types.interfaces.RoleInterface" href="interfaces.html#qscope.types.interfaces.RoleInterface">RoleInterface</a>]</code></dt>
+<dd>
+<div class="desc"><p>Interface for camera functionality.</p>
+<p>This interface provides methods for controlling scientific cameras
+and retrieving image data. It wraps a device implementing CameraProtocol
+and provides a clean, type-safe API for camera operations.</p>
+<p>Typical usage:</p>
+<pre><code class="language-python"># Get camera interface from system
+camera = system.get_device_by_role(MAIN_CAMERA)
+
+# Configure camera
+camera.set_exposure_time(0.1)  # 100ms exposure
+camera.set_hardware_binning((2, 2))  # 2x2 binning
+
+# Take an image
+image = camera.take_snapshot()
+
+# Get image dimensions
+width, height = camera.get_frame_shape()
+</code></pre></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="qscope.types.roles.DeviceRole" href="roles.html#qscope.types.roles.DeviceRole">DeviceRole</a></b></code>:
+<ul class="hlist">
+<li><code><a title="qscope.types.roles.DeviceRole.get_interface" href="roles.html#qscope.types.roles.DeviceRole.get_interface">get_interface</a></code></li>
+<li><code><a title="qscope.types.roles.DeviceRole.validate_device_type" href="roles.html#qscope.types.roles.DeviceRole.validate_device_type">validate_device_type</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="qscope.types.SecondaryRFSource"><code class="flex name class">
+<span>class <span class="ident">SecondaryRFSource</span></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class SecondaryRFSource(DeviceRole[RFSourceProtocol]):
+    &#34;&#34;&#34;Secondary RF source role for additional RF tasks.&#34;&#34;&#34;
+    interface_class = RFSourceInterface</code></pre>
+</details>
+<div class="desc"><p>Secondary RF source role for additional RF tasks.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.roles.DeviceRole" href="roles.html#qscope.types.roles.DeviceRole">DeviceRole</a></li>
+<li>typing.Generic</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="qscope.types.SecondaryRFSource.interface_class"><code class="name">var <span class="ident">interface_class</span> : Type[<a title="qscope.types.interfaces.RoleInterface" href="interfaces.html#qscope.types.interfaces.RoleInterface">RoleInterface</a>]</code></dt>
+<dd>
+<div class="desc"><p>Interface for RF source functionality.</p>
+<p>This interface provides methods for controlling RF signal generators
+used in spectroscopy and control applications. It wraps a device
+implementing RFSourceProtocol and provides a clean, type-safe API
+for RF source operations.</p>
+<p>Typical usage:</p>
+<pre><code class="language-python"># Get RF source interface from system
+rf = system.get_device_by_role(PRIMARY_RF)
+
+# Configure RF output
+rf.set_freq(2870.0)  # 2.87 GHz
+rf.set_power(-10.0)  # -10 dBm
+rf.set_state(True)   # Turn on output
+
+# Configure a frequency sweep
+freqs = np.linspace(2800, 2900, 101)  # MHz
+rf.set_freq_list(freqs, step_time=0.05)  # 50ms per point
+</code></pre></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="qscope.types.roles.DeviceRole" href="roles.html#qscope.types.roles.DeviceRole">DeviceRole</a></b></code>:
+<ul class="hlist">
+<li><code><a title="qscope.types.roles.DeviceRole.get_interface" href="roles.html#qscope.types.roles.DeviceRole.get_interface">get_interface</a></code></li>
+<li><code><a title="qscope.types.roles.DeviceRole.validate_device_type" href="roles.html#qscope.types.roles.DeviceRole.validate_device_type">validate_device_type</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="qscope.types.SequenceGenerator"><code class="flex name class">
+<span>class <span class="ident">SequenceGenerator</span></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class SequenceGenerator(DeviceRole[SeqGenProtocol]):
+    &#34;&#34;&#34;Sequence generator role for timing and pulse control.&#34;&#34;&#34;
+    interface_class = SeqGenInterface</code></pre>
+</details>
+<div class="desc"><p>Sequence generator role for timing and pulse control.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.roles.DeviceRole" href="roles.html#qscope.types.roles.DeviceRole">DeviceRole</a></li>
+<li>typing.Generic</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="qscope.types.SequenceGenerator.interface_class"><code class="name">var <span class="ident">interface_class</span> : Type[<a title="qscope.types.interfaces.RoleInterface" href="interfaces.html#qscope.types.interfaces.RoleInterface">RoleInterface</a>]</code></dt>
+<dd>
+<div class="desc"><p>Interface for sequence generator functionality.</p>
+<p>This interface provides methods for controlling sequence generators
+used for timing and pulse control in quantum experiments. It wraps
+a device implementing SeqGenProtocol and provides a clean, type-safe
+API for sequence generator operations.</p>
+<p>Sequence generators typically control:
+- Precise timing of experimental events
+- Digital output patterns
+- Trigger signals for other instruments
+- Synchronization of multiple devices</p>
+<p>Typical usage:</p>
+<pre><code class="language-python"># Get sequence generator interface from system
+seq_gen = system.get_device_by_role(SEQUENCE_GEN)
+
+# Load a sequence with parameters
+seq_gen.load_seq(&quot;rabi&quot;, pulse_length=100e-9, wait_time=5e-6)
+
+# Start the sequence
+seq_gen.start()
+
+# Later, stop the sequence
+seq_gen.stop()
+</code></pre></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="qscope.types.roles.DeviceRole" href="roles.html#qscope.types.roles.DeviceRole">DeviceRole</a></b></code>:
+<ul class="hlist">
+<li><code><a title="qscope.types.roles.DeviceRole.get_interface" href="roles.html#qscope.types.roles.DeviceRole.get_interface">get_interface</a></code></li>
+<li><code><a title="qscope.types.roles.DeviceRole.validate_device_type" href="roles.html#qscope.types.roles.DeviceRole.validate_device_type">validate_device_type</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="qscope.types.ServerConnection"><code class="flex name class">
+<span>class <span class="ident">ServerConnection</span></span>
+<span>(</span><span>msg_socket: zmq.asyncio.Socket,<br>notif_socket: zmq.asyncio.Socket,<br>stream_socket: zmq.asyncio.Socket,<br>host: str,<br>msg_port: int,<br>notif_port: int,<br>stream_port: int,<br>notif_queue: asyncio.Queue,<br>device_locks: dict[<a title="qscope.types.DeviceRole" href="#qscope.types.DeviceRole">DeviceRole</a>, <a title="qscope.types.DeviceLock" href="#qscope.types.DeviceLock">DeviceLock</a>] = &lt;factory&gt;,<br>stream_time_trace: list[float] = &lt;factory&gt;)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass
+class ServerConnection:
+    &#34;&#34;&#34;Server-side connection information.&#34;&#34;&#34;
+
+    msg_socket: zmq.asyncio.Socket  # ROUTER socket
+    notif_socket: zmq.asyncio.Socket  # PUB socket for notifications
+    stream_socket: zmq.asyncio.Socket  # PUB socket for streams
+    host: str
+    msg_port: int
+    notif_port: int
+    stream_port: int
+    notif_queue: asyncio.Queue
+    device_locks: dict[DeviceRole, DeviceLock] = field(default_factory=dict)
+    last_stream_message: Optional[np.ndarray] = field(default=None, init=False)
+    stream_time_trace: list[float] = field(default_factory=list)
+
+    def reset_stream(self) -&gt; None:
+        self.stream_time_trace = []
+        self.last_stream_message = None
+
+    def send_stream_chunk(self, msg: np.ndarray, header=&#34;video&#34;) -&gt; None:
+        &#34;&#34;&#34;Send a stream message to the client.&#34;&#34;&#34;
+        if self.last_stream_message is not None:
+            self.last_stream_message[:] = msg  # in-place op.
+        else:
+            self.last_stream_message = msg
+
+        if msg.ndim &gt; 1:  # video data -&gt; mean the frame
+            self.stream_time_trace.append(np.mean(msg))
+        else:  # photodiode data, each element is a sample
+            self.stream_time_trace.extend(msg)
+
+        header_frame = header.encode(&#34;utf-8&#34;)
+        message_frame = pickle.dumps(msg)
+        self.stream_socket.send_multipart([header_frame, message_frame])
+
+    def get_last_stream_chunk(self) -&gt; Optional[np.ndarray]:
+        return self.last_stream_message
+
+    def get_stream_time_trace(self) -&gt; list[float]:
+        return self.stream_time_trace</code></pre>
+</details>
+<div class="desc"><p>Server-side connection information.</p></div>
+<h3>Instance variables</h3>
+<dl>
+<dt id="qscope.types.ServerConnection.device_locks"><code class="name">var <span class="ident">device_locks</span> : dict[<a title="qscope.types.roles.DeviceRole" href="roles.html#qscope.types.roles.DeviceRole">DeviceRole</a>, <a title="qscope.types.DeviceLock" href="#qscope.types.DeviceLock">DeviceLock</a>]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.ServerConnection.host"><code class="name">var <span class="ident">host</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.ServerConnection.last_stream_message"><code class="name">var <span class="ident">last_stream_message</span> : numpy.ndarray | None</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.ServerConnection.msg_port"><code class="name">var <span class="ident">msg_port</span> : int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.ServerConnection.msg_socket"><code class="name">var <span class="ident">msg_socket</span> : zmq.asyncio.Socket</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.ServerConnection.notif_port"><code class="name">var <span class="ident">notif_port</span> : int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.ServerConnection.notif_queue"><code class="name">var <span class="ident">notif_queue</span> : asyncio.queues.Queue</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.ServerConnection.notif_socket"><code class="name">var <span class="ident">notif_socket</span> : zmq.asyncio.Socket</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.ServerConnection.stream_port"><code class="name">var <span class="ident">stream_port</span> : int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.ServerConnection.stream_socket"><code class="name">var <span class="ident">stream_socket</span> : zmq.asyncio.Socket</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.ServerConnection.stream_time_trace"><code class="name">var <span class="ident">stream_time_trace</span> : list[float]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.types.ServerConnection.get_last_stream_chunk"><code class="name flex">
+<span>def <span class="ident">get_last_stream_chunk</span></span>(<span>self) ‑> numpy.ndarray | None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_last_stream_chunk(self) -&gt; Optional[np.ndarray]:
+    return self.last_stream_message</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.ServerConnection.get_stream_time_trace"><code class="name flex">
+<span>def <span class="ident">get_stream_time_trace</span></span>(<span>self) ‑> list[float]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_stream_time_trace(self) -&gt; list[float]:
+    return self.stream_time_trace</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.ServerConnection.reset_stream"><code class="name flex">
+<span>def <span class="ident">reset_stream</span></span>(<span>self) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def reset_stream(self) -&gt; None:
+    self.stream_time_trace = []
+    self.last_stream_message = None</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.ServerConnection.send_stream_chunk"><code class="name flex">
+<span>def <span class="ident">send_stream_chunk</span></span>(<span>self, msg: np.ndarray, header='video') ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def send_stream_chunk(self, msg: np.ndarray, header=&#34;video&#34;) -&gt; None:
+    &#34;&#34;&#34;Send a stream message to the client.&#34;&#34;&#34;
+    if self.last_stream_message is not None:
+        self.last_stream_message[:] = msg  # in-place op.
+    else:
+        self.last_stream_message = msg
+
+    if msg.ndim &gt; 1:  # video data -&gt; mean the frame
+        self.stream_time_trace.append(np.mean(msg))
+    else:  # photodiode data, each element is a sample
+        self.stream_time_trace.extend(msg)
+
+    header_frame = header.encode(&#34;utf-8&#34;)
+    message_frame = pickle.dumps(msg)
+    self.stream_socket.send_multipart([header_frame, message_frame])</code></pre>
+</details>
+<div class="desc"><p>Send a stream message to the client.</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.types.Shape2DResponse"><code class="flex name class">
+<span>class <span class="ident">Shape2DResponse</span></span>
+<span>(</span><span>*, type: str = 'shape2D', value: tuple[int, int] = (-1, -1))</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass(kw_only=True, repr=False)
+class Shape2DResponse(Response):
+    type: str = &#34;shape2D&#34;
+    value: tuple[int, int] = (-1, -1)</code></pre>
+</details>
+<div class="desc"><p>Shape2DResponse(*, type: 'str' = 'shape2D', value: 'tuple[int, int]' = (-1, -1))</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.messages.Response" href="messages.html#qscope.types.messages.Response">Response</a></li>
+<li><a title="qscope.types.messages.Message" href="messages.html#qscope.types.messages.Message">Message</a></li>
+<li>mashumaro.mixins.msgpack.DataClassMessagePackMixin</li>
+<li>mashumaro.mixins.dict.DataClassDictMixin</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="qscope.types.Shape2DResponse.from_dict"><code class="name flex">
+<span>def <span class="ident">from_dict</span></span>(<span>d, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.Shape2DResponse.from_msgpack"><code class="name flex">
+<span>def <span class="ident">from_msgpack</span></span>(<span>d, decoder=&lt;function default_decoder&gt;, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="qscope.types.Shape2DResponse.type"><code class="name">var <span class="ident">type</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.Shape2DResponse.value"><code class="name">var <span class="ident">value</span> : tuple[int, int]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.types.Shape2DResponse.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.Shape2DResponse.to_msgpack"><code class="name flex">
+<span>def <span class="ident">to_msgpack</span></span>(<span>self, encoder=&lt;function default_encoder&gt;)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.types.SweepUpdate"><code class="flex name class">
+<span>class <span class="ident">SweepUpdate</span></span>
+<span>(</span><span>*,<br>type: str = 'sweep_update',<br>meas_id: str,<br>sweep_progress: float,<br>nsweeps: int,<br>aoi: tuple[int, int, int, int] | None,<br>sweep_data: np.ndarray)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass(kw_only=True, repr=False)
+class SweepUpdate(Notification):
+    type: str = &#34;sweep_update&#34;
+    meas_id: str
+    sweep_progress: float
+    nsweeps: int
+    aoi: tuple[int, int, int, int] | None
+    sweep_data: np.ndarray = field(
+        metadata={&#34;serialize&#34;: pickle.dumps, &#34;deserialize&#34;: pickle.loads}
+    )</code></pre>
+</details>
+<div class="desc"><p>SweepUpdate(*, type: 'str' = 'sweep_update', meas_id: 'str', sweep_progress: 'float', nsweeps: 'int', aoi: 'tuple[int, int, int, int] | None', sweep_data: 'np.ndarray')</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.messages.Notification" href="messages.html#qscope.types.messages.Notification">Notification</a></li>
+<li><a title="qscope.types.messages.Message" href="messages.html#qscope.types.messages.Message">Message</a></li>
+<li>mashumaro.mixins.msgpack.DataClassMessagePackMixin</li>
+<li>mashumaro.mixins.dict.DataClassDictMixin</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="qscope.types.SweepUpdate.from_dict"><code class="name flex">
+<span>def <span class="ident">from_dict</span></span>(<span>d, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.SweepUpdate.from_msgpack"><code class="name flex">
+<span>def <span class="ident">from_msgpack</span></span>(<span>d, decoder=&lt;function default_decoder&gt;, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="qscope.types.SweepUpdate.aoi"><code class="name">var <span class="ident">aoi</span> : tuple[int, int, int, int] | None</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.SweepUpdate.meas_id"><code class="name">var <span class="ident">meas_id</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.SweepUpdate.nsweeps"><code class="name">var <span class="ident">nsweeps</span> : int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.SweepUpdate.sweep_data"><code class="name">var <span class="ident">sweep_data</span> : numpy.ndarray</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.SweepUpdate.sweep_progress"><code class="name">var <span class="ident">sweep_progress</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.SweepUpdate.type"><code class="name">var <span class="ident">type</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.types.SweepUpdate.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.SweepUpdate.to_msgpack"><code class="name flex">
+<span>def <span class="ident">to_msgpack</span></span>(<span>self, encoder=&lt;function default_encoder&gt;)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.types.TupleResponse"><code class="flex name class">
+<span>class <span class="ident">TupleResponse</span></span>
+<span>(</span><span>*, type: str = 'tuple', value: tuple = ())</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass(kw_only=True, repr=False)
+class TupleResponse(Response):
+    type: str = &#34;tuple&#34;
+    value: tuple = ()</code></pre>
+</details>
+<div class="desc"><p>TupleResponse(*, type: 'str' = 'tuple', value: 'tuple' = ())</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.messages.Response" href="messages.html#qscope.types.messages.Response">Response</a></li>
+<li><a title="qscope.types.messages.Message" href="messages.html#qscope.types.messages.Message">Message</a></li>
+<li>mashumaro.mixins.msgpack.DataClassMessagePackMixin</li>
+<li>mashumaro.mixins.dict.DataClassDictMixin</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="qscope.types.TupleResponse.from_dict"><code class="name flex">
+<span>def <span class="ident">from_dict</span></span>(<span>d, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.TupleResponse.from_msgpack"><code class="name flex">
+<span>def <span class="ident">from_msgpack</span></span>(<span>d, decoder=&lt;function default_decoder&gt;, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="qscope.types.TupleResponse.type"><code class="name">var <span class="ident">type</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.TupleResponse.value"><code class="name">var <span class="ident">value</span> : tuple</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.types.TupleResponse.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.TupleResponse.to_msgpack"><code class="name flex">
+<span>def <span class="ident">to_msgpack</span></span>(<span>self, encoder=&lt;function default_encoder&gt;)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.types.ValidationError"><code class="flex name class">
+<span>class <span class="ident">ValidationError</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ValidationError(Exception):
+    &#34;&#34;&#34;Base exception for validation errors.&#34;&#34;&#34;
+
+    pass</code></pre>
+</details>
+<div class="desc"><p>Base exception for validation errors.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
+</ul>
+</dd>
+<dt id="qscope.types.ValueResponse"><code class="flex name class">
+<span>class <span class="ident">ValueResponse</span></span>
+<span>(</span><span>*, type: str = 'value', value: int | float | str | bool = False)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass(kw_only=True, repr=False)
+class ValueResponse(Response):
+    type: str = &#34;value&#34;
+    value: int | float | str | bool = False</code></pre>
+</details>
+<div class="desc"><p>ValueResponse(*, type: 'str' = 'value', value: 'int | float | str | bool' = False)</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.messages.Response" href="messages.html#qscope.types.messages.Response">Response</a></li>
+<li><a title="qscope.types.messages.Message" href="messages.html#qscope.types.messages.Message">Message</a></li>
+<li>mashumaro.mixins.msgpack.DataClassMessagePackMixin</li>
+<li>mashumaro.mixins.dict.DataClassDictMixin</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="qscope.types.ValueResponse.from_dict"><code class="name flex">
+<span>def <span class="ident">from_dict</span></span>(<span>d, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.ValueResponse.from_msgpack"><code class="name flex">
+<span>def <span class="ident">from_msgpack</span></span>(<span>d, decoder=&lt;function default_decoder&gt;, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="qscope.types.ValueResponse.type"><code class="name">var <span class="ident">type</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.ValueResponse.value"><code class="name">var <span class="ident">value</span> : int | float | str | bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.types.ValueResponse.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.ValueResponse.to_msgpack"><code class="name flex">
+<span>def <span class="ident">to_msgpack</span></span>(<span>self, encoder=&lt;function default_encoder&gt;)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.types.WarningResponse"><code class="flex name class">
+<span>class <span class="ident">WarningResponse</span></span>
+<span>(</span><span>*, type: str = 'warning', value: str = '')</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass(kw_only=True, repr=False)
+class WarningResponse(Response):
+    type: str = &#34;warning&#34;
+    value: str = &#34;&#34;</code></pre>
+</details>
+<div class="desc"><p>WarningResponse(*, type: 'str' = 'warning', value: 'str' = '')</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.messages.Response" href="messages.html#qscope.types.messages.Response">Response</a></li>
+<li><a title="qscope.types.messages.Message" href="messages.html#qscope.types.messages.Message">Message</a></li>
+<li>mashumaro.mixins.msgpack.DataClassMessagePackMixin</li>
+<li>mashumaro.mixins.dict.DataClassDictMixin</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="qscope.types.WarningResponse.from_dict"><code class="name flex">
+<span>def <span class="ident">from_dict</span></span>(<span>d, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.WarningResponse.from_msgpack"><code class="name flex">
+<span>def <span class="ident">from_msgpack</span></span>(<span>d, decoder=&lt;function default_decoder&gt;, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="qscope.types.WarningResponse.type"><code class="name">var <span class="ident">type</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.WarningResponse.value"><code class="name">var <span class="ident">value</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.types.WarningResponse.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.WarningResponse.to_msgpack"><code class="name flex">
+<span>def <span class="ident">to_msgpack</span></span>(<span>self, encoder=&lt;function default_encoder&gt;)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<form>
+<input id="lunr-search" name="q" placeholder="🔎 Search ..." aria-label="Search"
+disabled minlength="2">
+</form>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.css" integrity="sha512-b+T2i3P45i1LZM7I00Ci5QquB9szqaxu+uuk5TUSGjZQ4w4n+qujQiIuvTv2BxE7WCGQCifNMksyKILDiHzsOg==" crossorigin>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.js" integrity="sha512-2B9/byNV1KKRm5nQ2RLViPFD6U4dUjDGwuW1GU+ImJh8YinPU9Zlq1GzdTMO+G2ROrB5o1qasJBy1ttYz0wCug==" crossorigin></script>
+<style>
+.modal-dialog iframe {
+width: 100vw;
+height: calc(100vh - 80px);
+}
+@media screen and (min-width: 700px) {
+.modal-dialog iframe {
+width: 70vw;
+height: 80vh;
+}
+}
+.modal-dialog .tingle-modal-box {width: auto;}
+.modal-dialog .tingle-modal-box__content {padding: 0;}
+</style>
+<script>
+const input = document.getElementById('lunr-search');
+input.disabled = false;
+input.form.addEventListener('submit', (ev) => {
+ev.preventDefault();
+const url = new URL(window.location);
+url.searchParams.set('q', input.value);
+history.replaceState({}, null, url.toString());
+search(input.value);
+});
+const query = new URL(window.location).searchParams.get('q');
+if (query)
+search(query);
+function search(query) {
+const url = '../../doc-search.html#' + encodeURIComponent(query);
+new tingle.modal({
+cssClass: ['modal-dialog'],
+onClose: () => {
+const url = new URL(window.location);
+url.searchParams.delete('q');
+history.replaceState({}, null, url.toString());
+setTimeout(() => input.focus(), 100);
+}
+}).setContent('<iframe src="' + url + '"></iframe>').open();
+}
+</script>
+<div class="toc">
+<ul>
+<li><a href="#the-role-system-architecture">The Role System Architecture</a></li>
+<li><a href="#examples">Examples</a></li>
+<li><a href="#see-also">See Also</a></li>
+</ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="qscope" href="../index.html">qscope</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-submodules">Sub-modules</a></h3>
+<ul>
+<li><code><a title="qscope.types.commands" href="commands.html">qscope.types.commands</a></code></li>
+<li><code><a title="qscope.types.config" href="config.html">qscope.types.config</a></code></li>
+<li><code><a title="qscope.types.interfaces" href="interfaces.html">qscope.types.interfaces</a></code></li>
+<li><code><a title="qscope.types.messages" href="messages.html">qscope.types.messages</a></code></li>
+<li><code><a title="qscope.types.protocols" href="protocols.html">qscope.types.protocols</a></code></li>
+<li><code><a title="qscope.types.roles" href="roles.html">qscope.types.roles</a></code></li>
+<li><code><a title="qscope.types.validation" href="validation.html">qscope.types.validation</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="qscope.types.assert_valid_handler_client_correspondence" href="#qscope.types.assert_valid_handler_client_correspondence">assert_valid_handler_client_correspondence</a></code></li>
+<li><code><a title="qscope.types.get_all_subclasses_map" href="#qscope.types.get_all_subclasses_map">get_all_subclasses_map</a></code></li>
+<li><code><a title="qscope.types.validate_device_role_mapping" href="#qscope.types.validate_device_role_mapping">validate_device_role_mapping</a></code></li>
+<li><code><a title="qscope.types.validate_device_states" href="#qscope.types.validate_device_states">validate_device_states</a></code></li>
+<li><code><a title="qscope.types.validate_handler_client_correspondence" href="#qscope.types.validate_handler_client_correspondence">validate_handler_client_correspondence</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="qscope.types.ArrayResponse" href="#qscope.types.ArrayResponse">ArrayResponse</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.types.ArrayResponse.from_dict" href="#qscope.types.ArrayResponse.from_dict">from_dict</a></code></li>
+<li><code><a title="qscope.types.ArrayResponse.from_msgpack" href="#qscope.types.ArrayResponse.from_msgpack">from_msgpack</a></code></li>
+<li><code><a title="qscope.types.ArrayResponse.to_dict" href="#qscope.types.ArrayResponse.to_dict">to_dict</a></code></li>
+<li><code><a title="qscope.types.ArrayResponse.to_msgpack" href="#qscope.types.ArrayResponse.to_msgpack">to_msgpack</a></code></li>
+<li><code><a title="qscope.types.ArrayResponse.type" href="#qscope.types.ArrayResponse.type">type</a></code></li>
+<li><code><a title="qscope.types.ArrayResponse.value" href="#qscope.types.ArrayResponse.value">value</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.CameraConfig" href="#qscope.types.CameraConfig">CameraConfig</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.types.CameraConfig.avg_per_point" href="#qscope.types.CameraConfig.avg_per_point">avg_per_point</a></code></li>
+<li><code><a title="qscope.types.CameraConfig.exposure_time" href="#qscope.types.CameraConfig.exposure_time">exposure_time</a></code></li>
+<li><code><a title="qscope.types.CameraConfig.frame_shape" href="#qscope.types.CameraConfig.frame_shape">frame_shape</a></code></li>
+<li><code><a title="qscope.types.CameraConfig.from_dict" href="#qscope.types.CameraConfig.from_dict">from_dict</a></code></li>
+<li><code><a title="qscope.types.CameraConfig.hardware_binning" href="#qscope.types.CameraConfig.hardware_binning">hardware_binning</a></code></li>
+<li><code><a title="qscope.types.CameraConfig.to_dict" href="#qscope.types.CameraConfig.to_dict">to_dict</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.ClientConnection" href="#qscope.types.ClientConnection">ClientConnection</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.types.ClientConnection.context" href="#qscope.types.ClientConnection.context">context</a></code></li>
+<li><code><a title="qscope.types.ClientConnection.host" href="#qscope.types.ClientConnection.host">host</a></code></li>
+<li><code><a title="qscope.types.ClientConnection.msg_port" href="#qscope.types.ClientConnection.msg_port">msg_port</a></code></li>
+<li><code><a title="qscope.types.ClientConnection.msg_socket" href="#qscope.types.ClientConnection.msg_socket">msg_socket</a></code></li>
+<li><code><a title="qscope.types.ClientConnection.notif_port" href="#qscope.types.ClientConnection.notif_port">notif_port</a></code></li>
+<li><code><a title="qscope.types.ClientConnection.notif_socket" href="#qscope.types.ClientConnection.notif_socket">notif_socket</a></code></li>
+<li><code><a title="qscope.types.ClientConnection.stream_port" href="#qscope.types.ClientConnection.stream_port">stream_port</a></code></li>
+<li><code><a title="qscope.types.ClientConnection.stream_socket" href="#qscope.types.ClientConnection.stream_socket">stream_socket</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.ClientSyncResponse" href="#qscope.types.ClientSyncResponse">ClientSyncResponse</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.types.ClientSyncResponse.all_meas_info" href="#qscope.types.ClientSyncResponse.all_meas_info">all_meas_info</a></code></li>
+<li><code><a title="qscope.types.ClientSyncResponse.from_dict" href="#qscope.types.ClientSyncResponse.from_dict">from_dict</a></code></li>
+<li><code><a title="qscope.types.ClientSyncResponse.from_msgpack" href="#qscope.types.ClientSyncResponse.from_msgpack">from_msgpack</a></code></li>
+<li><code><a title="qscope.types.ClientSyncResponse.is_streaming" href="#qscope.types.ClientSyncResponse.is_streaming">is_streaming</a></code></li>
+<li><code><a title="qscope.types.ClientSyncResponse.sys_metadata" href="#qscope.types.ClientSyncResponse.sys_metadata">sys_metadata</a></code></li>
+<li><code><a title="qscope.types.ClientSyncResponse.system_name" href="#qscope.types.ClientSyncResponse.system_name">system_name</a></code></li>
+<li><code><a title="qscope.types.ClientSyncResponse.system_type" href="#qscope.types.ClientSyncResponse.system_type">system_type</a></code></li>
+<li><code><a title="qscope.types.ClientSyncResponse.to_dict" href="#qscope.types.ClientSyncResponse.to_dict">to_dict</a></code></li>
+<li><code><a title="qscope.types.ClientSyncResponse.to_msgpack" href="#qscope.types.ClientSyncResponse.to_msgpack">to_msgpack</a></code></li>
+<li><code><a title="qscope.types.ClientSyncResponse.type" href="#qscope.types.ClientSyncResponse.type">type</a></code></li>
+<li><code><a title="qscope.types.ClientSyncResponse.version" href="#qscope.types.ClientSyncResponse.version">version</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.CommsError" href="#qscope.types.CommsError">CommsError</a></code></h4>
+</li>
+<li>
+<h4><code><a title="qscope.types.DeviceLock" href="#qscope.types.DeviceLock">DeviceLock</a></code></h4>
+<ul class="">
+<li><code><a title="qscope.types.DeviceLock.description" href="#qscope.types.DeviceLock.description">description</a></code></li>
+<li><code><a title="qscope.types.DeviceLock.owner" href="#qscope.types.DeviceLock.owner">owner</a></code></li>
+<li><code><a title="qscope.types.DeviceLock.timestamp" href="#qscope.types.DeviceLock.timestamp">timestamp</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.DeviceRole" href="#qscope.types.DeviceRole">DeviceRole</a></code></h4>
+<ul class="">
+<li><code><a title="qscope.types.DeviceRole.get_interface" href="#qscope.types.DeviceRole.get_interface">get_interface</a></code></li>
+<li><code><a title="qscope.types.DeviceRole.interface_class" href="#qscope.types.DeviceRole.interface_class">interface_class</a></code></li>
+<li><code><a title="qscope.types.DeviceRole.validate_device_type" href="#qscope.types.DeviceRole.validate_device_type">validate_device_type</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.DictResponse" href="#qscope.types.DictResponse">DictResponse</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.types.DictResponse.from_dict" href="#qscope.types.DictResponse.from_dict">from_dict</a></code></li>
+<li><code><a title="qscope.types.DictResponse.from_msgpack" href="#qscope.types.DictResponse.from_msgpack">from_msgpack</a></code></li>
+<li><code><a title="qscope.types.DictResponse.to_dict" href="#qscope.types.DictResponse.to_dict">to_dict</a></code></li>
+<li><code><a title="qscope.types.DictResponse.to_msgpack" href="#qscope.types.DictResponse.to_msgpack">to_msgpack</a></code></li>
+<li><code><a title="qscope.types.DictResponse.type" href="#qscope.types.DictResponse.type">type</a></code></li>
+<li><code><a title="qscope.types.DictResponse.value" href="#qscope.types.DictResponse.value">value</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.ErrorResponse" href="#qscope.types.ErrorResponse">ErrorResponse</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.types.ErrorResponse.from_dict" href="#qscope.types.ErrorResponse.from_dict">from_dict</a></code></li>
+<li><code><a title="qscope.types.ErrorResponse.from_msgpack" href="#qscope.types.ErrorResponse.from_msgpack">from_msgpack</a></code></li>
+<li><code><a title="qscope.types.ErrorResponse.to_dict" href="#qscope.types.ErrorResponse.to_dict">to_dict</a></code></li>
+<li><code><a title="qscope.types.ErrorResponse.to_msgpack" href="#qscope.types.ErrorResponse.to_msgpack">to_msgpack</a></code></li>
+<li><code><a title="qscope.types.ErrorResponse.type" href="#qscope.types.ErrorResponse.type">type</a></code></li>
+<li><code><a title="qscope.types.ErrorResponse.value" href="#qscope.types.ErrorResponse.value">value</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.HandlerInfo" href="#qscope.types.HandlerInfo">HandlerInfo</a></code></h4>
+<ul class="">
+<li><code><a title="qscope.types.HandlerInfo.client_methods" href="#qscope.types.HandlerInfo.client_methods">client_methods</a></code></li>
+<li><code><a title="qscope.types.HandlerInfo.command" href="#qscope.types.HandlerInfo.command">command</a></code></li>
+<li><code><a title="qscope.types.HandlerInfo.handler_func" href="#qscope.types.HandlerInfo.handler_func">handler_func</a></code></li>
+<li><code><a title="qscope.types.HandlerInfo.required_roles" href="#qscope.types.HandlerInfo.required_roles">required_roles</a></code></li>
+<li><code><a title="qscope.types.HandlerInfo.system_types" href="#qscope.types.HandlerInfo.system_types">system_types</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.MainCamera" href="#qscope.types.MainCamera">MainCamera</a></code></h4>
+<ul class="">
+<li><code><a title="qscope.types.MainCamera.interface_class" href="#qscope.types.MainCamera.interface_class">interface_class</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.MeasurementConfig" href="#qscope.types.MeasurementConfig">MeasurementConfig</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.types.MeasurementConfig.Config" href="#qscope.types.MeasurementConfig.Config">Config</a></code></li>
+<li><code><a title="qscope.types.MeasurementConfig.from_dict" href="#qscope.types.MeasurementConfig.from_dict">from_dict</a></code></li>
+<li><code><a title="qscope.types.MeasurementConfig.meas_type" href="#qscope.types.MeasurementConfig.meas_type">meas_type</a></code></li>
+<li><code><a title="qscope.types.MeasurementConfig.ref_mode" href="#qscope.types.MeasurementConfig.ref_mode">ref_mode</a></code></li>
+<li><code><a title="qscope.types.MeasurementConfig.save_name" href="#qscope.types.MeasurementConfig.save_name">save_name</a></code></li>
+<li><code><a title="qscope.types.MeasurementConfig.sweep_x" href="#qscope.types.MeasurementConfig.sweep_x">sweep_x</a></code></li>
+<li><code><a title="qscope.types.MeasurementConfig.to_dict" href="#qscope.types.MeasurementConfig.to_dict">to_dict</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.MeasurementFrame" href="#qscope.types.MeasurementFrame">MeasurementFrame</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.types.MeasurementFrame.frame_num" href="#qscope.types.MeasurementFrame.frame_num">frame_num</a></code></li>
+<li><code><a title="qscope.types.MeasurementFrame.from_dict" href="#qscope.types.MeasurementFrame.from_dict">from_dict</a></code></li>
+<li><code><a title="qscope.types.MeasurementFrame.from_msgpack" href="#qscope.types.MeasurementFrame.from_msgpack">from_msgpack</a></code></li>
+<li><code><a title="qscope.types.MeasurementFrame.meas_id" href="#qscope.types.MeasurementFrame.meas_id">meas_id</a></code></li>
+<li><code><a title="qscope.types.MeasurementFrame.ref_frame" href="#qscope.types.MeasurementFrame.ref_frame">ref_frame</a></code></li>
+<li><code><a title="qscope.types.MeasurementFrame.sig_frame" href="#qscope.types.MeasurementFrame.sig_frame">sig_frame</a></code></li>
+<li><code><a title="qscope.types.MeasurementFrame.to_dict" href="#qscope.types.MeasurementFrame.to_dict">to_dict</a></code></li>
+<li><code><a title="qscope.types.MeasurementFrame.to_msgpack" href="#qscope.types.MeasurementFrame.to_msgpack">to_msgpack</a></code></li>
+<li><code><a title="qscope.types.MeasurementFrame.type" href="#qscope.types.MeasurementFrame.type">type</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.MeasurementUpdate" href="#qscope.types.MeasurementUpdate">MeasurementUpdate</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.types.MeasurementUpdate.from_dict" href="#qscope.types.MeasurementUpdate.from_dict">from_dict</a></code></li>
+<li><code><a title="qscope.types.MeasurementUpdate.from_msgpack" href="#qscope.types.MeasurementUpdate.from_msgpack">from_msgpack</a></code></li>
+<li><code><a title="qscope.types.MeasurementUpdate.meas_id" href="#qscope.types.MeasurementUpdate.meas_id">meas_id</a></code></li>
+<li><code><a title="qscope.types.MeasurementUpdate.new_state" href="#qscope.types.MeasurementUpdate.new_state">new_state</a></code></li>
+<li><code><a title="qscope.types.MeasurementUpdate.old_state" href="#qscope.types.MeasurementUpdate.old_state">old_state</a></code></li>
+<li><code><a title="qscope.types.MeasurementUpdate.to_dict" href="#qscope.types.MeasurementUpdate.to_dict">to_dict</a></code></li>
+<li><code><a title="qscope.types.MeasurementUpdate.to_msgpack" href="#qscope.types.MeasurementUpdate.to_msgpack">to_msgpack</a></code></li>
+<li><code><a title="qscope.types.MeasurementUpdate.type" href="#qscope.types.MeasurementUpdate.type">type</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.Message" href="#qscope.types.Message">Message</a></code></h4>
+<ul class="">
+<li><code><a title="qscope.types.Message.from_dict" href="#qscope.types.Message.from_dict">from_dict</a></code></li>
+<li><code><a title="qscope.types.Message.from_msgpack" href="#qscope.types.Message.from_msgpack">from_msgpack</a></code></li>
+<li><code><a title="qscope.types.Message.to_dict" href="#qscope.types.Message.to_dict">to_dict</a></code></li>
+<li><code><a title="qscope.types.Message.to_msgpack" href="#qscope.types.Message.to_msgpack">to_msgpack</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.MockSGAndorESRConfig" href="#qscope.types.MockSGAndorESRConfig">MockSGAndorESRConfig</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.types.MockSGAndorESRConfig.bg_zeeman" href="#qscope.types.MockSGAndorESRConfig.bg_zeeman">bg_zeeman</a></code></li>
+<li><code><a title="qscope.types.MockSGAndorESRConfig.from_dict" href="#qscope.types.MockSGAndorESRConfig.from_dict">from_dict</a></code></li>
+<li><code><a title="qscope.types.MockSGAndorESRConfig.ft_centre" href="#qscope.types.MockSGAndorESRConfig.ft_centre">ft_centre</a></code></li>
+<li><code><a title="qscope.types.MockSGAndorESRConfig.ft_height_dif" href="#qscope.types.MockSGAndorESRConfig.ft_height_dif">ft_height_dif</a></code></li>
+<li><code><a title="qscope.types.MockSGAndorESRConfig.ft_linewidth" href="#qscope.types.MockSGAndorESRConfig.ft_linewidth">ft_linewidth</a></code></li>
+<li><code><a title="qscope.types.MockSGAndorESRConfig.ft_rad" href="#qscope.types.MockSGAndorESRConfig.ft_rad">ft_rad</a></code></li>
+<li><code><a title="qscope.types.MockSGAndorESRConfig.ft_width_dif" href="#qscope.types.MockSGAndorESRConfig.ft_width_dif">ft_width_dif</a></code></li>
+<li><code><a title="qscope.types.MockSGAndorESRConfig.ft_zeeman" href="#qscope.types.MockSGAndorESRConfig.ft_zeeman">ft_zeeman</a></code></li>
+<li><code><a title="qscope.types.MockSGAndorESRConfig.laser_delay" href="#qscope.types.MockSGAndorESRConfig.laser_delay">laser_delay</a></code></li>
+<li><code><a title="qscope.types.MockSGAndorESRConfig.laser_dur" href="#qscope.types.MockSGAndorESRConfig.laser_dur">laser_dur</a></code></li>
+<li><code><a title="qscope.types.MockSGAndorESRConfig.laser_to_rf_delay" href="#qscope.types.MockSGAndorESRConfig.laser_to_rf_delay">laser_to_rf_delay</a></code></li>
+<li><code><a title="qscope.types.MockSGAndorESRConfig.meas_type" href="#qscope.types.MockSGAndorESRConfig.meas_type">meas_type</a></code></li>
+<li><code><a title="qscope.types.MockSGAndorESRConfig.noise_sigma" href="#qscope.types.MockSGAndorESRConfig.noise_sigma">noise_sigma</a></code></li>
+<li><code><a title="qscope.types.MockSGAndorESRConfig.peak_contrasts" href="#qscope.types.MockSGAndorESRConfig.peak_contrasts">peak_contrasts</a></code></li>
+<li><code><a title="qscope.types.MockSGAndorESRConfig.peak_widths" href="#qscope.types.MockSGAndorESRConfig.peak_widths">peak_widths</a></code></li>
+<li><code><a title="qscope.types.MockSGAndorESRConfig.rf_delay" href="#qscope.types.MockSGAndorESRConfig.rf_delay">rf_delay</a></code></li>
+<li><code><a title="qscope.types.MockSGAndorESRConfig.rf_dur" href="#qscope.types.MockSGAndorESRConfig.rf_dur">rf_dur</a></code></li>
+<li><code><a title="qscope.types.MockSGAndorESRConfig.rf_pow" href="#qscope.types.MockSGAndorESRConfig.rf_pow">rf_pow</a></code></li>
+<li><code><a title="qscope.types.MockSGAndorESRConfig.save_name" href="#qscope.types.MockSGAndorESRConfig.save_name">save_name</a></code></li>
+<li><code><a title="qscope.types.MockSGAndorESRConfig.to_dict" href="#qscope.types.MockSGAndorESRConfig.to_dict">to_dict</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.NewMeasurement" href="#qscope.types.NewMeasurement">NewMeasurement</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.types.NewMeasurement.from_dict" href="#qscope.types.NewMeasurement.from_dict">from_dict</a></code></li>
+<li><code><a title="qscope.types.NewMeasurement.from_msgpack" href="#qscope.types.NewMeasurement.from_msgpack">from_msgpack</a></code></li>
+<li><code><a title="qscope.types.NewMeasurement.meas_config" href="#qscope.types.NewMeasurement.meas_config">meas_config</a></code></li>
+<li><code><a title="qscope.types.NewMeasurement.meas_id" href="#qscope.types.NewMeasurement.meas_id">meas_id</a></code></li>
+<li><code><a title="qscope.types.NewMeasurement.to_dict" href="#qscope.types.NewMeasurement.to_dict">to_dict</a></code></li>
+<li><code><a title="qscope.types.NewMeasurement.to_msgpack" href="#qscope.types.NewMeasurement.to_msgpack">to_msgpack</a></code></li>
+<li><code><a title="qscope.types.NewMeasurement.type" href="#qscope.types.NewMeasurement.type">type</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.NewStream" href="#qscope.types.NewStream">NewStream</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.types.NewStream.from_dict" href="#qscope.types.NewStream.from_dict">from_dict</a></code></li>
+<li><code><a title="qscope.types.NewStream.from_msgpack" href="#qscope.types.NewStream.from_msgpack">from_msgpack</a></code></li>
+<li><code><a title="qscope.types.NewStream.stream_type" href="#qscope.types.NewStream.stream_type">stream_type</a></code></li>
+<li><code><a title="qscope.types.NewStream.to_dict" href="#qscope.types.NewStream.to_dict">to_dict</a></code></li>
+<li><code><a title="qscope.types.NewStream.to_msgpack" href="#qscope.types.NewStream.to_msgpack">to_msgpack</a></code></li>
+<li><code><a title="qscope.types.NewStream.type" href="#qscope.types.NewStream.type">type</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.Notification" href="#qscope.types.Notification">Notification</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.types.Notification.Config" href="#qscope.types.Notification.Config">Config</a></code></li>
+<li><code><a title="qscope.types.Notification.from_dict" href="#qscope.types.Notification.from_dict">from_dict</a></code></li>
+<li><code><a title="qscope.types.Notification.from_msgpack" href="#qscope.types.Notification.from_msgpack">from_msgpack</a></code></li>
+<li><code><a title="qscope.types.Notification.to_dict" href="#qscope.types.Notification.to_dict">to_dict</a></code></li>
+<li><code><a title="qscope.types.Notification.to_msgpack" href="#qscope.types.Notification.to_msgpack">to_msgpack</a></code></li>
+<li><code><a title="qscope.types.Notification.type" href="#qscope.types.Notification.type">type</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.PleaseWait" href="#qscope.types.PleaseWait">PleaseWait</a></code></h4>
+</li>
+<li>
+<h4><code><a title="qscope.types.PleaseWaitResponse" href="#qscope.types.PleaseWaitResponse">PleaseWaitResponse</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.types.PleaseWaitResponse.from_dict" href="#qscope.types.PleaseWaitResponse.from_dict">from_dict</a></code></li>
+<li><code><a title="qscope.types.PleaseWaitResponse.from_msgpack" href="#qscope.types.PleaseWaitResponse.from_msgpack">from_msgpack</a></code></li>
+<li><code><a title="qscope.types.PleaseWaitResponse.to_dict" href="#qscope.types.PleaseWaitResponse.to_dict">to_dict</a></code></li>
+<li><code><a title="qscope.types.PleaseWaitResponse.to_msgpack" href="#qscope.types.PleaseWaitResponse.to_msgpack">to_msgpack</a></code></li>
+<li><code><a title="qscope.types.PleaseWaitResponse.type" href="#qscope.types.PleaseWaitResponse.type">type</a></code></li>
+<li><code><a title="qscope.types.PleaseWaitResponse.value" href="#qscope.types.PleaseWaitResponse.value">value</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.PrimaryRFSource" href="#qscope.types.PrimaryRFSource">PrimaryRFSource</a></code></h4>
+<ul class="">
+<li><code><a title="qscope.types.PrimaryRFSource.interface_class" href="#qscope.types.PrimaryRFSource.interface_class">interface_class</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.Request" href="#qscope.types.Request">Request</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.types.Request.command" href="#qscope.types.Request.command">command</a></code></li>
+<li><code><a title="qscope.types.Request.from_dict" href="#qscope.types.Request.from_dict">from_dict</a></code></li>
+<li><code><a title="qscope.types.Request.from_msgpack" href="#qscope.types.Request.from_msgpack">from_msgpack</a></code></li>
+<li><code><a title="qscope.types.Request.params" href="#qscope.types.Request.params">params</a></code></li>
+<li><code><a title="qscope.types.Request.to_dict" href="#qscope.types.Request.to_dict">to_dict</a></code></li>
+<li><code><a title="qscope.types.Request.to_msgpack" href="#qscope.types.Request.to_msgpack">to_msgpack</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.Response" href="#qscope.types.Response">Response</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.types.Response.Config" href="#qscope.types.Response.Config">Config</a></code></li>
+<li><code><a title="qscope.types.Response.from_dict" href="#qscope.types.Response.from_dict">from_dict</a></code></li>
+<li><code><a title="qscope.types.Response.from_msgpack" href="#qscope.types.Response.from_msgpack">from_msgpack</a></code></li>
+<li><code><a title="qscope.types.Response.to_dict" href="#qscope.types.Response.to_dict">to_dict</a></code></li>
+<li><code><a title="qscope.types.Response.to_msgpack" href="#qscope.types.Response.to_msgpack">to_msgpack</a></code></li>
+<li><code><a title="qscope.types.Response.type" href="#qscope.types.Response.type">type</a></code></li>
+<li><code><a title="qscope.types.Response.value" href="#qscope.types.Response.value">value</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.RollingAvgSweepUpdate" href="#qscope.types.RollingAvgSweepUpdate">RollingAvgSweepUpdate</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.types.RollingAvgSweepUpdate.aoi" href="#qscope.types.RollingAvgSweepUpdate.aoi">aoi</a></code></li>
+<li><code><a title="qscope.types.RollingAvgSweepUpdate.avg_window" href="#qscope.types.RollingAvgSweepUpdate.avg_window">avg_window</a></code></li>
+<li><code><a title="qscope.types.RollingAvgSweepUpdate.from_dict" href="#qscope.types.RollingAvgSweepUpdate.from_dict">from_dict</a></code></li>
+<li><code><a title="qscope.types.RollingAvgSweepUpdate.from_msgpack" href="#qscope.types.RollingAvgSweepUpdate.from_msgpack">from_msgpack</a></code></li>
+<li><code><a title="qscope.types.RollingAvgSweepUpdate.meas_id" href="#qscope.types.RollingAvgSweepUpdate.meas_id">meas_id</a></code></li>
+<li><code><a title="qscope.types.RollingAvgSweepUpdate.sweep_idxs" href="#qscope.types.RollingAvgSweepUpdate.sweep_idxs">sweep_idxs</a></code></li>
+<li><code><a title="qscope.types.RollingAvgSweepUpdate.sweep_x" href="#qscope.types.RollingAvgSweepUpdate.sweep_x">sweep_x</a></code></li>
+<li><code><a title="qscope.types.RollingAvgSweepUpdate.sweep_yref" href="#qscope.types.RollingAvgSweepUpdate.sweep_yref">sweep_yref</a></code></li>
+<li><code><a title="qscope.types.RollingAvgSweepUpdate.sweep_ysig" href="#qscope.types.RollingAvgSweepUpdate.sweep_ysig">sweep_ysig</a></code></li>
+<li><code><a title="qscope.types.RollingAvgSweepUpdate.to_dict" href="#qscope.types.RollingAvgSweepUpdate.to_dict">to_dict</a></code></li>
+<li><code><a title="qscope.types.RollingAvgSweepUpdate.to_msgpack" href="#qscope.types.RollingAvgSweepUpdate.to_msgpack">to_msgpack</a></code></li>
+<li><code><a title="qscope.types.RollingAvgSweepUpdate.type" href="#qscope.types.RollingAvgSweepUpdate.type">type</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.SGAndorCWESRConfig" href="#qscope.types.SGAndorCWESRConfig">SGAndorCWESRConfig</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.types.SGAndorCWESRConfig.avg_per_point" href="#qscope.types.SGAndorCWESRConfig.avg_per_point">avg_per_point</a></code></li>
+<li><code><a title="qscope.types.SGAndorCWESRConfig.fmod_freq" href="#qscope.types.SGAndorCWESRConfig.fmod_freq">fmod_freq</a></code></li>
+<li><code><a title="qscope.types.SGAndorCWESRConfig.from_dict" href="#qscope.types.SGAndorCWESRConfig.from_dict">from_dict</a></code></li>
+<li><code><a title="qscope.types.SGAndorCWESRConfig.laser_delay" href="#qscope.types.SGAndorCWESRConfig.laser_delay">laser_delay</a></code></li>
+<li><code><a title="qscope.types.SGAndorCWESRConfig.meas_type" href="#qscope.types.SGAndorCWESRConfig.meas_type">meas_type</a></code></li>
+<li><code><a title="qscope.types.SGAndorCWESRConfig.rf_pow" href="#qscope.types.SGAndorCWESRConfig.rf_pow">rf_pow</a></code></li>
+<li><code><a title="qscope.types.SGAndorCWESRConfig.save_name" href="#qscope.types.SGAndorCWESRConfig.save_name">save_name</a></code></li>
+<li><code><a title="qscope.types.SGAndorCWESRConfig.to_dict" href="#qscope.types.SGAndorCWESRConfig.to_dict">to_dict</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.SGAndorPESRConfig" href="#qscope.types.SGAndorPESRConfig">SGAndorPESRConfig</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.types.SGAndorPESRConfig.avg_per_point" href="#qscope.types.SGAndorPESRConfig.avg_per_point">avg_per_point</a></code></li>
+<li><code><a title="qscope.types.SGAndorPESRConfig.fmod_freq" href="#qscope.types.SGAndorPESRConfig.fmod_freq">fmod_freq</a></code></li>
+<li><code><a title="qscope.types.SGAndorPESRConfig.from_dict" href="#qscope.types.SGAndorPESRConfig.from_dict">from_dict</a></code></li>
+<li><code><a title="qscope.types.SGAndorPESRConfig.laser_delay" href="#qscope.types.SGAndorPESRConfig.laser_delay">laser_delay</a></code></li>
+<li><code><a title="qscope.types.SGAndorPESRConfig.laser_dur" href="#qscope.types.SGAndorPESRConfig.laser_dur">laser_dur</a></code></li>
+<li><code><a title="qscope.types.SGAndorPESRConfig.laser_to_rf_delay" href="#qscope.types.SGAndorPESRConfig.laser_to_rf_delay">laser_to_rf_delay</a></code></li>
+<li><code><a title="qscope.types.SGAndorPESRConfig.meas_type" href="#qscope.types.SGAndorPESRConfig.meas_type">meas_type</a></code></li>
+<li><code><a title="qscope.types.SGAndorPESRConfig.rf_delay" href="#qscope.types.SGAndorPESRConfig.rf_delay">rf_delay</a></code></li>
+<li><code><a title="qscope.types.SGAndorPESRConfig.rf_dur" href="#qscope.types.SGAndorPESRConfig.rf_dur">rf_dur</a></code></li>
+<li><code><a title="qscope.types.SGAndorPESRConfig.rf_pow" href="#qscope.types.SGAndorPESRConfig.rf_pow">rf_pow</a></code></li>
+<li><code><a title="qscope.types.SGAndorPESRConfig.save_name" href="#qscope.types.SGAndorPESRConfig.save_name">save_name</a></code></li>
+<li><code><a title="qscope.types.SGAndorPESRConfig.to_dict" href="#qscope.types.SGAndorPESRConfig.to_dict">to_dict</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.SGAndorRabiConfig" href="#qscope.types.SGAndorRabiConfig">SGAndorRabiConfig</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.types.SGAndorRabiConfig.avg_per_point" href="#qscope.types.SGAndorRabiConfig.avg_per_point">avg_per_point</a></code></li>
+<li><code><a title="qscope.types.SGAndorRabiConfig.from_dict" href="#qscope.types.SGAndorRabiConfig.from_dict">from_dict</a></code></li>
+<li><code><a title="qscope.types.SGAndorRabiConfig.laser_delay" href="#qscope.types.SGAndorRabiConfig.laser_delay">laser_delay</a></code></li>
+<li><code><a title="qscope.types.SGAndorRabiConfig.laser_dur" href="#qscope.types.SGAndorRabiConfig.laser_dur">laser_dur</a></code></li>
+<li><code><a title="qscope.types.SGAndorRabiConfig.meas_type" href="#qscope.types.SGAndorRabiConfig.meas_type">meas_type</a></code></li>
+<li><code><a title="qscope.types.SGAndorRabiConfig.rf_delay" href="#qscope.types.SGAndorRabiConfig.rf_delay">rf_delay</a></code></li>
+<li><code><a title="qscope.types.SGAndorRabiConfig.rf_dur" href="#qscope.types.SGAndorRabiConfig.rf_dur">rf_dur</a></code></li>
+<li><code><a title="qscope.types.SGAndorRabiConfig.rf_freq" href="#qscope.types.SGAndorRabiConfig.rf_freq">rf_freq</a></code></li>
+<li><code><a title="qscope.types.SGAndorRabiConfig.rf_pow" href="#qscope.types.SGAndorRabiConfig.rf_pow">rf_pow</a></code></li>
+<li><code><a title="qscope.types.SGAndorRabiConfig.save_name" href="#qscope.types.SGAndorRabiConfig.save_name">save_name</a></code></li>
+<li><code><a title="qscope.types.SGAndorRabiConfig.to_dict" href="#qscope.types.SGAndorRabiConfig.to_dict">to_dict</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.SGAndorRamseyConfig" href="#qscope.types.SGAndorRamseyConfig">SGAndorRamseyConfig</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.types.SGAndorRamseyConfig.from_dict" href="#qscope.types.SGAndorRamseyConfig.from_dict">from_dict</a></code></li>
+<li><code><a title="qscope.types.SGAndorRamseyConfig.laser_delay" href="#qscope.types.SGAndorRamseyConfig.laser_delay">laser_delay</a></code></li>
+<li><code><a title="qscope.types.SGAndorRamseyConfig.laser_dur" href="#qscope.types.SGAndorRamseyConfig.laser_dur">laser_dur</a></code></li>
+<li><code><a title="qscope.types.SGAndorRamseyConfig.meas_type" href="#qscope.types.SGAndorRamseyConfig.meas_type">meas_type</a></code></li>
+<li><code><a title="qscope.types.SGAndorRamseyConfig.pi_2_dur" href="#qscope.types.SGAndorRamseyConfig.pi_2_dur">pi_2_dur</a></code></li>
+<li><code><a title="qscope.types.SGAndorRamseyConfig.pi_dur" href="#qscope.types.SGAndorRamseyConfig.pi_dur">pi_dur</a></code></li>
+<li><code><a title="qscope.types.SGAndorRamseyConfig.rf_delay" href="#qscope.types.SGAndorRamseyConfig.rf_delay">rf_delay</a></code></li>
+<li><code><a title="qscope.types.SGAndorRamseyConfig.rf_freq" href="#qscope.types.SGAndorRamseyConfig.rf_freq">rf_freq</a></code></li>
+<li><code><a title="qscope.types.SGAndorRamseyConfig.rf_pow" href="#qscope.types.SGAndorRamseyConfig.rf_pow">rf_pow</a></code></li>
+<li><code><a title="qscope.types.SGAndorRamseyConfig.save_name" href="#qscope.types.SGAndorRamseyConfig.save_name">save_name</a></code></li>
+<li><code><a title="qscope.types.SGAndorRamseyConfig.to_dict" href="#qscope.types.SGAndorRamseyConfig.to_dict">to_dict</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.SGAndorSpinEchoConfig" href="#qscope.types.SGAndorSpinEchoConfig">SGAndorSpinEchoConfig</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.types.SGAndorSpinEchoConfig.from_dict" href="#qscope.types.SGAndorSpinEchoConfig.from_dict">from_dict</a></code></li>
+<li><code><a title="qscope.types.SGAndorSpinEchoConfig.laser_delay" href="#qscope.types.SGAndorSpinEchoConfig.laser_delay">laser_delay</a></code></li>
+<li><code><a title="qscope.types.SGAndorSpinEchoConfig.laser_dur" href="#qscope.types.SGAndorSpinEchoConfig.laser_dur">laser_dur</a></code></li>
+<li><code><a title="qscope.types.SGAndorSpinEchoConfig.meas_type" href="#qscope.types.SGAndorSpinEchoConfig.meas_type">meas_type</a></code></li>
+<li><code><a title="qscope.types.SGAndorSpinEchoConfig.pi_2_dur" href="#qscope.types.SGAndorSpinEchoConfig.pi_2_dur">pi_2_dur</a></code></li>
+<li><code><a title="qscope.types.SGAndorSpinEchoConfig.pi_dur" href="#qscope.types.SGAndorSpinEchoConfig.pi_dur">pi_dur</a></code></li>
+<li><code><a title="qscope.types.SGAndorSpinEchoConfig.rf_delay" href="#qscope.types.SGAndorSpinEchoConfig.rf_delay">rf_delay</a></code></li>
+<li><code><a title="qscope.types.SGAndorSpinEchoConfig.rf_freq" href="#qscope.types.SGAndorSpinEchoConfig.rf_freq">rf_freq</a></code></li>
+<li><code><a title="qscope.types.SGAndorSpinEchoConfig.rf_pow" href="#qscope.types.SGAndorSpinEchoConfig.rf_pow">rf_pow</a></code></li>
+<li><code><a title="qscope.types.SGAndorSpinEchoConfig.save_name" href="#qscope.types.SGAndorSpinEchoConfig.save_name">save_name</a></code></li>
+<li><code><a title="qscope.types.SGAndorSpinEchoConfig.to_dict" href="#qscope.types.SGAndorSpinEchoConfig.to_dict">to_dict</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.SGAndorT1Config" href="#qscope.types.SGAndorT1Config">SGAndorT1Config</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.types.SGAndorT1Config.from_dict" href="#qscope.types.SGAndorT1Config.from_dict">from_dict</a></code></li>
+<li><code><a title="qscope.types.SGAndorT1Config.laser_delay" href="#qscope.types.SGAndorT1Config.laser_delay">laser_delay</a></code></li>
+<li><code><a title="qscope.types.SGAndorT1Config.laser_dur" href="#qscope.types.SGAndorT1Config.laser_dur">laser_dur</a></code></li>
+<li><code><a title="qscope.types.SGAndorT1Config.meas_type" href="#qscope.types.SGAndorT1Config.meas_type">meas_type</a></code></li>
+<li><code><a title="qscope.types.SGAndorT1Config.pi_dur" href="#qscope.types.SGAndorT1Config.pi_dur">pi_dur</a></code></li>
+<li><code><a title="qscope.types.SGAndorT1Config.rf_delay" href="#qscope.types.SGAndorT1Config.rf_delay">rf_delay</a></code></li>
+<li><code><a title="qscope.types.SGAndorT1Config.rf_freq" href="#qscope.types.SGAndorT1Config.rf_freq">rf_freq</a></code></li>
+<li><code><a title="qscope.types.SGAndorT1Config.rf_pow" href="#qscope.types.SGAndorT1Config.rf_pow">rf_pow</a></code></li>
+<li><code><a title="qscope.types.SGAndorT1Config.save_name" href="#qscope.types.SGAndorT1Config.save_name">save_name</a></code></li>
+<li><code><a title="qscope.types.SGAndorT1Config.to_dict" href="#qscope.types.SGAndorT1Config.to_dict">to_dict</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.SecondaryCamera" href="#qscope.types.SecondaryCamera">SecondaryCamera</a></code></h4>
+<ul class="">
+<li><code><a title="qscope.types.SecondaryCamera.interface_class" href="#qscope.types.SecondaryCamera.interface_class">interface_class</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.SecondaryRFSource" href="#qscope.types.SecondaryRFSource">SecondaryRFSource</a></code></h4>
+<ul class="">
+<li><code><a title="qscope.types.SecondaryRFSource.interface_class" href="#qscope.types.SecondaryRFSource.interface_class">interface_class</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.SequenceGenerator" href="#qscope.types.SequenceGenerator">SequenceGenerator</a></code></h4>
+<ul class="">
+<li><code><a title="qscope.types.SequenceGenerator.interface_class" href="#qscope.types.SequenceGenerator.interface_class">interface_class</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.ServerConnection" href="#qscope.types.ServerConnection">ServerConnection</a></code></h4>
+<ul class="">
+<li><code><a title="qscope.types.ServerConnection.device_locks" href="#qscope.types.ServerConnection.device_locks">device_locks</a></code></li>
+<li><code><a title="qscope.types.ServerConnection.get_last_stream_chunk" href="#qscope.types.ServerConnection.get_last_stream_chunk">get_last_stream_chunk</a></code></li>
+<li><code><a title="qscope.types.ServerConnection.get_stream_time_trace" href="#qscope.types.ServerConnection.get_stream_time_trace">get_stream_time_trace</a></code></li>
+<li><code><a title="qscope.types.ServerConnection.host" href="#qscope.types.ServerConnection.host">host</a></code></li>
+<li><code><a title="qscope.types.ServerConnection.last_stream_message" href="#qscope.types.ServerConnection.last_stream_message">last_stream_message</a></code></li>
+<li><code><a title="qscope.types.ServerConnection.msg_port" href="#qscope.types.ServerConnection.msg_port">msg_port</a></code></li>
+<li><code><a title="qscope.types.ServerConnection.msg_socket" href="#qscope.types.ServerConnection.msg_socket">msg_socket</a></code></li>
+<li><code><a title="qscope.types.ServerConnection.notif_port" href="#qscope.types.ServerConnection.notif_port">notif_port</a></code></li>
+<li><code><a title="qscope.types.ServerConnection.notif_queue" href="#qscope.types.ServerConnection.notif_queue">notif_queue</a></code></li>
+<li><code><a title="qscope.types.ServerConnection.notif_socket" href="#qscope.types.ServerConnection.notif_socket">notif_socket</a></code></li>
+<li><code><a title="qscope.types.ServerConnection.reset_stream" href="#qscope.types.ServerConnection.reset_stream">reset_stream</a></code></li>
+<li><code><a title="qscope.types.ServerConnection.send_stream_chunk" href="#qscope.types.ServerConnection.send_stream_chunk">send_stream_chunk</a></code></li>
+<li><code><a title="qscope.types.ServerConnection.stream_port" href="#qscope.types.ServerConnection.stream_port">stream_port</a></code></li>
+<li><code><a title="qscope.types.ServerConnection.stream_socket" href="#qscope.types.ServerConnection.stream_socket">stream_socket</a></code></li>
+<li><code><a title="qscope.types.ServerConnection.stream_time_trace" href="#qscope.types.ServerConnection.stream_time_trace">stream_time_trace</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.Shape2DResponse" href="#qscope.types.Shape2DResponse">Shape2DResponse</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.types.Shape2DResponse.from_dict" href="#qscope.types.Shape2DResponse.from_dict">from_dict</a></code></li>
+<li><code><a title="qscope.types.Shape2DResponse.from_msgpack" href="#qscope.types.Shape2DResponse.from_msgpack">from_msgpack</a></code></li>
+<li><code><a title="qscope.types.Shape2DResponse.to_dict" href="#qscope.types.Shape2DResponse.to_dict">to_dict</a></code></li>
+<li><code><a title="qscope.types.Shape2DResponse.to_msgpack" href="#qscope.types.Shape2DResponse.to_msgpack">to_msgpack</a></code></li>
+<li><code><a title="qscope.types.Shape2DResponse.type" href="#qscope.types.Shape2DResponse.type">type</a></code></li>
+<li><code><a title="qscope.types.Shape2DResponse.value" href="#qscope.types.Shape2DResponse.value">value</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.SweepUpdate" href="#qscope.types.SweepUpdate">SweepUpdate</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.types.SweepUpdate.aoi" href="#qscope.types.SweepUpdate.aoi">aoi</a></code></li>
+<li><code><a title="qscope.types.SweepUpdate.from_dict" href="#qscope.types.SweepUpdate.from_dict">from_dict</a></code></li>
+<li><code><a title="qscope.types.SweepUpdate.from_msgpack" href="#qscope.types.SweepUpdate.from_msgpack">from_msgpack</a></code></li>
+<li><code><a title="qscope.types.SweepUpdate.meas_id" href="#qscope.types.SweepUpdate.meas_id">meas_id</a></code></li>
+<li><code><a title="qscope.types.SweepUpdate.nsweeps" href="#qscope.types.SweepUpdate.nsweeps">nsweeps</a></code></li>
+<li><code><a title="qscope.types.SweepUpdate.sweep_data" href="#qscope.types.SweepUpdate.sweep_data">sweep_data</a></code></li>
+<li><code><a title="qscope.types.SweepUpdate.sweep_progress" href="#qscope.types.SweepUpdate.sweep_progress">sweep_progress</a></code></li>
+<li><code><a title="qscope.types.SweepUpdate.to_dict" href="#qscope.types.SweepUpdate.to_dict">to_dict</a></code></li>
+<li><code><a title="qscope.types.SweepUpdate.to_msgpack" href="#qscope.types.SweepUpdate.to_msgpack">to_msgpack</a></code></li>
+<li><code><a title="qscope.types.SweepUpdate.type" href="#qscope.types.SweepUpdate.type">type</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.TupleResponse" href="#qscope.types.TupleResponse">TupleResponse</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.types.TupleResponse.from_dict" href="#qscope.types.TupleResponse.from_dict">from_dict</a></code></li>
+<li><code><a title="qscope.types.TupleResponse.from_msgpack" href="#qscope.types.TupleResponse.from_msgpack">from_msgpack</a></code></li>
+<li><code><a title="qscope.types.TupleResponse.to_dict" href="#qscope.types.TupleResponse.to_dict">to_dict</a></code></li>
+<li><code><a title="qscope.types.TupleResponse.to_msgpack" href="#qscope.types.TupleResponse.to_msgpack">to_msgpack</a></code></li>
+<li><code><a title="qscope.types.TupleResponse.type" href="#qscope.types.TupleResponse.type">type</a></code></li>
+<li><code><a title="qscope.types.TupleResponse.value" href="#qscope.types.TupleResponse.value">value</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.ValidationError" href="#qscope.types.ValidationError">ValidationError</a></code></h4>
+</li>
+<li>
+<h4><code><a title="qscope.types.ValueResponse" href="#qscope.types.ValueResponse">ValueResponse</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.types.ValueResponse.from_dict" href="#qscope.types.ValueResponse.from_dict">from_dict</a></code></li>
+<li><code><a title="qscope.types.ValueResponse.from_msgpack" href="#qscope.types.ValueResponse.from_msgpack">from_msgpack</a></code></li>
+<li><code><a title="qscope.types.ValueResponse.to_dict" href="#qscope.types.ValueResponse.to_dict">to_dict</a></code></li>
+<li><code><a title="qscope.types.ValueResponse.to_msgpack" href="#qscope.types.ValueResponse.to_msgpack">to_msgpack</a></code></li>
+<li><code><a title="qscope.types.ValueResponse.type" href="#qscope.types.ValueResponse.type">type</a></code></li>
+<li><code><a title="qscope.types.ValueResponse.value" href="#qscope.types.ValueResponse.value">value</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.WarningResponse" href="#qscope.types.WarningResponse">WarningResponse</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.types.WarningResponse.from_dict" href="#qscope.types.WarningResponse.from_dict">from_dict</a></code></li>
+<li><code><a title="qscope.types.WarningResponse.from_msgpack" href="#qscope.types.WarningResponse.from_msgpack">from_msgpack</a></code></li>
+<li><code><a title="qscope.types.WarningResponse.to_dict" href="#qscope.types.WarningResponse.to_dict">to_dict</a></code></li>
+<li><code><a title="qscope.types.WarningResponse.to_msgpack" href="#qscope.types.WarningResponse.to_msgpack">to_msgpack</a></code></li>
+<li><code><a title="qscope.types.WarningResponse.type" href="#qscope.types.WarningResponse.type">type</a></code></li>
+<li><code><a title="qscope.types.WarningResponse.value" href="#qscope.types.WarningResponse.value">value</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
+</footer>
+</body>
+</html>

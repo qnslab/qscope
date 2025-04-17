@@ -1,0 +1,1385 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.6">
+<title>qscope.device.magnet.HHC API documentation</title>
+<meta name="description" content="">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}#lunr-search{width:100%;font-size:1em;padding:6px 9px 5px 9px;border:1px solid silver}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes: true } });</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML" integrity="sha256-kZafAc6mZvK3W3v1pHOcUix30OHQN6pU/NO2oFkqZVw=" crossorigin></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>qscope.device.magnet.HHC</code></h1>
+</header>
+<section id="section-intro">
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="qscope.device.magnet.HHC.HHC"><code class="flex name class">
+<span>class <span class="ident">HHC</span></span>
+<span>(</span><span>x_port: str,<br>y_port: str,<br>z_port: str,<br>ixlim: float | int,<br>iylim: float | int,<br>izlim: float | int,<br>vxlim: float | int,<br>vylim: float | int,<br>vzlim: float | int,<br>ix2bx: float | int,<br>iy2by: float | int,<br>iz2bz: float | int,<br>ixrate: float | int,<br>iyrate: float | int,<br>izrate: float | int,<br>istep: float | int)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class HHC(Magnet):
+    x_port: str
+    y_port: str
+    z_port: str
+    ixlim: float | int
+    iylim: float | int
+    izlim: float | int
+    vxlim: float | int
+    vylim: float | int
+    vzlim: float | int
+    ix2bx: float | int  # A -&gt; mT
+    iy2by: float | int
+    iz2bz: float | int
+    ixrate: float | int  # A/s
+    iyrate: float | int
+    izrate: float | int
+    istep: float | int
+
+    # required_config = {
+    #     &#34;x_port&#34;: str,
+    #     &#34;y_port&#34;: str,
+    #     &#34;z_port&#34;: str,
+    #     &#34;ixlim&#34;: float | int,
+    #     &#34;iylim&#34;: float | int,
+    #     &#34;izlim&#34;: float | int,
+    #     &#34;vxlim&#34;: float | int,
+    #     &#34;vylim&#34;: float | int,
+    #     &#34;vzlim&#34;: float | int,
+    #     &#34;ix2bx&#34;: float | int,
+    #     &#34;iy2by&#34;: float | int,
+    #     &#34;iz2bz&#34;: float | int,
+    #     &#34;ixrate&#34;: float | int,
+    #     &#34;iyrate&#34;: float | int,
+    #     &#34;izrate&#34;: float | int,
+    #     &#34;istep&#34;: float | int,
+    # }
+
+    def __init__(
+        self,
+        x_port: str,
+        y_port: str,
+        z_port: str,
+        ixlim: float | int,
+        iylim: float | int,
+        izlim: float | int,
+        vxlim: float | int,
+        vylim: float | int,
+        vzlim: float | int,
+        ix2bx: float | int,
+        iy2by: float | int,
+        iz2bz: float | int,
+        ixrate: float | int,
+        iyrate: float | int,
+        izrate: float | int,
+        istep: float | int,
+    ):
+        super().__init__()
+
+        self.x_port = x_port
+        self.y_port = y_port
+        self.z_port = z_port
+        self._ixlim = ixlim
+        self._iylim = iylim
+        self._izlim = izlim
+        self._vxlim = vxlim
+        self._vylim = vylim
+        self._vzlim = vzlim
+        self._ix2bx = ix2bx
+        self._iy2by = iy2by
+        self._iz2bz = iz2bz
+        self._ixrate = ixrate
+        self._iyrate = iyrate
+        self._izrate = izrate
+        self._istep = istep
+
+        self.cmd_wait = 1e-3  # seconds
+
+        self._ix_state = 0
+        self._iy_state = 0
+        self._iz_state = 0
+
+    def open(self):
+        # connect to the 3 current sources.
+        try:
+            self._mag_x = serial.Serial(
+                self.x_port,
+                baudrate=115200,
+                bytesize=serial.EIGHTBITS,
+                parity=serial.PARITY_NONE,
+                stopbits=serial.STOPBITS_ONE,
+                timeout=1,
+            )
+            resp = self.query_command(self._mag_x, &#34;*IDN?\n&#34;)
+            if not resp:
+                raise RuntimeError(&#34;No response from power supply.&#34;)
+            logger.info(
+                &#34;Connected to power supply for x-axis coil: on port {}&#34;, self.x_port
+            )
+        except serial.serialutil.SerialException:
+            logger.exception(&#34;Error opening power supply for x-axis coil serial port.&#34;)
+            return (
+                False,
+                f&#34;Error opening power supply for x-axis coil serial port: {format_error_response()}&#34;,
+            )
+
+        try:
+            self._mag_y = serial.Serial(
+                self.y_port,
+                baudrate=115200,
+                bytesize=serial.EIGHTBITS,
+                parity=serial.PARITY_NONE,
+                stopbits=serial.STOPBITS_ONE,
+                timeout=1,
+            )
+            resp = self.query_command(self._mag_y, &#34;*IDN?\n&#34;)
+            if not resp:
+                raise RuntimeError(&#34;No response from power supply.&#34;)
+            logger.info(
+                &#34;Connected to power supply for y-axis coil: on port {}&#34;, self.y_port
+            )
+        except serial.serialutil.SerialException:
+            logger.exception(&#34;Error opening power supply for y-axis coil serial port.&#34;)
+            return (
+                False,
+                f&#34;Error opening power supply for y-axis coil serial port: {format_error_response()}&#34;,
+            )
+
+        try:
+            self._mag_z = serial.Serial(
+                self.z_port,
+                baudrate=115200,
+                bytesize=serial.EIGHTBITS,
+                parity=serial.PARITY_NONE,
+                stopbits=serial.STOPBITS_ONE,
+                timeout=1,
+            )
+            resp = self.query_command(self._mag_z, &#34;*IDN?\n&#34;)
+            if not resp:
+                raise RuntimeError(&#34;No response from power supply.&#34;)
+            logger.info(
+                &#34;Connected to power supply for z-axis coil: on port {}&#34;, self.z_port
+            )
+        except serial.serialutil.SerialException:
+            logger.exception(&#34;Error opening power supply for z-axis coil serial port.&#34;)
+            return (
+                False,
+                f&#34;Error opening power supply for z-axis coil serial port: {format_error_response()}&#34;,
+            )
+
+        self.initial_psu(self._mag_x, self._ixlim, self._vxlim)
+        self.initial_psu(self._mag_y, self._iylim, self._vylim)
+        self.initial_psu(self._mag_z, self._izlim, self._vzlim)
+
+    def is_connected(self) -&gt; bool:
+        # check if the serial ports are open
+        # return self._mag_x.is_open and self._mag_y.is_open and self._mag_z.is_open
+        return self._mag_z.is_open
+
+    def initial_psu(self, ser: SerialBase, ilim: int | float, vlim: int | float):
+        self.write_command(ser, &#34;OUTP 0\n&#34;)
+        self.i_prot_set(ser, ilim)
+        self.v_prot_set(ser, vlim)
+        self.write_command(ser, f&#34;CURR 0.00\n&#34;)  # set current to 0 A
+        self.write_command(ser, f&#34;VOLT {vlim:.3f}\n&#34;)  # force cc mode
+
+    def stop(self):
+        # Step power to 0 W via current then turn off, each PSU
+        self.output_off(self._mag_x, self._ixlim, self._ixrate)
+        self.output_off(self._mag_y, self._iylim, self._iyrate)
+        self.output_off(self._mag_z, self._izlim, self._izrate)
+
+    def close(self):
+        self.stop()
+        self._mag_x.close()
+        self._mag_y.close()
+        self._mag_z.close()
+
+    def output_on(self, ser: SerialBase, ilim: int | float, irate: int | float):
+        # set current to 0 A, then to previous value
+        if int(float(self.query_command(ser, &#34;OUTP?\n&#34;))):
+            logger.debug(&#34;HHC Magnet: Output already on&#34;)
+        else:
+            # i_prev = self.i_read(ser)
+            i_prev = float(self.query_command(ser, f&#34;SOUR:CURR?\n&#34;))
+            self.write_command(ser, f&#34;CURR 0.0\n&#34;)
+            self.write_command(ser, &#34;OUTP 1\n&#34;)
+            self.i_sweep(ser, ilim, i_prev, irate)
+
+    def output_off(self, ser: SerialBase, ilim: int | float, irate: int | float):
+        if int(float(self.query_command(ser, &#34;OUTP?\n&#34;))):
+            self.i_sweep(ser, ilim, 0, irate)
+            self.write_command(ser, &#34;OUTP 0\n&#34;)
+        else:
+            logger.debug(&#34;HHC Magnet: Output already off&#34;)
+
+    def i_sweep(
+        self, ser: SerialBase, ilim: int | float, iend: int | float, irate: int | float
+    ):
+        if abs(iend) &gt; ilim:
+            logger.debug(&#34;HHC Magnet: CURRENT VALUE IS TOO HIGH. DID NOT CHANGE VALUE!&#34;)
+            return
+
+        # If output is on, sweep current, else set current to iend
+        if int(float(self.query_command(ser, &#34;OUTP?\n&#34;))):
+            istart = float(self.query_command(ser, &#34;SOUR:CURR?\n&#34;))
+            num = int(np.ceil(abs(iend - istart) / self._istep))
+            vals = np.linspace(istart, iend, num + 1)[1:]
+            # added if to prevent repeated attempts to set to same value
+            # difference between set and actual value is often &gt; 0.001, so this fails
+            if abs(iend - istart) &gt; 0.001:
+                for val in vals:
+                    self.write_command(ser, f&#34;CURR {val:.3f}\n&#34;)
+                    time.sleep(max(self._istep / irate - self.cmd_wait, 0.001))
+
+                time.sleep(0.1)
+                # If the current is not set to the desired value, set it to the desired value
+                count = 0
+                inew = iend
+                while abs(iend - self.i_read(ser) &gt; 0.001) &amp; (count &lt; 10):
+                    count += 1
+                    if iend - self.i_read(ser) &gt; 0.001:
+                        inew = inew + 0.001
+                    elif self.i_read(ser) - iend &gt; 0.001:
+                        inew = inew - 0.001
+
+                    self.write_command(ser, f&#34;CURR {inew:.3f}\n&#34;)
+                    time.sleep(0.1)
+
+                if count == 10:
+                    logger.error(&#34;Failed to set current to desired value&#34;)
+        else:
+            self.write_command(ser, f&#34;CURR {iend:.3f}\n&#34;)
+
+    ###################################################################
+    # Get functions
+    ###################################################################
+    def i_read(self, ser: SerialBase):
+        return float(self.query_command(ser, &#34;MEAS:CURR?\n&#34;))
+
+    def v_read(self, ser: SerialBase):
+        return float(self.query_command(ser, &#34;MEAS:VOLT?\n&#34;))
+
+    @property
+    def ix(self):
+        # Query the current value of the x magnet
+        self._ix = self.i_read(self._mag_x)
+        return self._ix
+
+    @property
+    def iy(self):
+        # Query the current value of the y magnet
+        self._iy = self.i_read(self._mag_y)
+        return self._iy
+
+    @property
+    def iz(self):
+        # Query the current value of the z magnet
+        self._iz = self.i_read(self._mag_z)
+        return self._iz
+
+    @property
+    def vx(self):
+        # Query the voltage value of the x magnet
+        self._vx = self.v_read(self._mag_x)
+        return self._vx
+
+    @property
+    def vy(self):
+        # Query the voltage value of the y magnet
+        self._vy = self.v_read(self._mag_y)
+        return self._vy
+
+    @property
+    def vz(self):
+        # Query the voltage value of the z magnet
+        self._vz = self.v_read(self._mag_z)
+        return self._vz
+
+    # B field read last set values, can update by running update_params
+    @property
+    def bx(self):
+        self._bx = self._ix / self._ix2bx
+        return self._bx
+
+    @property
+    def by(self):
+        self._by = self._iy / self._iy2by
+        return self._by
+
+    @property
+    def bz(self):
+        self._bz = self._iz / self._iz2bz
+        return self._bz
+
+    @property
+    def ix_state(self):
+        self._ix_state = self.query_command(self._mag_x, &#34;OUTP?\n&#34;)
+        return self.ix_state
+
+    @property
+    def iy_state(self):
+        self._iy_state = self.query_command(self._mag_y, &#34;OUTP?\n&#34;)
+        return self._iy_state
+
+    @property
+    def iz_state(self):
+        self._iz_state = self.query_command(self._mag_z, &#34;OUTP?\n&#34;)
+        return self._iz_state
+
+    ###################################################################
+    # Set functions
+    ###################################################################
+    def i_prot_set(self, ser: SerialBase, ilim: float | int):
+        self.write_command(ser, f&#34;CURR:PROT {ilim:.3f}\n&#34;)
+        logger.debug(&#34;Setting current overprotection to {} A&#34;, ilim)
+
+    def v_prot_set(self, ser: SerialBase, vlim: float | int):
+        self.write_command(ser, f&#34;VOLT:PROT {vlim:.3f}\n&#34;)
+        logger.debug(&#34;Setting voltage overprotection to {} V&#34;, vlim)
+
+    @ix.setter  #### update logging
+    def ix(self, val: float | int):
+        # check if the requested current vaules are within the limits
+        if abs(val) &gt; self._ixlim:
+            print(&#34;Ix CURRENT VALUE IS TOO HIGH. DID NOT CHANGE VALUE&#34;)
+            return
+
+        self.i_sweep(self._mag_x, self._ixlim, abs(val), self._ixrate)
+        self._ix = float(self.query_command(self._mag_x, &#34;CURR?\n&#34;))
+
+    @iy.setter  #### update logging
+    def iy(self, val: float | int):
+        # check if the requested current vaules are within the limits
+        if abs(val) &gt; self._iylim:
+            print(&#34;Iy CURRENT VALUE IS TOO HIGH. DID NOT CHANGE VALUE&#34;)
+            return
+
+        self.i_sweep(self._mag_y, self._iylim, abs(val), self._iyrate)
+        self._iy = float(self.query_command(self._mag_y, &#34;CURR?\n&#34;))
+
+    @iz.setter  #### update logging
+    def iz(self, val: float | int):
+        # check if the requested current vaules are within the limits
+        if abs(val) &gt; self._izlim:
+            print(&#34;Iz CURRENT VALUE IS TOO HIGH. DID NOT CHANGE VALUE&#34;)
+            return
+
+        self.i_sweep(self._mag_z, self._izlim, abs(val), self._izrate)
+        self._iz = float(self.query_command(self._mag_z, &#34;CURR?\n&#34;))
+
+    @ix_state.setter
+    def ix_state(self, val: int):
+        if val:
+            self.output_on(self._mag_x, self._ixlim, self._ixrate)
+        else:
+            self.output_off(self._mag_x, self._ixlim, self._ixrate)
+
+    @iy_state.setter
+    def iy_state(self, val: int):
+        if val:
+            self.output_on(self._mag_y, self._iylim, self._iyrate)
+        else:
+            self.output_off(self._mag_y, self._iylim, self._iyrate)
+
+    @iz_state.setter
+    def iz_state(self, val: int):
+        if val:
+            self.output_on(self._mag_z, self._izlim, self._izrate)
+        else:
+            self.output_off(self._mag_z, self._izlim, self._izrate)
+
+    # Set current to achieve desired field, update _b
+    @bx.setter
+    def bx(self, val: float | int):
+        self.ix = abs(val) / self._ix2bx
+        self._bx = abs(val)
+
+    @by.setter
+    def by(self, val: float | int):
+        self.iy = abs(val) / self._iy2by
+        self._by = abs(val)
+
+    @bz.setter
+    def bz(self, val: float | int):
+        self.iz = abs(val) / self._iz2bz
+        self._bz = abs(val)
+
+    ##########################################
+    #      b spherical properties
+    ##########################################
+    @property
+    def b_sph(self):
+        # use previously determined bx, by, bz values,
+        # run magnet.update_params to update based on actual current values
+        self._bnorm, self._theta, self._phi = self.cart2sph(
+            self._bx, self._by, self._bz
+        )
+        return self._bnorm, self._theta, self._phi
+
+    @b_sph.setter
+    def b_sph(self, value):
+        try:
+            bnorm, theta, phi = value
+        except ValueError:
+            raise ValueError(&#34;Pass an iterable with B norm (G), theta (°), and phi (°)&#34;)
+        # b is in Gauss and assume degrees
+        # Set bx, by, bz
+        self.bx = bnorm * np.sin(np.deg2rad(theta)) * np.cos(np.deg2rad(phi))
+        self.by = bnorm * np.sin(np.deg2rad(theta)) * np.sin(np.deg2rad(phi))
+        self.bz = bnorm * np.cos(np.deg2rad(theta))
+
+    ###################################################################
+    # Utility functions
+    ###################################################################
+    def write_command(self, ser: SerialBase, command: str):
+        # this function is just to convert a string command into a byte command and
+        # write it to the serial port
+        ser.write(bytes(command, &#34;utf-8&#34;))
+        time.sleep(self.cmd_wait)
+
+    def query_command(self, ser: SerialBase, command: str) -&gt; str:
+        self.write_command(ser, command)
+        ##### ser.write(bytes(command, &#34;utf-8&#34;)) already done in write_command
+        time.sleep(1e-6)
+        return ser.readline().decode(&#34;utf-8&#34;)</code></pre>
+</details>
+<div class="desc"><p>Base class for all hardware devices in QScope.</p>
+<p>The Device class provides the foundation for hardware abstraction in QScope.
+Specific device implementations inherit from this class and implement the
+methods required by their intended roles.</p>
+<p>A device can fulfill multiple roles if it implements all required methods
+for those roles. The system validates role compatibility at runtime.</p>
+<h2 id="device-architecture">Device Architecture</h2>
+<p>Devices are part of QScope's hardware abstraction layer:</p>
+<ol>
+<li>Base Device Class (this class)</li>
+<li>Provides configuration validation</li>
+<li>Manages role assignments</li>
+<li>Handles connection state</li>
+<li>
+<p>Defines required methods</p>
+</li>
+<li>
+<p>Device Implementations</p>
+</li>
+<li>Inherit from Device</li>
+<li>Implement protocol methods for specific roles</li>
+<li>Provide hardware-specific functionality</li>
+<li>
+<p>Can implement multiple protocols</p>
+</li>
+<li>
+<p>System Integration</p>
+</li>
+<li>Devices are added to systems with specific roles</li>
+<li>System validates that devices implement required protocols</li>
+<li>Devices are accessed through role interfaces</li>
+</ol>
+<h2 id="required-methods">Required Methods</h2>
+<p>All device implementations must override these methods:</p>
+<ul>
+<li>open(): Connect to the hardware</li>
+<li>close(): Disconnect from the hardware</li>
+<li>is_connected(): Check connection status</li>
+</ul>
+<p>In addition, devices must implement all methods required by the
+protocols of the roles they intend to fulfill.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>required_config</code></strong> :&ensp;<code>dict[str, Type]</code></dt>
+<dd>Required configuration parameters and their types</dd>
+<dt><strong><code>_roles</code></strong> :&ensp;<code>Set[DeviceRole[Device]]</code></dt>
+<dd>Set of roles this device fulfills</dd>
+</dl>
+<h2 id="examples">Examples</h2>
+<p>Creating a new device implementation:</p>
+<pre><code class="language-python">class MyRFSource(Device):
+    required_config = {
+        &quot;visa_addr&quot;: str,
+        &quot;max_power&quot;: float
+    }
+
+    def __init__(self, **config_kwargs):
+        super().__init__(**config_kwargs)
+        self.connected = False
+
+    def open(self) -&gt; tuple[bool, str]:
+        # Implementation for connecting to hardware
+        self.connected = True
+        return True, &quot;Connected successfully&quot;
+
+    def close(self):
+        # Implementation for disconnecting
+        self.connected = False
+
+    def is_connected(self) -&gt; bool:
+        return self.connected
+
+    # Implement methods required by RFSourceProtocol
+    def set_freq(self, freq: float) -&gt; None:
+        # Implementation
+        pass
+
+    def set_power(self, power: float) -&gt; None:
+        # Implementation
+        pass
+</code></pre>
+<p>Using the device with a role:</p>
+<pre><code class="language-python"># Create device instance
+rf = MyRFSource(visa_addr=&quot;TCPIP0::192.168.1.1::INSTR&quot;, max_power=20.0)
+
+# Add to system with role
+system.add_device_with_role(rf, PRIMARY_RF)
+</code></pre>
+<h2 id="see-also">See Also</h2>
+<dl>
+<dt><code><a title="qscope.types.protocols" href="../../types/protocols.html">qscope.types.protocols</a></code></dt>
+<dd>Protocol definitions</dd>
+<dt><code><a title="qscope.types.roles" href="../../types/roles.html">qscope.types.roles</a></code></dt>
+<dd>Role definitions</dd>
+<dt><code><a title="qscope.types.interfaces" href="../../types/interfaces.html">qscope.types.interfaces</a></code></dt>
+<dd>Interface implementations</dd>
+<dt><code><a title="qscope.system" href="../../system/index.html">qscope.system</a></code></dt>
+<dd>System implementation</dd>
+</dl></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.device.magnet.magnet.Magnet" href="magnet.html#qscope.device.magnet.magnet.Magnet">Magnet</a></li>
+<li><a title="qscope.device.device.Device" href="../device.html#qscope.device.device.Device">Device</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="qscope.device.magnet.HHC.HHC.istep"><code class="name">var <span class="ident">istep</span> : float | int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.magnet.HHC.HHC.x_port"><code class="name">var <span class="ident">x_port</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.magnet.HHC.HHC.y_port"><code class="name">var <span class="ident">y_port</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.magnet.HHC.HHC.z_port"><code class="name">var <span class="ident">z_port</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="qscope.device.magnet.HHC.HHC.b_sph"><code class="name">prop <span class="ident">b_sph</span></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def b_sph(self):
+    # use previously determined bx, by, bz values,
+    # run magnet.update_params to update based on actual current values
+    self._bnorm, self._theta, self._phi = self.cart2sph(
+        self._bx, self._by, self._bz
+    )
+    return self._bnorm, self._theta, self._phi</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.magnet.HHC.HHC.bx"><code class="name">prop <span class="ident">bx</span></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def bx(self):
+    self._bx = self._ix / self._ix2bx
+    return self._bx</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.magnet.HHC.HHC.by"><code class="name">prop <span class="ident">by</span></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def by(self):
+    self._by = self._iy / self._iy2by
+    return self._by</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.magnet.HHC.HHC.bz"><code class="name">prop <span class="ident">bz</span></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def bz(self):
+    self._bz = self._iz / self._iz2bz
+    return self._bz</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.magnet.HHC.HHC.ix"><code class="name">prop <span class="ident">ix</span></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def ix(self):
+    # Query the current value of the x magnet
+    self._ix = self.i_read(self._mag_x)
+    return self._ix</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.magnet.HHC.HHC.ix2bx"><code class="name">prop <span class="ident">ix2bx</span></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def ix2bx(self):
+    return self._ix2bx</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.magnet.HHC.HHC.ix_state"><code class="name">prop <span class="ident">ix_state</span></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def ix_state(self):
+    self._ix_state = self.query_command(self._mag_x, &#34;OUTP?\n&#34;)
+    return self.ix_state</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.magnet.HHC.HHC.ixlim"><code class="name">prop <span class="ident">ixlim</span></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def ixlim(self):
+    return self._ixlim</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.magnet.HHC.HHC.ixrate"><code class="name">prop <span class="ident">ixrate</span></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def ixrate(self):
+    return self._ixrate</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.magnet.HHC.HHC.iy"><code class="name">prop <span class="ident">iy</span></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def iy(self):
+    # Query the current value of the y magnet
+    self._iy = self.i_read(self._mag_y)
+    return self._iy</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.magnet.HHC.HHC.iy2by"><code class="name">prop <span class="ident">iy2by</span></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def iy2by(self):
+    return self._iy2by</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.magnet.HHC.HHC.iy_state"><code class="name">prop <span class="ident">iy_state</span></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def iy_state(self):
+    self._iy_state = self.query_command(self._mag_y, &#34;OUTP?\n&#34;)
+    return self._iy_state</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.magnet.HHC.HHC.iylim"><code class="name">prop <span class="ident">iylim</span></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def iylim(self):
+    return self._iylim</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.magnet.HHC.HHC.iyrate"><code class="name">prop <span class="ident">iyrate</span></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def iyrate(self):
+    return self._iyrate</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.magnet.HHC.HHC.iz"><code class="name">prop <span class="ident">iz</span></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def iz(self):
+    # Query the current value of the z magnet
+    self._iz = self.i_read(self._mag_z)
+    return self._iz</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.magnet.HHC.HHC.iz2bz"><code class="name">prop <span class="ident">iz2bz</span></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def iz2bz(self):
+    return self._iz2bz</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.magnet.HHC.HHC.iz_state"><code class="name">prop <span class="ident">iz_state</span></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def iz_state(self):
+    self._iz_state = self.query_command(self._mag_z, &#34;OUTP?\n&#34;)
+    return self._iz_state</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.magnet.HHC.HHC.izlim"><code class="name">prop <span class="ident">izlim</span></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def izlim(self):
+    return self._izlim</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.magnet.HHC.HHC.izrate"><code class="name">prop <span class="ident">izrate</span></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def izrate(self):
+    return self._izrate</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.magnet.HHC.HHC.vx"><code class="name">prop <span class="ident">vx</span></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def vx(self):
+    # Query the voltage value of the x magnet
+    self._vx = self.v_read(self._mag_x)
+    return self._vx</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.magnet.HHC.HHC.vxlim"><code class="name">prop <span class="ident">vxlim</span></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def vxlim(self):
+    return self._vxlim</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.magnet.HHC.HHC.vy"><code class="name">prop <span class="ident">vy</span></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def vy(self):
+    # Query the voltage value of the y magnet
+    self._vy = self.v_read(self._mag_y)
+    return self._vy</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.magnet.HHC.HHC.vylim"><code class="name">prop <span class="ident">vylim</span></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def vylim(self):
+    return self._vylim</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.magnet.HHC.HHC.vz"><code class="name">prop <span class="ident">vz</span></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def vz(self):
+    # Query the voltage value of the z magnet
+    self._vz = self.v_read(self._mag_z)
+    return self._vz</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.magnet.HHC.HHC.vzlim"><code class="name">prop <span class="ident">vzlim</span></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def vzlim(self):
+    return self._vzlim</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.device.magnet.HHC.HHC.close"><code class="name flex">
+<span>def <span class="ident">close</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def close(self):
+    self.stop()
+    self._mag_x.close()
+    self._mag_y.close()
+    self._mag_z.close()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.magnet.HHC.HHC.i_prot_set"><code class="name flex">
+<span>def <span class="ident">i_prot_set</span></span>(<span>self, ser: serial.serialutil.SerialBase, ilim: float | int)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def i_prot_set(self, ser: SerialBase, ilim: float | int):
+    self.write_command(ser, f&#34;CURR:PROT {ilim:.3f}\n&#34;)
+    logger.debug(&#34;Setting current overprotection to {} A&#34;, ilim)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.magnet.HHC.HHC.i_read"><code class="name flex">
+<span>def <span class="ident">i_read</span></span>(<span>self, ser: serial.serialutil.SerialBase)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def i_read(self, ser: SerialBase):
+    return float(self.query_command(ser, &#34;MEAS:CURR?\n&#34;))</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.magnet.HHC.HHC.i_sweep"><code class="name flex">
+<span>def <span class="ident">i_sweep</span></span>(<span>self,<br>ser: serial.serialutil.SerialBase,<br>ilim: float | int,<br>iend: float | int,<br>irate: float | int)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def i_sweep(
+    self, ser: SerialBase, ilim: int | float, iend: int | float, irate: int | float
+):
+    if abs(iend) &gt; ilim:
+        logger.debug(&#34;HHC Magnet: CURRENT VALUE IS TOO HIGH. DID NOT CHANGE VALUE!&#34;)
+        return
+
+    # If output is on, sweep current, else set current to iend
+    if int(float(self.query_command(ser, &#34;OUTP?\n&#34;))):
+        istart = float(self.query_command(ser, &#34;SOUR:CURR?\n&#34;))
+        num = int(np.ceil(abs(iend - istart) / self._istep))
+        vals = np.linspace(istart, iend, num + 1)[1:]
+        # added if to prevent repeated attempts to set to same value
+        # difference between set and actual value is often &gt; 0.001, so this fails
+        if abs(iend - istart) &gt; 0.001:
+            for val in vals:
+                self.write_command(ser, f&#34;CURR {val:.3f}\n&#34;)
+                time.sleep(max(self._istep / irate - self.cmd_wait, 0.001))
+
+            time.sleep(0.1)
+            # If the current is not set to the desired value, set it to the desired value
+            count = 0
+            inew = iend
+            while abs(iend - self.i_read(ser) &gt; 0.001) &amp; (count &lt; 10):
+                count += 1
+                if iend - self.i_read(ser) &gt; 0.001:
+                    inew = inew + 0.001
+                elif self.i_read(ser) - iend &gt; 0.001:
+                    inew = inew - 0.001
+
+                self.write_command(ser, f&#34;CURR {inew:.3f}\n&#34;)
+                time.sleep(0.1)
+
+            if count == 10:
+                logger.error(&#34;Failed to set current to desired value&#34;)
+    else:
+        self.write_command(ser, f&#34;CURR {iend:.3f}\n&#34;)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.magnet.HHC.HHC.initial_psu"><code class="name flex">
+<span>def <span class="ident">initial_psu</span></span>(<span>self, ser: serial.serialutil.SerialBase, ilim: float | int, vlim: float | int)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def initial_psu(self, ser: SerialBase, ilim: int | float, vlim: int | float):
+    self.write_command(ser, &#34;OUTP 0\n&#34;)
+    self.i_prot_set(ser, ilim)
+    self.v_prot_set(ser, vlim)
+    self.write_command(ser, f&#34;CURR 0.00\n&#34;)  # set current to 0 A
+    self.write_command(ser, f&#34;VOLT {vlim:.3f}\n&#34;)  # force cc mode</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.magnet.HHC.HHC.is_connected"><code class="name flex">
+<span>def <span class="ident">is_connected</span></span>(<span>self) ‑> bool</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def is_connected(self) -&gt; bool:
+    # check if the serial ports are open
+    # return self._mag_x.is_open and self._mag_y.is_open and self._mag_z.is_open
+    return self._mag_z.is_open</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.magnet.HHC.HHC.open"><code class="name flex">
+<span>def <span class="ident">open</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def open(self):
+    # connect to the 3 current sources.
+    try:
+        self._mag_x = serial.Serial(
+            self.x_port,
+            baudrate=115200,
+            bytesize=serial.EIGHTBITS,
+            parity=serial.PARITY_NONE,
+            stopbits=serial.STOPBITS_ONE,
+            timeout=1,
+        )
+        resp = self.query_command(self._mag_x, &#34;*IDN?\n&#34;)
+        if not resp:
+            raise RuntimeError(&#34;No response from power supply.&#34;)
+        logger.info(
+            &#34;Connected to power supply for x-axis coil: on port {}&#34;, self.x_port
+        )
+    except serial.serialutil.SerialException:
+        logger.exception(&#34;Error opening power supply for x-axis coil serial port.&#34;)
+        return (
+            False,
+            f&#34;Error opening power supply for x-axis coil serial port: {format_error_response()}&#34;,
+        )
+
+    try:
+        self._mag_y = serial.Serial(
+            self.y_port,
+            baudrate=115200,
+            bytesize=serial.EIGHTBITS,
+            parity=serial.PARITY_NONE,
+            stopbits=serial.STOPBITS_ONE,
+            timeout=1,
+        )
+        resp = self.query_command(self._mag_y, &#34;*IDN?\n&#34;)
+        if not resp:
+            raise RuntimeError(&#34;No response from power supply.&#34;)
+        logger.info(
+            &#34;Connected to power supply for y-axis coil: on port {}&#34;, self.y_port
+        )
+    except serial.serialutil.SerialException:
+        logger.exception(&#34;Error opening power supply for y-axis coil serial port.&#34;)
+        return (
+            False,
+            f&#34;Error opening power supply for y-axis coil serial port: {format_error_response()}&#34;,
+        )
+
+    try:
+        self._mag_z = serial.Serial(
+            self.z_port,
+            baudrate=115200,
+            bytesize=serial.EIGHTBITS,
+            parity=serial.PARITY_NONE,
+            stopbits=serial.STOPBITS_ONE,
+            timeout=1,
+        )
+        resp = self.query_command(self._mag_z, &#34;*IDN?\n&#34;)
+        if not resp:
+            raise RuntimeError(&#34;No response from power supply.&#34;)
+        logger.info(
+            &#34;Connected to power supply for z-axis coil: on port {}&#34;, self.z_port
+        )
+    except serial.serialutil.SerialException:
+        logger.exception(&#34;Error opening power supply for z-axis coil serial port.&#34;)
+        return (
+            False,
+            f&#34;Error opening power supply for z-axis coil serial port: {format_error_response()}&#34;,
+        )
+
+    self.initial_psu(self._mag_x, self._ixlim, self._vxlim)
+    self.initial_psu(self._mag_y, self._iylim, self._vylim)
+    self.initial_psu(self._mag_z, self._izlim, self._vzlim)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.magnet.HHC.HHC.output_off"><code class="name flex">
+<span>def <span class="ident">output_off</span></span>(<span>self, ser: serial.serialutil.SerialBase, ilim: float | int, irate: float | int)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def output_off(self, ser: SerialBase, ilim: int | float, irate: int | float):
+    if int(float(self.query_command(ser, &#34;OUTP?\n&#34;))):
+        self.i_sweep(ser, ilim, 0, irate)
+        self.write_command(ser, &#34;OUTP 0\n&#34;)
+    else:
+        logger.debug(&#34;HHC Magnet: Output already off&#34;)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.magnet.HHC.HHC.output_on"><code class="name flex">
+<span>def <span class="ident">output_on</span></span>(<span>self, ser: serial.serialutil.SerialBase, ilim: float | int, irate: float | int)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def output_on(self, ser: SerialBase, ilim: int | float, irate: int | float):
+    # set current to 0 A, then to previous value
+    if int(float(self.query_command(ser, &#34;OUTP?\n&#34;))):
+        logger.debug(&#34;HHC Magnet: Output already on&#34;)
+    else:
+        # i_prev = self.i_read(ser)
+        i_prev = float(self.query_command(ser, f&#34;SOUR:CURR?\n&#34;))
+        self.write_command(ser, f&#34;CURR 0.0\n&#34;)
+        self.write_command(ser, &#34;OUTP 1\n&#34;)
+        self.i_sweep(ser, ilim, i_prev, irate)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.magnet.HHC.HHC.query_command"><code class="name flex">
+<span>def <span class="ident">query_command</span></span>(<span>self, ser: serial.serialutil.SerialBase, command: str) ‑> str</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def query_command(self, ser: SerialBase, command: str) -&gt; str:
+    self.write_command(ser, command)
+    ##### ser.write(bytes(command, &#34;utf-8&#34;)) already done in write_command
+    time.sleep(1e-6)
+    return ser.readline().decode(&#34;utf-8&#34;)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.magnet.HHC.HHC.stop"><code class="name flex">
+<span>def <span class="ident">stop</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def stop(self):
+    # Step power to 0 W via current then turn off, each PSU
+    self.output_off(self._mag_x, self._ixlim, self._ixrate)
+    self.output_off(self._mag_y, self._iylim, self._iyrate)
+    self.output_off(self._mag_z, self._izlim, self._izrate)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.magnet.HHC.HHC.v_prot_set"><code class="name flex">
+<span>def <span class="ident">v_prot_set</span></span>(<span>self, ser: serial.serialutil.SerialBase, vlim: float | int)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def v_prot_set(self, ser: SerialBase, vlim: float | int):
+    self.write_command(ser, f&#34;VOLT:PROT {vlim:.3f}\n&#34;)
+    logger.debug(&#34;Setting voltage overprotection to {} V&#34;, vlim)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.magnet.HHC.HHC.v_read"><code class="name flex">
+<span>def <span class="ident">v_read</span></span>(<span>self, ser: serial.serialutil.SerialBase)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def v_read(self, ser: SerialBase):
+    return float(self.query_command(ser, &#34;MEAS:VOLT?\n&#34;))</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.magnet.HHC.HHC.write_command"><code class="name flex">
+<span>def <span class="ident">write_command</span></span>(<span>self, ser: serial.serialutil.SerialBase, command: str)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def write_command(self, ser: SerialBase, command: str):
+    # this function is just to convert a string command into a byte command and
+    # write it to the serial port
+    ser.write(bytes(command, &#34;utf-8&#34;))
+    time.sleep(self.cmd_wait)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="qscope.device.magnet.magnet.Magnet" href="magnet.html#qscope.device.magnet.magnet.Magnet">Magnet</a></b></code>:
+<ul class="hlist">
+<li><code><a title="qscope.device.magnet.magnet.Magnet.get_all_attrs" href="../device.html#qscope.device.device.Device.get_all_attrs">get_all_attrs</a></code></li>
+<li><code><a title="qscope.device.magnet.magnet.Magnet.get_roles" href="../device.html#qscope.device.device.Device.get_roles">get_roles</a></code></li>
+<li><code><a title="qscope.device.magnet.magnet.Magnet.has_role" href="../device.html#qscope.device.device.Device.has_role">has_role</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<form>
+<input id="lunr-search" name="q" placeholder="🔎 Search ..." aria-label="Search"
+disabled minlength="2">
+</form>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.css" integrity="sha512-b+T2i3P45i1LZM7I00Ci5QquB9szqaxu+uuk5TUSGjZQ4w4n+qujQiIuvTv2BxE7WCGQCifNMksyKILDiHzsOg==" crossorigin>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.js" integrity="sha512-2B9/byNV1KKRm5nQ2RLViPFD6U4dUjDGwuW1GU+ImJh8YinPU9Zlq1GzdTMO+G2ROrB5o1qasJBy1ttYz0wCug==" crossorigin></script>
+<style>
+.modal-dialog iframe {
+width: 100vw;
+height: calc(100vh - 80px);
+}
+@media screen and (min-width: 700px) {
+.modal-dialog iframe {
+width: 70vw;
+height: 80vh;
+}
+}
+.modal-dialog .tingle-modal-box {width: auto;}
+.modal-dialog .tingle-modal-box__content {padding: 0;}
+</style>
+<script>
+const input = document.getElementById('lunr-search');
+input.disabled = false;
+input.form.addEventListener('submit', (ev) => {
+ev.preventDefault();
+const url = new URL(window.location);
+url.searchParams.set('q', input.value);
+history.replaceState({}, null, url.toString());
+search(input.value);
+});
+const query = new URL(window.location).searchParams.get('q');
+if (query)
+search(query);
+function search(query) {
+const url = '../../../doc-search.html#' + encodeURIComponent(query);
+new tingle.modal({
+cssClass: ['modal-dialog'],
+onClose: () => {
+const url = new URL(window.location);
+url.searchParams.delete('q');
+history.replaceState({}, null, url.toString());
+setTimeout(() => input.focus(), 100);
+}
+}).setContent('<iframe src="' + url + '"></iframe>').open();
+}
+</script>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="qscope.device.magnet" href="index.html">qscope.device.magnet</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="qscope.device.magnet.HHC.HHC" href="#qscope.device.magnet.HHC.HHC">HHC</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.device.magnet.HHC.HHC.b_sph" href="#qscope.device.magnet.HHC.HHC.b_sph">b_sph</a></code></li>
+<li><code><a title="qscope.device.magnet.HHC.HHC.bx" href="#qscope.device.magnet.HHC.HHC.bx">bx</a></code></li>
+<li><code><a title="qscope.device.magnet.HHC.HHC.by" href="#qscope.device.magnet.HHC.HHC.by">by</a></code></li>
+<li><code><a title="qscope.device.magnet.HHC.HHC.bz" href="#qscope.device.magnet.HHC.HHC.bz">bz</a></code></li>
+<li><code><a title="qscope.device.magnet.HHC.HHC.close" href="#qscope.device.magnet.HHC.HHC.close">close</a></code></li>
+<li><code><a title="qscope.device.magnet.HHC.HHC.i_prot_set" href="#qscope.device.magnet.HHC.HHC.i_prot_set">i_prot_set</a></code></li>
+<li><code><a title="qscope.device.magnet.HHC.HHC.i_read" href="#qscope.device.magnet.HHC.HHC.i_read">i_read</a></code></li>
+<li><code><a title="qscope.device.magnet.HHC.HHC.i_sweep" href="#qscope.device.magnet.HHC.HHC.i_sweep">i_sweep</a></code></li>
+<li><code><a title="qscope.device.magnet.HHC.HHC.initial_psu" href="#qscope.device.magnet.HHC.HHC.initial_psu">initial_psu</a></code></li>
+<li><code><a title="qscope.device.magnet.HHC.HHC.is_connected" href="#qscope.device.magnet.HHC.HHC.is_connected">is_connected</a></code></li>
+<li><code><a title="qscope.device.magnet.HHC.HHC.istep" href="#qscope.device.magnet.HHC.HHC.istep">istep</a></code></li>
+<li><code><a title="qscope.device.magnet.HHC.HHC.ix" href="#qscope.device.magnet.HHC.HHC.ix">ix</a></code></li>
+<li><code><a title="qscope.device.magnet.HHC.HHC.ix2bx" href="#qscope.device.magnet.HHC.HHC.ix2bx">ix2bx</a></code></li>
+<li><code><a title="qscope.device.magnet.HHC.HHC.ix_state" href="#qscope.device.magnet.HHC.HHC.ix_state">ix_state</a></code></li>
+<li><code><a title="qscope.device.magnet.HHC.HHC.ixlim" href="#qscope.device.magnet.HHC.HHC.ixlim">ixlim</a></code></li>
+<li><code><a title="qscope.device.magnet.HHC.HHC.ixrate" href="#qscope.device.magnet.HHC.HHC.ixrate">ixrate</a></code></li>
+<li><code><a title="qscope.device.magnet.HHC.HHC.iy" href="#qscope.device.magnet.HHC.HHC.iy">iy</a></code></li>
+<li><code><a title="qscope.device.magnet.HHC.HHC.iy2by" href="#qscope.device.magnet.HHC.HHC.iy2by">iy2by</a></code></li>
+<li><code><a title="qscope.device.magnet.HHC.HHC.iy_state" href="#qscope.device.magnet.HHC.HHC.iy_state">iy_state</a></code></li>
+<li><code><a title="qscope.device.magnet.HHC.HHC.iylim" href="#qscope.device.magnet.HHC.HHC.iylim">iylim</a></code></li>
+<li><code><a title="qscope.device.magnet.HHC.HHC.iyrate" href="#qscope.device.magnet.HHC.HHC.iyrate">iyrate</a></code></li>
+<li><code><a title="qscope.device.magnet.HHC.HHC.iz" href="#qscope.device.magnet.HHC.HHC.iz">iz</a></code></li>
+<li><code><a title="qscope.device.magnet.HHC.HHC.iz2bz" href="#qscope.device.magnet.HHC.HHC.iz2bz">iz2bz</a></code></li>
+<li><code><a title="qscope.device.magnet.HHC.HHC.iz_state" href="#qscope.device.magnet.HHC.HHC.iz_state">iz_state</a></code></li>
+<li><code><a title="qscope.device.magnet.HHC.HHC.izlim" href="#qscope.device.magnet.HHC.HHC.izlim">izlim</a></code></li>
+<li><code><a title="qscope.device.magnet.HHC.HHC.izrate" href="#qscope.device.magnet.HHC.HHC.izrate">izrate</a></code></li>
+<li><code><a title="qscope.device.magnet.HHC.HHC.open" href="#qscope.device.magnet.HHC.HHC.open">open</a></code></li>
+<li><code><a title="qscope.device.magnet.HHC.HHC.output_off" href="#qscope.device.magnet.HHC.HHC.output_off">output_off</a></code></li>
+<li><code><a title="qscope.device.magnet.HHC.HHC.output_on" href="#qscope.device.magnet.HHC.HHC.output_on">output_on</a></code></li>
+<li><code><a title="qscope.device.magnet.HHC.HHC.query_command" href="#qscope.device.magnet.HHC.HHC.query_command">query_command</a></code></li>
+<li><code><a title="qscope.device.magnet.HHC.HHC.stop" href="#qscope.device.magnet.HHC.HHC.stop">stop</a></code></li>
+<li><code><a title="qscope.device.magnet.HHC.HHC.v_prot_set" href="#qscope.device.magnet.HHC.HHC.v_prot_set">v_prot_set</a></code></li>
+<li><code><a title="qscope.device.magnet.HHC.HHC.v_read" href="#qscope.device.magnet.HHC.HHC.v_read">v_read</a></code></li>
+<li><code><a title="qscope.device.magnet.HHC.HHC.vx" href="#qscope.device.magnet.HHC.HHC.vx">vx</a></code></li>
+<li><code><a title="qscope.device.magnet.HHC.HHC.vxlim" href="#qscope.device.magnet.HHC.HHC.vxlim">vxlim</a></code></li>
+<li><code><a title="qscope.device.magnet.HHC.HHC.vy" href="#qscope.device.magnet.HHC.HHC.vy">vy</a></code></li>
+<li><code><a title="qscope.device.magnet.HHC.HHC.vylim" href="#qscope.device.magnet.HHC.HHC.vylim">vylim</a></code></li>
+<li><code><a title="qscope.device.magnet.HHC.HHC.vz" href="#qscope.device.magnet.HHC.HHC.vz">vz</a></code></li>
+<li><code><a title="qscope.device.magnet.HHC.HHC.vzlim" href="#qscope.device.magnet.HHC.HHC.vzlim">vzlim</a></code></li>
+<li><code><a title="qscope.device.magnet.HHC.HHC.write_command" href="#qscope.device.magnet.HHC.HHC.write_command">write_command</a></code></li>
+<li><code><a title="qscope.device.magnet.HHC.HHC.x_port" href="#qscope.device.magnet.HHC.HHC.x_port">x_port</a></code></li>
+<li><code><a title="qscope.device.magnet.HHC.HHC.y_port" href="#qscope.device.magnet.HHC.HHC.y_port">y_port</a></code></li>
+<li><code><a title="qscope.device.magnet.HHC.HHC.z_port" href="#qscope.device.magnet.HHC.HHC.z_port">z_port</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
+</footer>
+</body>
+</html>

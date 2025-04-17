@@ -1,0 +1,2127 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.6">
+<title>qscope.device.picoscope.picoscope API documentation</title>
+<meta name="description" content="">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}#lunr-search{width:100%;font-size:1em;padding:6px 9px 5px 9px;border:1px solid silver}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes: true } });</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML" integrity="sha256-kZafAc6mZvK3W3v1pHOcUix30OHQN6pU/NO2oFkqZVw=" crossorigin></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>qscope.device.picoscope.picoscope</code></h1>
+</header>
+<section id="section-intro">
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="qscope.device.picoscope.picoscope.PicoSDKImportError"><code class="flex name class">
+<span>class <span class="ident">PicoSDKImportError</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class PicoSDKImportError(Exception):
+    &#34;&#34;&#34;Raised when required device libraries cannot be imported.&#34;&#34;&#34;
+    pass</code></pre>
+</details>
+<div class="desc"><p>Raised when required device libraries cannot be imported.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
+</ul>
+</dd>
+<dt id="qscope.device.picoscope.picoscope.Picoscope"><code class="flex name class">
+<span>class <span class="ident">Picoscope</span></span>
+<span>(</span><span>**config_kwargs)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Picoscope(Device):
+    # Subclasses must define their voltage ranges
+    VOLTAGE_RANGES: Dict[float, str] = {}
+    &#34;&#34;&#34;Base class for Picoscope digitizers.
+    
+    Handles common functionality across all Picoscope models.
+    Specific models should inherit from this and implement model-specific details.
+    
+    Attributes:
+        _chandle: Handle to the device
+        _ps: Reference to the picosdk module for this device
+        _status: Dict tracking device status codes
+        _sample_interval: Sampling interval in seconds
+        _resolution: ADC resolution in bits
+        _channel_range: Voltage range setting
+    &#34;&#34;&#34;
+
+    def __init__(self, **config_kwargs):
+        super().__init__(**config_kwargs)
+        self._chandle: Optional[ctypes.c_int16] = None
+        self._status: Dict[str, Any] = {}
+
+        # Configuration parameters
+        self._sample_interval_s: Optional[float] = None  # seconds
+        self._resolution: Optional[int] = None  # bits
+        self._channel_range: Optional[str] = None
+        self._is_streaming: bool = False
+
+        # Buffer management
+        self._buffers: Dict[int, np.ndarray] = {}  # One buffer per channel
+        self._buffer_max: Dict[int, np.ndarray] = {}  # Current segment buffer
+        self._buffer_complete: Dict[int, np.ndarray] = {}  # Complete capture buffer
+        self._samples_collected: int = 0
+        self._buffer_size: int = 0
+        self._enabled_channels: List[int] = []
+        self._channel_ranges: Dict[int, str] = {}
+        self._downsampling_ratio = 1
+
+        if not hasattr(self, &#34;_downsampling_mode&#34;):
+            raise ValueError(&#34;Downsampling mode not set in subclass.&#34;)
+        if not hasattr(self, &#34;_ps&#34;):
+            raise ValueError(&#34;Picosdk module not set in subclass.&#34;)
+
+    # required methods
+    @abstractmethod
+    def open(self) -&gt; None:
+        raise NotImplementedError
+
+    @abstractmethod
+    def _set_channel(self, channel_id: int, enabled: bool, coupling: int, range_id: int,
+                     offset: float) -&gt; None:
+        raise NotImplementedError
+
+    @abstractmethod
+    def _get_channel_range(self, channel: int) -&gt; str:
+        raise NotImplementedError
+
+    @abstractmethod
+    def _read_max_value(self):
+        raise NotImplementedError
+
+    @abstractmethod
+    def _set_simple_trigger(self, ch: int, threshold: int, direction: str, delay: float,
+                            autotrigger: float):
+        raise NotImplementedError
+
+    @abstractmethod
+    def _stop(self):
+        raise NotImplementedError
+
+    @abstractmethod
+    def _run_streaming(self, sample_interval_s: float, buffer_size: int, num_buffers: int,
+                       trigger_enabled: bool = False,
+                       ):
+        raise NotImplementedError
+
+    @abstractmethod
+    def _get_info(self):
+        raise NotImplementedError
+
+    @staticmethod
+    def assert_ok(status):
+        &#34;&#34;&#34;Check if a PicoScope status code indicates success.
+        
+        Parameters
+        ----------
+        status : int
+            Status code to check
+            
+        Raises
+        ------
+        RuntimeError
+            If status indicates an error
+        &#34;&#34;&#34;
+        assert_pico_ok(status)
+
+    def set_sample_interval(self, interval: float) -&gt; None:
+        &#34;&#34;&#34;Set sampling interval in seconds.
+
+        Parameters
+        ----------
+        interval : float
+            Sampling interval in seconds
+        &#34;&#34;&#34;
+        self._sample_interval_s = interval
+
+    def set_resolution(self, resolution: int) -&gt; None:
+        &#34;&#34;&#34;Set ADC resolution in bits.
+
+        Parameters
+        ----------
+        resolution : int
+            Resolution in bits (typically 8, 12, 14, 15, or 16)
+        &#34;&#34;&#34;
+        if resolution not in {8, 12, 14, 15, 16}:
+            raise ValueError(
+                f&#34;Invalid resolution: {resolution}. Must be one of: 8, 12, 14, 15, 16&#34;
+            )
+        self._resolution = resolution
+
+
+    def _adc_to_v(self, buffer: np.ndarray, channel: int) -&gt; np.ndarray:
+        &#34;&#34;&#34;Convert ADC counts to volts for a given channel.
+
+        Parameters
+        ----------
+        buffer : np.ndarray
+            Buffer containing ADC counts
+        channel : int
+            Channel number
+
+        Returns
+        -------
+        np.ndarray
+            Buffer converted to volts
+        &#34;&#34;&#34;
+        _, _, maxADC = self._read_max_value()
+
+        # Get the voltage range for this channel
+        try:
+            range_str = self._channel_ranges[channel]
+        except KeyError:
+            raise ValueError(f&#34;Channel {channel} not configured, does not have range.&#34;)
+        channel_range = self._get_channel_range(channel)
+        logger.trace(&#34;Converting channel {} data using range {}&#34;, channel, range_str)
+
+        # Convert to float array first
+        buffer = buffer.astype(np.float64)
+
+        # Mark overflow data as NaN
+        buffer[buffer == -32768] = np.nan
+
+        # adc2mV returns millivolts, convert to volts by dividing by 1000
+        return np.array(adc2mV(buffer, channel_range, maxADC)) / 1000.0
+
+    def close(self) -&gt; None:
+        &#34;&#34;&#34;Clean shutdown of picoscope.&#34;&#34;&#34;
+        if self._chandle and self._ps:
+            if self._is_streaming:
+                logger.trace(&#34;Stopping streaming before close&#34;)
+                self._stop()
+            logger.info(&#34;Closing Picoscope device&#34;)
+            self._ps._CloseUnit(self._chandle)
+            self._chandle = None
+            # Clean up buffers and configuration
+            self._buffers.clear()
+            self._enabled_channels.clear()
+            self._channel_ranges.clear()
+            self._status.clear()
+
+    def configure_channels(
+        self,
+        channels: List[int],
+        ranges: List[Union[float, str]],
+        coupling: Optional[List[str]] = None,
+    ) -&gt; None:
+        &#34;&#34;&#34;Configure input channels.&#34;&#34;&#34;
+        if coupling is None:
+            coupling = [&#34;DC&#34;] * len(channels)
+
+        if not (len(channels) == len(ranges) == len(coupling)):
+            raise ValueError(
+                &#34;channels, ranges, and coupling lists must have same length&#34;
+            )
+
+        # Clear previous configuration
+        self._enabled_channels = []
+        self._channel_ranges.clear()
+
+        for ch, ch_range, cp in zip(channels, ranges, coupling):
+            # Get range string
+            range_str = (
+                self.VOLTAGE_RANGES[ch_range]
+                if isinstance(ch_range, float)
+                else ch_range
+            )
+            if isinstance(ch_range, float) and ch_range not in self.VOLTAGE_RANGES:
+                raise ValueError(
+                    f&#34;Invalid voltage range: {ch_range}V. &#34;
+                    f&#34;Valid ranges: {sorted(self.VOLTAGE_RANGES.keys())}V&#34;
+                )
+
+            status = self._set_channel(
+                ch,
+                True,  # enabled
+                cp,
+                range_str,
+                0.0,  # analog offset
+            )
+            self.assert_ok(status)
+
+            # Store configuration
+            self._enabled_channels.append(ch)
+            self._channel_ranges[ch] = range_str
+
+
+    def start_streaming(
+        self,
+        sample_interval_s: float,
+        buffer_size: int,
+        num_buffers: Optional[int] = None,
+        trigger_enabled: bool = False,
+        trigger_channel: Optional[int] = None,
+        trigger_threshold: Optional[float] = None,
+        trigger_direction: str = &#34;RISING&#34;,
+        trigger_delay: float = 0.0,
+    ) -&gt; None:
+        &#34;&#34;&#34;Start streaming data acquisition.&#34;&#34;&#34;
+        min_interval = 1e-6  # 1 μs minimum
+        if sample_interval_s &lt; min_interval:
+            raise ValueError(f&#34;Sample interval must be &gt;= {min_interval} seconds&#34;)
+
+        logger.trace(
+            &#34;Starting streaming capture with interval={}, buffer_size={}, num_buffers={}&#34;,
+            sample_interval_s,
+            buffer_size,
+            num_buffers,
+        )
+        self._buffer_size = buffer_size
+        self._num_buffers = num_buffers
+        self._next_sample = 0
+        self._auto_stop_outer = False
+        self._was_called_back = False
+        self._sample_interval_s = sample_interval_s
+
+        if not self._enabled_channels:
+            logger.warning(
+                &#34;No channels configured before streaming. Using default channels [0, 1]&#34;
+            )
+            self._enabled_channels = [0, 1]
+        logger.trace(
+            &#34;Starting streaming with enabled channels: {}&#34;, self._enabled_channels
+        )
+        self._setup_buffers_streaming(self._enabled_channels)
+        self._register_callback()
+
+        self._start_streaming(
+            sample_interval_s=sample_interval_s,
+            buffer_size=buffer_size,
+            num_buffers=num_buffers,
+            trigger_enabled=trigger_enabled,
+            trigger_channel=trigger_channel,
+            trigger_threshold=trigger_threshold,
+            trigger_direction=trigger_direction,
+            trigger_delay=trigger_delay,
+        )
+
+    def _start_streaming(
+        self,
+        sample_interval_s: float,
+        buffer_size: int,
+        num_buffers: Optional[int] = None,
+        trigger_enabled: bool = False,
+        trigger_channel: Optional[int] = None,
+        trigger_threshold: Optional[float] = None,
+        trigger_direction: str = &#34;RISING&#34;,
+        trigger_delay: float = 0.0,
+    ) -&gt; None:
+        &#34;&#34;&#34;Start streaming data acquisition.
+
+        Parameters
+        ----------
+        sample_interval_s : float
+            Time between samples in seconds
+        buffer_size : int
+            Size of each buffer in samples
+        num_buffers : Optional[int]
+            Number of buffers to capture, None for continuous
+        trigger_enabled : bool
+            Enable trigger for streaming
+        trigger_channel : Optional[int]
+            Channel to trigger on (required if trigger_enabled)
+        trigger_threshold : Optional[float]
+            Trigger threshold in volts (required if trigger_enabled)
+        trigger_direction : str
+            Trigger direction (&#39;RISING&#39; or &#39;FALLING&#39;)
+        trigger_delay : float
+            Post-trigger delay in seconds
+        &#34;&#34;&#34;
+        if trigger_enabled:
+            if trigger_channel is None or trigger_threshold is None:
+                raise ValueError(
+                    &#34;trigger_channel and trigger_threshold required when trigger_enabled&#34;
+                )
+            self.set_trigger(
+                trigger_channel, trigger_threshold, trigger_direction, trigger_delay
+            )
+
+        status = self._run_streaming(sample_interval_s, buffer_size, num_buffers, trigger_enabled)
+        self.assert_ok(status)
+        self._status[&#34;runStreaming&#34;] = status
+        self._is_streaming = True
+
+    def stop_streaming(self) -&gt; None:
+        &#34;&#34;&#34;Stop streaming data acquisition.&#34;&#34;&#34;
+        if self._is_streaming:
+            status = self._stop()
+            self.assert_ok(status)
+            self._status[&#34;stop&#34;] = status
+            self._is_streaming = False
+
+    def set_trigger(
+        self,
+        channel: int,
+        threshold: float,
+        direction: str = &#34;RISING&#34;,
+        delay: float = 0.0,
+        autotrigger: float = 10.0,
+    ) -&gt; None:
+        &#34;&#34;&#34;Configure triggering.
+        
+        Parameters
+        ----------
+        channel : int
+            Channel to trigger on
+        threshold : float
+            Trigger threshold voltage
+        direction : str
+            Trigger direction (&#39;RISING&#39;, &#39;FALLING&#39;, etc) [RISING]
+        delay : float
+            Trigger delay in seconds [0.0]
+        autotrigger : float
+            Time in seconds before autotrigger [100ms]
+        &#34;&#34;&#34;
+        logger.trace(
+            &#34;Setting trigger: channel={}, threshold={}V, direction={}, delay={}s, autotrigger={}s&#34;,
+            channel,
+            threshold,
+            direction,
+            delay,
+            autotrigger,
+        )
+        
+        # Convert threshold to ADC counts
+        _, maxADC_value, maxADC = self._read_max_value()
+        
+        # Get the voltage range for the trigger channel
+        try:
+            range_str = self._channel_ranges[channel]
+        except KeyError:
+            raise ValueError(f&#34;Channel {channel} not configured, cannot set trigger&#34;)
+        
+        # Extract the voltage range value from the range string
+        # Range strings are like &#34;PS5000A_50MV&#34; or &#34;PS5000A_5V&#34;
+        range_value = None
+        for v, s in self.VOLTAGE_RANGES.items():
+            if s == range_str:
+                range_value = v
+                break
+        
+        if range_value is None:
+            raise ValueError(f&#34;Could not determine voltage range from {range_str}&#34;)
+        
+        # Calculate threshold as a fraction of the full range
+        # maxADC_value is the maximum ADC count (e.g., 32767)
+        # range_value is the full voltage range (e.g., 5.0V)
+        threshold_fraction = threshold / range_value
+        threshold_counts = int(threshold_fraction * maxADC_value)
+        
+        logger.trace(
+            &#34;Trigger threshold calculation: {}V in {}V range = {} counts (of {} max)&#34;,
+            threshold, range_value, threshold_counts, maxADC_value
+        )
+
+        # Set the trigger
+        self._set_simple_trigger(channel, threshold_counts, direction, delay, autotrigger)
+
+    @staticmethod
+    def _resolution_to_enum(resolution: int) -&gt; int:
+        &#34;&#34;&#34;Convert resolution in bits to picosdk enum.
+
+        Parameters
+        ----------
+        resolution : int
+            Resolution in bits
+
+        Returns
+        -------
+        int
+            PicoSDK resolution enum value
+        &#34;&#34;&#34;
+        resolution_map = {
+            8: picoEnum.PICO_DEVICE_RESOLUTION[&#34;PICO_DR_8BIT&#34;],
+            12: picoEnum.PICO_DEVICE_RESOLUTION[&#34;PICO_DR_12BIT&#34;],
+            14: picoEnum.PICO_DEVICE_RESOLUTION[&#34;PICO_DR_14BIT&#34;],
+            15: picoEnum.PICO_DEVICE_RESOLUTION[&#34;PICO_DR_15BIT&#34;],
+            16: picoEnum.PICO_DEVICE_RESOLUTION[&#34;PICO_DR_16BIT&#34;],
+        }
+        return resolution_map[resolution]
+
+    def is_responding(self) -&gt; bool:
+        &#34;&#34;&#34;Check if device is connected and responding.
+
+        Returns
+        -------
+        bool
+            True if device is connected and responding
+        &#34;&#34;&#34;
+        if not self._chandle:
+            return False
+        try:
+            # Try to read max ADC value as a simple check
+            status, _, _ = self._read_max_value()
+            return status == 0  # PICO_OK
+        except Exception as e:
+            logger.error(&#34;Error checking device response: {}&#34;, str(e))
+            return False
+
+    def get_device_info(self) -&gt; Dict[str, Any]:
+        &#34;&#34;&#34;Get device information and capabilities.
+
+        Returns
+        -------
+        Dict[str, Any]
+            Dictionary containing device information
+        &#34;&#34;&#34;
+        if not self._chandle:
+            raise RuntimeError(&#34;Device not initialized&#34;)
+
+        info = {}
+        try:
+            self._get_info()
+
+            # Get current settings
+            info[&#34;resolution&#34;] = self._resolution
+            info[&#34;enabled_channels&#34;] = self._enabled_channels.copy()
+            info[&#34;channel_ranges&#34;] = self._channel_ranges.copy()
+            info[&#34;is_streaming&#34;] = self._is_streaming
+
+            return info
+
+        except Exception as e:
+            logger.error(&#34;Error getting device info: {}&#34;, str(e))
+            raise
+
+    def config_signal_generator(self, config: SignalConfig) -&gt; None:
+        &#34;&#34;&#34;Configure the signal generator/AWG output without starting it.
+        
+        Parameters
+        ----------
+        config : SignalConfig
+            Signal configuration object
+        &#34;&#34;&#34;
+        config.validate()
+        self._config_signal_generator(config)
+        
+    def start_signal_generator(self) -&gt; None:
+        &#34;&#34;&#34;Start the previously configured signal generator.&#34;&#34;&#34;
+        self._start_signal_generator()    
+
+    def stop_signal_generator(self) -&gt; None:
+        &#34;&#34;&#34;Start the previously configured signal generator.&#34;&#34;&#34;
+        self._stop_signal_generator()
+        
+    def config_start_signal_generator(self, config: SignalConfig) -&gt; None:
+        &#34;&#34;&#34;Configure the signal generator/AWG output and start it immediately.
+        
+        Parameters
+        ----------
+        config : SignalConfig
+            Signal configuration object
+        &#34;&#34;&#34;
+        config.validate()
+        self._config_start_signal_generator(config)
+
+    @abstractmethod
+    def _config_signal_generator(self, config: SignalConfig) -&gt; None:
+        &#34;&#34;&#34;Implementation-specific signal generator configuration.&#34;&#34;&#34;
+        raise NotImplementedError
+        
+    @abstractmethod
+    def _start_signal_generator(self) -&gt; None:
+        &#34;&#34;&#34;Implementation-specific signal generator start.&#34;&#34;&#34;
+        raise NotImplementedError
+
+    @abstractmethod
+    def _config_start_signal_generator(self, config: SignalConfig) -&gt; None:
+        &#34;&#34;&#34;Implementation-specific signal generator configuration and start.&#34;&#34;&#34;
+        raise NotImplementedError
+
+
+    @abstractmethod
+    def get_timebase(
+        self, desired_interval: float, num_samples: int
+    ) -&gt; tuple[int, float]:
+        &#34;&#34;&#34;Calculate optimal timebase for desired sample interval.
+
+        Parameters
+        ----------
+        desired_interval : float
+            Desired time between samples in seconds
+        num_samples : int
+            Number of samples to capture
+
+        Returns
+        -------
+        tuple[int, float]
+            Tuple containing:
+            - Timebase index
+            - Actual sampling interval in seconds
+        &#34;&#34;&#34;
+        raise NotImplementedError
+
+    def _start_block_capture(
+        self,
+        sample_interval: float,
+        num_samples: int,
+        num_blocks: int = 1,
+        trigger_enabled: bool = False,
+        trigger_channel: Optional[int] = None,
+        trigger_threshold: Optional[float] = None,
+        trigger_direction: str = &#34;RISING&#34;,
+        trigger_delay: float = 0.0,
+        pre_trigger_samples: int = 0,
+    ) -&gt; float:
+        &#34;&#34;&#34;Start block-mode data acquisition.&#34;&#34;&#34;
+        # Get appropriate timebase
+        timebase, actual_interval = self.get_timebase(sample_interval, num_samples)
+
+        self._setup_memory_segments(num_blocks)
+
+        self._set_num_caps(num_blocks)
+
+        # Configure trigger if enabled
+        if trigger_enabled:
+            self.set_trigger(
+                trigger_channel, trigger_threshold, trigger_direction, trigger_delay
+            )
+
+        # Start the block capture
+        self._run_block(num_samples, timebase, pre_trigger_samples)
+
+        return actual_interval
+
+    @abstractmethod
+    def _run_block(self, num_samples: int, timebase: int, pre_trigger_samples: int = 0):
+        raise NotImplementedError
+
+    @abstractmethod
+    def _set_num_caps(self, num_blocks: int):
+        raise NotImplementedError
+
+    @abstractmethod
+    def _setup_memory_segments(self, num_blocks: int):
+        raise NotImplementedError
+
+    def start_block_capture(
+        self,
+        sample_interval: float,
+        num_samples: int,
+        num_blocks: int = 1,
+        trigger_enabled: bool = False,
+        trigger_channel: Optional[int] = None,
+        trigger_threshold: Optional[float] = None,
+        trigger_direction: str = &#34;RISING&#34;,
+        trigger_delay: float = 0.0,
+        pre_trigger_samples: int = 0,
+    ) -&gt; float:
+        &#34;&#34;&#34;Start block-mode data acquisition.&#34;&#34;&#34;
+        logger.trace(
+            &#34;Starting block capture with interval={}, samples={}, blocks={}&#34;,
+            sample_interval,
+            num_samples,
+            num_blocks,
+        )
+
+        # Set up buffers
+        if not self._enabled_channels:
+            logger.warning(&#34;No channels configured. Using default channels [0, 1]&#34;)
+            self._enabled_channels = [0, 1]
+        self._setup_block_buffers(self._enabled_channels, num_samples, num_blocks)
+
+        # Start capture using parent class method
+        actual_interval = self._start_block_capture(
+            sample_interval=sample_interval,
+            num_samples=num_samples,
+            num_blocks=num_blocks,
+            trigger_enabled=trigger_enabled,
+            trigger_channel=trigger_channel,
+            trigger_threshold=trigger_threshold,
+            trigger_direction=trigger_direction,
+            trigger_delay=trigger_delay,
+            pre_trigger_samples=pre_trigger_samples,
+        )
+
+        self._sample_interval_s = actual_interval
+        return actual_interval
+
+
+    @abstractmethod
+    def set_downsampling(self, mode: str, downsample_ratio: int) -&gt; None:
+        &#34;&#34;&#34;Configure hardware downsampling.
+
+        Parameters
+        ----------
+        mode : str
+            Downsampling mode (&#39;NONE&#39;, &#39;AVERAGE&#39;, &#39;DECIMATE&#39;, &#39;MIN_MAX&#39;)
+        downsample_ratio : int
+            Number of samples to combine
+        &#34;&#34;&#34;
+        raise NotImplementedError
+
+    def get_block_data(self, timeout_s=1) -&gt; tuple[
+        ndarray[Any, dtype[floating[Any]]], ndarray[Any, dtype[Any]]]:
+        &#34;&#34;&#34;Get block-mode captured data with hardware downsampling.&#34;&#34;&#34;
+        self._wait_for_capture(timeout_s)
+        captures = self._get_num_caps()
+
+        # Calculate samples after downsampling
+        samples_per_segment = (
+            len(self._buffers[self._enabled_channels[0]]) // captures.value
+        )
+        # had a `// self._downsampling_ratio` here, but that cropped data...
+        downsampled_samples = samples_per_segment
+
+        # Set up buffers for each segment
+        for ch in self._enabled_channels:
+            for segment in range(captures.value):
+                self._set_data_buffer(ch, downsampled_samples, samples_per_segment, segment)
+
+        self._get_values_bulk(captures, downsampled_samples)
+
+        # Convert data for all channels
+        voltage_data = tuple(
+            self._adc_to_v(self._buffers[ch], ch) for ch in self._enabled_channels
+        )
+        # Create time array for all blocks
+        total_samples = len(voltage_data[0])
+        time_data = np.linspace(
+            0,
+            (total_samples - 1) * self._sample_interval_s * self._downsampling_ratio,
+            total_samples,
+        )
+
+        return np.array(time_data), np.array(voltage_data)
+
+    @abstractmethod
+    def _get_values_bulk(self, captures, downsampled_samples):
+        raise NotImplementedError
+
+    @abstractmethod
+    def _set_data_buffer(self, ch, downsampled_samples, samples_per_segment, segment):
+        raise NotImplementedError
+
+    @abstractmethod
+    def _get_num_caps(self):
+        raise NotImplementedError
+
+    @abstractmethod
+    def _wait_for_capture(self, timeout_s):
+        raise NotImplementedError
+
+    def _handle_power_status(self, status: int) -&gt; None:
+        &#34;&#34;&#34;Handle power-related status codes from device initialization.
+
+        Parameters
+        ----------
+        status : int
+            Status code from device open call
+
+        Raises
+        ------
+        RuntimeError
+            If device initialization fails
+        &#34;&#34;&#34;
+        if status == 0:  # PICO_OK
+            return
+
+        # Power supply status codes
+        PICO_POWER_SUPPLY_NOT_CONNECTED = 286
+        PICO_USB3_0_DEVICE_NON_USB3_0_PORT = 282
+
+        if status in {
+            PICO_POWER_SUPPLY_NOT_CONNECTED,
+            PICO_USB3_0_DEVICE_NON_USB3_0_PORT,
+        }:
+            # For PS5000A, we can continue without the power supply
+            # The device will operate with reduced functionality
+            logger.warning(
+                &#34;Device opened with limited power supply. Some features may be restricted.&#34;
+            )
+            return
+        else:
+            raise RuntimeError(f&#34;Failed to initialize device. Status: {status}&#34;)
+
+
+
+    def get_data(
+        self, timeout: float = 10.0
+    ) -&gt; Tuple[np.ndarray, Tuple[np.ndarray, ...]]:
+        &#34;&#34;&#34;Get acquired data from all enabled channels.
+
+        Parameters
+        ----------
+        timeout : float
+            Maximum time to wait for data in seconds
+
+        Returns
+        -------
+        Tuple[np.ndarray, Tuple[np.ndarray, ...]]
+            Tuple containing:
+            - Time array in seconds
+            - Tuple of arrays containing voltage data for each channel
+
+        Raises
+        ------
+        TimeoutError
+            If data collection exceeds timeout
+        &#34;&#34;&#34;
+        total_samples = self._buffer_size
+        if self._num_buffers is not None:
+            total_samples *= self._num_buffers
+
+        self._get_stream(timeout, total_samples)
+
+        logger.info(&#34;Data collection complete: {} samples collected&#34;, self._next_sample)
+
+        # Create time array
+        time_data = np.linspace(
+            0, (total_samples - 1) * self._sample_interval_s, total_samples
+        )
+
+        # Convert all channels to Volts
+        voltage_data = tuple(
+            self._adc_to_v(self._buffers[ch], ch) for ch in self._enabled_channels
+        )
+
+        return time_data, voltage_data
+
+    @abstractmethod
+    def _get_stream(self, timeout, total_samples):
+        raise NotImplementedError
+
+    def check_overflow(self) -&gt; Dict[str, bool]:
+        &#34;&#34;&#34;Check if any channels have experienced overflow.
+
+        Returns
+        -------
+        Dict[str, bool]
+            Dictionary mapping channel letters to overflow status
+        &#34;&#34;&#34;
+        return {
+            k[11]: v for k, v in self._status.items() if k.startswith(&#34;overflow_ch&#34;)
+        }
+
+    def _register_callback(self) -&gt; None:
+        &#34;&#34;&#34;Convert the Python callback into a C function pointer.&#34;&#34;&#34;
+        logger.trace(&#34;Registering streaming callback&#34;)
+        self._c_callback = self._ps.StreamingReadyType(self._streaming_callback)
+
+    @abstractmethod
+    def _setup_buffers_streaming(self, channels: list[int]) -&gt; None:
+        &#34;&#34;&#34;Set up data buffers for streaming.
+
+        Parameters
+        ----------
+        channels : list[int]
+            List of channel numbers to set up buffers for
+        &#34;&#34;&#34;
+        raise NotImplementedError
+
+
+    @abstractmethod
+    def _setup_block_buffers(
+        self, channels: list[int], num_samples: int, num_blocks: int
+    ) -&gt; None:
+        &#34;&#34;&#34;Set up data buffers for block mode capture.
+
+        Parameters
+        ----------
+        channels : list[int]
+            List of channel numbers to set up buffers for
+        num_samples : int
+            Number of samples per block
+        num_blocks : int
+            Number of blocks to capture
+        &#34;&#34;&#34;
+        raise NotImplementedError
+
+
+    def _streaming_callback(
+        self,
+        handle: int,
+        num_samples: int,
+        start_index: int,
+        overflow: int,
+        trigger_at: int,
+        triggered: int,
+        auto_stop: int,
+        param: Any,
+    ) -&gt; None:
+        &#34;&#34;&#34;Callback function for streaming data collection.
+
+        Called by the driver when data is ready.
+
+        Parameters
+        ----------
+        handle : int
+            Device handle
+        num_samples : int
+            Number of new samples
+        start_index : int
+            Starting index in buffer
+        overflow : int
+            Bit field indicating which channels have overflowed
+        trigger_at : int
+            Index of trigger point
+        triggered : int
+            Whether trigger has occurred
+        auto_stop : int
+            Whether auto stop has occurred
+        param : Any
+            User parameter (unused)
+        &#34;&#34;&#34;
+        self._was_called_back = True
+
+        # Check for buffer overflow
+        if overflow:
+            channels = []
+            for ch in range(2):  # FIXME assuming 2 channels only -&gt; fixup
+                if overflow &amp; (1 &lt;&lt; ch):
+                    channels.append(chr(65 + ch))
+            overflow_msg = f&#34;Buffer overflow on channels: {&#39;, &#39;.join(channels)}&#34;
+            logger.warning(overflow_msg)
+
+            # Mark the overflowed data in the buffer
+            for ch_letter in channels:
+                ch_num = ord(ch_letter) - ord(&#34;A&#34;)
+                if ch_num in self._buffer_max:
+                    # Set overflow flag in status
+                    self._status[f&#34;overflow_ch{ch_letter}&#34;] = True
+                    # Mark overflow data with min int16 value
+                    self._buffer_max[ch_num][
+                        start_index : start_index + num_samples
+                    ] = -32768
+
+        try:
+            dest_end = self._next_sample + num_samples
+            first_channel = min(self._buffer_max.keys())
+            if dest_end &gt; len(self._buffers[first_channel]):
+                logger.error(
+                    &#34;Buffer overrun: trying to write {} samples when only {} remaining&#34;,
+                    num_samples,
+                    len(self._buffers[first_channel]) - self._next_sample,
+                )
+                raise BufferError(&#34;Buffer overrun in streaming callback&#34;)
+            source_end = start_index + num_samples
+
+            # Copy data from driver buffers to our complete buffers
+            for ch in self._buffer_max.keys():
+                self._buffers[ch][self._next_sample : dest_end] = self._buffer_max[ch][
+                    start_index:source_end
+                ]
+
+            self._next_sample += num_samples
+        except Exception as e:
+            logger.error(&#34;Error in streaming callback: {}&#34;, str(e))
+            raise
+        if auto_stop:
+            logger.info(&#34;Auto stop triggered after {} samples&#34;, self._next_sample)
+            self._auto_stop_outer = True</code></pre>
+</details>
+<div class="desc"><p>Base class for all hardware devices in QScope.</p>
+<p>The Device class provides the foundation for hardware abstraction in QScope.
+Specific device implementations inherit from this class and implement the
+methods required by their intended roles.</p>
+<p>A device can fulfill multiple roles if it implements all required methods
+for those roles. The system validates role compatibility at runtime.</p>
+<h2 id="device-architecture">Device Architecture</h2>
+<p>Devices are part of QScope's hardware abstraction layer:</p>
+<ol>
+<li>Base Device Class (this class)</li>
+<li>Provides configuration validation</li>
+<li>Manages role assignments</li>
+<li>Handles connection state</li>
+<li>
+<p>Defines required methods</p>
+</li>
+<li>
+<p>Device Implementations</p>
+</li>
+<li>Inherit from Device</li>
+<li>Implement protocol methods for specific roles</li>
+<li>Provide hardware-specific functionality</li>
+<li>
+<p>Can implement multiple protocols</p>
+</li>
+<li>
+<p>System Integration</p>
+</li>
+<li>Devices are added to systems with specific roles</li>
+<li>System validates that devices implement required protocols</li>
+<li>Devices are accessed through role interfaces</li>
+</ol>
+<h2 id="required-methods">Required Methods</h2>
+<p>All device implementations must override these methods:</p>
+<ul>
+<li>open(): Connect to the hardware</li>
+<li>close(): Disconnect from the hardware</li>
+<li>is_connected(): Check connection status</li>
+</ul>
+<p>In addition, devices must implement all methods required by the
+protocols of the roles they intend to fulfill.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>required_config</code></strong> :&ensp;<code>dict[str, Type]</code></dt>
+<dd>Required configuration parameters and their types</dd>
+<dt><strong><code>_roles</code></strong> :&ensp;<code>Set[DeviceRole[Device]]</code></dt>
+<dd>Set of roles this device fulfills</dd>
+</dl>
+<h2 id="examples">Examples</h2>
+<p>Creating a new device implementation:</p>
+<pre><code class="language-python">class MyRFSource(Device):
+    required_config = {
+        &quot;visa_addr&quot;: str,
+        &quot;max_power&quot;: float
+    }
+
+    def __init__(self, **config_kwargs):
+        super().__init__(**config_kwargs)
+        self.connected = False
+
+    def open(self) -&gt; tuple[bool, str]:
+        # Implementation for connecting to hardware
+        self.connected = True
+        return True, &quot;Connected successfully&quot;
+
+    def close(self):
+        # Implementation for disconnecting
+        self.connected = False
+
+    def is_connected(self) -&gt; bool:
+        return self.connected
+
+    # Implement methods required by RFSourceProtocol
+    def set_freq(self, freq: float) -&gt; None:
+        # Implementation
+        pass
+
+    def set_power(self, power: float) -&gt; None:
+        # Implementation
+        pass
+</code></pre>
+<p>Using the device with a role:</p>
+<pre><code class="language-python"># Create device instance
+rf = MyRFSource(visa_addr=&quot;TCPIP0::192.168.1.1::INSTR&quot;, max_power=20.0)
+
+# Add to system with role
+system.add_device_with_role(rf, PRIMARY_RF)
+</code></pre>
+<h2 id="see-also">See Also</h2>
+<dl>
+<dt><code><a title="qscope.types.protocols" href="../../types/protocols.html">qscope.types.protocols</a></code></dt>
+<dd>Protocol definitions</dd>
+<dt><code><a title="qscope.types.roles" href="../../types/roles.html">qscope.types.roles</a></code></dt>
+<dd>Role definitions</dd>
+<dt><code><a title="qscope.types.interfaces" href="../../types/interfaces.html">qscope.types.interfaces</a></code></dt>
+<dd>Interface implementations</dd>
+<dt><code><a title="qscope.system" href="../../system/index.html">qscope.system</a></code></dt>
+<dd>System implementation</dd>
+</dl></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.device.device.Device" href="../device.html#qscope.device.device.Device">Device</a></li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="qscope.device.picoscope.picoscope5000a.Picoscope5000a" href="picoscope5000a.html#qscope.device.picoscope.picoscope5000a.Picoscope5000a">Picoscope5000a</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="qscope.device.picoscope.picoscope.Picoscope.VOLTAGE_RANGES"><code class="name">var <span class="ident">VOLTAGE_RANGES</span> : Dict[float, str]</code></dt>
+<dd>
+<div class="desc"><p>Base class for Picoscope digitizers.</p>
+<p>Handles common functionality across all Picoscope models.
+Specific models should inherit from this and implement model-specific details.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>_chandle</code></strong></dt>
+<dd>Handle to the device</dd>
+<dt><strong><code>_ps</code></strong></dt>
+<dd>Reference to the picosdk module for this device</dd>
+<dt><strong><code>_status</code></strong></dt>
+<dd>Dict tracking device status codes</dd>
+<dt><strong><code>_sample_interval</code></strong></dt>
+<dd>Sampling interval in seconds</dd>
+<dt><strong><code>_resolution</code></strong></dt>
+<dd>ADC resolution in bits</dd>
+<dt><strong><code>_channel_range</code></strong></dt>
+<dd>Voltage range setting</dd>
+</dl></div>
+</dd>
+</dl>
+<h3>Static methods</h3>
+<dl>
+<dt id="qscope.device.picoscope.picoscope.Picoscope.assert_ok"><code class="name flex">
+<span>def <span class="ident">assert_ok</span></span>(<span>status)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def assert_ok(status):
+    &#34;&#34;&#34;Check if a PicoScope status code indicates success.
+    
+    Parameters
+    ----------
+    status : int
+        Status code to check
+        
+    Raises
+    ------
+    RuntimeError
+        If status indicates an error
+    &#34;&#34;&#34;
+    assert_pico_ok(status)</code></pre>
+</details>
+<div class="desc"><p>Check if a PicoScope status code indicates success.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>status</code></strong> :&ensp;<code>int</code></dt>
+<dd>Status code to check</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>RuntimeError</code></dt>
+<dd>If status indicates an error</dd>
+</dl></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.device.picoscope.picoscope.Picoscope.check_overflow"><code class="name flex">
+<span>def <span class="ident">check_overflow</span></span>(<span>self) ‑> Dict[str, bool]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def check_overflow(self) -&gt; Dict[str, bool]:
+    &#34;&#34;&#34;Check if any channels have experienced overflow.
+
+    Returns
+    -------
+    Dict[str, bool]
+        Dictionary mapping channel letters to overflow status
+    &#34;&#34;&#34;
+    return {
+        k[11]: v for k, v in self._status.items() if k.startswith(&#34;overflow_ch&#34;)
+    }</code></pre>
+</details>
+<div class="desc"><p>Check if any channels have experienced overflow.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Dict[str, bool]</code></dt>
+<dd>Dictionary mapping channel letters to overflow status</dd>
+</dl></div>
+</dd>
+<dt id="qscope.device.picoscope.picoscope.Picoscope.close"><code class="name flex">
+<span>def <span class="ident">close</span></span>(<span>self) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def close(self) -&gt; None:
+    &#34;&#34;&#34;Clean shutdown of picoscope.&#34;&#34;&#34;
+    if self._chandle and self._ps:
+        if self._is_streaming:
+            logger.trace(&#34;Stopping streaming before close&#34;)
+            self._stop()
+        logger.info(&#34;Closing Picoscope device&#34;)
+        self._ps._CloseUnit(self._chandle)
+        self._chandle = None
+        # Clean up buffers and configuration
+        self._buffers.clear()
+        self._enabled_channels.clear()
+        self._channel_ranges.clear()
+        self._status.clear()</code></pre>
+</details>
+<div class="desc"><p>Clean shutdown of picoscope.</p></div>
+</dd>
+<dt id="qscope.device.picoscope.picoscope.Picoscope.config_signal_generator"><code class="name flex">
+<span>def <span class="ident">config_signal_generator</span></span>(<span>self,<br>config: <a title="qscope.device.picoscope.picoscope.SignalConfig" href="#qscope.device.picoscope.picoscope.SignalConfig">SignalConfig</a>) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def config_signal_generator(self, config: SignalConfig) -&gt; None:
+    &#34;&#34;&#34;Configure the signal generator/AWG output without starting it.
+    
+    Parameters
+    ----------
+    config : SignalConfig
+        Signal configuration object
+    &#34;&#34;&#34;
+    config.validate()
+    self._config_signal_generator(config)</code></pre>
+</details>
+<div class="desc"><p>Configure the signal generator/AWG output without starting it.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>config</code></strong> :&ensp;<code><a title="qscope.device.picoscope.picoscope.SignalConfig" href="#qscope.device.picoscope.picoscope.SignalConfig">SignalConfig</a></code></dt>
+<dd>Signal configuration object</dd>
+</dl></div>
+</dd>
+<dt id="qscope.device.picoscope.picoscope.Picoscope.config_start_signal_generator"><code class="name flex">
+<span>def <span class="ident">config_start_signal_generator</span></span>(<span>self,<br>config: <a title="qscope.device.picoscope.picoscope.SignalConfig" href="#qscope.device.picoscope.picoscope.SignalConfig">SignalConfig</a>) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def config_start_signal_generator(self, config: SignalConfig) -&gt; None:
+    &#34;&#34;&#34;Configure the signal generator/AWG output and start it immediately.
+    
+    Parameters
+    ----------
+    config : SignalConfig
+        Signal configuration object
+    &#34;&#34;&#34;
+    config.validate()
+    self._config_start_signal_generator(config)</code></pre>
+</details>
+<div class="desc"><p>Configure the signal generator/AWG output and start it immediately.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>config</code></strong> :&ensp;<code><a title="qscope.device.picoscope.picoscope.SignalConfig" href="#qscope.device.picoscope.picoscope.SignalConfig">SignalConfig</a></code></dt>
+<dd>Signal configuration object</dd>
+</dl></div>
+</dd>
+<dt id="qscope.device.picoscope.picoscope.Picoscope.configure_channels"><code class="name flex">
+<span>def <span class="ident">configure_channels</span></span>(<span>self,<br>channels: List[int],<br>ranges: List[float | str],<br>coupling: List[str] | None = None) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def configure_channels(
+    self,
+    channels: List[int],
+    ranges: List[Union[float, str]],
+    coupling: Optional[List[str]] = None,
+) -&gt; None:
+    &#34;&#34;&#34;Configure input channels.&#34;&#34;&#34;
+    if coupling is None:
+        coupling = [&#34;DC&#34;] * len(channels)
+
+    if not (len(channels) == len(ranges) == len(coupling)):
+        raise ValueError(
+            &#34;channels, ranges, and coupling lists must have same length&#34;
+        )
+
+    # Clear previous configuration
+    self._enabled_channels = []
+    self._channel_ranges.clear()
+
+    for ch, ch_range, cp in zip(channels, ranges, coupling):
+        # Get range string
+        range_str = (
+            self.VOLTAGE_RANGES[ch_range]
+            if isinstance(ch_range, float)
+            else ch_range
+        )
+        if isinstance(ch_range, float) and ch_range not in self.VOLTAGE_RANGES:
+            raise ValueError(
+                f&#34;Invalid voltage range: {ch_range}V. &#34;
+                f&#34;Valid ranges: {sorted(self.VOLTAGE_RANGES.keys())}V&#34;
+            )
+
+        status = self._set_channel(
+            ch,
+            True,  # enabled
+            cp,
+            range_str,
+            0.0,  # analog offset
+        )
+        self.assert_ok(status)
+
+        # Store configuration
+        self._enabled_channels.append(ch)
+        self._channel_ranges[ch] = range_str</code></pre>
+</details>
+<div class="desc"><p>Configure input channels.</p></div>
+</dd>
+<dt id="qscope.device.picoscope.picoscope.Picoscope.get_block_data"><code class="name flex">
+<span>def <span class="ident">get_block_data</span></span>(<span>self, timeout_s=1) ‑> tuple[numpy.ndarray[typing.Any, numpy.dtype[numpy.floating[typing.Any]]], numpy.ndarray[typing.Any, numpy.dtype[typing.Any]]]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_block_data(self, timeout_s=1) -&gt; tuple[
+    ndarray[Any, dtype[floating[Any]]], ndarray[Any, dtype[Any]]]:
+    &#34;&#34;&#34;Get block-mode captured data with hardware downsampling.&#34;&#34;&#34;
+    self._wait_for_capture(timeout_s)
+    captures = self._get_num_caps()
+
+    # Calculate samples after downsampling
+    samples_per_segment = (
+        len(self._buffers[self._enabled_channels[0]]) // captures.value
+    )
+    # had a `// self._downsampling_ratio` here, but that cropped data...
+    downsampled_samples = samples_per_segment
+
+    # Set up buffers for each segment
+    for ch in self._enabled_channels:
+        for segment in range(captures.value):
+            self._set_data_buffer(ch, downsampled_samples, samples_per_segment, segment)
+
+    self._get_values_bulk(captures, downsampled_samples)
+
+    # Convert data for all channels
+    voltage_data = tuple(
+        self._adc_to_v(self._buffers[ch], ch) for ch in self._enabled_channels
+    )
+    # Create time array for all blocks
+    total_samples = len(voltage_data[0])
+    time_data = np.linspace(
+        0,
+        (total_samples - 1) * self._sample_interval_s * self._downsampling_ratio,
+        total_samples,
+    )
+
+    return np.array(time_data), np.array(voltage_data)</code></pre>
+</details>
+<div class="desc"><p>Get block-mode captured data with hardware downsampling.</p></div>
+</dd>
+<dt id="qscope.device.picoscope.picoscope.Picoscope.get_data"><code class="name flex">
+<span>def <span class="ident">get_data</span></span>(<span>self, timeout: float = 10.0) ‑> Tuple[numpy.ndarray, Tuple[numpy.ndarray, ...]]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_data(
+    self, timeout: float = 10.0
+) -&gt; Tuple[np.ndarray, Tuple[np.ndarray, ...]]:
+    &#34;&#34;&#34;Get acquired data from all enabled channels.
+
+    Parameters
+    ----------
+    timeout : float
+        Maximum time to wait for data in seconds
+
+    Returns
+    -------
+    Tuple[np.ndarray, Tuple[np.ndarray, ...]]
+        Tuple containing:
+        - Time array in seconds
+        - Tuple of arrays containing voltage data for each channel
+
+    Raises
+    ------
+    TimeoutError
+        If data collection exceeds timeout
+    &#34;&#34;&#34;
+    total_samples = self._buffer_size
+    if self._num_buffers is not None:
+        total_samples *= self._num_buffers
+
+    self._get_stream(timeout, total_samples)
+
+    logger.info(&#34;Data collection complete: {} samples collected&#34;, self._next_sample)
+
+    # Create time array
+    time_data = np.linspace(
+        0, (total_samples - 1) * self._sample_interval_s, total_samples
+    )
+
+    # Convert all channels to Volts
+    voltage_data = tuple(
+        self._adc_to_v(self._buffers[ch], ch) for ch in self._enabled_channels
+    )
+
+    return time_data, voltage_data</code></pre>
+</details>
+<div class="desc"><p>Get acquired data from all enabled channels.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>timeout</code></strong> :&ensp;<code>float</code></dt>
+<dd>Maximum time to wait for data in seconds</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Tuple[np.ndarray, Tuple[np.ndarray, &hellip;]]</code></dt>
+<dd>Tuple containing:
+- Time array in seconds
+- Tuple of arrays containing voltage data for each channel</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>TimeoutError</code></dt>
+<dd>If data collection exceeds timeout</dd>
+</dl></div>
+</dd>
+<dt id="qscope.device.picoscope.picoscope.Picoscope.get_device_info"><code class="name flex">
+<span>def <span class="ident">get_device_info</span></span>(<span>self) ‑> Dict[str, Any]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_device_info(self) -&gt; Dict[str, Any]:
+    &#34;&#34;&#34;Get device information and capabilities.
+
+    Returns
+    -------
+    Dict[str, Any]
+        Dictionary containing device information
+    &#34;&#34;&#34;
+    if not self._chandle:
+        raise RuntimeError(&#34;Device not initialized&#34;)
+
+    info = {}
+    try:
+        self._get_info()
+
+        # Get current settings
+        info[&#34;resolution&#34;] = self._resolution
+        info[&#34;enabled_channels&#34;] = self._enabled_channels.copy()
+        info[&#34;channel_ranges&#34;] = self._channel_ranges.copy()
+        info[&#34;is_streaming&#34;] = self._is_streaming
+
+        return info
+
+    except Exception as e:
+        logger.error(&#34;Error getting device info: {}&#34;, str(e))
+        raise</code></pre>
+</details>
+<div class="desc"><p>Get device information and capabilities.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Dict[str, Any]</code></dt>
+<dd>Dictionary containing device information</dd>
+</dl></div>
+</dd>
+<dt id="qscope.device.picoscope.picoscope.Picoscope.get_timebase"><code class="name flex">
+<span>def <span class="ident">get_timebase</span></span>(<span>self, desired_interval: float, num_samples: int) ‑> tuple[int, float]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@abstractmethod
+def get_timebase(
+    self, desired_interval: float, num_samples: int
+) -&gt; tuple[int, float]:
+    &#34;&#34;&#34;Calculate optimal timebase for desired sample interval.
+
+    Parameters
+    ----------
+    desired_interval : float
+        Desired time between samples in seconds
+    num_samples : int
+        Number of samples to capture
+
+    Returns
+    -------
+    tuple[int, float]
+        Tuple containing:
+        - Timebase index
+        - Actual sampling interval in seconds
+    &#34;&#34;&#34;
+    raise NotImplementedError</code></pre>
+</details>
+<div class="desc"><p>Calculate optimal timebase for desired sample interval.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>desired_interval</code></strong> :&ensp;<code>float</code></dt>
+<dd>Desired time between samples in seconds</dd>
+<dt><strong><code>num_samples</code></strong> :&ensp;<code>int</code></dt>
+<dd>Number of samples to capture</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>tuple[int, float]</code></dt>
+<dd>Tuple containing:
+- Timebase index
+- Actual sampling interval in seconds</dd>
+</dl></div>
+</dd>
+<dt id="qscope.device.picoscope.picoscope.Picoscope.is_responding"><code class="name flex">
+<span>def <span class="ident">is_responding</span></span>(<span>self) ‑> bool</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def is_responding(self) -&gt; bool:
+    &#34;&#34;&#34;Check if device is connected and responding.
+
+    Returns
+    -------
+    bool
+        True if device is connected and responding
+    &#34;&#34;&#34;
+    if not self._chandle:
+        return False
+    try:
+        # Try to read max ADC value as a simple check
+        status, _, _ = self._read_max_value()
+        return status == 0  # PICO_OK
+    except Exception as e:
+        logger.error(&#34;Error checking device response: {}&#34;, str(e))
+        return False</code></pre>
+</details>
+<div class="desc"><p>Check if device is connected and responding.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>bool</code></dt>
+<dd>True if device is connected and responding</dd>
+</dl></div>
+</dd>
+<dt id="qscope.device.picoscope.picoscope.Picoscope.open"><code class="name flex">
+<span>def <span class="ident">open</span></span>(<span>self) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@abstractmethod
+def open(self) -&gt; None:
+    raise NotImplementedError</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.picoscope.picoscope.Picoscope.set_downsampling"><code class="name flex">
+<span>def <span class="ident">set_downsampling</span></span>(<span>self, mode: str, downsample_ratio: int) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@abstractmethod
+def set_downsampling(self, mode: str, downsample_ratio: int) -&gt; None:
+    &#34;&#34;&#34;Configure hardware downsampling.
+
+    Parameters
+    ----------
+    mode : str
+        Downsampling mode (&#39;NONE&#39;, &#39;AVERAGE&#39;, &#39;DECIMATE&#39;, &#39;MIN_MAX&#39;)
+    downsample_ratio : int
+        Number of samples to combine
+    &#34;&#34;&#34;
+    raise NotImplementedError</code></pre>
+</details>
+<div class="desc"><p>Configure hardware downsampling.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>mode</code></strong> :&ensp;<code>str</code></dt>
+<dd>Downsampling mode ('NONE', 'AVERAGE', 'DECIMATE', 'MIN_MAX')</dd>
+<dt><strong><code>downsample_ratio</code></strong> :&ensp;<code>int</code></dt>
+<dd>Number of samples to combine</dd>
+</dl></div>
+</dd>
+<dt id="qscope.device.picoscope.picoscope.Picoscope.set_resolution"><code class="name flex">
+<span>def <span class="ident">set_resolution</span></span>(<span>self, resolution: int) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_resolution(self, resolution: int) -&gt; None:
+    &#34;&#34;&#34;Set ADC resolution in bits.
+
+    Parameters
+    ----------
+    resolution : int
+        Resolution in bits (typically 8, 12, 14, 15, or 16)
+    &#34;&#34;&#34;
+    if resolution not in {8, 12, 14, 15, 16}:
+        raise ValueError(
+            f&#34;Invalid resolution: {resolution}. Must be one of: 8, 12, 14, 15, 16&#34;
+        )
+    self._resolution = resolution</code></pre>
+</details>
+<div class="desc"><p>Set ADC resolution in bits.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>resolution</code></strong> :&ensp;<code>int</code></dt>
+<dd>Resolution in bits (typically 8, 12, 14, 15, or 16)</dd>
+</dl></div>
+</dd>
+<dt id="qscope.device.picoscope.picoscope.Picoscope.set_sample_interval"><code class="name flex">
+<span>def <span class="ident">set_sample_interval</span></span>(<span>self, interval: float) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_sample_interval(self, interval: float) -&gt; None:
+    &#34;&#34;&#34;Set sampling interval in seconds.
+
+    Parameters
+    ----------
+    interval : float
+        Sampling interval in seconds
+    &#34;&#34;&#34;
+    self._sample_interval_s = interval</code></pre>
+</details>
+<div class="desc"><p>Set sampling interval in seconds.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>interval</code></strong> :&ensp;<code>float</code></dt>
+<dd>Sampling interval in seconds</dd>
+</dl></div>
+</dd>
+<dt id="qscope.device.picoscope.picoscope.Picoscope.set_trigger"><code class="name flex">
+<span>def <span class="ident">set_trigger</span></span>(<span>self,<br>channel: int,<br>threshold: float,<br>direction: str = 'RISING',<br>delay: float = 0.0,<br>autotrigger: float = 10.0) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_trigger(
+    self,
+    channel: int,
+    threshold: float,
+    direction: str = &#34;RISING&#34;,
+    delay: float = 0.0,
+    autotrigger: float = 10.0,
+) -&gt; None:
+    &#34;&#34;&#34;Configure triggering.
+    
+    Parameters
+    ----------
+    channel : int
+        Channel to trigger on
+    threshold : float
+        Trigger threshold voltage
+    direction : str
+        Trigger direction (&#39;RISING&#39;, &#39;FALLING&#39;, etc) [RISING]
+    delay : float
+        Trigger delay in seconds [0.0]
+    autotrigger : float
+        Time in seconds before autotrigger [100ms]
+    &#34;&#34;&#34;
+    logger.trace(
+        &#34;Setting trigger: channel={}, threshold={}V, direction={}, delay={}s, autotrigger={}s&#34;,
+        channel,
+        threshold,
+        direction,
+        delay,
+        autotrigger,
+    )
+    
+    # Convert threshold to ADC counts
+    _, maxADC_value, maxADC = self._read_max_value()
+    
+    # Get the voltage range for the trigger channel
+    try:
+        range_str = self._channel_ranges[channel]
+    except KeyError:
+        raise ValueError(f&#34;Channel {channel} not configured, cannot set trigger&#34;)
+    
+    # Extract the voltage range value from the range string
+    # Range strings are like &#34;PS5000A_50MV&#34; or &#34;PS5000A_5V&#34;
+    range_value = None
+    for v, s in self.VOLTAGE_RANGES.items():
+        if s == range_str:
+            range_value = v
+            break
+    
+    if range_value is None:
+        raise ValueError(f&#34;Could not determine voltage range from {range_str}&#34;)
+    
+    # Calculate threshold as a fraction of the full range
+    # maxADC_value is the maximum ADC count (e.g., 32767)
+    # range_value is the full voltage range (e.g., 5.0V)
+    threshold_fraction = threshold / range_value
+    threshold_counts = int(threshold_fraction * maxADC_value)
+    
+    logger.trace(
+        &#34;Trigger threshold calculation: {}V in {}V range = {} counts (of {} max)&#34;,
+        threshold, range_value, threshold_counts, maxADC_value
+    )
+
+    # Set the trigger
+    self._set_simple_trigger(channel, threshold_counts, direction, delay, autotrigger)</code></pre>
+</details>
+<div class="desc"><p>Configure triggering.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>channel</code></strong> :&ensp;<code>int</code></dt>
+<dd>Channel to trigger on</dd>
+<dt><strong><code>threshold</code></strong> :&ensp;<code>float</code></dt>
+<dd>Trigger threshold voltage</dd>
+<dt><strong><code>direction</code></strong> :&ensp;<code>str</code></dt>
+<dd>Trigger direction ('RISING', 'FALLING', etc) [RISING]</dd>
+<dt><strong><code>delay</code></strong> :&ensp;<code>float</code></dt>
+<dd>Trigger delay in seconds [0.0]</dd>
+<dt><strong><code>autotrigger</code></strong> :&ensp;<code>float</code></dt>
+<dd>Time in seconds before autotrigger [100ms]</dd>
+</dl></div>
+</dd>
+<dt id="qscope.device.picoscope.picoscope.Picoscope.start_block_capture"><code class="name flex">
+<span>def <span class="ident">start_block_capture</span></span>(<span>self,<br>sample_interval: float,<br>num_samples: int,<br>num_blocks: int = 1,<br>trigger_enabled: bool = False,<br>trigger_channel: int | None = None,<br>trigger_threshold: float | None = None,<br>trigger_direction: str = 'RISING',<br>trigger_delay: float = 0.0,<br>pre_trigger_samples: int = 0) ‑> float</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def start_block_capture(
+    self,
+    sample_interval: float,
+    num_samples: int,
+    num_blocks: int = 1,
+    trigger_enabled: bool = False,
+    trigger_channel: Optional[int] = None,
+    trigger_threshold: Optional[float] = None,
+    trigger_direction: str = &#34;RISING&#34;,
+    trigger_delay: float = 0.0,
+    pre_trigger_samples: int = 0,
+) -&gt; float:
+    &#34;&#34;&#34;Start block-mode data acquisition.&#34;&#34;&#34;
+    logger.trace(
+        &#34;Starting block capture with interval={}, samples={}, blocks={}&#34;,
+        sample_interval,
+        num_samples,
+        num_blocks,
+    )
+
+    # Set up buffers
+    if not self._enabled_channels:
+        logger.warning(&#34;No channels configured. Using default channels [0, 1]&#34;)
+        self._enabled_channels = [0, 1]
+    self._setup_block_buffers(self._enabled_channels, num_samples, num_blocks)
+
+    # Start capture using parent class method
+    actual_interval = self._start_block_capture(
+        sample_interval=sample_interval,
+        num_samples=num_samples,
+        num_blocks=num_blocks,
+        trigger_enabled=trigger_enabled,
+        trigger_channel=trigger_channel,
+        trigger_threshold=trigger_threshold,
+        trigger_direction=trigger_direction,
+        trigger_delay=trigger_delay,
+        pre_trigger_samples=pre_trigger_samples,
+    )
+
+    self._sample_interval_s = actual_interval
+    return actual_interval</code></pre>
+</details>
+<div class="desc"><p>Start block-mode data acquisition.</p></div>
+</dd>
+<dt id="qscope.device.picoscope.picoscope.Picoscope.start_signal_generator"><code class="name flex">
+<span>def <span class="ident">start_signal_generator</span></span>(<span>self) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def start_signal_generator(self) -&gt; None:
+    &#34;&#34;&#34;Start the previously configured signal generator.&#34;&#34;&#34;
+    self._start_signal_generator()    </code></pre>
+</details>
+<div class="desc"><p>Start the previously configured signal generator.</p></div>
+</dd>
+<dt id="qscope.device.picoscope.picoscope.Picoscope.start_streaming"><code class="name flex">
+<span>def <span class="ident">start_streaming</span></span>(<span>self,<br>sample_interval_s: float,<br>buffer_size: int,<br>num_buffers: int | None = None,<br>trigger_enabled: bool = False,<br>trigger_channel: int | None = None,<br>trigger_threshold: float | None = None,<br>trigger_direction: str = 'RISING',<br>trigger_delay: float = 0.0) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def start_streaming(
+    self,
+    sample_interval_s: float,
+    buffer_size: int,
+    num_buffers: Optional[int] = None,
+    trigger_enabled: bool = False,
+    trigger_channel: Optional[int] = None,
+    trigger_threshold: Optional[float] = None,
+    trigger_direction: str = &#34;RISING&#34;,
+    trigger_delay: float = 0.0,
+) -&gt; None:
+    &#34;&#34;&#34;Start streaming data acquisition.&#34;&#34;&#34;
+    min_interval = 1e-6  # 1 μs minimum
+    if sample_interval_s &lt; min_interval:
+        raise ValueError(f&#34;Sample interval must be &gt;= {min_interval} seconds&#34;)
+
+    logger.trace(
+        &#34;Starting streaming capture with interval={}, buffer_size={}, num_buffers={}&#34;,
+        sample_interval_s,
+        buffer_size,
+        num_buffers,
+    )
+    self._buffer_size = buffer_size
+    self._num_buffers = num_buffers
+    self._next_sample = 0
+    self._auto_stop_outer = False
+    self._was_called_back = False
+    self._sample_interval_s = sample_interval_s
+
+    if not self._enabled_channels:
+        logger.warning(
+            &#34;No channels configured before streaming. Using default channels [0, 1]&#34;
+        )
+        self._enabled_channels = [0, 1]
+    logger.trace(
+        &#34;Starting streaming with enabled channels: {}&#34;, self._enabled_channels
+    )
+    self._setup_buffers_streaming(self._enabled_channels)
+    self._register_callback()
+
+    self._start_streaming(
+        sample_interval_s=sample_interval_s,
+        buffer_size=buffer_size,
+        num_buffers=num_buffers,
+        trigger_enabled=trigger_enabled,
+        trigger_channel=trigger_channel,
+        trigger_threshold=trigger_threshold,
+        trigger_direction=trigger_direction,
+        trigger_delay=trigger_delay,
+    )</code></pre>
+</details>
+<div class="desc"><p>Start streaming data acquisition.</p></div>
+</dd>
+<dt id="qscope.device.picoscope.picoscope.Picoscope.stop_signal_generator"><code class="name flex">
+<span>def <span class="ident">stop_signal_generator</span></span>(<span>self) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def stop_signal_generator(self) -&gt; None:
+    &#34;&#34;&#34;Start the previously configured signal generator.&#34;&#34;&#34;
+    self._stop_signal_generator()</code></pre>
+</details>
+<div class="desc"><p>Start the previously configured signal generator.</p></div>
+</dd>
+<dt id="qscope.device.picoscope.picoscope.Picoscope.stop_streaming"><code class="name flex">
+<span>def <span class="ident">stop_streaming</span></span>(<span>self) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def stop_streaming(self) -&gt; None:
+    &#34;&#34;&#34;Stop streaming data acquisition.&#34;&#34;&#34;
+    if self._is_streaming:
+        status = self._stop()
+        self.assert_ok(status)
+        self._status[&#34;stop&#34;] = status
+        self._is_streaming = False</code></pre>
+</details>
+<div class="desc"><p>Stop streaming data acquisition.</p></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="qscope.device.device.Device" href="../device.html#qscope.device.device.Device">Device</a></b></code>:
+<ul class="hlist">
+<li><code><a title="qscope.device.device.Device.get_all_attrs" href="../device.html#qscope.device.device.Device.get_all_attrs">get_all_attrs</a></code></li>
+<li><code><a title="qscope.device.device.Device.get_roles" href="../device.html#qscope.device.device.Device.get_roles">get_roles</a></code></li>
+<li><code><a title="qscope.device.device.Device.has_role" href="../device.html#qscope.device.device.Device.has_role">has_role</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="qscope.device.picoscope.picoscope.SignalConfig"><code class="flex name class">
+<span>class <span class="ident">SignalConfig</span></span>
+<span>(</span><span>frequency: float = 1.0, amplitude: float = 3.3, offset: float = 0.0)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass
+class SignalConfig:
+    &#34;&#34;&#34;Configuration for signal generator output.
+    
+    Attributes
+    ----------
+    frequency : float
+        Signal frequency in Hz
+    amplitude : float
+        Peak-to-peak amplitude in volts
+    offset : float 
+        DC offset in volts
+    duty_cycle : float
+        Duty cycle for square waves (0-100%)
+    &#34;&#34;&#34;
+    frequency: float = 1.0
+    amplitude: float = 3.3
+    offset: float = 0.0
+
+    def validate(self) -&gt; None:
+        &#34;&#34;&#34;Validate signal configuration.&#34;&#34;&#34;
+        if self.frequency &lt;= 0:
+            raise ValueError(&#34;Frequency must be positive&#34;)
+        if self.amplitude &lt;= 0:
+            raise ValueError(&#34;Amplitude must be positive&#34;)</code></pre>
+</details>
+<div class="desc"><p>Configuration for signal generator output.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>frequency</code></strong> :&ensp;<code>float</code></dt>
+<dd>Signal frequency in Hz</dd>
+<dt><strong><code>amplitude</code></strong> :&ensp;<code>float</code></dt>
+<dd>Peak-to-peak amplitude in volts</dd>
+<dt><strong><code>offset</code></strong> :&ensp;<code>float </code></dt>
+<dd>DC offset in volts</dd>
+<dt><strong><code>duty_cycle</code></strong> :&ensp;<code>float</code></dt>
+<dd>Duty cycle for square waves (0-100%)</dd>
+</dl></div>
+<h3>Instance variables</h3>
+<dl>
+<dt id="qscope.device.picoscope.picoscope.SignalConfig.amplitude"><code class="name">var <span class="ident">amplitude</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.picoscope.picoscope.SignalConfig.frequency"><code class="name">var <span class="ident">frequency</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.picoscope.picoscope.SignalConfig.offset"><code class="name">var <span class="ident">offset</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.device.picoscope.picoscope.SignalConfig.validate"><code class="name flex">
+<span>def <span class="ident">validate</span></span>(<span>self) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def validate(self) -&gt; None:
+    &#34;&#34;&#34;Validate signal configuration.&#34;&#34;&#34;
+    if self.frequency &lt;= 0:
+        raise ValueError(&#34;Frequency must be positive&#34;)
+    if self.amplitude &lt;= 0:
+        raise ValueError(&#34;Amplitude must be positive&#34;)</code></pre>
+</details>
+<div class="desc"><p>Validate signal configuration.</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.device.picoscope.picoscope.WaveType"><code class="flex name class">
+<span>class <span class="ident">WaveType</span></span>
+<span>(</span><span>*args, **kwds)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class WaveType(Enum):
+    &#34;&#34;&#34;Wave types supported by signal generator.&#34;&#34;&#34;
+    SINE = &#34;SINE&#34;
+    SQUARE = &#34;SQUARE&#34; 
+    TRIANGLE = &#34;TRIANGLE&#34;
+    DC = &#34;DC&#34;</code></pre>
+</details>
+<div class="desc"><p>Wave types supported by signal generator.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>enum.Enum</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="qscope.device.picoscope.picoscope.WaveType.DC"><code class="name">var <span class="ident">DC</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.picoscope.picoscope.WaveType.SINE"><code class="name">var <span class="ident">SINE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.picoscope.picoscope.WaveType.SQUARE"><code class="name">var <span class="ident">SQUARE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.picoscope.picoscope.WaveType.TRIANGLE"><code class="name">var <span class="ident">TRIANGLE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<form>
+<input id="lunr-search" name="q" placeholder="🔎 Search ..." aria-label="Search"
+disabled minlength="2">
+</form>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.css" integrity="sha512-b+T2i3P45i1LZM7I00Ci5QquB9szqaxu+uuk5TUSGjZQ4w4n+qujQiIuvTv2BxE7WCGQCifNMksyKILDiHzsOg==" crossorigin>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.js" integrity="sha512-2B9/byNV1KKRm5nQ2RLViPFD6U4dUjDGwuW1GU+ImJh8YinPU9Zlq1GzdTMO+G2ROrB5o1qasJBy1ttYz0wCug==" crossorigin></script>
+<style>
+.modal-dialog iframe {
+width: 100vw;
+height: calc(100vh - 80px);
+}
+@media screen and (min-width: 700px) {
+.modal-dialog iframe {
+width: 70vw;
+height: 80vh;
+}
+}
+.modal-dialog .tingle-modal-box {width: auto;}
+.modal-dialog .tingle-modal-box__content {padding: 0;}
+</style>
+<script>
+const input = document.getElementById('lunr-search');
+input.disabled = false;
+input.form.addEventListener('submit', (ev) => {
+ev.preventDefault();
+const url = new URL(window.location);
+url.searchParams.set('q', input.value);
+history.replaceState({}, null, url.toString());
+search(input.value);
+});
+const query = new URL(window.location).searchParams.get('q');
+if (query)
+search(query);
+function search(query) {
+const url = '../../../doc-search.html#' + encodeURIComponent(query);
+new tingle.modal({
+cssClass: ['modal-dialog'],
+onClose: () => {
+const url = new URL(window.location);
+url.searchParams.delete('q');
+history.replaceState({}, null, url.toString());
+setTimeout(() => input.focus(), 100);
+}
+}).setContent('<iframe src="' + url + '"></iframe>').open();
+}
+</script>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="qscope.device.picoscope" href="index.html">qscope.device.picoscope</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="qscope.device.picoscope.picoscope.PicoSDKImportError" href="#qscope.device.picoscope.picoscope.PicoSDKImportError">PicoSDKImportError</a></code></h4>
+</li>
+<li>
+<h4><code><a title="qscope.device.picoscope.picoscope.Picoscope" href="#qscope.device.picoscope.picoscope.Picoscope">Picoscope</a></code></h4>
+<ul class="">
+<li><code><a title="qscope.device.picoscope.picoscope.Picoscope.VOLTAGE_RANGES" href="#qscope.device.picoscope.picoscope.Picoscope.VOLTAGE_RANGES">VOLTAGE_RANGES</a></code></li>
+<li><code><a title="qscope.device.picoscope.picoscope.Picoscope.assert_ok" href="#qscope.device.picoscope.picoscope.Picoscope.assert_ok">assert_ok</a></code></li>
+<li><code><a title="qscope.device.picoscope.picoscope.Picoscope.check_overflow" href="#qscope.device.picoscope.picoscope.Picoscope.check_overflow">check_overflow</a></code></li>
+<li><code><a title="qscope.device.picoscope.picoscope.Picoscope.close" href="#qscope.device.picoscope.picoscope.Picoscope.close">close</a></code></li>
+<li><code><a title="qscope.device.picoscope.picoscope.Picoscope.config_signal_generator" href="#qscope.device.picoscope.picoscope.Picoscope.config_signal_generator">config_signal_generator</a></code></li>
+<li><code><a title="qscope.device.picoscope.picoscope.Picoscope.config_start_signal_generator" href="#qscope.device.picoscope.picoscope.Picoscope.config_start_signal_generator">config_start_signal_generator</a></code></li>
+<li><code><a title="qscope.device.picoscope.picoscope.Picoscope.configure_channels" href="#qscope.device.picoscope.picoscope.Picoscope.configure_channels">configure_channels</a></code></li>
+<li><code><a title="qscope.device.picoscope.picoscope.Picoscope.get_block_data" href="#qscope.device.picoscope.picoscope.Picoscope.get_block_data">get_block_data</a></code></li>
+<li><code><a title="qscope.device.picoscope.picoscope.Picoscope.get_data" href="#qscope.device.picoscope.picoscope.Picoscope.get_data">get_data</a></code></li>
+<li><code><a title="qscope.device.picoscope.picoscope.Picoscope.get_device_info" href="#qscope.device.picoscope.picoscope.Picoscope.get_device_info">get_device_info</a></code></li>
+<li><code><a title="qscope.device.picoscope.picoscope.Picoscope.get_timebase" href="#qscope.device.picoscope.picoscope.Picoscope.get_timebase">get_timebase</a></code></li>
+<li><code><a title="qscope.device.picoscope.picoscope.Picoscope.is_responding" href="#qscope.device.picoscope.picoscope.Picoscope.is_responding">is_responding</a></code></li>
+<li><code><a title="qscope.device.picoscope.picoscope.Picoscope.open" href="#qscope.device.picoscope.picoscope.Picoscope.open">open</a></code></li>
+<li><code><a title="qscope.device.picoscope.picoscope.Picoscope.set_downsampling" href="#qscope.device.picoscope.picoscope.Picoscope.set_downsampling">set_downsampling</a></code></li>
+<li><code><a title="qscope.device.picoscope.picoscope.Picoscope.set_resolution" href="#qscope.device.picoscope.picoscope.Picoscope.set_resolution">set_resolution</a></code></li>
+<li><code><a title="qscope.device.picoscope.picoscope.Picoscope.set_sample_interval" href="#qscope.device.picoscope.picoscope.Picoscope.set_sample_interval">set_sample_interval</a></code></li>
+<li><code><a title="qscope.device.picoscope.picoscope.Picoscope.set_trigger" href="#qscope.device.picoscope.picoscope.Picoscope.set_trigger">set_trigger</a></code></li>
+<li><code><a title="qscope.device.picoscope.picoscope.Picoscope.start_block_capture" href="#qscope.device.picoscope.picoscope.Picoscope.start_block_capture">start_block_capture</a></code></li>
+<li><code><a title="qscope.device.picoscope.picoscope.Picoscope.start_signal_generator" href="#qscope.device.picoscope.picoscope.Picoscope.start_signal_generator">start_signal_generator</a></code></li>
+<li><code><a title="qscope.device.picoscope.picoscope.Picoscope.start_streaming" href="#qscope.device.picoscope.picoscope.Picoscope.start_streaming">start_streaming</a></code></li>
+<li><code><a title="qscope.device.picoscope.picoscope.Picoscope.stop_signal_generator" href="#qscope.device.picoscope.picoscope.Picoscope.stop_signal_generator">stop_signal_generator</a></code></li>
+<li><code><a title="qscope.device.picoscope.picoscope.Picoscope.stop_streaming" href="#qscope.device.picoscope.picoscope.Picoscope.stop_streaming">stop_streaming</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.device.picoscope.picoscope.SignalConfig" href="#qscope.device.picoscope.picoscope.SignalConfig">SignalConfig</a></code></h4>
+<ul class="">
+<li><code><a title="qscope.device.picoscope.picoscope.SignalConfig.amplitude" href="#qscope.device.picoscope.picoscope.SignalConfig.amplitude">amplitude</a></code></li>
+<li><code><a title="qscope.device.picoscope.picoscope.SignalConfig.frequency" href="#qscope.device.picoscope.picoscope.SignalConfig.frequency">frequency</a></code></li>
+<li><code><a title="qscope.device.picoscope.picoscope.SignalConfig.offset" href="#qscope.device.picoscope.picoscope.SignalConfig.offset">offset</a></code></li>
+<li><code><a title="qscope.device.picoscope.picoscope.SignalConfig.validate" href="#qscope.device.picoscope.picoscope.SignalConfig.validate">validate</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.device.picoscope.picoscope.WaveType" href="#qscope.device.picoscope.picoscope.WaveType">WaveType</a></code></h4>
+<ul class="">
+<li><code><a title="qscope.device.picoscope.picoscope.WaveType.DC" href="#qscope.device.picoscope.picoscope.WaveType.DC">DC</a></code></li>
+<li><code><a title="qscope.device.picoscope.picoscope.WaveType.SINE" href="#qscope.device.picoscope.picoscope.WaveType.SINE">SINE</a></code></li>
+<li><code><a title="qscope.device.picoscope.picoscope.WaveType.SQUARE" href="#qscope.device.picoscope.picoscope.WaveType.SQUARE">SQUARE</a></code></li>
+<li><code><a title="qscope.device.picoscope.picoscope.WaveType.TRIANGLE" href="#qscope.device.picoscope.picoscope.WaveType.TRIANGLE">TRIANGLE</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
+</footer>
+</body>
+</html>

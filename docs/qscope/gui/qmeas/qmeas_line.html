@@ -1,0 +1,980 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.6">
+<title>qscope.gui.qmeas.qmeas_line API documentation</title>
+<meta name="description" content="">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}#lunr-search{width:100%;font-size:1em;padding:6px 9px 5px 9px;border:1px solid silver}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes: true } });</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML" integrity="sha256-kZafAc6mZvK3W3v1pHOcUix30OHQN6pU/NO2oFkqZVw=" crossorigin></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>qscope.gui.qmeas.qmeas_line</code></h1>
+</header>
+<section id="section-intro">
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="qscope.gui.qmeas.qmeas_line.LineFigure"><code class="flex name class">
+<span>class <span class="ident">LineFigure</span></span>
+<span>(</span><span>mw: PyQt6.QtWidgets.QMainWindow)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class LineFigure(QWidget):
+    # cursor_x: float
+
+    def __init__(self, mw: QMainWindow):
+        super().__init__()
+        self.mw = mw
+
+        # Initialise parameters
+        self.norm = &#34;None&#34;
+        self.bfit = False
+        self.fit_param_results = &#34;Fit Parameters&#34;
+        self.fit_type = &#34;Lorentzian&#34;
+
+        self.cursor_color = (1, 0.33, 1)
+
+        self.y_label_key = {
+            &#34;Normalise (%)&#34;: &#34;Intensity (%)&#34;,
+            &#34;sig / ref&#34;: &#34;Intensity (norm.)&#34;,
+            &#34;ref / sig&#34;: &#34;Intensity (norm.)&#34;,
+            &#34;sig - ref&#34;: &#34;Intensity (cps)&#34;,
+            &#34;ref - sig&#34;: &#34;Intensity (cps)&#34;,
+            &#34;norm ref / sig&#34;: &#34;Intensity (%)&#34;,
+            &#34;norm sig / ref&#34;: &#34;Intensity (%)&#34;,
+            &#34;None&#34;: &#34;Intensity (cps)&#34;,
+        }
+
+        self.x_multiplier = 1
+        self.b_realtime_plot = False
+        self.b_rolling_plot = False
+
+        self.canvas = MplCanvas(self, width=8, height=5, dpi=100)
+        self.x_data = np.linspace(2770, 2970, 100)
+        self.y_data = (
+            -1 / (1 + (self.x_data - 2870) ** 2 / 10**2)
+            + 1000
+            + 0.1 * np.random.randn(100)
+        )
+        # self.cursor_x = np.min(self.x_data)
+
+        self.y_data_ref = 1000 + 0.1 * np.random.randn(100)
+        self.set_data(self.x_data, self.y_data, self.y_data_ref)
+
+        self.set_x_label(&#34;Frequency (MHz)&#34;)
+
+        # Make the canvas background transparent
+        self.canvas.setStyleSheet(&#34;background-color: None&#34;)
+
+        self.canvas.mpl_connect(&#34;motion_notify_event&#34;, self.on_move)
+        self.canvas.mpl_connect(&#34;button_press_event&#34;, self.on_click)
+
+        def set_size(w, h, ax=None):
+            &#34;&#34;&#34;w, h: width, height in inches&#34;&#34;&#34;
+            if not ax:
+                ax = plt.gca()
+            l = ax.figure.subplotpars.left
+            r = ax.figure.subplotpars.right
+            t = ax.figure.subplotpars.top
+            b = ax.figure.subplotpars.bottom
+            figw = float(w) / (r - l)
+            figh = float(h) / (t - b)
+            ax.figure.set_size_inches(figw, figh)
+
+        bg_color = plt.gca().get_facecolor()
+
+        self.xytext = self.canvas.axes.text(
+            0.01,
+            0.01,
+            &#34;0, 0&#34;,
+            visible=True,
+            horizontalalignment=&#34;left&#34;,
+            verticalalignment=&#34;bottom&#34;,
+            transform=self.canvas.axes.transAxes,
+            color=get_contrasting_text_color(bg_color),
+        )
+        self.xytext.set_visible(False)
+
+        self.hline = self.canvas.axes.axhline(
+            y=0,
+            color=self.cursor_color,
+            alpha=0.6,
+            linestyle=&#34;-&#34;,
+            zorder=-10,
+            label=&#34;_nolegend_&#34;,
+        )
+        self.hline.set_visible(False)
+        self.vline = self.canvas.axes.axvline(
+            x=0,
+            color=self.cursor_color,
+            alpha=0.6,
+            linestyle=&#34;-&#34;,
+            zorder=-10,
+            label=&#34;_nolegend_&#34;,
+        )
+        self.vline.set_visible(False)
+        (self.cursor_spot,) = self.canvas.axes.plot(
+            0,
+            0,
+            &#34;o&#34;,
+            mec=(*self.cursor_color, 0.6),
+            mfc=(0, 0, 0, 0),
+            zorder=-10,
+            label=&#34;_nolegend_&#34;,
+        )
+        self.cursor_spot.set_visible(False)
+
+        xytext_position = self.xytext.get_position()
+        cursor_text_position = (
+            xytext_position[0],
+            xytext_position[1] + 0.04,
+        )  # Adjust the offset as needed
+
+        self.cursor_text = self.canvas.axes.text(
+            0,
+            0,
+            &#34;0; 0&#34;,
+            color=self.cursor_color,
+            transform=self.canvas.axes.transAxes,
+            horizontalalignment=&#34;left&#34;,
+            verticalalignment=&#34;bottom&#34;,
+        )
+        self.cursor_text.set_position(cursor_text_position)
+        self.cursor_text.set_visible(False)
+
+        self.canvas.draw()
+
+        # Set the axis size
+        set_size(7, 4, self.canvas.axes)
+
+        self.canvas.setStatusTip(
+            &#34;Left click to place cursor, right click to remove cursor&#34;
+        )
+
+    def on_move(self, event):
+        # printing x. y values
+        try:
+            if event.inaxes == self.canvas.axes:
+                self.xytext.set_text(f&#34;({event.xdata:.4g}; {event.ydata:.4g})&#34;)
+                self.xytext.set_visible(True)
+                self.xytext.set_position((0.01, 0.01))
+                self.canvas.draw_idle()
+            else:
+                self.xytext.set_visible(False)
+                self.canvas.draw_idle()
+        except Exception as e:
+            logger.error(f&#34;Error in on_move: {e}&#34;)
+
+    def on_click(self, event):
+        try:
+            if event.inaxes == self.canvas.axes:
+                if event.button == 3:  # Right mouse button
+                    self.cursor_spot.set_visible(False)
+                    self.cursor_text.set_visible(False)
+                    self.hline.set_visible(False)
+                    self.vline.set_visible(False)
+                    self.canvas.draw_idle()
+                else:
+                    self.hline.set_ydata([event.ydata])
+                    self.vline.set_xdata([event.xdata])
+                    self.cursor_spot.set_data([event.xdata], [event.ydata])
+                    self.cursor_spot.set_visible(True)
+                    self.cursor_text.set_text(f&#34;({event.xdata:.4g}; {event.ydata:.4g})&#34;)
+                    self.cursor_text.set_color(self.cursor_color)
+                    self.cursor_text.set_visible(True)
+                    self.hline.set_visible(True)
+                    self.vline.set_visible(True)
+                    self.canvas.draw_idle()
+        except Exception as e:
+            logger.error(f&#34;Error in on_click: {e}&#34;)
+
+    def set_normalisation(self, norm):
+        self.norm = norm
+        # self.update_plot()
+
+    def set_fitting(self, bfit):
+        self.bfit = bfit
+        self.update_plot(force_fit=True)
+
+    def is_fitting(self):
+        return self.bfit
+
+    def set_x_label(self, label):
+        self.canvas.axes.set_xlabel(label)
+        self.canvas.draw()
+
+    def set_y_label(self, label):
+        self.canvas.axes.set_ylabel(label)
+        self.canvas.draw()
+
+    def set_x_multiplier(self, multiplier):
+        self.x_multiplier = multiplier
+        self.update_plot()
+
+    def update_realtime_data(self, x_data, y_data, y_data_ref):
+        self.realtime_x_data = x_data * self.x_multiplier
+        self.realtime_y_data = y_data
+        self.realtime_y_data_ref = y_data_ref
+
+    def plot_realtime_data(self, state):
+        self.b_realtime_plot = state
+        if state:
+            self.b_rolling_plot = False
+
+    def plot_rolling_avg(self, state):
+        self.b_rolling_plot = state
+        if state:
+            self.b_realtime_plot = False
+
+    def set_data(self, x_data, y_data, y_data_ref, force_fit=False):
+        self.x_data = x_data * self.x_multiplier
+        self.y_data = y_data
+        self.y_data_ref = y_data_ref
+
+        self.xlims = [np.min(self.x_data), np.max(self.x_data)]
+
+        # For plotting with partial data check if the data contains any zeros and remove them
+        if np.any(self.y_data == 0):
+            self.x_data = self.x_data[self.y_data != 0]
+            self.y_data = self.y_data[self.y_data != 0]
+            self.y_data_ref = self.y_data_ref[self.y_data_ref != 0]
+        try:
+            if self.mw.line_figure_opts.start_index_input.value() != 0:
+                start_index = self.mw.line_figure_opts.start_index_input.value()
+                self.x_data = self.x_data[start_index:]
+                self.y_data = self.y_data[start_index:]
+                self.y_data_ref = self.y_data_ref[start_index:]
+
+            if self.mw.line_figure_opts.end_index_input.value() != 0:
+                end_index = self.mw.line_figure_opts.end_index_input.value()
+                self.x_data = self.x_data[: -end_index - 1]
+                self.y_data = self.y_data[: -end_index - 1]
+                self.y_data_ref = self.y_data_ref[: -end_index - 1]
+        except Exception as e:
+            pass
+
+        self.update_plot(force_fit=force_fit)
+
+    def get_plot_data(self):
+        return self.x_data, self.y_plot
+
+    def update_plot(self, force_fit=False):
+        try:
+            # self.canvas.axes.cla()
+            # Remove previous line plots but keep other artists like xytext
+            for line in self.canvas.axes.get_lines():
+                if not isinstance(line, mpl.lines.Line2D) or line.get_label() not in [
+                    &#34;_nolegend_&#34;
+                ]:
+                    line.remove()
+
+            # update the plot with the current state of the data
+
+            if not self.y_data.size:  # don&#39;t need to plot eh
+                return
+
+            sig_plt_options = {
+                &#34;c&#34;: &#34;#59b6e6&#34;,
+                &#34;mfc&#34;: (0, 0, 0, 0),
+                &#34;mec&#34;: &#34;#59b6e6&#34;,
+                &#34;mew&#34;: 2,
+                &#34;ms&#34;: 4,
+            }
+            ref_plt_options = {
+                &#34;c&#34;: &#34;#E68959&#34;,
+                &#34;mfc&#34;: (0, 0, 0, 0),
+                &#34;mec&#34;: &#34;#E68959&#34;,
+                &#34;mew&#34;: 2,
+                &#34;ms&#34;: 4,
+            }
+            fit_plt_options = {
+                &#34;c&#34;: &#34;red&#34;,
+                &#34;mfc&#34;: (0, 0, 0, 0),
+                &#34;mec&#34;: &#34;#E68959&#34;,
+                &#34;mew&#34;: 2,
+                &#34;ms&#34;: 4,
+            }
+
+            if self.b_realtime_plot:
+                x_data = self.realtime_x_data
+                y_data = self.realtime_y_data
+                y_data_ref = self.realtime_y_data_ref
+            elif self.b_rolling_plot:
+                x_data = self.x_data
+
+                y_data = self.parent.rolling_img_figure.last_sweep
+                # y_data_ref = self.y_data_ref
+            else:
+                x_data = self.x_data
+                y_data = self.y_data
+                y_data_ref = self.y_data_ref
+
+            # check if the plot is normalised
+            if self.norm == &#34;None&#34;:
+                self.y_plot = y_data
+                label = &#34;Signal&#34;
+
+            elif self.norm.lower() == &#34;sig - ref&#34;:
+                self.y_plot = y_data - y_data_ref
+                label = &#34;sig - ref&#34;
+
+            elif self.norm == &#34;ref - sig&#34;:
+                self.y_plot = y_data_ref - y_data
+                label = &#34;ref - sig&#34;
+
+            elif self.norm == &#34;sig / ref&#34;:
+                self.y_plot = y_data / y_data_ref
+                label = &#34;sig / ref&#34;
+
+            elif self.norm == &#34;ref / sig&#34;:
+                self.y_plot = y_data_ref / y_data
+                label = &#34;ref / sig&#34;
+
+            elif self.norm == &#34;norm sig / ref&#34;:
+                self.y_plot = 100 * (y_data / y_data_ref - 1)
+                label = &#34;norm sig / ref&#34;
+
+            elif self.norm == &#34;norm ref / sig&#34;:
+                self.y_plot = 100 * (y_data_ref / y_data - 1)
+                label = &#34;norm ref / sig&#34;
+
+            if self.norm == &#34;None&#34;:
+                y_max = np.max([np.max(y_data), np.max(y_data_ref)])
+                y_min = np.min([np.min(y_data), np.min(y_data_ref)])
+            else:
+                y_max = np.max(self.y_plot)
+                y_min = np.min(self.y_plot)
+
+            self.canvas.axes.plot(
+                x_data, self.y_plot, &#34;-o&#34;, label=label, **sig_plt_options
+            )
+
+            # if there is no normalisation, plot the reference data
+            if self.norm == &#34;None&#34;:
+                self.canvas.axes.plot(
+                    x_data,
+                    y_data_ref,
+                    &#34;-o&#34;,
+                    label=&#34;Reference&#34;,
+                    **ref_plt_options,
+                )
+
+            # update the y-axis
+            y_range = y_max - y_min
+            if not np.isnan(y_range):
+                self.canvas.axes.set_ylim(
+                    [y_min - 0.05 * y_range, y_max + 0.05 * y_range]
+                )
+                self.canvas.axes.set_xlim(self.xlims)
+
+            # set the y-axis label
+            try:
+                self.canvas.axes.set_ylabel(self.y_label_key[self.norm])
+            except:
+                self.canvas.axes.set_ylabel(&#34;Unsure (a.u.)&#34;)
+
+            # FIXME need to handle x-axis label, maybe send in SweepUpdate?
+
+            self.canvas.axes.set_yticks(np.linspace(y_min, y_max, 5))
+
+            # check if the fit button is pressed
+            if self.bfit and force_fit:
+                # Set the data for the fit
+                self.mw.line_fit_opts.FitModel.set_data(
+                    self.x_data / self.x_multiplier, self.y_plot
+                )
+                # get the initial guess for the fit
+                self.mw.line_fit_opts.FitModel.guess_parameters(
+                    fmod=self.mw.meas_opts.freq_mod_input.value()
+                )
+                # fit the data
+                self.mw.line_fit_opts.FitModel.fit()
+                # get the best fit results
+                x_fit, y_fit = self.mw.line_fit_opts.FitModel.best_fit()
+                self.canvas.axes.plot(x_fit, y_fit, label=&#34;Fit&#34;, **fit_plt_options)
+                # Get the results of the fit to display in the gui
+                total_counts = (
+                    np.nanmean(self.y_data)
+                    * self.mw.meas_opts.ith_loop.value()
+                    / self.mw.cam_opts.exposure_time_input.value()
+                )
+                fit_text = self.mw.line_fit_opts.FitModel.get_fit_results_txt(
+                    total_counts
+                )
+                self.mw.line_fit_opts.update_fit_results(fit_text)
+
+            elif self.bfit:
+                # plot the previous fit
+                x_fit, y_fit = self.mw.line_fit_opts.FitModel.best_fit()
+                self.canvas.axes.plot(x_fit, y_fit, label=&#34;Fit&#34;, **fit_plt_options)
+
+            self.canvas.axes.legend(
+                # facecolor=&#34;None&#34;,
+                framealpha=0.6,
+                edgecolor=&#34;None&#34;,
+                prop={&#34;size&#34;: 10},
+                labelcolor=&#34;linecolor&#34;,
+                loc=&#34;lower right&#34;,
+            )
+
+            # update the plot
+            self.canvas.draw()
+
+        except Exception as e:
+            logger.exception(&#34;Error updating qmeas_line plot.&#34;)
+            pass</code></pre>
+</details>
+<div class="desc"><p>QWidget(parent: Optional[QWidget] = None, flags: Qt.WindowType = Qt.WindowFlags())</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>PyQt6.QtWidgets.QWidget</li>
+<li>PyQt6.QtCore.QObject</li>
+<li>PyQt6.sip.wrapper</li>
+<li>PyQt6.QtGui.QPaintDevice</li>
+<li>PyQt6.sip.simplewrapper</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.gui.qmeas.qmeas_line.LineFigure.get_plot_data"><code class="name flex">
+<span>def <span class="ident">get_plot_data</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_plot_data(self):
+    return self.x_data, self.y_plot</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.qmeas_line.LineFigure.is_fitting"><code class="name flex">
+<span>def <span class="ident">is_fitting</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def is_fitting(self):
+    return self.bfit</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.qmeas_line.LineFigure.on_click"><code class="name flex">
+<span>def <span class="ident">on_click</span></span>(<span>self, event)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def on_click(self, event):
+    try:
+        if event.inaxes == self.canvas.axes:
+            if event.button == 3:  # Right mouse button
+                self.cursor_spot.set_visible(False)
+                self.cursor_text.set_visible(False)
+                self.hline.set_visible(False)
+                self.vline.set_visible(False)
+                self.canvas.draw_idle()
+            else:
+                self.hline.set_ydata([event.ydata])
+                self.vline.set_xdata([event.xdata])
+                self.cursor_spot.set_data([event.xdata], [event.ydata])
+                self.cursor_spot.set_visible(True)
+                self.cursor_text.set_text(f&#34;({event.xdata:.4g}; {event.ydata:.4g})&#34;)
+                self.cursor_text.set_color(self.cursor_color)
+                self.cursor_text.set_visible(True)
+                self.hline.set_visible(True)
+                self.vline.set_visible(True)
+                self.canvas.draw_idle()
+    except Exception as e:
+        logger.error(f&#34;Error in on_click: {e}&#34;)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.qmeas_line.LineFigure.on_move"><code class="name flex">
+<span>def <span class="ident">on_move</span></span>(<span>self, event)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def on_move(self, event):
+    # printing x. y values
+    try:
+        if event.inaxes == self.canvas.axes:
+            self.xytext.set_text(f&#34;({event.xdata:.4g}; {event.ydata:.4g})&#34;)
+            self.xytext.set_visible(True)
+            self.xytext.set_position((0.01, 0.01))
+            self.canvas.draw_idle()
+        else:
+            self.xytext.set_visible(False)
+            self.canvas.draw_idle()
+    except Exception as e:
+        logger.error(f&#34;Error in on_move: {e}&#34;)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.qmeas_line.LineFigure.plot_realtime_data"><code class="name flex">
+<span>def <span class="ident">plot_realtime_data</span></span>(<span>self, state)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def plot_realtime_data(self, state):
+    self.b_realtime_plot = state
+    if state:
+        self.b_rolling_plot = False</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.qmeas_line.LineFigure.plot_rolling_avg"><code class="name flex">
+<span>def <span class="ident">plot_rolling_avg</span></span>(<span>self, state)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def plot_rolling_avg(self, state):
+    self.b_rolling_plot = state
+    if state:
+        self.b_realtime_plot = False</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.qmeas_line.LineFigure.set_data"><code class="name flex">
+<span>def <span class="ident">set_data</span></span>(<span>self, x_data, y_data, y_data_ref, force_fit=False)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_data(self, x_data, y_data, y_data_ref, force_fit=False):
+    self.x_data = x_data * self.x_multiplier
+    self.y_data = y_data
+    self.y_data_ref = y_data_ref
+
+    self.xlims = [np.min(self.x_data), np.max(self.x_data)]
+
+    # For plotting with partial data check if the data contains any zeros and remove them
+    if np.any(self.y_data == 0):
+        self.x_data = self.x_data[self.y_data != 0]
+        self.y_data = self.y_data[self.y_data != 0]
+        self.y_data_ref = self.y_data_ref[self.y_data_ref != 0]
+    try:
+        if self.mw.line_figure_opts.start_index_input.value() != 0:
+            start_index = self.mw.line_figure_opts.start_index_input.value()
+            self.x_data = self.x_data[start_index:]
+            self.y_data = self.y_data[start_index:]
+            self.y_data_ref = self.y_data_ref[start_index:]
+
+        if self.mw.line_figure_opts.end_index_input.value() != 0:
+            end_index = self.mw.line_figure_opts.end_index_input.value()
+            self.x_data = self.x_data[: -end_index - 1]
+            self.y_data = self.y_data[: -end_index - 1]
+            self.y_data_ref = self.y_data_ref[: -end_index - 1]
+    except Exception as e:
+        pass
+
+    self.update_plot(force_fit=force_fit)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.qmeas_line.LineFigure.set_fitting"><code class="name flex">
+<span>def <span class="ident">set_fitting</span></span>(<span>self, bfit)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_fitting(self, bfit):
+    self.bfit = bfit
+    self.update_plot(force_fit=True)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.qmeas_line.LineFigure.set_normalisation"><code class="name flex">
+<span>def <span class="ident">set_normalisation</span></span>(<span>self, norm)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_normalisation(self, norm):
+    self.norm = norm
+    # self.update_plot()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.qmeas_line.LineFigure.set_x_label"><code class="name flex">
+<span>def <span class="ident">set_x_label</span></span>(<span>self, label)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_x_label(self, label):
+    self.canvas.axes.set_xlabel(label)
+    self.canvas.draw()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.qmeas_line.LineFigure.set_x_multiplier"><code class="name flex">
+<span>def <span class="ident">set_x_multiplier</span></span>(<span>self, multiplier)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_x_multiplier(self, multiplier):
+    self.x_multiplier = multiplier
+    self.update_plot()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.qmeas_line.LineFigure.set_y_label"><code class="name flex">
+<span>def <span class="ident">set_y_label</span></span>(<span>self, label)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_y_label(self, label):
+    self.canvas.axes.set_ylabel(label)
+    self.canvas.draw()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.qmeas_line.LineFigure.update_plot"><code class="name flex">
+<span>def <span class="ident">update_plot</span></span>(<span>self, force_fit=False)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update_plot(self, force_fit=False):
+    try:
+        # self.canvas.axes.cla()
+        # Remove previous line plots but keep other artists like xytext
+        for line in self.canvas.axes.get_lines():
+            if not isinstance(line, mpl.lines.Line2D) or line.get_label() not in [
+                &#34;_nolegend_&#34;
+            ]:
+                line.remove()
+
+        # update the plot with the current state of the data
+
+        if not self.y_data.size:  # don&#39;t need to plot eh
+            return
+
+        sig_plt_options = {
+            &#34;c&#34;: &#34;#59b6e6&#34;,
+            &#34;mfc&#34;: (0, 0, 0, 0),
+            &#34;mec&#34;: &#34;#59b6e6&#34;,
+            &#34;mew&#34;: 2,
+            &#34;ms&#34;: 4,
+        }
+        ref_plt_options = {
+            &#34;c&#34;: &#34;#E68959&#34;,
+            &#34;mfc&#34;: (0, 0, 0, 0),
+            &#34;mec&#34;: &#34;#E68959&#34;,
+            &#34;mew&#34;: 2,
+            &#34;ms&#34;: 4,
+        }
+        fit_plt_options = {
+            &#34;c&#34;: &#34;red&#34;,
+            &#34;mfc&#34;: (0, 0, 0, 0),
+            &#34;mec&#34;: &#34;#E68959&#34;,
+            &#34;mew&#34;: 2,
+            &#34;ms&#34;: 4,
+        }
+
+        if self.b_realtime_plot:
+            x_data = self.realtime_x_data
+            y_data = self.realtime_y_data
+            y_data_ref = self.realtime_y_data_ref
+        elif self.b_rolling_plot:
+            x_data = self.x_data
+
+            y_data = self.parent.rolling_img_figure.last_sweep
+            # y_data_ref = self.y_data_ref
+        else:
+            x_data = self.x_data
+            y_data = self.y_data
+            y_data_ref = self.y_data_ref
+
+        # check if the plot is normalised
+        if self.norm == &#34;None&#34;:
+            self.y_plot = y_data
+            label = &#34;Signal&#34;
+
+        elif self.norm.lower() == &#34;sig - ref&#34;:
+            self.y_plot = y_data - y_data_ref
+            label = &#34;sig - ref&#34;
+
+        elif self.norm == &#34;ref - sig&#34;:
+            self.y_plot = y_data_ref - y_data
+            label = &#34;ref - sig&#34;
+
+        elif self.norm == &#34;sig / ref&#34;:
+            self.y_plot = y_data / y_data_ref
+            label = &#34;sig / ref&#34;
+
+        elif self.norm == &#34;ref / sig&#34;:
+            self.y_plot = y_data_ref / y_data
+            label = &#34;ref / sig&#34;
+
+        elif self.norm == &#34;norm sig / ref&#34;:
+            self.y_plot = 100 * (y_data / y_data_ref - 1)
+            label = &#34;norm sig / ref&#34;
+
+        elif self.norm == &#34;norm ref / sig&#34;:
+            self.y_plot = 100 * (y_data_ref / y_data - 1)
+            label = &#34;norm ref / sig&#34;
+
+        if self.norm == &#34;None&#34;:
+            y_max = np.max([np.max(y_data), np.max(y_data_ref)])
+            y_min = np.min([np.min(y_data), np.min(y_data_ref)])
+        else:
+            y_max = np.max(self.y_plot)
+            y_min = np.min(self.y_plot)
+
+        self.canvas.axes.plot(
+            x_data, self.y_plot, &#34;-o&#34;, label=label, **sig_plt_options
+        )
+
+        # if there is no normalisation, plot the reference data
+        if self.norm == &#34;None&#34;:
+            self.canvas.axes.plot(
+                x_data,
+                y_data_ref,
+                &#34;-o&#34;,
+                label=&#34;Reference&#34;,
+                **ref_plt_options,
+            )
+
+        # update the y-axis
+        y_range = y_max - y_min
+        if not np.isnan(y_range):
+            self.canvas.axes.set_ylim(
+                [y_min - 0.05 * y_range, y_max + 0.05 * y_range]
+            )
+            self.canvas.axes.set_xlim(self.xlims)
+
+        # set the y-axis label
+        try:
+            self.canvas.axes.set_ylabel(self.y_label_key[self.norm])
+        except:
+            self.canvas.axes.set_ylabel(&#34;Unsure (a.u.)&#34;)
+
+        # FIXME need to handle x-axis label, maybe send in SweepUpdate?
+
+        self.canvas.axes.set_yticks(np.linspace(y_min, y_max, 5))
+
+        # check if the fit button is pressed
+        if self.bfit and force_fit:
+            # Set the data for the fit
+            self.mw.line_fit_opts.FitModel.set_data(
+                self.x_data / self.x_multiplier, self.y_plot
+            )
+            # get the initial guess for the fit
+            self.mw.line_fit_opts.FitModel.guess_parameters(
+                fmod=self.mw.meas_opts.freq_mod_input.value()
+            )
+            # fit the data
+            self.mw.line_fit_opts.FitModel.fit()
+            # get the best fit results
+            x_fit, y_fit = self.mw.line_fit_opts.FitModel.best_fit()
+            self.canvas.axes.plot(x_fit, y_fit, label=&#34;Fit&#34;, **fit_plt_options)
+            # Get the results of the fit to display in the gui
+            total_counts = (
+                np.nanmean(self.y_data)
+                * self.mw.meas_opts.ith_loop.value()
+                / self.mw.cam_opts.exposure_time_input.value()
+            )
+            fit_text = self.mw.line_fit_opts.FitModel.get_fit_results_txt(
+                total_counts
+            )
+            self.mw.line_fit_opts.update_fit_results(fit_text)
+
+        elif self.bfit:
+            # plot the previous fit
+            x_fit, y_fit = self.mw.line_fit_opts.FitModel.best_fit()
+            self.canvas.axes.plot(x_fit, y_fit, label=&#34;Fit&#34;, **fit_plt_options)
+
+        self.canvas.axes.legend(
+            # facecolor=&#34;None&#34;,
+            framealpha=0.6,
+            edgecolor=&#34;None&#34;,
+            prop={&#34;size&#34;: 10},
+            labelcolor=&#34;linecolor&#34;,
+            loc=&#34;lower right&#34;,
+        )
+
+        # update the plot
+        self.canvas.draw()
+
+    except Exception as e:
+        logger.exception(&#34;Error updating qmeas_line plot.&#34;)
+        pass</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.qmeas_line.LineFigure.update_realtime_data"><code class="name flex">
+<span>def <span class="ident">update_realtime_data</span></span>(<span>self, x_data, y_data, y_data_ref)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update_realtime_data(self, x_data, y_data, y_data_ref):
+    self.realtime_x_data = x_data * self.x_multiplier
+    self.realtime_y_data = y_data
+    self.realtime_y_data_ref = y_data_ref</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<form>
+<input id="lunr-search" name="q" placeholder="🔎 Search ..." aria-label="Search"
+disabled minlength="2">
+</form>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.css" integrity="sha512-b+T2i3P45i1LZM7I00Ci5QquB9szqaxu+uuk5TUSGjZQ4w4n+qujQiIuvTv2BxE7WCGQCifNMksyKILDiHzsOg==" crossorigin>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.js" integrity="sha512-2B9/byNV1KKRm5nQ2RLViPFD6U4dUjDGwuW1GU+ImJh8YinPU9Zlq1GzdTMO+G2ROrB5o1qasJBy1ttYz0wCug==" crossorigin></script>
+<style>
+.modal-dialog iframe {
+width: 100vw;
+height: calc(100vh - 80px);
+}
+@media screen and (min-width: 700px) {
+.modal-dialog iframe {
+width: 70vw;
+height: 80vh;
+}
+}
+.modal-dialog .tingle-modal-box {width: auto;}
+.modal-dialog .tingle-modal-box__content {padding: 0;}
+</style>
+<script>
+const input = document.getElementById('lunr-search');
+input.disabled = false;
+input.form.addEventListener('submit', (ev) => {
+ev.preventDefault();
+const url = new URL(window.location);
+url.searchParams.set('q', input.value);
+history.replaceState({}, null, url.toString());
+search(input.value);
+});
+const query = new URL(window.location).searchParams.get('q');
+if (query)
+search(query);
+function search(query) {
+const url = '../../../doc-search.html#' + encodeURIComponent(query);
+new tingle.modal({
+cssClass: ['modal-dialog'],
+onClose: () => {
+const url = new URL(window.location);
+url.searchParams.delete('q');
+history.replaceState({}, null, url.toString());
+setTimeout(() => input.focus(), 100);
+}
+}).setContent('<iframe src="' + url + '"></iframe>').open();
+}
+</script>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="qscope.gui.qmeas" href="index.html">qscope.gui.qmeas</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="qscope.gui.qmeas.qmeas_line.LineFigure" href="#qscope.gui.qmeas.qmeas_line.LineFigure">LineFigure</a></code></h4>
+<ul class="">
+<li><code><a title="qscope.gui.qmeas.qmeas_line.LineFigure.get_plot_data" href="#qscope.gui.qmeas.qmeas_line.LineFigure.get_plot_data">get_plot_data</a></code></li>
+<li><code><a title="qscope.gui.qmeas.qmeas_line.LineFigure.is_fitting" href="#qscope.gui.qmeas.qmeas_line.LineFigure.is_fitting">is_fitting</a></code></li>
+<li><code><a title="qscope.gui.qmeas.qmeas_line.LineFigure.on_click" href="#qscope.gui.qmeas.qmeas_line.LineFigure.on_click">on_click</a></code></li>
+<li><code><a title="qscope.gui.qmeas.qmeas_line.LineFigure.on_move" href="#qscope.gui.qmeas.qmeas_line.LineFigure.on_move">on_move</a></code></li>
+<li><code><a title="qscope.gui.qmeas.qmeas_line.LineFigure.plot_realtime_data" href="#qscope.gui.qmeas.qmeas_line.LineFigure.plot_realtime_data">plot_realtime_data</a></code></li>
+<li><code><a title="qscope.gui.qmeas.qmeas_line.LineFigure.plot_rolling_avg" href="#qscope.gui.qmeas.qmeas_line.LineFigure.plot_rolling_avg">plot_rolling_avg</a></code></li>
+<li><code><a title="qscope.gui.qmeas.qmeas_line.LineFigure.set_data" href="#qscope.gui.qmeas.qmeas_line.LineFigure.set_data">set_data</a></code></li>
+<li><code><a title="qscope.gui.qmeas.qmeas_line.LineFigure.set_fitting" href="#qscope.gui.qmeas.qmeas_line.LineFigure.set_fitting">set_fitting</a></code></li>
+<li><code><a title="qscope.gui.qmeas.qmeas_line.LineFigure.set_normalisation" href="#qscope.gui.qmeas.qmeas_line.LineFigure.set_normalisation">set_normalisation</a></code></li>
+<li><code><a title="qscope.gui.qmeas.qmeas_line.LineFigure.set_x_label" href="#qscope.gui.qmeas.qmeas_line.LineFigure.set_x_label">set_x_label</a></code></li>
+<li><code><a title="qscope.gui.qmeas.qmeas_line.LineFigure.set_x_multiplier" href="#qscope.gui.qmeas.qmeas_line.LineFigure.set_x_multiplier">set_x_multiplier</a></code></li>
+<li><code><a title="qscope.gui.qmeas.qmeas_line.LineFigure.set_y_label" href="#qscope.gui.qmeas.qmeas_line.LineFigure.set_y_label">set_y_label</a></code></li>
+<li><code><a title="qscope.gui.qmeas.qmeas_line.LineFigure.update_plot" href="#qscope.gui.qmeas.qmeas_line.LineFigure.update_plot">update_plot</a></code></li>
+<li><code><a title="qscope.gui.qmeas.qmeas_line.LineFigure.update_realtime_data" href="#qscope.gui.qmeas.qmeas_line.LineFigure.update_realtime_data">update_realtime_data</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
+</footer>
+</body>
+</html>

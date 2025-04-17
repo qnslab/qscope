@@ -1,0 +1,515 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.6">
+<title>qscope.types.validation API documentation</title>
+<meta name="description" content="Validation utilities for device roles and states …">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}#lunr-search{width:100%;font-size:1em;padding:6px 9px 5px 9px;border:1px solid silver}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes: true } });</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML" integrity="sha256-kZafAc6mZvK3W3v1pHOcUix30OHQN6pU/NO2oFkqZVw=" crossorigin></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>qscope.types.validation</code></h1>
+</header>
+<section id="section-intro">
+<p>Validation utilities for device roles and states.</p>
+<p>This module provides validation functions to ensure:
+1. Device roles map correctly to actual device types
+2. All required devices are present and properly connected
+3. System configurations meet their specified requirements</p>
+<p>The validation system uses a role-based approach where:
+- Each device type (Camera, RFSource etc) can fulfill specific roles
+- Systems declare which roles they require and which are optional
+- Validation ensures all required roles are fulfilled by appropriate devices</p>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="qscope.types.validation.assert_valid_handler_client_correspondence"><code class="name flex">
+<span>def <span class="ident">assert_valid_handler_client_correspondence</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def assert_valid_handler_client_correspondence():
+    &#34;&#34;&#34;Validates handler-client correspondence and raises if invalid.
+
+    Raises:
+        AssertionError: If any validation errors are found
+
+    This is the main entry point for protocol validation, typically
+    called from test.
+    &#34;&#34;&#34;
+    errors = validate_handler_client_correspondence()
+    if errors:
+        raise AssertionError(
+            &#34;Handler-client correspondence validation failed:\n&#34;
+            + &#34;\n&#34;.join(f&#34;- {err}&#34; for err in errors)
+        )</code></pre>
+</details>
+<div class="desc"><p>Validates handler-client correspondence and raises if invalid.</p>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>AssertionError</code></dt>
+<dd>If any validation errors are found</dd>
+</dl>
+<p>This is the main entry point for protocol validation, typically
+called from test.</p></div>
+</dd>
+<dt id="qscope.types.validation.validate_device_role_mapping"><code class="name flex">
+<span>def <span class="ident">validate_device_role_mapping</span></span>(<span>roles: "Set['DeviceRole']",<br>device_config: "dict['DeviceRole', tuple[Type['Device'], str]]",<br>allow_missing: bool = False) ‑> tuple[bool, str]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def validate_device_role_mapping(
+    roles: Set[&#34;DeviceRole&#34;],
+    device_config: dict[&#34;DeviceRole&#34;, tuple[Type[&#34;Device&#34;], str]],
+    allow_missing: bool = False,
+) -&gt; tuple[bool, str]:
+    &#34;&#34;&#34;Validate that device roles map to actual device types.
+
+    Parameters
+    ----------
+    roles : Set[DeviceRole]
+        The roles to validate
+    device_config : dict[DeviceRole, tuple[Type[Device], str]]
+        Mapping of roles to (device_class, config) tuples
+    allow_missing : bool, optional
+        If True, missing roles are allowed, by default False
+
+    Returns
+    -------
+    tuple[bool, str]
+        (is_valid, error_message)
+    &#34;&#34;&#34;
+    for role in roles:
+        if role not in device_config:
+            if not allow_missing:
+                return False, f&#34;Missing required role: {role}&#34;
+            continue
+
+        device_class = device_config[role][0]
+        is_valid, error_msg = role.validate_device_type(device_class)
+        if not is_valid:
+            return False, error_msg
+
+    return True, &#34;&#34;</code></pre>
+</details>
+<div class="desc"><p>Validate that device roles map to actual device types.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>roles</code></strong> :&ensp;<code>Set[DeviceRole]</code></dt>
+<dd>The roles to validate</dd>
+<dt><strong><code>device_config</code></strong> :&ensp;<code>dict[DeviceRole, tuple[Type[Device], str]]</code></dt>
+<dd>Mapping of roles to (device_class, config) tuples</dd>
+<dt><strong><code>allow_missing</code></strong> :&ensp;<code>bool</code>, optional</dt>
+<dd>If True, missing roles are allowed, by default False</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>tuple[bool, str]</code></dt>
+<dd>(is_valid, error_message)</dd>
+</dl></div>
+</dd>
+<dt id="qscope.types.validation.validate_device_states"><code class="name flex">
+<span>def <span class="ident">validate_device_states</span></span>(<span>device: Device) ‑> tuple[bool, str]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def validate_device_states(device: Device) -&gt; tuple[bool, str]:
+    &#34;&#34;&#34;Validate device state.
+
+    Parameters
+    ----------
+    device : Device
+        Device to validate
+
+    Returns
+    -------
+    tuple[bool, str]
+        (is_valid, error_message)
+    &#34;&#34;&#34;
+    if not device.is_connected():
+        return False, f&#34;Device {device.__class__.__name__} is not connected&#34;
+    return True, &#34;&#34;</code></pre>
+</details>
+<div class="desc"><p>Validate device state.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>device</code></strong> :&ensp;<code>Device</code></dt>
+<dd>Device to validate</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>tuple[bool, str]</code></dt>
+<dd>(is_valid, error_message)</dd>
+</dl></div>
+</dd>
+<dt id="qscope.types.validation.validate_handler_client_correspondence"><code class="name flex">
+<span>def <span class="ident">validate_handler_client_correspondence</span></span>(<span>) ‑> list[str]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def validate_handler_client_correspondence() -&gt; list[str]:
+    &#34;&#34;&#34;Validates the bidirectional correspondence between handlers and client methods.
+
+    This function performs comprehensive validation of the protocol mapping between
+    server handlers and client methods. It checks:
+
+    1. All client commands (@command decorated) have matching handlers registered
+    2. All handlers (@handler decorated) have at least one client method
+    3. All declared client methods actually exist in the client module
+    4. All client methods are properly decorated with @command
+    5. Commands match between handlers and their client methods
+
+    Returns:
+        List of validation error messages, empty if all valid
+
+    The validation happens in phases:
+    1. First validates all pending commands against the handler registry
+    2. Then checks all handlers have registered client methods
+    3. Finally verifies client methods exist and are properly decorated
+
+    This function is typically called during application startup after all
+    modules are imported but before any commands are used.
+    &#34;&#34;&#34;
+    errors = []
+
+    # First validate all pending commands against handlers
+    for command, func_name in PENDING_COMMAND_VALIDATIONS:
+        if command not in HANDLER_REGISTRY:
+            errors.append(
+                f&#34;Command {command} used by {func_name} not found in handler registry&#34;
+            )
+
+    # Check all handlers have registered client methods
+    for command, info in HANDLER_REGISTRY.items():
+        if not info.client_methods:
+            errors.append(
+                f&#34;Handler {info.handler_func.__name__} for command {command}&#34;
+                + &#34; has no registered client methods&#34;
+            )
+
+    # Check all client methods exist and are properly decorated
+    import qscope.server.client as client
+
+    for command, info in HANDLER_REGISTRY.items():
+        for client_method in info.client_methods:
+            if not hasattr(client, client_method):
+                errors.append(
+                    f&#34;Client method {client_method} for command {command}&#34;
+                    + &#34; not found in client module&#34;
+                )
+                continue
+
+            func = getattr(client, client_method)
+            if not hasattr(func, &#34;_is_client_method&#34;):
+                errors.append(
+                    f&#34;Client method {client_method} is not decorated with @command&#34;
+                )
+            elif func._command != command:
+                errors.append(
+                    f&#34;Client method {client_method} uses command {func._command}&#34;
+                    + &#34; but handler registered it for {command}&#34;
+                )
+
+    return errors</code></pre>
+</details>
+<div class="desc"><p>Validates the bidirectional correspondence between handlers and client methods.</p>
+<p>This function performs comprehensive validation of the protocol mapping between
+server handlers and client methods. It checks:</p>
+<ol>
+<li>All client commands (@command decorated) have matching handlers registered</li>
+<li>All handlers (@handler decorated) have at least one client method</li>
+<li>All declared client methods actually exist in the client module</li>
+<li>All client methods are properly decorated with @command</li>
+<li>Commands match between handlers and their client methods</li>
+</ol>
+<h2 id="returns">Returns</h2>
+<p>List of validation error messages, empty if all valid
+The validation happens in phases:
+1. First validates all pending commands against the handler registry
+2. Then checks all handlers have registered client methods
+3. Finally verifies client methods exist and are properly decorated</p>
+<p>This function is typically called during application startup after all
+modules are imported but before any commands are used.</p></div>
+</dd>
+<dt id="qscope.types.validation.validate_system_roles"><code class="name flex">
+<span>def <span class="ident">validate_system_roles</span></span>(<span>required_roles: "Set['DeviceRole']",<br>optional_roles: "Set['DeviceRole']",<br>config_roles: "Set['DeviceRole']") ‑> tuple[bool, str]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def validate_system_roles(
+    required_roles: Set[&#34;DeviceRole&#34;],
+    optional_roles: Set[&#34;DeviceRole&#34;],
+    config_roles: Set[&#34;DeviceRole&#34;],
+) -&gt; tuple[bool, str]:
+    &#34;&#34;&#34;Validate that a set of roles meets system requirements.
+
+    Parameters
+    ----------
+    required_roles : Set[DeviceRole]
+        Roles that must be present
+    optional_roles : Set[DeviceRole]
+        Roles that may be present
+    config_roles : Set[DeviceRole]
+        The actual roles to validate
+
+    Returns
+    -------
+    tuple[bool, str]
+        (is_valid, error_message)
+    &#34;&#34;&#34;
+    missing_required = required_roles - config_roles
+    invalid_roles = config_roles - (required_roles | optional_roles)
+
+    if missing_required:
+        return False, &#34;Missing required device roles for system type&#34;
+    if invalid_roles:
+        return False, f&#34;Invalid roles: {[r for r in invalid_roles]}&#34;
+    return True, &#34;&#34;</code></pre>
+</details>
+<div class="desc"><p>Validate that a set of roles meets system requirements.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>required_roles</code></strong> :&ensp;<code>Set[DeviceRole]</code></dt>
+<dd>Roles that must be present</dd>
+<dt><strong><code>optional_roles</code></strong> :&ensp;<code>Set[DeviceRole]</code></dt>
+<dd>Roles that may be present</dd>
+<dt><strong><code>config_roles</code></strong> :&ensp;<code>Set[DeviceRole]</code></dt>
+<dd>The actual roles to validate</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>tuple[bool, str]</code></dt>
+<dd>(is_valid, error_message)</dd>
+</dl></div>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="qscope.types.validation.HandlerInfo"><code class="flex name class">
+<span>class <span class="ident">HandlerInfo</span></span>
+<span>(</span><span>handler_func: Callable,<br>client_methods: list[str],<br>command: str,<br>system_types: tuple[Type[System], ...] = (),<br>required_roles: tuple[DeviceRole, ...] = ())</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass
+class HandlerInfo:
+    &#34;&#34;&#34;Stores the mapping between a server handler and its client methods.
+
+    Attributes:
+        handler_func: The server handler function
+        client_methods: List of client method names that use this handler
+        command: The command string that identifies this handler
+        system_types: Required system types
+        required_roles: Required device roles
+    &#34;&#34;&#34;
+
+    handler_func: Callable
+    client_methods: list[str]
+    command: str
+    system_types: tuple[Type[System], ...] = ()
+    required_roles: tuple[DeviceRole, ...] = ()</code></pre>
+</details>
+<div class="desc"><p>Stores the mapping between a server handler and its client methods.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>handler_func</code></strong></dt>
+<dd>The server handler function</dd>
+<dt><strong><code>client_methods</code></strong></dt>
+<dd>List of client method names that use this handler</dd>
+<dt><strong><code>command</code></strong></dt>
+<dd>The command string that identifies this handler</dd>
+<dt><strong><code>system_types</code></strong></dt>
+<dd>Required system types</dd>
+<dt><strong><code>required_roles</code></strong></dt>
+<dd>Required device roles</dd>
+</dl></div>
+<h3>Instance variables</h3>
+<dl>
+<dt id="qscope.types.validation.HandlerInfo.client_methods"><code class="name">var <span class="ident">client_methods</span> : list[str]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.validation.HandlerInfo.command"><code class="name">var <span class="ident">command</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.validation.HandlerInfo.handler_func"><code class="name">var <span class="ident">handler_func</span> : Callable</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.validation.HandlerInfo.required_roles"><code class="name">var <span class="ident">required_roles</span> : tuple[DeviceRole, ...]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.validation.HandlerInfo.system_types"><code class="name">var <span class="ident">system_types</span> : tuple[Type[System], ...]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.types.validation.ValidationError"><code class="flex name class">
+<span>class <span class="ident">ValidationError</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ValidationError(Exception):
+    &#34;&#34;&#34;Base exception for validation errors.&#34;&#34;&#34;
+
+    pass</code></pre>
+</details>
+<div class="desc"><p>Base exception for validation errors.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
+</ul>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<form>
+<input id="lunr-search" name="q" placeholder="🔎 Search ..." aria-label="Search"
+disabled minlength="2">
+</form>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.css" integrity="sha512-b+T2i3P45i1LZM7I00Ci5QquB9szqaxu+uuk5TUSGjZQ4w4n+qujQiIuvTv2BxE7WCGQCifNMksyKILDiHzsOg==" crossorigin>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.js" integrity="sha512-2B9/byNV1KKRm5nQ2RLViPFD6U4dUjDGwuW1GU+ImJh8YinPU9Zlq1GzdTMO+G2ROrB5o1qasJBy1ttYz0wCug==" crossorigin></script>
+<style>
+.modal-dialog iframe {
+width: 100vw;
+height: calc(100vh - 80px);
+}
+@media screen and (min-width: 700px) {
+.modal-dialog iframe {
+width: 70vw;
+height: 80vh;
+}
+}
+.modal-dialog .tingle-modal-box {width: auto;}
+.modal-dialog .tingle-modal-box__content {padding: 0;}
+</style>
+<script>
+const input = document.getElementById('lunr-search');
+input.disabled = false;
+input.form.addEventListener('submit', (ev) => {
+ev.preventDefault();
+const url = new URL(window.location);
+url.searchParams.set('q', input.value);
+history.replaceState({}, null, url.toString());
+search(input.value);
+});
+const query = new URL(window.location).searchParams.get('q');
+if (query)
+search(query);
+function search(query) {
+const url = '../../doc-search.html#' + encodeURIComponent(query);
+new tingle.modal({
+cssClass: ['modal-dialog'],
+onClose: () => {
+const url = new URL(window.location);
+url.searchParams.delete('q');
+history.replaceState({}, null, url.toString());
+setTimeout(() => input.focus(), 100);
+}
+}).setContent('<iframe src="' + url + '"></iframe>').open();
+}
+</script>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="qscope.types" href="index.html">qscope.types</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="qscope.types.validation.assert_valid_handler_client_correspondence" href="#qscope.types.validation.assert_valid_handler_client_correspondence">assert_valid_handler_client_correspondence</a></code></li>
+<li><code><a title="qscope.types.validation.validate_device_role_mapping" href="#qscope.types.validation.validate_device_role_mapping">validate_device_role_mapping</a></code></li>
+<li><code><a title="qscope.types.validation.validate_device_states" href="#qscope.types.validation.validate_device_states">validate_device_states</a></code></li>
+<li><code><a title="qscope.types.validation.validate_handler_client_correspondence" href="#qscope.types.validation.validate_handler_client_correspondence">validate_handler_client_correspondence</a></code></li>
+<li><code><a title="qscope.types.validation.validate_system_roles" href="#qscope.types.validation.validate_system_roles">validate_system_roles</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="qscope.types.validation.HandlerInfo" href="#qscope.types.validation.HandlerInfo">HandlerInfo</a></code></h4>
+<ul class="">
+<li><code><a title="qscope.types.validation.HandlerInfo.client_methods" href="#qscope.types.validation.HandlerInfo.client_methods">client_methods</a></code></li>
+<li><code><a title="qscope.types.validation.HandlerInfo.command" href="#qscope.types.validation.HandlerInfo.command">command</a></code></li>
+<li><code><a title="qscope.types.validation.HandlerInfo.handler_func" href="#qscope.types.validation.HandlerInfo.handler_func">handler_func</a></code></li>
+<li><code><a title="qscope.types.validation.HandlerInfo.required_roles" href="#qscope.types.validation.HandlerInfo.required_roles">required_roles</a></code></li>
+<li><code><a title="qscope.types.validation.HandlerInfo.system_types" href="#qscope.types.validation.HandlerInfo.system_types">system_types</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.types.validation.ValidationError" href="#qscope.types.validation.ValidationError">ValidationError</a></code></h4>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
+</footer>
+</body>
+</html>

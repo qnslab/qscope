@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.6">
+<title>qscope.util.check_hw API documentation</title>
+<meta name="description" content="">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}#lunr-search{width:100%;font-size:1em;padding:6px 9px 5px 9px;border:1px solid silver}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes: true } });</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML" integrity="sha256-kZafAc6mZvK3W3v1pHOcUix30OHQN6pU/NO2oFkqZVw=" crossorigin></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>qscope.util.check_hw</code></h1>
+</header>
+<section id="section-intro">
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="qscope.util.check_hw.check_smu_available"><code class="name flex">
+<span>def <span class="ident">check_smu_available</span></span>(<span>smu_address: str | None = None) ‑> bool</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def check_smu_available(smu_address: Optional[str] = None) -&gt; bool:
+    &#34;&#34;&#34;Check if an SMU is available before attempting measurement.
+
+    Args:
+        smu_address: Optional VISA address to check for specific device.
+            If None, checks for any available SMU2450.
+
+    Returns:
+        bool: True if specified/any SMU is available, False otherwise.
+    &#34;&#34;&#34;
+    try:
+        devices = list_visa_devices(model_filter=&#34;MODEL 2450&#34;, detailed=False)
+        if smu_address:
+            return smu_address in devices
+        return len(devices) &gt; 0
+    except Exception as e:
+        logger.error(f&#34;Error checking for SMU: {e}&#34;)
+        return False</code></pre>
+</details>
+<div class="desc"><p>Check if an SMU is available before attempting measurement.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>smu_address</code></strong></dt>
+<dd>Optional VISA address to check for specific device.
+If None, checks for any available SMU2450.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>bool</code></dt>
+<dd>True if specified/any SMU is available, False otherwise.</dd>
+</dl></div>
+</dd>
+<dt id="qscope.util.check_hw.get_hw_ports"><code class="name flex">
+<span>def <span class="ident">get_hw_ports</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_hw_ports():
+    port_dict = dict()
+    for p in list(serial.tools.list_ports.comports()):
+        # Skip virtual serial ports on Unix systems
+        # (unsure if we want to do this)
+        # if p.device.startswith(&#39;/dev/ttyS&#39;):
+        #     continue
+        # Only include if there&#39;s actual hardware info
+        if p.hwid != &#34;n/a&#34;:
+            port_dict[p.device] = tuple(p)[1:]
+    return port_dict</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.util.check_hw.list_visa_devices"><code class="name flex">
+<span>def <span class="ident">list_visa_devices</span></span>(<span>filter_string: str | None = None,<br>model_filter: str | None = None,<br>detailed: bool = True,<br>reset_devices: bool = False,<br>resource_manager: pyvisa.highlevel.ResourceManager | None = None,<br>progress_callback: <built-in function callable> | None = None) ‑> Dict[str, Dict[str, str]] | Dict[str, str]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def list_visa_devices(
+    filter_string: Optional[str] = None,
+    model_filter: Optional[str] = None,
+    detailed: bool = True,
+    reset_devices: bool = False,
+    resource_manager: Optional[pyvisa.ResourceManager] = None,
+    progress_callback: Optional[callable] = None,
+) -&gt; Dict[str, Dict[str, str]] | Dict[str, str]:
+    &#34;&#34;&#34;List available VISA devices and query their information.
+
+    Args:
+        filter_string: Optional string to filter resources (e.g., &#34;USB&#34; or &#34;GPIB&#34;)
+        model_filter: Optional string to filter devices by model name
+        detailed: If True, return detailed status info. If False, just return IDN strings
+        reset_devices: If True, attempt to reset each device found
+        resource_manager: Optional ResourceManager to use. If None, creates one
+        progress_callback: Optional callback function(current, total, message) for progress updates
+
+    Returns:
+        If detailed=True:
+            Dictionary mapping VISA addresses to device info dictionaries containing:
+            - idn: Full identification string
+            - status: Connection/query status (&#39;connected&#39;, &#39;error&#39;, &#39;reset_failed&#39;)
+            - error: Error message if query failed
+            - reset_status: Reset result if reset_devices=True
+        If detailed=False:
+            Dictionary mapping VISA addresses to IDN strings
+    &#34;&#34;&#34;
+    owns_rm = False
+    if resource_manager is None:
+        resource_manager = pyvisa.ResourceManager()
+        owns_rm = True
+
+    try:
+        devices = {}
+        resources = resource_manager.list_resources()
+        total_resources = len(resources)
+
+        # Filter out virtual ports once at the start
+        resources = [
+            r
+            for r in resources
+            if not any(x in r for x in [&#34;/dev/ttyS&#34;, &#34;COM&#34;, &#34;ASRL/dev/ttyS&#34;])
+        ]
+
+        for idx, resource in enumerate(resources):
+            if progress_callback:
+                progress_callback(idx, total_resources, f&#34;Scanning {resource}&#34;)
+
+            # Apply resource filter if provided
+            if filter_string and filter_string not in resource:
+                continue
+
+            device_info = (
+                {
+                    &#34;idn&#34;: &#34;&#34;,
+                    &#34;status&#34;: &#34;unknown&#34;,
+                    &#34;error&#34;: &#34;&#34;,
+                    &#34;reset_status&#34;: &#34;not_attempted&#34;,
+                }
+                if detailed
+                else None
+            )
+
+            inst = None
+            try:
+                # Try to open and query the device
+                inst = resource_manager.open_resource(resource)
+                inst.timeout = 2000  # 2 second timeout
+
+                # Set proper termination characters
+                inst.read_termination = &#34;\n&#34;
+                inst.write_termination = &#34;\n&#34;
+
+                if reset_devices:
+                    try:
+                        inst.write(&#34;*RST&#34;)
+                        time.sleep(0.1)
+                        inst.write(&#34;*CLS&#34;)
+                        time.sleep(0.1)
+                        inst.write(&#34;*WAI&#34;)
+                        time.sleep(0.1)
+                        if detailed:
+                            device_info[&#34;reset_status&#34;] = &#34;success&#34;
+                        logger.info(f&#34;Reset successful for {resource}&#34;)
+                    except Exception as e:
+                        if detailed:
+                            device_info[&#34;reset_status&#34;] = &#34;failed&#34;
+                        logger.error(f&#34;Reset failed for {resource}: {e}&#34;)
+
+                # Try SCPI identification first - it gives the most information
+                try:
+                    idn = inst.query(&#34;*IDN?&#34;).strip()
+                    if idn.count(&#34;,&#34;) &gt;= 3:  # Looks like a valid SCPI response
+                        logger.debug(f&#34;Got SCPI response from {resource}&#34;)
+                    else:
+                        logger.debug(
+                            f&#34;Got non-standard response from {resource}: {idn}&#34;
+                        )
+                except Exception as e:
+                    # Device might not support SCPI, try simple read
+                    logger.debug(f&#34;SCPI query failed for {resource}, trying basic read&#34;)
+                    try:
+                        idn = inst.read().strip()
+                    except Exception:
+                        idn = &#34;Unknown device&#34;
+
+                # Apply model filter if provided
+                if model_filter and model_filter not in idn:
+                    continue
+
+                if detailed:
+                    device_info[&#34;idn&#34;] = idn
+                    device_info[&#34;status&#34;] = &#34;connected&#34;
+                    devices[resource] = device_info
+                else:
+                    devices[resource] = idn
+
+                logger.debug(f&#34;Found device at {resource}: {idn}&#34;)
+
+            except Exception as e:
+                if detailed:
+                    device_info[&#34;status&#34;] = &#34;error&#34;
+                    device_info[&#34;error&#34;] = str(e)
+                    devices[resource] = device_info
+                logger.debug(f&#34;Error with resource {resource}: {str(e)}&#34;)
+            finally:
+                if inst is not None:
+                    try:
+                        inst.close()
+                    except Exception:
+                        pass
+
+        return devices
+
+    finally:
+        if owns_rm:
+            resource_manager.close()</code></pre>
+</details>
+<div class="desc"><p>List available VISA devices and query their information.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>filter_string</code></strong></dt>
+<dd>Optional string to filter resources (e.g., "USB" or "GPIB")</dd>
+<dt><strong><code>model_filter</code></strong></dt>
+<dd>Optional string to filter devices by model name</dd>
+<dt><strong><code>detailed</code></strong></dt>
+<dd>If True, return detailed status info. If False, just return IDN strings</dd>
+<dt><strong><code>reset_devices</code></strong></dt>
+<dd>If True, attempt to reset each device found</dd>
+<dt><strong><code>resource_manager</code></strong></dt>
+<dd>Optional ResourceManager to use. If None, creates one</dd>
+<dt><strong><code>progress_callback</code></strong></dt>
+<dd>Optional callback function(current, total, message) for progress updates</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>If detailed=True:
+Dictionary mapping VISA addresses to device info dictionaries containing:
+- idn: Full identification string
+- status: Connection/query status ('connected', 'error', 'reset_failed')
+- error: Error message if query failed
+- reset_status: Reset result if reset_devices=True
+If detailed=False:
+Dictionary mapping VISA addresses to IDN strings</p></div>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<form>
+<input id="lunr-search" name="q" placeholder="🔎 Search ..." aria-label="Search"
+disabled minlength="2">
+</form>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.css" integrity="sha512-b+T2i3P45i1LZM7I00Ci5QquB9szqaxu+uuk5TUSGjZQ4w4n+qujQiIuvTv2BxE7WCGQCifNMksyKILDiHzsOg==" crossorigin>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.js" integrity="sha512-2B9/byNV1KKRm5nQ2RLViPFD6U4dUjDGwuW1GU+ImJh8YinPU9Zlq1GzdTMO+G2ROrB5o1qasJBy1ttYz0wCug==" crossorigin></script>
+<style>
+.modal-dialog iframe {
+width: 100vw;
+height: calc(100vh - 80px);
+}
+@media screen and (min-width: 700px) {
+.modal-dialog iframe {
+width: 70vw;
+height: 80vh;
+}
+}
+.modal-dialog .tingle-modal-box {width: auto;}
+.modal-dialog .tingle-modal-box__content {padding: 0;}
+</style>
+<script>
+const input = document.getElementById('lunr-search');
+input.disabled = false;
+input.form.addEventListener('submit', (ev) => {
+ev.preventDefault();
+const url = new URL(window.location);
+url.searchParams.set('q', input.value);
+history.replaceState({}, null, url.toString());
+search(input.value);
+});
+const query = new URL(window.location).searchParams.get('q');
+if (query)
+search(query);
+function search(query) {
+const url = '../../doc-search.html#' + encodeURIComponent(query);
+new tingle.modal({
+cssClass: ['modal-dialog'],
+onClose: () => {
+const url = new URL(window.location);
+url.searchParams.delete('q');
+history.replaceState({}, null, url.toString());
+setTimeout(() => input.focus(), 100);
+}
+}).setContent('<iframe src="' + url + '"></iframe>').open();
+}
+</script>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="qscope.util" href="index.html">qscope.util</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="qscope.util.check_hw.check_smu_available" href="#qscope.util.check_hw.check_smu_available">check_smu_available</a></code></li>
+<li><code><a title="qscope.util.check_hw.get_hw_ports" href="#qscope.util.check_hw.get_hw_ports">get_hw_ports</a></code></li>
+<li><code><a title="qscope.util.check_hw.list_visa_devices" href="#qscope.util.check_hw.list_visa_devices">list_visa_devices</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
+</footer>
+</body>
+</html>

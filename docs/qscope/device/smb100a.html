@@ -1,0 +1,765 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.6">
+<title>qscope.device.smb100a API documentation</title>
+<meta name="description" content="">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}#lunr-search{width:100%;font-size:1em;padding:6px 9px 5px 9px;border:1px solid silver}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes: true } });</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML" integrity="sha256-kZafAc6mZvK3W3v1pHOcUix30OHQN6pU/NO2oFkqZVw=" crossorigin></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>qscope.device.smb100a</code></h1>
+</header>
+<section id="section-intro">
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="qscope.device.smb100a.SMB100a"><code class="flex name class">
+<span>class <span class="ident">SMB100a</span></span>
+<span>(</span><span>visa_addr='US?*::0x0AAD::0x0054::108563::INSTR')</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class SMB100a(Device):
+    visa_addr: str
+    required_config = {&#34;visa_addr&#34;: str}
+
+    def __init__(self, visa_addr=&#34;US?*::0x0AAD::0x0054::108563::INSTR&#34;):
+        super().__init__(visa_addr=visa_addr)
+
+        # set default device parameters
+        self.cmd_wait = 0.1  # wait time after sending instruction
+
+    def open(self) -&gt; bool:
+        self.rm = pyvisa.ResourceManager()
+        if (self.rm.list_resources(self.visa_addr)[0]) == None:
+            raise Exception(&#34;Rohde&amp;Schwarz SMB100A instrument not connected&#34;)
+        self.SMB100A_addr = self.rm.list_resources(self.visa_addr)[0]
+        print(self.SMB100A_addr)
+        a = self.rm.open_resource(self.SMB100A_addr)
+        a.close()
+        self.timeout = 3000
+        self.commands = []
+
+        # need to handle errors here
+        self.check_connection()
+        return True
+
+    def reconnect(self):
+        self.rm.close()
+        self.open()
+
+    def check_connection(
+        self,
+    ):
+        try:
+            with self.rm.open_resource(self.SMB100A_addr) as sg:
+                sg.timeout = self.timeout
+                msg = sg.query(&#34;*IDN?&#34;)
+            if &#34;SMB100A&#34; not in msg:
+                raise Exception(
+                    &#34;Device not responding correctly to identification \n\tIDN:%s&#34; % msg
+                )
+        except pyvisa.VisaIOError:
+            logger.exception(&#34;SMB100a Instrument disconnected, check USB connection.&#34;)
+            time.sleep(0.5)
+
+    def close(self):
+        self.rm.close()
+
+    ###################################################################
+    # set/get
+    ###################################################################
+    # NOTE we never really need the &#39;gets&#39; here. Superfluous
+
+    def get_freq(self):
+        self.commands.append(&#34;SOUR:FREQ?&#34;)
+        self._freq = float(self.query()) * 1e-6  # return in MHz
+        return self._freq
+
+    def set_freq(self, freq):
+        # freq in MHz
+        self.commands.append(&#34;FREQ %.3f MHz&#34; % freq)
+        self.send_commands()
+        self._freq = freq
+
+    def get_pow(self):
+        self.commands.append(&#34;SOUR:POW?&#34;)
+        self._power = float(self.query())
+        return self._power
+
+    def set_power(self, power):
+        # power in dBm
+        self.commands.append(&#34;SOUR:POW:LEV:IMM:AMPL %.1f dBM&#34; % power)
+        self.send_commands()
+        self._power = power
+
+    def get_state(self):
+        self.commands.append(&#34;OUTP?&#34;)
+        result = int(self.query())
+        self._output = result
+        return result
+
+    def set_state(self, state):
+        if state == 1:
+            self.commands.append(&#34;OUTP ON&#34;)
+        else:
+            self.commands.append(&#34;OUTP OFF&#34;)
+        self.send_commands()
+        self._output = state
+
+    def get_freq_list(self):
+        return self._freq_list
+
+    def set_freq_list(self, rf_freqs: Sequence, step_time=0):
+        self.set_f_list(rf_freqs)
+        return self._freq_list
+
+    ###################################################################
+    # Sweep functions
+    ###################################################################
+
+    def set_f_list(self, f_list, p_list=None, power=None):
+        &#34;&#34;&#34;Set the signal generator in list mode.
+        writes a list of frequencies and powers and set the system
+        to going through the list by an external trigger
+
+         fqlist: list of frequency in MHz
+         pwlist: list of powers in dBm
+
+        &#34;&#34;&#34;
+        if p_list is None:
+            if power is None:
+                power = self._power
+            p_list = [power for idx in range(len(f_list))]
+
+        if len(f_list) != len(p_list):
+            print(&#34;frequency and power lists have different lengths&#34;)
+            raise Exception(&#34;frequency and power lists have different lengths&#34;)
+        else:
+            fq_list, pw_list = &#34;&#34;, &#34;&#34;
+            for i, j in zip(f_list, p_list):
+                fq_list = fq_list + &#34; %.3f MHz,&#34; % i
+                pw_list = pw_list + &#34; %.1f dBm,&#34; % j
+
+            self.commands.append(&#34;SOUR:LIST:FREQ %s&#34; % fq_list[:-1])
+            self.commands.append(&#34;SOUR:LIST:POW %s&#34; % pw_list[:-1])
+            self.commands.append(&#34;SOUR:LIST:DWEL 1ms&#34;)
+            self.commands.append(&#34;SOUR:LIST:TRIG:SOUR EXT&#34;)
+            self.commands.append(&#34;SOUR:LIST:MODE STEP&#34;)
+            self.commands.append(&#34;FREQ:MODE LIST&#34;)
+            self.send_commands()
+            self._freq_list = f_list
+            print(&#34;Set rf frequency list&#34;)
+        return self._freq_list
+
+    def set_trigger(self, mode=2):
+        # This is taken care of in the RF_list function
+        return
+
+    def reset_sweep(self, *args, **kwargs):
+        # The SMB100A will reset with the start command so this is not needed
+        return
+
+    ###################################################################
+    # Utility functions
+    ###################################################################
+
+    def send_commands(self):
+        &#34;&#34;&#34;function to send the list of command to the SMB100A&#34;&#34;&#34;
+        rm = pyvisa.ResourceManager()
+        try:
+            with rm.open_resource(self.SMB100A_addr) as v:
+                v.timeout = self.timeout
+                for c in self.commands:
+                    v.write(str(c))
+                self.commands = []
+        except pyvisa.VisaIOError:
+            print(&#34;Instrument not responding, check USB connection&#34;)
+        time.sleep(self.cmd_wait)
+
+    def query(self):
+        rm = pyvisa.ResourceManager()
+        with rm.open_resource(self.SMB100A_addr) as sg:
+            sg.timeout = self.timeout
+            for c in self.commands:
+                msg = sg.query(str(c))
+        return msg</code></pre>
+</details>
+<div class="desc"><p>Base class for all hardware devices in QScope.</p>
+<p>The Device class provides the foundation for hardware abstraction in QScope.
+Specific device implementations inherit from this class and implement the
+methods required by their intended roles.</p>
+<p>A device can fulfill multiple roles if it implements all required methods
+for those roles. The system validates role compatibility at runtime.</p>
+<h2 id="device-architecture">Device Architecture</h2>
+<p>Devices are part of QScope's hardware abstraction layer:</p>
+<ol>
+<li>Base Device Class (this class)</li>
+<li>Provides configuration validation</li>
+<li>Manages role assignments</li>
+<li>Handles connection state</li>
+<li>
+<p>Defines required methods</p>
+</li>
+<li>
+<p>Device Implementations</p>
+</li>
+<li>Inherit from Device</li>
+<li>Implement protocol methods for specific roles</li>
+<li>Provide hardware-specific functionality</li>
+<li>
+<p>Can implement multiple protocols</p>
+</li>
+<li>
+<p>System Integration</p>
+</li>
+<li>Devices are added to systems with specific roles</li>
+<li>System validates that devices implement required protocols</li>
+<li>Devices are accessed through role interfaces</li>
+</ol>
+<h2 id="required-methods">Required Methods</h2>
+<p>All device implementations must override these methods:</p>
+<ul>
+<li>open(): Connect to the hardware</li>
+<li>close(): Disconnect from the hardware</li>
+<li>is_connected(): Check connection status</li>
+</ul>
+<p>In addition, devices must implement all methods required by the
+protocols of the roles they intend to fulfill.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>required_config</code></strong> :&ensp;<code>dict[str, Type]</code></dt>
+<dd>Required configuration parameters and their types</dd>
+<dt><strong><code>_roles</code></strong> :&ensp;<code>Set[DeviceRole[Device]]</code></dt>
+<dd>Set of roles this device fulfills</dd>
+</dl>
+<h2 id="examples">Examples</h2>
+<p>Creating a new device implementation:</p>
+<pre><code class="language-python">class MyRFSource(Device):
+    required_config = {
+        &quot;visa_addr&quot;: str,
+        &quot;max_power&quot;: float
+    }
+
+    def __init__(self, **config_kwargs):
+        super().__init__(**config_kwargs)
+        self.connected = False
+
+    def open(self) -&gt; tuple[bool, str]:
+        # Implementation for connecting to hardware
+        self.connected = True
+        return True, &quot;Connected successfully&quot;
+
+    def close(self):
+        # Implementation for disconnecting
+        self.connected = False
+
+    def is_connected(self) -&gt; bool:
+        return self.connected
+
+    # Implement methods required by RFSourceProtocol
+    def set_freq(self, freq: float) -&gt; None:
+        # Implementation
+        pass
+
+    def set_power(self, power: float) -&gt; None:
+        # Implementation
+        pass
+</code></pre>
+<p>Using the device with a role:</p>
+<pre><code class="language-python"># Create device instance
+rf = MyRFSource(visa_addr=&quot;TCPIP0::192.168.1.1::INSTR&quot;, max_power=20.0)
+
+# Add to system with role
+system.add_device_with_role(rf, PRIMARY_RF)
+</code></pre>
+<h2 id="see-also">See Also</h2>
+<dl>
+<dt><code><a title="qscope.types.protocols" href="../types/protocols.html">qscope.types.protocols</a></code></dt>
+<dd>Protocol definitions</dd>
+<dt><code><a title="qscope.types.roles" href="../types/roles.html">qscope.types.roles</a></code></dt>
+<dd>Role definitions</dd>
+<dt><code><a title="qscope.types.interfaces" href="../types/interfaces.html">qscope.types.interfaces</a></code></dt>
+<dd>Interface implementations</dd>
+<dt><code><a title="qscope.system" href="../system/index.html">qscope.system</a></code></dt>
+<dd>System implementation</dd>
+</dl></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.device.device.Device" href="device.html#qscope.device.device.Device">Device</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="qscope.device.smb100a.SMB100a.required_config"><code class="name">var <span class="ident">required_config</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.smb100a.SMB100a.visa_addr"><code class="name">var <span class="ident">visa_addr</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.device.smb100a.SMB100a.check_connection"><code class="name flex">
+<span>def <span class="ident">check_connection</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def check_connection(
+    self,
+):
+    try:
+        with self.rm.open_resource(self.SMB100A_addr) as sg:
+            sg.timeout = self.timeout
+            msg = sg.query(&#34;*IDN?&#34;)
+        if &#34;SMB100A&#34; not in msg:
+            raise Exception(
+                &#34;Device not responding correctly to identification \n\tIDN:%s&#34; % msg
+            )
+    except pyvisa.VisaIOError:
+        logger.exception(&#34;SMB100a Instrument disconnected, check USB connection.&#34;)
+        time.sleep(0.5)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.smb100a.SMB100a.close"><code class="name flex">
+<span>def <span class="ident">close</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def close(self):
+    self.rm.close()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.smb100a.SMB100a.get_freq"><code class="name flex">
+<span>def <span class="ident">get_freq</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_freq(self):
+    self.commands.append(&#34;SOUR:FREQ?&#34;)
+    self._freq = float(self.query()) * 1e-6  # return in MHz
+    return self._freq</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.smb100a.SMB100a.get_freq_list"><code class="name flex">
+<span>def <span class="ident">get_freq_list</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_freq_list(self):
+    return self._freq_list</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.smb100a.SMB100a.get_pow"><code class="name flex">
+<span>def <span class="ident">get_pow</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_pow(self):
+    self.commands.append(&#34;SOUR:POW?&#34;)
+    self._power = float(self.query())
+    return self._power</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.smb100a.SMB100a.get_state"><code class="name flex">
+<span>def <span class="ident">get_state</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_state(self):
+    self.commands.append(&#34;OUTP?&#34;)
+    result = int(self.query())
+    self._output = result
+    return result</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.smb100a.SMB100a.open"><code class="name flex">
+<span>def <span class="ident">open</span></span>(<span>self) ‑> bool</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def open(self) -&gt; bool:
+    self.rm = pyvisa.ResourceManager()
+    if (self.rm.list_resources(self.visa_addr)[0]) == None:
+        raise Exception(&#34;Rohde&amp;Schwarz SMB100A instrument not connected&#34;)
+    self.SMB100A_addr = self.rm.list_resources(self.visa_addr)[0]
+    print(self.SMB100A_addr)
+    a = self.rm.open_resource(self.SMB100A_addr)
+    a.close()
+    self.timeout = 3000
+    self.commands = []
+
+    # need to handle errors here
+    self.check_connection()
+    return True</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.smb100a.SMB100a.query"><code class="name flex">
+<span>def <span class="ident">query</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def query(self):
+    rm = pyvisa.ResourceManager()
+    with rm.open_resource(self.SMB100A_addr) as sg:
+        sg.timeout = self.timeout
+        for c in self.commands:
+            msg = sg.query(str(c))
+    return msg</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.smb100a.SMB100a.reconnect"><code class="name flex">
+<span>def <span class="ident">reconnect</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def reconnect(self):
+    self.rm.close()
+    self.open()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.smb100a.SMB100a.reset_sweep"><code class="name flex">
+<span>def <span class="ident">reset_sweep</span></span>(<span>self, *args, **kwargs)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def reset_sweep(self, *args, **kwargs):
+    # The SMB100A will reset with the start command so this is not needed
+    return</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.smb100a.SMB100a.send_commands"><code class="name flex">
+<span>def <span class="ident">send_commands</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def send_commands(self):
+    &#34;&#34;&#34;function to send the list of command to the SMB100A&#34;&#34;&#34;
+    rm = pyvisa.ResourceManager()
+    try:
+        with rm.open_resource(self.SMB100A_addr) as v:
+            v.timeout = self.timeout
+            for c in self.commands:
+                v.write(str(c))
+            self.commands = []
+    except pyvisa.VisaIOError:
+        print(&#34;Instrument not responding, check USB connection&#34;)
+    time.sleep(self.cmd_wait)</code></pre>
+</details>
+<div class="desc"><p>function to send the list of command to the SMB100A</p></div>
+</dd>
+<dt id="qscope.device.smb100a.SMB100a.set_f_list"><code class="name flex">
+<span>def <span class="ident">set_f_list</span></span>(<span>self, f_list, p_list=None, power=None)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_f_list(self, f_list, p_list=None, power=None):
+    &#34;&#34;&#34;Set the signal generator in list mode.
+    writes a list of frequencies and powers and set the system
+    to going through the list by an external trigger
+
+     fqlist: list of frequency in MHz
+     pwlist: list of powers in dBm
+
+    &#34;&#34;&#34;
+    if p_list is None:
+        if power is None:
+            power = self._power
+        p_list = [power for idx in range(len(f_list))]
+
+    if len(f_list) != len(p_list):
+        print(&#34;frequency and power lists have different lengths&#34;)
+        raise Exception(&#34;frequency and power lists have different lengths&#34;)
+    else:
+        fq_list, pw_list = &#34;&#34;, &#34;&#34;
+        for i, j in zip(f_list, p_list):
+            fq_list = fq_list + &#34; %.3f MHz,&#34; % i
+            pw_list = pw_list + &#34; %.1f dBm,&#34; % j
+
+        self.commands.append(&#34;SOUR:LIST:FREQ %s&#34; % fq_list[:-1])
+        self.commands.append(&#34;SOUR:LIST:POW %s&#34; % pw_list[:-1])
+        self.commands.append(&#34;SOUR:LIST:DWEL 1ms&#34;)
+        self.commands.append(&#34;SOUR:LIST:TRIG:SOUR EXT&#34;)
+        self.commands.append(&#34;SOUR:LIST:MODE STEP&#34;)
+        self.commands.append(&#34;FREQ:MODE LIST&#34;)
+        self.send_commands()
+        self._freq_list = f_list
+        print(&#34;Set rf frequency list&#34;)
+    return self._freq_list</code></pre>
+</details>
+<div class="desc"><p>Set the signal generator in list mode.
+writes a list of frequencies and powers and set the system
+to going through the list by an external trigger</p>
+<p>fqlist: list of frequency in MHz
+pwlist: list of powers in dBm</p></div>
+</dd>
+<dt id="qscope.device.smb100a.SMB100a.set_freq"><code class="name flex">
+<span>def <span class="ident">set_freq</span></span>(<span>self, freq)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_freq(self, freq):
+    # freq in MHz
+    self.commands.append(&#34;FREQ %.3f MHz&#34; % freq)
+    self.send_commands()
+    self._freq = freq</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.smb100a.SMB100a.set_freq_list"><code class="name flex">
+<span>def <span class="ident">set_freq_list</span></span>(<span>self, rf_freqs: Sequence, step_time=0)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_freq_list(self, rf_freqs: Sequence, step_time=0):
+    self.set_f_list(rf_freqs)
+    return self._freq_list</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.smb100a.SMB100a.set_power"><code class="name flex">
+<span>def <span class="ident">set_power</span></span>(<span>self, power)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_power(self, power):
+    # power in dBm
+    self.commands.append(&#34;SOUR:POW:LEV:IMM:AMPL %.1f dBM&#34; % power)
+    self.send_commands()
+    self._power = power</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.smb100a.SMB100a.set_state"><code class="name flex">
+<span>def <span class="ident">set_state</span></span>(<span>self, state)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_state(self, state):
+    if state == 1:
+        self.commands.append(&#34;OUTP ON&#34;)
+    else:
+        self.commands.append(&#34;OUTP OFF&#34;)
+    self.send_commands()
+    self._output = state</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.smb100a.SMB100a.set_trigger"><code class="name flex">
+<span>def <span class="ident">set_trigger</span></span>(<span>self, mode=2)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_trigger(self, mode=2):
+    # This is taken care of in the RF_list function
+    return</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="qscope.device.device.Device" href="device.html#qscope.device.device.Device">Device</a></b></code>:
+<ul class="hlist">
+<li><code><a title="qscope.device.device.Device.get_all_attrs" href="device.html#qscope.device.device.Device.get_all_attrs">get_all_attrs</a></code></li>
+<li><code><a title="qscope.device.device.Device.get_roles" href="device.html#qscope.device.device.Device.get_roles">get_roles</a></code></li>
+<li><code><a title="qscope.device.device.Device.has_role" href="device.html#qscope.device.device.Device.has_role">has_role</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<form>
+<input id="lunr-search" name="q" placeholder="🔎 Search ..." aria-label="Search"
+disabled minlength="2">
+</form>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.css" integrity="sha512-b+T2i3P45i1LZM7I00Ci5QquB9szqaxu+uuk5TUSGjZQ4w4n+qujQiIuvTv2BxE7WCGQCifNMksyKILDiHzsOg==" crossorigin>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.js" integrity="sha512-2B9/byNV1KKRm5nQ2RLViPFD6U4dUjDGwuW1GU+ImJh8YinPU9Zlq1GzdTMO+G2ROrB5o1qasJBy1ttYz0wCug==" crossorigin></script>
+<style>
+.modal-dialog iframe {
+width: 100vw;
+height: calc(100vh - 80px);
+}
+@media screen and (min-width: 700px) {
+.modal-dialog iframe {
+width: 70vw;
+height: 80vh;
+}
+}
+.modal-dialog .tingle-modal-box {width: auto;}
+.modal-dialog .tingle-modal-box__content {padding: 0;}
+</style>
+<script>
+const input = document.getElementById('lunr-search');
+input.disabled = false;
+input.form.addEventListener('submit', (ev) => {
+ev.preventDefault();
+const url = new URL(window.location);
+url.searchParams.set('q', input.value);
+history.replaceState({}, null, url.toString());
+search(input.value);
+});
+const query = new URL(window.location).searchParams.get('q');
+if (query)
+search(query);
+function search(query) {
+const url = '../../doc-search.html#' + encodeURIComponent(query);
+new tingle.modal({
+cssClass: ['modal-dialog'],
+onClose: () => {
+const url = new URL(window.location);
+url.searchParams.delete('q');
+history.replaceState({}, null, url.toString());
+setTimeout(() => input.focus(), 100);
+}
+}).setContent('<iframe src="' + url + '"></iframe>').open();
+}
+</script>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="qscope.device" href="index.html">qscope.device</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="qscope.device.smb100a.SMB100a" href="#qscope.device.smb100a.SMB100a">SMB100a</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.device.smb100a.SMB100a.check_connection" href="#qscope.device.smb100a.SMB100a.check_connection">check_connection</a></code></li>
+<li><code><a title="qscope.device.smb100a.SMB100a.close" href="#qscope.device.smb100a.SMB100a.close">close</a></code></li>
+<li><code><a title="qscope.device.smb100a.SMB100a.get_freq" href="#qscope.device.smb100a.SMB100a.get_freq">get_freq</a></code></li>
+<li><code><a title="qscope.device.smb100a.SMB100a.get_freq_list" href="#qscope.device.smb100a.SMB100a.get_freq_list">get_freq_list</a></code></li>
+<li><code><a title="qscope.device.smb100a.SMB100a.get_pow" href="#qscope.device.smb100a.SMB100a.get_pow">get_pow</a></code></li>
+<li><code><a title="qscope.device.smb100a.SMB100a.get_state" href="#qscope.device.smb100a.SMB100a.get_state">get_state</a></code></li>
+<li><code><a title="qscope.device.smb100a.SMB100a.open" href="#qscope.device.smb100a.SMB100a.open">open</a></code></li>
+<li><code><a title="qscope.device.smb100a.SMB100a.query" href="#qscope.device.smb100a.SMB100a.query">query</a></code></li>
+<li><code><a title="qscope.device.smb100a.SMB100a.reconnect" href="#qscope.device.smb100a.SMB100a.reconnect">reconnect</a></code></li>
+<li><code><a title="qscope.device.smb100a.SMB100a.required_config" href="#qscope.device.smb100a.SMB100a.required_config">required_config</a></code></li>
+<li><code><a title="qscope.device.smb100a.SMB100a.reset_sweep" href="#qscope.device.smb100a.SMB100a.reset_sweep">reset_sweep</a></code></li>
+<li><code><a title="qscope.device.smb100a.SMB100a.send_commands" href="#qscope.device.smb100a.SMB100a.send_commands">send_commands</a></code></li>
+<li><code><a title="qscope.device.smb100a.SMB100a.set_f_list" href="#qscope.device.smb100a.SMB100a.set_f_list">set_f_list</a></code></li>
+<li><code><a title="qscope.device.smb100a.SMB100a.set_freq" href="#qscope.device.smb100a.SMB100a.set_freq">set_freq</a></code></li>
+<li><code><a title="qscope.device.smb100a.SMB100a.set_freq_list" href="#qscope.device.smb100a.SMB100a.set_freq_list">set_freq_list</a></code></li>
+<li><code><a title="qscope.device.smb100a.SMB100a.set_power" href="#qscope.device.smb100a.SMB100a.set_power">set_power</a></code></li>
+<li><code><a title="qscope.device.smb100a.SMB100a.set_state" href="#qscope.device.smb100a.SMB100a.set_state">set_state</a></code></li>
+<li><code><a title="qscope.device.smb100a.SMB100a.set_trigger" href="#qscope.device.smb100a.SMB100a.set_trigger">set_trigger</a></code></li>
+<li><code><a title="qscope.device.smb100a.SMB100a.visa_addr" href="#qscope.device.smb100a.SMB100a.visa_addr">visa_addr</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
+</footer>
+</body>
+</html>

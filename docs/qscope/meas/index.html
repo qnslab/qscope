@@ -1,0 +1,2915 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.6">
+<title>qscope.meas API documentation</title>
+<meta name="description" content="Measurement implementations for Qscope experiments …">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}#lunr-search{width:100%;font-size:1em;padding:6px 9px 5px 9px;border:1px solid silver}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes: true } });</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML" integrity="sha256-kZafAc6mZvK3W3v1pHOcUix30OHQN6pU/NO2oFkqZVw=" crossorigin></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>qscope.meas</code></h1>
+</header>
+<section id="section-intro">
+<p>Measurement implementations for Qscope experiments.</p>
+<p>This module provides classes for implementing various quantum sensing
+measurements, including:</p>
+<ul>
+<li>Electron Spin Resonance (ESR)</li>
+<li>Rabi oscillation measurements</li>
+<li>T1 relaxation measurements</li>
+<li>Ramsey and Spin Echo sequences</li>
+<li>Frame grabbing and camera control</li>
+</ul>
+<p>Each measurement class handles the experiment logic, parameter sweeps,
+data collection, and processing for a specific type of measurement.</p>
+<h2 id="examples">Examples</h2>
+<p>Creating a measurement configuration:</p>
+<pre><code class="language-python">from qscope.meas import SGAndorCWESRConfig
+config = SGAndorCWESRConfig(
+    name=&quot;ESR Measurement&quot;,
+    start_freq=2.7e9,
+    stop_freq=3.0e9,
+    num_points=101
+)
+</code></pre>
+<h2 id="see-also">See Also</h2>
+<dl>
+<dt><code><a title="qscope.device" href="../device/index.html">qscope.device</a></code></dt>
+<dd>Hardware device implementations</dd>
+<dt><code><a title="qscope.fitting" href="../fitting/index.html">qscope.fitting</a></code></dt>
+<dd>Data fitting and analysis</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-submodules">Sub-modules</h2>
+<dl>
+<dt><code class="name"><a title="qscope.meas.decorators" href="decorators.html">qscope.meas.decorators</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="qscope.meas.framegrabber" href="framegrabber.html">qscope.meas.framegrabber</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="qscope.meas.measurement" href="measurement.html">qscope.meas.measurement</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="qscope.meas.mock_sg_andor_esr" href="mock_sg_andor_esr.html">qscope.meas.mock_sg_andor_esr</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="qscope.meas.sg_andor_esr" href="sg_andor_esr.html">qscope.meas.sg_andor_esr</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="qscope.meas.sg_andor_rabi" href="sg_andor_rabi.html">qscope.meas.sg_andor_rabi</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="qscope.meas.sg_andor_ramsey" href="sg_andor_ramsey.html">qscope.meas.sg_andor_ramsey</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="qscope.meas.sg_andor_spin_echo" href="sg_andor_spin_echo.html">qscope.meas.sg_andor_spin_echo</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="qscope.meas.sg_andor_t1" href="sg_andor_t1.html">qscope.meas.sg_andor_t1</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="qscope.meas.Measurement"><code class="flex name class">
+<span>class <span class="ident">Measurement</span></span>
+<span>(</span><span>system: System,<br>meas_config: <a title="qscope.meas.MeasurementConfig" href="#qscope.meas.MeasurementConfig">MeasurementConfig</a>,<br>notif_queue: asyncio.Queue[Notification])</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Measurement:
+    # init a new Measurement instance for each individual measurement
+
+    # subclass this for each hardware configuration/pulse sequence etc.
+    # (and build up inheritance tree for hardware sysconfig)
+    state = MEAS_STATE.AWAITING_START
+    meas_id: str = &#34;&#34;
+    _acq_mode: str  # ACQ_MODE -&gt; override in subclass
+    meas_config: MeasurementConfig
+    _meas_config_type: Type[MeasurementConfig] = (
+        MeasurementConfig  # override in subclass
+    )
+
+    _hardware_requirements: MeasurementRequirements  # overriden by decorator
+
+    # the &#39;data&#39;, in general.
+    sweep_x: np.ndarray  # always 1D
+    sweep_y_sig: np.ndarray  # always 1D
+    sweep_y_ref: np.ndarray  # always 1D
+    full_y_sig: np.ndarray  # general shape
+    full_y_ref: np.ndarray  # general shape
+    rolling_avg_sig: np.ndarray  # always 1D
+    rolling_avg_ref: np.ndarray  # always 1D
+
+    # NB: norm is not stored or generated here.
+    norm_mode: str  # NORM_MODE -&gt; override
+    ref_mode: str = &#34;&#34;
+    available_ref_modes = (&#34;&#34;,)  # override
+    aoi: tuple[int, int, int, int] | None = None
+
+    # these events can be set by the API methods, via async server calls
+    # that are DIFFERENT to the one that starts the state machine.
+    _start_event: asyncio.Event
+    _stop_now_event: asyncio.Event
+    _pause_endsweep_event: asyncio.Event
+    _close_event: asyncio.Event
+    _aoi_change_event: asyncio.Event
+
+    _continue_prev: bool = False
+    _nsweeps: int = 0
+    _sweep_progress: float = 0.0  # float in [0, 100]
+    _sweep_progress_increment: float = 0.0  # float in (0, 100]
+    _rolling_avg_window: int = 1
+    _rolling_avg_idx: int = 1
+    _rolling_sum_sweep_sig: np.ndarray  # always 1D
+    _rolling_sum_sweep_ref: np.ndarray  # always 1D
+
+    _frame_sending_num: int = 2
+
+    x_label: str = &#34;&#34;  # override in subclass
+    y_label: str = &#34;&#34;  # override in subclass
+
+    # ----------------------------------------------------------------------------------
+    # =========================API (~ each has comm associated) ========================
+    # ----------------------------------------------------------------------------------
+
+    def __init__(
+        self,
+        system: System,
+        meas_config: MeasurementConfig,
+        notif_queue: asyncio.Queue[Notification],
+    ):
+        if not hasattr(self, &#34;_hardware_requirements&#34;):
+            raise RuntimeError(
+                &#34;Measurement class must be decorated with `@requires_hardware`.&#34;
+            )
+        if meas_config.ref_mode not in self.available_ref_modes:
+            raise ValueError(
+                f&#34;Invalid ref_mode {meas_config.ref_mode} for {self.__class__.__name__}. &#34;
+                + f&#34;Available modes: {self.available_ref_modes}&#34;,
+            )
+        if not isinstance(meas_config, self._meas_config_type):
+            raise ValueError(f&#34;Invalid meas_config type, use {self._meas_config_type}&#34;)
+
+        self.system = system
+        self.meas_id = self._generate_meas_id()
+        self.sweep_x = meas_config.sweep_x
+        self.meas_config = meas_config
+        self.ref_mode = meas_config.ref_mode
+        self.notif_queue = (
+            notif_queue  # queue to send notifications to client (server dispatches)
+        )
+        self.notif_queue.put_nowait(
+            NewMeasurement(meas_id=self.get_meas_id(), meas_config=meas_config)
+        )
+        # init these
+        # (can&#39;t be in class def as they need to be at *instance* level
+        #  not for _all instances_ of this class)
+        self._start_event = asyncio.Event()
+        self._stop_now_event = asyncio.Event()
+        self._pause_endsweep_event = asyncio.Event()
+        self._close_event = asyncio.Event()
+        self._aoi_change_event = asyncio.Event()
+
+        # Init rolling avg stuff
+        self.rolling_avg_sigs = []
+        self.rolling_avg_refs = []
+        self.rolling_avg_idxs = []
+        self._rolling_avg_max_sweeps = 100
+
+    async def state_machine(self):
+        # start the state machine, can&#39;t be in the __init__ as it needs to be async.
+        # -&gt; keep all other fns sync.
+        self.state = MEAS_STATE.AWAITING_START
+        while True:
+            # await asyncio.sleep(0)  # check for events
+            if self.state == MEAS_STATE.CLOSE:
+                logger.info(&#34;{} Measurement closing.&#34;, self.__class__.__name__)
+                # may want to clear data here, object isn&#39;t going away...
+                break
+
+            # router *does stuff*, then updates what next_state should be
+            try:
+                next_state = await self._router(self.state)
+            except Exception as e:
+                logger.exception(&#34;Error in state machine.&#34;)
+                next_state = MEAS_STATE.FINISHED
+            if self.state != next_state:
+                logger.info(
+                    &#34;Measurement state: {} {} -&gt; {}&#34;,
+                    self.__class__.__name__,
+                    self.get_meas_id(),
+                    next_state,
+                )
+                self.notif_queue.put_nowait(
+                    MeasurementUpdate(
+                        meas_id=self.get_meas_id(),
+                        old_state=self.state,
+                        new_state=next_state,
+                    )
+                )
+            self.state = next_state
+        return &#34;ok&#34;
+
+    def start(self):
+        if self.state not in [MEAS_STATE.PAUSED, MEAS_STATE.AWAITING_START]:
+            if self._pause_endsweep_event.is_set():
+                logger.debug(
+                    &#34;Waiting for meas to end sweep to pause, in START on meas_id: {}&#34;,
+                    self.get_meas_id(),
+                )
+                raise PleaseWait(&#34;Waiting for meas to end sweep to pause.&#34;)
+            else:
+                logger.error(
+                    &#34;Measurement cannot be started unless paused or awaiting_start.&#34;
+                )
+                raise RuntimeError(
+                    &#34;Measurement cannot be started unless paused or awaiting_start.&#34;
+                )
+        self._continue_prev = False
+        self._stop_now_event.clear()
+        self._pause_endsweep_event.clear()
+        self._start_event.set()
+
+    def stop_now(self):
+        # stop the measurement now, go into &#39;finished&#39; state.
+        self._stop_now_event.set()
+
+    def pause_endsweep(self):
+        # pause the measurement, go into &#39;paused&#39; state.
+        self._pause_endsweep_event.set()
+
+    def close(self):
+        if self.state not in [MEAS_STATE.PAUSED, MEAS_STATE.FINISHED]:
+            if self._pause_endsweep_event.is_set() or self._stop_now_event.is_set():
+                logger.debug(
+                    &#34;Waiting for meas to end sweep to pause, or stop, in CLOSE on meas_id: {}&#34;,
+                    self.get_meas_id(),
+                )
+                raise PleaseWait(&#34;Waiting for meas to end sweep to pause, or stop.&#34;)
+            else:
+                logger.error(&#34;Measurement cannot be closed until paused or finished.&#34;)
+                raise RuntimeError(
+                    &#34;Measurement cannot be closed until paused or finished.&#34;
+                )
+        self._close_event.set()
+
+    def get_sweep(self) -&gt; np.ndarray:
+        if self.state in [MEAS_STATE.AWAITING_START]:
+            nones = np.empty_like(self.sweep_x)
+            nones[:] = np.nan
+            return np.vstack((self.sweep_x, nones, nones))
+        return np.vstack((self.sweep_x, self.sweep_y_sig, self.sweep_y_ref))
+
+    def get_norm_mode(self):
+        return self.norm_mode
+
+    def get_frame(self, frame_type: str = &#34;sig&#34;, frame_num: int = 2):
+        raise NotImplementedError()  # only implement for camera sequences.
+
+    def get_metadata(self):
+        if self.state == MEAS_STATE.AWAITING_START:
+            raise ValueError(&#34;Can only get metadata after measurement has started.&#34;)
+        return self.metadata
+        # TODO server needs to add the system/devices config (all the static stuff) on
+        #  top of this at higher lvl
+
+    def get_full_data(self):
+        return self.full_y_sig, self.full_y_ref
+
+    def get_meas_id(self):
+        return self.meas_id
+
+    def get_sweep_number(self):
+        return self._nsweeps
+
+    def get_sweep_progress(self):
+        return self._sweep_progress
+
+    def get_info(self):
+        return {
+            &#34;meas_id&#34;: self.get_meas_id(),
+            &#34;state&#34;: self.state,
+            &#34;nsweeps&#34;: self.get_sweep_number(),
+            &#34;sweep_progress&#34;: self.get_sweep_progress(),
+            &#34;meas_config&#34;: self.meas_config.to_dict(),
+        }
+
+    def set_aoi(self, aoi: tuple[int, int, int, int] | None):
+        if aoi[2] &lt; aoi[0]:
+            aoi[0], aoi[2] = aoi[2], aoi[0]
+        if aoi[3] &lt; aoi[1]:
+            aoi[1], aoi[3] = aoi[3], aoi[1]
+        self.aoi = aoi
+        self._aoi_change_event.set()
+
+    def get_aoi(self):
+        return self.aoi
+
+    def get_aoi_slice(self):
+        if self.aoi is None:
+            return slice(None), slice(None)
+        return slice(self.aoi[0], self.aoi[2]), slice(self.aoi[1], self.aoi[3])
+
+    # set frame number to send out on PUB socket
+    def set_frame_num(self, frame_num: int):
+        # only for camera sequences.
+        raise NotImplementedError()
+
+    def get_meas_type_name(self):
+        return self.__class__.__name__
+
+    def get_meas_save_name(self):
+        return self.meas_config.save_name
+
+    def get_norm_sweep(self):
+        mode = self.get_norm_mode()
+        sweep_data = self.get_sweep()
+        return sweep_data[0, :], norm_sweep(mode, sweep_data[1, :], sweep_data[2, :])
+
+    def get_rolling_avg_sweep(self):
+        if self.state in [MEAS_STATE.AWAITING_START]:
+            nones = np.empty_like(self.sweep_x)
+            nones[:] = np.nan
+            return np.vstack((self.sweep_x, nones, nones))
+        return np.vstack((self.sweep_x, self.rolling_avg_sig, self.rolling_avg_ref))
+
+    def set_rolling_avg_window(self, window: int):
+        self._rolling_avg_window = window
+
+    def get_description(self):
+        return f&#34;{self.__class__.__name__} measurement {self.get_meas_id()}&#34;
+
+    def get_hardware_requirements(self):
+        return self._hardware_requirements
+
+    def get_rolling_avg(self):
+        return self.rolling_avg_idxs, self.rolling_avg_sigs, self.rolling_avg_refs
+
+    # ----------------------------------------------------------------------------------
+    # ================================= HELPER METHODS =================================
+    # ----------------------------------------------------------------------------------
+
+    def _start_new_sweep(self) -&gt; bool:
+        return (
+            self._sweep_progress &lt; self._sweep_progress_increment
+            or self._sweep_progress &lt; 0.001
+        )
+
+    def _generate_meas_id(self):
+        self.meas_id = str(uuid.uuid4())
+        # self.meas_id = &#34;&#34;.join(
+        #     random.choices(string.ascii_uppercase + string.digits, k=10)
+        # )
+        return self.meas_id
+
+    def get_config_dict(self):
+        return self.meas_config.to_dict()
+
+    def _generate_metadata(self):
+        metadata = {
+            &#34;meas_id&#34;: self.meas_id,
+            &#34;nsweeps&#34;: self._nsweeps,
+            &#34;measurement_name&#34;: self.__class__.__name__,
+            &#34;ref_mode&#34;: self.ref_mode,
+        }
+        for attr in self.meas_config.__dict__:
+            metadata[attr] = getattr(self.meas_config, attr)
+        self.metadata = metadata
+
+    def _init_data(self, full_data_shape: tuple):
+        # TODO set the TYPE here! (of elements) -&gt; from meas_config, probably uint16 &amp; uint64 or so
+        self.sweep_y_sig = np.copy(self.sweep_x)
+        self.sweep_y_ref = np.copy(self.sweep_x)
+        self.sweep_y_sig[:] = 0
+        self.sweep_y_ref[:] = 0
+
+        self.full_y_sig = np.zeros(full_data_shape, dtype=np.uint64)
+        self.full_y_ref = np.zeros(full_data_shape, dtype=np.uint64)
+        self.full_y_sig[:] = 0
+        self.full_y_ref[:] = 0
+
+    async def _router(self, next_state: str) -&gt; str:
+        # NOTE: only place for sleeps!!
+        match next_state:
+            case MEAS_STATE.AWAITING_START:
+                await asyncio.sleep(0.1)
+                return self._state_awaiting_start()
+            case MEAS_STATE.PREPARING:
+                await asyncio.sleep(0)
+                return self._state_preparing()
+            case MEAS_STATE.PAUSED:
+                await asyncio.sleep(0.1)
+                return self._state_paused()
+            case MEAS_STATE.RUNNING:
+                await asyncio.sleep(0)
+                return await self._state_running()
+            case MEAS_STATE.END_OF_SWEEP:
+                await asyncio.sleep(0)
+                return self._state_end_of_sweep()
+            case MEAS_STATE.FINISHED:
+                await asyncio.sleep(0.1)
+                return self._state_finished()
+            case MEAS_STATE.CLOSE:
+                await asyncio.sleep(0.1)
+                return MEAS_STATE.CLOSE
+
+    # ----------------------------------------------------------------------------------
+    # ============================= STATE MACHINE - STATES =============================
+    # ----------------------------------------------------------------------------------
+
+    def _state_awaiting_start(self) -&gt; str:
+        if self._start_event.is_set():
+            self._start_event.clear()
+            return MEAS_STATE.PREPARING
+        if self._stop_now_event.is_set():
+            self._stop_now_event.clear()
+            return MEAS_STATE.FINISHED
+        return MEAS_STATE.AWAITING_START  # continue waiting
+
+    def _state_preparing(self) -&gt; str:
+        self._rolling_avg_idx = 1
+        nones = np.empty_like(self.sweep_x, dtype=np.float64)
+        self.rolling_avg_sig = nones
+        self.rolling_avg_ref = nones
+        self._rolling_sum_sweep_sig = np.zeros((len(self.sweep_x),))  # define a dtype
+        self._rolling_sum_sweep_ref = np.zeros((len(self.sweep_x),))
+
+        full_data_shape = self._prepare()  # includes *2 for ref if present
+        if not self._continue_prev:
+            self._generate_metadata()
+            self._init_data(full_data_shape)
+            self._sweep_progress_increment = 100.0 / len(self.sweep_x)
+            self._sweep_idx_nmeas = np.zeros(self.sweep_x.shape, dtype=int)
+
+        self._sweep_progress = 0.0
+        self._reset_per_sweep()  # run before first acq.
+        return MEAS_STATE.RUNNING
+
+    async def _state_running(self) -&gt; str:
+        try:
+            # this measurement type will acquire the full sweep in one method call.
+            if self._acq_mode == ACQ_MODE.SINGLE_SWEEP:
+                self._full_sweep_acq()
+                return MEAS_STATE.END_OF_SWEEP
+
+            # this measurement type will acquire one meas (sig/ref pair * avg_per_point)
+            elif self._acq_mode == ACQ_MODE.SINGLE_MEAS:
+                self._single_meas_acq()
+                self._sweep_progress += self._sweep_progress_increment
+                if self._sweep_progress + self._sweep_progress_increment &gt; 100.0:
+                    return MEAS_STATE.END_OF_SWEEP
+
+                self.notif_queue.put_nowait(
+                    SweepUpdate(
+                        meas_id=self.get_meas_id(),
+                        sweep_progress=self._sweep_progress,
+                        nsweeps=self._nsweeps,
+                        aoi=self.aoi,
+                        sweep_data=self.get_sweep(),
+                    )
+                )
+        except Exception:
+            logger.exception(&#34;Error while RUNNING meas {}.&#34;, self.get_meas_id())
+            self._stop_acq()
+            return MEAS_STATE.FINISHED
+        if self._stop_now_event.is_set():
+            self._stop_acq()
+            self._stop_now_event.clear()
+            return MEAS_STATE.FINISHED
+        return MEAS_STATE.RUNNING
+
+    def _state_paused(self) -&gt; str:
+        if self._start_event.is_set():
+            self._continue_prev = True
+            self._start_event.clear()
+            return MEAS_STATE.PREPARING
+        if self._stop_now_event.is_set():
+            self._stop_now_event.clear()
+            return MEAS_STATE.FINISHED
+        return MEAS_STATE.PAUSED
+
+    def _state_end_of_sweep(self) -&gt; str:
+        &#34;&#34;&#34;Handle end of sweep state.&#34;&#34;&#34;
+        # Increment sweep counter
+        self._nsweeps += 1
+
+        # Send sweep update notification
+        self.notif_queue.put_nowait(
+            SweepUpdate(
+                meas_id=self.get_meas_id(),
+                sweep_progress=100.0,
+                nsweeps=self._nsweeps,
+                aoi=self.aoi,
+                sweep_data=self.get_sweep(),
+            )
+        )
+
+        # Handle rolling average updates
+        if self._rolling_avg_idx == self._rolling_avg_window:
+            self._rolling_avg_idx = 1
+            self.rolling_avg_sigs.append(
+                (self._rolling_sum_sweep_sig / self._rolling_avg_window)
+            )
+            self.rolling_avg_refs.append(
+                (self._rolling_sum_sweep_ref / self._rolling_avg_window)
+            )
+            self.rolling_avg_idxs.append(self._nsweeps)
+            self._rolling_sum_sweep_sig[:] = 0
+            self._rolling_sum_sweep_ref[:] = 0
+            if len(self.rolling_avg_idxs) &gt; self._rolling_avg_max_sweeps:
+                # interpolate/decimate
+                new_idxs, self.rolling_avg_sigs = decimate_uneven_data(
+                    self.rolling_avg_idxs, self.rolling_avg_sigs, 2
+                )
+                _, self.rolling_avg_refs = decimate_uneven_data(
+                    self.rolling_avg_idxs, self.rolling_avg_refs, 2
+                )
+                self.rolling_avg_idxs = new_idxs
+            self.notif_queue.put_nowait(
+                RollingAvgSweepUpdate(
+                    meas_id=self.get_meas_id(),
+                    avg_window=self._rolling_avg_window,
+                    aoi=self.aoi,
+                    sweep_idxs=np.asarray(self.rolling_avg_idxs),
+                    sweep_x=self.sweep_x,
+                    sweep_ysig=np.asarray(self.rolling_avg_sigs),
+                    sweep_yref=np.asarray(self.rolling_avg_refs),
+                )
+            )
+        else:
+            self._rolling_avg_idx += 1
+
+        # Reset for next sweep
+        self._reset_per_sweep()
+
+        # Check if we should pause
+        if self._pause_endsweep_event.is_set():
+            self._stop_acq()
+            self._pause_endsweep_event.clear()
+            return MEAS_STATE.PAUSED
+
+        # Otherwise continue running
+        self._sweep_progress = 0.0
+        return MEAS_STATE.RUNNING
+
+    def _state_finished(self) -&gt; str:
+        # can&#39;t leave finished state.
+        # have sleeps to allow for access to data etc.
+        if self._close_event.is_set():
+            self._close_event.clear()
+            return MEAS_STATE.CLOSE
+        return MEAS_STATE.FINISHED
+
+    # ----------------------------------------------------------------------------------
+    # ============================== METHOD IMPLEMENTATION =============================
+    # ----------------------------------------------------------------------------------
+
+    def _prepare(self):
+        raise NotImplementedError()
+
+    def _stop_acq(self):
+        # stop any hardware (e.g. seqgen, camera) that is currently running.
+        raise NotImplementedError()
+
+    def _single_meas_acq(self):
+        # run a single measurement, e.g. acquire a single sig frame
+        # also in charge of: initing hardware for the sweep
+        # needs to update the data attrs: sweep_x, sweep_y_sig, sweep_y_ref
+        # and full_y_sig, full_y_ref.
+        # all required configuration is contained in the meas_config attribute.
+        # TODO check example and see what this *needs to set*
+        # (can any of it be wrapped??)
+        # NO CHANGE means single-point, but can be multiple frames e.g. avg-per-point
+        # ALSO needs to do the rolling avg stuff.
+        raise NotImplementedError()
+
+    def _full_sweep_acq(self):
+        # setup hardware for sweep, then run full sweep, updating data attrs:
+        # sweep_x, sweep_y_sig, sweep_y_ref and full_y_sig, full_y_ref.
+        # all required configuration is contained in the meas_config attribute.
+        raise NotImplementedError()
+
+    def _reset_per_sweep(self):
+        # reset hardware per-sweep etc.
+        raise NotImplementedError()</code></pre>
+</details>
+<div class="desc"></div>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li>qscope.meas.measurement.SGCameraMeasurement</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="qscope.meas.Measurement.aoi"><code class="name">var <span class="ident">aoi</span> : tuple[int, int, int, int] | None</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.Measurement.available_ref_modes"><code class="name">var <span class="ident">available_ref_modes</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.Measurement.full_y_ref"><code class="name">var <span class="ident">full_y_ref</span> : numpy.ndarray</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.Measurement.full_y_sig"><code class="name">var <span class="ident">full_y_sig</span> : numpy.ndarray</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.Measurement.meas_config"><code class="name">var <span class="ident">meas_config</span> : <a title="qscope.types.config.MeasurementConfig" href="../types/config.html#qscope.types.config.MeasurementConfig">MeasurementConfig</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.Measurement.meas_id"><code class="name">var <span class="ident">meas_id</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.Measurement.norm_mode"><code class="name">var <span class="ident">norm_mode</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.Measurement.ref_mode"><code class="name">var <span class="ident">ref_mode</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.Measurement.rolling_avg_ref"><code class="name">var <span class="ident">rolling_avg_ref</span> : numpy.ndarray</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.Measurement.rolling_avg_sig"><code class="name">var <span class="ident">rolling_avg_sig</span> : numpy.ndarray</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.Measurement.state"><code class="name">var <span class="ident">state</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.Measurement.sweep_x"><code class="name">var <span class="ident">sweep_x</span> : numpy.ndarray</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.Measurement.sweep_y_ref"><code class="name">var <span class="ident">sweep_y_ref</span> : numpy.ndarray</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.Measurement.sweep_y_sig"><code class="name">var <span class="ident">sweep_y_sig</span> : numpy.ndarray</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.Measurement.x_label"><code class="name">var <span class="ident">x_label</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.Measurement.y_label"><code class="name">var <span class="ident">y_label</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.meas.Measurement.close"><code class="name flex">
+<span>def <span class="ident">close</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def close(self):
+    if self.state not in [MEAS_STATE.PAUSED, MEAS_STATE.FINISHED]:
+        if self._pause_endsweep_event.is_set() or self._stop_now_event.is_set():
+            logger.debug(
+                &#34;Waiting for meas to end sweep to pause, or stop, in CLOSE on meas_id: {}&#34;,
+                self.get_meas_id(),
+            )
+            raise PleaseWait(&#34;Waiting for meas to end sweep to pause, or stop.&#34;)
+        else:
+            logger.error(&#34;Measurement cannot be closed until paused or finished.&#34;)
+            raise RuntimeError(
+                &#34;Measurement cannot be closed until paused or finished.&#34;
+            )
+    self._close_event.set()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.Measurement.get_aoi"><code class="name flex">
+<span>def <span class="ident">get_aoi</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_aoi(self):
+    return self.aoi</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.Measurement.get_aoi_slice"><code class="name flex">
+<span>def <span class="ident">get_aoi_slice</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_aoi_slice(self):
+    if self.aoi is None:
+        return slice(None), slice(None)
+    return slice(self.aoi[0], self.aoi[2]), slice(self.aoi[1], self.aoi[3])</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.Measurement.get_config_dict"><code class="name flex">
+<span>def <span class="ident">get_config_dict</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_config_dict(self):
+    return self.meas_config.to_dict()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.Measurement.get_description"><code class="name flex">
+<span>def <span class="ident">get_description</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_description(self):
+    return f&#34;{self.__class__.__name__} measurement {self.get_meas_id()}&#34;</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.Measurement.get_frame"><code class="name flex">
+<span>def <span class="ident">get_frame</span></span>(<span>self, frame_type: str = 'sig', frame_num: int = 2)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_frame(self, frame_type: str = &#34;sig&#34;, frame_num: int = 2):
+    raise NotImplementedError()  # only implement for camera sequences.</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.Measurement.get_full_data"><code class="name flex">
+<span>def <span class="ident">get_full_data</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_full_data(self):
+    return self.full_y_sig, self.full_y_ref</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.Measurement.get_hardware_requirements"><code class="name flex">
+<span>def <span class="ident">get_hardware_requirements</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_hardware_requirements(self):
+    return self._hardware_requirements</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.Measurement.get_info"><code class="name flex">
+<span>def <span class="ident">get_info</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_info(self):
+    return {
+        &#34;meas_id&#34;: self.get_meas_id(),
+        &#34;state&#34;: self.state,
+        &#34;nsweeps&#34;: self.get_sweep_number(),
+        &#34;sweep_progress&#34;: self.get_sweep_progress(),
+        &#34;meas_config&#34;: self.meas_config.to_dict(),
+    }</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.Measurement.get_meas_id"><code class="name flex">
+<span>def <span class="ident">get_meas_id</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_meas_id(self):
+    return self.meas_id</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.Measurement.get_meas_save_name"><code class="name flex">
+<span>def <span class="ident">get_meas_save_name</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_meas_save_name(self):
+    return self.meas_config.save_name</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.Measurement.get_meas_type_name"><code class="name flex">
+<span>def <span class="ident">get_meas_type_name</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_meas_type_name(self):
+    return self.__class__.__name__</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.Measurement.get_metadata"><code class="name flex">
+<span>def <span class="ident">get_metadata</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_metadata(self):
+    if self.state == MEAS_STATE.AWAITING_START:
+        raise ValueError(&#34;Can only get metadata after measurement has started.&#34;)
+    return self.metadata
+    # TODO server needs to add the system/devices config (all the static stuff) on
+    #  top of this at higher lvl</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.Measurement.get_norm_mode"><code class="name flex">
+<span>def <span class="ident">get_norm_mode</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_norm_mode(self):
+    return self.norm_mode</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.Measurement.get_norm_sweep"><code class="name flex">
+<span>def <span class="ident">get_norm_sweep</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_norm_sweep(self):
+    mode = self.get_norm_mode()
+    sweep_data = self.get_sweep()
+    return sweep_data[0, :], norm_sweep(mode, sweep_data[1, :], sweep_data[2, :])</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.Measurement.get_rolling_avg"><code class="name flex">
+<span>def <span class="ident">get_rolling_avg</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_rolling_avg(self):
+    return self.rolling_avg_idxs, self.rolling_avg_sigs, self.rolling_avg_refs</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.Measurement.get_rolling_avg_sweep"><code class="name flex">
+<span>def <span class="ident">get_rolling_avg_sweep</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_rolling_avg_sweep(self):
+    if self.state in [MEAS_STATE.AWAITING_START]:
+        nones = np.empty_like(self.sweep_x)
+        nones[:] = np.nan
+        return np.vstack((self.sweep_x, nones, nones))
+    return np.vstack((self.sweep_x, self.rolling_avg_sig, self.rolling_avg_ref))</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.Measurement.get_sweep"><code class="name flex">
+<span>def <span class="ident">get_sweep</span></span>(<span>self) ‑> numpy.ndarray</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_sweep(self) -&gt; np.ndarray:
+    if self.state in [MEAS_STATE.AWAITING_START]:
+        nones = np.empty_like(self.sweep_x)
+        nones[:] = np.nan
+        return np.vstack((self.sweep_x, nones, nones))
+    return np.vstack((self.sweep_x, self.sweep_y_sig, self.sweep_y_ref))</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.Measurement.get_sweep_number"><code class="name flex">
+<span>def <span class="ident">get_sweep_number</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_sweep_number(self):
+    return self._nsweeps</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.Measurement.get_sweep_progress"><code class="name flex">
+<span>def <span class="ident">get_sweep_progress</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_sweep_progress(self):
+    return self._sweep_progress</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.Measurement.pause_endsweep"><code class="name flex">
+<span>def <span class="ident">pause_endsweep</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def pause_endsweep(self):
+    # pause the measurement, go into &#39;paused&#39; state.
+    self._pause_endsweep_event.set()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.Measurement.set_aoi"><code class="name flex">
+<span>def <span class="ident">set_aoi</span></span>(<span>self, aoi: tuple[int, int, int, int] | None)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_aoi(self, aoi: tuple[int, int, int, int] | None):
+    if aoi[2] &lt; aoi[0]:
+        aoi[0], aoi[2] = aoi[2], aoi[0]
+    if aoi[3] &lt; aoi[1]:
+        aoi[1], aoi[3] = aoi[3], aoi[1]
+    self.aoi = aoi
+    self._aoi_change_event.set()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.Measurement.set_frame_num"><code class="name flex">
+<span>def <span class="ident">set_frame_num</span></span>(<span>self, frame_num: int)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_frame_num(self, frame_num: int):
+    # only for camera sequences.
+    raise NotImplementedError()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.Measurement.set_rolling_avg_window"><code class="name flex">
+<span>def <span class="ident">set_rolling_avg_window</span></span>(<span>self, window: int)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_rolling_avg_window(self, window: int):
+    self._rolling_avg_window = window</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.Measurement.start"><code class="name flex">
+<span>def <span class="ident">start</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def start(self):
+    if self.state not in [MEAS_STATE.PAUSED, MEAS_STATE.AWAITING_START]:
+        if self._pause_endsweep_event.is_set():
+            logger.debug(
+                &#34;Waiting for meas to end sweep to pause, in START on meas_id: {}&#34;,
+                self.get_meas_id(),
+            )
+            raise PleaseWait(&#34;Waiting for meas to end sweep to pause.&#34;)
+        else:
+            logger.error(
+                &#34;Measurement cannot be started unless paused or awaiting_start.&#34;
+            )
+            raise RuntimeError(
+                &#34;Measurement cannot be started unless paused or awaiting_start.&#34;
+            )
+    self._continue_prev = False
+    self._stop_now_event.clear()
+    self._pause_endsweep_event.clear()
+    self._start_event.set()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.Measurement.state_machine"><code class="name flex">
+<span>async def <span class="ident">state_machine</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">async def state_machine(self):
+    # start the state machine, can&#39;t be in the __init__ as it needs to be async.
+    # -&gt; keep all other fns sync.
+    self.state = MEAS_STATE.AWAITING_START
+    while True:
+        # await asyncio.sleep(0)  # check for events
+        if self.state == MEAS_STATE.CLOSE:
+            logger.info(&#34;{} Measurement closing.&#34;, self.__class__.__name__)
+            # may want to clear data here, object isn&#39;t going away...
+            break
+
+        # router *does stuff*, then updates what next_state should be
+        try:
+            next_state = await self._router(self.state)
+        except Exception as e:
+            logger.exception(&#34;Error in state machine.&#34;)
+            next_state = MEAS_STATE.FINISHED
+        if self.state != next_state:
+            logger.info(
+                &#34;Measurement state: {} {} -&gt; {}&#34;,
+                self.__class__.__name__,
+                self.get_meas_id(),
+                next_state,
+            )
+            self.notif_queue.put_nowait(
+                MeasurementUpdate(
+                    meas_id=self.get_meas_id(),
+                    old_state=self.state,
+                    new_state=next_state,
+                )
+            )
+        self.state = next_state
+    return &#34;ok&#34;</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.Measurement.stop_now"><code class="name flex">
+<span>def <span class="ident">stop_now</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def stop_now(self):
+    # stop the measurement now, go into &#39;finished&#39; state.
+    self._stop_now_event.set()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.meas.MeasurementConfig"><code class="flex name class">
+<span>class <span class="ident">MeasurementConfig</span></span>
+<span>(</span><span>*, meas_type: str, save_name: str, ref_mode: str, sweep_x: numpy.ndarray)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass(kw_only=True, repr=False)
+class MeasurementConfig(DataClassDictMixin):
+    &#34;&#34;&#34;Base configuration for measurements.
+
+    To be subclassed for each measurement type.
+    Provide all the parameters you require here as attributes.
+    &#34;&#34;&#34;
+
+    class Config(BaseConfig):
+        discriminator = Discriminator(
+            field=&#34;meas_type&#34;,
+            include_subtypes=True,
+        )
+
+    meas_type: str
+    save_name: str  # REQUIRED per-type
+    ref_mode: str
+    sweep_x: np.ndarray = field(metadata={&#34;serialize&#34;: tuple, &#34;deserialize&#34;: np.array})
+
+    def __repr__(self):
+        msg = self.__class__.__name__ + &#34;(&#34;
+        for i, (field, val) in enumerate(self.__dict__.items()):
+            if i not in (0, len(self.__dict__)):
+                msg += &#34;, &#34;
+            if isinstance(val, np.ndarray):
+                msg += f&#34;{field}=&lt;Array&gt;&#34;
+            else:
+                msg += f&#34;{field}={getattr(self, field)}&#34;
+        return msg + &#34;)&#34;</code></pre>
+</details>
+<div class="desc"><p>Base configuration for measurements.</p>
+<p>To be subclassed for each measurement type.
+Provide all the parameters you require here as attributes.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>mashumaro.mixins.dict.DataClassDictMixin</li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="qscope.types.config.CameraConfig" href="../types/config.html#qscope.types.config.CameraConfig">CameraConfig</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="qscope.meas.MeasurementConfig.Config"><code class="name">var <span class="ident">Config</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Static methods</h3>
+<dl>
+<dt id="qscope.meas.MeasurementConfig.from_dict"><code class="name flex">
+<span>def <span class="ident">from_dict</span></span>(<span>d, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="qscope.meas.MeasurementConfig.meas_type"><code class="name">var <span class="ident">meas_type</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.MeasurementConfig.ref_mode"><code class="name">var <span class="ident">ref_mode</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.MeasurementConfig.save_name"><code class="name">var <span class="ident">save_name</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.MeasurementConfig.sweep_x"><code class="name">var <span class="ident">sweep_x</span> : numpy.ndarray</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.meas.MeasurementConfig.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.meas.MockSGAndorESRConfig"><code class="flex name class">
+<span>class <span class="ident">MockSGAndorESRConfig</span></span>
+<span>(</span><span>*,<br>meas_type: str = 'MockSGAndorESR',<br>save_name: str = 'ESR',<br>ref_mode: str,<br>sweep_x: numpy.ndarray,<br>exposure_time: float,<br>frame_shape: tuple[int, int],<br>hardware_binning: tuple[int, int],<br>avg_per_point: int,<br>rf_delay: float,<br>rf_pow: float,<br>rf_dur: float,<br>laser_delay: float,<br>laser_dur: float,<br>laser_to_rf_delay: float,<br>peak_contrasts: tuple[float, float],<br>peak_widths: tuple[float, float],<br>bg_zeeman: float,<br>ft_zeeman: float,<br>ft_width_dif: float,<br>ft_height_dif: float,<br>ft_centre: tuple[int | None, int | None],<br>ft_rad: int | None,<br>ft_linewidth: int,<br>noise_sigma: float)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass(kw_only=True, repr=False)
+class MockSGAndorESRConfig(CameraConfig):
+    &#34;&#34;&#34;Configuration for mock ESR measurements.&#34;&#34;&#34;
+
+    meas_type: str = &#34;MockSGAndorESR&#34;
+    save_name: str = &#34;ESR&#34;
+    rf_delay: float
+    rf_pow: float
+    rf_dur: float
+    laser_delay: float
+    laser_dur: float
+    laser_to_rf_delay: float
+    # test data params
+    peak_contrasts: tuple[float, float]
+    peak_widths: tuple[float, float]
+    bg_zeeman: float
+    ft_zeeman: float
+    ft_width_dif: float
+    ft_height_dif: float
+    ft_centre: tuple[int | None, int | None]
+    ft_rad: int | None
+    ft_linewidth: int
+    noise_sigma: float</code></pre>
+</details>
+<div class="desc"><p>Configuration for mock ESR measurements.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.config.CameraConfig" href="../types/config.html#qscope.types.config.CameraConfig">CameraConfig</a></li>
+<li><a title="qscope.types.config.MeasurementConfig" href="../types/config.html#qscope.types.config.MeasurementConfig">MeasurementConfig</a></li>
+<li>mashumaro.mixins.dict.DataClassDictMixin</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="qscope.meas.MockSGAndorESRConfig.from_dict"><code class="name flex">
+<span>def <span class="ident">from_dict</span></span>(<span>d, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="qscope.meas.MockSGAndorESRConfig.bg_zeeman"><code class="name">var <span class="ident">bg_zeeman</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.MockSGAndorESRConfig.ft_centre"><code class="name">var <span class="ident">ft_centre</span> : tuple[int | None, int | None]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.MockSGAndorESRConfig.ft_height_dif"><code class="name">var <span class="ident">ft_height_dif</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.MockSGAndorESRConfig.ft_linewidth"><code class="name">var <span class="ident">ft_linewidth</span> : int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.MockSGAndorESRConfig.ft_rad"><code class="name">var <span class="ident">ft_rad</span> : int | None</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.MockSGAndorESRConfig.ft_width_dif"><code class="name">var <span class="ident">ft_width_dif</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.MockSGAndorESRConfig.ft_zeeman"><code class="name">var <span class="ident">ft_zeeman</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.MockSGAndorESRConfig.laser_delay"><code class="name">var <span class="ident">laser_delay</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.MockSGAndorESRConfig.laser_dur"><code class="name">var <span class="ident">laser_dur</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.MockSGAndorESRConfig.laser_to_rf_delay"><code class="name">var <span class="ident">laser_to_rf_delay</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.MockSGAndorESRConfig.meas_type"><code class="name">var <span class="ident">meas_type</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.MockSGAndorESRConfig.noise_sigma"><code class="name">var <span class="ident">noise_sigma</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.MockSGAndorESRConfig.peak_contrasts"><code class="name">var <span class="ident">peak_contrasts</span> : tuple[float, float]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.MockSGAndorESRConfig.peak_widths"><code class="name">var <span class="ident">peak_widths</span> : tuple[float, float]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.MockSGAndorESRConfig.rf_delay"><code class="name">var <span class="ident">rf_delay</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.MockSGAndorESRConfig.rf_dur"><code class="name">var <span class="ident">rf_dur</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.MockSGAndorESRConfig.rf_pow"><code class="name">var <span class="ident">rf_pow</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.MockSGAndorESRConfig.save_name"><code class="name">var <span class="ident">save_name</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.meas.MockSGAndorESRConfig.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.meas.SGAndorCWESRConfig"><code class="flex name class">
+<span>class <span class="ident">SGAndorCWESRConfig</span></span>
+<span>(</span><span>*,<br>meas_type: str = 'SGAndorCWESR',<br>save_name: str = 'ESR',<br>ref_mode: str,<br>sweep_x: numpy.ndarray,<br>exposure_time: float,<br>frame_shape: tuple[int, int],<br>hardware_binning: tuple[int, int],<br>avg_per_point: int,<br>fmod_freq: float,<br>rf_pow: float,<br>laser_delay: float)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass(kw_only=True, repr=False)
+class SGAndorCWESRConfig(CameraConfig):
+    &#34;&#34;&#34;Configuration for CW ESR measurements.&#34;&#34;&#34;
+
+    meas_type: str = &#34;SGAndorCWESR&#34;
+    save_name: str = &#34;ESR&#34;
+    avg_per_point: int
+    fmod_freq: float
+    rf_pow: float
+    laser_delay: float</code></pre>
+</details>
+<div class="desc"><p>Configuration for CW ESR measurements.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.config.CameraConfig" href="../types/config.html#qscope.types.config.CameraConfig">CameraConfig</a></li>
+<li><a title="qscope.types.config.MeasurementConfig" href="../types/config.html#qscope.types.config.MeasurementConfig">MeasurementConfig</a></li>
+<li>mashumaro.mixins.dict.DataClassDictMixin</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="qscope.meas.SGAndorCWESRConfig.from_dict"><code class="name flex">
+<span>def <span class="ident">from_dict</span></span>(<span>d, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="qscope.meas.SGAndorCWESRConfig.avg_per_point"><code class="name">var <span class="ident">avg_per_point</span> : int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.SGAndorCWESRConfig.fmod_freq"><code class="name">var <span class="ident">fmod_freq</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.SGAndorCWESRConfig.laser_delay"><code class="name">var <span class="ident">laser_delay</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.SGAndorCWESRConfig.meas_type"><code class="name">var <span class="ident">meas_type</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.SGAndorCWESRConfig.rf_pow"><code class="name">var <span class="ident">rf_pow</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.SGAndorCWESRConfig.save_name"><code class="name">var <span class="ident">save_name</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.meas.SGAndorCWESRConfig.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.meas.SGAndorPESRConfig"><code class="flex name class">
+<span>class <span class="ident">SGAndorPESRConfig</span></span>
+<span>(</span><span>*,<br>meas_type: str = 'SGAndorPESR',<br>save_name: str = 'ESR',<br>ref_mode: str,<br>sweep_x: numpy.ndarray,<br>exposure_time: float,<br>frame_shape: tuple[int, int],<br>hardware_binning: tuple[int, int],<br>avg_per_point: int,<br>fmod_freq: float,<br>rf_delay: float,<br>rf_pow: float,<br>rf_dur: float,<br>laser_delay: float,<br>laser_dur: float,<br>laser_to_rf_delay: float)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass(kw_only=True, repr=False)
+class SGAndorPESRConfig(CameraConfig):
+    &#34;&#34;&#34;Configuration for pulsed ESR measurements.&#34;&#34;&#34;
+
+    meas_type: str = &#34;SGAndorPESR&#34;
+    save_name: str = &#34;ESR&#34;
+    avg_per_point: int
+    fmod_freq: float
+    rf_delay: float
+    rf_pow: float
+    rf_dur: float
+    laser_delay: float
+    laser_dur: float
+    laser_to_rf_delay: float</code></pre>
+</details>
+<div class="desc"><p>Configuration for pulsed ESR measurements.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.config.CameraConfig" href="../types/config.html#qscope.types.config.CameraConfig">CameraConfig</a></li>
+<li><a title="qscope.types.config.MeasurementConfig" href="../types/config.html#qscope.types.config.MeasurementConfig">MeasurementConfig</a></li>
+<li>mashumaro.mixins.dict.DataClassDictMixin</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="qscope.meas.SGAndorPESRConfig.from_dict"><code class="name flex">
+<span>def <span class="ident">from_dict</span></span>(<span>d, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="qscope.meas.SGAndorPESRConfig.avg_per_point"><code class="name">var <span class="ident">avg_per_point</span> : int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.SGAndorPESRConfig.fmod_freq"><code class="name">var <span class="ident">fmod_freq</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.SGAndorPESRConfig.laser_delay"><code class="name">var <span class="ident">laser_delay</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.SGAndorPESRConfig.laser_dur"><code class="name">var <span class="ident">laser_dur</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.SGAndorPESRConfig.laser_to_rf_delay"><code class="name">var <span class="ident">laser_to_rf_delay</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.SGAndorPESRConfig.meas_type"><code class="name">var <span class="ident">meas_type</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.SGAndorPESRConfig.rf_delay"><code class="name">var <span class="ident">rf_delay</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.SGAndorPESRConfig.rf_dur"><code class="name">var <span class="ident">rf_dur</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.SGAndorPESRConfig.rf_pow"><code class="name">var <span class="ident">rf_pow</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.SGAndorPESRConfig.save_name"><code class="name">var <span class="ident">save_name</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.meas.SGAndorPESRConfig.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.meas.SGAndorRabiConfig"><code class="flex name class">
+<span>class <span class="ident">SGAndorRabiConfig</span></span>
+<span>(</span><span>*,<br>meas_type: str = 'SGAndorRabi',<br>save_name: str = 'Rabi',<br>ref_mode: str,<br>sweep_x: numpy.ndarray,<br>exposure_time: float,<br>frame_shape: tuple[int, int],<br>hardware_binning: tuple[int, int],<br>avg_per_point: int,<br>laser_dur: float,<br>rf_dur: float,<br>laser_delay: float,<br>rf_delay: float,<br>rf_pow: float,<br>rf_freq: float)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass(kw_only=True, repr=False)
+class SGAndorRabiConfig(CameraConfig):
+    &#34;&#34;&#34;Configuration for Rabi measurements.&#34;&#34;&#34;
+
+    meas_type: str = &#34;SGAndorRabi&#34;
+    save_name: str = &#34;Rabi&#34;
+    avg_per_point: int
+    laser_dur: float
+    rf_dur: float
+    laser_delay: float
+    rf_delay: float
+    rf_pow: float
+    rf_freq: float</code></pre>
+</details>
+<div class="desc"><p>Configuration for Rabi measurements.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.config.CameraConfig" href="../types/config.html#qscope.types.config.CameraConfig">CameraConfig</a></li>
+<li><a title="qscope.types.config.MeasurementConfig" href="../types/config.html#qscope.types.config.MeasurementConfig">MeasurementConfig</a></li>
+<li>mashumaro.mixins.dict.DataClassDictMixin</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="qscope.meas.SGAndorRabiConfig.from_dict"><code class="name flex">
+<span>def <span class="ident">from_dict</span></span>(<span>d, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="qscope.meas.SGAndorRabiConfig.avg_per_point"><code class="name">var <span class="ident">avg_per_point</span> : int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.SGAndorRabiConfig.laser_delay"><code class="name">var <span class="ident">laser_delay</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.SGAndorRabiConfig.laser_dur"><code class="name">var <span class="ident">laser_dur</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.SGAndorRabiConfig.meas_type"><code class="name">var <span class="ident">meas_type</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.SGAndorRabiConfig.rf_delay"><code class="name">var <span class="ident">rf_delay</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.SGAndorRabiConfig.rf_dur"><code class="name">var <span class="ident">rf_dur</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.SGAndorRabiConfig.rf_freq"><code class="name">var <span class="ident">rf_freq</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.SGAndorRabiConfig.rf_pow"><code class="name">var <span class="ident">rf_pow</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.SGAndorRabiConfig.save_name"><code class="name">var <span class="ident">save_name</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.meas.SGAndorRabiConfig.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.meas.SGAndorRamseyConfig"><code class="flex name class">
+<span>class <span class="ident">SGAndorRamseyConfig</span></span>
+<span>(</span><span>*,<br>meas_type: str = 'SGAndorRamsey',<br>save_name: str = 'Ramsey',<br>ref_mode: str,<br>sweep_x: numpy.ndarray,<br>exposure_time: float,<br>frame_shape: tuple[int, int],<br>hardware_binning: tuple[int, int],<br>avg_per_point: int,<br>laser_dur: float,<br>pi_dur: float,<br>pi_2_dur: float,<br>laser_delay: float,<br>rf_delay: float,<br>rf_pow: float,<br>rf_freq: float)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass(kw_only=True, repr=False)
+class SGAndorRamseyConfig(CameraConfig):
+    &#34;&#34;&#34;Configuration for Ramsey measurements.&#34;&#34;&#34;
+
+    meas_type: str = &#34;SGAndorRamsey&#34;
+    save_name: str = &#34;Ramsey&#34;
+    laser_dur: float
+    pi_dur: float
+    pi_2_dur: float
+    laser_delay: float
+    rf_delay: float
+    rf_pow: float
+    rf_freq: float</code></pre>
+</details>
+<div class="desc"><p>Configuration for Ramsey measurements.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.config.CameraConfig" href="../types/config.html#qscope.types.config.CameraConfig">CameraConfig</a></li>
+<li><a title="qscope.types.config.MeasurementConfig" href="../types/config.html#qscope.types.config.MeasurementConfig">MeasurementConfig</a></li>
+<li>mashumaro.mixins.dict.DataClassDictMixin</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="qscope.meas.SGAndorRamseyConfig.from_dict"><code class="name flex">
+<span>def <span class="ident">from_dict</span></span>(<span>d, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="qscope.meas.SGAndorRamseyConfig.laser_delay"><code class="name">var <span class="ident">laser_delay</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.SGAndorRamseyConfig.laser_dur"><code class="name">var <span class="ident">laser_dur</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.SGAndorRamseyConfig.meas_type"><code class="name">var <span class="ident">meas_type</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.SGAndorRamseyConfig.pi_2_dur"><code class="name">var <span class="ident">pi_2_dur</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.SGAndorRamseyConfig.pi_dur"><code class="name">var <span class="ident">pi_dur</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.SGAndorRamseyConfig.rf_delay"><code class="name">var <span class="ident">rf_delay</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.SGAndorRamseyConfig.rf_freq"><code class="name">var <span class="ident">rf_freq</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.SGAndorRamseyConfig.rf_pow"><code class="name">var <span class="ident">rf_pow</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.SGAndorRamseyConfig.save_name"><code class="name">var <span class="ident">save_name</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.meas.SGAndorRamseyConfig.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.meas.SGAndorSpinEchoConfig"><code class="flex name class">
+<span>class <span class="ident">SGAndorSpinEchoConfig</span></span>
+<span>(</span><span>*,<br>meas_type: str = 'SGAndorSpinEcho',<br>save_name: str = 'SpinEcho',<br>ref_mode: str,<br>sweep_x: numpy.ndarray,<br>exposure_time: float,<br>frame_shape: tuple[int, int],<br>hardware_binning: tuple[int, int],<br>avg_per_point: int,<br>laser_dur: float,<br>pi_dur: float,<br>pi_2_dur: float,<br>laser_delay: float,<br>rf_delay: float,<br>rf_pow: float,<br>rf_freq: float)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass(kw_only=True, repr=False)
+class SGAndorSpinEchoConfig(CameraConfig):
+    &#34;&#34;&#34;Configuration for spin echo measurements.&#34;&#34;&#34;
+
+    meas_type: str = &#34;SGAndorSpinEcho&#34;
+    save_name: str = &#34;SpinEcho&#34;
+    laser_dur: float
+    pi_dur: float
+    pi_2_dur: float
+    laser_delay: float
+    rf_delay: float
+    rf_pow: float
+    rf_freq: float</code></pre>
+</details>
+<div class="desc"><p>Configuration for spin echo measurements.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.config.CameraConfig" href="../types/config.html#qscope.types.config.CameraConfig">CameraConfig</a></li>
+<li><a title="qscope.types.config.MeasurementConfig" href="../types/config.html#qscope.types.config.MeasurementConfig">MeasurementConfig</a></li>
+<li>mashumaro.mixins.dict.DataClassDictMixin</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="qscope.meas.SGAndorSpinEchoConfig.from_dict"><code class="name flex">
+<span>def <span class="ident">from_dict</span></span>(<span>d, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="qscope.meas.SGAndorSpinEchoConfig.laser_delay"><code class="name">var <span class="ident">laser_delay</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.SGAndorSpinEchoConfig.laser_dur"><code class="name">var <span class="ident">laser_dur</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.SGAndorSpinEchoConfig.meas_type"><code class="name">var <span class="ident">meas_type</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.SGAndorSpinEchoConfig.pi_2_dur"><code class="name">var <span class="ident">pi_2_dur</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.SGAndorSpinEchoConfig.pi_dur"><code class="name">var <span class="ident">pi_dur</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.SGAndorSpinEchoConfig.rf_delay"><code class="name">var <span class="ident">rf_delay</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.SGAndorSpinEchoConfig.rf_freq"><code class="name">var <span class="ident">rf_freq</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.SGAndorSpinEchoConfig.rf_pow"><code class="name">var <span class="ident">rf_pow</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.SGAndorSpinEchoConfig.save_name"><code class="name">var <span class="ident">save_name</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.meas.SGAndorSpinEchoConfig.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.meas.SGAndorT1Config"><code class="flex name class">
+<span>class <span class="ident">SGAndorT1Config</span></span>
+<span>(</span><span>*,<br>meas_type: str = 'SGAndorT1',<br>save_name: str = 'T1',<br>ref_mode: str,<br>sweep_x: numpy.ndarray,<br>exposure_time: float,<br>frame_shape: tuple[int, int],<br>hardware_binning: tuple[int, int],<br>avg_per_point: int,<br>laser_dur: float,<br>pi_dur: float,<br>laser_delay: float,<br>rf_delay: float,<br>rf_pow: float,<br>rf_freq: float)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass(kw_only=True, repr=False)
+class SGAndorT1Config(CameraConfig):
+    &#34;&#34;&#34;Configuration for T1 measurements.&#34;&#34;&#34;
+
+    meas_type: str = &#34;SGAndorT1&#34;
+    save_name: str = &#34;T1&#34;
+    laser_dur: float
+    pi_dur: float
+    laser_delay: float
+    rf_delay: float
+    rf_pow: float
+    rf_freq: float</code></pre>
+</details>
+<div class="desc"><p>Configuration for T1 measurements.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.types.config.CameraConfig" href="../types/config.html#qscope.types.config.CameraConfig">CameraConfig</a></li>
+<li><a title="qscope.types.config.MeasurementConfig" href="../types/config.html#qscope.types.config.MeasurementConfig">MeasurementConfig</a></li>
+<li>mashumaro.mixins.dict.DataClassDictMixin</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="qscope.meas.SGAndorT1Config.from_dict"><code class="name flex">
+<span>def <span class="ident">from_dict</span></span>(<span>d, *, dialect=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="qscope.meas.SGAndorT1Config.laser_delay"><code class="name">var <span class="ident">laser_delay</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.SGAndorT1Config.laser_dur"><code class="name">var <span class="ident">laser_dur</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.SGAndorT1Config.meas_type"><code class="name">var <span class="ident">meas_type</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.SGAndorT1Config.pi_dur"><code class="name">var <span class="ident">pi_dur</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.SGAndorT1Config.rf_delay"><code class="name">var <span class="ident">rf_delay</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.SGAndorT1Config.rf_freq"><code class="name">var <span class="ident">rf_freq</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.SGAndorT1Config.rf_pow"><code class="name">var <span class="ident">rf_pow</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.meas.SGAndorT1Config.save_name"><code class="name">var <span class="ident">save_name</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.meas.SGAndorT1Config.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.meas.requires_hardware.<locals>.decorator.<locals>.Wrapper"><code class="flex name class">
+<span>class <span class="ident">SGCameraMeasurement</span></span>
+<span>(</span><span>system: System,<br>meas_config: <a title="qscope.meas.MeasurementConfig" href="#qscope.meas.MeasurementConfig">MeasurementConfig</a>,<br>notif_queue: asyncio.Queue[Notification])</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Wrapper(cls):  # type: ignore
+    @wraps(cls.__init__)
+    def __init__(self, system: System, *args, **kwargs) -&gt; None:
+        # Check system type
+        if not isinstance(system, system_types):
+            raise TypeError(
+                f&#34;{cls.__name__} requires one of these system types: &#34;
+                f&#34;{[t.__name__ for t in system_types]}, &#34;
+                f&#34;got {type(system).__name__}&#34;
+            )
+
+        self._hardware_requirements = MeasurementRequirements(
+            system_types=system_types, device_roles=roles
+        )
+
+        # Check required device roles
+        missing_roles = []
+        for role in self._hardware_requirements.device_roles:
+            if not system.has_device_role(role):
+                missing_roles.append(role)
+
+        if missing_roles:
+            raise TypeError(
+                f&#34;{cls.__name__} &#34;
+                + f&#34;requires device roles: {&#39;, &#39;.join(str(r) for r in missing_roles)}. &#34;
+                + f&#34;Found roles: {system.get_device_roles()}&#34;
+            )
+
+        super().__init__(system, *args, **kwargs)
+
+    def get_hardware_requirements(self) -&gt; MeasurementRequirements:
+        &#34;&#34;&#34;Get measurement hardware requirements.
+
+        Returns
+        -------
+        MeasurementRequirements
+            The hardware requirements
+        &#34;&#34;&#34;
+        return self._hardware_requirements</code></pre>
+</details>
+<div class="desc"></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>qscope.meas.measurement.SGCameraMeasurement</li>
+<li><a title="qscope.meas.measurement.Measurement" href="measurement.html#qscope.meas.measurement.Measurement">Measurement</a></li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li>qscope.meas.mock_sg_andor_esr.MockSGAndorESR</li>
+<li>qscope.meas.sg_andor_esr.SGAndorESRBase</li>
+<li>qscope.meas.sg_andor_rabi.SGAndorRabi</li>
+<li>qscope.meas.sg_andor_ramsey.SGAndorRamsey</li>
+<li>qscope.meas.sg_andor_spin_echo.SGAndorSpinEcho</li>
+<li>qscope.meas.sg_andor_t1.SGAndorT1</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.meas.requires_hardware.<locals>.decorator.<locals>.Wrapper.get_hardware_requirements"><code class="name flex">
+<span>def <span class="ident">get_hardware_requirements</span></span>(<span>self) ‑> <a title="qscope.meas.decorators.MeasurementRequirements" href="decorators.html#qscope.meas.decorators.MeasurementRequirements">MeasurementRequirements</a></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_hardware_requirements(self) -&gt; MeasurementRequirements:
+    &#34;&#34;&#34;Get measurement hardware requirements.
+
+    Returns
+    -------
+    MeasurementRequirements
+        The hardware requirements
+    &#34;&#34;&#34;
+    return self._hardware_requirements</code></pre>
+</details>
+<div class="desc"><p>Get measurement hardware requirements.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>MeasurementRequirements</code></dt>
+<dd>The hardware requirements</dd>
+</dl></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.meas.requires_hardware.<locals>.decorator.<locals>.Wrapper"><code class="flex name class">
+<span>class <span class="ident">MockSGAndorESR</span></span>
+<span>(</span><span>system: System,<br>meas_config: <a title="qscope.meas.MeasurementConfig" href="#qscope.meas.MeasurementConfig">MeasurementConfig</a>,<br>notif_queue: asyncio.Queue[Notification])</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Wrapper(cls):  # type: ignore
+    @wraps(cls.__init__)
+    def __init__(self, system: System, *args, **kwargs) -&gt; None:
+        # Check system type
+        if not isinstance(system, system_types):
+            raise TypeError(
+                f&#34;{cls.__name__} requires one of these system types: &#34;
+                f&#34;{[t.__name__ for t in system_types]}, &#34;
+                f&#34;got {type(system).__name__}&#34;
+            )
+
+        self._hardware_requirements = MeasurementRequirements(
+            system_types=system_types, device_roles=roles
+        )
+
+        # Check required device roles
+        missing_roles = []
+        for role in self._hardware_requirements.device_roles:
+            if not system.has_device_role(role):
+                missing_roles.append(role)
+
+        if missing_roles:
+            raise TypeError(
+                f&#34;{cls.__name__} &#34;
+                + f&#34;requires device roles: {&#39;, &#39;.join(str(r) for r in missing_roles)}. &#34;
+                + f&#34;Found roles: {system.get_device_roles()}&#34;
+            )
+
+        super().__init__(system, *args, **kwargs)
+
+    def get_hardware_requirements(self) -&gt; MeasurementRequirements:
+        &#34;&#34;&#34;Get measurement hardware requirements.
+
+        Returns
+        -------
+        MeasurementRequirements
+            The hardware requirements
+        &#34;&#34;&#34;
+        return self._hardware_requirements</code></pre>
+</details>
+<div class="desc"></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>qscope.meas.mock_sg_andor_esr.MockSGAndorESR</li>
+<li>qscope.meas.decorators.requires_hardware.<locals>.decorator.<locals>.Wrapper</li>
+<li>qscope.meas.measurement.SGCameraMeasurement</li>
+<li><a title="qscope.meas.measurement.Measurement" href="measurement.html#qscope.meas.measurement.Measurement">Measurement</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.meas.requires_hardware.<locals>.decorator.<locals>.Wrapper.get_hardware_requirements"><code class="name flex">
+<span>def <span class="ident">get_hardware_requirements</span></span>(<span>self) ‑> <a title="qscope.meas.decorators.MeasurementRequirements" href="decorators.html#qscope.meas.decorators.MeasurementRequirements">MeasurementRequirements</a></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_hardware_requirements(self) -&gt; MeasurementRequirements:
+    &#34;&#34;&#34;Get measurement hardware requirements.
+
+    Returns
+    -------
+    MeasurementRequirements
+        The hardware requirements
+    &#34;&#34;&#34;
+    return self._hardware_requirements</code></pre>
+</details>
+<div class="desc"><p>Get measurement hardware requirements.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>MeasurementRequirements</code></dt>
+<dd>The hardware requirements</dd>
+</dl></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.meas.requires_hardware.<locals>.decorator.<locals>.Wrapper"><code class="flex name class">
+<span>class <span class="ident">SGAndorCWESR</span></span>
+<span>(</span><span>system: System,<br>meas_config: <a title="qscope.meas.MeasurementConfig" href="#qscope.meas.MeasurementConfig">MeasurementConfig</a>,<br>notif_queue: asyncio.Queue[Notification])</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Wrapper(cls):  # type: ignore
+    @wraps(cls.__init__)
+    def __init__(self, system: System, *args, **kwargs) -&gt; None:
+        # Check system type
+        if not isinstance(system, system_types):
+            raise TypeError(
+                f&#34;{cls.__name__} requires one of these system types: &#34;
+                f&#34;{[t.__name__ for t in system_types]}, &#34;
+                f&#34;got {type(system).__name__}&#34;
+            )
+
+        self._hardware_requirements = MeasurementRequirements(
+            system_types=system_types, device_roles=roles
+        )
+
+        # Check required device roles
+        missing_roles = []
+        for role in self._hardware_requirements.device_roles:
+            if not system.has_device_role(role):
+                missing_roles.append(role)
+
+        if missing_roles:
+            raise TypeError(
+                f&#34;{cls.__name__} &#34;
+                + f&#34;requires device roles: {&#39;, &#39;.join(str(r) for r in missing_roles)}. &#34;
+                + f&#34;Found roles: {system.get_device_roles()}&#34;
+            )
+
+        super().__init__(system, *args, **kwargs)
+
+    def get_hardware_requirements(self) -&gt; MeasurementRequirements:
+        &#34;&#34;&#34;Get measurement hardware requirements.
+
+        Returns
+        -------
+        MeasurementRequirements
+            The hardware requirements
+        &#34;&#34;&#34;
+        return self._hardware_requirements</code></pre>
+</details>
+<div class="desc"><p>ESR measurement using CW excitation and camera detection.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>qscope.meas.sg_andor_esr.SGAndorCWESR</li>
+<li>qscope.meas.decorators.requires_hardware.<locals>.decorator.<locals>.Wrapper</li>
+<li>qscope.meas.sg_andor_esr.SGAndorESRBase</li>
+<li>qscope.meas.decorators.requires_hardware.<locals>.decorator.<locals>.Wrapper</li>
+<li>qscope.meas.measurement.SGCameraMeasurement</li>
+<li><a title="qscope.meas.measurement.Measurement" href="measurement.html#qscope.meas.measurement.Measurement">Measurement</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.meas.requires_hardware.<locals>.decorator.<locals>.Wrapper.get_hardware_requirements"><code class="name flex">
+<span>def <span class="ident">get_hardware_requirements</span></span>(<span>self) ‑> <a title="qscope.meas.decorators.MeasurementRequirements" href="decorators.html#qscope.meas.decorators.MeasurementRequirements">MeasurementRequirements</a></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_hardware_requirements(self) -&gt; MeasurementRequirements:
+    &#34;&#34;&#34;Get measurement hardware requirements.
+
+    Returns
+    -------
+    MeasurementRequirements
+        The hardware requirements
+    &#34;&#34;&#34;
+    return self._hardware_requirements</code></pre>
+</details>
+<div class="desc"><p>Get measurement hardware requirements.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>MeasurementRequirements</code></dt>
+<dd>The hardware requirements</dd>
+</dl></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.meas.requires_hardware.<locals>.decorator.<locals>.Wrapper"><code class="flex name class">
+<span>class <span class="ident">SGAndorPESR</span></span>
+<span>(</span><span>system: System,<br>meas_config: <a title="qscope.meas.MeasurementConfig" href="#qscope.meas.MeasurementConfig">MeasurementConfig</a>,<br>notif_queue: asyncio.Queue[Notification])</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Wrapper(cls):  # type: ignore
+    @wraps(cls.__init__)
+    def __init__(self, system: System, *args, **kwargs) -&gt; None:
+        # Check system type
+        if not isinstance(system, system_types):
+            raise TypeError(
+                f&#34;{cls.__name__} requires one of these system types: &#34;
+                f&#34;{[t.__name__ for t in system_types]}, &#34;
+                f&#34;got {type(system).__name__}&#34;
+            )
+
+        self._hardware_requirements = MeasurementRequirements(
+            system_types=system_types, device_roles=roles
+        )
+
+        # Check required device roles
+        missing_roles = []
+        for role in self._hardware_requirements.device_roles:
+            if not system.has_device_role(role):
+                missing_roles.append(role)
+
+        if missing_roles:
+            raise TypeError(
+                f&#34;{cls.__name__} &#34;
+                + f&#34;requires device roles: {&#39;, &#39;.join(str(r) for r in missing_roles)}. &#34;
+                + f&#34;Found roles: {system.get_device_roles()}&#34;
+            )
+
+        super().__init__(system, *args, **kwargs)
+
+    def get_hardware_requirements(self) -&gt; MeasurementRequirements:
+        &#34;&#34;&#34;Get measurement hardware requirements.
+
+        Returns
+        -------
+        MeasurementRequirements
+            The hardware requirements
+        &#34;&#34;&#34;
+        return self._hardware_requirements</code></pre>
+</details>
+<div class="desc"><p>Pulsed ESR measurement using camera detection.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>qscope.meas.sg_andor_esr.SGAndorPESR</li>
+<li>qscope.meas.decorators.requires_hardware.<locals>.decorator.<locals>.Wrapper</li>
+<li>qscope.meas.sg_andor_esr.SGAndorESRBase</li>
+<li>qscope.meas.decorators.requires_hardware.<locals>.decorator.<locals>.Wrapper</li>
+<li>qscope.meas.measurement.SGCameraMeasurement</li>
+<li><a title="qscope.meas.measurement.Measurement" href="measurement.html#qscope.meas.measurement.Measurement">Measurement</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.meas.requires_hardware.<locals>.decorator.<locals>.Wrapper.get_hardware_requirements"><code class="name flex">
+<span>def <span class="ident">get_hardware_requirements</span></span>(<span>self) ‑> <a title="qscope.meas.decorators.MeasurementRequirements" href="decorators.html#qscope.meas.decorators.MeasurementRequirements">MeasurementRequirements</a></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_hardware_requirements(self) -&gt; MeasurementRequirements:
+    &#34;&#34;&#34;Get measurement hardware requirements.
+
+    Returns
+    -------
+    MeasurementRequirements
+        The hardware requirements
+    &#34;&#34;&#34;
+    return self._hardware_requirements</code></pre>
+</details>
+<div class="desc"><p>Get measurement hardware requirements.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>MeasurementRequirements</code></dt>
+<dd>The hardware requirements</dd>
+</dl></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.meas.requires_hardware.<locals>.decorator.<locals>.Wrapper"><code class="flex name class">
+<span>class <span class="ident">SGAndorRabi</span></span>
+<span>(</span><span>system: System,<br>meas_config: <a title="qscope.meas.MeasurementConfig" href="#qscope.meas.MeasurementConfig">MeasurementConfig</a>,<br>notif_queue: asyncio.Queue[Notification])</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Wrapper(cls):  # type: ignore
+    @wraps(cls.__init__)
+    def __init__(self, system: System, *args, **kwargs) -&gt; None:
+        # Check system type
+        if not isinstance(system, system_types):
+            raise TypeError(
+                f&#34;{cls.__name__} requires one of these system types: &#34;
+                f&#34;{[t.__name__ for t in system_types]}, &#34;
+                f&#34;got {type(system).__name__}&#34;
+            )
+
+        self._hardware_requirements = MeasurementRequirements(
+            system_types=system_types, device_roles=roles
+        )
+
+        # Check required device roles
+        missing_roles = []
+        for role in self._hardware_requirements.device_roles:
+            if not system.has_device_role(role):
+                missing_roles.append(role)
+
+        if missing_roles:
+            raise TypeError(
+                f&#34;{cls.__name__} &#34;
+                + f&#34;requires device roles: {&#39;, &#39;.join(str(r) for r in missing_roles)}. &#34;
+                + f&#34;Found roles: {system.get_device_roles()}&#34;
+            )
+
+        super().__init__(system, *args, **kwargs)
+
+    def get_hardware_requirements(self) -&gt; MeasurementRequirements:
+        &#34;&#34;&#34;Get measurement hardware requirements.
+
+        Returns
+        -------
+        MeasurementRequirements
+            The hardware requirements
+        &#34;&#34;&#34;
+        return self._hardware_requirements</code></pre>
+</details>
+<div class="desc"></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>qscope.meas.sg_andor_rabi.SGAndorRabi</li>
+<li>qscope.meas.decorators.requires_hardware.<locals>.decorator.<locals>.Wrapper</li>
+<li>qscope.meas.measurement.SGCameraMeasurement</li>
+<li><a title="qscope.meas.measurement.Measurement" href="measurement.html#qscope.meas.measurement.Measurement">Measurement</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.meas.requires_hardware.<locals>.decorator.<locals>.Wrapper.get_hardware_requirements"><code class="name flex">
+<span>def <span class="ident">get_hardware_requirements</span></span>(<span>self) ‑> <a title="qscope.meas.decorators.MeasurementRequirements" href="decorators.html#qscope.meas.decorators.MeasurementRequirements">MeasurementRequirements</a></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_hardware_requirements(self) -&gt; MeasurementRequirements:
+    &#34;&#34;&#34;Get measurement hardware requirements.
+
+    Returns
+    -------
+    MeasurementRequirements
+        The hardware requirements
+    &#34;&#34;&#34;
+    return self._hardware_requirements</code></pre>
+</details>
+<div class="desc"><p>Get measurement hardware requirements.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>MeasurementRequirements</code></dt>
+<dd>The hardware requirements</dd>
+</dl></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.meas.requires_hardware.<locals>.decorator.<locals>.Wrapper"><code class="flex name class">
+<span>class <span class="ident">SGAndorRamsey</span></span>
+<span>(</span><span>system: System,<br>meas_config: <a title="qscope.meas.MeasurementConfig" href="#qscope.meas.MeasurementConfig">MeasurementConfig</a>,<br>notif_queue: asyncio.Queue[Notification])</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Wrapper(cls):  # type: ignore
+    @wraps(cls.__init__)
+    def __init__(self, system: System, *args, **kwargs) -&gt; None:
+        # Check system type
+        if not isinstance(system, system_types):
+            raise TypeError(
+                f&#34;{cls.__name__} requires one of these system types: &#34;
+                f&#34;{[t.__name__ for t in system_types]}, &#34;
+                f&#34;got {type(system).__name__}&#34;
+            )
+
+        self._hardware_requirements = MeasurementRequirements(
+            system_types=system_types, device_roles=roles
+        )
+
+        # Check required device roles
+        missing_roles = []
+        for role in self._hardware_requirements.device_roles:
+            if not system.has_device_role(role):
+                missing_roles.append(role)
+
+        if missing_roles:
+            raise TypeError(
+                f&#34;{cls.__name__} &#34;
+                + f&#34;requires device roles: {&#39;, &#39;.join(str(r) for r in missing_roles)}. &#34;
+                + f&#34;Found roles: {system.get_device_roles()}&#34;
+            )
+
+        super().__init__(system, *args, **kwargs)
+
+    def get_hardware_requirements(self) -&gt; MeasurementRequirements:
+        &#34;&#34;&#34;Get measurement hardware requirements.
+
+        Returns
+        -------
+        MeasurementRequirements
+            The hardware requirements
+        &#34;&#34;&#34;
+        return self._hardware_requirements</code></pre>
+</details>
+<div class="desc"></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>qscope.meas.sg_andor_ramsey.SGAndorRamsey</li>
+<li>qscope.meas.decorators.requires_hardware.<locals>.decorator.<locals>.Wrapper</li>
+<li>qscope.meas.measurement.SGCameraMeasurement</li>
+<li><a title="qscope.meas.measurement.Measurement" href="measurement.html#qscope.meas.measurement.Measurement">Measurement</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.meas.requires_hardware.<locals>.decorator.<locals>.Wrapper.get_hardware_requirements"><code class="name flex">
+<span>def <span class="ident">get_hardware_requirements</span></span>(<span>self) ‑> <a title="qscope.meas.decorators.MeasurementRequirements" href="decorators.html#qscope.meas.decorators.MeasurementRequirements">MeasurementRequirements</a></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_hardware_requirements(self) -&gt; MeasurementRequirements:
+    &#34;&#34;&#34;Get measurement hardware requirements.
+
+    Returns
+    -------
+    MeasurementRequirements
+        The hardware requirements
+    &#34;&#34;&#34;
+    return self._hardware_requirements</code></pre>
+</details>
+<div class="desc"><p>Get measurement hardware requirements.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>MeasurementRequirements</code></dt>
+<dd>The hardware requirements</dd>
+</dl></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.meas.requires_hardware.<locals>.decorator.<locals>.Wrapper"><code class="flex name class">
+<span>class <span class="ident">SGAndorSpinEcho</span></span>
+<span>(</span><span>system: System,<br>meas_config: <a title="qscope.meas.MeasurementConfig" href="#qscope.meas.MeasurementConfig">MeasurementConfig</a>,<br>notif_queue: asyncio.Queue[Notification])</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Wrapper(cls):  # type: ignore
+    @wraps(cls.__init__)
+    def __init__(self, system: System, *args, **kwargs) -&gt; None:
+        # Check system type
+        if not isinstance(system, system_types):
+            raise TypeError(
+                f&#34;{cls.__name__} requires one of these system types: &#34;
+                f&#34;{[t.__name__ for t in system_types]}, &#34;
+                f&#34;got {type(system).__name__}&#34;
+            )
+
+        self._hardware_requirements = MeasurementRequirements(
+            system_types=system_types, device_roles=roles
+        )
+
+        # Check required device roles
+        missing_roles = []
+        for role in self._hardware_requirements.device_roles:
+            if not system.has_device_role(role):
+                missing_roles.append(role)
+
+        if missing_roles:
+            raise TypeError(
+                f&#34;{cls.__name__} &#34;
+                + f&#34;requires device roles: {&#39;, &#39;.join(str(r) for r in missing_roles)}. &#34;
+                + f&#34;Found roles: {system.get_device_roles()}&#34;
+            )
+
+        super().__init__(system, *args, **kwargs)
+
+    def get_hardware_requirements(self) -&gt; MeasurementRequirements:
+        &#34;&#34;&#34;Get measurement hardware requirements.
+
+        Returns
+        -------
+        MeasurementRequirements
+            The hardware requirements
+        &#34;&#34;&#34;
+        return self._hardware_requirements</code></pre>
+</details>
+<div class="desc"></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>qscope.meas.sg_andor_spin_echo.SGAndorSpinEcho</li>
+<li>qscope.meas.decorators.requires_hardware.<locals>.decorator.<locals>.Wrapper</li>
+<li>qscope.meas.measurement.SGCameraMeasurement</li>
+<li><a title="qscope.meas.measurement.Measurement" href="measurement.html#qscope.meas.measurement.Measurement">Measurement</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.meas.requires_hardware.<locals>.decorator.<locals>.Wrapper.get_hardware_requirements"><code class="name flex">
+<span>def <span class="ident">get_hardware_requirements</span></span>(<span>self) ‑> <a title="qscope.meas.decorators.MeasurementRequirements" href="decorators.html#qscope.meas.decorators.MeasurementRequirements">MeasurementRequirements</a></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_hardware_requirements(self) -&gt; MeasurementRequirements:
+    &#34;&#34;&#34;Get measurement hardware requirements.
+
+    Returns
+    -------
+    MeasurementRequirements
+        The hardware requirements
+    &#34;&#34;&#34;
+    return self._hardware_requirements</code></pre>
+</details>
+<div class="desc"><p>Get measurement hardware requirements.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>MeasurementRequirements</code></dt>
+<dd>The hardware requirements</dd>
+</dl></div>
+</dd>
+</dl>
+</dd>
+<dt id="qscope.meas.requires_hardware.<locals>.decorator.<locals>.Wrapper"><code class="flex name class">
+<span>class <span class="ident">SGAndorT1</span></span>
+<span>(</span><span>system: System,<br>meas_config: <a title="qscope.meas.MeasurementConfig" href="#qscope.meas.MeasurementConfig">MeasurementConfig</a>,<br>notif_queue: asyncio.Queue[Notification])</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Wrapper(cls):  # type: ignore
+    @wraps(cls.__init__)
+    def __init__(self, system: System, *args, **kwargs) -&gt; None:
+        # Check system type
+        if not isinstance(system, system_types):
+            raise TypeError(
+                f&#34;{cls.__name__} requires one of these system types: &#34;
+                f&#34;{[t.__name__ for t in system_types]}, &#34;
+                f&#34;got {type(system).__name__}&#34;
+            )
+
+        self._hardware_requirements = MeasurementRequirements(
+            system_types=system_types, device_roles=roles
+        )
+
+        # Check required device roles
+        missing_roles = []
+        for role in self._hardware_requirements.device_roles:
+            if not system.has_device_role(role):
+                missing_roles.append(role)
+
+        if missing_roles:
+            raise TypeError(
+                f&#34;{cls.__name__} &#34;
+                + f&#34;requires device roles: {&#39;, &#39;.join(str(r) for r in missing_roles)}. &#34;
+                + f&#34;Found roles: {system.get_device_roles()}&#34;
+            )
+
+        super().__init__(system, *args, **kwargs)
+
+    def get_hardware_requirements(self) -&gt; MeasurementRequirements:
+        &#34;&#34;&#34;Get measurement hardware requirements.
+
+        Returns
+        -------
+        MeasurementRequirements
+            The hardware requirements
+        &#34;&#34;&#34;
+        return self._hardware_requirements</code></pre>
+</details>
+<div class="desc"></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>qscope.meas.sg_andor_t1.SGAndorT1</li>
+<li>qscope.meas.decorators.requires_hardware.<locals>.decorator.<locals>.Wrapper</li>
+<li>qscope.meas.measurement.SGCameraMeasurement</li>
+<li><a title="qscope.meas.measurement.Measurement" href="measurement.html#qscope.meas.measurement.Measurement">Measurement</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.meas.requires_hardware.<locals>.decorator.<locals>.Wrapper.get_hardware_requirements"><code class="name flex">
+<span>def <span class="ident">get_hardware_requirements</span></span>(<span>self) ‑> <a title="qscope.meas.decorators.MeasurementRequirements" href="decorators.html#qscope.meas.decorators.MeasurementRequirements">MeasurementRequirements</a></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_hardware_requirements(self) -&gt; MeasurementRequirements:
+    &#34;&#34;&#34;Get measurement hardware requirements.
+
+    Returns
+    -------
+    MeasurementRequirements
+        The hardware requirements
+    &#34;&#34;&#34;
+    return self._hardware_requirements</code></pre>
+</details>
+<div class="desc"><p>Get measurement hardware requirements.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>MeasurementRequirements</code></dt>
+<dd>The hardware requirements</dd>
+</dl></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<form>
+<input id="lunr-search" name="q" placeholder="🔎 Search ..." aria-label="Search"
+disabled minlength="2">
+</form>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.css" integrity="sha512-b+T2i3P45i1LZM7I00Ci5QquB9szqaxu+uuk5TUSGjZQ4w4n+qujQiIuvTv2BxE7WCGQCifNMksyKILDiHzsOg==" crossorigin>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.js" integrity="sha512-2B9/byNV1KKRm5nQ2RLViPFD6U4dUjDGwuW1GU+ImJh8YinPU9Zlq1GzdTMO+G2ROrB5o1qasJBy1ttYz0wCug==" crossorigin></script>
+<style>
+.modal-dialog iframe {
+width: 100vw;
+height: calc(100vh - 80px);
+}
+@media screen and (min-width: 700px) {
+.modal-dialog iframe {
+width: 70vw;
+height: 80vh;
+}
+}
+.modal-dialog .tingle-modal-box {width: auto;}
+.modal-dialog .tingle-modal-box__content {padding: 0;}
+</style>
+<script>
+const input = document.getElementById('lunr-search');
+input.disabled = false;
+input.form.addEventListener('submit', (ev) => {
+ev.preventDefault();
+const url = new URL(window.location);
+url.searchParams.set('q', input.value);
+history.replaceState({}, null, url.toString());
+search(input.value);
+});
+const query = new URL(window.location).searchParams.get('q');
+if (query)
+search(query);
+function search(query) {
+const url = '../../doc-search.html#' + encodeURIComponent(query);
+new tingle.modal({
+cssClass: ['modal-dialog'],
+onClose: () => {
+const url = new URL(window.location);
+url.searchParams.delete('q');
+history.replaceState({}, null, url.toString());
+setTimeout(() => input.focus(), 100);
+}
+}).setContent('<iframe src="' + url + '"></iframe>').open();
+}
+</script>
+<div class="toc">
+<ul>
+<li><a href="#examples">Examples</a></li>
+<li><a href="#see-also">See Also</a></li>
+</ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="qscope" href="../index.html">qscope</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-submodules">Sub-modules</a></h3>
+<ul>
+<li><code><a title="qscope.meas.decorators" href="decorators.html">qscope.meas.decorators</a></code></li>
+<li><code><a title="qscope.meas.framegrabber" href="framegrabber.html">qscope.meas.framegrabber</a></code></li>
+<li><code><a title="qscope.meas.measurement" href="measurement.html">qscope.meas.measurement</a></code></li>
+<li><code><a title="qscope.meas.mock_sg_andor_esr" href="mock_sg_andor_esr.html">qscope.meas.mock_sg_andor_esr</a></code></li>
+<li><code><a title="qscope.meas.sg_andor_esr" href="sg_andor_esr.html">qscope.meas.sg_andor_esr</a></code></li>
+<li><code><a title="qscope.meas.sg_andor_rabi" href="sg_andor_rabi.html">qscope.meas.sg_andor_rabi</a></code></li>
+<li><code><a title="qscope.meas.sg_andor_ramsey" href="sg_andor_ramsey.html">qscope.meas.sg_andor_ramsey</a></code></li>
+<li><code><a title="qscope.meas.sg_andor_spin_echo" href="sg_andor_spin_echo.html">qscope.meas.sg_andor_spin_echo</a></code></li>
+<li><code><a title="qscope.meas.sg_andor_t1" href="sg_andor_t1.html">qscope.meas.sg_andor_t1</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="qscope.meas.Measurement" href="#qscope.meas.Measurement">Measurement</a></code></h4>
+<ul class="">
+<li><code><a title="qscope.meas.Measurement.aoi" href="#qscope.meas.Measurement.aoi">aoi</a></code></li>
+<li><code><a title="qscope.meas.Measurement.available_ref_modes" href="#qscope.meas.Measurement.available_ref_modes">available_ref_modes</a></code></li>
+<li><code><a title="qscope.meas.Measurement.close" href="#qscope.meas.Measurement.close">close</a></code></li>
+<li><code><a title="qscope.meas.Measurement.full_y_ref" href="#qscope.meas.Measurement.full_y_ref">full_y_ref</a></code></li>
+<li><code><a title="qscope.meas.Measurement.full_y_sig" href="#qscope.meas.Measurement.full_y_sig">full_y_sig</a></code></li>
+<li><code><a title="qscope.meas.Measurement.get_aoi" href="#qscope.meas.Measurement.get_aoi">get_aoi</a></code></li>
+<li><code><a title="qscope.meas.Measurement.get_aoi_slice" href="#qscope.meas.Measurement.get_aoi_slice">get_aoi_slice</a></code></li>
+<li><code><a title="qscope.meas.Measurement.get_config_dict" href="#qscope.meas.Measurement.get_config_dict">get_config_dict</a></code></li>
+<li><code><a title="qscope.meas.Measurement.get_description" href="#qscope.meas.Measurement.get_description">get_description</a></code></li>
+<li><code><a title="qscope.meas.Measurement.get_frame" href="#qscope.meas.Measurement.get_frame">get_frame</a></code></li>
+<li><code><a title="qscope.meas.Measurement.get_full_data" href="#qscope.meas.Measurement.get_full_data">get_full_data</a></code></li>
+<li><code><a title="qscope.meas.Measurement.get_hardware_requirements" href="#qscope.meas.Measurement.get_hardware_requirements">get_hardware_requirements</a></code></li>
+<li><code><a title="qscope.meas.Measurement.get_info" href="#qscope.meas.Measurement.get_info">get_info</a></code></li>
+<li><code><a title="qscope.meas.Measurement.get_meas_id" href="#qscope.meas.Measurement.get_meas_id">get_meas_id</a></code></li>
+<li><code><a title="qscope.meas.Measurement.get_meas_save_name" href="#qscope.meas.Measurement.get_meas_save_name">get_meas_save_name</a></code></li>
+<li><code><a title="qscope.meas.Measurement.get_meas_type_name" href="#qscope.meas.Measurement.get_meas_type_name">get_meas_type_name</a></code></li>
+<li><code><a title="qscope.meas.Measurement.get_metadata" href="#qscope.meas.Measurement.get_metadata">get_metadata</a></code></li>
+<li><code><a title="qscope.meas.Measurement.get_norm_mode" href="#qscope.meas.Measurement.get_norm_mode">get_norm_mode</a></code></li>
+<li><code><a title="qscope.meas.Measurement.get_norm_sweep" href="#qscope.meas.Measurement.get_norm_sweep">get_norm_sweep</a></code></li>
+<li><code><a title="qscope.meas.Measurement.get_rolling_avg" href="#qscope.meas.Measurement.get_rolling_avg">get_rolling_avg</a></code></li>
+<li><code><a title="qscope.meas.Measurement.get_rolling_avg_sweep" href="#qscope.meas.Measurement.get_rolling_avg_sweep">get_rolling_avg_sweep</a></code></li>
+<li><code><a title="qscope.meas.Measurement.get_sweep" href="#qscope.meas.Measurement.get_sweep">get_sweep</a></code></li>
+<li><code><a title="qscope.meas.Measurement.get_sweep_number" href="#qscope.meas.Measurement.get_sweep_number">get_sweep_number</a></code></li>
+<li><code><a title="qscope.meas.Measurement.get_sweep_progress" href="#qscope.meas.Measurement.get_sweep_progress">get_sweep_progress</a></code></li>
+<li><code><a title="qscope.meas.Measurement.meas_config" href="#qscope.meas.Measurement.meas_config">meas_config</a></code></li>
+<li><code><a title="qscope.meas.Measurement.meas_id" href="#qscope.meas.Measurement.meas_id">meas_id</a></code></li>
+<li><code><a title="qscope.meas.Measurement.norm_mode" href="#qscope.meas.Measurement.norm_mode">norm_mode</a></code></li>
+<li><code><a title="qscope.meas.Measurement.pause_endsweep" href="#qscope.meas.Measurement.pause_endsweep">pause_endsweep</a></code></li>
+<li><code><a title="qscope.meas.Measurement.ref_mode" href="#qscope.meas.Measurement.ref_mode">ref_mode</a></code></li>
+<li><code><a title="qscope.meas.Measurement.rolling_avg_ref" href="#qscope.meas.Measurement.rolling_avg_ref">rolling_avg_ref</a></code></li>
+<li><code><a title="qscope.meas.Measurement.rolling_avg_sig" href="#qscope.meas.Measurement.rolling_avg_sig">rolling_avg_sig</a></code></li>
+<li><code><a title="qscope.meas.Measurement.set_aoi" href="#qscope.meas.Measurement.set_aoi">set_aoi</a></code></li>
+<li><code><a title="qscope.meas.Measurement.set_frame_num" href="#qscope.meas.Measurement.set_frame_num">set_frame_num</a></code></li>
+<li><code><a title="qscope.meas.Measurement.set_rolling_avg_window" href="#qscope.meas.Measurement.set_rolling_avg_window">set_rolling_avg_window</a></code></li>
+<li><code><a title="qscope.meas.Measurement.start" href="#qscope.meas.Measurement.start">start</a></code></li>
+<li><code><a title="qscope.meas.Measurement.state" href="#qscope.meas.Measurement.state">state</a></code></li>
+<li><code><a title="qscope.meas.Measurement.state_machine" href="#qscope.meas.Measurement.state_machine">state_machine</a></code></li>
+<li><code><a title="qscope.meas.Measurement.stop_now" href="#qscope.meas.Measurement.stop_now">stop_now</a></code></li>
+<li><code><a title="qscope.meas.Measurement.sweep_x" href="#qscope.meas.Measurement.sweep_x">sweep_x</a></code></li>
+<li><code><a title="qscope.meas.Measurement.sweep_y_ref" href="#qscope.meas.Measurement.sweep_y_ref">sweep_y_ref</a></code></li>
+<li><code><a title="qscope.meas.Measurement.sweep_y_sig" href="#qscope.meas.Measurement.sweep_y_sig">sweep_y_sig</a></code></li>
+<li><code><a title="qscope.meas.Measurement.x_label" href="#qscope.meas.Measurement.x_label">x_label</a></code></li>
+<li><code><a title="qscope.meas.Measurement.y_label" href="#qscope.meas.Measurement.y_label">y_label</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.meas.MeasurementConfig" href="#qscope.meas.MeasurementConfig">MeasurementConfig</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.meas.MeasurementConfig.Config" href="#qscope.meas.MeasurementConfig.Config">Config</a></code></li>
+<li><code><a title="qscope.meas.MeasurementConfig.from_dict" href="#qscope.meas.MeasurementConfig.from_dict">from_dict</a></code></li>
+<li><code><a title="qscope.meas.MeasurementConfig.meas_type" href="#qscope.meas.MeasurementConfig.meas_type">meas_type</a></code></li>
+<li><code><a title="qscope.meas.MeasurementConfig.ref_mode" href="#qscope.meas.MeasurementConfig.ref_mode">ref_mode</a></code></li>
+<li><code><a title="qscope.meas.MeasurementConfig.save_name" href="#qscope.meas.MeasurementConfig.save_name">save_name</a></code></li>
+<li><code><a title="qscope.meas.MeasurementConfig.sweep_x" href="#qscope.meas.MeasurementConfig.sweep_x">sweep_x</a></code></li>
+<li><code><a title="qscope.meas.MeasurementConfig.to_dict" href="#qscope.meas.MeasurementConfig.to_dict">to_dict</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.meas.MockSGAndorESRConfig" href="#qscope.meas.MockSGAndorESRConfig">MockSGAndorESRConfig</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.meas.MockSGAndorESRConfig.bg_zeeman" href="#qscope.meas.MockSGAndorESRConfig.bg_zeeman">bg_zeeman</a></code></li>
+<li><code><a title="qscope.meas.MockSGAndorESRConfig.from_dict" href="#qscope.meas.MockSGAndorESRConfig.from_dict">from_dict</a></code></li>
+<li><code><a title="qscope.meas.MockSGAndorESRConfig.ft_centre" href="#qscope.meas.MockSGAndorESRConfig.ft_centre">ft_centre</a></code></li>
+<li><code><a title="qscope.meas.MockSGAndorESRConfig.ft_height_dif" href="#qscope.meas.MockSGAndorESRConfig.ft_height_dif">ft_height_dif</a></code></li>
+<li><code><a title="qscope.meas.MockSGAndorESRConfig.ft_linewidth" href="#qscope.meas.MockSGAndorESRConfig.ft_linewidth">ft_linewidth</a></code></li>
+<li><code><a title="qscope.meas.MockSGAndorESRConfig.ft_rad" href="#qscope.meas.MockSGAndorESRConfig.ft_rad">ft_rad</a></code></li>
+<li><code><a title="qscope.meas.MockSGAndorESRConfig.ft_width_dif" href="#qscope.meas.MockSGAndorESRConfig.ft_width_dif">ft_width_dif</a></code></li>
+<li><code><a title="qscope.meas.MockSGAndorESRConfig.ft_zeeman" href="#qscope.meas.MockSGAndorESRConfig.ft_zeeman">ft_zeeman</a></code></li>
+<li><code><a title="qscope.meas.MockSGAndorESRConfig.laser_delay" href="#qscope.meas.MockSGAndorESRConfig.laser_delay">laser_delay</a></code></li>
+<li><code><a title="qscope.meas.MockSGAndorESRConfig.laser_dur" href="#qscope.meas.MockSGAndorESRConfig.laser_dur">laser_dur</a></code></li>
+<li><code><a title="qscope.meas.MockSGAndorESRConfig.laser_to_rf_delay" href="#qscope.meas.MockSGAndorESRConfig.laser_to_rf_delay">laser_to_rf_delay</a></code></li>
+<li><code><a title="qscope.meas.MockSGAndorESRConfig.meas_type" href="#qscope.meas.MockSGAndorESRConfig.meas_type">meas_type</a></code></li>
+<li><code><a title="qscope.meas.MockSGAndorESRConfig.noise_sigma" href="#qscope.meas.MockSGAndorESRConfig.noise_sigma">noise_sigma</a></code></li>
+<li><code><a title="qscope.meas.MockSGAndorESRConfig.peak_contrasts" href="#qscope.meas.MockSGAndorESRConfig.peak_contrasts">peak_contrasts</a></code></li>
+<li><code><a title="qscope.meas.MockSGAndorESRConfig.peak_widths" href="#qscope.meas.MockSGAndorESRConfig.peak_widths">peak_widths</a></code></li>
+<li><code><a title="qscope.meas.MockSGAndorESRConfig.rf_delay" href="#qscope.meas.MockSGAndorESRConfig.rf_delay">rf_delay</a></code></li>
+<li><code><a title="qscope.meas.MockSGAndorESRConfig.rf_dur" href="#qscope.meas.MockSGAndorESRConfig.rf_dur">rf_dur</a></code></li>
+<li><code><a title="qscope.meas.MockSGAndorESRConfig.rf_pow" href="#qscope.meas.MockSGAndorESRConfig.rf_pow">rf_pow</a></code></li>
+<li><code><a title="qscope.meas.MockSGAndorESRConfig.save_name" href="#qscope.meas.MockSGAndorESRConfig.save_name">save_name</a></code></li>
+<li><code><a title="qscope.meas.MockSGAndorESRConfig.to_dict" href="#qscope.meas.MockSGAndorESRConfig.to_dict">to_dict</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.meas.SGAndorCWESRConfig" href="#qscope.meas.SGAndorCWESRConfig">SGAndorCWESRConfig</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.meas.SGAndorCWESRConfig.avg_per_point" href="#qscope.meas.SGAndorCWESRConfig.avg_per_point">avg_per_point</a></code></li>
+<li><code><a title="qscope.meas.SGAndorCWESRConfig.fmod_freq" href="#qscope.meas.SGAndorCWESRConfig.fmod_freq">fmod_freq</a></code></li>
+<li><code><a title="qscope.meas.SGAndorCWESRConfig.from_dict" href="#qscope.meas.SGAndorCWESRConfig.from_dict">from_dict</a></code></li>
+<li><code><a title="qscope.meas.SGAndorCWESRConfig.laser_delay" href="#qscope.meas.SGAndorCWESRConfig.laser_delay">laser_delay</a></code></li>
+<li><code><a title="qscope.meas.SGAndorCWESRConfig.meas_type" href="#qscope.meas.SGAndorCWESRConfig.meas_type">meas_type</a></code></li>
+<li><code><a title="qscope.meas.SGAndorCWESRConfig.rf_pow" href="#qscope.meas.SGAndorCWESRConfig.rf_pow">rf_pow</a></code></li>
+<li><code><a title="qscope.meas.SGAndorCWESRConfig.save_name" href="#qscope.meas.SGAndorCWESRConfig.save_name">save_name</a></code></li>
+<li><code><a title="qscope.meas.SGAndorCWESRConfig.to_dict" href="#qscope.meas.SGAndorCWESRConfig.to_dict">to_dict</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.meas.SGAndorPESRConfig" href="#qscope.meas.SGAndorPESRConfig">SGAndorPESRConfig</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.meas.SGAndorPESRConfig.avg_per_point" href="#qscope.meas.SGAndorPESRConfig.avg_per_point">avg_per_point</a></code></li>
+<li><code><a title="qscope.meas.SGAndorPESRConfig.fmod_freq" href="#qscope.meas.SGAndorPESRConfig.fmod_freq">fmod_freq</a></code></li>
+<li><code><a title="qscope.meas.SGAndorPESRConfig.from_dict" href="#qscope.meas.SGAndorPESRConfig.from_dict">from_dict</a></code></li>
+<li><code><a title="qscope.meas.SGAndorPESRConfig.laser_delay" href="#qscope.meas.SGAndorPESRConfig.laser_delay">laser_delay</a></code></li>
+<li><code><a title="qscope.meas.SGAndorPESRConfig.laser_dur" href="#qscope.meas.SGAndorPESRConfig.laser_dur">laser_dur</a></code></li>
+<li><code><a title="qscope.meas.SGAndorPESRConfig.laser_to_rf_delay" href="#qscope.meas.SGAndorPESRConfig.laser_to_rf_delay">laser_to_rf_delay</a></code></li>
+<li><code><a title="qscope.meas.SGAndorPESRConfig.meas_type" href="#qscope.meas.SGAndorPESRConfig.meas_type">meas_type</a></code></li>
+<li><code><a title="qscope.meas.SGAndorPESRConfig.rf_delay" href="#qscope.meas.SGAndorPESRConfig.rf_delay">rf_delay</a></code></li>
+<li><code><a title="qscope.meas.SGAndorPESRConfig.rf_dur" href="#qscope.meas.SGAndorPESRConfig.rf_dur">rf_dur</a></code></li>
+<li><code><a title="qscope.meas.SGAndorPESRConfig.rf_pow" href="#qscope.meas.SGAndorPESRConfig.rf_pow">rf_pow</a></code></li>
+<li><code><a title="qscope.meas.SGAndorPESRConfig.save_name" href="#qscope.meas.SGAndorPESRConfig.save_name">save_name</a></code></li>
+<li><code><a title="qscope.meas.SGAndorPESRConfig.to_dict" href="#qscope.meas.SGAndorPESRConfig.to_dict">to_dict</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.meas.SGAndorRabiConfig" href="#qscope.meas.SGAndorRabiConfig">SGAndorRabiConfig</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.meas.SGAndorRabiConfig.avg_per_point" href="#qscope.meas.SGAndorRabiConfig.avg_per_point">avg_per_point</a></code></li>
+<li><code><a title="qscope.meas.SGAndorRabiConfig.from_dict" href="#qscope.meas.SGAndorRabiConfig.from_dict">from_dict</a></code></li>
+<li><code><a title="qscope.meas.SGAndorRabiConfig.laser_delay" href="#qscope.meas.SGAndorRabiConfig.laser_delay">laser_delay</a></code></li>
+<li><code><a title="qscope.meas.SGAndorRabiConfig.laser_dur" href="#qscope.meas.SGAndorRabiConfig.laser_dur">laser_dur</a></code></li>
+<li><code><a title="qscope.meas.SGAndorRabiConfig.meas_type" href="#qscope.meas.SGAndorRabiConfig.meas_type">meas_type</a></code></li>
+<li><code><a title="qscope.meas.SGAndorRabiConfig.rf_delay" href="#qscope.meas.SGAndorRabiConfig.rf_delay">rf_delay</a></code></li>
+<li><code><a title="qscope.meas.SGAndorRabiConfig.rf_dur" href="#qscope.meas.SGAndorRabiConfig.rf_dur">rf_dur</a></code></li>
+<li><code><a title="qscope.meas.SGAndorRabiConfig.rf_freq" href="#qscope.meas.SGAndorRabiConfig.rf_freq">rf_freq</a></code></li>
+<li><code><a title="qscope.meas.SGAndorRabiConfig.rf_pow" href="#qscope.meas.SGAndorRabiConfig.rf_pow">rf_pow</a></code></li>
+<li><code><a title="qscope.meas.SGAndorRabiConfig.save_name" href="#qscope.meas.SGAndorRabiConfig.save_name">save_name</a></code></li>
+<li><code><a title="qscope.meas.SGAndorRabiConfig.to_dict" href="#qscope.meas.SGAndorRabiConfig.to_dict">to_dict</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.meas.SGAndorRamseyConfig" href="#qscope.meas.SGAndorRamseyConfig">SGAndorRamseyConfig</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.meas.SGAndorRamseyConfig.from_dict" href="#qscope.meas.SGAndorRamseyConfig.from_dict">from_dict</a></code></li>
+<li><code><a title="qscope.meas.SGAndorRamseyConfig.laser_delay" href="#qscope.meas.SGAndorRamseyConfig.laser_delay">laser_delay</a></code></li>
+<li><code><a title="qscope.meas.SGAndorRamseyConfig.laser_dur" href="#qscope.meas.SGAndorRamseyConfig.laser_dur">laser_dur</a></code></li>
+<li><code><a title="qscope.meas.SGAndorRamseyConfig.meas_type" href="#qscope.meas.SGAndorRamseyConfig.meas_type">meas_type</a></code></li>
+<li><code><a title="qscope.meas.SGAndorRamseyConfig.pi_2_dur" href="#qscope.meas.SGAndorRamseyConfig.pi_2_dur">pi_2_dur</a></code></li>
+<li><code><a title="qscope.meas.SGAndorRamseyConfig.pi_dur" href="#qscope.meas.SGAndorRamseyConfig.pi_dur">pi_dur</a></code></li>
+<li><code><a title="qscope.meas.SGAndorRamseyConfig.rf_delay" href="#qscope.meas.SGAndorRamseyConfig.rf_delay">rf_delay</a></code></li>
+<li><code><a title="qscope.meas.SGAndorRamseyConfig.rf_freq" href="#qscope.meas.SGAndorRamseyConfig.rf_freq">rf_freq</a></code></li>
+<li><code><a title="qscope.meas.SGAndorRamseyConfig.rf_pow" href="#qscope.meas.SGAndorRamseyConfig.rf_pow">rf_pow</a></code></li>
+<li><code><a title="qscope.meas.SGAndorRamseyConfig.save_name" href="#qscope.meas.SGAndorRamseyConfig.save_name">save_name</a></code></li>
+<li><code><a title="qscope.meas.SGAndorRamseyConfig.to_dict" href="#qscope.meas.SGAndorRamseyConfig.to_dict">to_dict</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.meas.SGAndorSpinEchoConfig" href="#qscope.meas.SGAndorSpinEchoConfig">SGAndorSpinEchoConfig</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.meas.SGAndorSpinEchoConfig.from_dict" href="#qscope.meas.SGAndorSpinEchoConfig.from_dict">from_dict</a></code></li>
+<li><code><a title="qscope.meas.SGAndorSpinEchoConfig.laser_delay" href="#qscope.meas.SGAndorSpinEchoConfig.laser_delay">laser_delay</a></code></li>
+<li><code><a title="qscope.meas.SGAndorSpinEchoConfig.laser_dur" href="#qscope.meas.SGAndorSpinEchoConfig.laser_dur">laser_dur</a></code></li>
+<li><code><a title="qscope.meas.SGAndorSpinEchoConfig.meas_type" href="#qscope.meas.SGAndorSpinEchoConfig.meas_type">meas_type</a></code></li>
+<li><code><a title="qscope.meas.SGAndorSpinEchoConfig.pi_2_dur" href="#qscope.meas.SGAndorSpinEchoConfig.pi_2_dur">pi_2_dur</a></code></li>
+<li><code><a title="qscope.meas.SGAndorSpinEchoConfig.pi_dur" href="#qscope.meas.SGAndorSpinEchoConfig.pi_dur">pi_dur</a></code></li>
+<li><code><a title="qscope.meas.SGAndorSpinEchoConfig.rf_delay" href="#qscope.meas.SGAndorSpinEchoConfig.rf_delay">rf_delay</a></code></li>
+<li><code><a title="qscope.meas.SGAndorSpinEchoConfig.rf_freq" href="#qscope.meas.SGAndorSpinEchoConfig.rf_freq">rf_freq</a></code></li>
+<li><code><a title="qscope.meas.SGAndorSpinEchoConfig.rf_pow" href="#qscope.meas.SGAndorSpinEchoConfig.rf_pow">rf_pow</a></code></li>
+<li><code><a title="qscope.meas.SGAndorSpinEchoConfig.save_name" href="#qscope.meas.SGAndorSpinEchoConfig.save_name">save_name</a></code></li>
+<li><code><a title="qscope.meas.SGAndorSpinEchoConfig.to_dict" href="#qscope.meas.SGAndorSpinEchoConfig.to_dict">to_dict</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.meas.SGAndorT1Config" href="#qscope.meas.SGAndorT1Config">SGAndorT1Config</a></code></h4>
+<ul class="two-column">
+<li><code><a title="qscope.meas.SGAndorT1Config.from_dict" href="#qscope.meas.SGAndorT1Config.from_dict">from_dict</a></code></li>
+<li><code><a title="qscope.meas.SGAndorT1Config.laser_delay" href="#qscope.meas.SGAndorT1Config.laser_delay">laser_delay</a></code></li>
+<li><code><a title="qscope.meas.SGAndorT1Config.laser_dur" href="#qscope.meas.SGAndorT1Config.laser_dur">laser_dur</a></code></li>
+<li><code><a title="qscope.meas.SGAndorT1Config.meas_type" href="#qscope.meas.SGAndorT1Config.meas_type">meas_type</a></code></li>
+<li><code><a title="qscope.meas.SGAndorT1Config.pi_dur" href="#qscope.meas.SGAndorT1Config.pi_dur">pi_dur</a></code></li>
+<li><code><a title="qscope.meas.SGAndorT1Config.rf_delay" href="#qscope.meas.SGAndorT1Config.rf_delay">rf_delay</a></code></li>
+<li><code><a title="qscope.meas.SGAndorT1Config.rf_freq" href="#qscope.meas.SGAndorT1Config.rf_freq">rf_freq</a></code></li>
+<li><code><a title="qscope.meas.SGAndorT1Config.rf_pow" href="#qscope.meas.SGAndorT1Config.rf_pow">rf_pow</a></code></li>
+<li><code><a title="qscope.meas.SGAndorT1Config.save_name" href="#qscope.meas.SGAndorT1Config.save_name">save_name</a></code></li>
+<li><code><a title="qscope.meas.SGAndorT1Config.to_dict" href="#qscope.meas.SGAndorT1Config.to_dict">to_dict</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.meas.requires_hardware.<locals>.decorator.<locals>.Wrapper" href="#qscope.meas.requires_hardware.<locals>.decorator.<locals>.Wrapper">requires_hardware.<locals>.decorator.<locals>.Wrapper</a></code></h4>
+<ul class="">
+<li><code><a title="qscope.meas.requires_hardware.<locals>.decorator.<locals>.Wrapper.get_hardware_requirements" href="#qscope.meas.requires_hardware.<locals>.decorator.<locals>.Wrapper.get_hardware_requirements">get_hardware_requirements</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.meas.requires_hardware.<locals>.decorator.<locals>.Wrapper" href="#qscope.meas.requires_hardware.<locals>.decorator.<locals>.Wrapper">requires_hardware.<locals>.decorator.<locals>.Wrapper</a></code></h4>
+<ul class="">
+<li><code><a title="qscope.meas.requires_hardware.<locals>.decorator.<locals>.Wrapper.get_hardware_requirements" href="#qscope.meas.requires_hardware.<locals>.decorator.<locals>.Wrapper.get_hardware_requirements">get_hardware_requirements</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.meas.requires_hardware.<locals>.decorator.<locals>.Wrapper" href="#qscope.meas.requires_hardware.<locals>.decorator.<locals>.Wrapper">requires_hardware.<locals>.decorator.<locals>.Wrapper</a></code></h4>
+<ul class="">
+<li><code><a title="qscope.meas.requires_hardware.<locals>.decorator.<locals>.Wrapper.get_hardware_requirements" href="#qscope.meas.requires_hardware.<locals>.decorator.<locals>.Wrapper.get_hardware_requirements">get_hardware_requirements</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.meas.requires_hardware.<locals>.decorator.<locals>.Wrapper" href="#qscope.meas.requires_hardware.<locals>.decorator.<locals>.Wrapper">requires_hardware.<locals>.decorator.<locals>.Wrapper</a></code></h4>
+<ul class="">
+<li><code><a title="qscope.meas.requires_hardware.<locals>.decorator.<locals>.Wrapper.get_hardware_requirements" href="#qscope.meas.requires_hardware.<locals>.decorator.<locals>.Wrapper.get_hardware_requirements">get_hardware_requirements</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.meas.requires_hardware.<locals>.decorator.<locals>.Wrapper" href="#qscope.meas.requires_hardware.<locals>.decorator.<locals>.Wrapper">requires_hardware.<locals>.decorator.<locals>.Wrapper</a></code></h4>
+<ul class="">
+<li><code><a title="qscope.meas.requires_hardware.<locals>.decorator.<locals>.Wrapper.get_hardware_requirements" href="#qscope.meas.requires_hardware.<locals>.decorator.<locals>.Wrapper.get_hardware_requirements">get_hardware_requirements</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.meas.requires_hardware.<locals>.decorator.<locals>.Wrapper" href="#qscope.meas.requires_hardware.<locals>.decorator.<locals>.Wrapper">requires_hardware.<locals>.decorator.<locals>.Wrapper</a></code></h4>
+<ul class="">
+<li><code><a title="qscope.meas.requires_hardware.<locals>.decorator.<locals>.Wrapper.get_hardware_requirements" href="#qscope.meas.requires_hardware.<locals>.decorator.<locals>.Wrapper.get_hardware_requirements">get_hardware_requirements</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.meas.requires_hardware.<locals>.decorator.<locals>.Wrapper" href="#qscope.meas.requires_hardware.<locals>.decorator.<locals>.Wrapper">requires_hardware.<locals>.decorator.<locals>.Wrapper</a></code></h4>
+<ul class="">
+<li><code><a title="qscope.meas.requires_hardware.<locals>.decorator.<locals>.Wrapper.get_hardware_requirements" href="#qscope.meas.requires_hardware.<locals>.decorator.<locals>.Wrapper.get_hardware_requirements">get_hardware_requirements</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="qscope.meas.requires_hardware.<locals>.decorator.<locals>.Wrapper" href="#qscope.meas.requires_hardware.<locals>.decorator.<locals>.Wrapper">requires_hardware.<locals>.decorator.<locals>.Wrapper</a></code></h4>
+<ul class="">
+<li><code><a title="qscope.meas.requires_hardware.<locals>.decorator.<locals>.Wrapper.get_hardware_requirements" href="#qscope.meas.requires_hardware.<locals>.decorator.<locals>.Wrapper.get_hardware_requirements">get_hardware_requirements</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
+</footer>
+</body>
+</html>

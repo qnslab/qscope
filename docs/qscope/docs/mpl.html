@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.6">
+<title>qscope.docs.mpl API documentation</title>
+<meta name="description" content="MagnetoPhotoLuminescence …">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}#lunr-search{width:100%;font-size:1em;padding:6px 9px 5px 9px;border:1px solid silver}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes: true } });</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML" integrity="sha256-kZafAc6mZvK3W3v1pHOcUix30OHQN6pU/NO2oFkqZVw=" crossorigin></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>qscope.docs.mpl</code></h1>
+</header>
+<section id="section-intro">
+<h1 id="magnetophotoluminescence">MagnetoPhotoLuminescence</h1>
+<p>This page contains (some) documentation for the MPL system/code.</p>
+<h1 id="goals">Goals</h1>
+<ul>
+<li>Measure the time-dependence of the MPL contrast of a sample with a simple, versatile system.</li>
+</ul>
+<h1 id="physical-setup">Physical setup</h1>
+<p><img alt="MPL Setup" src="../../../docs/images/mpl_setup.png"></p>
+<p>The MPL setup I have designed has no pulseblaster. The common clock signal is generated by a picoscope (5000a) sig-gen. This can only produce up to 2V, and the Keithley (SMU 2450), which is used as a voltage supply, requires a 5V (3.3 minimum) logic input. To solve this problem, I made a 2V-5V level shifter (see below). The 2450 is programmed over usb (visa) with a trigger model, to switch quickly between voltage on and off - this part was tricky! The 2450 is triggered by rising edges for 'on' AND 'off' - so for a square wave of voltage at 1Hz, the clock is programmed to output a 2Hz signal (first rising edge turns voltage on, second turns if off, in a cycle). The 2450 then directly drives the electromagnet. The PL is collected onto a photodetector, which is read onto the picoscope (Channel B), as well as the gate signal (Channel A) for completeness. By comparing the gate signal to the PL we can analyse the response of the sample to magnetic fields.</p>
+<p>The above experiment is run using the <code><a title="qscope" href="../index.html">qscope</a> mpl trigtime</code> command, and you can test the electromagnet response with the command <code><a title="qscope" href="../index.html">qscope</a> mpl trigtrace</code>. This command requires you do disconnect the photodetector from Channel B on the picoscope, and instead connect it in parallel across the electromagnet (e.g. at the 2450).</p>
+<p>I am intending to write another command to test the electromagnet response by measuring across a series resistor, I will endeavor to come back and document that.</p>
+<h1 id="software">Software</h1>
+<p>To run the software navigate (in anaconda prompt) to <code>Qscope</code> (e.g. on Zyla it's at <code>C://Qscope</code>), activate the conda env (<code>conda activate ./conda_env</code>), and then test you have access to qscope (<code>qscope --tree</code>).</p>
+<h3 id="trigtime">Trigtime</h3>
+<p>Use <code>trigtime</code> to characterise the electromagnet:</p>
+<pre><code>$ qscope mpl trigtime --help
+Usage: qscope mpl trigtime [OPTIONS]
+
+  Test timing synchronization between AWG trigger and SMU response.
+
+  Physical Connections: AWG Out ─┬─&gt; Channel A (monitor clock)          
+                                 └─&gt; SMU Digital Input (pin 3)
+
+  SMU Out ──&gt; Channel B (monitor current)
+
+  Verifies: 
+    1. AWG signal generation 
+    2. SMU trigger detection and response time 
+    3. Current switching timing/delays
+
+  Usage `qscope mpl trigtime -n zyla -p mpl_cds -c 0.45 -f 0.25 -d 10 -s 1e7
+  -dr 5000`
+
+Options:
+  -n, --system-name TEXT          Name of the system configuration  [required]
+  -p, --project-name TEXT         Project name for saving results
+  Signal Parameters: 
+    -f, --frequency FLOAT         Square wave frequency in Hz (default: 1.0)
+    -d, --duration FLOAT          Test duration in seconds (default: 1.0)
+    -c, --current FLOAT           Test current in amps (default: 0.1A)
+  Electromagnet Configuration: 
+    --source-mode [current|voltage]
+                                  SMU source mode (default: voltage)
+    -r, --coil-resistance FLOAT   Electromagnet coil resistance in ohms
+                                  (default: 27.0)
+    -ar, --additional-resistance FLOAT
+                                  Additional resistance in series with coil in
+                                  ohms (default: 0.0)
+    -vl, --voltage-limit FLOAT    Maximum voltage to apply (default:
+                                  calculated from current and resistance)
+    --force-sourcing              Force operation even when approaching SMU
+                                  limits (use with caution)
+  Hardware Configuration: 
+    -s, --sample-rate FLOAT       Digitizer sample rate in Hz (default: 1e6)
+    -dr, --downsample-ratio INTEGER
+                                  Hardware downsampling ratio (must be &gt;=1,
+                                  default: 1)
+    --smu-address TEXT            Optional VISA address of SMU
+  Diagnostic Options: 
+    -diag, --diagnostic           Run in diagnostic mode to check trigger
+                                  signals
+    -v, --verbose                 Enable verbose logging
+    -ccl, --check-config-lists BOOLEAN
+                                  Check the TRIGGER configuration lists
+  --help                          Show this message and exit.
+</code></pre>
+<h3 id="trigtrace">Trigtrace</h3>
+<p>Use <code>trigtrace</code> to characterise the MPL response of a sample:</p>
+<pre><code>$ qscope mpl trigtrace --help
+Usage: qscope mpl trigtrace [OPTIONS]
+
+  Measure PL response to triggered magnetic field changes.
+
+  Physical Connections: AWG Out ─┬─&gt; Channel A (monitor clock)          
+                                 └─&gt; SMU Digital Input (pin 3)
+
+  PL In ────&gt; Channel B (photodetector)
+
+  Pre-measurement checks: 
+   - Validates all device connections 
+   - Checks signal levels are within range 
+   - Verifies trigger configuration
+
+  Parameter Groups:
+    Measurement:     Current, frequency, duration, averages
+    Hardware:        Sample rate, ranges, coupling, trigger settings
+    Data Collection: Save options, trace display
+    Logging:         File/console logging, paths, levels
+
+Options:
+  -n, --system-name TEXT          Name of the system configuration  [required]
+  -p, --project-name TEXT         Project name for saving results
+  --detrend / --no-detrend        Remove linear trend from PL signal (corrects
+                                  for photobleaching)
+  Measurement Parameters: 
+    -c, --current FLOAT           Peak current amplitude in amps (default:
+                                  0.1)
+    -f, --frequency FLOAT         Operational frequency in Hz (default: 1.0)
+    -d, --duration FLOAT          Measurement duration in seconds (defaults to
+                                  1/f)
+    -a, --averages INTEGER        Number of measurement sequences to average
+                                  (default: 1)
+  Electromagnet Configuration: 
+    --source-mode [current|voltage]
+                                  SMU source mode (default: voltage)
+    -r, --coil-resistance FLOAT   Electromagnet coil resistance in ohms
+                                  (default: 27.0)
+    -ar, --additional-resistance FLOAT
+                                  Additional resistance in series with coil in
+                                  ohms (default: 0.0)
+  Hardware Configuration: 
+    -s, --sample-rate FLOAT       Digitizer sample rate in Hz (default: 1e6)
+    --pl-range FLOAT              Voltage range for PL channel in V (default:
+                                  0.5)
+    --pl-coupling [AC|DC]         PL channel coupling (default: DC)
+    --trigger-threshold FLOAT     Scope trigger threshold in volts (default:
+                                  2.5)
+    -dr, --downsample-ratio INTEGER
+                                  Hardware downsampling ratio (must be &gt;=1,
+                                  default: 1)
+    --trigger-source [FREE|CLOCK]
+                                  Scope trigger source (default: FREE)
+    --smu-address TEXT            Optional VISA address of SMU
+    -vl, --voltage-limit FLOAT    Maximum voltage to apply (default:
+                                  calculated from current and resistance)
+    --force-sourcing              Force operation even when approaching SMU
+                                  limits (use with caution)
+  Plotting Parameters: 
+    --fit / --no-fit              Fit exponential curves to transitions
+                                  (default: disabled)
+    --fit-type [single|double]    Type of exponential fit to use (default:
+                                  single)
+    --plot-pulses / --no-plot-pulses
+                                  Plot detailed pulse analysis for each
+                                  transition (default: disabled)
+  Saving/Output: 
+    --save / --no-save            Save measurement data to file (default:
+                                  enabled)
+    --show-individual / --no-show-individual
+                                  Plot individual traces along with average
+                                  (default: True)
+  Logging: 
+    -ltf, --log-to-file / --no-log-to-file
+                                  Enable/disable logging to file (default:
+                                  enabled)
+    -lts, --log-to-stdout / --no-log-to-stdout
+                                  Enable/disable console logging (default:
+                                  enabled)
+    -lp, --log-path TEXT          Custom path for log file (default: auto-
+                                  generated)
+    -cpl, --clear-prev-log / --no-clear-prev-log
+                                  Clear previous log file on startup (default:
+                                  enabled)
+    -ll, --log-level TEXT         Logging level (DEBUG, INFO, WARNING, ERROR)
+                                  (default: INFO)
+  --help                          Show this message and exit.
+</code></pre>
+<h1 id="other-docs">Other docs</h1>
+<p>See <a href="https://scattered-inc.blog/blog/lab-amp/">lab-amp</a> for a discussion of the construction of the amplifier/level shifter, and <a href="https://scattered-inc.blog/blog/rlc-optim/">rlc-optim</a> for a discussion of inductance &amp; optimising temporal response therein.</p>
+<h1 id="limitations">Limitations</h1>
+<ul>
+<li>The photodetector will only be able to pick up strong signals - but it is faster than the more sensitive camera. The photodetector experiment is also much faster to set up.</li>
+<li>The picoscope can measure up to +-20V, at a timebase/duration dependent on sampling rate etc.</li>
+<li>The picoscope can generate signals at 0.025Hz to 20MHz, up to +-2V.</li>
+<li>The 2450 can measure up to 1A and source up to 20V.</li>
+<li>We are limited in speed by the electromagnet's inductance. We can add resistors to damp any underdamping (ringing), and reduce the rise time.</li>
+</ul>
+<h1 id="tips-tricks">Tips &amp; tricks</h1>
+<ul>
+<li>
+<p>First open up the picoscope software (cannot be running when you run the <code><a title="qscope" href="../index.html">qscope</a></code> software!!) and optimise the fibre coupling, ensure the photodetector gain does not saturate it (2V limit), and make note of the voltage output to use for the (next nearest) <code>pl-range</code> option.</p>
+</li>
+<li>
+<p>Make sure that the level shifter is on when you want to run the above commands - but please turn it off when you're leaving the lab. It is an inverting amplifier, so it is outputing 5V (to the keithley) when it is <strong>NOT</strong> triggered. I'd rather not have 5V running around the lab constantly and without much insulation (my bad).</p>
+</li>
+<li>
+<p>Use voltage sourcing - current sourcing needs a sort of PID loop to lock on to the current you ask for, very slow!</p>
+</li>
+</ul>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<form>
+<input id="lunr-search" name="q" placeholder="🔎 Search ..." aria-label="Search"
+disabled minlength="2">
+</form>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.css" integrity="sha512-b+T2i3P45i1LZM7I00Ci5QquB9szqaxu+uuk5TUSGjZQ4w4n+qujQiIuvTv2BxE7WCGQCifNMksyKILDiHzsOg==" crossorigin>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.js" integrity="sha512-2B9/byNV1KKRm5nQ2RLViPFD6U4dUjDGwuW1GU+ImJh8YinPU9Zlq1GzdTMO+G2ROrB5o1qasJBy1ttYz0wCug==" crossorigin></script>
+<style>
+.modal-dialog iframe {
+width: 100vw;
+height: calc(100vh - 80px);
+}
+@media screen and (min-width: 700px) {
+.modal-dialog iframe {
+width: 70vw;
+height: 80vh;
+}
+}
+.modal-dialog .tingle-modal-box {width: auto;}
+.modal-dialog .tingle-modal-box__content {padding: 0;}
+</style>
+<script>
+const input = document.getElementById('lunr-search');
+input.disabled = false;
+input.form.addEventListener('submit', (ev) => {
+ev.preventDefault();
+const url = new URL(window.location);
+url.searchParams.set('q', input.value);
+history.replaceState({}, null, url.toString());
+search(input.value);
+});
+const query = new URL(window.location).searchParams.get('q');
+if (query)
+search(query);
+function search(query) {
+const url = '../../doc-search.html#' + encodeURIComponent(query);
+new tingle.modal({
+cssClass: ['modal-dialog'],
+onClose: () => {
+const url = new URL(window.location);
+url.searchParams.delete('q');
+history.replaceState({}, null, url.toString());
+setTimeout(() => input.focus(), 100);
+}
+}).setContent('<iframe src="' + url + '"></iframe>').open();
+}
+</script>
+<div class="toc">
+<ul>
+<li><a href="#magnetophotoluminescence">MagnetoPhotoLuminescence</a></li>
+<li><a href="#goals">Goals</a></li>
+<li><a href="#physical-setup">Physical setup</a></li>
+<li><a href="#software">Software</a><ul>
+<li><a href="#trigtime">Trigtime</a></li>
+<li><a href="#trigtrace">Trigtrace</a></li>
+</ul>
+</li>
+<li><a href="#other-docs">Other docs</a></li>
+<li><a href="#limitations">Limitations</a></li>
+<li><a href="#tips-tricks">Tips &amp; tricks</a></li>
+</ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="qscope.docs" href="index.html">qscope.docs</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
+</footer>
+</body>
+</html>
