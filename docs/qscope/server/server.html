@@ -79,7 +79,7 @@ assert_valid_handler_client_correspondence()</p>
     # Add shutdown flag if it doesn&#39;t exist
     if not hasattr(server_connection, &#34;shutdown_requested&#34;):
         server_connection.shutdown_requested = False
-        
+
     while not server_connection.shutdown_requested:
         # bit hacky: would be nicer to have a round-robin between notifs &amp; msgs...
 
@@ -131,7 +131,7 @@ assert_valid_handler_client_correspondence()</p>
                 req_identity,
                 ErrorResponse(value=format_error_response()),
             )
-            
+
     # After exiting the loop due to shutdown
     logger.info(&#34;Client handler exiting due to shutdown request&#34;)</code></pre>
 </details>
@@ -320,6 +320,7 @@ async def handle_client_sync(
             sys_metadata=system.get_metadata(),
             version=qscope.__version__,
             value=None,
+            hardware_started_up=system.hardware_started_up
         ),
     )</code></pre>
 </details>
@@ -1232,6 +1233,9 @@ async def handle_save_sweep_w_fit_measurement(
             request.params[&#34;xfit&#34;],
             request.params[&#34;yfit&#34;],
             request.params[&#34;fit_results&#34;],
+            request.params[&#34;comparison_x&#34;],
+            request.params[&#34;comparison_y&#34;],
+            request.params[&#34;comparison_label&#34;],
             request.params[&#34;color_map&#34;],
             request.params[&#34;notes&#34;],
         )
@@ -1502,17 +1506,17 @@ async def handle_shutdown(
         + &#34;subprocess with the `kill_bg_server` method.&#34;
     )
     system.packdown()
-    
+
     # Add shutdown flag to server_connection
     server_connection.shutdown_requested = True
-    
+
     await _send_response(
         server_connection, req_identity, MsgResponse(value=&#34;Shutting down&#34;)
     )
     logger.info(&#34;Closing connection.&#34;)
     # Increase sleep time to give client more time to process the response and close its sockets
     await asyncio.sleep(3)  # Increased from 1 to 3 seconds
-    
+
     # Close sockets with LINGER=0
     for socket in [
         server_connection.msg_socket,
@@ -1524,14 +1528,14 @@ async def handle_shutdown(
             socket.close()
         except Exception as e:
             logger.warning(f&#34;Error closing socket: {e}&#34;)
-            
+
     # Try to terminate the ZMQ context if available
     try:
-        if hasattr(server_connection, &#39;context&#39;):
+        if hasattr(server_connection, &#34;context&#34;):
             server_connection.context.term()
     except Exception as e:
         logger.warning(f&#34;Error terminating ZMQ context: {e}&#34;)
-            
+
     logger.info(&#34;Closing down server logger.&#34;)
     logger.remove()</code></pre>
 </details>

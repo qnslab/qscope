@@ -140,12 +140,12 @@ system.add_device_with_role(MyRFDevice(), PRIMARY_RF)
 <pre><code class="python">@runtime_checkable
 class CameraProtocol(Protocol):
     &#34;&#34;&#34;Methods required for camera functionality.
-    
+
     This protocol defines the interface for scientific cameras used in imaging
     and spectroscopy applications. Camera implementations must provide methods
     for controlling exposure, acquisition modes, ROI settings, and retrieving
     image data.
-    
+
     Implementations must support:
     - Single frame acquisition
     - Continuous video mode
@@ -153,20 +153,20 @@ class CameraProtocol(Protocol):
     - ROI and binning configuration
     - Various shutter and readout modes
     &#34;&#34;&#34;
-    
+
     take_snapshot: Callable[[], np.ndarray]
     &#34;&#34;&#34;Capture a single image and return it as a numpy array.
     
     Returns:
     - 2D numpy array containing the image data
     &#34;&#34;&#34;
-    
+
     set_exposure_time: Callable[[float], None]
     &#34;&#34;&#34;Set the exposure time in seconds.&#34;&#34;&#34;
-    
+
     get_frame_shape: Callable[[], tuple[int, int]]
     &#34;&#34;&#34;Get the current frame dimensions (width, height) in pixels.&#34;&#34;&#34;
-    
+
     set_hardware_binning: Callable[[tuple[int, int]], tuple[int, int]]
     &#34;&#34;&#34;Set hardware binning factors and return the actual values set.
     
@@ -176,13 +176,13 @@ class CameraProtocol(Protocol):
     Returns:
     - Tuple of actual (horizontal, vertical) binning factors applied
     &#34;&#34;&#34;
-    
+
     get_readout_time: Callable[[], float]
     &#34;&#34;&#34;Get the camera readout time in seconds.&#34;&#34;&#34;
-    
+
     get_all_seq_frames: Callable[[], List[np.ndarray]]
     &#34;&#34;&#34;Get all frames from a sequence acquisition as a list of arrays.&#34;&#34;&#34;
-    
+
     setup_acquisition: Callable[[str, int], None]
     &#34;&#34;&#34;Configure acquisition mode and frame count.
     
@@ -190,64 +190,64 @@ class CameraProtocol(Protocol):
     - mode: Acquisition mode (&#39;SINGLE&#39;, &#39;SEQUENCE&#39;, &#39;CONTINUOUS&#39;)
     - nframes: Number of frames to acquire (for SEQUENCE mode)
     &#34;&#34;&#34;
-    
+
     start_acquisition: Callable[[], None]
     &#34;&#34;&#34;Start the configured acquisition.&#34;&#34;&#34;
-    
+
     stop_acquisition: Callable[[], None]
     &#34;&#34;&#34;Stop the current acquisition.&#34;&#34;&#34;
-    
+
     clear_acquisition: Callable[[], None]
     &#34;&#34;&#34;Clear any pending acquisition and free resources.&#34;&#34;&#34;
-    
+
     get_trigger_time: Callable[[], float]
     &#34;&#34;&#34;Get the trigger response time in seconds.&#34;&#34;&#34;
-    
+
     set_trigger_mode: Callable[[str], None]
     &#34;&#34;&#34;Set the trigger mode (&#39;INTERNAL&#39;, &#39;EXTERNAL&#39;, &#39;SOFTWARE&#39;, etc.).&#34;&#34;&#34;
-    
+
     set_shutter_mode: Callable[[str], None]
     &#34;&#34;&#34;Set the shutter mode (&#39;GLOBAL&#39;, &#39;ROLLING&#39;, etc.).&#34;&#34;&#34;
-    
+
     get_shutter_mode: Callable[[], str]
     &#34;&#34;&#34;Get the current shutter mode.&#34;&#34;&#34;
-    
+
     get_roi: Callable[[], Tuple[int, int, int, int]]
     &#34;&#34;&#34;Get the current ROI as (x_min, x_max, y_min, y_max).&#34;&#34;&#34;
-    
+
     set_roi: Callable[[int, int, int, int], None]
     &#34;&#34;&#34;Set the ROI using (x_min, x_max, y_min, y_max).&#34;&#34;&#34;
-    
+
     get_hardware_binning: Callable[[], Tuple[int, int]]
     &#34;&#34;&#34;Get the current hardware binning factors (horizontal, vertical).&#34;&#34;&#34;
-    
+
     set_hardware_binning: Callable[[int, int], None]
     &#34;&#34;&#34;Set hardware binning factors (horizontal, vertical).&#34;&#34;&#34;
-    
+
     get_frame_shape: Callable[[], Tuple[int, int]]
     &#34;&#34;&#34;Get the current frame dimensions (width, height) in pixels.&#34;&#34;&#34;
-    
+
     set_frame_shape: Callable[[int, int], None]
     &#34;&#34;&#34;Set the frame dimensions (width, height) in pixels.&#34;&#34;&#34;
-    
+
     update_data_size: Callable[[], Tuple[int, int]]
     &#34;&#34;&#34;Update and return the current data dimensions after settings changes.&#34;&#34;&#34;
-    
+
     get_data_size: Callable[[], Tuple[int, int]]
     &#34;&#34;&#34;Get the current data dimensions (width, height) in pixels.&#34;&#34;&#34;
-    
+
     get_exposure_time: Callable[[], float]
     &#34;&#34;&#34;Get the current exposure time in seconds.&#34;&#34;&#34;
-    
+
     set_exposure_time: Callable[[float], None]
     &#34;&#34;&#34;Set the exposure time in seconds.&#34;&#34;&#34;
-    
+
     wait_for_frame: Callable[[], None]
     &#34;&#34;&#34;Wait for the next frame to be available.&#34;&#34;&#34;
-    
+
     start_video: Callable[[], None]
     &#34;&#34;&#34;Start continuous video acquisition.&#34;&#34;&#34;
-    
+
     stop_video: Callable[[], None]
     &#34;&#34;&#34;Stop continuous video acquisition.&#34;&#34;&#34;</code></pre>
 </details>
@@ -384,12 +384,12 @@ image data.</p>
 <pre><code class="python">@runtime_checkable
 class DigitizerProtocol(Protocol):
     &#34;&#34;&#34;Methods required for digitizer functionality.
-    
+
     This protocol defines the interface for data acquisition devices that can
     capture analog signals at high sample rates. Digitizers typically support
     multiple input channels, various triggering modes, and different acquisition
     methods (streaming vs. block capture).
-    
+
     Implementations must provide methods for:
     - Configuring input channels and ranges
     - Setting up acquisition parameters
@@ -397,7 +397,7 @@ class DigitizerProtocol(Protocol):
     - Retrieving acquired data
     - Managing hardware triggers
     &#34;&#34;&#34;
-    
+
     configure_channels: Callable[
         [List[int], List[Union[float, str]], Optional[List[str]]], None
     ]
@@ -408,9 +408,10 @@ class DigitizerProtocol(Protocol):
     - ranges: List of voltage ranges for each channel
     - coupling: Optional list of coupling modes (&#39;AC&#39; or &#39;DC&#39;)
     &#34;&#34;&#34;
-    
+
     start_streaming: Callable[
-        [float, int, Optional[int], bool, Optional[int], Optional[float], str, float], None
+        [float, int, Optional[int], bool, Optional[int], Optional[float], str, float],
+        None,
     ]
     &#34;&#34;&#34;Start continuous data streaming.
     
@@ -424,10 +425,10 @@ class DigitizerProtocol(Protocol):
     - trigger_direction: Direction (&#39;RISING&#39;, &#39;FALLING&#39;, etc.)
     - trigger_delay: Delay after trigger in seconds
     &#34;&#34;&#34;
-    
+
     stop_streaming: Callable[[], None]
     &#34;&#34;&#34;Stop the current streaming acquisition.&#34;&#34;&#34;
-    
+
     get_data: Callable[[float], Tuple[np.ndarray, Tuple[np.ndarray, ...]]]
     &#34;&#34;&#34;Get acquired data from all enabled channels.
     
@@ -437,25 +438,25 @@ class DigitizerProtocol(Protocol):
     Returns:
     - Tuple containing time array and tuple of channel data arrays
     &#34;&#34;&#34;
-    
+
     get_timebase: Callable[[], float]
     &#34;&#34;&#34;Get the current timebase (sample interval) in seconds.&#34;&#34;&#34;
-    
+
     set_downsampling: Callable[[int], None]
     &#34;&#34;&#34;Set downsampling factor for data acquisition.&#34;&#34;&#34;
-    
+
     assert_ok: Callable[[], None]
     &#34;&#34;&#34;Check device status and raise exception if not OK.&#34;&#34;&#34;
-    
+
     set_sample_interval: Callable[[float], None]
     &#34;&#34;&#34;Set the time between samples in seconds.&#34;&#34;&#34;
-    
+
     set_resolution: Callable[[int], None]
     &#34;&#34;&#34;Set the ADC resolution in bits.&#34;&#34;&#34;
-    
+
     set_trigger: Callable[[str], None]
     &#34;&#34;&#34;Set the trigger mode (&#39;AUTO&#39;, &#39;NONE&#39;, &#39;RISING&#39;, etc.).&#34;&#34;&#34;
-    
+
     start_block_capture: Callable[[int, float, int, str], None]
     &#34;&#34;&#34;Start a single block capture.
     
@@ -465,14 +466,14 @@ class DigitizerProtocol(Protocol):
     - post_trigger_samples: Number of samples after trigger
     - trigger_source: Source of trigger signal
     &#34;&#34;&#34;
-    
+
     get_block_data: Callable[[], Tuple[np.ndarray, Tuple[np.ndarray, ...]]]
     &#34;&#34;&#34;Get data from completed block capture.
     
     Returns:
     - Tuple containing time array and tuple of channel data arrays
     &#34;&#34;&#34;
-    
+
     check_overflow: Callable[[], bool]
     &#34;&#34;&#34;Check if data overflow occurred during acquisition.&#34;&#34;&#34;</code></pre>
 </details>
@@ -584,11 +585,11 @@ methods (streaming vs. block capture).</p>
 <pre><code class="python">@runtime_checkable
 class RFSourceProtocol(Protocol):
     &#34;&#34;&#34;Methods required for RF source functionality.
-    
+
     This protocol defines the interface for RF signal generators used in
     spectroscopy and control applications. RF sources must provide methods
     for controlling frequency, power, output state, and frequency sweeps.
-    
+
     Implementations must support:
     - Single frequency generation
     - Frequency sweeps and lists
@@ -597,25 +598,25 @@ class RFSourceProtocol(Protocol):
     - Triggering options
     - Modulation capabilities
     &#34;&#34;&#34;
-    
+
     set_freq: Callable[[float], None]
     &#34;&#34;&#34;Set the output frequency in MHz.&#34;&#34;&#34;
-    
+
     get_freq: Callable[[], float]
     &#34;&#34;&#34;Get the current output frequency in MHz.&#34;&#34;&#34;
-    
+
     set_power: Callable[[float], None]
     &#34;&#34;&#34;Set the output power in dBm.&#34;&#34;&#34;
-    
+
     get_power: Callable[[], float]
     &#34;&#34;&#34;Get the current output power in dBm.&#34;&#34;&#34;
-    
+
     set_state: Callable[[bool], None]
     &#34;&#34;&#34;Set the RF output state (on/off).&#34;&#34;&#34;
-    
+
     get_state: Callable[[], bool]
     &#34;&#34;&#34;Get the current RF output state (on/off).&#34;&#34;&#34;
-    
+
     set_freq_list: Callable[[Sequence[float], float], Sequence[float]]
     &#34;&#34;&#34;Configure a frequency list for stepped sweeps.
     
@@ -626,7 +627,7 @@ class RFSourceProtocol(Protocol):
     Returns:
     - Sequence of actual frequencies set (may differ slightly from requested)
     &#34;&#34;&#34;
-    
+
     set_f_table: Callable[[Sequence[float], Sequence[float]], None]
     &#34;&#34;&#34;Configure a frequency table with corresponding power levels.
     
@@ -634,25 +635,25 @@ class RFSourceProtocol(Protocol):
     - frequencies: Sequence of frequencies in MHz
     - powers: Sequence of power levels in dBm
     &#34;&#34;&#34;
-    
+
     reconnect: Callable[[], None]
     &#34;&#34;&#34;Attempt to reconnect to the device if connection was lost.&#34;&#34;&#34;
-    
+
     start_fm_mod: Callable[[], None]
     &#34;&#34;&#34;Start frequency modulation.&#34;&#34;&#34;
-    
+
     stop_fm_mod: Callable[[], None]
     &#34;&#34;&#34;Stop frequency modulation.&#34;&#34;&#34;
-    
+
     set_trigger: Callable[[str], None]
     &#34;&#34;&#34;Set the trigger mode for frequency sweeps.&#34;&#34;&#34;
-    
+
     start_sweep: Callable[[], None]
     &#34;&#34;&#34;Start a frequency sweep using the configured frequency list.&#34;&#34;&#34;
-    
+
     reset_sweep: Callable[[], None]
     &#34;&#34;&#34;Reset the sweep to the first frequency in the list.&#34;&#34;&#34;
-    
+
     stop_sweep: Callable[[], None]
     &#34;&#34;&#34;Stop the current frequency sweep.&#34;&#34;&#34;</code></pre>
 </details>
@@ -756,24 +757,24 @@ for controlling frequency, power, output state, and frequency sweeps.</p>
 <pre><code class="python">@runtime_checkable
 class SeqGenProtocol(Protocol):
     &#34;&#34;&#34;Methods required for sequence generator functionality.
-    
+
     This protocol defines the interface for sequence generators used for
     timing and pulse control in quantum experiments. Sequence generators
     must provide methods for loading, starting, stopping, and resetting
     pulse sequences.
-    
+
     Sequence generators typically control:
     - Precise timing of experimental events
     - Digital output patterns
     - Trigger signals for other instruments
     - Synchronization of multiple devices
-    
+
     Examples of sequence generators include:
     - SpinCore PulseBlaster
     - Arbitrary waveform generators
     - FPGA-based timing controllers
     &#34;&#34;&#34;
-    
+
     load_seq: Callable[[str, ...], None]
     &#34;&#34;&#34;Load a named sequence with optional parameters.
     
@@ -781,13 +782,13 @@ class SeqGenProtocol(Protocol):
     - seq_name: Name of the sequence to load
     - Additional keyword arguments specific to the sequence
     &#34;&#34;&#34;
-    
+
     start: Callable[[], None]
     &#34;&#34;&#34;Start the loaded sequence.&#34;&#34;&#34;
-    
+
     stop: Callable[[], None]
     &#34;&#34;&#34;Stop the currently running sequence.&#34;&#34;&#34;
-    
+
     reset: Callable[[], None]
     &#34;&#34;&#34;Reset the sequence generator to its initial state.&#34;&#34;&#34;</code></pre>
 </details>

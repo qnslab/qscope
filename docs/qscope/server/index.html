@@ -304,10 +304,10 @@ def camera_take_snapshot(
                 socket.close()
             except zmq.ZMQError as e:
                 logger.debug(f&#34;Error closing socket: {e}&#34;)
-    
+
     # Also terminate the ZMQ context to ensure clean shutdown
     try:
-        if hasattr(client_connection, &#39;context&#39;) and client_connection.context:
+        if hasattr(client_connection, &#34;context&#34;) and client_connection.context:
             client_connection.context.term()
     except Exception as e:
         logger.debug(f&#34;Error terminating ZMQ context: {e}&#34;)</code></pre>
@@ -749,7 +749,7 @@ def measurement_save_sweep(
 <div class="desc"></div>
 </dd>
 <dt id="qscope.server.measurement_save_sweep_w_fit"><code class="name flex">
-<span>def <span class="ident">measurement_save_sweep_w_fit</span></span>(<span>client_connection: ClientConnection,<br>meas_id: str,<br>project_name: str,<br>xdata: np.ndarray,<br>ydata: np.ndarray,<br>xfit: np.ndarray,<br>yfit: np.ndarray,<br>fit_results: str,<br>color_map: str = 'gray',<br>notes: str = '',<br>request_retries: int = 3)</span>
+<span>def <span class="ident">measurement_save_sweep_w_fit</span></span>(<span>client_connection: ClientConnection,<br>meas_id: str,<br>project_name: str,<br>xdata: np.ndarray,<br>ydata: np.ndarray,<br>xfit: np.ndarray,<br>yfit: np.ndarray,<br>fit_results: str,<br>comparison_x: np.ndarray = None,<br>comparison_y: np.ndarray = None,<br>comparison_label: str = None,<br>color_map: str = 'gray',<br>notes: str = '',<br>request_retries: int = 3)</span>
 </code></dt>
 <dd>
 <details class="source">
@@ -766,6 +766,9 @@ def measurement_save_sweep_w_fit(
     xfit: np.ndarray,
     yfit: np.ndarray,
     fit_results: str,
+    comparison_x: np.ndarray = None,
+    comparison_y: np.ndarray = None,
+    comparison_label: str = None,
     color_map: str = &#34;gray&#34;,
     notes: str = &#34;&#34;,
     request_retries: int = DEFAULT_RETRIES,
@@ -786,6 +789,9 @@ def measurement_save_sweep_w_fit(
                 &#34;xfit&#34;: xfit,
                 &#34;yfit&#34;: yfit,
                 &#34;fit_results&#34;: fit_results,
+                &#34;comparison_x&#34;: comparison_x,
+                &#34;comparison_y&#34;: comparison_y,
+                &#34;comparison_label&#34;: comparison_label,
                 &#34;color_map&#34;: color_map,
                 &#34;notes&#34;: notes,
             },
@@ -1230,7 +1236,7 @@ def shutdown_server(
     client_connection: ClientConnection, request_retries: int = DEFAULT_RETRIES
 ) -&gt; None:
     &#34;&#34;&#34;Send shutdown request to server and handle expected disconnection.
-    
+
     This function sends a shutdown command to the server and expects the server
     to close the connection afterward. It handles any connection errors that
     may occur during this process.
@@ -1238,11 +1244,9 @@ def shutdown_server(
     calls: qscope.server.server.handle_shutdown
     try:
         # Send the shutdown request with fewer retries since we expect disconnection
-        resp = _send_request(
-            client_connection, Request(CONSTS.COMMS.SHUTDOWN), 1
-        )
+        resp = _send_request(client_connection, Request(CONSTS.COMMS.SHUTDOWN), 1)
         logger.info(&#34;Server shutdown initiated successfully&#34;)
-        
+
         # Close all sockets with LINGER=0 to prevent hanging
         for socket in [
             client_connection.msg_socket,
@@ -1254,13 +1258,13 @@ def shutdown_server(
                 socket.close()
             except:
                 pass
-        
+
         # Terminate the ZMQ context to ensure clean shutdown
         try:
             client_connection.context.term()
         except:
             pass
-            
+
         return resp
     except zmq.ZMQError as e:
         logger.info(f&#34;Expected ZMQ error during shutdown: {e}&#34;)
@@ -1275,12 +1279,12 @@ def shutdown_server(
                 socket.close()
             except:
                 pass
-        
+
         try:
             client_connection.context.term()
         except:
             pass
-            
+
         return None
     except Exception as e:
         logger.warning(f&#34;Unexpected error during shutdown: {e}&#34;)
@@ -1295,12 +1299,12 @@ def shutdown_server(
                 socket.close()
             except:
                 pass
-                
+
         try:
             client_connection.context.term()
         except:
             pass
-            
+
         return None</code></pre>
 </details>
 <div class="desc"><p>Send shutdown request to server and handle expected disconnection.</p>

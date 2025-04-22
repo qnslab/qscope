@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 <meta name="generator" content="pdoc3 0.11.6">
-<title>qscope.gui.main_gui API documentation</title>
+<title>qscope.device.seqgen.pulseblaster API documentation</title>
 <meta name="description" content="">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
@@ -35,88 +35,50 @@ el.replaceWith(d);
 <main>
 <article id="content">
 <header>
-<h1 class="title">Module <code>qscope.gui.main_gui</code></h1>
+<h1 class="title">Module <code>qscope.device.seqgen.pulseblaster</code></h1>
 </header>
 <section id="section-intro">
 </section>
 <section>
-</section>
-<section>
-</section>
-<section>
-<h2 class="section-title" id="header-functions">Functions</h2>
+<h2 class="section-title" id="header-submodules">Sub-modules</h2>
 <dl>
-<dt id="qscope.gui.main_gui.main_gui"><code class="name flex">
-<span>def <span class="ident">main_gui</span></span>(<span>system_name=None,<br>host='',<br>msg_port='',<br>log_to_file=True,<br>log_to_stdout=True,<br>log_path=None,<br>clear_prev_log=True,<br>log_level='INFO',<br>auto_connect=True)</span>
-</code></dt>
+<dt><code class="name"><a title="qscope.device.seqgen.pulseblaster.pulseblaster" href="pulseblaster.html">qscope.device.seqgen.pulseblaster.pulseblaster</a></code></dt>
 <dd>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def main_gui(
-    system_name=None,
-    host=&#34;&#34;,
-    msg_port=&#34;&#34;,
-    log_to_file=True,
-    log_to_stdout=True,
-    log_path=None,
-    clear_prev_log=True,
-    log_level=&#34;INFO&#34;,
-    auto_connect=True,
-):
-    start_client_log(
-        log_to_file=log_to_file,
-        log_to_stdout=log_to_stdout,
-        log_path=log_path,
-        clear_prev=clear_prev_log,
-        log_level=log_level,
-    )
-    app = QApplication(sys.argv)
-    app.setStyle(&#34;Fusion&#34;)
-
-    window = MainWindow(
-        system_name=system_name, auto_connect=auto_connect, host=host, msg_port=msg_port
-    )
-    window.show()
-
-    # Return the exit code instead of calling sys.exit directly
-    return_code = app.exec()
-
-    # Ensure all threads are stopped and resources are cleaned up
-    app.quit()  # Make sure the application knows it should quit
-
-    # Force Python garbage collection
-    import gc
-
-    gc.collect()
-
-    # If there are any remaining ZMQ contexts, terminate them
-    try:
-        import zmq
-
-        zmq.Context.instance().term()
-    except:
-        pass
-
-    # If there are any remaining asyncio event loops, close them
-    try:
-        import asyncio
-
-        loop = asyncio.get_event_loop()
-        if loop.is_running():
-            loop.stop()
-        loop.close()
-    except:
-        pass
-
-    if __name__ != &#34;__main__&#34;:  # Don&#39;t exit if being imported (e.g. during testing)
-        return return_code
-    sys.exit(return_code)</code></pre>
-</details>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="qscope.device.seqgen.pulseblaster.seq_cw_esr" href="seq_cw_esr.html">qscope.device.seqgen.pulseblaster.seq_cw_esr</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="qscope.device.seqgen.pulseblaster.seq_p_esr" href="seq_p_esr.html">qscope.device.seqgen.pulseblaster.seq_p_esr</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="qscope.device.seqgen.pulseblaster.seq_rabi" href="seq_rabi.html">qscope.device.seqgen.pulseblaster.seq_rabi</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="qscope.device.seqgen.pulseblaster.seq_ramsey" href="seq_ramsey.html">qscope.device.seqgen.pulseblaster.seq_ramsey</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="qscope.device.seqgen.pulseblaster.seq_spin_echo" href="seq_spin_echo.html">qscope.device.seqgen.pulseblaster.seq_spin_echo</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="qscope.device.seqgen.pulseblaster.seq_t1" href="seq_t1.html">qscope.device.seqgen.pulseblaster.seq_t1</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="qscope.device.seqgen.pulseblaster.spinapi" href="spinapi.html">qscope.device.seqgen.pulseblaster.spinapi</a></code></dt>
+<dd>
 <div class="desc"></div>
 </dd>
 </dl>
+</section>
+<section>
+</section>
+<section>
 </section>
 <section>
 </section>
@@ -156,7 +118,7 @@ const query = new URL(window.location).searchParams.get('q');
 if (query)
 search(query);
 function search(query) {
-const url = '../../doc-search.html#' + encodeURIComponent(query);
+const url = '../../../../doc-search.html#' + encodeURIComponent(query);
 new tingle.modal({
 cssClass: ['modal-dialog'],
 onClose: () => {
@@ -174,12 +136,19 @@ setTimeout(() => input.focus(), 100);
 <ul id="index">
 <li><h3>Super-module</h3>
 <ul>
-<li><code><a title="qscope.gui" href="index.html">qscope.gui</a></code></li>
+<li><code><a title="qscope.device.seqgen" href="../index.html">qscope.device.seqgen</a></code></li>
 </ul>
 </li>
-<li><h3><a href="#header-functions">Functions</a></h3>
-<ul class="">
-<li><code><a title="qscope.gui.main_gui.main_gui" href="#qscope.gui.main_gui.main_gui">main_gui</a></code></li>
+<li><h3><a href="#header-submodules">Sub-modules</a></h3>
+<ul>
+<li><code><a title="qscope.device.seqgen.pulseblaster.pulseblaster" href="pulseblaster.html">qscope.device.seqgen.pulseblaster.pulseblaster</a></code></li>
+<li><code><a title="qscope.device.seqgen.pulseblaster.seq_cw_esr" href="seq_cw_esr.html">qscope.device.seqgen.pulseblaster.seq_cw_esr</a></code></li>
+<li><code><a title="qscope.device.seqgen.pulseblaster.seq_p_esr" href="seq_p_esr.html">qscope.device.seqgen.pulseblaster.seq_p_esr</a></code></li>
+<li><code><a title="qscope.device.seqgen.pulseblaster.seq_rabi" href="seq_rabi.html">qscope.device.seqgen.pulseblaster.seq_rabi</a></code></li>
+<li><code><a title="qscope.device.seqgen.pulseblaster.seq_ramsey" href="seq_ramsey.html">qscope.device.seqgen.pulseblaster.seq_ramsey</a></code></li>
+<li><code><a title="qscope.device.seqgen.pulseblaster.seq_spin_echo" href="seq_spin_echo.html">qscope.device.seqgen.pulseblaster.seq_spin_echo</a></code></li>
+<li><code><a title="qscope.device.seqgen.pulseblaster.seq_t1" href="seq_t1.html">qscope.device.seqgen.pulseblaster.seq_t1</a></code></li>
+<li><code><a title="qscope.device.seqgen.pulseblaster.spinapi" href="spinapi.html">qscope.device.seqgen.pulseblaster.spinapi</a></code></li>
 </ul>
 </li>
 </ul>

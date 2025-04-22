@@ -75,7 +75,7 @@ the SMU current switching while simultaneously measuring both the clock and PL s
 </summary>
 <pre><code class="python">def detrend_pl_signal(time_data, pl_data, clock_data, trigger_threshold):
     &#34;&#34;&#34;Remove linear trend from PL signal.
-    
+
     Parameters
     ----------
     time_data : np.ndarray
@@ -86,7 +86,7 @@ the SMU current switching while simultaneously measuring both the clock and PL s
         Clock signal data
     trigger_threshold : float
         Threshold for clock signal edge detection
-        
+
     Returns
     -------
     np.ndarray
@@ -97,10 +97,10 @@ the SMU current switching while simultaneously measuring both the clock and PL s
     # Find baseline regions (when field is OFF)
     clock_high = clock_data &gt; trigger_threshold
     rising_edges = np.where(np.diff(clock_high.astype(int)) &gt; 0)[0]
-    
+
     # Create mask for baseline points (when field is OFF)
     baseline_mask = np.ones_like(time_data, dtype=bool)
-    
+
     # Toggle state at each rising edge
     current_on = False
     for edge_idx in rising_edges:
@@ -108,46 +108,46 @@ the SMU current switching while simultaneously measuring both the clock and PL s
         if edge_idx + 1 &lt; len(baseline_mask):
             # When current is ON, exclude these points from baseline
             if current_on:
-                baseline_mask[edge_idx + 1:] = False
+                baseline_mask[edge_idx + 1 :] = False
             else:
-                baseline_mask[edge_idx + 1:] = True
-    
+                baseline_mask[edge_idx + 1 :] = True
+
     # Fit linear trend to baseline points only
     if np.sum(baseline_mask) &gt; 10:  # Ensure we have enough points
         # Use polyfit to get linear trend
         coeffs = np.polyfit(time_data[baseline_mask], pl_data[baseline_mask], 1)
         slope, intercept = coeffs
-        
+
         # Calculate trend line
         trend = slope * time_data + intercept
-        
+
         # Subtract trend from data
         detrended_pl = pl_data - trend + pl_data[0]  # Keep the initial value
-        
+
         trend_info = {
             &#34;slope&#34;: slope,
             &#34;intercept&#34;: intercept,
             &#34;trend&#34;: trend,
-            &#34;method&#34;: &#34;baseline_linear&#34;
+            &#34;method&#34;: &#34;baseline_linear&#34;,
         }
     else:
         # Fallback to using all points if we can&#39;t identify enough baseline points
         coeffs = np.polyfit(time_data, pl_data, 1)
         slope, intercept = coeffs
-        
+
         # Calculate trend line
         trend = slope * time_data + intercept
-        
+
         # Subtract trend from data
         detrended_pl = pl_data - trend + pl_data[0]  # Keep the initial value
-        
+
         trend_info = {
             &#34;slope&#34;: slope,
             &#34;intercept&#34;: intercept,
             &#34;trend&#34;: trend,
-            &#34;method&#34;: &#34;full_linear&#34;
+            &#34;method&#34;: &#34;full_linear&#34;,
         }
-    
+
     return detrended_pl, trend_info</code></pre>
 </details>
 <div class="desc"><p>Remove linear trend from PL signal.</p>
@@ -180,7 +180,7 @@ the SMU current switching while simultaneously measuring both the clock and PL s
 </summary>
 <pre><code class="python">def get_command_string() -&gt; str:
     &#34;&#34;&#34;Get the original command string that was used to run this script.
-    
+
     Returns
     -------
     str
@@ -269,7 +269,7 @@ the SMU current switching while simultaneously measuring both the clock and PL s
         mean_clock = np.array(raw_data[&#34;clock_data&#34;])
         mean_pl = np.array(raw_data[&#34;pl_data&#34;])
         std_pl = np.zeros_like(mean_pl)  # No std dev for single measurement
-        
+
         # Reshape for consistency
         time_data = mean_time[np.newaxis, :]
         clock_data = mean_clock[np.newaxis, :]
@@ -281,30 +281,29 @@ the SMU current switching while simultaneously measuring both the clock and PL s
 
     # Initialize current array (starts OFF because we capture with pre-trigger)
     mean_current = np.zeros_like(mean_clock)
-    
+
     # Set initial state (OFF)
     current_state = False
 
     # Process regions between rising edges
     for i in range(len(rising_edges)):
-        start_idx = 0 if i == 0 else rising_edges[i-1]
+        start_idx = 0 if i == 0 else rising_edges[i - 1]
         end_idx = rising_edges[i]
-        
+
         # Set current value for this region
         if current_state:
             mean_current[start_idx:end_idx] = current
-        
+
         # Toggle state for next region
         current_state = not current_state
 
     # Handle the final region after the last rising edge
     if rising_edges.size &gt; 0:
-        mean_current[rising_edges[-1]:] = 0 if current_state else current
-        
+        mean_current[rising_edges[-1] :] = 0 if current_state else current
+
     # If no rising edges were detected, assume all ON
     if rising_edges.size == 0:
         mean_current[:] = current
-
 
     # Prepare results dictionary with raw data
     results = {
@@ -317,7 +316,7 @@ the SMU current switching while simultaneously measuring both the clock and PL s
         &#34;clock_data&#34;: clock_data,
         &#34;pl_data&#34;: pl_data,
     }
-    
+
     # Apply detrending if requested - BEFORE analysis
     trend_info = None
     if detrend:
@@ -328,40 +327,49 @@ the SMU current switching while simultaneously measuring both the clock and PL s
         results[&#34;mean_pl_raw&#34;] = mean_pl.copy()
         results[&#34;mean_pl&#34;] = detrended_pl
         results[&#34;trend_info&#34;] = trend_info
-        
+
         # Also detrend individual traces if available
         if isinstance(raw_data, list) and len(raw_data) &gt; 1:
             detrended_pl_data = np.zeros_like(results[&#34;pl_data&#34;])
             for i in range(len(raw_data)):
                 detrended, _ = detrend_pl_signal(
-                    results[&#34;time_data&#34;][i], 
-                    results[&#34;pl_data&#34;][i], 
+                    results[&#34;time_data&#34;][i],
+                    results[&#34;pl_data&#34;][i],
                     results[&#34;clock_data&#34;][i],
-                    trigger_threshold
+                    trigger_threshold,
                 )
                 detrended_pl_data[i] = detrended
-            
+
             # Store raw and detrended individual traces
             results[&#34;pl_data_raw&#34;] = results[&#34;pl_data&#34;].copy()
             results[&#34;pl_data&#34;] = detrended_pl_data
-            
+
             # Recalculate standard deviation with detrended data
             results[&#34;std_pl&#34;] = np.std(detrended_pl_data, axis=0, ddof=1)
-        
+
         logger.info(&#34;Detrending applied - analysis will be performed on detrended data&#34;)
 
     # Run appropriate analysis based on fit_exponential flag
     if fit_exponential:
         transition_analysis = MPLFitter.analyze_and_fit(
-            mean_time, results[&#34;mean_pl&#34;], mean_clock, 
-            trigger_threshold, plot_pulses, use_cache=True, fit_type=fit_type
+            mean_time,
+            results[&#34;mean_pl&#34;],
+            mean_clock,
+            trigger_threshold,
+            plot_pulses,
+            use_cache=True,
+            fit_type=fit_type,
         )
     else:
         transition_analysis = MPLFitter.analyze_transitions(
-            mean_time, results[&#34;mean_pl&#34;], mean_clock, 
-            trigger_threshold, plot_pulses, use_cache=True
+            mean_time,
+            results[&#34;mean_pl&#34;],
+            mean_clock,
+            trigger_threshold,
+            plot_pulses,
+            use_cache=True,
         )
-    
+
     # Combine with basic response analysis
     basic_analysis = analyze_mpl_response(results[&#34;mean_pl&#34;], mean_current)
     results[&#34;analysis&#34;] = {**basic_analysis, **transition_analysis}
@@ -417,7 +425,7 @@ the SMU current switching while simultaneously measuring both the clock and PL s
     system_name: str,
     project_name: str,
     frequency: float,
-    duration: float, 
+    duration: float,
     sample_rate: float,
     pl_range: float,
     pl_coupling: str,
@@ -430,10 +438,10 @@ the SMU current switching while simultaneously measuring both the clock and PL s
     downsample_ratio: int,
     trigger_threshold: float,
     detrend: bool = False,
-    no_show: bool = False
+    no_show: bool = False,
 ) -&gt; None:
     &#34;&#34;&#34;Save measurement results to file.
-    
+
     Parameters
     ----------
     results : Dict[str, Any]
@@ -475,11 +483,13 @@ the SMU current switching while simultaneously measuring both the clock and PL s
     # Clean up results to remove non-serializable objects
     def clean_for_json(obj):
         if isinstance(obj, dict):
-            return {k: clean_for_json(v) for k, v in obj.items() 
-                   if not callable(v) and k != &#34;function&#34;}
+            return {
+                k: clean_for_json(v)
+                for k, v in obj.items()
+                if not callable(v) and k != &#34;function&#34;
+            }
         elif isinstance(obj, list):
-            return [clean_for_json(item) for item in obj 
-                   if not callable(item)]
+            return [clean_for_json(item) for item in obj if not callable(item)]
         elif isinstance(obj, np.bool_):
             return bool(obj)
         else:
@@ -515,39 +525,46 @@ the SMU current switching while simultaneously measuring both the clock and PL s
             &#34;voltage_limit&#34;: voltage_limit,
             &#34;trigger_threshold&#34;: trigger_threshold,
             &#34;downsample_ratio&#34;: downsample_ratio,
-            &#34;detrend&#34;: detrend
+            &#34;detrend&#34;: detrend,
         },
         &#34;analysis&#34;: clean_for_json(results[&#34;analysis&#34;]),
         # Include processed results but not the raw data arrays
-        &#34;results&#34;: clean_for_json({
-            k: v for k, v in results.items() 
-            if k not in [&#34;time_data&#34;, &#34;clock_data&#34;, &#34;pl_data&#34;, &#34;pl_data_raw&#34;, &#34;analysis&#34;]
-            and not isinstance(v, np.ndarray)
-        }),
+        &#34;results&#34;: clean_for_json(
+            {
+                k: v
+                for k, v in results.items()
+                if k
+                not in [&#34;time_data&#34;, &#34;clock_data&#34;, &#34;pl_data&#34;, &#34;pl_data_raw&#34;, &#34;analysis&#34;]
+                and not isinstance(v, np.ndarray)
+            }
+        ),
     }
-    
+
     # Add trend information if available
     if &#34;trend_info&#34; in results:
-        metadata[&#34;detrending&#34;] = clean_for_json({
-            k: v for k, v in results[&#34;trend_info&#34;].items()
-            if k != &#34;trend&#34;  # Don&#39;t include the full trend array in metadata
-        })
+        metadata[&#34;detrending&#34;] = clean_for_json(
+            {
+                k: v
+                for k, v in results[&#34;trend_info&#34;].items()
+                if k != &#34;trend&#34;  # Don&#39;t include the full trend array in metadata
+            }
+        )
 
     # Save data and figure in parallel
     def save_data():
         # Save metadata as JSON
         with open(f&#34;{base_path}.json&#34;, &#34;w&#34;) as f:
             json.dump(metadata, f, indent=2, cls=NumpyEncoder)
-        
+
         # Save raw data as compressed NumPy file
         save_data = {
             &#34;time_data&#34;: results[&#34;time_data&#34;],
             &#34;clock_data&#34;: results[&#34;clock_data&#34;],
             &#34;mean_time&#34;: results[&#34;mean_time&#34;],
             &#34;mean_clock&#34;: results[&#34;mean_clock&#34;],
-            &#34;std_pl&#34;: results[&#34;std_pl&#34;]
+            &#34;std_pl&#34;: results[&#34;std_pl&#34;],
         }
-        
+
         # Handle raw and detrended PL data
         if &#34;mean_pl_raw&#34; in results:
             save_data[&#34;mean_pl_raw&#34;] = results[&#34;mean_pl_raw&#34;]
@@ -556,16 +573,16 @@ the SMU current switching while simultaneously measuring both the clock and PL s
                 save_data[&#34;trend&#34;] = results[&#34;trend_info&#34;][&#34;trend&#34;]
         else:
             save_data[&#34;mean_pl&#34;] = results[&#34;mean_pl&#34;]
-            
+
         # Handle individual traces
         if &#34;pl_data_raw&#34; in results:
             save_data[&#34;pl_data_raw&#34;] = results[&#34;pl_data_raw&#34;]
             save_data[&#34;pl_data&#34;] = results[&#34;pl_data&#34;]
         else:
             save_data[&#34;pl_data&#34;] = results[&#34;pl_data&#34;]
-            
+
         np.savez_compressed(f&#34;{base_path}_raw.npz&#34;, **save_data)
-        
+
         logger.debug(f&#34;Raw data saved to {base_path}_raw.npz&#34;)
 
     def save_figure():
@@ -579,7 +596,7 @@ the SMU current switching while simultaneously measuring both the clock and PL s
             coil_resistance=coil_resistance,
             trigger_threshold=trigger_threshold,
             show_individual=True,
-            no_show=True
+            no_show=True,
         )
         fig.savefig(f&#34;{base_path}.png&#34;, dpi=300, bbox_inches=&#34;tight&#34;)
         plt.close(fig)

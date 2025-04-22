@@ -41,13 +41,27 @@ el.replaceWith(d);
 <h1 id="tutorials">Tutorials</h1>
 <p>This section contains step-by-step tutorials to help you get started with QScope.</p>
 <h2 id="installation">Installation</h2>
-<p>For detailed installation instructions, see the <a href="https://github.com/DavidBroadway/qscope/blob/main/INSTALL.md">Installation Guide</a> (INSTALL.md).</p>
-<p>Here's a quick summary:</p>
 <ol>
-<li>Clone the repository and create a Python 3.11+ environment</li>
+<li>Clone the repository and create a Python 3.11+ environment (<code>conda create --prefix ./conda_env python=3.11</code>)</li>
 <li>Install with <code>pip install -e .</code></li>
-<li>Verify with <code>doit check_systems</code> and <code>doit test_logic</code></li>
+<li>Verify with <code>doit check_systems</code> and <code>doit test_logic</code> (<code>pip install doit</code> first if you want to verify)</li>
 </ol>
+<h2 id="hardware-dependencies">Hardware Dependencies</h2>
+<p>Many devices require specific drivers or libraries to function:</p>
+<ul>
+<li>Some libraries are required in the <code>proprietary_artefacts</code> folder</li>
+<li>For Andor cameras, install the Andor SDK or Solis software</li>
+<li>For Picoscope, install the Picoscope SDK</li>
+<li>Others must be installed separately (see <a href=""></a>)</li>
+</ul>
+<h2 id="build-system">Build System</h2>
+<p>Qscope uses the <code>doit</code> build system for various tasks:</p>
+<pre><code class="language-bash"># Run logic tests
+doit test_logic
+
+# Check system compatibility
+doit check_systems
+</code></pre>
 <h2 id="getting-started-with-qscope">Getting Started with QScope</h2>
 <p>This tutorial will guide you through your first steps with QScope.</p>
 <h3 id="starting-the-gui">Starting the GUI</h3>
@@ -322,6 +336,8 @@ setTimeout(() => input.focus(), 100);
 <ul>
 <li><a href="#tutorials">Tutorials</a><ul>
 <li><a href="#installation">Installation</a></li>
+<li><a href="#hardware-dependencies">Hardware Dependencies</a></li>
+<li><a href="#build-system">Build System</a></li>
 <li><a href="#getting-started-with-qscope">Getting Started with QScope</a><ul>
 <li><a href="#starting-the-gui">Starting the GUI</a></li>
 <li><a href="#your-first-script">Your First Script</a></li>

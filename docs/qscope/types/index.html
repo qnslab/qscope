@@ -631,7 +631,7 @@ class ClientConnection:
 </dd>
 <dt id="qscope.types.ClientSyncResponse"><code class="flex name class">
 <span>class <span class="ident">ClientSyncResponse</span></span>
-<span>(</span><span>*,<br>type: str = 'client_sync',<br>value: Any,<br>system_type: str,<br>system_name: str,<br>is_streaming: bool,<br>all_meas_info: dict,<br>sys_metadata: dict,<br>version: str)</span>
+<span>(</span><span>*,<br>type: str = 'client_sync',<br>value: Any,<br>system_type: str,<br>system_name: str,<br>is_streaming: bool,<br>all_meas_info: dict,<br>sys_metadata: dict,<br>version: str,<br>hardware_started_up: bool)</span>
 </code></dt>
 <dd>
 <details class="source">
@@ -646,9 +646,10 @@ class ClientSyncResponse(Response):
     is_streaming: bool
     all_meas_info: dict
     sys_metadata: dict
-    version: str</code></pre>
+    version: str
+    hardware_started_up: bool</code></pre>
 </details>
-<div class="desc"><p>ClientSyncResponse(*, type: 'str' = 'client_sync', value: 'Any', system_type: 'str', system_name: 'str', is_streaming: 'bool', all_meas_info: 'dict', sys_metadata: 'dict', version: 'str')</p></div>
+<div class="desc"><p>ClientSyncResponse(*, type: 'str' = 'client_sync', value: 'Any', system_type: 'str', system_name: 'str', is_streaming: 'bool', all_meas_info: 'dict', sys_metadata: 'dict', version: 'str', hardware_started_up: 'bool')</p></div>
 <h3>Ancestors</h3>
 <ul class="hlist">
 <li><a title="qscope.types.messages.Response" href="messages.html#qscope.types.messages.Response">Response</a></li>
@@ -674,6 +675,10 @@ class ClientSyncResponse(Response):
 <h3>Instance variables</h3>
 <dl>
 <dt id="qscope.types.ClientSyncResponse.all_meas_info"><code class="name">var <span class="ident">all_meas_info</span> : dict</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.ClientSyncResponse.hardware_started_up"><code class="name">var <span class="ident">hardware_started_up</span> : bool</code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
@@ -783,42 +788,43 @@ class DeviceLock:
 </summary>
 <pre><code class="python">class DeviceRole(Generic[D]):
     &#34;&#34;&#34;Base class for device roles.
-    
+
     A DeviceRole defines an abstract capability that a device can fulfill.
     It connects concrete device implementations to abstract interfaces,
     allowing the system to work with devices through a consistent API
     regardless of the specific hardware.
-    
+
     Each role:
     1. Specifies a protocol that devices must implement
     2. Provides an interface class for accessing device functionality
     3. Validates that devices can fulfill the role requirements
-    
+
     Type Parameters
     --------------
     D : Type[Device]
         The device protocol type that can fulfill this role
-        
+
     Examples
     --------
     Defining a new role:
-    
+
     ```python
     class TemperatureController(DeviceRole[TempControlProtocol]):
         interface_class = TempControlInterface
     ```
-    
+
     Using a role in a system:
-    
+
     ```python
     # Add device with role
     system.add_device_with_role(my_temp_controller, TEMP_CONTROL)
-    
+
     # Get interface for role
     temp = system.get_device_by_role(TEMP_CONTROL)
     temp.set_temperature(25.0)  # Use interface methods
     ```
     &#34;&#34;&#34;
+
     interface_class: Type[RoleInterface] = None
 
     def __init__(self) -&gt; None:
@@ -849,7 +855,7 @@ class DeviceLock:
 
     def validate_device_type(self, device_class: type[&#34;Device&#34;]) -&gt; tuple[bool, str]:
         &#34;&#34;&#34;Validate if a device class can fulfill this role.
-        
+
         This method checks if a device class implements all the methods required by
         the protocol associated with this role. It handles both runtime protocol
         checking and forward references to protocol classes.
@@ -865,7 +871,7 @@ class DeviceLock:
             A tuple containing:
             - is_valid (bool): True if the device can fulfill this role
             - error_message (str): Empty string if valid, otherwise an error message
-            
+
         Notes
         -----
         Validation works in two ways:
@@ -891,7 +897,7 @@ class DeviceLock:
             for method_name in self.required_type.__annotations__:
                 if not hasattr(device_class, method_name):
                     missing_methods.append(method_name)
-        
+
             if missing_methods:
                 return False, (
                     f&#34;Role {self} requires device implementing {self.required_type.__name__}, &#34;
@@ -1022,7 +1028,7 @@ temp.set_temperature(25.0)  # Use interface methods
 </summary>
 <pre><code class="python">def validate_device_type(self, device_class: type[&#34;Device&#34;]) -&gt; tuple[bool, str]:
     &#34;&#34;&#34;Validate if a device class can fulfill this role.
-    
+
     This method checks if a device class implements all the methods required by
     the protocol associated with this role. It handles both runtime protocol
     checking and forward references to protocol classes.
@@ -1038,7 +1044,7 @@ temp.set_temperature(25.0)  # Use interface methods
         A tuple containing:
         - is_valid (bool): True if the device can fulfill this role
         - error_message (str): Empty string if valid, otherwise an error message
-        
+
     Notes
     -----
     Validation works in two ways:
@@ -1064,7 +1070,7 @@ temp.set_temperature(25.0)  # Use interface methods
         for method_name in self.required_type.__annotations__:
             if not hasattr(device_class, method_name):
                 missing_methods.append(method_name)
-    
+
         if missing_methods:
             return False, (
                 f&#34;Role {self} requires device implementing {self.required_type.__name__}, &#34;
@@ -1298,6 +1304,7 @@ class HandlerInfo:
 </summary>
 <pre><code class="python">class MainCamera(DeviceRole[CameraProtocol]):
     &#34;&#34;&#34;Primary camera role for main imaging and measurements.&#34;&#34;&#34;
+
     interface_class = CameraInterface</code></pre>
 </details>
 <div class="desc"><p>Primary camera role for main imaging and measurements.</p></div>
@@ -2100,6 +2107,7 @@ class PleaseWaitResponse(Response):
 </summary>
 <pre><code class="python">class PrimaryRFSource(DeviceRole[RFSourceProtocol]):
     &#34;&#34;&#34;Primary RF source role for main RF control.&#34;&#34;&#34;
+
     interface_class = RFSourceInterface</code></pre>
 </details>
 <div class="desc"><p>Primary RF source role for main RF control.</p></div>
@@ -2933,6 +2941,7 @@ class SGAndorT1Config(CameraConfig):
 </summary>
 <pre><code class="python">class SecondaryCamera(DeviceRole[CameraProtocol]):
     &#34;&#34;&#34;Secondary/auxiliary camera role for additional imaging tasks.&#34;&#34;&#34;
+
     interface_class = CameraInterface</code></pre>
 </details>
 <div class="desc"><p>Secondary/auxiliary camera role for additional imaging tasks.</p></div>
@@ -2985,6 +2994,7 @@ width, height = camera.get_frame_shape()
 </summary>
 <pre><code class="python">class SecondaryRFSource(DeviceRole[RFSourceProtocol]):
     &#34;&#34;&#34;Secondary RF source role for additional RF tasks.&#34;&#34;&#34;
+
     interface_class = RFSourceInterface</code></pre>
 </details>
 <div class="desc"><p>Secondary RF source role for additional RF tasks.</p></div>
@@ -3037,6 +3047,7 @@ rf.set_freq_list(freqs, step_time=0.05)  # 50ms per point
 </summary>
 <pre><code class="python">class SequenceGenerator(DeviceRole[SeqGenProtocol]):
     &#34;&#34;&#34;Sequence generator role for timing and pulse control.&#34;&#34;&#34;
+
     interface_class = SeqGenInterface</code></pre>
 </details>
 <div class="desc"><p>Sequence generator role for timing and pulse control.</p></div>
@@ -3742,6 +3753,7 @@ setTimeout(() => input.focus(), 100);
 <li><code><a title="qscope.types.ClientSyncResponse.all_meas_info" href="#qscope.types.ClientSyncResponse.all_meas_info">all_meas_info</a></code></li>
 <li><code><a title="qscope.types.ClientSyncResponse.from_dict" href="#qscope.types.ClientSyncResponse.from_dict">from_dict</a></code></li>
 <li><code><a title="qscope.types.ClientSyncResponse.from_msgpack" href="#qscope.types.ClientSyncResponse.from_msgpack">from_msgpack</a></code></li>
+<li><code><a title="qscope.types.ClientSyncResponse.hardware_started_up" href="#qscope.types.ClientSyncResponse.hardware_started_up">hardware_started_up</a></code></li>
 <li><code><a title="qscope.types.ClientSyncResponse.is_streaming" href="#qscope.types.ClientSyncResponse.is_streaming">is_streaming</a></code></li>
 <li><code><a title="qscope.types.ClientSyncResponse.sys_metadata" href="#qscope.types.ClientSyncResponse.sys_metadata">sys_metadata</a></code></li>
 <li><code><a title="qscope.types.ClientSyncResponse.system_name" href="#qscope.types.ClientSyncResponse.system_name">system_name</a></code></li>

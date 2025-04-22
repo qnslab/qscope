@@ -97,8 +97,8 @@ el.replaceWith(d);
         server_menu.addAction(server_connect_action)
         server_menu.addAction(server_startup_hw_action)
         server_menu.addAction(server_check_connection_action)
-        # server_menu.addAction(server_disconnect_action)
-        # server_menu.addAction(close_server_action)
+        server_menu.addAction(server_disconnect_action)
+        server_menu.addAction(close_server_action)
 
         self._set_connection_status(status=False)
         return server_menu
@@ -197,6 +197,10 @@ el.replaceWith(d);
             self.parent.start_video_listener_thread()
             self._set_connection_status(status=True)
             self.parent.statusBar.set_server_status(&#34;Connected&#34;)
+            try:
+                self.parent.statusBar.set_hw_status(&#34;Initialized&#34; if self.parent.connection_manager.client_sync.hardware_started_up else &#34;Not initialized&#34;)
+            except:
+                pass # idk what good logic is here
         except Exception as e:
             logger.exception(&#34;Error connecting to server.&#34;)
             self._set_connection_status(status=False)
@@ -217,18 +221,24 @@ el.replaceWith(d);
         except Exception as e:
             self.server_connection_label.setText(&#34;Server not connected&#34;)
             self._set_connection_status(status=False)
-            logger.exception(&#34;Error checking server connection.&#34;)
+            logger.warning(&#34;Server connection check failed.&#34;)
 
     def _disconnect_from_server(self):
         try:
             self.parent.connection_manager.disconnect()
             self._set_connection_status(status=False)
+            self.parent.connection_manager._connection = None
+            self.parent.statusBar.set_server_status(&#34;Not connected&#34;)
         except Exception as e:
             logger.exception(&#34;Error disconnecting from server.&#34;)
 
     def close_server(self):
         try:
             self.parent.connection_manager.stop_server()
+            self._set_connection_status(status=False)
+            self.parent.connection_manager._connection = None
+            self.parent.statusBar.set_server_status(&#34;Not connected&#34;)
+            self.parent.statusBar.set_hw_status(&#34;Not Initialized&#34;)
         except Exception as e:
             logger.exception(&#34;Error stopping server.&#34;)
 
@@ -262,6 +272,10 @@ QMenu(title: Optional[str], parent: Optional[QWidget] = None)</p></div>
 <pre><code class="python">def close_server(self):
     try:
         self.parent.connection_manager.stop_server()
+        self._set_connection_status(status=False)
+        self.parent.connection_manager._connection = None
+        self.parent.statusBar.set_server_status(&#34;Not connected&#34;)
+        self.parent.statusBar.set_hw_status(&#34;Not Initialized&#34;)
     except Exception as e:
         logger.exception(&#34;Error stopping server.&#34;)</code></pre>
 </details>

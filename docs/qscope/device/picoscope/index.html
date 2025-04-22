@@ -69,6 +69,7 @@ el.replaceWith(d);
     &#34;&#34;&#34;Lazy import of Picoscope classes.&#34;&#34;&#34;
     try:
         from .picoscope import Picoscope5000a
+
         return Picoscope5000a
     except ImportError as e:
         raise PicoSDKImportError(f&#34;Failed to import Picoscope classes: {str(e)}&#34;)</code></pre>

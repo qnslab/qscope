@@ -197,7 +197,7 @@ providing a clean interface for the rest of the application to use.</p>
     @qt_process_events_if_available
     def stop_server(self) -&gt; None:
         &#34;&#34;&#34;Stop the server and handle connection cleanup.
-        
+
         This method sends a shutdown command to the server if connected,
         and handles the expected disconnection gracefully.
         &#34;&#34;&#34;
@@ -214,7 +214,7 @@ providing a clean interface for the rest of the application to use.</p>
                         &#34;Could not reconnect to remote running server: %s&#34;, str(e)
                     )
                     # Continue with termination even if reconnect fails
-            
+
             if self._connection:
                 try:
                     # Send shutdown command and expect disconnection
@@ -222,11 +222,11 @@ providing a clean interface for the rest of the application to use.</p>
                     # Connection is now invalid, so clear it
                     self._connection = None
                     self._client_sync = None
-                    
+
                     if self._notif_task:
                         self._notif_task.cancel()
                         self._notif_task = None
-                    
+
                     logger.info(&#34;Server shutdown completed&#34;)
                 except Exception as e:
                     logger.warning(f&#34;Error during server shutdown: {e}&#34;)
@@ -306,6 +306,40 @@ providing a clean interface for the rest of the application to use.</p>
         if not self._notif_queue:
             raise RuntimeError(&#34;Notification listener not started&#34;)
         return await client.wait_for_notif(self._notif_queue, notif_type, timeout)
+        
+    async def wait_for_notification_with_meas_check(
+        self, notif_type: Type[T], meas_id: str, timeout: float = DEFAULT_TIMEOUT
+    ) -&gt; T:
+        &#34;&#34;&#34;Wait for a specific type of notification while checking measurement state.
+        
+        Parameters
+        ----------
+        notif_type : Type[T]
+            The notification type to wait for
+        meas_id : str
+            Measurement ID to check for state changes
+        timeout : float, optional
+            Maximum time to wait, by default DEFAULT_TIMEOUT
+        
+        Returns
+        -------
+        T
+            The notification of the requested type
+            
+        Raises
+        ------
+        RuntimeError
+            If notification listener is not started
+        MeasurementStoppedError
+            If the measurement is stopped while waiting, includes latest notification
+        TimeoutError
+            If timeout is reached before any relevant notification is received
+        &#34;&#34;&#34;
+        if not self._notif_queue:
+            raise RuntimeError(&#34;Notification listener not started&#34;)
+        return await client.wait_for_notif_with_meas_check(
+            self._notif_queue, notif_type, meas_id, timeout
+        )
 
     def clean_notification_queue(self) -&gt; None:
         &#34;&#34;&#34;Clear all pending notifications.&#34;&#34;&#34;
@@ -328,13 +362,15 @@ providing a clean interface for the rest of the application to use.</p>
         &#34;&#34;&#34;Get the stream socket for direct access.&#34;&#34;&#34;
         if not self._connection:
             raise RuntimeError(&#34;Not connected to server&#34;)
-        
+
         # Configure socket buffer limit if not already done
-        if not hasattr(self, &#39;_configured_buffer&#39;):
-            self._connection.stream_socket.setsockopt(zmq.RCVHWM, 20)  # Limit receive buffer to 20 frames
+        if not hasattr(self, &#34;_configured_buffer&#34;):
+            self._connection.stream_socket.setsockopt(
+                zmq.RCVHWM, 20
+            )  # Limit receive buffer to 20 frames
             self._configured_buffer = True
             logger.debug(&#34;Configured stream socket with RCVHWM=20&#34;)
-        
+
         return self._connection.stream_socket
 
     def get_device_locks(self) -&gt; dict[str, tuple[str, str, float]]:
@@ -632,13 +668,15 @@ def disconnect(self) -&gt; None:
     &#34;&#34;&#34;Get the stream socket for direct access.&#34;&#34;&#34;
     if not self._connection:
         raise RuntimeError(&#34;Not connected to server&#34;)
-    
+
     # Configure socket buffer limit if not already done
-    if not hasattr(self, &#39;_configured_buffer&#39;):
-        self._connection.stream_socket.setsockopt(zmq.RCVHWM, 20)  # Limit receive buffer to 20 frames
+    if not hasattr(self, &#34;_configured_buffer&#34;):
+        self._connection.stream_socket.setsockopt(
+            zmq.RCVHWM, 20
+        )  # Limit receive buffer to 20 frames
         self._configured_buffer = True
         logger.debug(&#34;Configured stream socket with RCVHWM=20&#34;)
-    
+
     return self._connection.stream_socket</code></pre>
 </details>
 <div class="desc"><p>Get the stream socket for direct access.</p></div>
@@ -784,7 +822,7 @@ def stop_local_server(self) -&gt; None:
 <pre><code class="python">@qt_process_events_if_available
 def stop_server(self) -&gt; None:
     &#34;&#34;&#34;Stop the server and handle connection cleanup.
-    
+
     This method sends a shutdown command to the server if connected,
     and handles the expected disconnection gracefully.
     &#34;&#34;&#34;
@@ -801,7 +839,7 @@ def stop_server(self) -&gt; None:
                     &#34;Could not reconnect to remote running server: %s&#34;, str(e)
                 )
                 # Continue with termination even if reconnect fails
-        
+
         if self._connection:
             try:
                 # Send shutdown command and expect disconnection
@@ -809,11 +847,11 @@ def stop_server(self) -&gt; None:
                 # Connection is now invalid, so clear it
                 self._connection = None
                 self._client_sync = None
-                
+
                 if self._notif_task:
                     self._notif_task.cancel()
                     self._notif_task = None
-                
+
                 logger.info(&#34;Server shutdown completed&#34;)
             except Exception as e:
                 logger.warning(f&#34;Error during server shutdown: {e}&#34;)
@@ -843,6 +881,73 @@ and handles the expected disconnection gracefully.</p></div>
     return await client.wait_for_notif(self._notif_queue, notif_type, timeout)</code></pre>
 </details>
 <div class="desc"><p>Wait for a specific type of notification.</p></div>
+</dd>
+<dt id="qscope.server.connection_manager.ConnectionManager.wait_for_notification_with_meas_check"><code class="name flex">
+<span>async def <span class="ident">wait_for_notification_with_meas_check</span></span>(<span>self, notif_type: Type[T], meas_id: str, timeout: float = 5) ‑> T</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">async def wait_for_notification_with_meas_check(
+    self, notif_type: Type[T], meas_id: str, timeout: float = DEFAULT_TIMEOUT
+) -&gt; T:
+    &#34;&#34;&#34;Wait for a specific type of notification while checking measurement state.
+    
+    Parameters
+    ----------
+    notif_type : Type[T]
+        The notification type to wait for
+    meas_id : str
+        Measurement ID to check for state changes
+    timeout : float, optional
+        Maximum time to wait, by default DEFAULT_TIMEOUT
+    
+    Returns
+    -------
+    T
+        The notification of the requested type
+        
+    Raises
+    ------
+    RuntimeError
+        If notification listener is not started
+    MeasurementStoppedError
+        If the measurement is stopped while waiting, includes latest notification
+    TimeoutError
+        If timeout is reached before any relevant notification is received
+    &#34;&#34;&#34;
+    if not self._notif_queue:
+        raise RuntimeError(&#34;Notification listener not started&#34;)
+    return await client.wait_for_notif_with_meas_check(
+        self._notif_queue, notif_type, meas_id, timeout
+    )</code></pre>
+</details>
+<div class="desc"><p>Wait for a specific type of notification while checking measurement state.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>notif_type</code></strong> :&ensp;<code>Type[T]</code></dt>
+<dd>The notification type to wait for</dd>
+<dt><strong><code>meas_id</code></strong> :&ensp;<code>str</code></dt>
+<dd>Measurement ID to check for state changes</dd>
+<dt><strong><code>timeout</code></strong> :&ensp;<code>float</code>, optional</dt>
+<dd>Maximum time to wait, by default DEFAULT_TIMEOUT</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>T</code></dt>
+<dd>The notification of the requested type</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>RuntimeError</code></dt>
+<dd>If notification listener is not started</dd>
+<dt><code>MeasurementStoppedError</code></dt>
+<dd>If the measurement is stopped while waiting, includes latest notification</dd>
+<dt><code>TimeoutError</code></dt>
+<dd>If timeout is reached before any relevant notification is received</dd>
+</dl></div>
 </dd>
 </dl>
 </dd>
@@ -932,6 +1037,7 @@ setTimeout(() => input.focus(), 100);
 <li><code><a title="qscope.server.connection_manager.ConnectionManager.stop_local_server" href="#qscope.server.connection_manager.ConnectionManager.stop_local_server">stop_local_server</a></code></li>
 <li><code><a title="qscope.server.connection_manager.ConnectionManager.stop_server" href="#qscope.server.connection_manager.ConnectionManager.stop_server">stop_server</a></code></li>
 <li><code><a title="qscope.server.connection_manager.ConnectionManager.wait_for_notification" href="#qscope.server.connection_manager.ConnectionManager.wait_for_notification">wait_for_notification</a></code></li>
+<li><code><a title="qscope.server.connection_manager.ConnectionManager.wait_for_notification_with_meas_check" href="#qscope.server.connection_manager.ConnectionManager.wait_for_notification_with_meas_check">wait_for_notification_with_meas_check</a></code></li>
 </ul>
 </li>
 </ul>

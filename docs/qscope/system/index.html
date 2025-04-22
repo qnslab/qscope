@@ -234,7 +234,9 @@ class SGCameraSystem(SGSystem):
             return -1.0, -1.0
 
     @check_role_is_connected()
-    def get_cam_trig_time(self, role: DeviceRole[CameraProtocol] = MAIN_CAMERA) -&gt; float:
+    def get_cam_trig_time(
+        self, role: DeviceRole[CameraProtocol] = MAIN_CAMERA
+    ) -&gt; float:
         return self.get_device_by_role(role).get_trigger_time()
 
     def get_pixel_size(self) -&gt; tuple[float, float]:
@@ -256,7 +258,9 @@ class SGCameraSystem(SGSystem):
         return self.get_device_by_role(role).get_frame_shape()
 
     @check_role_is_connected()
-    def take_snapshot(self, role: DeviceRole[CameraProtocol] = MAIN_CAMERA) -&gt; np.ndarray:
+    def take_snapshot(
+        self, role: DeviceRole[CameraProtocol] = MAIN_CAMERA
+    ) -&gt; np.ndarray:
         return self.get_device_by_role(role).take_snapshot()
 
     @check_role_is_connected()
@@ -390,7 +394,9 @@ class SGCameraSystem(SGSystem):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">@check_role_is_connected()
-def get_cam_trig_time(self, role: DeviceRole[CameraProtocol] = MAIN_CAMERA) -&gt; float:
+def get_cam_trig_time(
+    self, role: DeviceRole[CameraProtocol] = MAIN_CAMERA
+) -&gt; float:
     return self.get_device_by_role(role).get_trigger_time()</code></pre>
 </details>
 <div class="desc"></div>
@@ -638,7 +644,9 @@ async def start_stream(
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">@check_role_is_connected()
-def take_snapshot(self, role: DeviceRole[CameraProtocol] = MAIN_CAMERA) -&gt; np.ndarray:
+def take_snapshot(
+    self, role: DeviceRole[CameraProtocol] = MAIN_CAMERA
+) -&gt; np.ndarray:
     return self.get_device_by_role(role).take_snapshot()</code></pre>
 </details>
 <div class="desc"></div>
@@ -1223,16 +1231,24 @@ def start_sequence(self) -&gt; None:
 
     # these are just for type-checking
     @overload
-    def get_device_by_role(self, role: DeviceRole[CameraProtocol]) -&gt; CameraInterface: ...
+    def get_device_by_role(
+        self, role: DeviceRole[CameraProtocol]
+    ) -&gt; CameraInterface: ...
 
     @overload
-    def get_device_by_role(self, role: DeviceRole[RFSourceProtocol]) -&gt; RFSourceInterface: ...
+    def get_device_by_role(
+        self, role: DeviceRole[RFSourceProtocol]
+    ) -&gt; RFSourceInterface: ...
 
     @overload
-    def get_device_by_role(self, role: DeviceRole[SeqGenProtocol]) -&gt; SeqGenInterface: ...
+    def get_device_by_role(
+        self, role: DeviceRole[SeqGenProtocol]
+    ) -&gt; SeqGenInterface: ...
 
     @overload
-    def get_device_by_role(self, role: DeviceRole[DigitizerProtocol]) -&gt; DigitizerInterface: ...
+    def get_device_by_role(
+        self, role: DeviceRole[DigitizerProtocol]
+    ) -&gt; DigitizerInterface: ...
 
     def get_device_by_role(self, role: DeviceRole) -&gt; RoleInterface:
         &#34;&#34;&#34;Get first device that fulfills the specified role.
@@ -1307,14 +1323,19 @@ def start_sequence(self) -&gt; None:
 
     @check_role_is_connected()  # checks that &#39;role&#39; device is connected
     def setup_single_rf_freq(
-        self, rf_freq: float, rf_pow: float, role: DeviceRole[RFSourceProtocol] = PRIMARY_RF
+        self,
+        rf_freq: float,
+        rf_pow: float,
+        role: DeviceRole[RFSourceProtocol] = PRIMARY_RF,
     ):
         rfsource = self.get_device_by_role(role)
         rfsource.set_freq(rf_freq)
         rfsource.set_power(rf_pow)
 
     @check_role_is_connected()
-    def set_rf_state(self, state: bool, role: DeviceRole[RFSourceProtocol] = PRIMARY_RF):
+    def set_rf_state(
+        self, state: bool, role: DeviceRole[RFSourceProtocol] = PRIMARY_RF
+    ):
         rfsource = self.get_device_by_role(role)
         rfsource.set_state(state)
 
@@ -1797,7 +1818,9 @@ def set_rf_params(
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">@check_role_is_connected()
-def set_rf_state(self, state: bool, role: DeviceRole[RFSourceProtocol] = PRIMARY_RF):
+def set_rf_state(
+    self, state: bool, role: DeviceRole[RFSourceProtocol] = PRIMARY_RF
+):
     rfsource = self.get_device_by_role(role)
     rfsource.set_state(state)</code></pre>
 </details>
@@ -1855,7 +1878,10 @@ def setup_rf_sweep(
 </summary>
 <pre><code class="python">@check_role_is_connected()  # checks that &#39;role&#39; device is connected
 def setup_single_rf_freq(
-    self, rf_freq: float, rf_pow: float, role: DeviceRole[RFSourceProtocol] = PRIMARY_RF
+    self,
+    rf_freq: float,
+    rf_pow: float,
+    role: DeviceRole[RFSourceProtocol] = PRIMARY_RF,
 ):
     rfsource = self.get_device_by_role(role)
     rfsource.set_freq(rf_freq)

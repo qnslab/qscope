@@ -75,19 +75,17 @@ el.replaceWith(d);
     def set_freq(self, freq: float) -&gt; None:
         &#34;&#34;&#34;Set RF frequency in MHz.&#34;&#34;&#34;
         self._frequency = freq
-        
+
     def set_power(self, power: float) -&gt; None:
         &#34;&#34;&#34;Set RF power in dBm.&#34;&#34;&#34;
         self._power = power
-        
+
     def set_state(self, state: bool) -&gt; None:
         &#34;&#34;&#34;Set RF output state.&#34;&#34;&#34;
         self._output = state
-        
+
     def set_freq_list(
-        self, 
-        rf_freqs: Sequence[float], 
-        step_time: float = 0.1
+        self, rf_freqs: Sequence[float], step_time: float = 0.1
     ) -&gt; Sequence[float]:
         &#34;&#34;&#34;Configure frequency sweep.&#34;&#34;&#34;
         self._frequency = rf_freqs[0]  # Just set to first frequency
@@ -376,9 +374,7 @@ system.add_device_with_role(rf, PRIMARY_RF)
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def set_freq_list(
-    self, 
-    rf_freqs: Sequence[float], 
-    step_time: float = 0.1
+    self, rf_freqs: Sequence[float], step_time: float = 0.1
 ) -&gt; Sequence[float]:
     &#34;&#34;&#34;Configure frequency sweep.&#34;&#34;&#34;
     self._frequency = rf_freqs[0]  # Just set to first frequency

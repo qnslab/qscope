@@ -122,6 +122,7 @@ rf_source.set_frequency(2.87e9)
     &#34;&#34;&#34;Get Picoscope classes if available.&#34;&#34;&#34;
     # effectively `from .picoscope import Picoscope5000a`
     from .picoscope import get_picoscope
+
     return get_picoscope()</code></pre>
 </details>
 <div class="desc"><p>Get Picoscope classes if available.</p></div>
@@ -131,991 +132,6 @@ rf_source.set_frequency(2.87e9)
 <section>
 <h2 class="section-title" id="header-classes">Classes</h2>
 <dl>
-<dt id="qscope.device.APS100"><code class="flex name class">
-<span>class <span class="ident">APS100</span></span>
-<span>(</span><span>system,<br>xy_port: str,<br>z_port: str,<br>xlim: float,<br>ylim: float,<br>zlim: float,<br>ix2bx: float,<br>iy2by: float,<br>iz2bz: float,<br>xrate: float,<br>yrate: float,<br>zrate: float,<br>**other_config)</span>
-</code></dt>
-<dd>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">class APS100(Magnet):
-    # also need to define &#39;channels&#39;?
-    xy_port: str
-    z_port: str
-    xlim: float
-    ylim: float
-    zlim: float
-    ix2bx: float  # A -&gt; mT
-    iy2by: float
-    iz2bz: float
-    xrate: float  # A/s
-    yrate: float
-    zrate: float
-
-    required_config = {
-        &#34;xy_port&#34;: str,
-        &#34;z_port&#34;: str,
-        &#34;xlim&#34;: float,
-        &#34;ylim&#34;: float,
-        &#34;zlim&#34;: float,
-        &#34;ix2bx&#34;: float,
-        &#34;iy2by&#34;: float,
-        &#34;iz2bz&#34;: float,
-        &#34;xrate&#34;: float,
-        &#34;yrate&#34;: float,
-        &#34;zrate&#34;: float,
-    }
-
-    def __init__(
-        self,
-        system,
-        xy_port: str,
-        z_port: str,
-        xlim: float,
-        ylim: float,
-        zlim: float,
-        ix2bx: float,
-        iy2by: float,
-        iz2bz: float,
-        xrate: float,
-        yrate: float,
-        zrate: float,
-        **other_config,
-    ):
-        super().__init__(
-            system,
-            xy_port=xy_port,
-            z_port=z_port,
-            xlim=xlim,
-            ylim=ylim,
-            zlim=zlim,
-            ix2bx=ix2bx,
-            iy2by=iy2by,
-            iz2bz=iz2bz,
-            xrate=xrate,
-            yrate=yrate,
-            zrate=zrate,
-            **other_config,
-        )
-        self.cmd_wait = (
-            0.1  # time (s) to wait after sending a command to the windfreak &gt;&gt; FIXME?
-        )
-
-        # FIXME what do we want to do here?
-        self._xrate = self.xrate * 1e-3  # A/s
-        self._yrate = self.yrate * 1e-3  # A/s
-        self._zrate = self.zrate * 1e-3  # A/s
-
-        self.sweeping_tolerance = 0.5  # percentage
-
-    def open(self):
-        # connect to the x current source.
-        self.magnet_xy = serial.Serial(self.xy_port, 9600, timeout=1)
-        self.magnet_z = serial.Serial(self.z_port, 9600, timeout=1)
-        self.init_channels()
-
-    def init_channels(self):
-        # initalise Bx channel
-        self.write_command(self.magnet_xy, &#34;REMOTE\n&#34;)
-        self.write_command(self.magnet_xy, &#34;CHAN 1\n&#34;)
-        self.write_command(self.magnet_xy, &#34;LLIM -&#34; + str(self.xlim) + &#34;\n&#34;)
-
-        self.write_command(self.magnet_xy, &#34;REMOTE\n&#34;)
-        self.write_command(self.magnet_xy, &#34;CHAN 2\n&#34;)
-        self.write_command(self.magnet_xy, &#34;LLIM -&#34; + str(self.ylim) + &#34;\n&#34;)
-
-        self.write_command(self.magnet_z, &#34;REMOTE\n&#34;)
-        self.write_command(self.magnet_z, &#34;LLIM -&#34; + str(self.zlim) + &#34;\n&#34;)
-
-    def stop(self):
-        self.write_command(self.magnet_xy, &#34;CHAN 1\n&#34;)
-        self.write_command(self.magnet_xy, &#34;SWEEP ZERO\n&#34;)
-
-        self.write_command(self.magnet_xy, &#34;CHAN 2\n&#34;)
-        self.write_command(self.magnet_xy, &#34;SWEEP ZERO\n&#34;)
-        self.write_command(self.magnet_z, &#34;SWEEP ZERO\n&#34;)
-
-    def close(self):
-        self.stop()
-        self.magnet_xy.close()
-        self.magnet_z.close()
-
-    ###################################################################
-    # Get functions
-    ###################################################################
-
-    @property
-    def ix(self):
-        # clear the read buffer
-        self.magnet_xy.read(1000)
-
-        self.write_command(self.magnet_xy, &#34;CHAN 1\n&#34;)
-        self.magnet_xy.readline()
-        self.write_command(self.magnet_xy, &#34;IMAG?\n&#34;)
-        self.magnet_xy.readline()
-        ix = self.magnet_xy.readline().decode()
-        self._ix = float(ix[:-3])
-        return self._ix
-
-    @property
-    def iy(self):
-        # clear the read buffer
-        self.magnet_xy.read(1000)
-
-        self.write_command(self.magnet_xy, &#34;CHAN 2\n&#34;)
-        self.magnet_xy.readline()
-        self.write_command(self.magnet_xy, &#34;IMAG?\n&#34;)
-        self.magnet_xy.readline()
-        iy = self.magnet_xy.readline().decode()
-        self._iy = float(iy[:-3])
-        return self._iy
-
-    @property
-    def iz(self):
-        # clear the read buffer
-        self.magnet_z.read(1000)
-        self.write_command(self.magnet_z, &#34;IMAG?\n&#34;)
-        self.magnet_z.readline()
-        iz = self.magnet_z.readline().decode()
-        self._iz = float(iz[:-3])
-        return self._iz
-
-    @property
-    def bx(self):
-        self._bx = self.ix * self.ix2bx
-        return self._bx
-
-    @property
-    def by(self):
-        self._by = self.iy * self.iy2by
-        return self._by
-
-    @property
-    def bz(self):
-        self._bz = self.iz * self.iz2bz
-        return self._bz
-
-    @property
-    def bnorm(self, read=True):
-        if read:
-            [_, _, bspher] = self.get_current(print_b_field=False)
-            self._bnorm = bspher[0]
-        return self._bnorm
-
-    @property
-    def theta(self, read=True):
-        if read:
-            [_, _, bspher] = self.get_current(print_b_field=False)
-            self._theta = bspher[1]
-        return self._theta
-
-    @property
-    def phi(self, read=True):
-        if read:
-            [_, _, bspher] = self.get_current(print_b_field=False)
-            self._phi = bspher[1]
-        return self._phi
-
-    def get_current(self, print_b_field=True):
-        # convert the current values into a bxyz
-        self._bx = self._ix * self.ix2bx
-        self._by = self._iy * self.iy2by
-        self._bz = self._iz * self.iz2bz
-        # convert the bxyz into bspherical
-        self._bnorm, self._theta, self._phi = self.convert_cartesian_to_spherical(
-            self._bx, self._by, self._bz
-        )
-
-        if print_b_field:
-            print(&#34;Current field values&#34;)
-            print(f&#34;B = {self._bnorm:.3f} (mT)&#34;)
-            print(f&#34;theta = {self._theta:.3f} (deg)&#34;)
-            print(f&#34;phi = {self._phi:.3f} (deg)&#34;)
-            aligned_freq_1 = np.abs(2870 - 28 * self._bnorm)
-            aligned_freq_2 = 2870 + 28 * self._bnorm
-            print(f&#34;Upper frequency = {aligned_freq_2:.5} (MHz))&#34;)
-            print(f&#34;Lower frequency = {aligned_freq_1:.5} (MHz))&#34;)
-
-        curr = [self._ix, self._iy, self._iz]
-        b = [self._bx, self._by, self._bz]
-        bspher = [self._bnorm, self._theta, self._phi]
-        return curr, b, bspher
-
-    ###################################################################
-    # Set functions
-    ###################################################################
-
-    def set_b(self, bnorm, theta, phi):
-        bx, by, bz = self.convert_spherical_to_cartesian(bnorm, theta, phi)
-        print(
-            f&#34;Setting B to {bnorm:.3f} (mT) at theta = {theta:.3f} (deg) and phi = {phi:.3f} (deg)&#34;
-        )
-
-        set_ix = bx / self.ix2bx
-        set_iy = by / self.iy2by
-        set_iz = bz / self.iz2bz
-
-        self.ix = set_ix
-        self.iy = set_iy
-        self.iz = set_iz
-
-        self.check_if_field_reached(set_ix, set_iy, set_iz)
-
-    @ix.setter
-    def ix(self, val):
-        # check if the requested current vaules are within the limits
-        if abs(val) &gt; self.xlim:
-            print(&#34;Ix CURRENT VALUE IS TOO HIGH. DID NOT CHANGE VALUE&#34;)
-            return
-
-        # Set all of the current values at once
-        self.write_command(self.magnet_xy, &#34;CHAN 1\n&#34;)
-        self.write_command(self.magnet_xy, &#34;ULIM &#34; + str(val) + &#34;\n&#34;)
-        self.write_command(self.magnet_xy, &#34;SWEEP UP\n&#34;)
-        self._ix = val
-
-    @iy.setter
-    def iy(self, val):
-        # check if the requested current vaules are within the limits
-        if abs(val) &gt; self.ylim:
-            print(&#34;Iy CURRENT VALUE IS TOO HIGH. DID NOT CHANGE VALUE&#34;)
-            return
-
-        # Set all of the current values at once
-        self.write_command(self.magnet_xy, &#34;CHAN 2\n&#34;)
-        self.write_command(self.magnet_xy, &#34;ULIM &#34; + str(val) + &#34;\n&#34;)
-        self.write_command(self.magnet_xy, &#34;SWEEP UP\n&#34;)
-        self._iy = val
-
-    @iz.setter
-    def iz(self, val):
-        # check if the requested current vaules are within the limits
-        if abs(val) &gt; self.zlim:
-            print(&#34;Iz CURRENT VALUE IS TOO HIGH. DID NOT CHANGE VALUE&#34;)
-            return
-
-        # Set all of the current values at once
-        self.write_command(self.magnet_z, &#34;ULIM &#34; + str(val) + &#34;\n&#34;)
-        self.write_command(self.magnet_z, &#34;SWEEP UP\n&#34;)
-        self._iz = val
-
-    def set_curr(self, ix, iy, iz):
-        # check if the requested current vaules are within the limits
-        if abs(ix) &gt; self.xlim or abs(iy) &gt; self.ylim or abs(iz) &gt; self.zlim:
-            print(&#34;CURRENT VALUE IS TOO HIGH. DID NOT CHANGE VALUE&#34;)
-            return
-
-        self.ix = ix
-        self.iy = iy
-        self.iz = iz
-
-        self.check_if_field_reached(ix, iy, iz)
-
-    @bx.setter
-    def bx(self, bx):
-        ix = bx / self.ix2bx
-        self.ix = ix
-
-    @by.setter
-    def by(self, by):
-        iy = by / self.iy2by
-        self.iy = iy
-
-    @bz.setter
-    def bz(self, bz):
-        iz = bz / self.iz2bz
-        self.iz = iz
-
-    @bnorm.setter
-    def bnorm(self, val):
-        theta = self.theta(read=False)
-        phi = self.phi(read=False)
-        self.set_b(val, theta, phi)
-        self._bnorm = val
-
-    @theta.setter
-    def theta(self, val):
-        bnorm = self.bnorm(read=False)
-        phi = self.phi(read=False)
-        self.set_b(bnorm, val, phi)
-        self._theta = val
-
-    @phi.setter
-    def phi(self, val):
-        bnorm = self.bnorm(read=False)
-        theta = self.theta(read=False)
-        self.set_b(bnorm, theta, val)
-        self._phi = val
-
-    def check_if_field_reached(self, ix, iy, iz):
-        b_sweeping = True
-
-        # Get the difference between the current and the requested
-        # current as a percentage
-        x_diff = np.abs(ix - self.ix)
-        y_diff = np.abs(iy - self.iy)
-        z_diff = np.abs(iz - self.iz)
-
-        # Waiting for sweeping to finish
-        sweeping_time = np.max(
-            [x_diff / self._xrate, y_diff / self._yrate, z_diff / self._zrate]
-        )
-        print(
-            f&#34;Sweeping to new field value. Estimated sweeping time: {sweeping_time:0.2f} (s)&#34;
-        )
-        time.sleep(sweeping_time)
-
-        while b_sweeping:
-            curr, _, _ = self.get_current(print_b_field=False)
-
-            # Get the difference between the current and the requested
-            # current as a percentage
-            x_diff = np.abs(ix - self.ix) * 100
-            y_diff = np.abs(iy - self.iy) * 100
-            z_diff = np.abs(iz - self.iz) * 100
-
-            # if all of the differences are less than the tolerance then stop sweeping
-            if (
-                x_diff &lt; self.sweeping_tolerance
-                and y_diff &lt; self.sweeping_tolerance
-                and z_diff &lt; self.sweeping_tolerance
-            ):
-                print(&#34;Field has been reached&#34;)
-                b_sweeping = False
-            else:
-                time.sleep(0.5)
-                print(&#34;Field has not been reached yet&#34;)
-
-        aligned_freq_1 = np.abs(2870 - 28 * self._bnorm)
-        aligned_freq_2 = 2870 + 28 * self._bnorm
-        print(f&#34;B = {self._bnorm:.3f} (mT)&#34;)
-        print(f&#34;NV freq approx [{aligned_freq_1:.5}, {aligned_freq_2:.5}] (MHz)&#34;)
-
-    ###################################################################
-    # Utility functions
-    ###################################################################
-
-    def convert_cartesian_to_spherical(self, x, y, z):
-        # convert cartesian coordinates to spherical coordinates
-        r = np.round(np.sqrt(x**2 + y**2 + z**2), decimals=3)
-        theta = np.round(np.rad2deg(np.arccos(z / r)), decimals=3)
-        phi = np.round(np.rad2deg(np.arctan2(y, x)), decimals=3)
-        return r, theta, phi
-
-    def convert_spherical_to_cartesian(self, r, theta, phi):
-        # convert spherical coordinates to cartesian coordinates
-        x = r * np.sin(np.deg2rad(theta)) * np.cos(np.deg2rad(phi))
-        y = r * np.sin(np.deg2rad(theta)) * np.sin(np.deg2rad(phi))
-        z = r * np.cos(np.deg2rad(theta))
-        return x, y, z
-
-    def write_command(self, serial, command):
-        # this function is just to convert a string command into a byte command and
-        # write it to the serial port
-        serial.write(bytes(command, &#34;utf-8&#34;))
-        time.sleep(self.cmd_wait)</code></pre>
-</details>
-<div class="desc"><p>Base class for all hardware devices in QScope.</p>
-<p>The Device class provides the foundation for hardware abstraction in QScope.
-Specific device implementations inherit from this class and implement the
-methods required by their intended roles.</p>
-<p>A device can fulfill multiple roles if it implements all required methods
-for those roles. The system validates role compatibility at runtime.</p>
-<h2 id="device-architecture">Device Architecture</h2>
-<p>Devices are part of QScope's hardware abstraction layer:</p>
-<ol>
-<li>Base Device Class (this class)</li>
-<li>Provides configuration validation</li>
-<li>Manages role assignments</li>
-<li>Handles connection state</li>
-<li>
-<p>Defines required methods</p>
-</li>
-<li>
-<p>Device Implementations</p>
-</li>
-<li>Inherit from Device</li>
-<li>Implement protocol methods for specific roles</li>
-<li>Provide hardware-specific functionality</li>
-<li>
-<p>Can implement multiple protocols</p>
-</li>
-<li>
-<p>System Integration</p>
-</li>
-<li>Devices are added to systems with specific roles</li>
-<li>System validates that devices implement required protocols</li>
-<li>Devices are accessed through role interfaces</li>
-</ol>
-<h2 id="required-methods">Required Methods</h2>
-<p>All device implementations must override these methods:</p>
-<ul>
-<li>open(): Connect to the hardware</li>
-<li>close(): Disconnect from the hardware</li>
-<li>is_connected(): Check connection status</li>
-</ul>
-<p>In addition, devices must implement all methods required by the
-protocols of the roles they intend to fulfill.</p>
-<h2 id="attributes">Attributes</h2>
-<dl>
-<dt><strong><code>required_config</code></strong> :&ensp;<code>dict[str, Type]</code></dt>
-<dd>Required configuration parameters and their types</dd>
-<dt><strong><code>_roles</code></strong> :&ensp;<code>Set[DeviceRole[<a title="qscope.device.Device" href="#qscope.device.Device">Device</a>]]</code></dt>
-<dd>Set of roles this device fulfills</dd>
-</dl>
-<h2 id="examples">Examples</h2>
-<p>Creating a new device implementation:</p>
-<pre><code class="language-python">class MyRFSource(Device):
-    required_config = {
-        &quot;visa_addr&quot;: str,
-        &quot;max_power&quot;: float
-    }
-
-    def __init__(self, **config_kwargs):
-        super().__init__(**config_kwargs)
-        self.connected = False
-
-    def open(self) -&gt; tuple[bool, str]:
-        # Implementation for connecting to hardware
-        self.connected = True
-        return True, &quot;Connected successfully&quot;
-
-    def close(self):
-        # Implementation for disconnecting
-        self.connected = False
-
-    def is_connected(self) -&gt; bool:
-        return self.connected
-
-    # Implement methods required by RFSourceProtocol
-    def set_freq(self, freq: float) -&gt; None:
-        # Implementation
-        pass
-
-    def set_power(self, power: float) -&gt; None:
-        # Implementation
-        pass
-</code></pre>
-<p>Using the device with a role:</p>
-<pre><code class="language-python"># Create device instance
-rf = MyRFSource(visa_addr=&quot;TCPIP0::192.168.1.1::INSTR&quot;, max_power=20.0)
-
-# Add to system with role
-system.add_device_with_role(rf, PRIMARY_RF)
-</code></pre>
-<h2 id="see-also">See Also</h2>
-<dl>
-<dt><code><a title="qscope.types.protocols" href="../types/protocols.html">qscope.types.protocols</a></code></dt>
-<dd>Protocol definitions</dd>
-<dt><code><a title="qscope.types.roles" href="../types/roles.html">qscope.types.roles</a></code></dt>
-<dd>Role definitions</dd>
-<dt><code><a title="qscope.types.interfaces" href="../types/interfaces.html">qscope.types.interfaces</a></code></dt>
-<dd>Interface implementations</dd>
-<dt><code><a title="qscope.system" href="../system/index.html">qscope.system</a></code></dt>
-<dd>System implementation</dd>
-</dl></div>
-<h3>Ancestors</h3>
-<ul class="hlist">
-<li><a title="qscope.device.magnet.magnet.Magnet" href="magnet/magnet.html#qscope.device.magnet.magnet.Magnet">Magnet</a></li>
-<li><a title="qscope.device.device.Device" href="device.html#qscope.device.device.Device">Device</a></li>
-</ul>
-<h3>Class variables</h3>
-<dl>
-<dt id="qscope.device.APS100.required_config"><code class="name">var <span class="ident">required_config</span></code></dt>
-<dd>
-<div class="desc"></div>
-</dd>
-<dt id="qscope.device.APS100.xlim"><code class="name">var <span class="ident">xlim</span> : float</code></dt>
-<dd>
-<div class="desc"></div>
-</dd>
-<dt id="qscope.device.APS100.xrate"><code class="name">var <span class="ident">xrate</span> : float</code></dt>
-<dd>
-<div class="desc"></div>
-</dd>
-<dt id="qscope.device.APS100.xy_port"><code class="name">var <span class="ident">xy_port</span> : str</code></dt>
-<dd>
-<div class="desc"></div>
-</dd>
-<dt id="qscope.device.APS100.ylim"><code class="name">var <span class="ident">ylim</span> : float</code></dt>
-<dd>
-<div class="desc"></div>
-</dd>
-<dt id="qscope.device.APS100.yrate"><code class="name">var <span class="ident">yrate</span> : float</code></dt>
-<dd>
-<div class="desc"></div>
-</dd>
-<dt id="qscope.device.APS100.z_port"><code class="name">var <span class="ident">z_port</span> : str</code></dt>
-<dd>
-<div class="desc"></div>
-</dd>
-<dt id="qscope.device.APS100.zlim"><code class="name">var <span class="ident">zlim</span> : float</code></dt>
-<dd>
-<div class="desc"></div>
-</dd>
-<dt id="qscope.device.APS100.zrate"><code class="name">var <span class="ident">zrate</span> : float</code></dt>
-<dd>
-<div class="desc"></div>
-</dd>
-</dl>
-<h3>Instance variables</h3>
-<dl>
-<dt id="qscope.device.APS100.bnorm"><code class="name">prop <span class="ident">bnorm</span></code></dt>
-<dd>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">@property
-def bnorm(self, read=True):
-    if read:
-        [_, _, bspher] = self.get_current(print_b_field=False)
-        self._bnorm = bspher[0]
-    return self._bnorm</code></pre>
-</details>
-<div class="desc"></div>
-</dd>
-<dt id="qscope.device.APS100.bx"><code class="name">prop <span class="ident">bx</span></code></dt>
-<dd>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">@property
-def bx(self):
-    self._bx = self.ix * self.ix2bx
-    return self._bx</code></pre>
-</details>
-<div class="desc"></div>
-</dd>
-<dt id="qscope.device.APS100.by"><code class="name">prop <span class="ident">by</span></code></dt>
-<dd>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">@property
-def by(self):
-    self._by = self.iy * self.iy2by
-    return self._by</code></pre>
-</details>
-<div class="desc"></div>
-</dd>
-<dt id="qscope.device.APS100.bz"><code class="name">prop <span class="ident">bz</span></code></dt>
-<dd>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">@property
-def bz(self):
-    self._bz = self.iz * self.iz2bz
-    return self._bz</code></pre>
-</details>
-<div class="desc"></div>
-</dd>
-<dt id="qscope.device.APS100.ix"><code class="name">prop <span class="ident">ix</span></code></dt>
-<dd>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">@property
-def ix(self):
-    # clear the read buffer
-    self.magnet_xy.read(1000)
-
-    self.write_command(self.magnet_xy, &#34;CHAN 1\n&#34;)
-    self.magnet_xy.readline()
-    self.write_command(self.magnet_xy, &#34;IMAG?\n&#34;)
-    self.magnet_xy.readline()
-    ix = self.magnet_xy.readline().decode()
-    self._ix = float(ix[:-3])
-    return self._ix</code></pre>
-</details>
-<div class="desc"></div>
-</dd>
-<dt id="qscope.device.APS100.ix2bx"><code class="name">prop <span class="ident">ix2bx</span></code></dt>
-<dd>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">@property
-def ix2bx(self):
-    return self._ix2bx</code></pre>
-</details>
-<div class="desc"></div>
-</dd>
-<dt id="qscope.device.APS100.iy"><code class="name">prop <span class="ident">iy</span></code></dt>
-<dd>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">@property
-def iy(self):
-    # clear the read buffer
-    self.magnet_xy.read(1000)
-
-    self.write_command(self.magnet_xy, &#34;CHAN 2\n&#34;)
-    self.magnet_xy.readline()
-    self.write_command(self.magnet_xy, &#34;IMAG?\n&#34;)
-    self.magnet_xy.readline()
-    iy = self.magnet_xy.readline().decode()
-    self._iy = float(iy[:-3])
-    return self._iy</code></pre>
-</details>
-<div class="desc"></div>
-</dd>
-<dt id="qscope.device.APS100.iy2by"><code class="name">prop <span class="ident">iy2by</span></code></dt>
-<dd>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">@property
-def iy2by(self):
-    return self._iy2by</code></pre>
-</details>
-<div class="desc"></div>
-</dd>
-<dt id="qscope.device.APS100.iz"><code class="name">prop <span class="ident">iz</span></code></dt>
-<dd>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">@property
-def iz(self):
-    # clear the read buffer
-    self.magnet_z.read(1000)
-    self.write_command(self.magnet_z, &#34;IMAG?\n&#34;)
-    self.magnet_z.readline()
-    iz = self.magnet_z.readline().decode()
-    self._iz = float(iz[:-3])
-    return self._iz</code></pre>
-</details>
-<div class="desc"></div>
-</dd>
-<dt id="qscope.device.APS100.iz2bz"><code class="name">prop <span class="ident">iz2bz</span></code></dt>
-<dd>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">@property
-def iz2bz(self):
-    return self._iz2bz</code></pre>
-</details>
-<div class="desc"></div>
-</dd>
-<dt id="qscope.device.APS100.phi"><code class="name">prop <span class="ident">phi</span></code></dt>
-<dd>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">@property
-def phi(self, read=True):
-    if read:
-        [_, _, bspher] = self.get_current(print_b_field=False)
-        self._phi = bspher[1]
-    return self._phi</code></pre>
-</details>
-<div class="desc"></div>
-</dd>
-<dt id="qscope.device.APS100.theta"><code class="name">prop <span class="ident">theta</span></code></dt>
-<dd>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">@property
-def theta(self, read=True):
-    if read:
-        [_, _, bspher] = self.get_current(print_b_field=False)
-        self._theta = bspher[1]
-    return self._theta</code></pre>
-</details>
-<div class="desc"></div>
-</dd>
-</dl>
-<h3>Methods</h3>
-<dl>
-<dt id="qscope.device.APS100.check_if_field_reached"><code class="name flex">
-<span>def <span class="ident">check_if_field_reached</span></span>(<span>self, ix, iy, iz)</span>
-</code></dt>
-<dd>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def check_if_field_reached(self, ix, iy, iz):
-    b_sweeping = True
-
-    # Get the difference between the current and the requested
-    # current as a percentage
-    x_diff = np.abs(ix - self.ix)
-    y_diff = np.abs(iy - self.iy)
-    z_diff = np.abs(iz - self.iz)
-
-    # Waiting for sweeping to finish
-    sweeping_time = np.max(
-        [x_diff / self._xrate, y_diff / self._yrate, z_diff / self._zrate]
-    )
-    print(
-        f&#34;Sweeping to new field value. Estimated sweeping time: {sweeping_time:0.2f} (s)&#34;
-    )
-    time.sleep(sweeping_time)
-
-    while b_sweeping:
-        curr, _, _ = self.get_current(print_b_field=False)
-
-        # Get the difference between the current and the requested
-        # current as a percentage
-        x_diff = np.abs(ix - self.ix) * 100
-        y_diff = np.abs(iy - self.iy) * 100
-        z_diff = np.abs(iz - self.iz) * 100
-
-        # if all of the differences are less than the tolerance then stop sweeping
-        if (
-            x_diff &lt; self.sweeping_tolerance
-            and y_diff &lt; self.sweeping_tolerance
-            and z_diff &lt; self.sweeping_tolerance
-        ):
-            print(&#34;Field has been reached&#34;)
-            b_sweeping = False
-        else:
-            time.sleep(0.5)
-            print(&#34;Field has not been reached yet&#34;)
-
-    aligned_freq_1 = np.abs(2870 - 28 * self._bnorm)
-    aligned_freq_2 = 2870 + 28 * self._bnorm
-    print(f&#34;B = {self._bnorm:.3f} (mT)&#34;)
-    print(f&#34;NV freq approx [{aligned_freq_1:.5}, {aligned_freq_2:.5}] (MHz)&#34;)</code></pre>
-</details>
-<div class="desc"></div>
-</dd>
-<dt id="qscope.device.APS100.close"><code class="name flex">
-<span>def <span class="ident">close</span></span>(<span>self)</span>
-</code></dt>
-<dd>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def close(self):
-    self.stop()
-    self.magnet_xy.close()
-    self.magnet_z.close()</code></pre>
-</details>
-<div class="desc"></div>
-</dd>
-<dt id="qscope.device.APS100.convert_cartesian_to_spherical"><code class="name flex">
-<span>def <span class="ident">convert_cartesian_to_spherical</span></span>(<span>self, x, y, z)</span>
-</code></dt>
-<dd>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def convert_cartesian_to_spherical(self, x, y, z):
-    # convert cartesian coordinates to spherical coordinates
-    r = np.round(np.sqrt(x**2 + y**2 + z**2), decimals=3)
-    theta = np.round(np.rad2deg(np.arccos(z / r)), decimals=3)
-    phi = np.round(np.rad2deg(np.arctan2(y, x)), decimals=3)
-    return r, theta, phi</code></pre>
-</details>
-<div class="desc"></div>
-</dd>
-<dt id="qscope.device.APS100.convert_spherical_to_cartesian"><code class="name flex">
-<span>def <span class="ident">convert_spherical_to_cartesian</span></span>(<span>self, r, theta, phi)</span>
-</code></dt>
-<dd>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def convert_spherical_to_cartesian(self, r, theta, phi):
-    # convert spherical coordinates to cartesian coordinates
-    x = r * np.sin(np.deg2rad(theta)) * np.cos(np.deg2rad(phi))
-    y = r * np.sin(np.deg2rad(theta)) * np.sin(np.deg2rad(phi))
-    z = r * np.cos(np.deg2rad(theta))
-    return x, y, z</code></pre>
-</details>
-<div class="desc"></div>
-</dd>
-<dt id="qscope.device.APS100.get_current"><code class="name flex">
-<span>def <span class="ident">get_current</span></span>(<span>self, print_b_field=True)</span>
-</code></dt>
-<dd>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def get_current(self, print_b_field=True):
-    # convert the current values into a bxyz
-    self._bx = self._ix * self.ix2bx
-    self._by = self._iy * self.iy2by
-    self._bz = self._iz * self.iz2bz
-    # convert the bxyz into bspherical
-    self._bnorm, self._theta, self._phi = self.convert_cartesian_to_spherical(
-        self._bx, self._by, self._bz
-    )
-
-    if print_b_field:
-        print(&#34;Current field values&#34;)
-        print(f&#34;B = {self._bnorm:.3f} (mT)&#34;)
-        print(f&#34;theta = {self._theta:.3f} (deg)&#34;)
-        print(f&#34;phi = {self._phi:.3f} (deg)&#34;)
-        aligned_freq_1 = np.abs(2870 - 28 * self._bnorm)
-        aligned_freq_2 = 2870 + 28 * self._bnorm
-        print(f&#34;Upper frequency = {aligned_freq_2:.5} (MHz))&#34;)
-        print(f&#34;Lower frequency = {aligned_freq_1:.5} (MHz))&#34;)
-
-    curr = [self._ix, self._iy, self._iz]
-    b = [self._bx, self._by, self._bz]
-    bspher = [self._bnorm, self._theta, self._phi]
-    return curr, b, bspher</code></pre>
-</details>
-<div class="desc"></div>
-</dd>
-<dt id="qscope.device.APS100.init_channels"><code class="name flex">
-<span>def <span class="ident">init_channels</span></span>(<span>self)</span>
-</code></dt>
-<dd>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def init_channels(self):
-    # initalise Bx channel
-    self.write_command(self.magnet_xy, &#34;REMOTE\n&#34;)
-    self.write_command(self.magnet_xy, &#34;CHAN 1\n&#34;)
-    self.write_command(self.magnet_xy, &#34;LLIM -&#34; + str(self.xlim) + &#34;\n&#34;)
-
-    self.write_command(self.magnet_xy, &#34;REMOTE\n&#34;)
-    self.write_command(self.magnet_xy, &#34;CHAN 2\n&#34;)
-    self.write_command(self.magnet_xy, &#34;LLIM -&#34; + str(self.ylim) + &#34;\n&#34;)
-
-    self.write_command(self.magnet_z, &#34;REMOTE\n&#34;)
-    self.write_command(self.magnet_z, &#34;LLIM -&#34; + str(self.zlim) + &#34;\n&#34;)</code></pre>
-</details>
-<div class="desc"></div>
-</dd>
-<dt id="qscope.device.APS100.open"><code class="name flex">
-<span>def <span class="ident">open</span></span>(<span>self)</span>
-</code></dt>
-<dd>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def open(self):
-    # connect to the x current source.
-    self.magnet_xy = serial.Serial(self.xy_port, 9600, timeout=1)
-    self.magnet_z = serial.Serial(self.z_port, 9600, timeout=1)
-    self.init_channels()</code></pre>
-</details>
-<div class="desc"></div>
-</dd>
-<dt id="qscope.device.APS100.set_b"><code class="name flex">
-<span>def <span class="ident">set_b</span></span>(<span>self, bnorm, theta, phi)</span>
-</code></dt>
-<dd>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def set_b(self, bnorm, theta, phi):
-    bx, by, bz = self.convert_spherical_to_cartesian(bnorm, theta, phi)
-    print(
-        f&#34;Setting B to {bnorm:.3f} (mT) at theta = {theta:.3f} (deg) and phi = {phi:.3f} (deg)&#34;
-    )
-
-    set_ix = bx / self.ix2bx
-    set_iy = by / self.iy2by
-    set_iz = bz / self.iz2bz
-
-    self.ix = set_ix
-    self.iy = set_iy
-    self.iz = set_iz
-
-    self.check_if_field_reached(set_ix, set_iy, set_iz)</code></pre>
-</details>
-<div class="desc"></div>
-</dd>
-<dt id="qscope.device.APS100.set_curr"><code class="name flex">
-<span>def <span class="ident">set_curr</span></span>(<span>self, ix, iy, iz)</span>
-</code></dt>
-<dd>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def set_curr(self, ix, iy, iz):
-    # check if the requested current vaules are within the limits
-    if abs(ix) &gt; self.xlim or abs(iy) &gt; self.ylim or abs(iz) &gt; self.zlim:
-        print(&#34;CURRENT VALUE IS TOO HIGH. DID NOT CHANGE VALUE&#34;)
-        return
-
-    self.ix = ix
-    self.iy = iy
-    self.iz = iz
-
-    self.check_if_field_reached(ix, iy, iz)</code></pre>
-</details>
-<div class="desc"></div>
-</dd>
-<dt id="qscope.device.APS100.stop"><code class="name flex">
-<span>def <span class="ident">stop</span></span>(<span>self)</span>
-</code></dt>
-<dd>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def stop(self):
-    self.write_command(self.magnet_xy, &#34;CHAN 1\n&#34;)
-    self.write_command(self.magnet_xy, &#34;SWEEP ZERO\n&#34;)
-
-    self.write_command(self.magnet_xy, &#34;CHAN 2\n&#34;)
-    self.write_command(self.magnet_xy, &#34;SWEEP ZERO\n&#34;)
-    self.write_command(self.magnet_z, &#34;SWEEP ZERO\n&#34;)</code></pre>
-</details>
-<div class="desc"></div>
-</dd>
-<dt id="qscope.device.APS100.write_command"><code class="name flex">
-<span>def <span class="ident">write_command</span></span>(<span>self, serial, command)</span>
-</code></dt>
-<dd>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def write_command(self, serial, command):
-    # this function is just to convert a string command into a byte command and
-    # write it to the serial port
-    serial.write(bytes(command, &#34;utf-8&#34;))
-    time.sleep(self.cmd_wait)</code></pre>
-</details>
-<div class="desc"></div>
-</dd>
-</dl>
-<h3>Inherited members</h3>
-<ul class="hlist">
-<li><code><b><a title="qscope.device.magnet.magnet.Magnet" href="magnet/magnet.html#qscope.device.magnet.magnet.Magnet">Magnet</a></b></code>:
-<ul class="hlist">
-<li><code><a title="qscope.device.magnet.magnet.Magnet.get_all_attrs" href="device.html#qscope.device.device.Device.get_all_attrs">get_all_attrs</a></code></li>
-<li><code><a title="qscope.device.magnet.magnet.Magnet.get_roles" href="device.html#qscope.device.device.Device.get_roles">get_roles</a></code></li>
-<li><code><a title="qscope.device.magnet.magnet.Magnet.has_role" href="device.html#qscope.device.device.Device.has_role">has_role</a></code></li>
-</ul>
-</li>
-</ul>
-</dd>
 <dt id="qscope.device.Device"><code class="flex name class">
 <span>class <span class="ident">Device</span></span>
 <span>(</span><span>**config_kwargs)</span>
@@ -1127,100 +143,100 @@ def theta(self, read=True):
 </summary>
 <pre><code class="python">class Device:
     &#34;&#34;&#34;Base class for all hardware devices in QScope.
-    
+
     The Device class provides the foundation for hardware abstraction in QScope.
     Specific device implementations inherit from this class and implement the
     methods required by their intended roles.
-    
+
     A device can fulfill multiple roles if it implements all required methods
     for those roles. The system validates role compatibility at runtime.
-    
+
     Device Architecture
     ------------------
     Devices are part of QScope&#39;s hardware abstraction layer:
-    
+
     1. Base Device Class (this class)
        - Provides configuration validation
        - Manages role assignments
        - Handles connection state
        - Defines required methods
-    
+
     2. Device Implementations
        - Inherit from Device
        - Implement protocol methods for specific roles
        - Provide hardware-specific functionality
        - Can implement multiple protocols
-    
+
     3. System Integration
        - Devices are added to systems with specific roles
        - System validates that devices implement required protocols
        - Devices are accessed through role interfaces
-    
+
     Required Methods
     --------------
     All device implementations must override these methods:
-    
+
     - open(): Connect to the hardware
     - close(): Disconnect from the hardware
     - is_connected(): Check connection status
-    
+
     In addition, devices must implement all methods required by the
     protocols of the roles they intend to fulfill.
-    
+
     Attributes
     ----------
     required_config : dict[str, Type]
         Required configuration parameters and their types
     _roles : Set[DeviceRole[Device]]
         Set of roles this device fulfills
-        
+
     Examples
     --------
     Creating a new device implementation:
-    
+
     ```python
     class MyRFSource(Device):
         required_config = {
             &#34;visa_addr&#34;: str,
             &#34;max_power&#34;: float
         }
-        
+
         def __init__(self, **config_kwargs):
             super().__init__(**config_kwargs)
             self.connected = False
-            
+
         def open(self) -&gt; tuple[bool, str]:
             # Implementation for connecting to hardware
             self.connected = True
             return True, &#34;Connected successfully&#34;
-            
+
         def close(self):
             # Implementation for disconnecting
             self.connected = False
-            
+
         def is_connected(self) -&gt; bool:
             return self.connected
-            
+
         # Implement methods required by RFSourceProtocol
         def set_freq(self, freq: float) -&gt; None:
             # Implementation
             pass
-            
+
         def set_power(self, power: float) -&gt; None:
             # Implementation
             pass
     ```
-    
+
     Using the device with a role:
-    
+
     ```python
     # Create device instance
     rf = MyRFSource(visa_addr=&#34;TCPIP0::192.168.1.1::INSTR&#34;, max_power=20.0)
-    
+
     # Add to system with role
     system.add_device_with_role(rf, PRIMARY_RF)
     ```
-    
+
     See Also
     --------
     qscope.types.protocols : Protocol definitions
@@ -2298,19 +1314,17 @@ system.add_device_with_role(rf, PRIMARY_RF)
     def set_freq(self, freq: float) -&gt; None:
         &#34;&#34;&#34;Set RF frequency in MHz.&#34;&#34;&#34;
         self._frequency = freq
-        
+
     def set_power(self, power: float) -&gt; None:
         &#34;&#34;&#34;Set RF power in dBm.&#34;&#34;&#34;
         self._power = power
-        
+
     def set_state(self, state: bool) -&gt; None:
         &#34;&#34;&#34;Set RF output state.&#34;&#34;&#34;
         self._output = state
-        
+
     def set_freq_list(
-        self, 
-        rf_freqs: Sequence[float], 
-        step_time: float = 0.1
+        self, rf_freqs: Sequence[float], step_time: float = 0.1
     ) -&gt; Sequence[float]:
         &#34;&#34;&#34;Configure frequency sweep.&#34;&#34;&#34;
         self._frequency = rf_freqs[0]  # Just set to first frequency
@@ -2599,9 +1613,7 @@ system.add_device_with_role(rf, PRIMARY_RF)
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def set_freq_list(
-    self, 
-    rf_freqs: Sequence[float], 
-    step_time: float = 0.1
+    self, rf_freqs: Sequence[float], step_time: float = 0.1
 ) -&gt; Sequence[float]:
     &#34;&#34;&#34;Configure frequency sweep.&#34;&#34;&#34;
     self._frequency = rf_freqs[0]  # Just set to first frequency
@@ -4762,9 +3774,9 @@ system.add_device_with_role(rf, PRIMARY_RF)
     def is_connected(self) -&gt; bool:
         hw_port_info = get_hw_ports()
         return (
-            self.port in hw_port_info
-            and self.port_info == hw_port_info[self.port] if hasattr(self, &#34;port_info&#34;) else False
-            and self.connected
+            self.port in hw_port_info and self.port_info == hw_port_info[self.port]
+            if hasattr(self, &#34;port_info&#34;)
+            else False and self.connected
         )
 
     def _get_version(self):  # untested
@@ -5223,9 +4235,9 @@ system.add_device_with_role(rf, PRIMARY_RF)
 <pre><code class="python">def is_connected(self) -&gt; bool:
     hw_port_info = get_hw_ports()
     return (
-        self.port in hw_port_info
-        and self.port_info == hw_port_info[self.port] if hasattr(self, &#34;port_info&#34;) else False
-        and self.connected
+        self.port in hw_port_info and self.port_info == hw_port_info[self.port]
+        if hasattr(self, &#34;port_info&#34;)
+        else False and self.connected
     )</code></pre>
 </details>
 <div class="desc"></div>
@@ -6074,43 +5086,6 @@ setTimeout(() => input.focus(), 100);
 </li>
 <li><h3><a href="#header-classes">Classes</a></h3>
 <ul>
-<li>
-<h4><code><a title="qscope.device.APS100" href="#qscope.device.APS100">APS100</a></code></h4>
-<ul class="">
-<li><code><a title="qscope.device.APS100.bnorm" href="#qscope.device.APS100.bnorm">bnorm</a></code></li>
-<li><code><a title="qscope.device.APS100.bx" href="#qscope.device.APS100.bx">bx</a></code></li>
-<li><code><a title="qscope.device.APS100.by" href="#qscope.device.APS100.by">by</a></code></li>
-<li><code><a title="qscope.device.APS100.bz" href="#qscope.device.APS100.bz">bz</a></code></li>
-<li><code><a title="qscope.device.APS100.check_if_field_reached" href="#qscope.device.APS100.check_if_field_reached">check_if_field_reached</a></code></li>
-<li><code><a title="qscope.device.APS100.close" href="#qscope.device.APS100.close">close</a></code></li>
-<li><code><a title="qscope.device.APS100.convert_cartesian_to_spherical" href="#qscope.device.APS100.convert_cartesian_to_spherical">convert_cartesian_to_spherical</a></code></li>
-<li><code><a title="qscope.device.APS100.convert_spherical_to_cartesian" href="#qscope.device.APS100.convert_spherical_to_cartesian">convert_spherical_to_cartesian</a></code></li>
-<li><code><a title="qscope.device.APS100.get_current" href="#qscope.device.APS100.get_current">get_current</a></code></li>
-<li><code><a title="qscope.device.APS100.init_channels" href="#qscope.device.APS100.init_channels">init_channels</a></code></li>
-<li><code><a title="qscope.device.APS100.ix" href="#qscope.device.APS100.ix">ix</a></code></li>
-<li><code><a title="qscope.device.APS100.ix2bx" href="#qscope.device.APS100.ix2bx">ix2bx</a></code></li>
-<li><code><a title="qscope.device.APS100.iy" href="#qscope.device.APS100.iy">iy</a></code></li>
-<li><code><a title="qscope.device.APS100.iy2by" href="#qscope.device.APS100.iy2by">iy2by</a></code></li>
-<li><code><a title="qscope.device.APS100.iz" href="#qscope.device.APS100.iz">iz</a></code></li>
-<li><code><a title="qscope.device.APS100.iz2bz" href="#qscope.device.APS100.iz2bz">iz2bz</a></code></li>
-<li><code><a title="qscope.device.APS100.open" href="#qscope.device.APS100.open">open</a></code></li>
-<li><code><a title="qscope.device.APS100.phi" href="#qscope.device.APS100.phi">phi</a></code></li>
-<li><code><a title="qscope.device.APS100.required_config" href="#qscope.device.APS100.required_config">required_config</a></code></li>
-<li><code><a title="qscope.device.APS100.set_b" href="#qscope.device.APS100.set_b">set_b</a></code></li>
-<li><code><a title="qscope.device.APS100.set_curr" href="#qscope.device.APS100.set_curr">set_curr</a></code></li>
-<li><code><a title="qscope.device.APS100.stop" href="#qscope.device.APS100.stop">stop</a></code></li>
-<li><code><a title="qscope.device.APS100.theta" href="#qscope.device.APS100.theta">theta</a></code></li>
-<li><code><a title="qscope.device.APS100.write_command" href="#qscope.device.APS100.write_command">write_command</a></code></li>
-<li><code><a title="qscope.device.APS100.xlim" href="#qscope.device.APS100.xlim">xlim</a></code></li>
-<li><code><a title="qscope.device.APS100.xrate" href="#qscope.device.APS100.xrate">xrate</a></code></li>
-<li><code><a title="qscope.device.APS100.xy_port" href="#qscope.device.APS100.xy_port">xy_port</a></code></li>
-<li><code><a title="qscope.device.APS100.ylim" href="#qscope.device.APS100.ylim">ylim</a></code></li>
-<li><code><a title="qscope.device.APS100.yrate" href="#qscope.device.APS100.yrate">yrate</a></code></li>
-<li><code><a title="qscope.device.APS100.z_port" href="#qscope.device.APS100.z_port">z_port</a></code></li>
-<li><code><a title="qscope.device.APS100.zlim" href="#qscope.device.APS100.zlim">zlim</a></code></li>
-<li><code><a title="qscope.device.APS100.zrate" href="#qscope.device.APS100.zrate">zrate</a></code></li>
-</ul>
-</li>
 <li>
 <h4><code><a title="qscope.device.Device" href="#qscope.device.Device">Device</a></code></h4>
 <ul class="two-column">

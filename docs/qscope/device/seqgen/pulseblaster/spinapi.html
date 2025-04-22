@@ -1,0 +1,706 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.6">
+<title>qscope.device.seqgen.pulseblaster.spinapi API documentation</title>
+<meta name="description" content="">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}#lunr-search{width:100%;font-size:1em;padding:6px 9px 5px 9px;border:1px solid silver}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes: true } });</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML" integrity="sha256-kZafAc6mZvK3W3v1pHOcUix30OHQN6pU/NO2oFkqZVw=" crossorigin></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>qscope.device.seqgen.pulseblaster.spinapi</code></h1>
+</header>
+<section id="section-intro">
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="qscope.device.seqgen.pulseblaster.spinapi.pb_close"><code class="name flex">
+<span>def <span class="ident">pb_close</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def pb_close():
+    _checkloaded()
+    _spinapi.pb_close.restype = ctypes.c_int
+    result = _spinapi.pb_close()
+    if result != 0:
+        raise RuntimeError(pb_get_error())
+    return result</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.seqgen.pulseblaster.spinapi.pb_core_clock"><code class="name flex">
+<span>def <span class="ident">pb_core_clock</span></span>(<span>clock_freq)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def pb_core_clock(clock_freq):
+    _checkloaded()
+    _spinapi.pb_core_clock.restype = ctypes.c_void_p
+    _spinapi.pb_core_clock(
+        ctypes.c_double(clock_freq)
+    )  # returns void, so ignore return value.</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.seqgen.pulseblaster.spinapi.pb_count_boards"><code class="name flex">
+<span>def <span class="ident">pb_count_boards</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def pb_count_boards():
+    _checkloaded()
+    _spinapi.pb_count_boards.restype = ctypes.c_int
+    result = _spinapi.pb_count_boards()
+    if result == -1:
+        raise RuntimeError(pb_get_error())
+    return result</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.seqgen.pulseblaster.spinapi.pb_get_error"><code class="name flex">
+<span>def <span class="ident">pb_get_error</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def pb_get_error():
+    _checkloaded()
+    _spinapi.pb_get_error.restype = ctypes.c_char_p
+    return _spinapi.pb_get_error()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.seqgen.pulseblaster.spinapi.pb_get_firmware_id"><code class="name flex">
+<span>def <span class="ident">pb_get_firmware_id</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def pb_get_firmware_id():
+    _checkloaded()
+    _spinapi.pb_get_firmware_id.restype = ctypes.c_uint
+    return _spinapi.pb_get_firmware_id()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.seqgen.pulseblaster.spinapi.pb_get_version"><code class="name flex">
+<span>def <span class="ident">pb_get_version</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def pb_get_version():
+    _checkloaded()
+    _spinapi.pb_get_version.restype = ctypes.c_char_p
+    return _spinapi.pb_get_version()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.seqgen.pulseblaster.spinapi.pb_init"><code class="name flex">
+<span>def <span class="ident">pb_init</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def pb_init():
+    _checkloaded()
+    _spinapi.pb_init.restype = ctypes.c_int
+    result = _spinapi.pb_init()
+    if result != 0:
+        raise RuntimeError(pb_get_error())
+    return result</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.seqgen.pulseblaster.spinapi.pb_inst_dds2"><code class="name flex">
+<span>def <span class="ident">pb_inst_dds2</span></span>(<span>freq0,<br>phase0,<br>amp0,<br>dds_en0,<br>phase_reset0,<br>freq1,<br>phase1,<br>amp1,<br>dds_en1,<br>phase_reset1,<br>flags,<br>inst,<br>inst_data,<br>length)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def pb_inst_dds2(
+    freq0,
+    phase0,
+    amp0,
+    dds_en0,
+    phase_reset0,
+    freq1,
+    phase1,
+    amp1,
+    dds_en1,
+    phase_reset1,
+    flags,
+    inst,
+    inst_data,
+    length,
+):
+    &#34;&#34;&#34;Gives a full instruction to the pulseblaster, with DDS included. The flags argument can be
+    either an int representing the bitfield for the flag states, or a string of ones and zeros.
+    Note that if passing in a string for the flag states, the first character represents flag 0.
+    Eg.
+    If it is a string:
+         flag: 0          12
+              &#39;101100011111&#39;
+
+    If it is a binary number (or integer:
+         flag:12          0
+             0b111110001101
+             3981    &lt;---- integer representation
+    &#34;&#34;&#34;
+    _checkloaded()
+    _spinapi.pb_inst_dds2.restype = ctypes.c_int
+    if isinstance(flags, str) or isinstance(flags, bytes):
+        flags = int(flags[::-1], 2)
+    result = _spinapi.pb_inst_dds2(
+        ctypes.c_int(freq0),
+        ctypes.c_int(phase0),
+        ctypes.c_int(amp0),
+        ctypes.c_int(dds_en0),
+        ctypes.c_int(phase_reset0),
+        ctypes.c_int(freq1),
+        ctypes.c_int(phase1),
+        ctypes.c_int(amp1),
+        ctypes.c_int(dds_en1),
+        ctypes.c_int(phase_reset1),
+        ctypes.c_int(flags),
+        ctypes.c_int(inst),
+        ctypes.c_int(inst_data),
+        ctypes.c_double(length),
+    )
+    if result &lt; 0:
+        raise RuntimeError(pb_get_error())
+    return result</code></pre>
+</details>
+<div class="desc"><p>Gives a full instruction to the pulseblaster, with DDS included. The flags argument can be
+either an int representing the bitfield for the flag states, or a string of ones and zeros.
+Note that if passing in a string for the flag states, the first character represents flag 0.
+Eg.
+If it is a string:
+flag: 0
+12
+'101100011111'</p>
+<p>If it is a binary number (or integer:
+flag:12
+0
+0b111110001101
+3981
+&lt;---- integer representation</p></div>
+</dd>
+<dt id="qscope.device.seqgen.pulseblaster.spinapi.pb_inst_pbonly"><code class="name flex">
+<span>def <span class="ident">pb_inst_pbonly</span></span>(<span>flags, inst, inst_data, length) ‑> int</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def pb_inst_pbonly(
+    flags, inst, inst_data, length
+) -&gt; int:  # is the ret type int correct?
+    _checkloaded()
+    _spinapi.pb_inst_pbonly.restype = ctypes.c_int
+    if isinstance(flags, str) or isinstance(flags, bytes):
+        flags = int(flags[::-1], 2)
+    result = _spinapi.pb_inst_pbonly(
+        ctypes.c_uint32(flags),
+        ctypes.c_int(inst),
+        ctypes.c_int(inst_data),
+        ctypes.c_double(length),
+    )
+    if result &lt; 0:
+        raise RuntimeError(pb_get_error())
+    return result</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.seqgen.pulseblaster.spinapi.pb_read_status"><code class="name flex">
+<span>def <span class="ident">pb_read_status</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def pb_read_status():
+    _checkloaded()
+    _spinapi.pb_read_status.restype = ctypes.c_uint32
+    status = _spinapi.pb_read_status()
+
+    # convert to reversed binary string
+    # convert to binary string, and remove 0b
+    status = bin(status)[2:]
+    # reverse string
+    status = status[::-1]
+    # pad to make sure we have enough bits!
+    status = status + &#34;0000&#34;
+
+    return {
+        &#34;stopped&#34;: bool(int(status[0])),
+        &#34;reset&#34;: bool(int(status[1])),
+        &#34;running&#34;: bool(int(status[2])),
+        &#34;waiting&#34;: bool(int(status[3])),
+    }</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.seqgen.pulseblaster.spinapi.pb_reset"><code class="name flex">
+<span>def <span class="ident">pb_reset</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def pb_reset():
+    _checkloaded()
+    _spinapi.pb_reset.restype = ctypes.c_int
+    result = _spinapi.pb_reset()
+    if result != 0:
+        raise RuntimeError(pb_get_error())
+    return result</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.seqgen.pulseblaster.spinapi.pb_select_board"><code class="name flex">
+<span>def <span class="ident">pb_select_board</span></span>(<span>board_num)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def pb_select_board(board_num):
+    _checkloaded()
+    _spinapi.pb_select_board.restype = ctypes.c_int
+    result = _spinapi.pb_select_board(ctypes.c_int(board_num))
+    if result &lt; 0:
+        raise RuntimeError(pb_get_error())
+    return result</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.seqgen.pulseblaster.spinapi.pb_select_dds"><code class="name flex">
+<span>def <span class="ident">pb_select_dds</span></span>(<span>dds)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def pb_select_dds(dds):
+    _checkloaded()
+    _spinapi.pb_select_dds.restype = ctypes.c_int
+    result = _spinapi.pb_select_dds(ctypes.c_int(dds))
+    if result &lt; 0:
+        raise RuntimeError(pb_get_error())
+    return result</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.seqgen.pulseblaster.spinapi.pb_set_amp"><code class="name flex">
+<span>def <span class="ident">pb_set_amp</span></span>(<span>amp, register)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def pb_set_amp(amp, register):
+    _checkloaded()
+    _spinapi.pb_set_amp.restype = ctypes.c_int
+    result = _spinapi.pb_set_amp(ctypes.c_float(amp), ctypes.c_int(register))
+    if result &lt; 0:
+        raise RuntimeError(pb_get_error())
+    return result</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.seqgen.pulseblaster.spinapi.pb_set_debug"><code class="name flex">
+<span>def <span class="ident">pb_set_debug</span></span>(<span>debug)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def pb_set_debug(debug):
+    _checkloaded()
+    _spinapi.pb_set_debug.restype = ctypes.c_int
+    return _spinapi.pb_set_debug(ctypes.c_int(debug))</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.seqgen.pulseblaster.spinapi.pb_set_freq"><code class="name flex">
+<span>def <span class="ident">pb_set_freq</span></span>(<span>freq)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def pb_set_freq(freq):
+    _checkloaded()
+    _spinapi.pb_set_freq.restype = ctypes.c_int
+    result = _spinapi.pb_set_freq(ctypes.c_double(freq))
+    if result &lt; 0:
+        raise RuntimeError(pb_get_error())
+    return result</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.seqgen.pulseblaster.spinapi.pb_set_phase"><code class="name flex">
+<span>def <span class="ident">pb_set_phase</span></span>(<span>phase)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def pb_set_phase(phase):
+    _spinapi.pb_set_phase.restype = ctypes.c_int
+    result = _spinapi.pb_set_phase(ctypes.c_double(phase))
+    if result &lt; 0:
+        raise RuntimeError(pb_get_error())
+    return result</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.seqgen.pulseblaster.spinapi.pb_start"><code class="name flex">
+<span>def <span class="ident">pb_start</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def pb_start():
+    _checkloaded()
+    _spinapi.pb_start.restype = ctypes.c_int
+    result = _spinapi.pb_start()
+    if result != 0:
+        raise RuntimeError(pb_get_error())
+    return result</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.seqgen.pulseblaster.spinapi.pb_start_programming"><code class="name flex">
+<span>def <span class="ident">pb_start_programming</span></span>(<span>device)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def pb_start_programming(device):
+    _checkloaded()
+    _spinapi.pb_start_programming.restype = ctypes.c_int
+    result = _spinapi.pb_start_programming(ctypes.c_int(device))
+    if result != 0:
+        raise RuntimeError(pb_get_error())
+    return result</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.seqgen.pulseblaster.spinapi.pb_status_message"><code class="name flex">
+<span>def <span class="ident">pb_status_message</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def pb_status_message():
+    _checkloaded()
+    _spinapi.pb_status_message.restype = ctypes.c_char_p
+    message = _spinapi.pb_status_message()
+    return message</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.seqgen.pulseblaster.spinapi.pb_stop"><code class="name flex">
+<span>def <span class="ident">pb_stop</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def pb_stop():
+    _checkloaded()
+    _spinapi.pb_stop.restype = ctypes.c_int
+    result = _spinapi.pb_stop()
+    if result != 0:
+        raise RuntimeError(pb_get_error())
+    return result</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.seqgen.pulseblaster.spinapi.pb_stop_programming"><code class="name flex">
+<span>def <span class="ident">pb_stop_programming</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def pb_stop_programming():
+    _checkloaded()
+    _spinapi.pb_stop_programming.restype = ctypes.c_int
+    result = _spinapi.pb_stop_programming()
+    if result != 0:
+        raise RuntimeError(pb_get_error())
+    return result</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.seqgen.pulseblaster.spinapi.pb_write_default_flag"><code class="name flex">
+<span>def <span class="ident">pb_write_default_flag</span></span>(<span>flags)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def pb_write_default_flag(flags):
+    _checkloaded()
+    _spinapi.pb_write_register.restype = ctypes.c_int
+    if isinstance(flags, str) or isinstance(flags, bytes):
+        flags = int(flags[::-1], 2)
+    result = _spinapi.pb_write_register(
+        ctypes.c_int(0x40000 + 0x08), ctypes.c_int(flags)
+    )
+    if result != 0:
+        raise RuntimeError(pb_get_error())
+    return result</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.seqgen.pulseblaster.spinapi.program_amp_regs"><code class="name flex">
+<span>def <span class="ident">program_amp_regs</span></span>(<span>*amps)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def program_amp_regs(*amps):
+    for i, amp in enumerate(amps):
+        pb_set_amp(amp, i)
+    if len(amps) == 1:
+        return 0
+    else:
+        return tuple(range(len(amps)))</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.seqgen.pulseblaster.spinapi.program_freq_regs"><code class="name flex">
+<span>def <span class="ident">program_freq_regs</span></span>(<span>*freqs, **kwargs)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def program_freq_regs(*freqs, **kwargs):
+    call_stop_programming = kwargs.pop(&#34;call_stop_programming&#34;, True)
+    pb_start_programming(FREQ_REGS)
+    for freq in freqs:
+        pb_set_freq(freq)
+    if call_stop_programming:
+        pb_stop_programming()
+    if len(freqs) == 1:
+        return 0
+    else:
+        return tuple(range(len(freqs)))</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.seqgen.pulseblaster.spinapi.program_phase_regs"><code class="name flex">
+<span>def <span class="ident">program_phase_regs</span></span>(<span>*phases, **kwargs)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def program_phase_regs(*phases, **kwargs):
+    call_stop_programming = kwargs.pop(&#34;call_stop_programming&#34;, True)
+    pb_start_programming(PHASE_REGS)
+    for phase in phases:
+        pb_set_phase(phase)
+    if call_stop_programming:
+        pb_stop_programming()
+    if len(phases) == 1:
+        return 0
+    else:
+        return tuple(range(len(phases)))</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.seqgen.pulseblaster.spinapi.spinpts_get_version"><code class="name flex">
+<span>def <span class="ident">spinpts_get_version</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def spinpts_get_version():
+    _checkloaded()
+    _spinapi.spinpts_get_version.restype = ctypes.c_char_p
+    return _spinapi.spinpts_get_version()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<form>
+<input id="lunr-search" name="q" placeholder="🔎 Search ..." aria-label="Search"
+disabled minlength="2">
+</form>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.css" integrity="sha512-b+T2i3P45i1LZM7I00Ci5QquB9szqaxu+uuk5TUSGjZQ4w4n+qujQiIuvTv2BxE7WCGQCifNMksyKILDiHzsOg==" crossorigin>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.js" integrity="sha512-2B9/byNV1KKRm5nQ2RLViPFD6U4dUjDGwuW1GU+ImJh8YinPU9Zlq1GzdTMO+G2ROrB5o1qasJBy1ttYz0wCug==" crossorigin></script>
+<style>
+.modal-dialog iframe {
+width: 100vw;
+height: calc(100vh - 80px);
+}
+@media screen and (min-width: 700px) {
+.modal-dialog iframe {
+width: 70vw;
+height: 80vh;
+}
+}
+.modal-dialog .tingle-modal-box {width: auto;}
+.modal-dialog .tingle-modal-box__content {padding: 0;}
+</style>
+<script>
+const input = document.getElementById('lunr-search');
+input.disabled = false;
+input.form.addEventListener('submit', (ev) => {
+ev.preventDefault();
+const url = new URL(window.location);
+url.searchParams.set('q', input.value);
+history.replaceState({}, null, url.toString());
+search(input.value);
+});
+const query = new URL(window.location).searchParams.get('q');
+if (query)
+search(query);
+function search(query) {
+const url = '../../../../doc-search.html#' + encodeURIComponent(query);
+new tingle.modal({
+cssClass: ['modal-dialog'],
+onClose: () => {
+const url = new URL(window.location);
+url.searchParams.delete('q');
+history.replaceState({}, null, url.toString());
+setTimeout(() => input.focus(), 100);
+}
+}).setContent('<iframe src="' + url + '"></iframe>').open();
+}
+</script>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="qscope.device.seqgen.pulseblaster" href="index.html">qscope.device.seqgen.pulseblaster</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="qscope.device.seqgen.pulseblaster.spinapi.pb_close" href="#qscope.device.seqgen.pulseblaster.spinapi.pb_close">pb_close</a></code></li>
+<li><code><a title="qscope.device.seqgen.pulseblaster.spinapi.pb_core_clock" href="#qscope.device.seqgen.pulseblaster.spinapi.pb_core_clock">pb_core_clock</a></code></li>
+<li><code><a title="qscope.device.seqgen.pulseblaster.spinapi.pb_count_boards" href="#qscope.device.seqgen.pulseblaster.spinapi.pb_count_boards">pb_count_boards</a></code></li>
+<li><code><a title="qscope.device.seqgen.pulseblaster.spinapi.pb_get_error" href="#qscope.device.seqgen.pulseblaster.spinapi.pb_get_error">pb_get_error</a></code></li>
+<li><code><a title="qscope.device.seqgen.pulseblaster.spinapi.pb_get_firmware_id" href="#qscope.device.seqgen.pulseblaster.spinapi.pb_get_firmware_id">pb_get_firmware_id</a></code></li>
+<li><code><a title="qscope.device.seqgen.pulseblaster.spinapi.pb_get_version" href="#qscope.device.seqgen.pulseblaster.spinapi.pb_get_version">pb_get_version</a></code></li>
+<li><code><a title="qscope.device.seqgen.pulseblaster.spinapi.pb_init" href="#qscope.device.seqgen.pulseblaster.spinapi.pb_init">pb_init</a></code></li>
+<li><code><a title="qscope.device.seqgen.pulseblaster.spinapi.pb_inst_dds2" href="#qscope.device.seqgen.pulseblaster.spinapi.pb_inst_dds2">pb_inst_dds2</a></code></li>
+<li><code><a title="qscope.device.seqgen.pulseblaster.spinapi.pb_inst_pbonly" href="#qscope.device.seqgen.pulseblaster.spinapi.pb_inst_pbonly">pb_inst_pbonly</a></code></li>
+<li><code><a title="qscope.device.seqgen.pulseblaster.spinapi.pb_read_status" href="#qscope.device.seqgen.pulseblaster.spinapi.pb_read_status">pb_read_status</a></code></li>
+<li><code><a title="qscope.device.seqgen.pulseblaster.spinapi.pb_reset" href="#qscope.device.seqgen.pulseblaster.spinapi.pb_reset">pb_reset</a></code></li>
+<li><code><a title="qscope.device.seqgen.pulseblaster.spinapi.pb_select_board" href="#qscope.device.seqgen.pulseblaster.spinapi.pb_select_board">pb_select_board</a></code></li>
+<li><code><a title="qscope.device.seqgen.pulseblaster.spinapi.pb_select_dds" href="#qscope.device.seqgen.pulseblaster.spinapi.pb_select_dds">pb_select_dds</a></code></li>
+<li><code><a title="qscope.device.seqgen.pulseblaster.spinapi.pb_set_amp" href="#qscope.device.seqgen.pulseblaster.spinapi.pb_set_amp">pb_set_amp</a></code></li>
+<li><code><a title="qscope.device.seqgen.pulseblaster.spinapi.pb_set_debug" href="#qscope.device.seqgen.pulseblaster.spinapi.pb_set_debug">pb_set_debug</a></code></li>
+<li><code><a title="qscope.device.seqgen.pulseblaster.spinapi.pb_set_freq" href="#qscope.device.seqgen.pulseblaster.spinapi.pb_set_freq">pb_set_freq</a></code></li>
+<li><code><a title="qscope.device.seqgen.pulseblaster.spinapi.pb_set_phase" href="#qscope.device.seqgen.pulseblaster.spinapi.pb_set_phase">pb_set_phase</a></code></li>
+<li><code><a title="qscope.device.seqgen.pulseblaster.spinapi.pb_start" href="#qscope.device.seqgen.pulseblaster.spinapi.pb_start">pb_start</a></code></li>
+<li><code><a title="qscope.device.seqgen.pulseblaster.spinapi.pb_start_programming" href="#qscope.device.seqgen.pulseblaster.spinapi.pb_start_programming">pb_start_programming</a></code></li>
+<li><code><a title="qscope.device.seqgen.pulseblaster.spinapi.pb_status_message" href="#qscope.device.seqgen.pulseblaster.spinapi.pb_status_message">pb_status_message</a></code></li>
+<li><code><a title="qscope.device.seqgen.pulseblaster.spinapi.pb_stop" href="#qscope.device.seqgen.pulseblaster.spinapi.pb_stop">pb_stop</a></code></li>
+<li><code><a title="qscope.device.seqgen.pulseblaster.spinapi.pb_stop_programming" href="#qscope.device.seqgen.pulseblaster.spinapi.pb_stop_programming">pb_stop_programming</a></code></li>
+<li><code><a title="qscope.device.seqgen.pulseblaster.spinapi.pb_write_default_flag" href="#qscope.device.seqgen.pulseblaster.spinapi.pb_write_default_flag">pb_write_default_flag</a></code></li>
+<li><code><a title="qscope.device.seqgen.pulseblaster.spinapi.program_amp_regs" href="#qscope.device.seqgen.pulseblaster.spinapi.program_amp_regs">program_amp_regs</a></code></li>
+<li><code><a title="qscope.device.seqgen.pulseblaster.spinapi.program_freq_regs" href="#qscope.device.seqgen.pulseblaster.spinapi.program_freq_regs">program_freq_regs</a></code></li>
+<li><code><a title="qscope.device.seqgen.pulseblaster.spinapi.program_phase_regs" href="#qscope.device.seqgen.pulseblaster.spinapi.program_phase_regs">program_phase_regs</a></code></li>
+<li><code><a title="qscope.device.seqgen.pulseblaster.spinapi.spinpts_get_version" href="#qscope.device.seqgen.pulseblaster.spinapi.spinpts_get_version">spinpts_get_version</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
+</footer>
+</body>
+</html>

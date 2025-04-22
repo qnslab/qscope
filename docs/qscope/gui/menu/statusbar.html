@@ -111,6 +111,7 @@ el.replaceWith(d);
         self.addPermanentWidget(self.hw_status)
         self.addPermanentWidget(self.hw_led)
 
+    # TODO change to bool argument
     def set_server_status(self, status: str):
         &#34;&#34;&#34;Update the server connection status display.
 
@@ -123,6 +124,7 @@ el.replaceWith(d);
         icon_path = self.LED_G_PATH if status == &#34;Connected&#34; else self.LED_R_PATH
         self.server_led.setPixmap(QIcon(icon_path).pixmap(20, 20))
 
+    # TODO change to bool argument
     def set_hw_status(self, status: str):
         &#34;&#34;&#34;Update the hardware initialization status display.
 

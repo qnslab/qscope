@@ -60,9 +60,32 @@ el.replaceWith(d);
     def __init__(self):
         pass
 
-    def set_data(self, xdata, ydata):
+    def set_data(self, xdata, ydata_sig, ydata_ref):
         self.xdata = xdata
-        self.ydata = ydata
+        self.ydata_signal = ydata_sig
+        self.ydata_ref = ydata_ref
+
+    def set_normalization(self, normalisation):
+        self.normalisation = normalisation
+        if normalisation == &#34;None&#34;:
+            self.ydata = self.ydata_signal
+        elif normalisation == &#34;sig - ref&#34;:
+            self.ydata = self.ydata_signal - self.ydata_ref
+        elif normalisation == &#34;sig / ref&#34;:
+            self.ydata = self.ydata_signal / self.ydata_ref
+        elif normalisation == &#34;ref - sig&#34;:
+            self.ydata = self.ydata_ref - self.ydata_signal
+        elif normalisation == &#34;ref / sig&#34;:
+            self.ydata = self.ydata_ref / self.ydata_signal
+        elif normalisation == &#34;norm sig / ref&#34;:
+            self.ydata = 100 * ((self.ydata_signal / self.ydata_ref) - 1)
+        elif normalisation == &#34;norm ref / sig&#34;:
+            self.ydata = 100 * ((self.ydata_ref / self.ydata_signal) - 1)
+        elif normalisation == &#34;intensity&#34;:
+            self.ydata = (self.ydata_signal - self.ydata_ref)/ (self.ydata_signal + self.ydata_ref)
+        else:
+            self.ydata = self.ydata_signal
+            self.normalisation = &#34;None&#34;
 
     def fit(self):
         if not hasattr(self, &#34;p0&#34;):
@@ -74,7 +97,7 @@ el.replaceWith(d);
         # get the fit error
         self.fit_error = np.sqrt(np.diag(pcov))
 
-        logger.info(f&#34;Fit initial guess: {self.p0}&#34;)
+        logger.debug(f&#34;Fit initial guess: {self.p0}&#34;)
 
         return
 
@@ -109,7 +132,7 @@ el.replaceWith(d);
     def print_initial_guess(self):
         print(self.get_initial_guess_txt())
 
-    def get_fit_results_txt(self):
+    def get_fit_results_txt(self, *args, **kwargs):
         results = &#34;Fit results:\n&#34;
         for name, val, error, unit in zip(
             self.param_names, self.fit_results, self.fit_error, self.param_units
@@ -184,7 +207,7 @@ el.replaceWith(d);
     # get the fit error
     self.fit_error = np.sqrt(np.diag(pcov))
 
-    logger.info(f&#34;Fit initial guess: {self.p0}&#34;)
+    logger.debug(f&#34;Fit initial guess: {self.p0}&#34;)
 
     return</code></pre>
 </details>
@@ -220,14 +243,14 @@ el.replaceWith(d);
 <div class="desc"></div>
 </dd>
 <dt id="qscope.fitting.fit_model.FitModel.get_fit_results_txt"><code class="name flex">
-<span>def <span class="ident">get_fit_results_txt</span></span>(<span>self)</span>
+<span>def <span class="ident">get_fit_results_txt</span></span>(<span>self, *args, **kwargs)</span>
 </code></dt>
 <dd>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def get_fit_results_txt(self):
+<pre><code class="python">def get_fit_results_txt(self, *args, **kwargs):
     results = &#34;Fit results:\n&#34;
     for name, val, error, unit in zip(
         self.param_names, self.fit_results, self.fit_error, self.param_units
@@ -332,16 +355,49 @@ el.replaceWith(d);
 <div class="desc"></div>
 </dd>
 <dt id="qscope.fitting.fit_model.FitModel.set_data"><code class="name flex">
-<span>def <span class="ident">set_data</span></span>(<span>self, xdata, ydata)</span>
+<span>def <span class="ident">set_data</span></span>(<span>self, xdata, ydata_sig, ydata_ref)</span>
 </code></dt>
 <dd>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def set_data(self, xdata, ydata):
+<pre><code class="python">def set_data(self, xdata, ydata_sig, ydata_ref):
     self.xdata = xdata
-    self.ydata = ydata</code></pre>
+    self.ydata_signal = ydata_sig
+    self.ydata_ref = ydata_ref</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.fitting.fit_model.FitModel.set_normalization"><code class="name flex">
+<span>def <span class="ident">set_normalization</span></span>(<span>self, normalisation)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_normalization(self, normalisation):
+    self.normalisation = normalisation
+    if normalisation == &#34;None&#34;:
+        self.ydata = self.ydata_signal
+    elif normalisation == &#34;sig - ref&#34;:
+        self.ydata = self.ydata_signal - self.ydata_ref
+    elif normalisation == &#34;sig / ref&#34;:
+        self.ydata = self.ydata_signal / self.ydata_ref
+    elif normalisation == &#34;ref - sig&#34;:
+        self.ydata = self.ydata_ref - self.ydata_signal
+    elif normalisation == &#34;ref / sig&#34;:
+        self.ydata = self.ydata_ref / self.ydata_signal
+    elif normalisation == &#34;norm sig / ref&#34;:
+        self.ydata = 100 * ((self.ydata_signal / self.ydata_ref) - 1)
+    elif normalisation == &#34;norm ref / sig&#34;:
+        self.ydata = 100 * ((self.ydata_ref / self.ydata_signal) - 1)
+    elif normalisation == &#34;intensity&#34;:
+        self.ydata = (self.ydata_signal - self.ydata_ref)/ (self.ydata_signal + self.ydata_ref)
+    else:
+        self.ydata = self.ydata_signal
+        self.normalisation = &#34;None&#34;</code></pre>
 </details>
 <div class="desc"></div>
 </dd>
@@ -423,6 +479,7 @@ setTimeout(() => input.focus(), 100);
 <li><code><a title="qscope.fitting.fit_model.FitModel.print_initial_guess" href="#qscope.fitting.fit_model.FitModel.print_initial_guess">print_initial_guess</a></code></li>
 <li><code><a title="qscope.fitting.fit_model.FitModel.print_results" href="#qscope.fitting.fit_model.FitModel.print_results">print_results</a></code></li>
 <li><code><a title="qscope.fitting.fit_model.FitModel.set_data" href="#qscope.fitting.fit_model.FitModel.set_data">set_data</a></code></li>
+<li><code><a title="qscope.fitting.fit_model.FitModel.set_normalization" href="#qscope.fitting.fit_model.FitModel.set_normalization">set_normalization</a></code></li>
 </ul>
 </li>
 </ul>

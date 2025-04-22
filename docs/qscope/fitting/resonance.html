@@ -530,9 +530,9 @@ el.replaceWith(d);
 
         return self.p0
 
-    def get_fit_results_txt(self, total_counts):
+    def get_fit_results_txt(self, total_counts, ith_loop=1):
         results = super().get_fit_results_txt()
-        results += f&#34;sens.: {self.sensitivity(total_counts):0.3e} (T/sqrt(Hz))\n&#34;
+        results += f&#34;sens.: {self.sensitivity(total_counts, ith_loop=ith_loop):0.3e} (T/sqrt(Hz))\n&#34;
 
         return results
 
@@ -544,16 +544,27 @@ el.replaceWith(d);
         # Gaussian function
         return a * np.exp(-((x - x0) ** 2) / w**2) + c
 
-    def sensitivity(self, total_counts):
+    def sensitivity(self, total_counts, ith_loop=1):
         # To get the sensitivity we need to know the absolute counts.
         # Thus we need to pass this value.
-
         amp = self.fit_results[1]
         width = self.fit_results[2]
 
         planks_const = 6.62607015e-34
         muB = 9.274009994e-24
         ge = 2.0023
+
+        if self.normalisation == &#34;sig - ref&#34; or self.normalisation == &#34;ref - sig&#34;:
+            # The amplitude is the difference between the peak value and the mean value
+            amp = total_counts/(amp* ith_loop)
+        elif self.normalisation == &#34;norm sig / ref&#34; or self.normalisation ==&#34;norm ref / sig&#34;:
+            # The amplitude is the ratio between the peak value and the mean value
+            amp = amp /100
+        elif self.normalisation == &#34;intensity&#34; or self.normalisation == &#34;sig / ref&#34; or self.normalisation == &#34;ref / sig&#34;:
+            amp = amp
+        else:
+            # To catch the None case
+            amp = total_counts/(amp* ith_loop)
 
         eta = (
             0.7
@@ -600,16 +611,16 @@ el.replaceWith(d);
 <div class="desc"></div>
 </dd>
 <dt id="qscope.fitting.resonance.Gaussian.get_fit_results_txt"><code class="name flex">
-<span>def <span class="ident">get_fit_results_txt</span></span>(<span>self, total_counts)</span>
+<span>def <span class="ident">get_fit_results_txt</span></span>(<span>self, total_counts, ith_loop=1)</span>
 </code></dt>
 <dd>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def get_fit_results_txt(self, total_counts):
+<pre><code class="python">def get_fit_results_txt(self, total_counts, ith_loop=1):
     results = super().get_fit_results_txt()
-    results += f&#34;sens.: {self.sensitivity(total_counts):0.3e} (T/sqrt(Hz))\n&#34;
+    results += f&#34;sens.: {self.sensitivity(total_counts, ith_loop=ith_loop):0.3e} (T/sqrt(Hz))\n&#34;
 
     return results</code></pre>
 </details>
@@ -665,23 +676,34 @@ el.replaceWith(d);
 <div class="desc"></div>
 </dd>
 <dt id="qscope.fitting.resonance.Gaussian.sensitivity"><code class="name flex">
-<span>def <span class="ident">sensitivity</span></span>(<span>self, total_counts)</span>
+<span>def <span class="ident">sensitivity</span></span>(<span>self, total_counts, ith_loop=1)</span>
 </code></dt>
 <dd>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def sensitivity(self, total_counts):
+<pre><code class="python">def sensitivity(self, total_counts, ith_loop=1):
     # To get the sensitivity we need to know the absolute counts.
     # Thus we need to pass this value.
-
     amp = self.fit_results[1]
     width = self.fit_results[2]
 
     planks_const = 6.62607015e-34
     muB = 9.274009994e-24
     ge = 2.0023
+
+    if self.normalisation == &#34;sig - ref&#34; or self.normalisation == &#34;ref - sig&#34;:
+        # The amplitude is the difference between the peak value and the mean value
+        amp = total_counts/(amp* ith_loop)
+    elif self.normalisation == &#34;norm sig / ref&#34; or self.normalisation ==&#34;norm ref / sig&#34;:
+        # The amplitude is the ratio between the peak value and the mean value
+        amp = amp /100
+    elif self.normalisation == &#34;intensity&#34; or self.normalisation == &#34;sig / ref&#34; or self.normalisation == &#34;ref / sig&#34;:
+        amp = amp
+    else:
+        # To catch the None case
+        amp = total_counts/(amp* ith_loop)
 
     eta = (
         0.7
@@ -836,13 +858,24 @@ el.replaceWith(d);
     def function(self, x, x0, a, w, c):
         return a * w**2 / (w**2 + (x - x0) ** 2) + c
 
-    def sensitivity(self, total_counts):
+    def sensitivity(self, total_counts,  ith_loop=1, *args, **kwargs):
         # To get the sensitivity we need to know the absolute counts.
         # Thus we need to pass this value.
 
         amp = self.fit_results[1]
         width = self.fit_results[2]
-        pl = self.fit_results[3]
+
+        if self.normalisation == &#34;sig - ref&#34; or self.normalisation == &#34;ref - sig&#34;:
+            # The amplitude is the difference between the peak value and the mean value
+            amp = total_counts/(amp* ith_loop)
+        elif self.normalisation == &#34;norm sig / ref&#34; or self.normalisation ==&#34;norm ref / sig&#34;:
+            # The amplitude is the ratio between the peak value and the mean value
+            amp = amp /100
+        elif self.normalisation == &#34;intensity&#34; or self.normalisation == &#34;sig / ref&#34; or self.normalisation == &#34;ref / sig&#34;:
+            amp = amp
+        else:
+            # To catch the None case
+            amp = total_counts/(amp* ith_loop)
 
         planks_const = 6.62607015e-34
         muB = 9.274009994e-24
@@ -861,9 +894,9 @@ el.replaceWith(d);
         self.p0 = [5, 1, 1, 1]
         return super().generate_test_data()
 
-    def get_fit_results_txt(self, total_counts):
+    def get_fit_results_txt(self, total_counts, ith_loop=1):
         results = super().get_fit_results_txt()
-        results += f&#34;sens.: {self.sensitivity(total_counts):0.3e} (T/sqrt(Hz))\n&#34;
+        results += f&#34;sens.: {self.sensitivity(total_counts, ith_loop=ith_loop):0.3e} (T/sqrt(Hz))\n&#34;
         return results</code></pre>
 </details>
 <div class="desc"></div>
@@ -901,16 +934,16 @@ el.replaceWith(d);
 <div class="desc"></div>
 </dd>
 <dt id="qscope.fitting.resonance.Lorentzian.get_fit_results_txt"><code class="name flex">
-<span>def <span class="ident">get_fit_results_txt</span></span>(<span>self, total_counts)</span>
+<span>def <span class="ident">get_fit_results_txt</span></span>(<span>self, total_counts, ith_loop=1)</span>
 </code></dt>
 <dd>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def get_fit_results_txt(self, total_counts):
+<pre><code class="python">def get_fit_results_txt(self, total_counts, ith_loop=1):
     results = super().get_fit_results_txt()
-    results += f&#34;sens.: {self.sensitivity(total_counts):0.3e} (T/sqrt(Hz))\n&#34;
+    results += f&#34;sens.: {self.sensitivity(total_counts, ith_loop=ith_loop):0.3e} (T/sqrt(Hz))\n&#34;
     return results</code></pre>
 </details>
 <div class="desc"></div>
@@ -964,20 +997,31 @@ el.replaceWith(d);
 <div class="desc"></div>
 </dd>
 <dt id="qscope.fitting.resonance.Lorentzian.sensitivity"><code class="name flex">
-<span>def <span class="ident">sensitivity</span></span>(<span>self, total_counts)</span>
+<span>def <span class="ident">sensitivity</span></span>(<span>self, total_counts, ith_loop=1, *args, **kwargs)</span>
 </code></dt>
 <dd>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def sensitivity(self, total_counts):
+<pre><code class="python">def sensitivity(self, total_counts,  ith_loop=1, *args, **kwargs):
     # To get the sensitivity we need to know the absolute counts.
     # Thus we need to pass this value.
 
     amp = self.fit_results[1]
     width = self.fit_results[2]
-    pl = self.fit_results[3]
+
+    if self.normalisation == &#34;sig - ref&#34; or self.normalisation == &#34;ref - sig&#34;:
+        # The amplitude is the difference between the peak value and the mean value
+        amp = total_counts/(amp* ith_loop)
+    elif self.normalisation == &#34;norm sig / ref&#34; or self.normalisation ==&#34;norm ref / sig&#34;:
+        # The amplitude is the ratio between the peak value and the mean value
+        amp = amp /100
+    elif self.normalisation == &#34;intensity&#34; or self.normalisation == &#34;sig / ref&#34; or self.normalisation == &#34;ref / sig&#34;:
+        amp = amp
+    else:
+        # To catch the None case
+        amp = total_counts/(amp* ith_loop)
 
     planks_const = 6.62607015e-34
     muB = 9.274009994e-24

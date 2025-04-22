@@ -177,14 +177,14 @@ safety features like ramping and compliance limits.</p>
 
     def _recover_from_pipe_error(self) -&gt; bool:
         &#34;&#34;&#34;Attempt to recover from a pipe error by resetting communication.
-        
+
         Returns
         -------
         bool
             True if recovery was successful, False otherwise
         &#34;&#34;&#34;
         logger.trace(&#34;Attempting to recover from pipe error&#34;)
-        
+
         # Define recovery steps
         recovery_steps = [
             lambda: self._close_connection(),
@@ -192,27 +192,27 @@ safety features like ramping and compliance limits.</p>
             lambda: self._recreate_resource_manager(),
             lambda: self._open_connection(),
             lambda: self._reset_device(),
-            lambda: self._verify_connection()
+            lambda: self._verify_connection(),
         ]
-        
+
         # Try recovery sequence up to 2 times
         for attempt in range(2):
             try:
                 # Execute each recovery step
                 for step in recovery_steps:
                     step()
-                
+
                 # If we get here, recovery was successful
                 logger.trace(&#34;Successfully recovered from pipe error&#34;)
                 return True
-                
+
             except Exception as e:
                 logger.trace(f&#34;Recovery attempt {attempt + 1} failed: {e}&#34;)
                 time.sleep(1.0)  # Wait between attempts
-        
+
         logger.error(&#34;All recovery attempts failed&#34;)
         return False
-        
+
     def _close_connection(self) -&gt; None:
         &#34;&#34;&#34;Close the current connection safely.&#34;&#34;&#34;
         if self.inst:
@@ -221,24 +221,24 @@ safety features like ramping and compliance limits.</p>
             except Exception:
                 pass
             self.inst = None
-            
+
     def _recreate_resource_manager(self) -&gt; None:
         &#34;&#34;&#34;Recreate the resource manager if we own it.&#34;&#34;&#34;
         if self._owns_rm:
             self.rm = pyvisa.ResourceManager()
-            
+
     def _open_connection(self) -&gt; None:
         &#34;&#34;&#34;Open a new connection to the device.&#34;&#34;&#34;
         self.inst = self.rm.open_resource(self.visa_address)
         self.inst.timeout = 5000  # Longer timeout during recovery
-        
+
     def _reset_device(self) -&gt; None:
         &#34;&#34;&#34;Reset the device to a known state.&#34;&#34;&#34;
         self.inst.write(&#34;*RST&#34;)
         time.sleep(0.2)
         self.inst.write(&#34;*CLS&#34;)
         time.sleep(0.2)
-        
+
     def _verify_connection(self) -&gt; None:
         &#34;&#34;&#34;Verify the connection is working properly.&#34;&#34;&#34;
         response = self.inst.query(&#34;*IDN?&#34;)
@@ -246,10 +246,15 @@ safety features like ramping and compliance limits.</p>
             raise RuntimeError(&#34;Device identification failed&#34;)
         self.inst.timeout = 2000  # Reset to normal timeout
 
-    def _communicate(self, command: str, query: bool = False, check_errors: bool = False, 
-                    description: str = None) -&gt; Optional[str]:
+    def _communicate(
+        self,
+        command: str,
+        query: bool = False,
+        check_errors: bool = False,
+        description: str = None,
+    ) -&gt; Optional[str]:
         &#34;&#34;&#34;Unified communication method with error handling and recovery.
-        
+
         Parameters
         ----------
         command : str
@@ -260,12 +265,12 @@ safety features like ramping and compliance limits.</p>
             Whether to check for device errors after command execution
         description : str
             Human-readable description of what this command does
-            
+
         Returns
         -------
         Optional[str]
             Response string if query=True, None otherwise
-            
+
         Raises
         ------
         RuntimeError
@@ -283,27 +288,31 @@ safety features like ramping and compliance limits.</p>
                     time.sleep(0.02)  # Reduced delay before queries
                     result = self.inst.query(command).strip()
                     logger.trace(f&#34;Query result: {result}&#34;)
-                    
+
                     # Check for errors if requested
                     if check_errors:
                         error = self.inst.query(&#34;SYST:ERR?&#34;).strip()
                         if not error.startswith(&#34;0&#34;):
                             cmd_desc = f&#34; ({description})&#34; if description else &#34;&#34;
-                            raise RuntimeError(f&#34;Error executing query{cmd_desc}: {command}\nDevice error: {error}&#34;)
-                    
+                            raise RuntimeError(
+                                f&#34;Error executing query{cmd_desc}: {command}\nDevice error: {error}&#34;
+                            )
+
                     return result
                 else:
                     self.inst.write(command)
                     time.sleep(0.01)  # Reduced delay after writes
                     logger.trace(f&#34;Command write successful&#34;)
-                    
+
                     # Check for errors if requested
                     if check_errors:
                         error = self.inst.query(&#34;SYST:ERR?&#34;).strip()
                         if not error.startswith(&#34;0&#34;):
                             cmd_desc = f&#34; ({description})&#34; if description else &#34;&#34;
-                            raise RuntimeError(f&#34;Error executing command{cmd_desc}: {command}\nDevice error: {error}&#34;)
-                    
+                            raise RuntimeError(
+                                f&#34;Error executing command{cmd_desc}: {command}\nDevice error: {error}&#34;
+                            )
+
                     return None
 
             except Exception as e:
@@ -316,12 +325,14 @@ safety features like ramping and compliance limits.</p>
                         continue
 
                 self._handle_error(f&#34;{&#39;query&#39; if query else &#39;command&#39;} {command}&#34;, e)
-    
-    def _communicate_with_check(self, command: str, query: bool = False, description: str = None) -&gt; Optional[str]:
+
+    def _communicate_with_check(
+        self, command: str, query: bool = False, description: str = None
+    ) -&gt; Optional[str]:
         &#34;&#34;&#34;Execute a command and immediately check for errors.
-        
+
         This is a convenience wrapper around _communicate with check_errors=True.
-        
+
         Parameters
         ----------
         command : str
@@ -330,13 +341,15 @@ safety features like ramping and compliance limits.</p>
             Whether this is a query command
         description : str
             Human-readable description of what this command does
-            
+
         Returns
         -------
         Optional[str]
             Response string if query=True, None otherwise
         &#34;&#34;&#34;
-        return self._communicate(command, query=query, check_errors=True, description=description)
+        return self._communicate(
+            command, query=query, check_errors=True, description=description
+        )
 
     def check_compliance(self) -&gt; bool:
         &#34;&#34;&#34;Check if device is in compliance (limit reached).&#34;&#34;&#34;
@@ -362,7 +375,9 @@ safety features like ramping and compliance limits.</p>
             except Exception as e:
                 logger.trace(f&#34;Compliance check failed with command {cmd}: {e}&#34;)
                 # Try alternative compliance check method
-                status = self._communicate(&#34;:STAT:OPER:COND?&#34;, query=True, check_errors=False)
+                status = self._communicate(
+                    &#34;:STAT:OPER:COND?&#34;, query=True, check_errors=False
+                )
                 return bool(int(status) &amp; 0x0800)  # Check compliance bit
 
         except Exception as e:
@@ -540,12 +555,22 @@ safety features like ramping and compliance limits.</p>
             time.sleep(0.1)
 
             # Basic configuration - standard safe state
-            self._communicate(&#34;:SOUR:FUNC VOLT&#34;, check_errors=True)  # Start in voltage source mode
-            self._communicate(&#34;:SOUR:VOLT:RANG 20&#34;, check_errors=True)  # Set to 20V range for safety
-            self._communicate(&#34;:SOUR:VOLT:ILIM 0.5&#34;, check_errors=True)  # Set 500mA compliance
+            self._communicate(
+                &#34;:SOUR:FUNC VOLT&#34;, check_errors=True
+            )  # Start in voltage source mode
+            self._communicate(
+                &#34;:SOUR:VOLT:RANG 20&#34;, check_errors=True
+            )  # Set to 20V range for safety
+            self._communicate(
+                &#34;:SOUR:VOLT:ILIM 0.5&#34;, check_errors=True
+            )  # Set 500mA compliance
             self._communicate(&#39;:SENS:FUNC &#34;CURR&#34;&#39;, check_errors=True)  # Measure current
-            self._communicate(&#34;:SENS:CURR:RANG 1.05&#34;, check_errors=True)  # Set to max current range
-            self._communicate(&#34;:SENS:CURR:NPLC 1&#34;, check_errors=True)  # Set integration time
+            self._communicate(
+                &#34;:SENS:CURR:RANG 1.05&#34;, check_errors=True
+            )  # Set to max current range
+            self._communicate(
+                &#34;:SENS:CURR:NPLC 1&#34;, check_errors=True
+            )  # Set integration time
             self._communicate(&#34;:OUTP OFF&#34;, check_errors=True)  # Ensure output is off
 
             self._mode = &#34;voltage&#34;  # Set initial mode
@@ -598,7 +623,7 @@ safety features like ramping and compliance limits.</p>
         else:
             source_val = float(self._communicate(&#34;:MEAS:CURR?&#34;, query=True))
             meas_val = float(self._communicate(&#34;:MEAS:VOLT?&#34;, query=True))
-            
+
         return source_val, meas_val
 
     def measure_iv_curve(
@@ -859,16 +884,16 @@ safety features like ramping and compliance limits.</p>
         &#34;&#34;&#34;Abort any ongoing operations safely.&#34;&#34;&#34;
         if not self.inst:
             return
-            
+
         logger.trace(&#34;Attempting abort sequence&#34;)
-        
+
         # Define critical commands to execute in sequence
         commands = [
             (&#34;ABOR&#34;, &#34;abort command&#34;),
             (&#34;TRIG:LOAD:EMPTY&#34;, &#34;reset trigger model&#34;),
-            (&#34;:OUTP OFF&#34;, &#34;disable output&#34;)
+            (&#34;:OUTP OFF&#34;, &#34;disable output&#34;),
         ]
-        
+
         # Execute each command with basic error handling
         for cmd, description in commands:
             try:
@@ -878,13 +903,13 @@ safety features like ramping and compliance limits.</p>
             except Exception as e:
                 logger.warning(f&#34;Error during {description}: {e}&#34;)
                 # Continue with next command even if this one failed
-        
+
         # Final emergency output disable if needed
         try:
             self.inst.write(&#34;:OUTP OFF&#34;)
         except Exception:
             pass
-            
+
         logger.trace(&#34;Abort sequence completed&#34;)
 
     def zero_output(self) -&gt; None:
@@ -984,12 +1009,12 @@ safety features like ramping and compliance limits.</p>
 
     def configure_trigger(self, config: TriggerConfig) -&gt; None:
         &#34;&#34;&#34;Configure triggering behavior.
-        
+
         Parameters
         ----------
         config : TriggerConfig
             TriggerConfig instance with trigger settings
-            
+
         Raises
         ------
         ValueError
@@ -999,20 +1024,20 @@ safety features like ramping and compliance limits.</p>
         &#34;&#34;&#34;
         if not self.inst:
             raise RuntimeError(ERROR_MESSAGES[&#34;not_connected&#34;])
-        
+
         # Configure the trigger model
         self._configure_trigger_simple(config)
         self._check_error()
 
     def wait_for_trigger(self, timeout: float = 1.0) -&gt; bool:
         &#34;&#34;&#34;Wait for trigger event.
-        
+
         Args:
             timeout: Maximum time to wait in seconds
-            
+
         Returns:
             bool: True if triggered, False if timed out
-            
+
         Raises:
             RuntimeError: If device not connected or error occurs
         &#34;&#34;&#34;
@@ -1027,9 +1052,11 @@ safety features like ramping and compliance limits.</p>
             time.sleep(0.01)
         return False
 
-    def configure_digital_io(self, pin: int, mode: Literal[&#34;trigger&#34;, &#34;input&#34;, &#34;output&#34;] = &#34;trigger&#34;) -&gt; None:
+    def configure_digital_io(
+        self, pin: int, mode: Literal[&#34;trigger&#34;, &#34;input&#34;, &#34;output&#34;] = &#34;trigger&#34;
+    ) -&gt; None:
         &#34;&#34;&#34;Configure a digital I/O pin.
-        
+
         Args:
             pin: Digital I/O pin number (1-6)
             mode: Pin mode - &#34;trigger&#34; for trigger input, &#34;input&#34; for digital input,
@@ -1037,7 +1064,7 @@ safety features like ramping and compliance limits.</p>
         &#34;&#34;&#34;
         if not 1 &lt;= pin &lt;= 6:
             raise ValueError(&#34;Pin must be between 1 and 6&#34;)
-            
+
         if mode == &#34;trigger&#34;:
             self._communicate(f&#34;DIG:LINE{pin}:MODE TRIG, IN&#34;)
         elif mode == &#34;input&#34;:
@@ -1052,25 +1079,25 @@ safety features like ramping and compliance limits.</p>
 
     def stop_trigger_model(self, max_wait: float = 2.0) -&gt; str:
         &#34;&#34;&#34;Stop the trigger model execution and wait for it to fully stop.
-        
+
         Parameters
         ----------
         max_wait : float
             Maximum time to wait in seconds for the trigger model to stop
-            
+
         Returns
         -------
         str
             Final trigger model state after stopping
         &#34;&#34;&#34;
         logger.debug(&#34;Stopping trigger model&#34;)
-        
+
         # Define stop sequence commands
         stop_commands = [
             (&#34;ABOR&#34;, &#34;abort trigger model&#34;),
             # (&#34;TRIG:LOAD:EMPTY&#34;, &#34;reset trigger model&#34;)
         ]
-        
+
         # Execute stop sequence
         for cmd, description in stop_commands:
             try:
@@ -1078,11 +1105,11 @@ safety features like ramping and compliance limits.</p>
                 logger.trace(f&#34;Executed {description}&#34;)
             except Exception as e:
                 logger.warning(f&#34;Error during {description}: {e}&#34;)
-        
+
         # Wait for trigger model to fully stop with timeout
         acceptable_states = [&#34;idle&#34;, &#34;empty&#34;, &#34;aborted&#34;]
         start_time = time.time()
-        
+
         while time.time() - start_time &lt; max_wait:
             try:
                 state = self.get_trigger_state()
@@ -1093,7 +1120,7 @@ safety features like ramping and compliance limits.</p>
             except Exception:
                 break
         raise RuntimeError(f&#34;Could not abort, state: {state}&#34;)
-        
+
         # # If we get here, try a more aggressive reset
         # try:
         #     self._communicate(&#34;*RST&#34;, check_errors=False)
@@ -1104,33 +1131,33 @@ safety features like ramping and compliance limits.</p>
 
     def get_trigger_state(self) -&gt; str:
         &#34;&#34;&#34;Get the current trigger model state.
-        
+
         Returns:
-            str: Current state (&#34;idle&#34;, &#34;running&#34;, &#34;waiting&#34;, &#34;empty&#34;, 
+            str: Current state (&#34;idle&#34;, &#34;running&#34;, &#34;waiting&#34;, &#34;empty&#34;,
                                &#34;building&#34;, &#34;failed&#34;, &#34;aborting&#34;, &#34;aborted&#34;)
-                               
+
         Note:
             The device returns both the state and the last executed block number
             in format like &#34;IDLE;IDLE;9&#34;. This method extracts just the state.
         &#34;&#34;&#34;
         try:
             response = self._communicate(&#34;:TRIG:STATE?&#34;, query=True)
-            
+
             # Handle empty response
             if not response:
                 return &#34;unknown&#34;
-                
+
             # Extract just the state part from the response
             # Response format is typically &#34;STATE;STATE;BLOCK_NUMBER&#34;
             if &#34;;&#34; in response:
                 state = response.split(&#34;;&#34;)[0]
             else:
                 state = response
-                
+
             # Clean up the state - remove any block information
             if &#34;)&#34; in state:
                 state = &#34;running&#34;  # If we see block info, the model is running
-            
+
             # Normalize state to lowercase
             return state.lower()
         except Exception as e:
@@ -1139,38 +1166,38 @@ safety features like ramping and compliance limits.</p>
 
     def _configure_trigger_simple(self, config: TriggerConfig) -&gt; None:
         &#34;&#34;&#34;Configure a simple trigger model for toggling output based on digital input.
-        
+
         Parameters
         ----------
         config : TriggerConfig
             Trigger configuration
         &#34;&#34;&#34;
         logger.debug(&#34;Configuring simple trigger model&#34;)
-        
+
         try:
             # Step 1: Reset and prepare the device
             self._setup_device_for_triggering(config)
-            
+
             # Step 2: Create configuration list with high and low states
             list_name = &#34;sourceList&#34;
             self._create_source_config_list(list_name, config)
-            
+
             # Step 3: Build the trigger model blocks
             self._build_trigger_model_blocks(config, list_name)
-            
+
             # Step 4: Enable output
             self._communicate_with_check(&#34;:OUTP ON&#34;, description=&#34;Enable output&#34;)
-            
+
             self._check_error()
 
             logger.debug(&#34;Trigger model configured successfully&#34;)
-            
+
         except Exception as e:
             self._handle_error(&#34;configuring simple trigger&#34;, e)
-            
+
     def _setup_device_for_triggering(self, config: TriggerConfig) -&gt; None:
         &#34;&#34;&#34;Prepare the device for triggering by setting up basic configuration.
-        
+
         Parameters
         ----------
         config : TriggerConfig
@@ -1182,75 +1209,115 @@ safety features like ramping and compliance limits.</p>
 
         # Explicitly set the source mode
         if self._mode == &#34;current&#34;:
-            self._communicate_with_check(&#34;:SOUR:FUNC CURR&#34;, description=&#34;Set to current source mode&#34;)
+            self._communicate_with_check(
+                &#34;:SOUR:FUNC CURR&#34;, description=&#34;Set to current source mode&#34;
+            )
             # Set voltage limit for current source mode
-            self._communicate_with_check(&#34;:SOUR:CURR:VLIM 20&#34;, description=&#34;Set voltage limit to 20V&#34;)
+            self._communicate_with_check(
+                &#34;:SOUR:CURR:VLIM 20&#34;, description=&#34;Set voltage limit to 20V&#34;
+            )
         else:
-            self._communicate_with_check(&#34;:SOUR:FUNC VOLT&#34;, description=&#34;Set to voltage source mode&#34;)
+            self._communicate_with_check(
+                &#34;:SOUR:FUNC VOLT&#34;, description=&#34;Set to voltage source mode&#34;
+            )
             # Set smart current limit for voltage source mode based on expected current
             # Use 1.05A as default max, but calculate based on config if possible
-            if hasattr(config, &#39;high_value&#39;) and config.high_value &gt; 0:
+            if hasattr(config, &#34;high_value&#34;) and config.high_value &gt; 0:
                 # Calculate current from voltage using Ohm&#39;s law with the provided resistance
-                resistance = getattr(config, &#39;resistance&#39;, 20.0)  # Use provided resistance or default to 20 ohms
+                resistance = getattr(
+                    config, &#34;resistance&#34;, 20.0
+                )  # Use provided resistance or default to 20 ohms
                 expected_current = config.high_value / resistance
-                
+
                 # For high currents near the maximum, use less headroom
                 if expected_current &gt; 0.8:  # If we&#39;re near the max current
-                    estimated_current = min(1.05, expected_current * 1.05)  # Use only 5% headroom
-                    logger.info(f&#34;High current detected ({expected_current:.3f}A), using reduced headroom&#34;)
+                    estimated_current = min(
+                        1.05, expected_current * 1.05
+                    )  # Use only 5% headroom
+                    logger.info(
+                        f&#34;High current detected ({expected_current:.3f}A), using reduced headroom&#34;
+                    )
                 else:
-                    estimated_current = min(1.05, expected_current * 1.2)  # Normal 20% headroom
-                
+                    estimated_current = min(
+                        1.05, expected_current * 1.2
+                    )  # Normal 20% headroom
+
                 # First disable auto-ranging for current measurement
-                self._communicate_with_check(&#34;:SENS:CURR:RANG:AUTO OFF&#34;, 
-                                           description=&#34;Disable current auto-range&#34;)
-                
+                self._communicate_with_check(
+                    &#34;:SENS:CURR:RANG:AUTO OFF&#34;, description=&#34;Disable current auto-range&#34;
+                )
+
                 # For high currents, set to max range directly
                 if expected_current &gt; 0.8:
-                    self._communicate_with_check(&#34;:SENS:CURR:RANG 1.05&#34;, 
-                                               description=&#34;Set current measurement range to maximum (1.05A)&#34;)
+                    self._communicate_with_check(
+                        &#34;:SENS:CURR:RANG 1.05&#34;,
+                        description=&#34;Set current measurement range to maximum (1.05A)&#34;,
+                    )
                 else:
                     # Set current measurement range before setting compliance limit
-                    self._communicate_with_check(f&#34;:SENS:CURR:RANG {estimated_current}&#34;, 
-                                               description=f&#34;Set current measurement range to {estimated_current}A&#34;)
-                
+                    self._communicate_with_check(
+                        f&#34;:SENS:CURR:RANG {estimated_current}&#34;,
+                        description=f&#34;Set current measurement range to {estimated_current}A&#34;,
+                    )
+
                 # Then set current limit
-                self._communicate_with_check(f&#34;:SOUR:VOLT:ILIM {estimated_current}&#34;, 
-                                           description=f&#34;Set current limit to {estimated_current}A (using {resistance}Ω)&#34;)
+                self._communicate_with_check(
+                    f&#34;:SOUR:VOLT:ILIM {estimated_current}&#34;,
+                    description=f&#34;Set current limit to {estimated_current}A (using {resistance}Ω)&#34;,
+                )
             else:
                 # Default to max current if we can&#39;t estimate
-                self._communicate_with_check(&#34;:SOUR:VOLT:ILIM 1.05&#34;, description=&#34;Set current limit to 1.05A&#34;)
-                self._communicate_with_check(&#34;:SENS:CURR:RANG:AUTO OFF&#34;, description=&#34;Disable current auto-range&#34;)
-                self._communicate_with_check(&#34;:SENS:CURR:RANG 1.05&#34;, description=&#34;Set current measurement range to 1.05A&#34;)
+                self._communicate_with_check(
+                    &#34;:SOUR:VOLT:ILIM 1.05&#34;, description=&#34;Set current limit to 1.05A&#34;
+                )
+                self._communicate_with_check(
+                    &#34;:SENS:CURR:RANG:AUTO OFF&#34;, description=&#34;Disable current auto-range&#34;
+                )
+                self._communicate_with_check(
+                    &#34;:SENS:CURR:RANG 1.05&#34;,
+                    description=&#34;Set current measurement range to 1.05A&#34;,
+                )
 
         # Verify the mode is set correctly
-        actual_mode = self._communicate_with_check(&#34;:SOUR:FUNC?&#34;, query=True, description=&#34;Verify source mode&#34;)
+        actual_mode = self._communicate_with_check(
+            &#34;:SOUR:FUNC?&#34;, query=True, description=&#34;Verify source mode&#34;
+        )
         logger.debug(f&#34;Source mode set to: {actual_mode}&#34;)
-        
+
         # Clear any existing trigger model
-        self._communicate_with_check(&#34;TRIG:LOAD:EMPTY&#34;, description=&#34;Empty trigger model&#34;)
-        
+        self._communicate_with_check(
+            &#34;TRIG:LOAD:EMPTY&#34;, description=&#34;Empty trigger model&#34;
+        )
+
         # Configure digital line for external triggering
         self._communicate_with_check(
-            f&#34;DIG:LINE{config.pin}:MODE TRIG, IN&#34;, 
-            description=f&#34;Set digital line {config.pin} as trigger input&#34;
+            f&#34;DIG:LINE{config.pin}:MODE TRIG, IN&#34;,
+            description=f&#34;Set digital line {config.pin} as trigger input&#34;,
         )
-        
+
         # Set edge detection
-        edge_str = &#34;EITH&#34; if config.edge == TriggerEdge.EITHER else (&#34;RIS&#34; if config.edge == TriggerEdge.RISING else &#34;FALL&#34;)
+        edge_str = (
+            &#34;EITH&#34;
+            if config.edge == TriggerEdge.EITHER
+            else (&#34;RIS&#34; if config.edge == TriggerEdge.RISING else &#34;FALL&#34;)
+        )
         self._communicate_with_check(
             f&#34;TRIG:DIG{config.pin}:IN:EDGE {edge_str}&#34;,
-            description=f&#34;Set trigger edge to {edge_str}&#34;
+            description=f&#34;Set trigger edge to {edge_str}&#34;,
         )
 
         # Optimize for fast transitions
-        self._communicate_with_check(&#34;:SOUR:DEL:AUTO OFF&#34;, description=&#34;Disable auto delay&#34;)
+        self._communicate_with_check(
+            &#34;:SOUR:DEL:AUTO OFF&#34;, description=&#34;Disable auto delay&#34;
+        )
         self._communicate_with_check(&#34;:SOUR:DEL 0&#34;, description=&#34;Set source delay to 0&#34;)
-        self._communicate_with_check(&#34;:SENS:CURR:NPLC 0.01&#34;, description=&#34;Set NPLC to minimum&#34;)
-    
+        self._communicate_with_check(
+            &#34;:SENS:CURR:NPLC 0.01&#34;, description=&#34;Set NPLC to minimum&#34;
+        )
+
     def _create_source_config_list(self, list_name: str, config: TriggerConfig) -&gt; None:
         &#34;&#34;&#34;Create a configuration list with high and low states.
-        
+
         Parameters
         ----------
         list_name : str
@@ -1260,14 +1327,16 @@ safety features like ramping and compliance limits.</p>
         &#34;&#34;&#34;
         # Create a new configuration list
         self._communicate_with_check(
-            f&#34;SOUR:CONF:LIST:CRE \&#34;{list_name}\&#34;&#34;,
-            description=&#34;Create source configuration list&#34;
+            f&#39;SOUR:CONF:LIST:CRE &#34;{list_name}&#34;&#39;,
+            description=&#34;Create source configuration list&#34;,
         )
-        
+
         if self._mode == &#34;current&#34;:
             # Set appropriate current range
-            self._communicate_with_check(&#34;:SOUR:CURR:RANG:AUTO OFF&#34;, description=&#34;Disable auto range&#34;)
-            
+            self._communicate_with_check(
+                &#34;:SOUR:CURR:RANG:AUTO OFF&#34;, description=&#34;Disable auto range&#34;
+            )
+
             # Calculate appropriate range based on high value
             high_current = 1.2 * config.high_value
             current_range = 1.0  # Default to max range
@@ -1277,23 +1346,33 @@ safety features like ramping and compliance limits.</p>
                 current_range = 0.1
             elif high_current &lt;= 1.0:
                 current_range = 1.0
-                
+
             self._communicate_with_check(
                 f&#34;:SOUR:CURR:RANG {current_range}&#34;,
-                description=f&#34;Set current range to {current_range}A&#34;
+                description=f&#34;Set current range to {current_range}A&#34;,
             )
-            
+
             # Configure and store low state
-            self._communicate_with_check(f&#34;:SOUR:CURR {config.low_value}&#34;, description=&#34;Set low current&#34;)
-            self._communicate_with_check(f&#34;SOUR:CONF:LIST:STOR \&#34;{list_name}\&#34;&#34;, description=&#34;Store low state&#34;)
-            
+            self._communicate_with_check(
+                f&#34;:SOUR:CURR {config.low_value}&#34;, description=&#34;Set low current&#34;
+            )
+            self._communicate_with_check(
+                f&#39;SOUR:CONF:LIST:STOR &#34;{list_name}&#34;&#39;, description=&#34;Store low state&#34;
+            )
+
             # Configure and store high state
-            self._communicate_with_check(f&#34;:SOUR:CURR {config.high_value}&#34;, description=&#34;Set high current&#34;)
-            self._communicate_with_check(f&#34;SOUR:CONF:LIST:STOR \&#34;{list_name}\&#34;&#34;, description=&#34;Store high state&#34;)
+            self._communicate_with_check(
+                f&#34;:SOUR:CURR {config.high_value}&#34;, description=&#34;Set high current&#34;
+            )
+            self._communicate_with_check(
+                f&#39;SOUR:CONF:LIST:STOR &#34;{list_name}&#34;&#39;, description=&#34;Store high state&#34;
+            )
         else:
             # Set appropriate voltage range for voltage mode
-            self._communicate_with_check(&#34;:SOUR:VOLT:RANG:AUTO OFF&#34;, description=&#34;Disable auto range&#34;)
-            
+            self._communicate_with_check(
+                &#34;:SOUR:VOLT:RANG:AUTO OFF&#34;, description=&#34;Disable auto range&#34;
+            )
+
             # Calculate appropriate range based on high value
             high_voltage = 1.2 * config.high_value
             voltage_range = 20.0  # Default to max range
@@ -1303,66 +1382,97 @@ safety features like ramping and compliance limits.</p>
                 voltage_range = 7.0
             elif high_voltage &lt;= 20.0:
                 voltage_range = 20.0
-                
+
             self._communicate_with_check(
                 f&#34;:SOUR:VOLT:RANG {voltage_range}&#34;,
-                description=f&#34;Set voltage range to {voltage_range}V&#34;
+                description=f&#34;Set voltage range to {voltage_range}V&#34;,
             )
-            
+
             # Calculate appropriate current limit based on expected current
-            resistance = getattr(config, &#39;resistance&#39;, 20.0)  # Use provided resistance or default to 20 ohms
+            resistance = getattr(
+                config, &#34;resistance&#34;, 20.0
+            )  # Use provided resistance or default to 20 ohms
             expected_current = config.high_value / resistance
-            
+
             # For high currents near the maximum, use less headroom
             if expected_current &gt; 0.8:  # If we&#39;re near the max current
-                current_limit = min(1.05, expected_current * 1.05)  # Use only 5% headroom
-                logger.info(f&#34;High current detected ({expected_current:.3f}A), using reduced headroom&#34;)
+                current_limit = min(
+                    1.05, expected_current * 1.05
+                )  # Use only 5% headroom
+                logger.info(
+                    f&#34;High current detected ({expected_current:.3f}A), using reduced headroom&#34;
+                )
             else:
                 current_limit = min(1.05, expected_current * 1.2)  # Normal 20% headroom
-            
+
             # First disable auto-ranging for current measurement
-            self._communicate_with_check(&#34;:SENS:CURR:RANG:AUTO OFF&#34;, 
-                                       description=&#34;Disable current auto-range&#34;)
-            
+            self._communicate_with_check(
+                &#34;:SENS:CURR:RANG:AUTO OFF&#34;, description=&#34;Disable current auto-range&#34;
+            )
+
             # For high currents, set to max range directly
             if expected_current &gt; 0.8:
-                self._communicate_with_check(&#34;:SENS:CURR:RANG 1.05&#34;, 
-                                           description=&#34;Set current measurement range to maximum (1.05A)&#34;)
+                self._communicate_with_check(
+                    &#34;:SENS:CURR:RANG 1.05&#34;,
+                    description=&#34;Set current measurement range to maximum (1.05A)&#34;,
+                )
             else:
                 # Set current measurement range before setting compliance limit
-                self._communicate_with_check(f&#34;:SENS:CURR:RANG {current_limit}&#34;, 
-                                           description=f&#34;Set current measurement range to {current_limit}A&#34;)
-            
+                self._communicate_with_check(
+                    f&#34;:SENS:CURR:RANG {current_limit}&#34;,
+                    description=f&#34;Set current measurement range to {current_limit}A&#34;,
+                )
+
             # Then set current limit
-            self._communicate_with_check(f&#34;:SOUR:VOLT:ILIM {current_limit}&#34;, 
-                                       description=f&#34;Set current limit to {current_limit}A (using {resistance}Ω)&#34;)
-            
+            self._communicate_with_check(
+                f&#34;:SOUR:VOLT:ILIM {current_limit}&#34;,
+                description=f&#34;Set current limit to {current_limit}A (using {resistance}Ω)&#34;,
+            )
+
             # Configure and store low state for voltage mode
-            self._communicate_with_check(f&#34;:SOUR:VOLT {config.low_value}&#34;, description=&#34;Set low voltage&#34;)
-            self._communicate_with_check(f&#34;SOUR:CONF:LIST:STOR \&#34;{list_name}\&#34;&#34;, description=&#34;Store low state&#34;)
-            
+            self._communicate_with_check(
+                f&#34;:SOUR:VOLT {config.low_value}&#34;, description=&#34;Set low voltage&#34;
+            )
+            self._communicate_with_check(
+                f&#39;SOUR:CONF:LIST:STOR &#34;{list_name}&#34;&#39;, description=&#34;Store low state&#34;
+            )
+
             # Configure and store high state
-            self._communicate_with_check(f&#34;:SOUR:VOLT {config.high_value}&#34;, description=&#34;Set high voltage&#34;)
-            
+            self._communicate_with_check(
+                f&#34;:SOUR:VOLT {config.high_value}&#34;, description=&#34;Set high voltage&#34;
+            )
+
             # For high currents, maintain the same approach as above
             if expected_current &gt; 0.8:
-                self._communicate_with_check(&#34;:SENS:CURR:RANG 1.05&#34;, 
-                                           description=&#34;Set current measurement range to maximum (1.05A)&#34;)
+                self._communicate_with_check(
+                    &#34;:SENS:CURR:RANG 1.05&#34;,
+                    description=&#34;Set current measurement range to maximum (1.05A)&#34;,
+                )
             else:
-                self._communicate_with_check(f&#34;:SENS:CURR:RANG {current_limit}&#34;, 
-                                           description=&#34;Set current measurement range for high state&#34;)
-                
+                self._communicate_with_check(
+                    f&#34;:SENS:CURR:RANG {current_limit}&#34;,
+                    description=&#34;Set current measurement range for high state&#34;,
+                )
+
             # Set current limit again before storing high state to ensure it&#39;s included
-            self._communicate_with_check(f&#34;:SOUR:VOLT:ILIM {current_limit}&#34;, 
-                                       description=&#34;Set current limit for high state&#34;)
-            self._communicate_with_check(f&#34;SOUR:CONF:LIST:STOR \&#34;{list_name}\&#34;&#34;, description=&#34;Store high state&#34;)
-        
+            self._communicate_with_check(
+                f&#34;:SOUR:VOLT:ILIM {current_limit}&#34;,
+                description=&#34;Set current limit for high state&#34;,
+            )
+            self._communicate_with_check(
+                f&#39;SOUR:CONF:LIST:STOR &#34;{list_name}&#34;&#39;, description=&#34;Store high state&#34;
+            )
+
         # Set back to low state initially
-        self._communicate_with_check(f&#34;SOUR:CONF:LIST:REC \&#34;{list_name}\&#34;, 1&#34;, description=&#34;Recall low state&#34;)
-    
-    def _build_trigger_model_blocks(self, config: TriggerConfig, list_name: str) -&gt; None:
+        self._communicate_with_check(
+            f&#39;SOUR:CONF:LIST:REC &#34;{list_name}&#34;, 1&#39;, description=&#34;Recall low state&#34;
+        )
+
+    def _build_trigger_model_blocks(
+        self, config: TriggerConfig, list_name: str
+    ) -&gt; None:
         &#34;&#34;&#34;Build the trigger model blocks for toggling between states.
-        
+
         Parameters
         ----------
         config : TriggerConfig
@@ -1374,30 +1484,27 @@ safety features like ramping and compliance limits.</p>
         commands = [
             # Block 1: Wait for rising edge trigger
             f&#34;TRIG:BLOC:WAIT 1, DIG{config.pin}&#34;,
-            
             # Block 2: Recall high state configuration
-            f&#34;TRIG:BLOC:CONF:REC 2, \&#34;{list_name}\&#34;, 2&#34;,
-            
+            f&#39;TRIG:BLOC:CONF:REC 2, &#34;{list_name}&#34;, 2&#39;,
             # Block 3: Wait for rising edge trigger again
             f&#34;TRIG:BLOC:WAIT 3, DIG{config.pin}&#34;,
-            
             # Block 4: Recall low state configuration
-            f&#34;TRIG:BLOC:CONF:REC 4, \&#34;{list_name}\&#34;, 1&#34;,
+            f&#39;TRIG:BLOC:CONF:REC 4, &#34;{list_name}&#34;, 1&#39;,
         ]
-        
+
         # Add the appropriate branching block based on count
         if config.count &gt; 0:
             commands.append(f&#34;TRIG:BLOC:BRAN:COUN 5, {config.count}, 1&#34;)
         else:
             commands.append(&#34;TRIG:BLOC:BRAN:ALW 5, 1&#34;)
-        
+
         # Execute all commands
         for cmd in commands:
             self._communicate_with_check(cmd, description=&#34;Build trigger model block&#34;)
-            
+
     def is_responding(self) -&gt; bool:
         &#34;&#34;&#34;Check if device is connected and responding.
-        
+
         Returns
         -------
         bool
@@ -1405,7 +1512,7 @@ safety features like ramping and compliance limits.</p>
         &#34;&#34;&#34;
         if not self.inst:
             return False
-            
+
         try:
             # Try to query device ID as a simple check
             response = self._communicate(&#34;*IDN?&#34;, query=True, check_errors=False)
@@ -1413,7 +1520,7 @@ safety features like ramping and compliance limits.</p>
         except Exception as e:
             logger.trace(f&#34;Device not responding: {e}&#34;)
             return False
-            
+
     def get_all_attrs(self) -&gt; Dict[str, Any]:
         &#34;&#34;&#34;Get all device attributes.
 
@@ -1490,16 +1597,16 @@ If None, will create one with Python backend.</dd>
     &#34;&#34;&#34;Abort any ongoing operations safely.&#34;&#34;&#34;
     if not self.inst:
         return
-        
+
     logger.trace(&#34;Attempting abort sequence&#34;)
-    
+
     # Define critical commands to execute in sequence
     commands = [
         (&#34;ABOR&#34;, &#34;abort command&#34;),
         (&#34;TRIG:LOAD:EMPTY&#34;, &#34;reset trigger model&#34;),
-        (&#34;:OUTP OFF&#34;, &#34;disable output&#34;)
+        (&#34;:OUTP OFF&#34;, &#34;disable output&#34;),
     ]
-    
+
     # Execute each command with basic error handling
     for cmd, description in commands:
         try:
@@ -1509,13 +1616,13 @@ If None, will create one with Python backend.</dd>
         except Exception as e:
             logger.warning(f&#34;Error during {description}: {e}&#34;)
             # Continue with next command even if this one failed
-    
+
     # Final emergency output disable if needed
     try:
         self.inst.write(&#34;:OUTP OFF&#34;)
     except Exception:
         pass
-        
+
     logger.trace(&#34;Abort sequence completed&#34;)</code></pre>
 </details>
 <div class="desc"><p>Abort any ongoing operations safely.</p></div>
@@ -1552,7 +1659,9 @@ If None, will create one with Python backend.</dd>
         except Exception as e:
             logger.trace(f&#34;Compliance check failed with command {cmd}: {e}&#34;)
             # Try alternative compliance check method
-            status = self._communicate(&#34;:STAT:OPER:COND?&#34;, query=True, check_errors=False)
+            status = self._communicate(
+                &#34;:STAT:OPER:COND?&#34;, query=True, check_errors=False
+            )
             return bool(int(status) &amp; 0x0800)  # Check compliance bit
 
     except Exception as e:
@@ -1700,9 +1809,11 @@ If None, will create one with Python backend.</dd>
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def configure_digital_io(self, pin: int, mode: Literal[&#34;trigger&#34;, &#34;input&#34;, &#34;output&#34;] = &#34;trigger&#34;) -&gt; None:
+<pre><code class="python">def configure_digital_io(
+    self, pin: int, mode: Literal[&#34;trigger&#34;, &#34;input&#34;, &#34;output&#34;] = &#34;trigger&#34;
+) -&gt; None:
     &#34;&#34;&#34;Configure a digital I/O pin.
-    
+
     Args:
         pin: Digital I/O pin number (1-6)
         mode: Pin mode - &#34;trigger&#34; for trigger input, &#34;input&#34; for digital input,
@@ -1710,7 +1821,7 @@ If None, will create one with Python backend.</dd>
     &#34;&#34;&#34;
     if not 1 &lt;= pin &lt;= 6:
         raise ValueError(&#34;Pin must be between 1 and 6&#34;)
-        
+
     if mode == &#34;trigger&#34;:
         self._communicate(f&#34;DIG:LINE{pin}:MODE TRIG, IN&#34;)
     elif mode == &#34;input&#34;:
@@ -1738,12 +1849,12 @@ If None, will create one with Python backend.</dd>
 </summary>
 <pre><code class="python">def configure_trigger(self, config: TriggerConfig) -&gt; None:
     &#34;&#34;&#34;Configure triggering behavior.
-    
+
     Parameters
     ----------
     config : TriggerConfig
         TriggerConfig instance with trigger settings
-        
+
     Raises
     ------
     ValueError
@@ -1753,7 +1864,7 @@ If None, will create one with Python backend.</dd>
     &#34;&#34;&#34;
     if not self.inst:
         raise RuntimeError(ERROR_MESSAGES[&#34;not_connected&#34;])
-    
+
     # Configure the trigger model
     self._configure_trigger_simple(config)
     self._check_error()</code></pre>
@@ -2038,33 +2149,33 @@ If None, will create one with Python backend.</dd>
 </summary>
 <pre><code class="python">def get_trigger_state(self) -&gt; str:
     &#34;&#34;&#34;Get the current trigger model state.
-    
+
     Returns:
-        str: Current state (&#34;idle&#34;, &#34;running&#34;, &#34;waiting&#34;, &#34;empty&#34;, 
+        str: Current state (&#34;idle&#34;, &#34;running&#34;, &#34;waiting&#34;, &#34;empty&#34;,
                            &#34;building&#34;, &#34;failed&#34;, &#34;aborting&#34;, &#34;aborted&#34;)
-                           
+
     Note:
         The device returns both the state and the last executed block number
         in format like &#34;IDLE;IDLE;9&#34;. This method extracts just the state.
     &#34;&#34;&#34;
     try:
         response = self._communicate(&#34;:TRIG:STATE?&#34;, query=True)
-        
+
         # Handle empty response
         if not response:
             return &#34;unknown&#34;
-            
+
         # Extract just the state part from the response
         # Response format is typically &#34;STATE;STATE;BLOCK_NUMBER&#34;
         if &#34;;&#34; in response:
             state = response.split(&#34;;&#34;)[0]
         else:
             state = response
-            
+
         # Clean up the state - remove any block information
         if &#34;)&#34; in state:
             state = &#34;running&#34;  # If we see block info, the model is running
-        
+
         # Normalize state to lowercase
         return state.lower()
     except Exception as e:
@@ -2150,7 +2261,7 @@ in format like "IDLE;IDLE;9". This method extracts just the state.</p></div>
 </summary>
 <pre><code class="python">def is_responding(self) -&gt; bool:
     &#34;&#34;&#34;Check if device is connected and responding.
-    
+
     Returns
     -------
     bool
@@ -2158,7 +2269,7 @@ in format like "IDLE;IDLE;9". This method extracts just the state.</p></div>
     &#34;&#34;&#34;
     if not self.inst:
         return False
-        
+
     try:
         # Try to query device ID as a simple check
         response = self._communicate(&#34;*IDN?&#34;, query=True, check_errors=False)
@@ -2271,12 +2382,22 @@ in format like "IDLE;IDLE;9". This method extracts just the state.</p></div>
         time.sleep(0.1)
 
         # Basic configuration - standard safe state
-        self._communicate(&#34;:SOUR:FUNC VOLT&#34;, check_errors=True)  # Start in voltage source mode
-        self._communicate(&#34;:SOUR:VOLT:RANG 20&#34;, check_errors=True)  # Set to 20V range for safety
-        self._communicate(&#34;:SOUR:VOLT:ILIM 0.5&#34;, check_errors=True)  # Set 500mA compliance
+        self._communicate(
+            &#34;:SOUR:FUNC VOLT&#34;, check_errors=True
+        )  # Start in voltage source mode
+        self._communicate(
+            &#34;:SOUR:VOLT:RANG 20&#34;, check_errors=True
+        )  # Set to 20V range for safety
+        self._communicate(
+            &#34;:SOUR:VOLT:ILIM 0.5&#34;, check_errors=True
+        )  # Set 500mA compliance
         self._communicate(&#39;:SENS:FUNC &#34;CURR&#34;&#39;, check_errors=True)  # Measure current
-        self._communicate(&#34;:SENS:CURR:RANG 1.05&#34;, check_errors=True)  # Set to max current range
-        self._communicate(&#34;:SENS:CURR:NPLC 1&#34;, check_errors=True)  # Set integration time
+        self._communicate(
+            &#34;:SENS:CURR:RANG 1.05&#34;, check_errors=True
+        )  # Set to max current range
+        self._communicate(
+            &#34;:SENS:CURR:NPLC 1&#34;, check_errors=True
+        )  # Set integration time
         self._communicate(&#34;:OUTP OFF&#34;, check_errors=True)  # Ensure output is off
 
         self._mode = &#34;voltage&#34;  # Set initial mode
@@ -2593,25 +2714,25 @@ In current source mode, sets voltage compliance.</p>
 </summary>
 <pre><code class="python">def stop_trigger_model(self, max_wait: float = 2.0) -&gt; str:
     &#34;&#34;&#34;Stop the trigger model execution and wait for it to fully stop.
-    
+
     Parameters
     ----------
     max_wait : float
         Maximum time to wait in seconds for the trigger model to stop
-        
+
     Returns
     -------
     str
         Final trigger model state after stopping
     &#34;&#34;&#34;
     logger.debug(&#34;Stopping trigger model&#34;)
-    
+
     # Define stop sequence commands
     stop_commands = [
         (&#34;ABOR&#34;, &#34;abort trigger model&#34;),
         # (&#34;TRIG:LOAD:EMPTY&#34;, &#34;reset trigger model&#34;)
     ]
-    
+
     # Execute stop sequence
     for cmd, description in stop_commands:
         try:
@@ -2619,11 +2740,11 @@ In current source mode, sets voltage compliance.</p>
             logger.trace(f&#34;Executed {description}&#34;)
         except Exception as e:
             logger.warning(f&#34;Error during {description}: {e}&#34;)
-    
+
     # Wait for trigger model to fully stop with timeout
     acceptable_states = [&#34;idle&#34;, &#34;empty&#34;, &#34;aborted&#34;]
     start_time = time.time()
-    
+
     while time.time() - start_time &lt; max_wait:
         try:
             state = self.get_trigger_state()
@@ -2634,7 +2755,7 @@ In current source mode, sets voltage compliance.</p>
         except Exception:
             break
     raise RuntimeError(f&#34;Could not abort, state: {state}&#34;)
-    
+
     # # If we get here, try a more aggressive reset
     # try:
     #     self._communicate(&#34;*RST&#34;, check_errors=False)
@@ -2665,13 +2786,13 @@ In current source mode, sets voltage compliance.</p>
 </summary>
 <pre><code class="python">def wait_for_trigger(self, timeout: float = 1.0) -&gt; bool:
     &#34;&#34;&#34;Wait for trigger event.
-    
+
     Args:
         timeout: Maximum time to wait in seconds
-        
+
     Returns:
         bool: True if triggered, False if timed out
-        
+
     Raises:
         RuntimeError: If device not connected or error occurs
     &#34;&#34;&#34;
@@ -2761,7 +2882,7 @@ In current source mode, sets voltage compliance.</p>
 <pre><code class="python">@dataclass
 class TriggerConfig:
     &#34;&#34;&#34;Configuration for SMU triggering and digital I/O.
-    
+
     Attributes
     ----------
     source : Literal[&#34;external&#34;, &#34;timer&#34;, &#34;manual&#34;]
@@ -2783,6 +2904,7 @@ class TriggerConfig:
     resistance : float
         Resistance value for voltage-to-current calculations (ohms)
     &#34;&#34;&#34;
+
     source: Literal[&#34;external&#34;, &#34;timer&#34;, &#34;manual&#34;] = &#34;external&#34;
     edge: TriggerEdge = TriggerEdge.RISING
     pin: int = 3
@@ -2803,9 +2925,9 @@ class TriggerConfig:
             &#34;pin&#34;: (1 &lt;= self.pin &lt;= 6, &#34;Digital I/O pin must be between 1 and 6&#34;),
             &#34;delay&#34;: (self.delay &gt;= 0, &#34;Trigger delay cannot be negative&#34;),
             &#34;timeout&#34;: (self.timeout &gt; 0, &#34;Trigger timeout must be positive&#34;),
-            &#34;count&#34;: (self.count &gt;= 0, &#34;Trigger count cannot be negative&#34;)
+            &#34;count&#34;: (self.count &gt;= 0, &#34;Trigger count cannot be negative&#34;),
         }
-        
+
         # Check all validation rules
         for param, (valid, message) in validators.items():
             if not valid:
@@ -2888,9 +3010,9 @@ class TriggerConfig:
         &#34;pin&#34;: (1 &lt;= self.pin &lt;= 6, &#34;Digital I/O pin must be between 1 and 6&#34;),
         &#34;delay&#34;: (self.delay &gt;= 0, &#34;Trigger delay cannot be negative&#34;),
         &#34;timeout&#34;: (self.timeout &gt; 0, &#34;Trigger timeout must be positive&#34;),
-        &#34;count&#34;: (self.count &gt;= 0, &#34;Trigger count cannot be negative&#34;)
+        &#34;count&#34;: (self.count &gt;= 0, &#34;Trigger count cannot be negative&#34;),
     }
-    
+
     # Check all validation rules
     for param, (valid, message) in validators.items():
         if not valid:
@@ -2911,6 +3033,7 @@ class TriggerConfig:
 </summary>
 <pre><code class="python">class TriggerEdge(Enum):
     &#34;&#34;&#34;Trigger edge direction.&#34;&#34;&#34;
+
     RISING = auto()
     FALLING = auto()
     EITHER = auto()</code></pre>

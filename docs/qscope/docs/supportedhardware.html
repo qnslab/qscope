@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 <meta name="generator" content="pdoc3 0.11.6">
-<title>qscope.gui.main_gui API documentation</title>
-<meta name="description" content="">
+<title>qscope.docs.supportedhardware API documentation</title>
+<meta name="description" content="Supported Hardware …">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" crossorigin>
@@ -35,88 +35,149 @@ el.replaceWith(d);
 <main>
 <article id="content">
 <header>
-<h1 class="title">Module <code>qscope.gui.main_gui</code></h1>
+<h1 class="title">Module <code>qscope.docs.supportedhardware</code></h1>
 </header>
 <section id="section-intro">
+<h1 id="supported-hardware">Supported Hardware</h1>
+<p>This page documents what devices/hardware are currently supported by <code><a title="qscope" href="../index.html">qscope</a></code>.</p>
+<p>The table below shows hardware compatibility across operating systems:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Device</th>
+<th style="text-align: center;">&nbsp;&nbsp;Windows&nbsp;&nbsp;</th>
+<th style="text-align: center;">&nbsp;&nbsp;Linux&nbsp;&nbsp;</th>
+<th style="text-align: left;">Connection&nbsp;&nbsp;</th>
+<th style="text-align: left;">Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Andor camera</td>
+<td style="text-align: center;">&nbsp;&nbsp;✅&nbsp;&nbsp;</td>
+<td style="text-align: center;">&nbsp;&nbsp;❓&nbsp;&nbsp;</td>
+<td style="text-align: left;">USB/PCIe</td>
+<td style="text-align: left;">Install Solis (win only) or SDK</td>
+</tr>
+<tr>
+<td style="text-align: left;">Basler camera</td>
+<td style="text-align: center;">&nbsp;&nbsp;✅&nbsp;&nbsp;</td>
+<td style="text-align: center;">&nbsp;&nbsp;❓&nbsp;&nbsp;</td>
+<td style="text-align: left;">USB/GigE</td>
+<td style="text-align: left;">Install pylon</td>
+</tr>
+<tr>
+<td style="text-align: left;">Thorlabs camera</td>
+<td style="text-align: center;">&nbsp;&nbsp;✅&nbsp;&nbsp;</td>
+<td style="text-align: center;">&nbsp;&nbsp;❓&nbsp;&nbsp;</td>
+<td style="text-align: left;">USB</td>
+<td style="text-align: left;">Install Thorcam</td>
+</tr>
+<tr>
+<td style="text-align: left;">Photometrics camera</td>
+<td style="text-align: center;">&nbsp;&nbsp;✅&nbsp;&nbsp;</td>
+<td style="text-align: center;">&nbsp;&nbsp;❓&nbsp;&nbsp;</td>
+<td style="text-align: left;">USB/PCIe</td>
+<td style="text-align: left;">Install PVCAM</td>
+</tr>
+<tr>
+<td style="text-align: left;">Atto magnet</td>
+<td style="text-align: center;">&nbsp;&nbsp;✅&nbsp;&nbsp;</td>
+<td style="text-align: center;">&nbsp;&nbsp;❓&nbsp;&nbsp;</td>
+<td style="text-align: left;">Serial</td>
+<td style="text-align: left;">Serial communication</td>
+</tr>
+<tr>
+<td style="text-align: left;">Winfreak</td>
+<td style="text-align: center;">&nbsp;&nbsp;✅&nbsp;&nbsp;</td>
+<td style="text-align: center;">&nbsp;&nbsp;❓&nbsp;&nbsp;</td>
+<td style="text-align: left;">Serial</td>
+<td style="text-align: left;">Serial communication</td>
+</tr>
+<tr>
+<td style="text-align: left;">R&amp;S smb100</td>
+<td style="text-align: center;">&nbsp;&nbsp;✅&nbsp;&nbsp;</td>
+<td style="text-align: center;">&nbsp;&nbsp;❓&nbsp;&nbsp;</td>
+<td style="text-align: left;">VISA</td>
+<td style="text-align: left;">VISA communication</td>
+</tr>
+<tr>
+<td style="text-align: left;">Agilent SigGen</td>
+<td style="text-align: center;">&nbsp;&nbsp;✅&nbsp;&nbsp;</td>
+<td style="text-align: center;">&nbsp;&nbsp;❓&nbsp;&nbsp;</td>
+<td style="text-align: left;">VISA</td>
+<td style="text-align: left;">VISA communication</td>
+</tr>
+<tr>
+<td style="text-align: left;">DAQ</td>
+<td style="text-align: center;">&nbsp;&nbsp;❓&nbsp;&nbsp;</td>
+<td style="text-align: center;">&nbsp;&nbsp;❓&nbsp;&nbsp;</td>
+<td style="text-align: left;">USB/PCIe</td>
+<td style="text-align: left;">See pylablib</td>
+</tr>
+<tr>
+<td style="text-align: left;">Picoscope</td>
+<td style="text-align: center;">&nbsp;&nbsp;✅&nbsp;&nbsp;</td>
+<td style="text-align: center;">&nbsp;&nbsp;✅&nbsp;&nbsp;</td>
+<td style="text-align: left;">USB</td>
+<td style="text-align: left;">Picoscope SDK. Win/Ubuntu/OpenSUSE/Mac</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pulseblaster</td>
+<td style="text-align: center;">&nbsp;&nbsp;✅&nbsp;&nbsp;</td>
+<td style="text-align: center;">&nbsp;&nbsp;✅&nbsp;&nbsp;</td>
+<td style="text-align: left;">PCIe</td>
+<td style="text-align: left;">spinapi DLL from spincore</td>
+</tr>
+<tr>
+<td style="text-align: left;">Keithley SMU</td>
+<td style="text-align: center;">&nbsp;&nbsp;✅&nbsp;&nbsp;</td>
+<td style="text-align: center;">&nbsp;&nbsp;✅&nbsp;&nbsp;</td>
+<td style="text-align: left;">VISA</td>
+<td style="text-align: left;">VISA communication</td>
+</tr>
+<tr>
+<td style="text-align: left;">Helmholtz coils</td>
+<td style="text-align: center;">&nbsp;&nbsp;❓&nbsp;&nbsp;</td>
+<td style="text-align: center;">&nbsp;&nbsp;❓&nbsp;&nbsp;</td>
+<td style="text-align: left;">Serial</td>
+<td style="text-align: left;">Serial communication</td>
+</tr>
+<tr>
+<td style="text-align: left;">Temp controller</td>
+<td style="text-align: center;">&nbsp;&nbsp;❓&nbsp;&nbsp;</td>
+<td style="text-align: center;">&nbsp;&nbsp;❓&nbsp;&nbsp;</td>
+<td style="text-align: left;">VISA/USB</td>
+<td style="text-align: left;">See pylablib</td>
+</tr>
+<tr>
+<td style="text-align: left;">AWG</td>
+<td style="text-align: center;">&nbsp;&nbsp;✅&nbsp;&nbsp;</td>
+<td style="text-align: center;">&nbsp;&nbsp;✅&nbsp;&nbsp;</td>
+<td style="text-align: left;">PCIe/USB</td>
+<td style="text-align: left;">Generic, see pylablib, need NI runtime</td>
+</tr>
+<tr>
+<td style="text-align: left;">Spectrometer</td>
+<td style="text-align: center;">&nbsp;&nbsp;❓&nbsp;&nbsp;</td>
+<td style="text-align: center;">&nbsp;&nbsp;❓&nbsp;&nbsp;</td>
+<td style="text-align: left;">USB</td>
+<td style="text-align: left;">Swap to pyseabreeze</td>
+</tr>
+</tbody>
+</table>
+<p>Legend:</p>
+<ul>
+<li>✅ = Supported</li>
+<li>❓ = Needs testing, or partially tested</li>
+<li>❌ = requires external libs</li>
+</ul>
 </section>
 <section>
 </section>
 <section>
 </section>
 <section>
-<h2 class="section-title" id="header-functions">Functions</h2>
-<dl>
-<dt id="qscope.gui.main_gui.main_gui"><code class="name flex">
-<span>def <span class="ident">main_gui</span></span>(<span>system_name=None,<br>host='',<br>msg_port='',<br>log_to_file=True,<br>log_to_stdout=True,<br>log_path=None,<br>clear_prev_log=True,<br>log_level='INFO',<br>auto_connect=True)</span>
-</code></dt>
-<dd>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def main_gui(
-    system_name=None,
-    host=&#34;&#34;,
-    msg_port=&#34;&#34;,
-    log_to_file=True,
-    log_to_stdout=True,
-    log_path=None,
-    clear_prev_log=True,
-    log_level=&#34;INFO&#34;,
-    auto_connect=True,
-):
-    start_client_log(
-        log_to_file=log_to_file,
-        log_to_stdout=log_to_stdout,
-        log_path=log_path,
-        clear_prev=clear_prev_log,
-        log_level=log_level,
-    )
-    app = QApplication(sys.argv)
-    app.setStyle(&#34;Fusion&#34;)
-
-    window = MainWindow(
-        system_name=system_name, auto_connect=auto_connect, host=host, msg_port=msg_port
-    )
-    window.show()
-
-    # Return the exit code instead of calling sys.exit directly
-    return_code = app.exec()
-
-    # Ensure all threads are stopped and resources are cleaned up
-    app.quit()  # Make sure the application knows it should quit
-
-    # Force Python garbage collection
-    import gc
-
-    gc.collect()
-
-    # If there are any remaining ZMQ contexts, terminate them
-    try:
-        import zmq
-
-        zmq.Context.instance().term()
-    except:
-        pass
-
-    # If there are any remaining asyncio event loops, close them
-    try:
-        import asyncio
-
-        loop = asyncio.get_event_loop()
-        if loop.is_running():
-            loop.stop()
-        loop.close()
-    except:
-        pass
-
-    if __name__ != &#34;__main__&#34;:  # Don&#39;t exit if being imported (e.g. during testing)
-        return return_code
-    sys.exit(return_code)</code></pre>
-</details>
-<div class="desc"></div>
-</dd>
-</dl>
 </section>
 <section>
 </section>
@@ -169,17 +230,14 @@ setTimeout(() => input.focus(), 100);
 }
 </script>
 <div class="toc">
-<ul></ul>
+<ul>
+<li><a href="#supported-hardware">Supported Hardware</a></li>
+</ul>
 </div>
 <ul id="index">
 <li><h3>Super-module</h3>
 <ul>
-<li><code><a title="qscope.gui" href="index.html">qscope.gui</a></code></li>
-</ul>
-</li>
-<li><h3><a href="#header-functions">Functions</a></h3>
-<ul class="">
-<li><code><a title="qscope.gui.main_gui.main_gui" href="#qscope.gui.main_gui.main_gui">main_gui</a></code></li>
+<li><code><a title="qscope.docs" href="index.html">qscope.docs</a></code></li>
 </ul>
 </li>
 </ul>

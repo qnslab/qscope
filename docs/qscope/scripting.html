@@ -48,7 +48,7 @@ el.replaceWith(d);
 <h2 class="section-title" id="header-functions">Functions</h2>
 <dl>
 <dt id="qscope.scripting.meas_close_after_nsweeps"><code class="name flex">
-<span>def <span class="ident">meas_close_after_nsweeps</span></span>(<span>manager: <a title="qscope.server.connection_manager.ConnectionManager" href="server/connection_manager.html#qscope.server.connection_manager.ConnectionManager">ConnectionManager</a>,<br>meas_id: str,<br>nsweeps: int,<br>timeout: float = 10)</span>
+<span>def <span class="ident">meas_close_after_nsweeps</span></span>(<span>manager: <a title="qscope.server.connection_manager.ConnectionManager" href="server/connection_manager.html#qscope.server.connection_manager.ConnectionManager">ConnectionManager</a>,<br>meas_id: str,<br>nsweeps: int,<br>timeout: float = 10,<br>raise_on_stop: bool = False)</span>
 </code></dt>
 <dd>
 <details class="source">
@@ -60,29 +60,78 @@ el.replaceWith(d);
     meas_id: str,
     nsweeps: int,
     timeout: float = 10,
+    raise_on_stop: bool = False
 ):
+    &#34;&#34;&#34;Stop and close a measurement after a specific number of sweeps.
+    
+    Parameters
+    ----------
+    manager : ConnectionManager
+        The connection manager
+    meas_id : str
+        The measurement ID to monitor
+    nsweeps : int
+        Number of sweeps to wait for before stopping and closing
+    timeout : float, optional
+        Maximum time to wait, by default 10 seconds
+    raise_on_stop : bool, optional
+        Whether to raise an exception if the measurement is stopped, by default False
+        
+    Returns
+    -------
+    np.ndarray
+        The sweep data if successful, or the latest data if measurement was stopped
+        
+    Raises
+    ------
+    MeasurementStoppedError
+        If the measurement is stopped while waiting and raise_on_stop is True,
+        or if no data is available
+    TimeoutError
+        If timeout is reached before the required sweeps are completed
+    &#34;&#34;&#34;
     async def runner():
-        manager.start_notification_listener()
-        start = time.time()
-        while time.time() - start &lt; timeout:
-            sweep_update = await manager.wait_for_notification(
-                qscope.types.SweepUpdate, timeout=10
-            )
-            if sweep_update.nsweeps &gt;= nsweeps:
-                manager.stop_measurement(meas_id)
-                manager.close_measurement_wait(meas_id)
-                break
-        else:
-            raise TimeoutError(&#34;Timeout waiting for nsweeps&#34;)
-        return sweep_update.sweep_data
-
-    sweep_data = asyncio.run(runner())
-    return sweep_data</code></pre>
+        def on_success(sweep_update):
+            manager.stop_measurement(meas_id)
+            manager.close_measurement_wait(meas_id)
+            return sweep_update.sweep_data
+            
+        return await _common_meas_runner(
+            manager, meas_id, nsweeps, timeout, raise_on_stop, on_success
+        )
+    
+    return asyncio.run(runner())</code></pre>
 </details>
-<div class="desc"></div>
+<div class="desc"><p>Stop and close a measurement after a specific number of sweeps.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>manager</code></strong> :&ensp;<code>ConnectionManager</code></dt>
+<dd>The connection manager</dd>
+<dt><strong><code>meas_id</code></strong> :&ensp;<code>str</code></dt>
+<dd>The measurement ID to monitor</dd>
+<dt><strong><code>nsweeps</code></strong> :&ensp;<code>int</code></dt>
+<dd>Number of sweeps to wait for before stopping and closing</dd>
+<dt><strong><code>timeout</code></strong> :&ensp;<code>float</code>, optional</dt>
+<dd>Maximum time to wait, by default 10 seconds</dd>
+<dt><strong><code>raise_on_stop</code></strong> :&ensp;<code>bool</code>, optional</dt>
+<dd>Whether to raise an exception if the measurement is stopped, by default False</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>np.ndarray</code></dt>
+<dd>The sweep data if successful, or the latest data if measurement was stopped</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>MeasurementStoppedError</code></dt>
+<dd>If the measurement is stopped while waiting and raise_on_stop is True,
+or if no data is available</dd>
+<dt><code>TimeoutError</code></dt>
+<dd>If timeout is reached before the required sweeps are completed</dd>
+</dl></div>
 </dd>
 <dt id="qscope.scripting.meas_stop_after_nsweeps"><code class="name flex">
-<span>def <span class="ident">meas_stop_after_nsweeps</span></span>(<span>manager: <a title="qscope.server.connection_manager.ConnectionManager" href="server/connection_manager.html#qscope.server.connection_manager.ConnectionManager">ConnectionManager</a>,<br>meas_id: str,<br>nsweeps: int,<br>timeout: float = 10)</span>
+<span>def <span class="ident">meas_stop_after_nsweeps</span></span>(<span>manager: <a title="qscope.server.connection_manager.ConnectionManager" href="server/connection_manager.html#qscope.server.connection_manager.ConnectionManager">ConnectionManager</a>,<br>meas_id: str,<br>nsweeps: int,<br>timeout: float = 10,<br>raise_on_stop: bool = False)</span>
 </code></dt>
 <dd>
 <details class="source">
@@ -94,28 +143,74 @@ el.replaceWith(d);
     meas_id: str,
     nsweeps: int,
     timeout: float = 10,
+    raise_on_stop: bool = False
 ):
+    &#34;&#34;&#34;Stop a measurement after a specific number of sweeps.
+    
+    Parameters
+    ----------
+    manager : ConnectionManager
+        The connection manager
+    meas_id : str
+        The measurement ID to monitor
+    nsweeps : int
+        Number of sweeps to wait for before stopping
+    timeout : float, optional
+        Maximum time to wait, by default 10 seconds
+    raise_on_stop : bool, optional
+        Whether to raise an exception if the measurement is stopped, by default False
+        
+    Returns
+    -------
+    np.ndarray
+        The sweep data if successful, or the latest data if measurement was stopped
+        
+    Raises
+    ------
+    MeasurementStoppedError
+        If the measurement is stopped while waiting and raise_on_stop is True,
+        or if no data is available
+    TimeoutError
+        If timeout is reached before the required sweeps are completed
+    &#34;&#34;&#34;
     async def runner():
-        manager.start_notification_listener()
-        start = time.time()
-        while time.time() - start &lt; timeout:
-            sweep_update = await manager.wait_for_notification(
-                qscope.types.SweepUpdate, timeout=10
-            )
-            if sweep_update.nsweeps &gt;= nsweeps:
-                manager.stop_measurement(meas_id)
-                break
-        else:
-            raise TimeoutError(&#34;Timeout waiting for nsweeps&#34;)
-        return sweep_update.sweep_data
-
-    sweep_data = asyncio.run(runner())
-    return sweep_data</code></pre>
+        return await _common_meas_runner(
+            manager, meas_id, nsweeps, timeout, raise_on_stop,
+            lambda sweep_update: (manager.stop_measurement(meas_id), sweep_update.sweep_data)[1]
+        )
+    
+    return asyncio.run(runner())</code></pre>
 </details>
-<div class="desc"></div>
+<div class="desc"><p>Stop a measurement after a specific number of sweeps.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>manager</code></strong> :&ensp;<code>ConnectionManager</code></dt>
+<dd>The connection manager</dd>
+<dt><strong><code>meas_id</code></strong> :&ensp;<code>str</code></dt>
+<dd>The measurement ID to monitor</dd>
+<dt><strong><code>nsweeps</code></strong> :&ensp;<code>int</code></dt>
+<dd>Number of sweeps to wait for before stopping</dd>
+<dt><strong><code>timeout</code></strong> :&ensp;<code>float</code>, optional</dt>
+<dd>Maximum time to wait, by default 10 seconds</dd>
+<dt><strong><code>raise_on_stop</code></strong> :&ensp;<code>bool</code>, optional</dt>
+<dd>Whether to raise an exception if the measurement is stopped, by default False</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>np.ndarray</code></dt>
+<dd>The sweep data if successful, or the latest data if measurement was stopped</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>MeasurementStoppedError</code></dt>
+<dd>If the measurement is stopped while waiting and raise_on_stop is True,
+or if no data is available</dd>
+<dt><code>TimeoutError</code></dt>
+<dd>If timeout is reached before the required sweeps are completed</dd>
+</dl></div>
 </dd>
 <dt id="qscope.scripting.meas_wait_for_nsweeps"><code class="name flex">
-<span>def <span class="ident">meas_wait_for_nsweeps</span></span>(<span>manager: <a title="qscope.server.connection_manager.ConnectionManager" href="server/connection_manager.html#qscope.server.connection_manager.ConnectionManager">ConnectionManager</a>,<br>nsweeps: int,<br>timeout: float = 10)</span>
+<span>def <span class="ident">meas_wait_for_nsweeps</span></span>(<span>manager: <a title="qscope.server.connection_manager.ConnectionManager" href="server/connection_manager.html#qscope.server.connection_manager.ConnectionManager">ConnectionManager</a>,<br>meas_id: str,<br>nsweeps: int,<br>timeout: float = 10,<br>raise_on_stop: bool = False)</span>
 </code></dt>
 <dd>
 <details class="source">
@@ -123,25 +218,75 @@ el.replaceWith(d);
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def meas_wait_for_nsweeps(
-    manager: qscope.server.ConnectionManager, nsweeps: int, timeout: float = 10
+    manager: qscope.server.ConnectionManager, 
+    meas_id: str,
+    nsweeps: int, 
+    timeout: float = 10,
+    raise_on_stop: bool = False
 ):
-    async def nsweeps_runner():
-        manager.start_notification_listener()
-        start = time.time()
-        while time.time() - start &lt; timeout:
-            sweep_update = await manager.wait_for_notification(
-                qscope.types.SweepUpdate, timeout=10
-            )
-            if sweep_update.nsweeps &gt;= nsweeps:
-                break
-        else:
-            raise TimeoutError(&#34;Timeout waiting for nsweeps&#34;)
-        return sweep_update.sweep_data
-
-    sweep_data = asyncio.run(nsweeps_runner())
-    return sweep_data</code></pre>
+    &#34;&#34;&#34;Wait for a measurement to complete a specific number of sweeps.
+    
+    Parameters
+    ----------
+    manager : ConnectionManager
+        The connection manager
+    meas_id : str
+        The measurement ID to monitor
+    nsweeps : int
+        Number of sweeps to wait for
+    timeout : float, optional
+        Maximum time to wait, by default 10 seconds
+    raise_on_stop : bool, optional
+        Whether to raise an exception if the measurement is stopped, by default False
+        
+    Returns
+    -------
+    np.ndarray
+        The sweep data if successful, or the latest data if measurement was stopped
+        
+    Raises
+    ------
+    MeasurementStoppedError
+        If the measurement is stopped while waiting and raise_on_stop is True,
+        or if no data is available
+    TimeoutError
+        If timeout is reached before the required sweeps are completed
+    &#34;&#34;&#34;
+    async def runner():
+        return await _common_meas_runner(
+            manager, meas_id, nsweeps, timeout, raise_on_stop,
+            lambda sweep_update: sweep_update.sweep_data
+        )
+    
+    return asyncio.run(runner())</code></pre>
 </details>
-<div class="desc"></div>
+<div class="desc"><p>Wait for a measurement to complete a specific number of sweeps.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>manager</code></strong> :&ensp;<code>ConnectionManager</code></dt>
+<dd>The connection manager</dd>
+<dt><strong><code>meas_id</code></strong> :&ensp;<code>str</code></dt>
+<dd>The measurement ID to monitor</dd>
+<dt><strong><code>nsweeps</code></strong> :&ensp;<code>int</code></dt>
+<dd>Number of sweeps to wait for</dd>
+<dt><strong><code>timeout</code></strong> :&ensp;<code>float</code>, optional</dt>
+<dd>Maximum time to wait, by default 10 seconds</dd>
+<dt><strong><code>raise_on_stop</code></strong> :&ensp;<code>bool</code>, optional</dt>
+<dd>Whether to raise an exception if the measurement is stopped, by default False</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>np.ndarray</code></dt>
+<dd>The sweep data if successful, or the latest data if measurement was stopped</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>MeasurementStoppedError</code></dt>
+<dd>If the measurement is stopped while waiting and raise_on_stop is True,
+or if no data is available</dd>
+<dt><code>TimeoutError</code></dt>
+<dd>If timeout is reached before the required sweeps are completed</dd>
+</dl></div>
 </dd>
 </dl>
 </section>

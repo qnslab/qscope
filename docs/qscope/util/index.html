@@ -550,7 +550,7 @@ or log_default_path_server().</dd>
             {
                 &#34;command&#34;: get_command_string(),
                 &#34;timestamp&#34;: datetime.now().isoformat(),
-                &#34;sys_metadata&#34;: metadata
+                &#34;sys_metadata&#34;: metadata,
             },
             f,
             cls=NumpyEncoder,
@@ -562,9 +562,7 @@ or log_default_path_server().</dd>
 
     if stream_chunk.ndim == 2:
         fig, ax = plt.subplots(figsize=(8, 4))
-        plot = ax.imshow(stream_chunk, cmap=_get_colormap(color_map), 
-                         origin=&#34;upper&#34;
-                         )
+        plot = ax.imshow(stream_chunk, cmap=_get_colormap(color_map), origin=&#34;upper&#34;)
         # Add a colorbar
         cbar = add_colorbar(
             plot,
@@ -625,7 +623,7 @@ or log_default_path_server().</dd>
             {
                 &#34;command&#34;: get_command_string(),
                 &#34;timestamp&#34;: datetime.now().isoformat(),
-                &#34;sys_metadata&#34;: system.get_metadata()
+                &#34;sys_metadata&#34;: system.get_metadata(),
             },
             f,
             cls=NumpyEncoder,
@@ -669,7 +667,7 @@ or log_default_path_server().</dd>
 <div class="desc"></div>
 </dd>
 <dt id="qscope.util.save_sweep_w_fit"><code class="name flex">
-<span>def <span class="ident">save_sweep_w_fit</span></span>(<span>system: System,<br>measurement: Measurement,<br>project_name: str,<br>x_data: typing.Sequence,<br>y_data: typing.Sequence,<br>x_fit: typing.Sequence,<br>y_fit: typing.Sequence,<br>fit_results: str = None,<br>color_map: str = 'gray',<br>notes: str = '',<br>norm_type: str = 'None') ‑> str</span>
+<span>def <span class="ident">save_sweep_w_fit</span></span>(<span>system: System,<br>measurement: Measurement,<br>project_name: str,<br>x_data: typing.Sequence,<br>y_data: typing.Sequence,<br>x_fit: typing.Sequence,<br>y_fit: typing.Sequence,<br>fit_results: str = None,<br>comparison_x: typing.Sequence = None,<br>comparison_y: typing.Sequence = None,<br>comparison_label: str = None,<br>color_map: str = 'gray',<br>notes: str = '',<br>norm_type: str = 'None') ‑> str</span>
 </code></dt>
 <dd>
 <details class="source">
@@ -685,6 +683,9 @@ or log_default_path_server().</dd>
     x_fit: typing.Sequence,
     y_fit: typing.Sequence,
     fit_results: str = None,
+    comparison_x: typing.Sequence = None,
+    comparison_y: typing.Sequence = None,
+    comparison_label: str = None,
     color_map: str = &#34;gray&#34;,
     notes: str = &#34;&#34;,
     norm_type: str = &#34;None&#34;,
@@ -693,11 +694,15 @@ or log_default_path_server().</dd>
     _save_notes(base_path, notes)
     _save_metadata(system, measurement, base_path)
     spec_path = _save_sweep(system, measurement, base_path)
+    logger.info(f&#34;comparison x: {comparison_x}&#34;)
+    logger.info(f&#34;comparison y: {comparison_y}&#34;)
     spec_fit_path = _save_sweep_w_fit(
         system,
         measurement,
         base_path,
         {&#34;x&#34;: x_data, &#34;y&#34;: y_data, &#34;x_fit&#34;: x_fit, &#34;y_fit&#34;: y_fit},
+        {&#34;x&#34;: comparison_x, &#34;y&#34;: comparison_y},
+        comparison_label
     )
     image_path = _save_integrated_image(
         system, measurement, base_path, color_map=color_map

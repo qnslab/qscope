@@ -58,14 +58,14 @@ Usage: qscope mpl trigtime [OPTIONS]
 
   Test timing synchronization between AWG trigger and SMU response.
 
-  Physical Connections: AWG Out ─┬─&gt; Channel A (monitor clock)          
+  Physical Connections: AWG Out ─┬─&gt; Channel A (monitor clock)
                                  └─&gt; SMU Digital Input (pin 3)
 
   SMU Out ──&gt; Channel B (monitor current)
 
-  Verifies: 
-    1. AWG signal generation 
-    2. SMU trigger detection and response time 
+  Verifies:
+    1. AWG signal generation
+    2. SMU trigger detection and response time
     3. Current switching timing/delays
 
   Usage `qscope mpl trigtime -n zyla -p mpl_cds -c 0.45 -f 0.25 -d 10 -s 1e7
@@ -74,11 +74,11 @@ Usage: qscope mpl trigtime [OPTIONS]
 Options:
   -n, --system-name TEXT          Name of the system configuration  [required]
   -p, --project-name TEXT         Project name for saving results
-  Signal Parameters: 
+  Signal Parameters:
     -f, --frequency FLOAT         Square wave frequency in Hz (default: 1.0)
     -d, --duration FLOAT          Test duration in seconds (default: 1.0)
     -c, --current FLOAT           Test current in amps (default: 0.1A)
-  Electromagnet Configuration: 
+  Electromagnet Configuration:
     --source-mode [current|voltage]
                                   SMU source mode (default: voltage)
     -r, --coil-resistance FLOAT   Electromagnet coil resistance in ohms
@@ -90,13 +90,13 @@ Options:
                                   calculated from current and resistance)
     --force-sourcing              Force operation even when approaching SMU
                                   limits (use with caution)
-  Hardware Configuration: 
+  Hardware Configuration:
     -s, --sample-rate FLOAT       Digitizer sample rate in Hz (default: 1e6)
     -dr, --downsample-ratio INTEGER
                                   Hardware downsampling ratio (must be &gt;=1,
                                   default: 1)
     --smu-address TEXT            Optional VISA address of SMU
-  Diagnostic Options: 
+  Diagnostic Options:
     -diag, --diagnostic           Run in diagnostic mode to check trigger
                                   signals
     -v, --verbose                 Enable verbose logging
@@ -111,14 +111,14 @@ Usage: qscope mpl trigtrace [OPTIONS]
 
   Measure PL response to triggered magnetic field changes.
 
-  Physical Connections: AWG Out ─┬─&gt; Channel A (monitor clock)          
+  Physical Connections: AWG Out ─┬─&gt; Channel A (monitor clock)
                                  └─&gt; SMU Digital Input (pin 3)
 
   PL In ────&gt; Channel B (photodetector)
 
-  Pre-measurement checks: 
-   - Validates all device connections 
-   - Checks signal levels are within range 
+  Pre-measurement checks:
+   - Validates all device connections
+   - Checks signal levels are within range
    - Verifies trigger configuration
 
   Parameter Groups:
@@ -132,7 +132,7 @@ Options:
   -p, --project-name TEXT         Project name for saving results
   --detrend / --no-detrend        Remove linear trend from PL signal (corrects
                                   for photobleaching)
-  Measurement Parameters: 
+  Measurement Parameters:
     -c, --current FLOAT           Peak current amplitude in amps (default:
                                   0.1)
     -f, --frequency FLOAT         Operational frequency in Hz (default: 1.0)
@@ -140,7 +140,7 @@ Options:
                                   1/f)
     -a, --averages INTEGER        Number of measurement sequences to average
                                   (default: 1)
-  Electromagnet Configuration: 
+  Electromagnet Configuration:
     --source-mode [current|voltage]
                                   SMU source mode (default: voltage)
     -r, --coil-resistance FLOAT   Electromagnet coil resistance in ohms
@@ -148,7 +148,7 @@ Options:
     -ar, --additional-resistance FLOAT
                                   Additional resistance in series with coil in
                                   ohms (default: 0.0)
-  Hardware Configuration: 
+  Hardware Configuration:
     -s, --sample-rate FLOAT       Digitizer sample rate in Hz (default: 1e6)
     --pl-range FLOAT              Voltage range for PL channel in V (default:
                                   0.5)
@@ -165,7 +165,7 @@ Options:
                                   calculated from current and resistance)
     --force-sourcing              Force operation even when approaching SMU
                                   limits (use with caution)
-  Plotting Parameters: 
+  Plotting Parameters:
     --fit / --no-fit              Fit exponential curves to transitions
                                   (default: disabled)
     --fit-type [single|double]    Type of exponential fit to use (default:
@@ -173,13 +173,13 @@ Options:
     --plot-pulses / --no-plot-pulses
                                   Plot detailed pulse analysis for each
                                   transition (default: disabled)
-  Saving/Output: 
+  Saving/Output:
     --save / --no-save            Save measurement data to file (default:
                                   enabled)
     --show-individual / --no-show-individual
                                   Plot individual traces along with average
                                   (default: True)
-  Logging: 
+  Logging:
     -ltf, --log-to-file / --no-log-to-file
                                   Enable/disable logging to file (default:
                                   enabled)

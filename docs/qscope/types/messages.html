@@ -144,7 +144,7 @@ class ArrayResponse(Response):
 </dd>
 <dt id="qscope.types.messages.ClientSyncResponse"><code class="flex name class">
 <span>class <span class="ident">ClientSyncResponse</span></span>
-<span>(</span><span>*,<br>type: str = 'client_sync',<br>value: Any,<br>system_type: str,<br>system_name: str,<br>is_streaming: bool,<br>all_meas_info: dict,<br>sys_metadata: dict,<br>version: str)</span>
+<span>(</span><span>*,<br>type: str = 'client_sync',<br>value: Any,<br>system_type: str,<br>system_name: str,<br>is_streaming: bool,<br>all_meas_info: dict,<br>sys_metadata: dict,<br>version: str,<br>hardware_started_up: bool)</span>
 </code></dt>
 <dd>
 <details class="source">
@@ -159,9 +159,10 @@ class ClientSyncResponse(Response):
     is_streaming: bool
     all_meas_info: dict
     sys_metadata: dict
-    version: str</code></pre>
+    version: str
+    hardware_started_up: bool</code></pre>
 </details>
-<div class="desc"><p>ClientSyncResponse(*, type: 'str' = 'client_sync', value: 'Any', system_type: 'str', system_name: 'str', is_streaming: 'bool', all_meas_info: 'dict', sys_metadata: 'dict', version: 'str')</p></div>
+<div class="desc"><p>ClientSyncResponse(*, type: 'str' = 'client_sync', value: 'Any', system_type: 'str', system_name: 'str', is_streaming: 'bool', all_meas_info: 'dict', sys_metadata: 'dict', version: 'str', hardware_started_up: 'bool')</p></div>
 <h3>Ancestors</h3>
 <ul class="hlist">
 <li><a title="qscope.types.messages.Response" href="#qscope.types.messages.Response">Response</a></li>
@@ -187,6 +188,10 @@ class ClientSyncResponse(Response):
 <h3>Instance variables</h3>
 <dl>
 <dt id="qscope.types.messages.ClientSyncResponse.all_meas_info"><code class="name">var <span class="ident">all_meas_info</span> : dict</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.types.messages.ClientSyncResponse.hardware_started_up"><code class="name">var <span class="ident">hardware_started_up</span> : bool</code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
@@ -1687,6 +1692,7 @@ setTimeout(() => input.focus(), 100);
 <li><code><a title="qscope.types.messages.ClientSyncResponse.all_meas_info" href="#qscope.types.messages.ClientSyncResponse.all_meas_info">all_meas_info</a></code></li>
 <li><code><a title="qscope.types.messages.ClientSyncResponse.from_dict" href="#qscope.types.messages.ClientSyncResponse.from_dict">from_dict</a></code></li>
 <li><code><a title="qscope.types.messages.ClientSyncResponse.from_msgpack" href="#qscope.types.messages.ClientSyncResponse.from_msgpack">from_msgpack</a></code></li>
+<li><code><a title="qscope.types.messages.ClientSyncResponse.hardware_started_up" href="#qscope.types.messages.ClientSyncResponse.hardware_started_up">hardware_started_up</a></code></li>
 <li><code><a title="qscope.types.messages.ClientSyncResponse.is_streaming" href="#qscope.types.messages.ClientSyncResponse.is_streaming">is_streaming</a></code></li>
 <li><code><a title="qscope.types.messages.ClientSyncResponse.sys_metadata" href="#qscope.types.messages.ClientSyncResponse.sys_metadata">sys_metadata</a></code></li>
 <li><code><a title="qscope.types.messages.ClientSyncResponse.system_name" href="#qscope.types.messages.ClientSyncResponse.system_name">system_name</a></code></li>

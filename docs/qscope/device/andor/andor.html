@@ -60,8 +60,10 @@ el.replaceWith(d);
 <pre><code class="python">class AndorSDK3(Device):
     def __init__(self, **config_kwargs):
         super().__init__(**config_kwargs)
+
         if platform.system() == &#34;Windows&#34;:
-            pll.par[&#34;devices/dlls/andor_sdk3&#34;] = lib_folder
+            # pll.par[&#34;devices/dlls/andor_sdk3&#34;] = lib_folder
+            pll.par[&#34;devices/dlls/andor_sdk3&#34;] = &#34;C:\\Qscope\\proprietary_artefacts&#34;
         else:
             pll.par[&#34;devices/only_windows_dlls&#34;] = False
             pll.par[&#34;devices/dlls/andor_sdk3&#34;] = &#34;/usr/local/lib/libatcore.so&#34;
@@ -352,7 +354,14 @@ el.replaceWith(d);
         cmax = np.max(frame) + 0.1 * np.max(frame)
         cmin = np.min(frame) - 0.1 * np.min(frame)
 
-        img = ax1.imshow(frame, interpolation=&#34;None&#34;, cmap=&#34;gray&#34;, vmin=cmin, vmax=cmax, origin=&#34;upper&#34;)
+        img = ax1.imshow(
+            frame,
+            interpolation=&#34;None&#34;,
+            cmap=&#34;gray&#34;,
+            vmin=cmin,
+            vmax=cmax,
+            origin=&#34;upper&#34;,
+        )
         # Add a colorbar to the image
         divider = make_axes_locatable(ax1)
         cax = divider.append_axes(&#34;right&#34;, size=&#34;5%&#34;, pad=0.05)
@@ -971,7 +980,14 @@ system.add_device_with_role(rf, PRIMARY_RF)
     cmax = np.max(frame) + 0.1 * np.max(frame)
     cmin = np.min(frame) - 0.1 * np.min(frame)
 
-    img = ax1.imshow(frame, interpolation=&#34;None&#34;, cmap=&#34;gray&#34;, vmin=cmin, vmax=cmax, origin=&#34;upper&#34;)
+    img = ax1.imshow(
+        frame,
+        interpolation=&#34;None&#34;,
+        cmap=&#34;gray&#34;,
+        vmin=cmin,
+        vmax=cmax,
+        origin=&#34;upper&#34;,
+    )
     # Add a colorbar to the image
     divider = make_axes_locatable(ax1)
     cax = divider.append_axes(&#34;right&#34;, size=&#34;5%&#34;, pad=0.05)

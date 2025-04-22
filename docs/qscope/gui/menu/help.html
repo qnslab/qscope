@@ -65,7 +65,7 @@ el.replaceWith(d);
 
     def _create_menu(self, menuBar):
         # Help menu
-        HelpMenu = menuBar.addMenu(&#34;&amp;Help&#34;)
+        help_menu = menuBar.addMenu(&#34;&amp;Help&#34;)
 
         help_about_action = QAction(&#34;About&#34;, self.parent)
         help_about_action.triggered.connect(self._show_about_dialog)
@@ -79,12 +79,12 @@ el.replaceWith(d);
         help_client_log_action = QAction(&#34;Open Local Client Log&#34;, self.parent)
         help_client_log_action.triggered.connect(self._show_client_log)
 
-        HelpMenu.addAction(help_about_action)
-        HelpMenu.addAction(help_shortcuts_action)
-        HelpMenu.addAction(help_server_log_action)
-        HelpMenu.addAction(help_client_log_action)
+        help_menu.addAction(help_about_action)
+        help_menu.addAction(help_shortcuts_action)
+        help_menu.addAction(help_server_log_action)
+        help_menu.addAction(help_client_log_action)
 
-        return HelpMenu
+        return help_menu
 
     def _show_about_dialog(self):
         &#34;&#34;&#34;Show the about dialog&#34;&#34;&#34;

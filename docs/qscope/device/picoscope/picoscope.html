@@ -59,6 +59,7 @@ el.replaceWith(d);
 </summary>
 <pre><code class="python">class PicoSDKImportError(Exception):
     &#34;&#34;&#34;Raised when required device libraries cannot be imported.&#34;&#34;&#34;
+
     pass</code></pre>
 </details>
 <div class="desc"><p>Raised when required device libraries cannot be imported.</p></div>
@@ -126,8 +127,14 @@ el.replaceWith(d);
         raise NotImplementedError
 
     @abstractmethod
-    def _set_channel(self, channel_id: int, enabled: bool, coupling: int, range_id: int,
-                     offset: float) -&gt; None:
+    def _set_channel(
+        self,
+        channel_id: int,
+        enabled: bool,
+        coupling: int,
+        range_id: int,
+        offset: float,
+    ) -&gt; None:
         raise NotImplementedError
 
     @abstractmethod
@@ -139,8 +146,9 @@ el.replaceWith(d);
         raise NotImplementedError
 
     @abstractmethod
-    def _set_simple_trigger(self, ch: int, threshold: int, direction: str, delay: float,
-                            autotrigger: float):
+    def _set_simple_trigger(
+        self, ch: int, threshold: int, direction: str, delay: float, autotrigger: float
+    ):
         raise NotImplementedError
 
     @abstractmethod
@@ -148,9 +156,13 @@ el.replaceWith(d);
         raise NotImplementedError
 
     @abstractmethod
-    def _run_streaming(self, sample_interval_s: float, buffer_size: int, num_buffers: int,
-                       trigger_enabled: bool = False,
-                       ):
+    def _run_streaming(
+        self,
+        sample_interval_s: float,
+        buffer_size: int,
+        num_buffers: int,
+        trigger_enabled: bool = False,
+    ):
         raise NotImplementedError
 
     @abstractmethod
@@ -160,12 +172,12 @@ el.replaceWith(d);
     @staticmethod
     def assert_ok(status):
         &#34;&#34;&#34;Check if a PicoScope status code indicates success.
-        
+
         Parameters
         ----------
         status : int
             Status code to check
-            
+
         Raises
         ------
         RuntimeError
@@ -196,7 +208,6 @@ el.replaceWith(d);
                 f&#34;Invalid resolution: {resolution}. Must be one of: 8, 12, 14, 15, 16&#34;
             )
         self._resolution = resolution
-
 
     def _adc_to_v(self, buffer: np.ndarray, channel: int) -&gt; np.ndarray:
         &#34;&#34;&#34;Convert ADC counts to volts for a given channel.
@@ -292,7 +303,6 @@ el.replaceWith(d);
             self._enabled_channels.append(ch)
             self._channel_ranges[ch] = range_str
 
-
     def start_streaming(
         self,
         sample_interval_s: float,
@@ -385,7 +395,9 @@ el.replaceWith(d);
                 trigger_channel, trigger_threshold, trigger_direction, trigger_delay
             )
 
-        status = self._run_streaming(sample_interval_s, buffer_size, num_buffers, trigger_enabled)
+        status = self._run_streaming(
+            sample_interval_s, buffer_size, num_buffers, trigger_enabled
+        )
         self.assert_ok(status)
         self._status[&#34;runStreaming&#34;] = status
         self._is_streaming = True
@@ -407,7 +419,7 @@ el.replaceWith(d);
         autotrigger: float = 10.0,
     ) -&gt; None:
         &#34;&#34;&#34;Configure triggering.
-        
+
         Parameters
         ----------
         channel : int
@@ -429,16 +441,16 @@ el.replaceWith(d);
             delay,
             autotrigger,
         )
-        
+
         # Convert threshold to ADC counts
         _, maxADC_value, maxADC = self._read_max_value()
-        
+
         # Get the voltage range for the trigger channel
         try:
             range_str = self._channel_ranges[channel]
         except KeyError:
             raise ValueError(f&#34;Channel {channel} not configured, cannot set trigger&#34;)
-        
+
         # Extract the voltage range value from the range string
         # Range strings are like &#34;PS5000A_50MV&#34; or &#34;PS5000A_5V&#34;
         range_value = None
@@ -446,23 +458,28 @@ el.replaceWith(d);
             if s == range_str:
                 range_value = v
                 break
-        
+
         if range_value is None:
             raise ValueError(f&#34;Could not determine voltage range from {range_str}&#34;)
-        
+
         # Calculate threshold as a fraction of the full range
         # maxADC_value is the maximum ADC count (e.g., 32767)
         # range_value is the full voltage range (e.g., 5.0V)
         threshold_fraction = threshold / range_value
         threshold_counts = int(threshold_fraction * maxADC_value)
-        
+
         logger.trace(
             &#34;Trigger threshold calculation: {}V in {}V range = {} counts (of {} max)&#34;,
-            threshold, range_value, threshold_counts, maxADC_value
+            threshold,
+            range_value,
+            threshold_counts,
+            maxADC_value,
         )
 
         # Set the trigger
-        self._set_simple_trigger(channel, threshold_counts, direction, delay, autotrigger)
+        self._set_simple_trigger(
+            channel, threshold_counts, direction, delay, autotrigger
+        )
 
     @staticmethod
     def _resolution_to_enum(resolution: int) -&gt; int:
@@ -534,7 +551,7 @@ el.replaceWith(d);
 
     def config_signal_generator(self, config: SignalConfig) -&gt; None:
         &#34;&#34;&#34;Configure the signal generator/AWG output without starting it.
-        
+
         Parameters
         ----------
         config : SignalConfig
@@ -542,18 +559,18 @@ el.replaceWith(d);
         &#34;&#34;&#34;
         config.validate()
         self._config_signal_generator(config)
-        
+
     def start_signal_generator(self) -&gt; None:
         &#34;&#34;&#34;Start the previously configured signal generator.&#34;&#34;&#34;
-        self._start_signal_generator()    
+        self._start_signal_generator()
 
     def stop_signal_generator(self) -&gt; None:
         &#34;&#34;&#34;Start the previously configured signal generator.&#34;&#34;&#34;
         self._stop_signal_generator()
-        
+
     def config_start_signal_generator(self, config: SignalConfig) -&gt; None:
         &#34;&#34;&#34;Configure the signal generator/AWG output and start it immediately.
-        
+
         Parameters
         ----------
         config : SignalConfig
@@ -566,7 +583,7 @@ el.replaceWith(d);
     def _config_signal_generator(self, config: SignalConfig) -&gt; None:
         &#34;&#34;&#34;Implementation-specific signal generator configuration.&#34;&#34;&#34;
         raise NotImplementedError
-        
+
     @abstractmethod
     def _start_signal_generator(self) -&gt; None:
         &#34;&#34;&#34;Implementation-specific signal generator start.&#34;&#34;&#34;
@@ -576,7 +593,6 @@ el.replaceWith(d);
     def _config_start_signal_generator(self, config: SignalConfig) -&gt; None:
         &#34;&#34;&#34;Implementation-specific signal generator configuration and start.&#34;&#34;&#34;
         raise NotImplementedError
-
 
     @abstractmethod
     def get_timebase(
@@ -685,7 +701,6 @@ el.replaceWith(d);
         self._sample_interval_s = actual_interval
         return actual_interval
 
-
     @abstractmethod
     def set_downsampling(self, mode: str, downsample_ratio: int) -&gt; None:
         &#34;&#34;&#34;Configure hardware downsampling.
@@ -699,8 +714,9 @@ el.replaceWith(d);
         &#34;&#34;&#34;
         raise NotImplementedError
 
-    def get_block_data(self, timeout_s=1) -&gt; tuple[
-        ndarray[Any, dtype[floating[Any]]], ndarray[Any, dtype[Any]]]:
+    def get_block_data(
+        self, timeout_s=1
+    ) -&gt; tuple[ndarray[Any, dtype[floating[Any]]], ndarray[Any, dtype[Any]]]:
         &#34;&#34;&#34;Get block-mode captured data with hardware downsampling.&#34;&#34;&#34;
         self._wait_for_capture(timeout_s)
         captures = self._get_num_caps()
@@ -715,7 +731,9 @@ el.replaceWith(d);
         # Set up buffers for each segment
         for ch in self._enabled_channels:
             for segment in range(captures.value):
-                self._set_data_buffer(ch, downsampled_samples, samples_per_segment, segment)
+                self._set_data_buffer(
+                    ch, downsampled_samples, samples_per_segment, segment
+                )
 
         self._get_values_bulk(captures, downsampled_samples)
 
@@ -781,8 +799,6 @@ el.replaceWith(d);
             return
         else:
             raise RuntimeError(f&#34;Failed to initialize device. Status: {status}&#34;)
-
-
 
     def get_data(
         self, timeout: float = 10.0
@@ -858,7 +874,6 @@ el.replaceWith(d);
         &#34;&#34;&#34;
         raise NotImplementedError
 
-
     @abstractmethod
     def _setup_block_buffers(
         self, channels: list[int], num_samples: int, num_blocks: int
@@ -875,7 +890,6 @@ el.replaceWith(d);
             Number of blocks to capture
         &#34;&#34;&#34;
         raise NotImplementedError
-
 
     def _streaming_callback(
         self,
@@ -1103,12 +1117,12 @@ Specific models should inherit from this and implement model-specific details.</
 <pre><code class="python">@staticmethod
 def assert_ok(status):
     &#34;&#34;&#34;Check if a PicoScope status code indicates success.
-    
+
     Parameters
     ----------
     status : int
         Status code to check
-        
+
     Raises
     ------
     RuntimeError
@@ -1193,7 +1207,7 @@ def assert_ok(status):
 </summary>
 <pre><code class="python">def config_signal_generator(self, config: SignalConfig) -&gt; None:
     &#34;&#34;&#34;Configure the signal generator/AWG output without starting it.
-    
+
     Parameters
     ----------
     config : SignalConfig
@@ -1219,7 +1233,7 @@ def assert_ok(status):
 </summary>
 <pre><code class="python">def config_start_signal_generator(self, config: SignalConfig) -&gt; None:
     &#34;&#34;&#34;Configure the signal generator/AWG output and start it immediately.
-    
+
     Parameters
     ----------
     config : SignalConfig
@@ -1298,8 +1312,9 @@ def assert_ok(status):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def get_block_data(self, timeout_s=1) -&gt; tuple[
-    ndarray[Any, dtype[floating[Any]]], ndarray[Any, dtype[Any]]]:
+<pre><code class="python">def get_block_data(
+    self, timeout_s=1
+) -&gt; tuple[ndarray[Any, dtype[floating[Any]]], ndarray[Any, dtype[Any]]]:
     &#34;&#34;&#34;Get block-mode captured data with hardware downsampling.&#34;&#34;&#34;
     self._wait_for_capture(timeout_s)
     captures = self._get_num_caps()
@@ -1314,7 +1329,9 @@ def assert_ok(status):
     # Set up buffers for each segment
     for ch in self._enabled_channels:
         for segment in range(captures.value):
-            self._set_data_buffer(ch, downsampled_samples, samples_per_segment, segment)
+            self._set_data_buffer(
+                ch, downsampled_samples, samples_per_segment, segment
+            )
 
     self._get_values_bulk(captures, downsampled_samples)
 
@@ -1639,7 +1656,7 @@ def set_downsampling(self, mode: str, downsample_ratio: int) -&gt; None:
     autotrigger: float = 10.0,
 ) -&gt; None:
     &#34;&#34;&#34;Configure triggering.
-    
+
     Parameters
     ----------
     channel : int
@@ -1661,16 +1678,16 @@ def set_downsampling(self, mode: str, downsample_ratio: int) -&gt; None:
         delay,
         autotrigger,
     )
-    
+
     # Convert threshold to ADC counts
     _, maxADC_value, maxADC = self._read_max_value()
-    
+
     # Get the voltage range for the trigger channel
     try:
         range_str = self._channel_ranges[channel]
     except KeyError:
         raise ValueError(f&#34;Channel {channel} not configured, cannot set trigger&#34;)
-    
+
     # Extract the voltage range value from the range string
     # Range strings are like &#34;PS5000A_50MV&#34; or &#34;PS5000A_5V&#34;
     range_value = None
@@ -1678,23 +1695,28 @@ def set_downsampling(self, mode: str, downsample_ratio: int) -&gt; None:
         if s == range_str:
             range_value = v
             break
-    
+
     if range_value is None:
         raise ValueError(f&#34;Could not determine voltage range from {range_str}&#34;)
-    
+
     # Calculate threshold as a fraction of the full range
     # maxADC_value is the maximum ADC count (e.g., 32767)
     # range_value is the full voltage range (e.g., 5.0V)
     threshold_fraction = threshold / range_value
     threshold_counts = int(threshold_fraction * maxADC_value)
-    
+
     logger.trace(
         &#34;Trigger threshold calculation: {}V in {}V range = {} counts (of {} max)&#34;,
-        threshold, range_value, threshold_counts, maxADC_value
+        threshold,
+        range_value,
+        threshold_counts,
+        maxADC_value,
     )
 
     # Set the trigger
-    self._set_simple_trigger(channel, threshold_counts, direction, delay, autotrigger)</code></pre>
+    self._set_simple_trigger(
+        channel, threshold_counts, direction, delay, autotrigger
+    )</code></pre>
 </details>
 <div class="desc"><p>Configure triggering.</p>
 <h2 id="parameters">Parameters</h2>
@@ -1773,7 +1795,7 @@ def set_downsampling(self, mode: str, downsample_ratio: int) -&gt; None:
 </summary>
 <pre><code class="python">def start_signal_generator(self) -&gt; None:
     &#34;&#34;&#34;Start the previously configured signal generator.&#34;&#34;&#34;
-    self._start_signal_generator()    </code></pre>
+    self._start_signal_generator()</code></pre>
 </details>
 <div class="desc"><p>Start the previously configured signal generator.</p></div>
 </dd>
@@ -1894,18 +1916,19 @@ def set_downsampling(self, mode: str, downsample_ratio: int) -&gt; None:
 <pre><code class="python">@dataclass
 class SignalConfig:
     &#34;&#34;&#34;Configuration for signal generator output.
-    
+
     Attributes
     ----------
     frequency : float
         Signal frequency in Hz
     amplitude : float
         Peak-to-peak amplitude in volts
-    offset : float 
+    offset : float
         DC offset in volts
     duty_cycle : float
         Duty cycle for square waves (0-100%)
     &#34;&#34;&#34;
+
     frequency: float = 1.0
     amplitude: float = 3.3
     offset: float = 0.0
@@ -1924,7 +1947,7 @@ class SignalConfig:
 <dd>Signal frequency in Hz</dd>
 <dt><strong><code>amplitude</code></strong> :&ensp;<code>float</code></dt>
 <dd>Peak-to-peak amplitude in volts</dd>
-<dt><strong><code>offset</code></strong> :&ensp;<code>float </code></dt>
+<dt><strong><code>offset</code></strong> :&ensp;<code>float</code></dt>
 <dd>DC offset in volts</dd>
 <dt><strong><code>duty_cycle</code></strong> :&ensp;<code>float</code></dt>
 <dd>Duty cycle for square waves (0-100%)</dd>
@@ -1976,8 +1999,9 @@ class SignalConfig:
 </summary>
 <pre><code class="python">class WaveType(Enum):
     &#34;&#34;&#34;Wave types supported by signal generator.&#34;&#34;&#34;
+
     SINE = &#34;SINE&#34;
-    SQUARE = &#34;SQUARE&#34; 
+    SQUARE = &#34;SQUARE&#34;
     TRIANGLE = &#34;TRIANGLE&#34;
     DC = &#34;DC&#34;</code></pre>
 </details>

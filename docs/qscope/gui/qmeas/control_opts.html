@@ -740,25 +740,40 @@ class QuantumMeasurementOpts(QGroupBox):
         self.save_measurement_button.setStyleSheet(&#34;background-color: blue&#34;)
 
         # get the current normalised data
-        xdata, ydata = self.parent.meas_line_figure.get_plot_data()
+        # check if there is a comparison line because it can have a different x-axis
+        if self.parent.meas_line_figure.b_comp:
+            xdata = self.parent.meas_line_figure.x_data
+            ydata = self.parent.meas_line_figure.y_plot
+            xdata_comp = self.parent.meas_line_figure.x_data_comp
+            ydata_comp = self.parent.meas_line_figure.y_plot_comp
+        else:
+            # xdata, ydata = self.parent.meas_line_figure.get_plot_data()
+            xdata = self.parent.meas_line_figure.x_data
+            ydata = self.parent.meas_line_figure.y_plot
+            xdata_comp, ydata_comp = None, None
 
         # Get the x-multiplier to convert the x-axis back into seconds
         x_multiplier = self.parent.meas_line_figure.x_multiplier
+
+        # get the raw y_data signal rather than the normalised data
+        y_data_sig =  self.parent.meas_line_figure.y_data
+        y_data_ref =  self.parent.meas_line_figure.y_data_ref
 
         # get the information from the fit model
         if self.parent.line_fit_opts.fit_button.isChecked():
             fit_x, fit_y = self.parent.line_fit_opts.FitModel.best_fit()
             total_counts = (
-                np.nanmean(ydata)
+                np.nanmean(y_data_ref)
                 * self.parent.meas_opts.ith_loop.value()
-                / self.parent.cam_opts.exposure_time_input.value()
+                # / self.parent.cam_opts.exposure_time_input.value()
             )
             fit_results = self.parent.line_fit_opts.FitModel.get_fit_results_txt(
-                total_counts
+                total_counts, ith_loop=self.parent.meas_opts.ith_loop.value()
             )
         else:
             fit_x, fit_y = None, None
             fit_results = &#34;&#34;
+
         path = self.parent.connection_manager.measurement_save_sweep_w_fit(
             self.parent.meas_id,
             self.parent.get_project_name(),
@@ -767,8 +782,11 @@ class QuantumMeasurementOpts(QGroupBox):
             fit_x / x_multiplier if fit_x is not None else fit_x,
             fit_y,
             fit_results,
+            comparison_x=xdata_comp,
+            comparison_y=ydata_comp,
+            comparison_label=self.parent.meas_line_figure.label_comp,
             color_map=self.parent.frame_plot_opts.cmap_dropdown.currentText(),
-            notes=self.parent.get_notes(),
+            notes=self.parent.get_notes(), 
         )
         self.parent.show_status_msg(f&#34;Saved sweep to {path}&#34;)
         self.save_measurement_button.setStyleSheet(&#34;background-color: None&#34;)
@@ -1799,25 +1817,40 @@ class QuantumMeasurementOpts(QGroupBox):
     self.save_measurement_button.setStyleSheet(&#34;background-color: blue&#34;)
 
     # get the current normalised data
-    xdata, ydata = self.parent.meas_line_figure.get_plot_data()
+    # check if there is a comparison line because it can have a different x-axis
+    if self.parent.meas_line_figure.b_comp:
+        xdata = self.parent.meas_line_figure.x_data
+        ydata = self.parent.meas_line_figure.y_plot
+        xdata_comp = self.parent.meas_line_figure.x_data_comp
+        ydata_comp = self.parent.meas_line_figure.y_plot_comp
+    else:
+        # xdata, ydata = self.parent.meas_line_figure.get_plot_data()
+        xdata = self.parent.meas_line_figure.x_data
+        ydata = self.parent.meas_line_figure.y_plot
+        xdata_comp, ydata_comp = None, None
 
     # Get the x-multiplier to convert the x-axis back into seconds
     x_multiplier = self.parent.meas_line_figure.x_multiplier
+
+    # get the raw y_data signal rather than the normalised data
+    y_data_sig =  self.parent.meas_line_figure.y_data
+    y_data_ref =  self.parent.meas_line_figure.y_data_ref
 
     # get the information from the fit model
     if self.parent.line_fit_opts.fit_button.isChecked():
         fit_x, fit_y = self.parent.line_fit_opts.FitModel.best_fit()
         total_counts = (
-            np.nanmean(ydata)
+            np.nanmean(y_data_ref)
             * self.parent.meas_opts.ith_loop.value()
-            / self.parent.cam_opts.exposure_time_input.value()
+            # / self.parent.cam_opts.exposure_time_input.value()
         )
         fit_results = self.parent.line_fit_opts.FitModel.get_fit_results_txt(
-            total_counts
+            total_counts, ith_loop=self.parent.meas_opts.ith_loop.value()
         )
     else:
         fit_x, fit_y = None, None
         fit_results = &#34;&#34;
+
     path = self.parent.connection_manager.measurement_save_sweep_w_fit(
         self.parent.meas_id,
         self.parent.get_project_name(),
@@ -1826,8 +1859,11 @@ class QuantumMeasurementOpts(QGroupBox):
         fit_x / x_multiplier if fit_x is not None else fit_x,
         fit_y,
         fit_results,
+        comparison_x=xdata_comp,
+        comparison_y=ydata_comp,
+        comparison_label=self.parent.meas_line_figure.label_comp,
         color_map=self.parent.frame_plot_opts.cmap_dropdown.currentText(),
-        notes=self.parent.get_notes(),
+        notes=self.parent.get_notes(), 
     )
     self.parent.show_status_msg(f&#34;Saved sweep to {path}&#34;)
     self.save_measurement_button.setStyleSheet(&#34;background-color: None&#34;)

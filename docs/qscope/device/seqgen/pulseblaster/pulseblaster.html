@@ -1,0 +1,1100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.6">
+<title>qscope.device.seqgen.pulseblaster.pulseblaster API documentation</title>
+<meta name="description" content="">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}#lunr-search{width:100%;font-size:1em;padding:6px 9px 5px 9px;border:1px solid silver}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes: true } });</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML" integrity="sha256-kZafAc6mZvK3W3v1pHOcUix30OHQN6pU/NO2oFkqZVw=" crossorigin></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>qscope.device.seqgen.pulseblaster.pulseblaster</code></h1>
+</header>
+<section id="section-intro">
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster"><code class="flex name class">
+<span>class <span class="ident">PulseBlaster</span></span>
+<span>(</span><span>board_num: str, ch_defs: dict[str, str], sequence_params: dict[str, float])</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class PulseBlaster(Device):
+    connected: bool = False
+    board_num: str
+    ch_defs: dict[str, str]
+    sequence_params: dict[str, float]
+    required_config: dict[str, type] = {
+        &#34;board_num&#34;: str,
+        &#34;ch_defs&#34;: dict,  # dict[str, str]
+        &#34;sequence_params&#34;: dict,  # dict[str, float]
+    }
+
+    def __init__(
+        self,
+        board_num: str,
+        ch_defs: dict[str, str],
+        sequence_params: dict[str, float],
+    ):
+        super().__init__(
+            board_num=board_num,
+            ch_defs=ch_defs,
+            sequence_params=sequence_params,
+        )
+        # Define the control chs of the system
+        self.shortest_dur = int(12)  # ns
+
+    def unroll_metadata(self):
+        # override normal unroll_metadata as we don&#39;t use underscores... could be cleaned up.
+        return {
+            &#34;board_num&#34;: self.board_num,
+            &#34;ch_defs&#34;: self.ch_defs,
+            &#34;sequence_params&#34;: self.sequence_params,
+        }
+
+    def open(self) -&gt; tuple[bool, str]:
+        if pb.pb_count_boards() &lt; 0:
+            logger.error(&#34;No Pulseblaster boards found&#34;)
+            self.connected = False
+            return False, &#34;Error: No Pulseblaster boards found&#34;
+        try:
+            pb.pb_select_board(int(self.board_num))
+            pb.pb_init()
+            pb.pb_core_clock(500)  # in MHz
+            logger.info(&#34;Pulseblaster opened, status: {}&#34;, pb.pb_read_status())
+            self.connected = True
+            return True, &#34;Pulseblaster opened&#34;
+        except Exception as e:
+            logger.exception(&#34;Error opening Pulseblaster: {}&#34;, format_error_response())
+            return False, f&#34;Error opening Pulseblaster: {format_error_response()}&#34;
+
+    def close(self):
+        if self.connected:
+            self.stop()
+            pb.pb_close()
+        self.connected = False
+
+    def is_connected(self) -&gt; bool:
+        try:
+            return False if pb.pb_count_boards() &lt; 0 else True
+        except:
+            return False
+
+    def start(self):
+        pb.pb_start()
+
+    def reset(self):
+        pb.pb_reset()
+
+    def stop(self):
+        pb.pb_stop()
+
+    # def set_clock(self, clock):
+    #     pb.pb_core_clock(clock)
+
+    def is_finished(self):
+        # IDK do we check for &#39;waiting&#39;??
+        return pb.pb_read_status() == 0
+
+    def get_status(self):
+        &#34;&#34;&#34;
+        See https://www.spincore.com/support/spinapi/reference/production/2013-09-25/spinapi_8h.html#ade910c40db242fb8238d29462d46de78
+        Read status from the board. Not all boards support this, see your manual. Each bit of the
+        returned integer indicates whether the board is in that state. Bit 0 is the least
+        significant bit.
+
+        Bit 0 - Stopped
+        Bit 1 - Reset
+        Bit 2 - Running
+        Bit 3 - Waiting
+        Bit 4 - Scanning (RadioProcessor boards only)
+
+        *Note on Reset Bit: The Reset Bit will be true as soon as the board is initialized. *It
+        will remain true until a hardware or software trigger occurs, *at which point it will stay
+        false until the board is reset again.
+
+        *Note on Activation Levels: The activation level of each bit depends on the board, please
+        see *your product&#39;s manual for details.
+
+        Bits 5-31 are reserved for future use.
+        It should not be assumed that these will be set to 0.
+        &#34;&#34;&#34;
+        return pb.pb_read_status()
+
+    ##############################################
+    # Functions for sequences
+    ##############################################
+
+    # TODO ideally sequences would have CONST chs.
+    def get_available_sequences(self):
+        sequences = {
+            &#34;MockSGAndorCWESR&#34;: seq_cw_esr,
+            &#34;SGAndorCWESR&#34;: seq_cw_esr,
+            &#34;SGAndorPESR&#34;: seq_p_esr,
+            &#34;SGAndorRabi&#34;: seq_rabi,
+            &#34;SGAndorT1&#34;: seq_t1,
+            &#34;SGAndorRamsey&#34;: seq_ramsey,
+            &#34;SGAndorSpinEcho&#34;: seq_spin_echo,
+        }
+        return sequences
+
+    def load_seq(self, seq_name, **seq_kwargs):
+        logger.info(&#34;Loading {} sequence&#34;, seq_name)
+        sequences = self.get_available_sequences()
+        sequences[seq_name](self, self.sequence_params, **seq_kwargs)
+        logger.info(&#34;Loaded {} sequence&#34;, seq_name)
+
+    ##############################################
+    # Functions for programming the pulseblaster
+    ##############################################
+
+    def start_programming(self):
+        pb.pb_start_programming(pb.PULSE_PROGRAM)
+
+    def stop_programming(self):
+        pb.pb_stop_programming()
+
+    def inst_pbonly(self, chs, opcode, data, duration):
+        return pb.pb_inst_pbonly(chs, opcode, data, duration)
+
+    def get_chs_cmd_bits(self, ch_defs, ch_list):
+        command_num = 0
+        for ch in ch_list:
+            command_num = command_num + int(ch_defs[ch], 2)
+        return command_num
+
+    def end_sequence(self, dur):
+        pb.pb_inst_pbonly(0, Inst.STOP, 0, dur)
+
+    def add_instruction(
+        self,
+        active_chs,
+        dur=0,
+        delay=None,
+        loop=None,
+        num=0,
+        inst=None,
+        const_chs=(),
+        **kwargs,
+    ):
+        &#34;&#34;&#34;
+        Function to add an arbitary pulse to the pulseblaster
+        inputs:
+            active_chs: list of pulse chs
+            pulse_dur: duration of the pulse in ns
+            pulse_delay: delay of the pulse in ns
+            loop: parameter for loop control, &#34;start&#34;, &#34;end&#34;, None
+            num: Number of loops
+            inst: instruction to the start of a pulseblaster loop
+            const_trigger: list of chs that are constant during the pulse
+
+        output:
+            Returns the instruction to the start of the pulseblaster loop
+        &#34;&#34;&#34;
+
+        inst_out = None
+        # check if a constant trigger is needed.
+        # For some trigger modes the camera trigger is on during the whole intergration
+        if len(const_chs) &gt; 0:
+            # append the constant trigger to the pulse chs list
+            active_chs.append(const_chs[0])
+
+        # Check if the pulse is long enough to be added
+        if dur &lt; self.shortest_dur:
+            old_dur = dur
+            if dur == 0:
+                dur = 0
+            else:
+                dur = self.shortest_dur
+            logger.error(
+                &#34;Pulse with channels {} rounded from {} ns to {} ns.&#34;,
+                active_chs,
+                old_dur,
+                dur,
+            )
+
+        if dur &gt;= self.shortest_dur:
+            # make sure that that the pulse duration is a multiple of 2
+            dur = np.round(dur / 2) * 2
+
+            # define the pulse
+            ctl = self.get_chs_cmd_bits(self.ch_defs, active_chs)
+
+            # add the pulse to the pulseblaster with the three options
+            # Starting a pulseblaster loop
+            # Continuing
+            # Ending a pulseblaster loop
+            if loop == &#34;start&#34;:
+                inst_out = self.inst_pbonly(ctl, Inst.LOOP, num, dur)
+            elif loop == &#34;end&#34;:
+                inst_out = self.inst_pbonly(ctl, Inst.END_LOOP, inst, dur)
+            else:
+                inst_out = self.inst_pbonly(ctl, Inst.CONTINUE, 0, dur)
+        else:
+            logger.error(&#34;Pulse duration too short, not adding pulse.&#34;)
+            logger.error(&#34;Did not add {} for {} ns.&#34;, active_chs, dur)
+
+        return inst_out
+
+    def add_kernel(self, pulse_kernel, num_loop, const_chs=[], **kwargs):
+        &#34;&#34;&#34;
+        Add the instructions to the signal generator assuming that the instructions that have been defined is a kernel
+        &#34;&#34;&#34;
+        pulse_kernel.convert_to_instructions(const_chs=const_chs)
+        # add the instructions to the pulseblaster in a loop
+        for inst in pulse_kernel.insts:
+            # For kernels that contain a single instruction no loop is required.
+            if len(pulse_kernel.insts) == 1:
+                self.add_instruction(**inst)
+                return
+            # For the first instruction, we need to add the start loop instruction
+            if pulse_kernel.insts.index(inst) == 0:
+                loop_inst = self.add_instruction(loop=&#34;start&#34;, num=num_loop, **inst)
+            # For the last instruction, we need to add the end loop instruction
+            elif pulse_kernel.insts.index(inst) == len(pulse_kernel.insts) - 1:
+                self.add_instruction(loop=&#34;end&#34;, inst=loop_inst, **inst)
+            else:
+                self.add_instruction(**inst)
+        return
+
+    ##############################################
+
+    def laser_output(self, onoff: bool):
+        if onoff:
+            chs = self.ch_defs
+            control = self.get_chs_cmd_bits(chs, [&#34;laser&#34;])
+            self.start_programming()
+            self.inst_pbonly(control, Inst.BRANCH, 0, 1000 * Timing.ms)
+            self.stop_programming()
+            self.reset()
+            self.start()
+            logger.info(&#34;Laser set to on&#34;)
+        else:
+            self.stop()
+            logger.info(&#34;Laser set to off&#34;)
+
+    def rf_output(self, onoff: bool):
+        if onoff:
+            chs = self.ch_defs
+            control = self.get_chs_cmd_bits(chs, [&#34;mw_x&#34;])
+            self.start_programming()
+            self.inst_pbonly(control, Inst.BRANCH, 0, 1000 * Timing.ms)
+            self.stop_programming()
+            self.reset()
+            self.start()
+            logger.info(&#34;RF set to on&#34;)
+        else:
+            self.reset()
+            self.stop()
+            logger.info(&#34;RF set to off&#34;)
+
+    def laser_rf_output(self, onoff: bool):
+        if onoff:
+            chs = self.ch_defs
+            control = self.get_chs_cmd_bits(chs, [&#34;laser&#34;, &#34;mw_x&#34;])
+            self.start_programming()
+            self.inst_pbonly(control, Inst.BRANCH, 0, 1000 * Timing.ms)
+            self.stop_programming()
+            self.reset()
+            self.start()
+            logger.info(&#34;Laser and RF set to on&#34;)
+        else:
+            self.stop()
+            logger.info(&#34;Laser and RF set to off&#34;)
+
+    def output_on(self, state, ch_names):
+        if state:
+            chs = self.ch_defs
+            control = self.get_chs_cmd_bits(chs, ch_names)
+            self.start_programming()
+            self.inst_pbonly(control, Inst.BRANCH, 0, 1000 * Timing.ms)
+            self.stop_programming()
+
+            self.reset()
+            self.start()
+        else:
+            self.stop()</code></pre>
+</details>
+<div class="desc"><p>Base class for all hardware devices in QScope.</p>
+<p>The Device class provides the foundation for hardware abstraction in QScope.
+Specific device implementations inherit from this class and implement the
+methods required by their intended roles.</p>
+<p>A device can fulfill multiple roles if it implements all required methods
+for those roles. The system validates role compatibility at runtime.</p>
+<h2 id="device-architecture">Device Architecture</h2>
+<p>Devices are part of QScope's hardware abstraction layer:</p>
+<ol>
+<li>Base Device Class (this class)</li>
+<li>Provides configuration validation</li>
+<li>Manages role assignments</li>
+<li>Handles connection state</li>
+<li>
+<p>Defines required methods</p>
+</li>
+<li>
+<p>Device Implementations</p>
+</li>
+<li>Inherit from Device</li>
+<li>Implement protocol methods for specific roles</li>
+<li>Provide hardware-specific functionality</li>
+<li>
+<p>Can implement multiple protocols</p>
+</li>
+<li>
+<p>System Integration</p>
+</li>
+<li>Devices are added to systems with specific roles</li>
+<li>System validates that devices implement required protocols</li>
+<li>Devices are accessed through role interfaces</li>
+</ol>
+<h2 id="required-methods">Required Methods</h2>
+<p>All device implementations must override these methods:</p>
+<ul>
+<li>open(): Connect to the hardware</li>
+<li>close(): Disconnect from the hardware</li>
+<li>is_connected(): Check connection status</li>
+</ul>
+<p>In addition, devices must implement all methods required by the
+protocols of the roles they intend to fulfill.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>required_config</code></strong> :&ensp;<code>dict[str, Type]</code></dt>
+<dd>Required configuration parameters and their types</dd>
+<dt><strong><code>_roles</code></strong> :&ensp;<code>Set[DeviceRole[Device]]</code></dt>
+<dd>Set of roles this device fulfills</dd>
+</dl>
+<h2 id="examples">Examples</h2>
+<p>Creating a new device implementation:</p>
+<pre><code class="language-python">class MyRFSource(Device):
+    required_config = {
+        &quot;visa_addr&quot;: str,
+        &quot;max_power&quot;: float
+    }
+
+    def __init__(self, **config_kwargs):
+        super().__init__(**config_kwargs)
+        self.connected = False
+
+    def open(self) -&gt; tuple[bool, str]:
+        # Implementation for connecting to hardware
+        self.connected = True
+        return True, &quot;Connected successfully&quot;
+
+    def close(self):
+        # Implementation for disconnecting
+        self.connected = False
+
+    def is_connected(self) -&gt; bool:
+        return self.connected
+
+    # Implement methods required by RFSourceProtocol
+    def set_freq(self, freq: float) -&gt; None:
+        # Implementation
+        pass
+
+    def set_power(self, power: float) -&gt; None:
+        # Implementation
+        pass
+</code></pre>
+<p>Using the device with a role:</p>
+<pre><code class="language-python"># Create device instance
+rf = MyRFSource(visa_addr=&quot;TCPIP0::192.168.1.1::INSTR&quot;, max_power=20.0)
+
+# Add to system with role
+system.add_device_with_role(rf, PRIMARY_RF)
+</code></pre>
+<h2 id="see-also">See Also</h2>
+<dl>
+<dt><code><a title="qscope.types.protocols" href="../../../types/protocols.html">qscope.types.protocols</a></code></dt>
+<dd>Protocol definitions</dd>
+<dt><code><a title="qscope.types.roles" href="../../../types/roles.html">qscope.types.roles</a></code></dt>
+<dd>Role definitions</dd>
+<dt><code><a title="qscope.types.interfaces" href="../../../types/interfaces.html">qscope.types.interfaces</a></code></dt>
+<dd>Interface implementations</dd>
+<dt><code><a title="qscope.system" href="../../../system/index.html">qscope.system</a></code></dt>
+<dd>System implementation</dd>
+</dl></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.device.device.Device" href="../../device.html#qscope.device.device.Device">Device</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.board_num"><code class="name">var <span class="ident">board_num</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.ch_defs"><code class="name">var <span class="ident">ch_defs</span> : dict[str, str]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.connected"><code class="name">var <span class="ident">connected</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.required_config"><code class="name">var <span class="ident">required_config</span> : dict[str, type]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.sequence_params"><code class="name">var <span class="ident">sequence_params</span> : dict[str, float]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.add_instruction"><code class="name flex">
+<span>def <span class="ident">add_instruction</span></span>(<span>self, active_chs, dur=0, delay=None, loop=None, num=0, inst=None, const_chs=(), **kwargs)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def add_instruction(
+    self,
+    active_chs,
+    dur=0,
+    delay=None,
+    loop=None,
+    num=0,
+    inst=None,
+    const_chs=(),
+    **kwargs,
+):
+    &#34;&#34;&#34;
+    Function to add an arbitary pulse to the pulseblaster
+    inputs:
+        active_chs: list of pulse chs
+        pulse_dur: duration of the pulse in ns
+        pulse_delay: delay of the pulse in ns
+        loop: parameter for loop control, &#34;start&#34;, &#34;end&#34;, None
+        num: Number of loops
+        inst: instruction to the start of a pulseblaster loop
+        const_trigger: list of chs that are constant during the pulse
+
+    output:
+        Returns the instruction to the start of the pulseblaster loop
+    &#34;&#34;&#34;
+
+    inst_out = None
+    # check if a constant trigger is needed.
+    # For some trigger modes the camera trigger is on during the whole intergration
+    if len(const_chs) &gt; 0:
+        # append the constant trigger to the pulse chs list
+        active_chs.append(const_chs[0])
+
+    # Check if the pulse is long enough to be added
+    if dur &lt; self.shortest_dur:
+        old_dur = dur
+        if dur == 0:
+            dur = 0
+        else:
+            dur = self.shortest_dur
+        logger.error(
+            &#34;Pulse with channels {} rounded from {} ns to {} ns.&#34;,
+            active_chs,
+            old_dur,
+            dur,
+        )
+
+    if dur &gt;= self.shortest_dur:
+        # make sure that that the pulse duration is a multiple of 2
+        dur = np.round(dur / 2) * 2
+
+        # define the pulse
+        ctl = self.get_chs_cmd_bits(self.ch_defs, active_chs)
+
+        # add the pulse to the pulseblaster with the three options
+        # Starting a pulseblaster loop
+        # Continuing
+        # Ending a pulseblaster loop
+        if loop == &#34;start&#34;:
+            inst_out = self.inst_pbonly(ctl, Inst.LOOP, num, dur)
+        elif loop == &#34;end&#34;:
+            inst_out = self.inst_pbonly(ctl, Inst.END_LOOP, inst, dur)
+        else:
+            inst_out = self.inst_pbonly(ctl, Inst.CONTINUE, 0, dur)
+    else:
+        logger.error(&#34;Pulse duration too short, not adding pulse.&#34;)
+        logger.error(&#34;Did not add {} for {} ns.&#34;, active_chs, dur)
+
+    return inst_out</code></pre>
+</details>
+<div class="desc"><p>Function to add an arbitary pulse to the pulseblaster
+inputs:
+active_chs: list of pulse chs
+pulse_dur: duration of the pulse in ns
+pulse_delay: delay of the pulse in ns
+loop: parameter for loop control, "start", "end", None
+num: Number of loops
+inst: instruction to the start of a pulseblaster loop
+const_trigger: list of chs that are constant during the pulse</p>
+<p>output:
+Returns the instruction to the start of the pulseblaster loop</p></div>
+</dd>
+<dt id="qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.add_kernel"><code class="name flex">
+<span>def <span class="ident">add_kernel</span></span>(<span>self, pulse_kernel, num_loop, const_chs=[], **kwargs)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def add_kernel(self, pulse_kernel, num_loop, const_chs=[], **kwargs):
+    &#34;&#34;&#34;
+    Add the instructions to the signal generator assuming that the instructions that have been defined is a kernel
+    &#34;&#34;&#34;
+    pulse_kernel.convert_to_instructions(const_chs=const_chs)
+    # add the instructions to the pulseblaster in a loop
+    for inst in pulse_kernel.insts:
+        # For kernels that contain a single instruction no loop is required.
+        if len(pulse_kernel.insts) == 1:
+            self.add_instruction(**inst)
+            return
+        # For the first instruction, we need to add the start loop instruction
+        if pulse_kernel.insts.index(inst) == 0:
+            loop_inst = self.add_instruction(loop=&#34;start&#34;, num=num_loop, **inst)
+        # For the last instruction, we need to add the end loop instruction
+        elif pulse_kernel.insts.index(inst) == len(pulse_kernel.insts) - 1:
+            self.add_instruction(loop=&#34;end&#34;, inst=loop_inst, **inst)
+        else:
+            self.add_instruction(**inst)
+    return</code></pre>
+</details>
+<div class="desc"><p>Add the instructions to the signal generator assuming that the instructions that have been defined is a kernel</p></div>
+</dd>
+<dt id="qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.close"><code class="name flex">
+<span>def <span class="ident">close</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def close(self):
+    if self.connected:
+        self.stop()
+        pb.pb_close()
+    self.connected = False</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.end_sequence"><code class="name flex">
+<span>def <span class="ident">end_sequence</span></span>(<span>self, dur)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def end_sequence(self, dur):
+    pb.pb_inst_pbonly(0, Inst.STOP, 0, dur)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.get_available_sequences"><code class="name flex">
+<span>def <span class="ident">get_available_sequences</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_available_sequences(self):
+    sequences = {
+        &#34;MockSGAndorCWESR&#34;: seq_cw_esr,
+        &#34;SGAndorCWESR&#34;: seq_cw_esr,
+        &#34;SGAndorPESR&#34;: seq_p_esr,
+        &#34;SGAndorRabi&#34;: seq_rabi,
+        &#34;SGAndorT1&#34;: seq_t1,
+        &#34;SGAndorRamsey&#34;: seq_ramsey,
+        &#34;SGAndorSpinEcho&#34;: seq_spin_echo,
+    }
+    return sequences</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.get_chs_cmd_bits"><code class="name flex">
+<span>def <span class="ident">get_chs_cmd_bits</span></span>(<span>self, ch_defs, ch_list)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_chs_cmd_bits(self, ch_defs, ch_list):
+    command_num = 0
+    for ch in ch_list:
+        command_num = command_num + int(ch_defs[ch], 2)
+    return command_num</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.get_status"><code class="name flex">
+<span>def <span class="ident">get_status</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_status(self):
+    &#34;&#34;&#34;
+    See https://www.spincore.com/support/spinapi/reference/production/2013-09-25/spinapi_8h.html#ade910c40db242fb8238d29462d46de78
+    Read status from the board. Not all boards support this, see your manual. Each bit of the
+    returned integer indicates whether the board is in that state. Bit 0 is the least
+    significant bit.
+
+    Bit 0 - Stopped
+    Bit 1 - Reset
+    Bit 2 - Running
+    Bit 3 - Waiting
+    Bit 4 - Scanning (RadioProcessor boards only)
+
+    *Note on Reset Bit: The Reset Bit will be true as soon as the board is initialized. *It
+    will remain true until a hardware or software trigger occurs, *at which point it will stay
+    false until the board is reset again.
+
+    *Note on Activation Levels: The activation level of each bit depends on the board, please
+    see *your product&#39;s manual for details.
+
+    Bits 5-31 are reserved for future use.
+    It should not be assumed that these will be set to 0.
+    &#34;&#34;&#34;
+    return pb.pb_read_status()</code></pre>
+</details>
+<div class="desc"><p>See <a href="https://www.spincore.com/support/spinapi/reference/production/2013-09-25/spinapi_8h.html#ade910c40db242fb8238d29462d46de78">https://www.spincore.com/support/spinapi/reference/production/2013-09-25/spinapi_8h.html#ade910c40db242fb8238d29462d46de78</a>
+Read status from the board. Not all boards support this, see your manual. Each bit of the
+returned integer indicates whether the board is in that state. Bit 0 is the least
+significant bit.</p>
+<p>Bit 0 - Stopped
+Bit 1 - Reset
+Bit 2 - Running
+Bit 3 - Waiting
+Bit 4 - Scanning (RadioProcessor boards only)</p>
+<p><em>Note on Reset Bit: The Reset Bit will be true as soon as the board is initialized. </em>It
+will remain true until a hardware or software trigger occurs, *at which point it will stay
+false until the board is reset again.</p>
+<p><em>Note on Activation Levels: The activation level of each bit depends on the board, please
+see </em>your product's manual for details.</p>
+<p>Bits 5-31 are reserved for future use.
+It should not be assumed that these will be set to 0.</p></div>
+</dd>
+<dt id="qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.inst_pbonly"><code class="name flex">
+<span>def <span class="ident">inst_pbonly</span></span>(<span>self, chs, opcode, data, duration)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def inst_pbonly(self, chs, opcode, data, duration):
+    return pb.pb_inst_pbonly(chs, opcode, data, duration)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.is_connected"><code class="name flex">
+<span>def <span class="ident">is_connected</span></span>(<span>self) ‑> bool</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def is_connected(self) -&gt; bool:
+    try:
+        return False if pb.pb_count_boards() &lt; 0 else True
+    except:
+        return False</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.is_finished"><code class="name flex">
+<span>def <span class="ident">is_finished</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def is_finished(self):
+    # IDK do we check for &#39;waiting&#39;??
+    return pb.pb_read_status() == 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.laser_output"><code class="name flex">
+<span>def <span class="ident">laser_output</span></span>(<span>self, onoff: bool)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def laser_output(self, onoff: bool):
+    if onoff:
+        chs = self.ch_defs
+        control = self.get_chs_cmd_bits(chs, [&#34;laser&#34;])
+        self.start_programming()
+        self.inst_pbonly(control, Inst.BRANCH, 0, 1000 * Timing.ms)
+        self.stop_programming()
+        self.reset()
+        self.start()
+        logger.info(&#34;Laser set to on&#34;)
+    else:
+        self.stop()
+        logger.info(&#34;Laser set to off&#34;)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.laser_rf_output"><code class="name flex">
+<span>def <span class="ident">laser_rf_output</span></span>(<span>self, onoff: bool)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def laser_rf_output(self, onoff: bool):
+    if onoff:
+        chs = self.ch_defs
+        control = self.get_chs_cmd_bits(chs, [&#34;laser&#34;, &#34;mw_x&#34;])
+        self.start_programming()
+        self.inst_pbonly(control, Inst.BRANCH, 0, 1000 * Timing.ms)
+        self.stop_programming()
+        self.reset()
+        self.start()
+        logger.info(&#34;Laser and RF set to on&#34;)
+    else:
+        self.stop()
+        logger.info(&#34;Laser and RF set to off&#34;)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.load_seq"><code class="name flex">
+<span>def <span class="ident">load_seq</span></span>(<span>self, seq_name, **seq_kwargs)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def load_seq(self, seq_name, **seq_kwargs):
+    logger.info(&#34;Loading {} sequence&#34;, seq_name)
+    sequences = self.get_available_sequences()
+    sequences[seq_name](self, self.sequence_params, **seq_kwargs)
+    logger.info(&#34;Loaded {} sequence&#34;, seq_name)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.open"><code class="name flex">
+<span>def <span class="ident">open</span></span>(<span>self) ‑> tuple[bool, str]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def open(self) -&gt; tuple[bool, str]:
+    if pb.pb_count_boards() &lt; 0:
+        logger.error(&#34;No Pulseblaster boards found&#34;)
+        self.connected = False
+        return False, &#34;Error: No Pulseblaster boards found&#34;
+    try:
+        pb.pb_select_board(int(self.board_num))
+        pb.pb_init()
+        pb.pb_core_clock(500)  # in MHz
+        logger.info(&#34;Pulseblaster opened, status: {}&#34;, pb.pb_read_status())
+        self.connected = True
+        return True, &#34;Pulseblaster opened&#34;
+    except Exception as e:
+        logger.exception(&#34;Error opening Pulseblaster: {}&#34;, format_error_response())
+        return False, f&#34;Error opening Pulseblaster: {format_error_response()}&#34;</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.output_on"><code class="name flex">
+<span>def <span class="ident">output_on</span></span>(<span>self, state, ch_names)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def output_on(self, state, ch_names):
+    if state:
+        chs = self.ch_defs
+        control = self.get_chs_cmd_bits(chs, ch_names)
+        self.start_programming()
+        self.inst_pbonly(control, Inst.BRANCH, 0, 1000 * Timing.ms)
+        self.stop_programming()
+
+        self.reset()
+        self.start()
+    else:
+        self.stop()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.reset"><code class="name flex">
+<span>def <span class="ident">reset</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def reset(self):
+    pb.pb_reset()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.rf_output"><code class="name flex">
+<span>def <span class="ident">rf_output</span></span>(<span>self, onoff: bool)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def rf_output(self, onoff: bool):
+    if onoff:
+        chs = self.ch_defs
+        control = self.get_chs_cmd_bits(chs, [&#34;mw_x&#34;])
+        self.start_programming()
+        self.inst_pbonly(control, Inst.BRANCH, 0, 1000 * Timing.ms)
+        self.stop_programming()
+        self.reset()
+        self.start()
+        logger.info(&#34;RF set to on&#34;)
+    else:
+        self.reset()
+        self.stop()
+        logger.info(&#34;RF set to off&#34;)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.start"><code class="name flex">
+<span>def <span class="ident">start</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def start(self):
+    pb.pb_start()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.start_programming"><code class="name flex">
+<span>def <span class="ident">start_programming</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def start_programming(self):
+    pb.pb_start_programming(pb.PULSE_PROGRAM)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.stop"><code class="name flex">
+<span>def <span class="ident">stop</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def stop(self):
+    pb.pb_stop()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.stop_programming"><code class="name flex">
+<span>def <span class="ident">stop_programming</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def stop_programming(self):
+    pb.pb_stop_programming()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.unroll_metadata"><code class="name flex">
+<span>def <span class="ident">unroll_metadata</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def unroll_metadata(self):
+    # override normal unroll_metadata as we don&#39;t use underscores... could be cleaned up.
+    return {
+        &#34;board_num&#34;: self.board_num,
+        &#34;ch_defs&#34;: self.ch_defs,
+        &#34;sequence_params&#34;: self.sequence_params,
+    }</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="qscope.device.device.Device" href="../../device.html#qscope.device.device.Device">Device</a></b></code>:
+<ul class="hlist">
+<li><code><a title="qscope.device.device.Device.get_all_attrs" href="../../device.html#qscope.device.device.Device.get_all_attrs">get_all_attrs</a></code></li>
+<li><code><a title="qscope.device.device.Device.get_roles" href="../../device.html#qscope.device.device.Device.get_roles">get_roles</a></code></li>
+<li><code><a title="qscope.device.device.Device.has_role" href="../../device.html#qscope.device.device.Device.has_role">has_role</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<form>
+<input id="lunr-search" name="q" placeholder="🔎 Search ..." aria-label="Search"
+disabled minlength="2">
+</form>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.css" integrity="sha512-b+T2i3P45i1LZM7I00Ci5QquB9szqaxu+uuk5TUSGjZQ4w4n+qujQiIuvTv2BxE7WCGQCifNMksyKILDiHzsOg==" crossorigin>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.js" integrity="sha512-2B9/byNV1KKRm5nQ2RLViPFD6U4dUjDGwuW1GU+ImJh8YinPU9Zlq1GzdTMO+G2ROrB5o1qasJBy1ttYz0wCug==" crossorigin></script>
+<style>
+.modal-dialog iframe {
+width: 100vw;
+height: calc(100vh - 80px);
+}
+@media screen and (min-width: 700px) {
+.modal-dialog iframe {
+width: 70vw;
+height: 80vh;
+}
+}
+.modal-dialog .tingle-modal-box {width: auto;}
+.modal-dialog .tingle-modal-box__content {padding: 0;}
+</style>
+<script>
+const input = document.getElementById('lunr-search');
+input.disabled = false;
+input.form.addEventListener('submit', (ev) => {
+ev.preventDefault();
+const url = new URL(window.location);
+url.searchParams.set('q', input.value);
+history.replaceState({}, null, url.toString());
+search(input.value);
+});
+const query = new URL(window.location).searchParams.get('q');
+if (query)
+search(query);
+function search(query) {
+const url = '../../../../doc-search.html#' + encodeURIComponent(query);
+new tingle.modal({
+cssClass: ['modal-dialog'],
+onClose: () => {
+const url = new URL(window.location);
+url.searchParams.delete('q');
+history.replaceState({}, null, url.toString());
+setTimeout(() => input.focus(), 100);
+}
+}).setContent('<iframe src="' + url + '"></iframe>').open();
+}
+</script>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="qscope.device.seqgen.pulseblaster" href="index.html">qscope.device.seqgen.pulseblaster</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster" href="#qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster">PulseBlaster</a></code></h4>
+<ul class="">
+<li><code><a title="qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.add_instruction" href="#qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.add_instruction">add_instruction</a></code></li>
+<li><code><a title="qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.add_kernel" href="#qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.add_kernel">add_kernel</a></code></li>
+<li><code><a title="qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.board_num" href="#qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.board_num">board_num</a></code></li>
+<li><code><a title="qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.ch_defs" href="#qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.ch_defs">ch_defs</a></code></li>
+<li><code><a title="qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.close" href="#qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.close">close</a></code></li>
+<li><code><a title="qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.connected" href="#qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.connected">connected</a></code></li>
+<li><code><a title="qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.end_sequence" href="#qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.end_sequence">end_sequence</a></code></li>
+<li><code><a title="qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.get_available_sequences" href="#qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.get_available_sequences">get_available_sequences</a></code></li>
+<li><code><a title="qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.get_chs_cmd_bits" href="#qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.get_chs_cmd_bits">get_chs_cmd_bits</a></code></li>
+<li><code><a title="qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.get_status" href="#qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.get_status">get_status</a></code></li>
+<li><code><a title="qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.inst_pbonly" href="#qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.inst_pbonly">inst_pbonly</a></code></li>
+<li><code><a title="qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.is_connected" href="#qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.is_connected">is_connected</a></code></li>
+<li><code><a title="qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.is_finished" href="#qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.is_finished">is_finished</a></code></li>
+<li><code><a title="qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.laser_output" href="#qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.laser_output">laser_output</a></code></li>
+<li><code><a title="qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.laser_rf_output" href="#qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.laser_rf_output">laser_rf_output</a></code></li>
+<li><code><a title="qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.load_seq" href="#qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.load_seq">load_seq</a></code></li>
+<li><code><a title="qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.open" href="#qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.open">open</a></code></li>
+<li><code><a title="qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.output_on" href="#qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.output_on">output_on</a></code></li>
+<li><code><a title="qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.required_config" href="#qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.required_config">required_config</a></code></li>
+<li><code><a title="qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.reset" href="#qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.reset">reset</a></code></li>
+<li><code><a title="qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.rf_output" href="#qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.rf_output">rf_output</a></code></li>
+<li><code><a title="qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.sequence_params" href="#qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.sequence_params">sequence_params</a></code></li>
+<li><code><a title="qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.start" href="#qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.start">start</a></code></li>
+<li><code><a title="qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.start_programming" href="#qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.start_programming">start_programming</a></code></li>
+<li><code><a title="qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.stop" href="#qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.stop">stop</a></code></li>
+<li><code><a title="qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.stop_programming" href="#qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.stop_programming">stop_programming</a></code></li>
+<li><code><a title="qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.unroll_metadata" href="#qscope.device.seqgen.pulseblaster.pulseblaster.PulseBlaster.unroll_metadata">unroll_metadata</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
+</footer>
+</body>
+</html>

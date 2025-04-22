@@ -55,24 +55,24 @@ el.replaceWith(d);
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def analyze_and_plot_results(
-    time_data: np.ndarray, 
-    clock_data: np.ndarray, 
-    smu_data: np.ndarray, 
+    time_data: np.ndarray,
+    clock_data: np.ndarray,
+    smu_data: np.ndarray,
     coil_resistance: float,
     additional_resistance: float,
     current: float,
     source_mode: str,
-    sample_rate: float, 
+    sample_rate: float,
     downsample_ratio: int,
-    system_name: str, 
-    project_name: str, 
-    frequency: float, 
+    system_name: str,
+    project_name: str,
+    frequency: float,
     voltage_limit: Optional[float],
     compliance_reached: bool,
-    no_show: bool = False
+    no_show: bool = False,
 ) -&gt; None:
     &#34;&#34;&#34;Analyze timing relationships and plot results.
-    
+
     Parameters
     ----------
     time_data : np.ndarray
@@ -108,7 +108,7 @@ el.replaceWith(d);
     &#34;&#34;&#34;
     # Calculate total resistance
     total_resistance = coil_resistance + additional_resistance
-    
+
     # Convert SMU data to current based on source mode
     if source_mode == &#34;current&#34;:
         # SMU data is voltage, convert to current
@@ -119,7 +119,7 @@ el.replaceWith(d);
 
     # Analyze timing relationships
     edges_clock = np.where(np.diff(clock_data &gt; 3))[0]  # Clock threshold
-    
+
     if source_mode == &#34;current&#34;:
         # In current mode, use a threshold based on the expected current
         smu_threshold = 3 * current / 4
@@ -130,9 +130,13 @@ el.replaceWith(d);
         smu_min = np.min(smu_current)
         smu_max = np.max(smu_current)
         smu_threshold = smu_min + (smu_max - smu_min) * 0.5  # Use 50% of the range
-        
-        logger.info(f&#34;Adaptive threshold for SMU current: {smu_threshold:.3f}A (min: {smu_min:.3f}A, max: {smu_max:.3f}A)&#34;)
-        edges_smu = np.where(np.diff(smu_current &gt; smu_threshold))[0]  # Adaptive threshold
+
+        logger.info(
+            f&#34;Adaptive threshold for SMU current: {smu_threshold:.3f}A (min: {smu_min:.3f}A, max: {smu_max:.3f}A)&#34;
+        )
+        edges_smu = np.where(np.diff(smu_current &gt; smu_threshold))[
+            0
+        ]  # Adaptive threshold
 
     if len(edges_clock) == 0 or len(edges_smu) == 0:
         logger.warning(&#34;No edges detected in signals. Check connections and settings.&#34;)
@@ -146,21 +150,25 @@ el.replaceWith(d);
         # First rising edge in data = field ON, second rising edge = field OFF, etc.
         field_on_edges = edges_clock[::2]  # Every other rising edge (0, 2, 4...)
         field_off_edges = edges_clock[1::2]  # Every other rising edge (1, 3, 5...)
-        
-        logger.info(f&#34;Detected {len(field_on_edges)} field ON edges and {len(field_off_edges)} field OFF edges&#34;)
-        
+
+        logger.info(
+            f&#34;Detected {len(field_on_edges)} field ON edges and {len(field_off_edges)} field OFF edges&#34;
+        )
+
         # Use field ON edges as the effective clock edges for delay calculation
         effective_clock_edges = field_on_edges
-        
+
         # Now calculate delays using the effective clock edges
         delays = []
         for clock_edge in effective_clock_edges:
             # Find closest SMU edge
             if len(edges_smu) &gt; 0:
                 closest_smu = edges_smu[np.argmin(np.abs(edges_smu - clock_edge))]
-                delay = (closest_smu - clock_edge) / (sample_rate/downsample_ratio) * 1e3  # Convert to ms
+                delay = (
+                    (closest_smu - clock_edge) / (sample_rate / downsample_ratio) * 1e3
+                )  # Convert to ms
                 delays.append(delay)
-        
+
         mean_delay = np.mean(delays) if delays else 0
         std_delay = np.std(delays) if delays else 0
 
@@ -168,12 +176,12 @@ el.replaceWith(d);
 
     # Plot results
     fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(10, 8), sharex=True)
-    plt.title(f&#39;Timing Test: {frequency:.1f} Hz switching, AWG: {frequency * 2:.1f} Hz&#39;)
+    plt.title(f&#34;Timing Test: {frequency:.1f} Hz switching, AWG: {frequency * 2:.1f} Hz&#34;)
 
     # Plot clock signal in volts
-    ax1.plot(time_data, clock_data, &#39;b-&#39;, label=&#39;Clock (Ch A)&#39;)
-    ax1.set_ylabel(&#39;Voltage (V)&#39;)
-    ax1.legend(loc=&#39;upper left&#39;)
+    ax1.plot(time_data, clock_data, &#34;b-&#34;, label=&#34;Clock (Ch A)&#34;)
+    ax1.set_ylabel(&#34;Voltage (V)&#34;)
+    ax1.legend(loc=&#34;upper left&#34;)
     ax1.grid(True)
 
     ax1.axhline(y=0.7, color=&#34;xkcd:grey&#34;, linestyle=&#34;dotted&#34;, label=&#34;Max logic Off&#34;)
@@ -181,15 +189,21 @@ el.replaceWith(d);
 
     # Plot SMU output in mamps
     ax1_twin = ax1.twinx()  # Create a second y-axis
-    ax1_twin.plot(time_data, 1e3*smu_current, &#39;r-&#39;, label=&#39;SMU Current (Ch B)&#39;, alpha=0.7)
-    ax1_twin.set_ylabel(&#39;Current (mA)&#39;)
-    
+    ax1_twin.plot(
+        time_data, 1e3 * smu_current, &#34;r-&#34;, label=&#34;SMU Current (Ch B)&#34;, alpha=0.7
+    )
+    ax1_twin.set_ylabel(&#34;Current (mA)&#34;)
+
     # Add threshold line to help visualize edge detection
-    if &#39;smu_threshold&#39; in locals():
-        ax1_twin.axhline(y=1e3*smu_threshold, color=&#34;r&#34;, linestyle=&#34;--&#34;, 
-                        label=f&#39;Threshold: {smu_threshold*1e3:.1f} mA&#39;)
-    
-    ax1_twin.legend(loc=&#39;upper right&#39;)
+    if &#34;smu_threshold&#34; in locals():
+        ax1_twin.axhline(
+            y=1e3 * smu_threshold,
+            color=&#34;r&#34;,
+            linestyle=&#34;--&#34;,
+            label=f&#34;Threshold: {smu_threshold * 1e3:.1f} mA&#34;,
+        )
+
+    ax1_twin.legend(loc=&#34;upper right&#34;)
 
     ax1.set_ylim(bottom=0)
     ax1_twin.set_ylim(bottom=0)
@@ -198,33 +212,44 @@ el.replaceWith(d);
     if len(delays) &gt; 0:
         # Use effective_clock_edges for plotting
         plot_indices = min(len(delays), len(effective_clock_edges))
-        ax2.plot(time_data[effective_clock_edges[:plot_indices]], delays[:plot_indices], &#39;b.&#39;)
-        
+        ax2.plot(
+            time_data[effective_clock_edges[:plot_indices]], delays[:plot_indices], &#34;b.&#34;
+        )
+
         # Find corresponding SMU edges for plotting
         smu_plot_edges = []
         for i, clock_edge in enumerate(effective_clock_edges[:plot_indices]):
             if i &lt; len(delays):
                 closest_smu = edges_smu[np.argmin(np.abs(edges_smu - clock_edge))]
                 smu_plot_edges.append(closest_smu)
-        
-        ax2.plot(time_data[smu_plot_edges], delays[:len(smu_plot_edges)], &#39;rs&#39;)
-        ax2.set_ylabel(&#39;Delay (ms)&#39;)
-        ax2.set_xlabel(&#39;Time (s)&#39;)
+
+        ax2.plot(time_data[smu_plot_edges], delays[: len(smu_plot_edges)], &#34;rs&#34;)
+        ax2.set_ylabel(&#34;Delay (ms)&#34;)
+        ax2.set_xlabel(&#34;Time (s)&#34;)
         ax2.grid(True)
-        ax2.axhline(mean_delay, color=&#39;k&#39;, linestyle=&#39;--&#39;,
-                   label=f&#39;Mean: {mean_delay:.1f}ms&#39;)
-        ax2.fill_between(time_data[[0,-1]],
-                       [mean_delay-std_delay]*2,
-                       [mean_delay+std_delay]*2,
-                       color=&#39;k&#39;, alpha=0.2,
-                       label=f&#39;Std: {std_delay:.1f}ms&#39;)
+        ax2.axhline(
+            mean_delay, color=&#34;k&#34;, linestyle=&#34;--&#34;, label=f&#34;Mean: {mean_delay:.1f}ms&#34;
+        )
+        ax2.fill_between(
+            time_data[[0, -1]],
+            [mean_delay - std_delay] * 2,
+            [mean_delay + std_delay] * 2,
+            color=&#34;k&#34;,
+            alpha=0.2,
+            label=f&#34;Std: {std_delay:.1f}ms&#34;,
+        )
         ax2.legend(loc=&#34;upper right&#34;)
     else:
-        ax2.text(0.5, 0.5, &#34;No timing data available&#34;, 
-                 horizontalalignment=&#39;center&#39;, verticalalignment=&#39;center&#39;,
-                 transform=ax2.transAxes)
-        ax2.set_ylabel(&#39;Delay (ms)&#39;)
-        ax2.set_xlabel(&#39;Time (s)&#39;)
+        ax2.text(
+            0.5,
+            0.5,
+            &#34;No timing data available&#34;,
+            horizontalalignment=&#34;center&#34;,
+            verticalalignment=&#34;center&#34;,
+            transform=ax2.transAxes,
+        )
+        ax2.set_ylabel(&#34;Delay (ms)&#34;)
+        ax2.set_xlabel(&#34;Time (s)&#34;)
 
     plt.tight_layout()
     if not no_show:
@@ -241,7 +266,7 @@ el.replaceWith(d);
         &#34;effective_clock_edges&#34;: effective_clock_edges,
         &#34;delays&#34;: delays,
         &#34;mean_delay&#34;: mean_delay,
-        &#34;std_delay&#34;: std_delay
+        &#34;std_delay&#34;: std_delay,
     }
 
     # Save results
@@ -250,7 +275,8 @@ el.replaceWith(d);
         system_name=system_name,
         project_name=project_name,
         frequency=frequency,
-        duration=len(time_data) / (sample_rate / downsample_ratio),  # Calculate duration from data
+        duration=len(time_data)
+        / (sample_rate / downsample_ratio),  # Calculate duration from data
         sample_rate=sample_rate,
         downsample_ratio=downsample_ratio,
         coil_resistance=coil_resistance,
@@ -260,7 +286,7 @@ el.replaceWith(d);
         voltage_limit=voltage_limit,
         compliance_reached=compliance_reached,
         fig=fig,
-        no_show=no_show
+        no_show=no_show,
     )</code></pre>
 </details>
 <div class="desc"><p>Analyze timing relationships and plot results.</p>
@@ -308,7 +334,7 @@ el.replaceWith(d);
 </summary>
 <pre><code class="python">def get_command_string() -&gt; str:
     &#34;&#34;&#34;Get the original command string that was used to run this script.
-    
+
     Returns
     -------
     str
@@ -334,14 +360,14 @@ el.replaceWith(d);
 <pre><code class="python">def run_diagnostic_mode(scope, frequency, duration, sample_rate):
     &#34;&#34;&#34;Run diagnostic mode to check trigger signals.&#34;&#34;&#34;
     logger.info(&#34;Running in diagnostic mode to check trigger signals&#34;)
-    
+
     # Configure scope to capture the trigger signal
     scope.configure_channels(
         channels=[0],  # Just channel A for the clock/trigger
         ranges=[10.0],
-        coupling=[&#34;DC&#34;]
+        coupling=[&#34;DC&#34;],
     )
-    
+
     # Configure and start AWG output
     signal_config = SignalConfig(
         frequency=frequency,
@@ -349,28 +375,28 @@ el.replaceWith(d);
         offset=0.5,
     )
     scope.config_signal_generator(signal_config)
-    
+
     # Calculate pre-trigger samples (10% of one clock cycle)
     pre_trigger_samples = int(0.1 * sample_rate / frequency)
     logger.info(f&#34;Using {pre_trigger_samples} pre-trigger samples for diagnostic&#34;)
-    
+
     # Capture the signal
     scope.start_block_capture(
-        sample_interval=1.0/sample_rate,
+        sample_interval=1.0 / sample_rate,
         num_samples=int(duration * sample_rate),
         trigger_enabled=True,
         trigger_channel=0,
         trigger_threshold=2.5,
         trigger_direction=&#34;RISING&#34;,
-        pre_trigger_samples=pre_trigger_samples
+        pre_trigger_samples=pre_trigger_samples,
     )
-    
+
     # Start the signal generator
     scope.start_signal_generator()
-    
+
     # Get scope data
     time_data, (clock_data,) = scope.get_block_data(timeout_s=max(5.0, duration * 2.5))
-    
+
     # Shift time array so trigger point is at t=0
     if pre_trigger_samples &gt; 0:
         # Make sure we don&#39;t exceed array bounds
@@ -378,28 +404,32 @@ el.replaceWith(d);
         trigger_time = time_data[trigger_index]
         time_data = time_data - trigger_time
         logger.info(f&#34;Shifted time data so trigger point is at t=0&#34;)
-    
+
     # Plot the trigger signal
     plt.figure(figsize=(10, 6))
-    plt.plot(time_data, clock_data, &#39;b-&#39;, label=&#39;Trigger Signal&#39;)
-    plt.axhline(y=1.65, color=&#39;k&#39;, linestyle=&#39;--&#39;, label=&#39;Trigger Threshold&#39;)
+    plt.plot(time_data, clock_data, &#34;b-&#34;, label=&#34;Trigger Signal&#34;)
+    plt.axhline(y=1.65, color=&#34;k&#34;, linestyle=&#34;--&#34;, label=&#34;Trigger Threshold&#34;)
     plt.axhline(y=0.7, color=&#34;r&#34;, linestyle=&#34;dotted&#34;, label=&#34;Max logic Off&#34;)
     plt.axhline(y=3.3, color=&#34;g&#34;, linestyle=&#34;dotted&#34;, label=&#34;Min logic On&#34;)
-    plt.xlabel(&#39;Time (s)&#39;)
-    plt.ylabel(&#39;Voltage (V)&#39;)
-    plt.title(&#39;Trigger Signal Diagnostic&#39;)
+    plt.xlabel(&#34;Time (s)&#34;)
+    plt.ylabel(&#34;Voltage (V)&#34;)
+    plt.title(&#34;Trigger Signal Diagnostic&#34;)
     plt.ylim(bottom=0)
     plt.legend(loc=&#34;upper right&#34;)
     plt.grid(True)
     plt.show()
-    
+
     # Count edges and verify frequency
     edges = np.where(np.diff(clock_data &gt; 1.65))[0]
-    measured_freq = len(edges) / (2 * duration)  # Divide by 2 because each cycle has 2 edges
-    
+    measured_freq = len(edges) / (
+        2 * duration
+    )  # Divide by 2 because each cycle has 2 edges
+
     logger.info(f&#34;Detected {len(edges)} edges in {duration}s&#34;)
-    logger.info(f&#34;Measured frequency: {measured_freq:.2f}Hz (expected: {frequency:.2f}Hz)&#34;)
-    
+    logger.info(
+        f&#34;Measured frequency: {measured_freq:.2f}Hz (expected: {frequency:.2f}Hz)&#34;
+    )
+
     # Check signal levels
     min_v = np.min(clock_data)
     max_v = np.max(clock_data)
@@ -430,10 +460,10 @@ el.replaceWith(d);
     voltage_limit: Optional[float],
     compliance_reached: bool,
     fig: Optional[plt.Figure] = None,
-    no_show: bool = False
+    no_show: bool = False,
 ) -&gt; None:
     &#34;&#34;&#34;Save measurement results to file.
-    
+
     Parameters
     ----------
     results : Dict[str, Any]
@@ -468,11 +498,13 @@ el.replaceWith(d);
     # Clean up results to remove non-serializable objects
     def clean_for_json(obj):
         if isinstance(obj, dict):
-            return {k: clean_for_json(v) for k, v in obj.items() 
-                   if not callable(v) and k != &#34;function&#34;}
+            return {
+                k: clean_for_json(v)
+                for k, v in obj.items()
+                if not callable(v) and k != &#34;function&#34;
+            }
         elif isinstance(obj, list):
-            return [clean_for_json(item) for item in obj 
-                   if not callable(item)]
+            return [clean_for_json(item) for item in obj if not callable(item)]
         elif isinstance(obj, np.bool_):
             return bool(obj)
         else:
@@ -500,8 +532,8 @@ el.replaceWith(d);
             &#34;num_clock_edges&#34;: len(results.get(&#34;edges_clock&#34;, [])),
             &#34;num_effective_edges&#34;: len(results.get(&#34;effective_clock_edges&#34;, [])),
             &#34;num_smu_edges&#34;: len(results.get(&#34;edges_smu&#34;, [])),
-            &#34;compliance_reached&#34;: compliance_reached
-        }
+            &#34;compliance_reached&#34;: compliance_reached,
+        },
     }
 
     # Save data and figure in parallel
@@ -509,7 +541,7 @@ el.replaceWith(d);
         # Save metadata as JSON
         with open(f&#34;{base_path}.json&#34;, &#34;w&#34;) as f:
             json.dump(metadata, f, indent=2, cls=NumpyEncoder)
-        
+
         # Save raw data as compressed NumPy file
         np.savez_compressed(
             f&#34;{base_path}_raw.npz&#34;,
@@ -520,9 +552,9 @@ el.replaceWith(d);
             edges_clock=results.get(&#34;edges_clock&#34;, []),
             edges_smu=results.get(&#34;edges_smu&#34;, []),
             effective_clock_edges=results.get(&#34;effective_clock_edges&#34;, []),
-            delays=results.get(&#34;delays&#34;, [])
+            delays=results.get(&#34;delays&#34;, []),
         )
-        
+
         logger.debug(f&#34;Raw data saved to {base_path}_raw.npz&#34;)
 
     def save_figure():

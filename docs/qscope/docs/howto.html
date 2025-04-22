@@ -250,6 +250,12 @@ tab_layout = QVBoxLayout(tab_widget)
 # Add to the main tab widget
 main_tabs.addTab(tab_widget, &quot;My Custom Tab&quot;)
 </code></pre>
+<h3 id="build-the-documentation">Build the documentation</h3>
+<p>View the full documentation by running:</p>
+<pre><code class="language-bash">pdoc3 --output-dir docs/ --html --template-dir docs/ --force --skip-errors ./src/qscope/
+</code></pre>
+<p>Then open <code>docs/qscope/index.html</code> in your browser.
+Commit the above change to main to update the github pages docs website.</p>
 </section>
 <section>
 </section>
@@ -331,6 +337,7 @@ setTimeout(() => input.focus(), 100);
 <li><a href="#how-to-extend-the-gui">How to Extend the GUI</a><ul>
 <li><a href="#adding-a-custom-widget">Adding a Custom Widget</a></li>
 <li><a href="#creating-a-custom-tab">Creating a Custom Tab</a></li>
+<li><a href="#build-the-documentation">Build the documentation</a></li>
 </ul>
 </li>
 </ul>

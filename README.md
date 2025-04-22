@@ -5,33 +5,65 @@
 
 `Quantum Spin Control and Optics Programming Engine`
 
-A framework for controlling physics experiments with a focus on quantum sensing and spin defect measurements.
+A (python) library for controlling physics experiments via script or GUI front-ends and a hardware/measurement server.
+Currently implements spin defect measurements, in particular for widefield/camera-based experiments.
 
-![Qscope GUI](./docs/images/qscope_gui.png)
+| ![Qscope GUI](./docs/images/qscope_gui.png) |
+|:--:|
+| *GUI for widefield defect microscopy* |
 
+<!-- TODO: add scripting example (gif?) -->
+
+## Pitch
+
+Do you:
+
+- Need some software to control a widefield defect microscope?
+- Have long-running quantitative (camera) spectroscopy experiments?
+- Want to borrow a framework for controlling your lab, with a server-client model?
+
+Then this project might be of interest to you!
+
+## Quick Start
+
+### Installation
+
+Clone the repo & `pip install` it. For more info see [Installation](https://qnslab.github.io/qscope/qscope/docs/tutorials.html#installation).
+
+### Starting the GUI
+
+```bash
+# Basic start
+qscope gui
+
+# Start with mock system started in subprocess
+qscope gui -n mock
+```
 
 ## Overview
 
 Qscope features a server-client architecture designed for flexible control of experiments:
-- **Server**: Manages hardware devices and runs experiment logic
-- **Client**: Controls the system through scripts or GUI
-- **Measurement**: Handles experiment logic with parameter sweeps
+- **Server**: Manages hardware devices and oversees experiment logic. Runs it its own process.
+- **Client**: API to control the system on a server process. Can be used directly in script or through the GUI wrapper.
+- **Measurement**: Handles experiment logic with parameter sweeps. Each measurement runs in an async loop as a state machine.
 
 Multiple clients (script or gui) can connect simultaneously to control the system, run measurements, and monitor data in real-time.
 
 ## Key Features
 
 - **Distributed Architecture**: Server-client model allows multiple control points
-- **Hardware Abstraction**: Unified interface for diverse scientific instruments
+- **Hardware Abstraction**: Unified interface for diverse scientific instruments (defined by their `Role` and `RoleInterface`)
 - **Measurement Framework**: Standardized approach to common swept measurements (T1, ODMR, PL spectra, ...)
-- **Real-time Data Visualization**: Live data monitoring and analysis
+- **Real-time Data Visualization**: Live data monitoring and analysis, separated from experiment control logic
 - **Scripting & GUI Interfaces**: Flexible control options for different needs
 
 ## Current Systems
 
+For documentation on supported hardware see the relevant [docs page](https://qnslab.github.io/qscope/qscope/supportedhardware.html).
+
 - **Widefield defect microscope (QDM)**: ESR, T1, Rabi measurements, etc.
 - Ensemble NV measurements
-- Photodiode-based systems
+- Photodiode-based systems: magnetophotoluminescence
 - Any pulsed camera measurement
 
 ## Planned Systems
@@ -42,29 +74,10 @@ Multiple clients (script or gui) can connect simultaneously to control the syste
 
 QScope documentation is organized according to the Diátaxis framework:
 
-- **[Tutorials](https://qnslab.github.io/qscope/qscope/docs/tutorials.html)**: Step-by-step guides for beginners
-- **[How-to Guides](https://qnslab.github.io/qscope/qscope/docs/howto.html)**: Task-oriented guides for specific use cases
-- **[Explanations](https://qnslab.github.io/qscope/qscope/docs/explanation.html)**: Conceptual documentation about the system
+- **[Tutorials](https://qnslab.github.io/qscope/qscope/docs/tutorials.html)**: Step-by-step guides for beginners.
+- **[How-to Guides](https://qnslab.github.io/qscope/qscope/docs/howto.html)**: Task-oriented guides for specific use cases.
+- **[Explanations](https://qnslab.github.io/qscope/qscope/docs/explanation.html)**: Conceptual documentation about the system.
 - **[Reference](https://qnslab.github.io/qscope/qscope/index.html#header-submodules)**: Generated API documentation.
 
-## Quick Start
-
-### Installation
-
-See [INSTALL.md](./INSTALL.md) for detailed installation instructions.
-In brief: clone the repo and run `pip install -e .` in a Python 3.11 environment.
-
-### Starting the GUI
-
-```bash
-# Basic start
-qscope gui
-
-# Start with mock system
-qscope gui -n mock
-```
-
-## Resources
-
-- [Developer Documentation](./DEVDOCS.md): Architecture, workflow, and hardware support
-- [Installation Guide](./INSTALL.md): Detailed setup instructions
+- **[Hardware Support](https://qnslab.github.io/qscope/qscope/docs/supportedhardware.html)**: Documentation for the hardware devices supported.
+- **[MPL Documentation](https://qnslab.github.io/qscope/qscope/docs/mpl.html)**: The CLI MPL docs are separate for now, due to its different architecture.

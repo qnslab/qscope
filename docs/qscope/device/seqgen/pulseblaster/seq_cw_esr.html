@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 <meta name="generator" content="pdoc3 0.11.6">
-<title>qscope.gui.main_gui API documentation</title>
+<title>qscope.device.seqgen.pulseblaster.seq_cw_esr API documentation</title>
 <meta name="description" content="">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
@@ -35,7 +35,7 @@ el.replaceWith(d);
 <main>
 <article id="content">
 <header>
-<h1 class="title">Module <code>qscope.gui.main_gui</code></h1>
+<h1 class="title">Module <code>qscope.device.seqgen.pulseblaster.seq_cw_esr</code></h1>
 </header>
 <section id="section-intro">
 </section>
@@ -46,73 +46,99 @@ el.replaceWith(d);
 <section>
 <h2 class="section-title" id="header-functions">Functions</h2>
 <dl>
-<dt id="qscope.gui.main_gui.main_gui"><code class="name flex">
-<span>def <span class="ident">main_gui</span></span>(<span>system_name=None,<br>host='',<br>msg_port='',<br>log_to_file=True,<br>log_to_stdout=True,<br>log_path=None,<br>clear_prev_log=True,<br>log_level='INFO',<br>auto_connect=True)</span>
+<dt id="qscope.device.seqgen.pulseblaster.seq_cw_esr.seq_cw_esr"><code class="name flex">
+<span>def <span class="ident">seq_cw_esr</span></span>(<span>seqgen: PulseBlaster,<br>sequence_params: dict[str, float],<br>ref_mode: str = 'no_rf',<br>exp_t: float = 3e-05,<br>sweep_len: int = 1,<br>avg_per_point: int = 1,<br>camera_trig_time: float = 0,<br>**kwargs)</span>
 </code></dt>
 <dd>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def main_gui(
-    system_name=None,
-    host=&#34;&#34;,
-    msg_port=&#34;&#34;,
-    log_to_file=True,
-    log_to_stdout=True,
-    log_path=None,
-    clear_prev_log=True,
-    log_level=&#34;INFO&#34;,
-    auto_connect=True,
+<pre><code class="python">def seq_cw_esr(
+    seqgen: PulseBlaster,
+    sequence_params: dict[str, float],
+    ref_mode: str = &#34;no_rf&#34;,
+    exp_t: float = 30e-6,
+    sweep_len: int = 1,
+    avg_per_point: int = 1,
+    camera_trig_time: float = 0,
+    **kwargs,
 ):
-    start_client_log(
-        log_to_file=log_to_file,
-        log_to_stdout=log_to_stdout,
-        log_path=log_path,
-        clear_prev=clear_prev_log,
-        log_level=log_level,
-    )
-    app = QApplication(sys.argv)
-    app.setStyle(&#34;Fusion&#34;)
+    if camera_trig_time == 0:
+        trigger_time = sequence_params[&#34;camera_trig_time&#34;]  # s
+    else:
+        trigger_time = camera_trig_time
+    if ref_mode == (&#34;&#34; or None):
+        b_ref = False
+        logger.info(&#34;Setting up CW ESR sequence with no reference&#34;)
+    else:
+        b_ref = True
+        logger.info(&#34;Setting up CW ESR sequence with {} as a reference&#34;, ref_mode)
 
-    window = MainWindow(
-        system_name=system_name, auto_connect=auto_connect, host=host, msg_port=msg_port
-    )
-    window.show()
+    # convert times to ns assuming the user inputs in s
+    exp_t *= 1e9  # s to ns
+    trigger_time *= 1e9  # s to ns
 
-    # Return the exit code instead of calling sys.exit directly
-    return_code = app.exec()
+    # ------- SIGNAL -------
+    pk_sig = PulseKernel(seqgen.ch_defs)
+    # Program the kernel pulses
+    pk_sig.add_pulse([&#34;laser&#34;, &#34;rf_x&#34;], 0, exp_t)
 
-    # Ensure all threads are stopped and resources are cleaned up
-    app.quit()  # Make sure the application knows it should quit
+    # ------- Trigger -------
+    pk_sig_trig = PulseKernel(seqgen.ch_defs)
+    pk_sig_trig.add_pulse([&#34;laser&#34;, &#34;rf_x&#34;], 0, trigger_time)
 
-    # Force Python garbage collection
-    import gc
+    # ------- REFERENCE -------
+    pk_ref = PulseKernel(seqgen.ch_defs)
+    if ref_mode == &#34;no_rf&#34;:
+        pk_ref.append_pulse([&#34;laser&#34;], exp_t)
+    elif ref_mode == &#34;no_laser&#34;:
+        pk_ref.append_pulse([&#34;rf_x&#34;], exp_t)
 
-    gc.collect()
+    # ------- Trigger -------
+    pk_ref_trig = PulseKernel(seqgen.ch_defs)
+    if ref_mode == &#34;no_rf&#34;:
+        pk_ref_trig.append_pulse([&#34;laser&#34;], trigger_time)
+    elif ref_mode == &#34;no_laser&#34;:
+        pk_ref_trig.append_pulse([&#34;rf_x&#34;], trigger_time)
+    elif ref_mode == &#34;f_mod&#34;:
+        pk_ref_trig.append_pulse([&#34;laser&#34;, &#34;rf_x&#34;], trigger_time)
 
-    # If there are any remaining ZMQ contexts, terminate them
-    try:
-        import zmq
+    # Start the programming of the pulseblaster
+    seqgen.start_programming()
 
-        zmq.Context.instance().term()
-    except:
-        pass
+    # Turn the laser on to initialize the system
+    seqgen.add_instruction(**{&#34;active_chs&#34;: [&#34;laser&#34;], &#34;dur&#34;: exp_t})
 
-    # If there are any remaining asyncio event loops, close them
-    try:
-        import asyncio
+    for i in range(0, sweep_len):
+        # Start the per point average loop if required
+        if avg_per_point &gt; 1:
+            inst = seqgen.add_instruction([], 12, loop=&#34;start&#34;, num=avg_per_point)
 
-        loop = asyncio.get_event_loop()
-        if loop.is_running():
-            loop.stop()
-        loop.close()
-    except:
-        pass
+        # Add the SIG kernel to the sequence generator
+        seqgen.add_kernel(pk_sig, 1, const_chs=[&#34;camera&#34;])
+        if ref_mode == &#34;f_mod&#34;:
+            # trigger the segnal generator to go to the next freq
+            seqgen.add_kernel(pk_sig, 1, const_chs=[&#34;rf_trig&#34;])
+        else:
+            seqgen.add_kernel(pk_sig, 1)
 
-    if __name__ != &#34;__main__&#34;:  # Don&#39;t exit if being imported (e.g. during testing)
-        return return_code
-    sys.exit(return_code)</code></pre>
+        if b_ref:
+            seqgen.add_kernel(pk_ref, 1, const_chs=[&#34;camera&#34;])
+            seqgen.add_kernel(pk_ref_trig, 1, const_chs=[&#34;rf_trig&#34;])
+
+        if avg_per_point &gt; 1:
+            seqgen.add_instruction([], 12, loop=&#34;end&#34;, inst=inst)
+
+        seqgen.add_instruction([], dur=trigger_time)
+
+    # Turn the laser off and end sequence
+    seqgen.end_sequence(10e6)
+
+    # End of pulse program
+    seqgen.stop_programming()
+
+    return pk_sig, pk_ref</code></pre>
 </details>
 <div class="desc"></div>
 </dd>
@@ -156,7 +182,7 @@ const query = new URL(window.location).searchParams.get('q');
 if (query)
 search(query);
 function search(query) {
-const url = '../../doc-search.html#' + encodeURIComponent(query);
+const url = '../../../../doc-search.html#' + encodeURIComponent(query);
 new tingle.modal({
 cssClass: ['modal-dialog'],
 onClose: () => {
@@ -174,12 +200,12 @@ setTimeout(() => input.focus(), 100);
 <ul id="index">
 <li><h3>Super-module</h3>
 <ul>
-<li><code><a title="qscope.gui" href="index.html">qscope.gui</a></code></li>
+<li><code><a title="qscope.device.seqgen.pulseblaster" href="index.html">qscope.device.seqgen.pulseblaster</a></code></li>
 </ul>
 </li>
 <li><h3><a href="#header-functions">Functions</a></h3>
 <ul class="">
-<li><code><a title="qscope.gui.main_gui.main_gui" href="#qscope.gui.main_gui.main_gui">main_gui</a></code></li>
+<li><code><a title="qscope.device.seqgen.pulseblaster.seq_cw_esr.seq_cw_esr" href="#qscope.device.seqgen.pulseblaster.seq_cw_esr.seq_cw_esr">seq_cw_esr</a></code></li>
 </ul>
 </li>
 </ul>

@@ -70,100 +70,100 @@ validated when the device is added to a system with a specific role.</p>
 </summary>
 <pre><code class="python">class Device:
     &#34;&#34;&#34;Base class for all hardware devices in QScope.
-    
+
     The Device class provides the foundation for hardware abstraction in QScope.
     Specific device implementations inherit from this class and implement the
     methods required by their intended roles.
-    
+
     A device can fulfill multiple roles if it implements all required methods
     for those roles. The system validates role compatibility at runtime.
-    
+
     Device Architecture
     ------------------
     Devices are part of QScope&#39;s hardware abstraction layer:
-    
+
     1. Base Device Class (this class)
        - Provides configuration validation
        - Manages role assignments
        - Handles connection state
        - Defines required methods
-    
+
     2. Device Implementations
        - Inherit from Device
        - Implement protocol methods for specific roles
        - Provide hardware-specific functionality
        - Can implement multiple protocols
-    
+
     3. System Integration
        - Devices are added to systems with specific roles
        - System validates that devices implement required protocols
        - Devices are accessed through role interfaces
-    
+
     Required Methods
     --------------
     All device implementations must override these methods:
-    
+
     - open(): Connect to the hardware
     - close(): Disconnect from the hardware
     - is_connected(): Check connection status
-    
+
     In addition, devices must implement all methods required by the
     protocols of the roles they intend to fulfill.
-    
+
     Attributes
     ----------
     required_config : dict[str, Type]
         Required configuration parameters and their types
     _roles : Set[DeviceRole[Device]]
         Set of roles this device fulfills
-        
+
     Examples
     --------
     Creating a new device implementation:
-    
+
     ```python
     class MyRFSource(Device):
         required_config = {
             &#34;visa_addr&#34;: str,
             &#34;max_power&#34;: float
         }
-        
+
         def __init__(self, **config_kwargs):
             super().__init__(**config_kwargs)
             self.connected = False
-            
+
         def open(self) -&gt; tuple[bool, str]:
             # Implementation for connecting to hardware
             self.connected = True
             return True, &#34;Connected successfully&#34;
-            
+
         def close(self):
             # Implementation for disconnecting
             self.connected = False
-            
+
         def is_connected(self) -&gt; bool:
             return self.connected
-            
+
         # Implement methods required by RFSourceProtocol
         def set_freq(self, freq: float) -&gt; None:
             # Implementation
             pass
-            
+
         def set_power(self, power: float) -&gt; None:
             # Implementation
             pass
     ```
-    
+
     Using the device with a role:
-    
+
     ```python
     # Create device instance
     rf = MyRFSource(visa_addr=&#34;TCPIP0::192.168.1.1::INSTR&#34;, max_power=20.0)
-    
+
     # Add to system with role
     system.add_device_with_role(rf, PRIMARY_RF)
     ```
-    
+
     See Also
     --------
     qscope.types.protocols : Protocol definitions

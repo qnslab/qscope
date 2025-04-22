@@ -80,12 +80,15 @@ el.replaceWith(d);
             &#34;ref - sig&#34;: &#34;Intensity (cps)&#34;,
             &#34;norm ref / sig&#34;: &#34;Intensity (%)&#34;,
             &#34;norm sig / ref&#34;: &#34;Intensity (%)&#34;,
+            &#34;intensity&#34;: &#34;Intensity (norm.)&#34;,
             &#34;None&#34;: &#34;Intensity (cps)&#34;,
         }
 
         self.x_multiplier = 1
         self.b_realtime_plot = False
         self.b_rolling_plot = False
+        self.b_comp = False
+        self.label_comp = None
 
         self.canvas = MplCanvas(self, width=8, height=5, dpi=100)
         self.x_data = np.linspace(2770, 2970, 100)
@@ -106,6 +109,9 @@ el.replaceWith(d);
 
         self.canvas.mpl_connect(&#34;motion_notify_event&#34;, self.on_move)
         self.canvas.mpl_connect(&#34;button_press_event&#34;, self.on_click)
+        # Create and add toolbar
+        # self.toolbar = NavigationToolbar(self.canvas, self)
+        
 
         def set_size(w, h, ax=None):
             &#34;&#34;&#34;w, h: width, height in inches&#34;&#34;&#34;
@@ -291,10 +297,55 @@ el.replaceWith(d);
         except Exception as e:
             pass
 
-        self.update_plot(force_fit=force_fit)
+        self.update_plot(force_fit=True)
 
     def get_plot_data(self):
         return self.x_data, self.y_plot
+
+    def set_comparison_data(self, x_data, y_data, y_data_ref, label=None):
+        self.x_data_comp = x_data * self.x_multiplier
+        self.y_data_comp = y_data
+        self.y_data_ref_comp = y_data_ref
+        self.label_comp = label
+        self.b_comp = True
+
+    def remove_comparison_data(self):
+        self.b_comp = False
+
+    def normalise_data(self, y_data, y_data_ref):
+        # check if the plot is normalised
+        if self.norm == &#34;None&#34;:
+            y_plot = y_data
+            label = &#34;Signal&#34;
+
+        elif self.norm.lower() == &#34;sig - ref&#34;:
+            y_plot = y_data - y_data_ref
+            label = &#34;sig - ref&#34;
+
+        elif self.norm == &#34;ref - sig&#34;:
+            y_plot = y_data_ref - y_data
+            label = &#34;ref - sig&#34;
+
+        elif self.norm == &#34;sig / ref&#34;:
+            y_plot = y_data / y_data_ref
+            label = &#34;sig / ref&#34;
+
+        elif self.norm == &#34;ref / sig&#34;:
+            y_plot = y_data_ref / y_data
+            label = &#34;ref / sig&#34;
+
+        elif self.norm == &#34;norm sig / ref&#34;:
+            y_plot = 100 * ((y_data / y_data_ref) - 1)
+            label = &#34;norm sig / ref&#34;
+
+        elif self.norm == &#34;norm ref / sig&#34;:
+            y_plot = 100 * ((y_data_ref / y_data) - 1)
+            label = &#34;norm ref / sig&#34;
+        elif self.norm == &#34;intensity&#34;:
+            y_plot = (y_data - y_data_ref) / (y_data + y_data_ref)
+            label = &#34;Intensity&#34;
+
+        return y_plot, label
 
     def update_plot(self, force_fit=False):
         try:
@@ -333,13 +384,20 @@ el.replaceWith(d);
                 &#34;ms&#34;: 4,
             }
 
+            comp_plt_options = {
+                &#34;c&#34;: &#34;xkcd:light gray&#34;,
+                &#34;mfc&#34;: (0, 0, 0, 0),
+                &#34;mec&#34;: &#34;xkcd:light gray&#34;,
+                &#34;mew&#34;: 2,
+                &#34;ms&#34;: 4,
+            }
+
             if self.b_realtime_plot:
                 x_data = self.realtime_x_data
                 y_data = self.realtime_y_data
                 y_data_ref = self.realtime_y_data_ref
             elif self.b_rolling_plot:
                 x_data = self.x_data
-
                 y_data = self.parent.rolling_img_figure.last_sweep
                 # y_data_ref = self.y_data_ref
             else:
@@ -348,34 +406,8 @@ el.replaceWith(d);
                 y_data_ref = self.y_data_ref
 
             # check if the plot is normalised
-            if self.norm == &#34;None&#34;:
-                self.y_plot = y_data
-                label = &#34;Signal&#34;
-
-            elif self.norm.lower() == &#34;sig - ref&#34;:
-                self.y_plot = y_data - y_data_ref
-                label = &#34;sig - ref&#34;
-
-            elif self.norm == &#34;ref - sig&#34;:
-                self.y_plot = y_data_ref - y_data
-                label = &#34;ref - sig&#34;
-
-            elif self.norm == &#34;sig / ref&#34;:
-                self.y_plot = y_data / y_data_ref
-                label = &#34;sig / ref&#34;
-
-            elif self.norm == &#34;ref / sig&#34;:
-                self.y_plot = y_data_ref / y_data
-                label = &#34;ref / sig&#34;
-
-            elif self.norm == &#34;norm sig / ref&#34;:
-                self.y_plot = 100 * (y_data / y_data_ref - 1)
-                label = &#34;norm sig / ref&#34;
-
-            elif self.norm == &#34;norm ref / sig&#34;:
-                self.y_plot = 100 * (y_data_ref / y_data - 1)
-                label = &#34;norm ref / sig&#34;
-
+            self.y_plot, label = self.normalise_data(y_data, y_data_ref)
+            
             if self.norm == &#34;None&#34;:
                 y_max = np.max([np.max(y_data), np.max(y_data_ref)])
                 y_min = np.min([np.min(y_data), np.min(y_data_ref)])
@@ -395,6 +427,21 @@ el.replaceWith(d);
                     &#34;-o&#34;,
                     label=&#34;Reference&#34;,
                     **ref_plt_options,
+                )
+
+            # check if the comparison data should be plotted
+            if self.b_comp:
+                # plot the comparison data
+                self.y_plot_comp, _ = self.normalise_data(
+                    self.y_data_comp, self.y_data_ref_comp
+                )
+                self.canvas.axes.plot(
+                    self.x_data_comp,
+                    self.y_plot_comp,
+                    &#34;-o&#34;,
+                    label= self.label_comp,
+                    zorder=-10,
+                    **comp_plt_options,
                 )
 
             # update the y-axis
@@ -419,8 +466,9 @@ el.replaceWith(d);
             if self.bfit and force_fit:
                 # Set the data for the fit
                 self.mw.line_fit_opts.FitModel.set_data(
-                    self.x_data / self.x_multiplier, self.y_plot
+                    self.x_data / self.x_multiplier, self.y_data, y_data_ref
                 )
+                self.mw.line_fit_opts.FitModel.set_normalization(self.norm)
                 # get the initial guess for the fit
                 self.mw.line_fit_opts.FitModel.guess_parameters(
                     fmod=self.mw.meas_opts.freq_mod_input.value()
@@ -432,16 +480,21 @@ el.replaceWith(d);
                 self.canvas.axes.plot(x_fit, y_fit, label=&#34;Fit&#34;, **fit_plt_options)
                 # Get the results of the fit to display in the gui
                 total_counts = (
-                    np.nanmean(self.y_data)
+                    np.nanmean(self.y_data_ref)
                     * self.mw.meas_opts.ith_loop.value()
-                    / self.mw.cam_opts.exposure_time_input.value()
+                    # / self.mw.cam_opts.exposure_time_input.value()
                 )
                 fit_text = self.mw.line_fit_opts.FitModel.get_fit_results_txt(
-                    total_counts
+                    total_counts,
+                    ith_loop=self.mw.meas_opts.ith_loop.value(),
                 )
                 self.mw.line_fit_opts.update_fit_results(fit_text)
 
             elif self.bfit:
+                self.mw.line_fit_opts.FitModel.set_data(
+                    self.x_data / self.x_multiplier, self.y_data, y_data_ref
+                )
+                self.mw.line_fit_opts.FitModel.set_normalization(self.norm)
                 # plot the previous fit
                 x_fit, y_fit = self.mw.line_fit_opts.FitModel.best_fit()
                 self.canvas.axes.plot(x_fit, y_fit, label=&#34;Fit&#34;, **fit_plt_options)
@@ -496,6 +549,51 @@ el.replaceWith(d);
 </summary>
 <pre><code class="python">def is_fitting(self):
     return self.bfit</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.qmeas_line.LineFigure.normalise_data"><code class="name flex">
+<span>def <span class="ident">normalise_data</span></span>(<span>self, y_data, y_data_ref)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def normalise_data(self, y_data, y_data_ref):
+    # check if the plot is normalised
+    if self.norm == &#34;None&#34;:
+        y_plot = y_data
+        label = &#34;Signal&#34;
+
+    elif self.norm.lower() == &#34;sig - ref&#34;:
+        y_plot = y_data - y_data_ref
+        label = &#34;sig - ref&#34;
+
+    elif self.norm == &#34;ref - sig&#34;:
+        y_plot = y_data_ref - y_data
+        label = &#34;ref - sig&#34;
+
+    elif self.norm == &#34;sig / ref&#34;:
+        y_plot = y_data / y_data_ref
+        label = &#34;sig / ref&#34;
+
+    elif self.norm == &#34;ref / sig&#34;:
+        y_plot = y_data_ref / y_data
+        label = &#34;ref / sig&#34;
+
+    elif self.norm == &#34;norm sig / ref&#34;:
+        y_plot = 100 * ((y_data / y_data_ref) - 1)
+        label = &#34;norm sig / ref&#34;
+
+    elif self.norm == &#34;norm ref / sig&#34;:
+        y_plot = 100 * ((y_data_ref / y_data) - 1)
+        label = &#34;norm ref / sig&#34;
+    elif self.norm == &#34;intensity&#34;:
+        y_plot = (y_data - y_data_ref) / (y_data + y_data_ref)
+        label = &#34;Intensity&#34;
+
+    return y_plot, label</code></pre>
 </details>
 <div class="desc"></div>
 </dd>
@@ -586,6 +684,36 @@ el.replaceWith(d);
 </details>
 <div class="desc"></div>
 </dd>
+<dt id="qscope.gui.qmeas.qmeas_line.LineFigure.remove_comparison_data"><code class="name flex">
+<span>def <span class="ident">remove_comparison_data</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def remove_comparison_data(self):
+    self.b_comp = False</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.qmeas_line.LineFigure.set_comparison_data"><code class="name flex">
+<span>def <span class="ident">set_comparison_data</span></span>(<span>self, x_data, y_data, y_data_ref, label=None)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_comparison_data(self, x_data, y_data, y_data_ref, label=None):
+    self.x_data_comp = x_data * self.x_multiplier
+    self.y_data_comp = y_data
+    self.y_data_ref_comp = y_data_ref
+    self.label_comp = label
+    self.b_comp = True</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
 <dt id="qscope.gui.qmeas.qmeas_line.LineFigure.set_data"><code class="name flex">
 <span>def <span class="ident">set_data</span></span>(<span>self, x_data, y_data, y_data_ref, force_fit=False)</span>
 </code></dt>
@@ -621,7 +749,7 @@ el.replaceWith(d);
     except Exception as e:
         pass
 
-    self.update_plot(force_fit=force_fit)</code></pre>
+    self.update_plot(force_fit=True)</code></pre>
 </details>
 <div class="desc"></div>
 </dd>
@@ -740,13 +868,20 @@ el.replaceWith(d);
             &#34;ms&#34;: 4,
         }
 
+        comp_plt_options = {
+            &#34;c&#34;: &#34;xkcd:light gray&#34;,
+            &#34;mfc&#34;: (0, 0, 0, 0),
+            &#34;mec&#34;: &#34;xkcd:light gray&#34;,
+            &#34;mew&#34;: 2,
+            &#34;ms&#34;: 4,
+        }
+
         if self.b_realtime_plot:
             x_data = self.realtime_x_data
             y_data = self.realtime_y_data
             y_data_ref = self.realtime_y_data_ref
         elif self.b_rolling_plot:
             x_data = self.x_data
-
             y_data = self.parent.rolling_img_figure.last_sweep
             # y_data_ref = self.y_data_ref
         else:
@@ -755,34 +890,8 @@ el.replaceWith(d);
             y_data_ref = self.y_data_ref
 
         # check if the plot is normalised
-        if self.norm == &#34;None&#34;:
-            self.y_plot = y_data
-            label = &#34;Signal&#34;
-
-        elif self.norm.lower() == &#34;sig - ref&#34;:
-            self.y_plot = y_data - y_data_ref
-            label = &#34;sig - ref&#34;
-
-        elif self.norm == &#34;ref - sig&#34;:
-            self.y_plot = y_data_ref - y_data
-            label = &#34;ref - sig&#34;
-
-        elif self.norm == &#34;sig / ref&#34;:
-            self.y_plot = y_data / y_data_ref
-            label = &#34;sig / ref&#34;
-
-        elif self.norm == &#34;ref / sig&#34;:
-            self.y_plot = y_data_ref / y_data
-            label = &#34;ref / sig&#34;
-
-        elif self.norm == &#34;norm sig / ref&#34;:
-            self.y_plot = 100 * (y_data / y_data_ref - 1)
-            label = &#34;norm sig / ref&#34;
-
-        elif self.norm == &#34;norm ref / sig&#34;:
-            self.y_plot = 100 * (y_data_ref / y_data - 1)
-            label = &#34;norm ref / sig&#34;
-
+        self.y_plot, label = self.normalise_data(y_data, y_data_ref)
+        
         if self.norm == &#34;None&#34;:
             y_max = np.max([np.max(y_data), np.max(y_data_ref)])
             y_min = np.min([np.min(y_data), np.min(y_data_ref)])
@@ -802,6 +911,21 @@ el.replaceWith(d);
                 &#34;-o&#34;,
                 label=&#34;Reference&#34;,
                 **ref_plt_options,
+            )
+
+        # check if the comparison data should be plotted
+        if self.b_comp:
+            # plot the comparison data
+            self.y_plot_comp, _ = self.normalise_data(
+                self.y_data_comp, self.y_data_ref_comp
+            )
+            self.canvas.axes.plot(
+                self.x_data_comp,
+                self.y_plot_comp,
+                &#34;-o&#34;,
+                label= self.label_comp,
+                zorder=-10,
+                **comp_plt_options,
             )
 
         # update the y-axis
@@ -826,8 +950,9 @@ el.replaceWith(d);
         if self.bfit and force_fit:
             # Set the data for the fit
             self.mw.line_fit_opts.FitModel.set_data(
-                self.x_data / self.x_multiplier, self.y_plot
+                self.x_data / self.x_multiplier, self.y_data, y_data_ref
             )
+            self.mw.line_fit_opts.FitModel.set_normalization(self.norm)
             # get the initial guess for the fit
             self.mw.line_fit_opts.FitModel.guess_parameters(
                 fmod=self.mw.meas_opts.freq_mod_input.value()
@@ -839,16 +964,21 @@ el.replaceWith(d);
             self.canvas.axes.plot(x_fit, y_fit, label=&#34;Fit&#34;, **fit_plt_options)
             # Get the results of the fit to display in the gui
             total_counts = (
-                np.nanmean(self.y_data)
+                np.nanmean(self.y_data_ref)
                 * self.mw.meas_opts.ith_loop.value()
-                / self.mw.cam_opts.exposure_time_input.value()
+                # / self.mw.cam_opts.exposure_time_input.value()
             )
             fit_text = self.mw.line_fit_opts.FitModel.get_fit_results_txt(
-                total_counts
+                total_counts,
+                ith_loop=self.mw.meas_opts.ith_loop.value(),
             )
             self.mw.line_fit_opts.update_fit_results(fit_text)
 
         elif self.bfit:
+            self.mw.line_fit_opts.FitModel.set_data(
+                self.x_data / self.x_multiplier, self.y_data, y_data_ref
+            )
+            self.mw.line_fit_opts.FitModel.set_normalization(self.norm)
             # plot the previous fit
             x_fit, y_fit = self.mw.line_fit_opts.FitModel.best_fit()
             self.canvas.axes.plot(x_fit, y_fit, label=&#34;Fit&#34;, **fit_plt_options)
@@ -954,10 +1084,13 @@ setTimeout(() => input.focus(), 100);
 <ul class="">
 <li><code><a title="qscope.gui.qmeas.qmeas_line.LineFigure.get_plot_data" href="#qscope.gui.qmeas.qmeas_line.LineFigure.get_plot_data">get_plot_data</a></code></li>
 <li><code><a title="qscope.gui.qmeas.qmeas_line.LineFigure.is_fitting" href="#qscope.gui.qmeas.qmeas_line.LineFigure.is_fitting">is_fitting</a></code></li>
+<li><code><a title="qscope.gui.qmeas.qmeas_line.LineFigure.normalise_data" href="#qscope.gui.qmeas.qmeas_line.LineFigure.normalise_data">normalise_data</a></code></li>
 <li><code><a title="qscope.gui.qmeas.qmeas_line.LineFigure.on_click" href="#qscope.gui.qmeas.qmeas_line.LineFigure.on_click">on_click</a></code></li>
 <li><code><a title="qscope.gui.qmeas.qmeas_line.LineFigure.on_move" href="#qscope.gui.qmeas.qmeas_line.LineFigure.on_move">on_move</a></code></li>
 <li><code><a title="qscope.gui.qmeas.qmeas_line.LineFigure.plot_realtime_data" href="#qscope.gui.qmeas.qmeas_line.LineFigure.plot_realtime_data">plot_realtime_data</a></code></li>
 <li><code><a title="qscope.gui.qmeas.qmeas_line.LineFigure.plot_rolling_avg" href="#qscope.gui.qmeas.qmeas_line.LineFigure.plot_rolling_avg">plot_rolling_avg</a></code></li>
+<li><code><a title="qscope.gui.qmeas.qmeas_line.LineFigure.remove_comparison_data" href="#qscope.gui.qmeas.qmeas_line.LineFigure.remove_comparison_data">remove_comparison_data</a></code></li>
+<li><code><a title="qscope.gui.qmeas.qmeas_line.LineFigure.set_comparison_data" href="#qscope.gui.qmeas.qmeas_line.LineFigure.set_comparison_data">set_comparison_data</a></code></li>
 <li><code><a title="qscope.gui.qmeas.qmeas_line.LineFigure.set_data" href="#qscope.gui.qmeas.qmeas_line.LineFigure.set_data">set_data</a></code></li>
 <li><code><a title="qscope.gui.qmeas.qmeas_line.LineFigure.set_fitting" href="#qscope.gui.qmeas.qmeas_line.LineFigure.set_fitting">set_fitting</a></code></li>
 <li><code><a title="qscope.gui.qmeas.qmeas_line.LineFigure.set_normalisation" href="#qscope.gui.qmeas.qmeas_line.LineFigure.set_normalisation">set_normalisation</a></code></li>

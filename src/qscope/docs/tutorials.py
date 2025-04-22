@@ -4,13 +4,30 @@ This section contains step-by-step tutorials to help you get started with QScope
 
 ## Installation
 
-For detailed installation instructions, see the [Installation Guide](https://github.com/DavidBroadway/qscope/blob/main/INSTALL.md) (INSTALL.md).
-
-Here's a quick summary:
-
 1. Clone the repository and create a Python 3.11+ environment (`conda create --prefix ./conda_env python=3.11`)
 2. Install with `pip install -e .`
-3. Verify with `doit check_systems` and `doit test_logic` (install doit first)
+3. Verify with `doit check_systems` and `doit test_logic` (`pip install doit` first if you want to verify)
+
+## Hardware Dependencies
+
+Many devices require specific drivers or libraries to function:
+
+- Some libraries are required in the `proprietary_artefacts` folder
+- For Andor cameras, install the Andor SDK or Solis software
+- For Picoscope, install the Picoscope SDK
+- Others must be installed separately (see []())
+
+## Build System
+
+Qscope uses the `doit` build system for various tasks:
+
+```bash
+# Run logic tests
+doit test_logic
+
+# Check system compatibility
+doit check_systems
+```
 
 ## Getting Started with QScope
 

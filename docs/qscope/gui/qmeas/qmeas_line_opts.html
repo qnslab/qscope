@@ -60,6 +60,8 @@ el.replaceWith(d);
 <pre><code class="python">class LineFigureOpts(QGroupBox):
     REAL_TIME_LABEL = &#34;Real-Time&#34;
     ROLLING_AVG_LABEL = &#34;Rolling Avg&#34;
+    COMP_LOAD_LABEL = &#34;Load Comparison&#34;
+    COMP_REMOVE_LABEL = &#34;Remove Comparison&#34;
     START_INDEX_LABEL = &#34;Start Index&#34;
     END_INDEX_LABEL = &#34;End Index&#34;
     INDEX_LABEL = &#34;remove pts [start, end]&#34;
@@ -89,6 +91,18 @@ el.replaceWith(d);
         self.rolling_avg_button.setCheckable(True)
         self.rolling_avg_button.setStatusTip(&#34;Use RollingAvg data to update the plot&#34;)
 
+        self.load_comp_button = QPushButton(self.COMP_LOAD_LABEL)   
+        self.load_comp_button.setCheckable(True)
+        self.load_comp_button.setStatusTip(
+            &#34;Load a comparison measurement to the plot&#34;
+        )
+
+        self.remove_comp_button = QPushButton(self.COMP_REMOVE_LABEL)
+        self.remove_comp_button.setCheckable(True)
+        self.remove_comp_button.setStatusTip(
+            &#34;Remove the comparison measurement from the plot&#34;
+        )
+
         # options to remove the start or end indices from the plotting
         self.index_label, self.start_index_input = util.get_spin_box_wdiget(
             self.INDEX_LABEL, default_value=1, max_value=1000
@@ -104,11 +118,12 @@ el.replaceWith(d);
             [
                 &#34;None&#34;,
                 &#34;sig - ref&#34;,
-                &#34;ref - sig&#34;,
+                # &#34;ref - sig&#34;,
                 &#34;sig / ref&#34;,
-                &#34;ref / sig&#34;,
-                &#34;norm sig / ref&#34;,
-                &#34;norm ref / sig&#34;,
+                # &#34;ref / sig&#34;,
+                &#34;sig / ref (%)&#34;,
+                # &#34;norm ref / sig&#34;,
+                &#34;intensity&#34;,
             ],
         )
 
@@ -120,6 +135,14 @@ el.replaceWith(d);
         # Add the widgets to the layout
         plotting_type_layout.addWidget(self.real_time_button)
         plotting_type_layout.addWidget(self.rolling_avg_button)
+
+        plot_comp_frame = QFrame()
+        plotting_comp_layout = QHBoxLayout(plot_comp_frame)
+        plotting_comp_layout.setSpacing(10)
+        plotting_comp_layout.setContentsMargins(0, 0, 0, 0)
+
+        plotting_comp_layout.addWidget(self.load_comp_button)
+        plotting_comp_layout.addWidget(self.remove_comp_button)
 
         norm_frame = QFrame()
         norm_layout = QHBoxLayout(norm_frame)
@@ -139,9 +162,10 @@ el.replaceWith(d);
         idx_layout.addWidget(self.start_index_input)
         idx_layout.addWidget(self.end_index_input)
 
-        vbox.addWidget(plot_type_frame)
         vbox.addWidget(norm_frame)
         vbox.addWidget(idx_frame)
+        vbox.addWidget(plot_type_frame)
+        vbox.addWidget(plot_comp_frame)
 
         self.setLayout(vbox)
         return
@@ -150,9 +174,16 @@ el.replaceWith(d);
         &#34;&#34;&#34;Connect signals to their respective slots.&#34;&#34;&#34;
         self.real_time_button.clicked.connect(self._real_time_button_pressed)
         self.plot_norm_dropdown.currentIndexChanged.connect(self.norm_button_pressed)
+        self.load_comp_button.clicked.connect(self._load_comp_button_pressed)
+        self.remove_comp_button.clicked.connect(self._remove_comp_button_pressed)
 
     def norm_button_pressed(self):
-        self.figure.set_normalisation(self.plot_norm_dropdown.currentText())
+        &#34;&#34;&#34;Handle normalisation button press.&#34;&#34;&#34;
+        norm_type = self.plot_norm_dropdown.currentText()
+        if norm_type == &#34;sig / ref (%)&#34;:
+            norm_type = &#34;norm sig / ref&#34;
+
+        self.figure.set_normalisation(norm_type)
         # Check if there is a fit and update the plot
         if self.figure.is_fitting():
             self.figure.set_fitting(True)
@@ -181,7 +212,67 @@ el.replaceWith(d);
         else:
             self.real_time_button.setStyleSheet(&#34;background-color: None&#34;)
             self.real_time_button.setChecked(False)
-            self.figure.plot_realtime_data(False)</code></pre>
+            self.figure.plot_realtime_data(False)
+
+    def _load_comp_button_pressed(self):
+        &#34;&#34;&#34;Handle load comparison button press.&#34;&#34;&#34;
+        if self.load_comp_button.isChecked():
+            self.load_comp_button.setChecked(True)
+            self.load_comp_button.setStyleSheet(&#34;background-color: blue&#34;)
+            # load the comparison data using a file dialog
+            filename = QFileDialog.getOpenFileName(
+                self, &#34;Load Comparison Data&#34;, &#34;&#34;, &#34;numpy data (*.npy)&#34;
+            )
+            if filename[0] == &#34;&#34;:
+                self.load_comp_button.setChecked(False)
+                return
+            # load the comparison data
+            try:
+                comp_data = np.load(filename[0])
+            except Exception as e:
+                logger.error(f&#34;Error loading comparison data: {e}&#34;)
+                return
+            
+            # split the data into the x and y values and y ref values
+            x_data = comp_data[0,::]
+            y_data = comp_data[1,::]
+            y_ref_data = comp_data[2,::]
+
+            # get the file name after the last /
+            filename = filename[0].split(&#34;/&#34;)[-1]
+            # remove the file extension from the file name
+            filename = filename.split(&#34;.&#34;)[0]
+
+            # send the comparison data to the figure
+            self.figure.set_comparison_data(x_data, y_data, y_ref_data, label=filename)
+
+            self.remove_comp_button.setStyleSheet(&#34;background-color: None&#34;)
+            self.remove_comp_button.setChecked(False)
+            # update the plot
+            self.figure.update_plot()
+
+        else:
+            self.load_comp_button.setStyleSheet(&#34;background-color: None&#34;)
+            self.load_comp_button.setChecked(False)
+
+
+    def _remove_comp_button_pressed(self):
+        &#34;&#34;&#34;Handle remove comparison button press.&#34;&#34;&#34;
+        if self.remove_comp_button.isChecked():
+            self.remove_comp_button.setChecked(True)
+            self.remove_comp_button.setStyleSheet(&#34;background-color: blue&#34;)
+            self.figure.remove_comparison_data()
+            # reset the load comparison button
+            self.load_comp_button.setStyleSheet(&#34;background-color: None&#34;)
+            self.load_comp_button.setChecked(False)
+        else:
+            self.remove_comp_button.setStyleSheet(&#34;background-color: None&#34;)
+            self.remove_comp_button.setChecked(False)
+        
+        self.remove_comp_button.setStyleSheet(&#34;background-color: None&#34;)
+        self.remove_comp_button.setChecked(False)
+        # update the plot
+        self.figure.update_plot()</code></pre>
 </details>
 <div class="desc"><p>QGroupBox(parent: Optional[QWidget] = None)
 QGroupBox(title: Optional[str], parent: Optional[QWidget] = None)</p></div>
@@ -196,6 +287,14 @@ QGroupBox(title: Optional[str], parent: Optional[QWidget] = None)</p></div>
 </ul>
 <h3>Class variables</h3>
 <dl>
+<dt id="qscope.gui.qmeas.qmeas_line_opts.LineFigureOpts.COMP_LOAD_LABEL"><code class="name">var <span class="ident">COMP_LOAD_LABEL</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.gui.qmeas.qmeas_line_opts.LineFigureOpts.COMP_REMOVE_LABEL"><code class="name">var <span class="ident">COMP_REMOVE_LABEL</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
 <dt id="qscope.gui.qmeas.qmeas_line_opts.LineFigureOpts.END_INDEX_LABEL"><code class="name">var <span class="ident">END_INDEX_LABEL</span></code></dt>
 <dd>
 <div class="desc"></div>
@@ -234,7 +333,9 @@ QGroupBox(title: Optional[str], parent: Optional[QWidget] = None)</p></div>
 <pre><code class="python">def connect_signals(self):
     &#34;&#34;&#34;Connect signals to their respective slots.&#34;&#34;&#34;
     self.real_time_button.clicked.connect(self._real_time_button_pressed)
-    self.plot_norm_dropdown.currentIndexChanged.connect(self.norm_button_pressed)</code></pre>
+    self.plot_norm_dropdown.currentIndexChanged.connect(self.norm_button_pressed)
+    self.load_comp_button.clicked.connect(self._load_comp_button_pressed)
+    self.remove_comp_button.clicked.connect(self._remove_comp_button_pressed)</code></pre>
 </details>
 <div class="desc"><p>Connect signals to their respective slots.</p></div>
 </dd>
@@ -261,6 +362,18 @@ QGroupBox(title: Optional[str], parent: Optional[QWidget] = None)</p></div>
     self.rolling_avg_button.setCheckable(True)
     self.rolling_avg_button.setStatusTip(&#34;Use RollingAvg data to update the plot&#34;)
 
+    self.load_comp_button = QPushButton(self.COMP_LOAD_LABEL)   
+    self.load_comp_button.setCheckable(True)
+    self.load_comp_button.setStatusTip(
+        &#34;Load a comparison measurement to the plot&#34;
+    )
+
+    self.remove_comp_button = QPushButton(self.COMP_REMOVE_LABEL)
+    self.remove_comp_button.setCheckable(True)
+    self.remove_comp_button.setStatusTip(
+        &#34;Remove the comparison measurement from the plot&#34;
+    )
+
     # options to remove the start or end indices from the plotting
     self.index_label, self.start_index_input = util.get_spin_box_wdiget(
         self.INDEX_LABEL, default_value=1, max_value=1000
@@ -276,11 +389,12 @@ QGroupBox(title: Optional[str], parent: Optional[QWidget] = None)</p></div>
         [
             &#34;None&#34;,
             &#34;sig - ref&#34;,
-            &#34;ref - sig&#34;,
+            # &#34;ref - sig&#34;,
             &#34;sig / ref&#34;,
-            &#34;ref / sig&#34;,
-            &#34;norm sig / ref&#34;,
-            &#34;norm ref / sig&#34;,
+            # &#34;ref / sig&#34;,
+            &#34;sig / ref (%)&#34;,
+            # &#34;norm ref / sig&#34;,
+            &#34;intensity&#34;,
         ],
     )
 
@@ -292,6 +406,14 @@ QGroupBox(title: Optional[str], parent: Optional[QWidget] = None)</p></div>
     # Add the widgets to the layout
     plotting_type_layout.addWidget(self.real_time_button)
     plotting_type_layout.addWidget(self.rolling_avg_button)
+
+    plot_comp_frame = QFrame()
+    plotting_comp_layout = QHBoxLayout(plot_comp_frame)
+    plotting_comp_layout.setSpacing(10)
+    plotting_comp_layout.setContentsMargins(0, 0, 0, 0)
+
+    plotting_comp_layout.addWidget(self.load_comp_button)
+    plotting_comp_layout.addWidget(self.remove_comp_button)
 
     norm_frame = QFrame()
     norm_layout = QHBoxLayout(norm_frame)
@@ -311,9 +433,10 @@ QGroupBox(title: Optional[str], parent: Optional[QWidget] = None)</p></div>
     idx_layout.addWidget(self.start_index_input)
     idx_layout.addWidget(self.end_index_input)
 
-    vbox.addWidget(plot_type_frame)
     vbox.addWidget(norm_frame)
     vbox.addWidget(idx_frame)
+    vbox.addWidget(plot_type_frame)
+    vbox.addWidget(plot_comp_frame)
 
     self.setLayout(vbox)
     return</code></pre>
@@ -329,14 +452,19 @@ QGroupBox(title: Optional[str], parent: Optional[QWidget] = None)</p></div>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def norm_button_pressed(self):
-    self.figure.set_normalisation(self.plot_norm_dropdown.currentText())
+    &#34;&#34;&#34;Handle normalisation button press.&#34;&#34;&#34;
+    norm_type = self.plot_norm_dropdown.currentText()
+    if norm_type == &#34;sig / ref (%)&#34;:
+        norm_type = &#34;norm sig / ref&#34;
+
+    self.figure.set_normalisation(norm_type)
     # Check if there is a fit and update the plot
     if self.figure.is_fitting():
         self.figure.set_fitting(True)
     else:
         self.figure.update_plot()</code></pre>
 </details>
-<div class="desc"></div>
+<div class="desc"><p>Handle normalisation button press.</p></div>
 </dd>
 </dl>
 </dd>
@@ -404,6 +532,8 @@ setTimeout(() => input.focus(), 100);
 <li>
 <h4><code><a title="qscope.gui.qmeas.qmeas_line_opts.LineFigureOpts" href="#qscope.gui.qmeas.qmeas_line_opts.LineFigureOpts">LineFigureOpts</a></code></h4>
 <ul class="two-column">
+<li><code><a title="qscope.gui.qmeas.qmeas_line_opts.LineFigureOpts.COMP_LOAD_LABEL" href="#qscope.gui.qmeas.qmeas_line_opts.LineFigureOpts.COMP_LOAD_LABEL">COMP_LOAD_LABEL</a></code></li>
+<li><code><a title="qscope.gui.qmeas.qmeas_line_opts.LineFigureOpts.COMP_REMOVE_LABEL" href="#qscope.gui.qmeas.qmeas_line_opts.LineFigureOpts.COMP_REMOVE_LABEL">COMP_REMOVE_LABEL</a></code></li>
 <li><code><a title="qscope.gui.qmeas.qmeas_line_opts.LineFigureOpts.END_INDEX_LABEL" href="#qscope.gui.qmeas.qmeas_line_opts.LineFigureOpts.END_INDEX_LABEL">END_INDEX_LABEL</a></code></li>
 <li><code><a title="qscope.gui.qmeas.qmeas_line_opts.LineFigureOpts.INDEX_LABEL" href="#qscope.gui.qmeas.qmeas_line_opts.LineFigureOpts.INDEX_LABEL">INDEX_LABEL</a></code></li>
 <li><code><a title="qscope.gui.qmeas.qmeas_line_opts.LineFigureOpts.NORM_TYPE_LABEL" href="#qscope.gui.qmeas.qmeas_line_opts.LineFigureOpts.NORM_TYPE_LABEL">NORM_TYPE_LABEL</a></code></li>

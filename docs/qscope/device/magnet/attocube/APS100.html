@@ -1,0 +1,1143 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.6">
+<title>qscope.device.magnet.attocube.APS100 API documentation</title>
+<meta name="description" content="">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}#lunr-search{width:100%;font-size:1em;padding:6px 9px 5px 9px;border:1px solid silver}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes: true } });</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML" integrity="sha256-kZafAc6mZvK3W3v1pHOcUix30OHQN6pU/NO2oFkqZVw=" crossorigin></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>qscope.device.magnet.attocube.APS100</code></h1>
+</header>
+<section id="section-intro">
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="qscope.device.magnet.attocube.APS100.APS100"><code class="flex name class">
+<span>class <span class="ident">APS100</span></span>
+<span>(</span><span>system,<br>xy_port: str,<br>z_port: str,<br>xlim: float,<br>ylim: float,<br>zlim: float,<br>ix2bx: float,<br>iy2by: float,<br>iz2bz: float,<br>xrate: float,<br>yrate: float,<br>zrate: float,<br>**other_config)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class APS100(Magnet):
+    # also need to define &#39;channels&#39;?
+    xy_port: str
+    z_port: str
+    xlim: float
+    ylim: float
+    zlim: float
+    ix2bx: float  # A -&gt; mT
+    iy2by: float
+    iz2bz: float
+    xrate: float  # A/s
+    yrate: float
+    zrate: float
+
+    required_config = {
+        &#34;xy_port&#34;: str,
+        &#34;z_port&#34;: str,
+        &#34;xlim&#34;: float,
+        &#34;ylim&#34;: float,
+        &#34;zlim&#34;: float,
+        &#34;ix2bx&#34;: float,
+        &#34;iy2by&#34;: float,
+        &#34;iz2bz&#34;: float,
+        &#34;xrate&#34;: float,
+        &#34;yrate&#34;: float,
+        &#34;zrate&#34;: float,
+    }
+
+    def __init__(
+        self,
+        system,
+        xy_port: str,
+        z_port: str,
+        xlim: float,
+        ylim: float,
+        zlim: float,
+        ix2bx: float,
+        iy2by: float,
+        iz2bz: float,
+        xrate: float,
+        yrate: float,
+        zrate: float,
+        **other_config,
+    ):
+        super().__init__(
+            system,
+            xy_port=xy_port,
+            z_port=z_port,
+            xlim=xlim,
+            ylim=ylim,
+            zlim=zlim,
+            ix2bx=ix2bx,
+            iy2by=iy2by,
+            iz2bz=iz2bz,
+            xrate=xrate,
+            yrate=yrate,
+            zrate=zrate,
+            **other_config,
+        )
+        self.cmd_wait = (
+            0.1  # time (s) to wait after sending a command to the windfreak &gt;&gt; FIXME?
+        )
+
+        # FIXME what do we want to do here?
+        self._xrate = self.xrate * 1e-3  # A/s
+        self._yrate = self.yrate * 1e-3  # A/s
+        self._zrate = self.zrate * 1e-3  # A/s
+
+        self.sweeping_tolerance = 0.5  # percentage
+
+    def open(self):
+        # connect to the x current source.
+        self.magnet_xy = serial.Serial(self.xy_port, 9600, timeout=1)
+        self.magnet_z = serial.Serial(self.z_port, 9600, timeout=1)
+        self.init_channels()
+
+    def init_channels(self):
+        # initalise Bx channel
+        self.write_command(self.magnet_xy, &#34;REMOTE\n&#34;)
+        self.write_command(self.magnet_xy, &#34;CHAN 1\n&#34;)
+        self.write_command(self.magnet_xy, &#34;LLIM -&#34; + str(self.xlim) + &#34;\n&#34;)
+
+        self.write_command(self.magnet_xy, &#34;REMOTE\n&#34;)
+        self.write_command(self.magnet_xy, &#34;CHAN 2\n&#34;)
+        self.write_command(self.magnet_xy, &#34;LLIM -&#34; + str(self.ylim) + &#34;\n&#34;)
+
+        self.write_command(self.magnet_z, &#34;REMOTE\n&#34;)
+        self.write_command(self.magnet_z, &#34;LLIM -&#34; + str(self.zlim) + &#34;\n&#34;)
+
+    def stop(self):
+        self.write_command(self.magnet_xy, &#34;CHAN 1\n&#34;)
+        self.write_command(self.magnet_xy, &#34;SWEEP ZERO\n&#34;)
+
+        self.write_command(self.magnet_xy, &#34;CHAN 2\n&#34;)
+        self.write_command(self.magnet_xy, &#34;SWEEP ZERO\n&#34;)
+        self.write_command(self.magnet_z, &#34;SWEEP ZERO\n&#34;)
+
+    def close(self):
+        self.stop()
+        self.magnet_xy.close()
+        self.magnet_z.close()
+
+    ###################################################################
+    # Get functions
+    ###################################################################
+
+    @property
+    def ix(self):
+        # clear the read buffer
+        self.magnet_xy.read(1000)
+
+        self.write_command(self.magnet_xy, &#34;CHAN 1\n&#34;)
+        self.magnet_xy.readline()
+        self.write_command(self.magnet_xy, &#34;IMAG?\n&#34;)
+        self.magnet_xy.readline()
+        ix = self.magnet_xy.readline().decode()
+        self._ix = float(ix[:-3])
+        return self._ix
+
+    @property
+    def iy(self):
+        # clear the read buffer
+        self.magnet_xy.read(1000)
+
+        self.write_command(self.magnet_xy, &#34;CHAN 2\n&#34;)
+        self.magnet_xy.readline()
+        self.write_command(self.magnet_xy, &#34;IMAG?\n&#34;)
+        self.magnet_xy.readline()
+        iy = self.magnet_xy.readline().decode()
+        self._iy = float(iy[:-3])
+        return self._iy
+
+    @property
+    def iz(self):
+        # clear the read buffer
+        self.magnet_z.read(1000)
+        self.write_command(self.magnet_z, &#34;IMAG?\n&#34;)
+        self.magnet_z.readline()
+        iz = self.magnet_z.readline().decode()
+        self._iz = float(iz[:-3])
+        return self._iz
+
+    @property
+    def bx(self):
+        self._bx = self.ix * self.ix2bx
+        return self._bx
+
+    @property
+    def by(self):
+        self._by = self.iy * self.iy2by
+        return self._by
+
+    @property
+    def bz(self):
+        self._bz = self.iz * self.iz2bz
+        return self._bz
+
+    @property
+    def bnorm(self, read=True):
+        if read:
+            [_, _, bspher] = self.get_current(print_b_field=False)
+            self._bnorm = bspher[0]
+        return self._bnorm
+
+    @property
+    def theta(self, read=True):
+        if read:
+            [_, _, bspher] = self.get_current(print_b_field=False)
+            self._theta = bspher[1]
+        return self._theta
+
+    @property
+    def phi(self, read=True):
+        if read:
+            [_, _, bspher] = self.get_current(print_b_field=False)
+            self._phi = bspher[1]
+        return self._phi
+
+    def get_current(self, print_b_field=True):
+        # convert the current values into a bxyz
+        self._bx = self._ix * self.ix2bx
+        self._by = self._iy * self.iy2by
+        self._bz = self._iz * self.iz2bz
+        # convert the bxyz into bspherical
+        self._bnorm, self._theta, self._phi = self.convert_cartesian_to_spherical(
+            self._bx, self._by, self._bz
+        )
+
+        if print_b_field:
+            print(&#34;Current field values&#34;)
+            print(f&#34;B = {self._bnorm:.3f} (mT)&#34;)
+            print(f&#34;theta = {self._theta:.3f} (deg)&#34;)
+            print(f&#34;phi = {self._phi:.3f} (deg)&#34;)
+            aligned_freq_1 = np.abs(2870 - 28 * self._bnorm)
+            aligned_freq_2 = 2870 + 28 * self._bnorm
+            print(f&#34;Upper frequency = {aligned_freq_2:.5} (MHz))&#34;)
+            print(f&#34;Lower frequency = {aligned_freq_1:.5} (MHz))&#34;)
+
+        curr = [self._ix, self._iy, self._iz]
+        b = [self._bx, self._by, self._bz]
+        bspher = [self._bnorm, self._theta, self._phi]
+        return curr, b, bspher
+
+    ###################################################################
+    # Set functions
+    ###################################################################
+
+    def set_b(self, bnorm, theta, phi):
+        bx, by, bz = self.convert_spherical_to_cartesian(bnorm, theta, phi)
+        print(
+            f&#34;Setting B to {bnorm:.3f} (mT) at theta = {theta:.3f} (deg) and phi = {phi:.3f} (deg)&#34;
+        )
+
+        set_ix = bx / self.ix2bx
+        set_iy = by / self.iy2by
+        set_iz = bz / self.iz2bz
+
+        self.ix = set_ix
+        self.iy = set_iy
+        self.iz = set_iz
+
+        self.check_if_field_reached(set_ix, set_iy, set_iz)
+
+    @ix.setter
+    def ix(self, val):
+        # check if the requested current vaules are within the limits
+        if abs(val) &gt; self.xlim:
+            print(&#34;Ix CURRENT VALUE IS TOO HIGH. DID NOT CHANGE VALUE&#34;)
+            return
+
+        # Set all of the current values at once
+        self.write_command(self.magnet_xy, &#34;CHAN 1\n&#34;)
+        self.write_command(self.magnet_xy, &#34;ULIM &#34; + str(val) + &#34;\n&#34;)
+        self.write_command(self.magnet_xy, &#34;SWEEP UP\n&#34;)
+        self._ix = val
+
+    @iy.setter
+    def iy(self, val):
+        # check if the requested current vaules are within the limits
+        if abs(val) &gt; self.ylim:
+            print(&#34;Iy CURRENT VALUE IS TOO HIGH. DID NOT CHANGE VALUE&#34;)
+            return
+
+        # Set all of the current values at once
+        self.write_command(self.magnet_xy, &#34;CHAN 2\n&#34;)
+        self.write_command(self.magnet_xy, &#34;ULIM &#34; + str(val) + &#34;\n&#34;)
+        self.write_command(self.magnet_xy, &#34;SWEEP UP\n&#34;)
+        self._iy = val
+
+    @iz.setter
+    def iz(self, val):
+        # check if the requested current vaules are within the limits
+        if abs(val) &gt; self.zlim:
+            print(&#34;Iz CURRENT VALUE IS TOO HIGH. DID NOT CHANGE VALUE&#34;)
+            return
+
+        # Set all of the current values at once
+        self.write_command(self.magnet_z, &#34;ULIM &#34; + str(val) + &#34;\n&#34;)
+        self.write_command(self.magnet_z, &#34;SWEEP UP\n&#34;)
+        self._iz = val
+
+    def set_curr(self, ix, iy, iz):
+        # check if the requested current vaules are within the limits
+        if abs(ix) &gt; self.xlim or abs(iy) &gt; self.ylim or abs(iz) &gt; self.zlim:
+            print(&#34;CURRENT VALUE IS TOO HIGH. DID NOT CHANGE VALUE&#34;)
+            return
+
+        self.ix = ix
+        self.iy = iy
+        self.iz = iz
+
+        self.check_if_field_reached(ix, iy, iz)
+
+    @bx.setter
+    def bx(self, bx):
+        ix = bx / self.ix2bx
+        self.ix = ix
+
+    @by.setter
+    def by(self, by):
+        iy = by / self.iy2by
+        self.iy = iy
+
+    @bz.setter
+    def bz(self, bz):
+        iz = bz / self.iz2bz
+        self.iz = iz
+
+    @bnorm.setter
+    def bnorm(self, val):
+        theta = self.theta(read=False)
+        phi = self.phi(read=False)
+        self.set_b(val, theta, phi)
+        self._bnorm = val
+
+    @theta.setter
+    def theta(self, val):
+        bnorm = self.bnorm(read=False)
+        phi = self.phi(read=False)
+        self.set_b(bnorm, val, phi)
+        self._theta = val
+
+    @phi.setter
+    def phi(self, val):
+        bnorm = self.bnorm(read=False)
+        theta = self.theta(read=False)
+        self.set_b(bnorm, theta, val)
+        self._phi = val
+
+    def check_if_field_reached(self, ix, iy, iz):
+        b_sweeping = True
+
+        # Get the difference between the current and the requested
+        # current as a percentage
+        x_diff = np.abs(ix - self.ix)
+        y_diff = np.abs(iy - self.iy)
+        z_diff = np.abs(iz - self.iz)
+
+        # Waiting for sweeping to finish
+        sweeping_time = np.max(
+            [x_diff / self._xrate, y_diff / self._yrate, z_diff / self._zrate]
+        )
+        print(
+            f&#34;Sweeping to new field value. Estimated sweeping time: {sweeping_time:0.2f} (s)&#34;
+        )
+        time.sleep(sweeping_time)
+
+        while b_sweeping:
+            curr, _, _ = self.get_current(print_b_field=False)
+
+            # Get the difference between the current and the requested
+            # current as a percentage
+            x_diff = np.abs(ix - self.ix) * 100
+            y_diff = np.abs(iy - self.iy) * 100
+            z_diff = np.abs(iz - self.iz) * 100
+
+            # if all of the differences are less than the tolerance then stop sweeping
+            if (
+                x_diff &lt; self.sweeping_tolerance
+                and y_diff &lt; self.sweeping_tolerance
+                and z_diff &lt; self.sweeping_tolerance
+            ):
+                print(&#34;Field has been reached&#34;)
+                b_sweeping = False
+            else:
+                time.sleep(0.5)
+                print(&#34;Field has not been reached yet&#34;)
+
+        aligned_freq_1 = np.abs(2870 - 28 * self._bnorm)
+        aligned_freq_2 = 2870 + 28 * self._bnorm
+        print(f&#34;B = {self._bnorm:.3f} (mT)&#34;)
+        print(f&#34;NV freq approx [{aligned_freq_1:.5}, {aligned_freq_2:.5}] (MHz)&#34;)
+
+    ###################################################################
+    # Utility functions
+    ###################################################################
+
+    def convert_cartesian_to_spherical(self, x, y, z):
+        # convert cartesian coordinates to spherical coordinates
+        r = np.round(np.sqrt(x**2 + y**2 + z**2), decimals=3)
+        theta = np.round(np.rad2deg(np.arccos(z / r)), decimals=3)
+        phi = np.round(np.rad2deg(np.arctan2(y, x)), decimals=3)
+        return r, theta, phi
+
+    def convert_spherical_to_cartesian(self, r, theta, phi):
+        # convert spherical coordinates to cartesian coordinates
+        x = r * np.sin(np.deg2rad(theta)) * np.cos(np.deg2rad(phi))
+        y = r * np.sin(np.deg2rad(theta)) * np.sin(np.deg2rad(phi))
+        z = r * np.cos(np.deg2rad(theta))
+        return x, y, z
+
+    def write_command(self, serial, command):
+        # this function is just to convert a string command into a byte command and
+        # write it to the serial port
+        serial.write(bytes(command, &#34;utf-8&#34;))
+        time.sleep(self.cmd_wait)</code></pre>
+</details>
+<div class="desc"><p>Base class for all hardware devices in QScope.</p>
+<p>The Device class provides the foundation for hardware abstraction in QScope.
+Specific device implementations inherit from this class and implement the
+methods required by their intended roles.</p>
+<p>A device can fulfill multiple roles if it implements all required methods
+for those roles. The system validates role compatibility at runtime.</p>
+<h2 id="device-architecture">Device Architecture</h2>
+<p>Devices are part of QScope's hardware abstraction layer:</p>
+<ol>
+<li>Base Device Class (this class)</li>
+<li>Provides configuration validation</li>
+<li>Manages role assignments</li>
+<li>Handles connection state</li>
+<li>
+<p>Defines required methods</p>
+</li>
+<li>
+<p>Device Implementations</p>
+</li>
+<li>Inherit from Device</li>
+<li>Implement protocol methods for specific roles</li>
+<li>Provide hardware-specific functionality</li>
+<li>
+<p>Can implement multiple protocols</p>
+</li>
+<li>
+<p>System Integration</p>
+</li>
+<li>Devices are added to systems with specific roles</li>
+<li>System validates that devices implement required protocols</li>
+<li>Devices are accessed through role interfaces</li>
+</ol>
+<h2 id="required-methods">Required Methods</h2>
+<p>All device implementations must override these methods:</p>
+<ul>
+<li>open(): Connect to the hardware</li>
+<li>close(): Disconnect from the hardware</li>
+<li>is_connected(): Check connection status</li>
+</ul>
+<p>In addition, devices must implement all methods required by the
+protocols of the roles they intend to fulfill.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>required_config</code></strong> :&ensp;<code>dict[str, Type]</code></dt>
+<dd>Required configuration parameters and their types</dd>
+<dt><strong><code>_roles</code></strong> :&ensp;<code>Set[DeviceRole[Device]]</code></dt>
+<dd>Set of roles this device fulfills</dd>
+</dl>
+<h2 id="examples">Examples</h2>
+<p>Creating a new device implementation:</p>
+<pre><code class="language-python">class MyRFSource(Device):
+    required_config = {
+        &quot;visa_addr&quot;: str,
+        &quot;max_power&quot;: float
+    }
+
+    def __init__(self, **config_kwargs):
+        super().__init__(**config_kwargs)
+        self.connected = False
+
+    def open(self) -&gt; tuple[bool, str]:
+        # Implementation for connecting to hardware
+        self.connected = True
+        return True, &quot;Connected successfully&quot;
+
+    def close(self):
+        # Implementation for disconnecting
+        self.connected = False
+
+    def is_connected(self) -&gt; bool:
+        return self.connected
+
+    # Implement methods required by RFSourceProtocol
+    def set_freq(self, freq: float) -&gt; None:
+        # Implementation
+        pass
+
+    def set_power(self, power: float) -&gt; None:
+        # Implementation
+        pass
+</code></pre>
+<p>Using the device with a role:</p>
+<pre><code class="language-python"># Create device instance
+rf = MyRFSource(visa_addr=&quot;TCPIP0::192.168.1.1::INSTR&quot;, max_power=20.0)
+
+# Add to system with role
+system.add_device_with_role(rf, PRIMARY_RF)
+</code></pre>
+<h2 id="see-also">See Also</h2>
+<dl>
+<dt><code><a title="qscope.types.protocols" href="../../../types/protocols.html">qscope.types.protocols</a></code></dt>
+<dd>Protocol definitions</dd>
+<dt><code><a title="qscope.types.roles" href="../../../types/roles.html">qscope.types.roles</a></code></dt>
+<dd>Role definitions</dd>
+<dt><code><a title="qscope.types.interfaces" href="../../../types/interfaces.html">qscope.types.interfaces</a></code></dt>
+<dd>Interface implementations</dd>
+<dt><code><a title="qscope.system" href="../../../system/index.html">qscope.system</a></code></dt>
+<dd>System implementation</dd>
+</dl></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="qscope.device.magnet.magnet.Magnet" href="../magnet.html#qscope.device.magnet.magnet.Magnet">Magnet</a></li>
+<li><a title="qscope.device.device.Device" href="../../device.html#qscope.device.device.Device">Device</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="qscope.device.magnet.attocube.APS100.APS100.required_config"><code class="name">var <span class="ident">required_config</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.magnet.attocube.APS100.APS100.xlim"><code class="name">var <span class="ident">xlim</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.magnet.attocube.APS100.APS100.xrate"><code class="name">var <span class="ident">xrate</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.magnet.attocube.APS100.APS100.xy_port"><code class="name">var <span class="ident">xy_port</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.magnet.attocube.APS100.APS100.ylim"><code class="name">var <span class="ident">ylim</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.magnet.attocube.APS100.APS100.yrate"><code class="name">var <span class="ident">yrate</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.magnet.attocube.APS100.APS100.z_port"><code class="name">var <span class="ident">z_port</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.magnet.attocube.APS100.APS100.zlim"><code class="name">var <span class="ident">zlim</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.magnet.attocube.APS100.APS100.zrate"><code class="name">var <span class="ident">zrate</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="qscope.device.magnet.attocube.APS100.APS100.bnorm"><code class="name">prop <span class="ident">bnorm</span></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def bnorm(self, read=True):
+    if read:
+        [_, _, bspher] = self.get_current(print_b_field=False)
+        self._bnorm = bspher[0]
+    return self._bnorm</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.magnet.attocube.APS100.APS100.bx"><code class="name">prop <span class="ident">bx</span></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def bx(self):
+    self._bx = self.ix * self.ix2bx
+    return self._bx</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.magnet.attocube.APS100.APS100.by"><code class="name">prop <span class="ident">by</span></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def by(self):
+    self._by = self.iy * self.iy2by
+    return self._by</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.magnet.attocube.APS100.APS100.bz"><code class="name">prop <span class="ident">bz</span></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def bz(self):
+    self._bz = self.iz * self.iz2bz
+    return self._bz</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.magnet.attocube.APS100.APS100.ix"><code class="name">prop <span class="ident">ix</span></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def ix(self):
+    # clear the read buffer
+    self.magnet_xy.read(1000)
+
+    self.write_command(self.magnet_xy, &#34;CHAN 1\n&#34;)
+    self.magnet_xy.readline()
+    self.write_command(self.magnet_xy, &#34;IMAG?\n&#34;)
+    self.magnet_xy.readline()
+    ix = self.magnet_xy.readline().decode()
+    self._ix = float(ix[:-3])
+    return self._ix</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.magnet.attocube.APS100.APS100.ix2bx"><code class="name">prop <span class="ident">ix2bx</span></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def ix2bx(self):
+    return self._ix2bx</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.magnet.attocube.APS100.APS100.iy"><code class="name">prop <span class="ident">iy</span></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def iy(self):
+    # clear the read buffer
+    self.magnet_xy.read(1000)
+
+    self.write_command(self.magnet_xy, &#34;CHAN 2\n&#34;)
+    self.magnet_xy.readline()
+    self.write_command(self.magnet_xy, &#34;IMAG?\n&#34;)
+    self.magnet_xy.readline()
+    iy = self.magnet_xy.readline().decode()
+    self._iy = float(iy[:-3])
+    return self._iy</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.magnet.attocube.APS100.APS100.iy2by"><code class="name">prop <span class="ident">iy2by</span></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def iy2by(self):
+    return self._iy2by</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.magnet.attocube.APS100.APS100.iz"><code class="name">prop <span class="ident">iz</span></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def iz(self):
+    # clear the read buffer
+    self.magnet_z.read(1000)
+    self.write_command(self.magnet_z, &#34;IMAG?\n&#34;)
+    self.magnet_z.readline()
+    iz = self.magnet_z.readline().decode()
+    self._iz = float(iz[:-3])
+    return self._iz</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.magnet.attocube.APS100.APS100.iz2bz"><code class="name">prop <span class="ident">iz2bz</span></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def iz2bz(self):
+    return self._iz2bz</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.magnet.attocube.APS100.APS100.phi"><code class="name">prop <span class="ident">phi</span></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def phi(self, read=True):
+    if read:
+        [_, _, bspher] = self.get_current(print_b_field=False)
+        self._phi = bspher[1]
+    return self._phi</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.magnet.attocube.APS100.APS100.theta"><code class="name">prop <span class="ident">theta</span></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def theta(self, read=True):
+    if read:
+        [_, _, bspher] = self.get_current(print_b_field=False)
+        self._theta = bspher[1]
+    return self._theta</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="qscope.device.magnet.attocube.APS100.APS100.check_if_field_reached"><code class="name flex">
+<span>def <span class="ident">check_if_field_reached</span></span>(<span>self, ix, iy, iz)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def check_if_field_reached(self, ix, iy, iz):
+    b_sweeping = True
+
+    # Get the difference between the current and the requested
+    # current as a percentage
+    x_diff = np.abs(ix - self.ix)
+    y_diff = np.abs(iy - self.iy)
+    z_diff = np.abs(iz - self.iz)
+
+    # Waiting for sweeping to finish
+    sweeping_time = np.max(
+        [x_diff / self._xrate, y_diff / self._yrate, z_diff / self._zrate]
+    )
+    print(
+        f&#34;Sweeping to new field value. Estimated sweeping time: {sweeping_time:0.2f} (s)&#34;
+    )
+    time.sleep(sweeping_time)
+
+    while b_sweeping:
+        curr, _, _ = self.get_current(print_b_field=False)
+
+        # Get the difference between the current and the requested
+        # current as a percentage
+        x_diff = np.abs(ix - self.ix) * 100
+        y_diff = np.abs(iy - self.iy) * 100
+        z_diff = np.abs(iz - self.iz) * 100
+
+        # if all of the differences are less than the tolerance then stop sweeping
+        if (
+            x_diff &lt; self.sweeping_tolerance
+            and y_diff &lt; self.sweeping_tolerance
+            and z_diff &lt; self.sweeping_tolerance
+        ):
+            print(&#34;Field has been reached&#34;)
+            b_sweeping = False
+        else:
+            time.sleep(0.5)
+            print(&#34;Field has not been reached yet&#34;)
+
+    aligned_freq_1 = np.abs(2870 - 28 * self._bnorm)
+    aligned_freq_2 = 2870 + 28 * self._bnorm
+    print(f&#34;B = {self._bnorm:.3f} (mT)&#34;)
+    print(f&#34;NV freq approx [{aligned_freq_1:.5}, {aligned_freq_2:.5}] (MHz)&#34;)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.magnet.attocube.APS100.APS100.close"><code class="name flex">
+<span>def <span class="ident">close</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def close(self):
+    self.stop()
+    self.magnet_xy.close()
+    self.magnet_z.close()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.magnet.attocube.APS100.APS100.convert_cartesian_to_spherical"><code class="name flex">
+<span>def <span class="ident">convert_cartesian_to_spherical</span></span>(<span>self, x, y, z)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def convert_cartesian_to_spherical(self, x, y, z):
+    # convert cartesian coordinates to spherical coordinates
+    r = np.round(np.sqrt(x**2 + y**2 + z**2), decimals=3)
+    theta = np.round(np.rad2deg(np.arccos(z / r)), decimals=3)
+    phi = np.round(np.rad2deg(np.arctan2(y, x)), decimals=3)
+    return r, theta, phi</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.magnet.attocube.APS100.APS100.convert_spherical_to_cartesian"><code class="name flex">
+<span>def <span class="ident">convert_spherical_to_cartesian</span></span>(<span>self, r, theta, phi)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def convert_spherical_to_cartesian(self, r, theta, phi):
+    # convert spherical coordinates to cartesian coordinates
+    x = r * np.sin(np.deg2rad(theta)) * np.cos(np.deg2rad(phi))
+    y = r * np.sin(np.deg2rad(theta)) * np.sin(np.deg2rad(phi))
+    z = r * np.cos(np.deg2rad(theta))
+    return x, y, z</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.magnet.attocube.APS100.APS100.get_current"><code class="name flex">
+<span>def <span class="ident">get_current</span></span>(<span>self, print_b_field=True)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_current(self, print_b_field=True):
+    # convert the current values into a bxyz
+    self._bx = self._ix * self.ix2bx
+    self._by = self._iy * self.iy2by
+    self._bz = self._iz * self.iz2bz
+    # convert the bxyz into bspherical
+    self._bnorm, self._theta, self._phi = self.convert_cartesian_to_spherical(
+        self._bx, self._by, self._bz
+    )
+
+    if print_b_field:
+        print(&#34;Current field values&#34;)
+        print(f&#34;B = {self._bnorm:.3f} (mT)&#34;)
+        print(f&#34;theta = {self._theta:.3f} (deg)&#34;)
+        print(f&#34;phi = {self._phi:.3f} (deg)&#34;)
+        aligned_freq_1 = np.abs(2870 - 28 * self._bnorm)
+        aligned_freq_2 = 2870 + 28 * self._bnorm
+        print(f&#34;Upper frequency = {aligned_freq_2:.5} (MHz))&#34;)
+        print(f&#34;Lower frequency = {aligned_freq_1:.5} (MHz))&#34;)
+
+    curr = [self._ix, self._iy, self._iz]
+    b = [self._bx, self._by, self._bz]
+    bspher = [self._bnorm, self._theta, self._phi]
+    return curr, b, bspher</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.magnet.attocube.APS100.APS100.init_channels"><code class="name flex">
+<span>def <span class="ident">init_channels</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def init_channels(self):
+    # initalise Bx channel
+    self.write_command(self.magnet_xy, &#34;REMOTE\n&#34;)
+    self.write_command(self.magnet_xy, &#34;CHAN 1\n&#34;)
+    self.write_command(self.magnet_xy, &#34;LLIM -&#34; + str(self.xlim) + &#34;\n&#34;)
+
+    self.write_command(self.magnet_xy, &#34;REMOTE\n&#34;)
+    self.write_command(self.magnet_xy, &#34;CHAN 2\n&#34;)
+    self.write_command(self.magnet_xy, &#34;LLIM -&#34; + str(self.ylim) + &#34;\n&#34;)
+
+    self.write_command(self.magnet_z, &#34;REMOTE\n&#34;)
+    self.write_command(self.magnet_z, &#34;LLIM -&#34; + str(self.zlim) + &#34;\n&#34;)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.magnet.attocube.APS100.APS100.open"><code class="name flex">
+<span>def <span class="ident">open</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def open(self):
+    # connect to the x current source.
+    self.magnet_xy = serial.Serial(self.xy_port, 9600, timeout=1)
+    self.magnet_z = serial.Serial(self.z_port, 9600, timeout=1)
+    self.init_channels()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.magnet.attocube.APS100.APS100.set_b"><code class="name flex">
+<span>def <span class="ident">set_b</span></span>(<span>self, bnorm, theta, phi)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_b(self, bnorm, theta, phi):
+    bx, by, bz = self.convert_spherical_to_cartesian(bnorm, theta, phi)
+    print(
+        f&#34;Setting B to {bnorm:.3f} (mT) at theta = {theta:.3f} (deg) and phi = {phi:.3f} (deg)&#34;
+    )
+
+    set_ix = bx / self.ix2bx
+    set_iy = by / self.iy2by
+    set_iz = bz / self.iz2bz
+
+    self.ix = set_ix
+    self.iy = set_iy
+    self.iz = set_iz
+
+    self.check_if_field_reached(set_ix, set_iy, set_iz)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.magnet.attocube.APS100.APS100.set_curr"><code class="name flex">
+<span>def <span class="ident">set_curr</span></span>(<span>self, ix, iy, iz)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_curr(self, ix, iy, iz):
+    # check if the requested current vaules are within the limits
+    if abs(ix) &gt; self.xlim or abs(iy) &gt; self.ylim or abs(iz) &gt; self.zlim:
+        print(&#34;CURRENT VALUE IS TOO HIGH. DID NOT CHANGE VALUE&#34;)
+        return
+
+    self.ix = ix
+    self.iy = iy
+    self.iz = iz
+
+    self.check_if_field_reached(ix, iy, iz)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.magnet.attocube.APS100.APS100.stop"><code class="name flex">
+<span>def <span class="ident">stop</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def stop(self):
+    self.write_command(self.magnet_xy, &#34;CHAN 1\n&#34;)
+    self.write_command(self.magnet_xy, &#34;SWEEP ZERO\n&#34;)
+
+    self.write_command(self.magnet_xy, &#34;CHAN 2\n&#34;)
+    self.write_command(self.magnet_xy, &#34;SWEEP ZERO\n&#34;)
+    self.write_command(self.magnet_z, &#34;SWEEP ZERO\n&#34;)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="qscope.device.magnet.attocube.APS100.APS100.write_command"><code class="name flex">
+<span>def <span class="ident">write_command</span></span>(<span>self, serial, command)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def write_command(self, serial, command):
+    # this function is just to convert a string command into a byte command and
+    # write it to the serial port
+    serial.write(bytes(command, &#34;utf-8&#34;))
+    time.sleep(self.cmd_wait)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="qscope.device.magnet.magnet.Magnet" href="../magnet.html#qscope.device.magnet.magnet.Magnet">Magnet</a></b></code>:
+<ul class="hlist">
+<li><code><a title="qscope.device.magnet.magnet.Magnet.get_all_attrs" href="../../device.html#qscope.device.device.Device.get_all_attrs">get_all_attrs</a></code></li>
+<li><code><a title="qscope.device.magnet.magnet.Magnet.get_roles" href="../../device.html#qscope.device.device.Device.get_roles">get_roles</a></code></li>
+<li><code><a title="qscope.device.magnet.magnet.Magnet.has_role" href="../../device.html#qscope.device.device.Device.has_role">has_role</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<form>
+<input id="lunr-search" name="q" placeholder="🔎 Search ..." aria-label="Search"
+disabled minlength="2">
+</form>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.css" integrity="sha512-b+T2i3P45i1LZM7I00Ci5QquB9szqaxu+uuk5TUSGjZQ4w4n+qujQiIuvTv2BxE7WCGQCifNMksyKILDiHzsOg==" crossorigin>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.16.0/tingle.min.js" integrity="sha512-2B9/byNV1KKRm5nQ2RLViPFD6U4dUjDGwuW1GU+ImJh8YinPU9Zlq1GzdTMO+G2ROrB5o1qasJBy1ttYz0wCug==" crossorigin></script>
+<style>
+.modal-dialog iframe {
+width: 100vw;
+height: calc(100vh - 80px);
+}
+@media screen and (min-width: 700px) {
+.modal-dialog iframe {
+width: 70vw;
+height: 80vh;
+}
+}
+.modal-dialog .tingle-modal-box {width: auto;}
+.modal-dialog .tingle-modal-box__content {padding: 0;}
+</style>
+<script>
+const input = document.getElementById('lunr-search');
+input.disabled = false;
+input.form.addEventListener('submit', (ev) => {
+ev.preventDefault();
+const url = new URL(window.location);
+url.searchParams.set('q', input.value);
+history.replaceState({}, null, url.toString());
+search(input.value);
+});
+const query = new URL(window.location).searchParams.get('q');
+if (query)
+search(query);
+function search(query) {
+const url = '../../../../doc-search.html#' + encodeURIComponent(query);
+new tingle.modal({
+cssClass: ['modal-dialog'],
+onClose: () => {
+const url = new URL(window.location);
+url.searchParams.delete('q');
+history.replaceState({}, null, url.toString());
+setTimeout(() => input.focus(), 100);
+}
+}).setContent('<iframe src="' + url + '"></iframe>').open();
+}
+</script>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="qscope.device.magnet.attocube" href="index.html">qscope.device.magnet.attocube</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="qscope.device.magnet.attocube.APS100.APS100" href="#qscope.device.magnet.attocube.APS100.APS100">APS100</a></code></h4>
+<ul class="">
+<li><code><a title="qscope.device.magnet.attocube.APS100.APS100.bnorm" href="#qscope.device.magnet.attocube.APS100.APS100.bnorm">bnorm</a></code></li>
+<li><code><a title="qscope.device.magnet.attocube.APS100.APS100.bx" href="#qscope.device.magnet.attocube.APS100.APS100.bx">bx</a></code></li>
+<li><code><a title="qscope.device.magnet.attocube.APS100.APS100.by" href="#qscope.device.magnet.attocube.APS100.APS100.by">by</a></code></li>
+<li><code><a title="qscope.device.magnet.attocube.APS100.APS100.bz" href="#qscope.device.magnet.attocube.APS100.APS100.bz">bz</a></code></li>
+<li><code><a title="qscope.device.magnet.attocube.APS100.APS100.check_if_field_reached" href="#qscope.device.magnet.attocube.APS100.APS100.check_if_field_reached">check_if_field_reached</a></code></li>
+<li><code><a title="qscope.device.magnet.attocube.APS100.APS100.close" href="#qscope.device.magnet.attocube.APS100.APS100.close">close</a></code></li>
+<li><code><a title="qscope.device.magnet.attocube.APS100.APS100.convert_cartesian_to_spherical" href="#qscope.device.magnet.attocube.APS100.APS100.convert_cartesian_to_spherical">convert_cartesian_to_spherical</a></code></li>
+<li><code><a title="qscope.device.magnet.attocube.APS100.APS100.convert_spherical_to_cartesian" href="#qscope.device.magnet.attocube.APS100.APS100.convert_spherical_to_cartesian">convert_spherical_to_cartesian</a></code></li>
+<li><code><a title="qscope.device.magnet.attocube.APS100.APS100.get_current" href="#qscope.device.magnet.attocube.APS100.APS100.get_current">get_current</a></code></li>
+<li><code><a title="qscope.device.magnet.attocube.APS100.APS100.init_channels" href="#qscope.device.magnet.attocube.APS100.APS100.init_channels">init_channels</a></code></li>
+<li><code><a title="qscope.device.magnet.attocube.APS100.APS100.ix" href="#qscope.device.magnet.attocube.APS100.APS100.ix">ix</a></code></li>
+<li><code><a title="qscope.device.magnet.attocube.APS100.APS100.ix2bx" href="#qscope.device.magnet.attocube.APS100.APS100.ix2bx">ix2bx</a></code></li>
+<li><code><a title="qscope.device.magnet.attocube.APS100.APS100.iy" href="#qscope.device.magnet.attocube.APS100.APS100.iy">iy</a></code></li>
+<li><code><a title="qscope.device.magnet.attocube.APS100.APS100.iy2by" href="#qscope.device.magnet.attocube.APS100.APS100.iy2by">iy2by</a></code></li>
+<li><code><a title="qscope.device.magnet.attocube.APS100.APS100.iz" href="#qscope.device.magnet.attocube.APS100.APS100.iz">iz</a></code></li>
+<li><code><a title="qscope.device.magnet.attocube.APS100.APS100.iz2bz" href="#qscope.device.magnet.attocube.APS100.APS100.iz2bz">iz2bz</a></code></li>
+<li><code><a title="qscope.device.magnet.attocube.APS100.APS100.open" href="#qscope.device.magnet.attocube.APS100.APS100.open">open</a></code></li>
+<li><code><a title="qscope.device.magnet.attocube.APS100.APS100.phi" href="#qscope.device.magnet.attocube.APS100.APS100.phi">phi</a></code></li>
+<li><code><a title="qscope.device.magnet.attocube.APS100.APS100.required_config" href="#qscope.device.magnet.attocube.APS100.APS100.required_config">required_config</a></code></li>
+<li><code><a title="qscope.device.magnet.attocube.APS100.APS100.set_b" href="#qscope.device.magnet.attocube.APS100.APS100.set_b">set_b</a></code></li>
+<li><code><a title="qscope.device.magnet.attocube.APS100.APS100.set_curr" href="#qscope.device.magnet.attocube.APS100.APS100.set_curr">set_curr</a></code></li>
+<li><code><a title="qscope.device.magnet.attocube.APS100.APS100.stop" href="#qscope.device.magnet.attocube.APS100.APS100.stop">stop</a></code></li>
+<li><code><a title="qscope.device.magnet.attocube.APS100.APS100.theta" href="#qscope.device.magnet.attocube.APS100.APS100.theta">theta</a></code></li>
+<li><code><a title="qscope.device.magnet.attocube.APS100.APS100.write_command" href="#qscope.device.magnet.attocube.APS100.APS100.write_command">write_command</a></code></li>
+<li><code><a title="qscope.device.magnet.attocube.APS100.APS100.xlim" href="#qscope.device.magnet.attocube.APS100.APS100.xlim">xlim</a></code></li>
+<li><code><a title="qscope.device.magnet.attocube.APS100.APS100.xrate" href="#qscope.device.magnet.attocube.APS100.APS100.xrate">xrate</a></code></li>
+<li><code><a title="qscope.device.magnet.attocube.APS100.APS100.xy_port" href="#qscope.device.magnet.attocube.APS100.APS100.xy_port">xy_port</a></code></li>
+<li><code><a title="qscope.device.magnet.attocube.APS100.APS100.ylim" href="#qscope.device.magnet.attocube.APS100.APS100.ylim">ylim</a></code></li>
+<li><code><a title="qscope.device.magnet.attocube.APS100.APS100.yrate" href="#qscope.device.magnet.attocube.APS100.APS100.yrate">yrate</a></code></li>
+<li><code><a title="qscope.device.magnet.attocube.APS100.APS100.z_port" href="#qscope.device.magnet.attocube.APS100.APS100.z_port">z_port</a></code></li>
+<li><code><a title="qscope.device.magnet.attocube.APS100.APS100.zlim" href="#qscope.device.magnet.attocube.APS100.APS100.zlim">zlim</a></code></li>
+<li><code><a title="qscope.device.magnet.attocube.APS100.APS100.zrate" href="#qscope.device.magnet.attocube.APS100.APS100.zrate">zrate</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
+</footer>
+</body>
+</html>

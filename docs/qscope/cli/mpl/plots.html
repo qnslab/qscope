@@ -57,7 +57,7 @@ el.replaceWith(d);
 </summary>
 <pre><code class="python">def global_fall_exp(t, a, tau, c, t0):
     &#34;&#34;&#34;Exponential decay function with absolute time reference.&#34;&#34;&#34;
-    return a * np.exp(-(t-t0)/tau) + c</code></pre>
+    return a * np.exp(-(t - t0) / tau) + c</code></pre>
 </details>
 <div class="desc"><p>Exponential decay function with absolute time reference.</p></div>
 </dd>
@@ -71,7 +71,7 @@ el.replaceWith(d);
 </summary>
 <pre><code class="python">def global_rise_exp(t, a, tau, c, t0):
     &#34;&#34;&#34;Exponential rise function with absolute time reference.&#34;&#34;&#34;
-    return a * (1 - np.exp(-(t-t0)/tau)) + c</code></pre>
+    return a * (1 - np.exp(-(t - t0) / tau)) + c</code></pre>
 </details>
 <div class="desc"><p>Exponential rise function with absolute time reference.</p></div>
 </dd>
@@ -94,10 +94,10 @@ el.replaceWith(d);
     trigger_threshold: float,
     show_individual: bool = True,
     detrend: bool = False,
-    no_show: bool = False
+    no_show: bool = False,
 ) -&gt; Tuple[plt.Figure, List[plt.Axes]]:
     &#34;&#34;&#34;Plot measurement results.
-    
+
     Parameters
     ----------
     results : Dict[str, Any]
@@ -120,7 +120,7 @@ el.replaceWith(d);
         Whether to show individual traces, by default True
     no_show : bool, optional
         Whether to suppress plot display, by default False
-        
+
     Returns
     -------
     Tuple[plt.Figure, List[plt.Axes]]
@@ -150,76 +150,96 @@ el.replaceWith(d);
     # Detect rising edges in clock signal to determine current state
     # First create a binary signal where clock is above threshold
     clock_high = plot_clock &gt; trigger_threshold
-    
+
     # Find rising edges (where signal transitions from low to high)
     rising_edges = np.where(np.diff(clock_high.astype(int)) &gt; 0)[0]
-    
+
     # Create effective current signal (starts OFF due to pre-trigger capture)
     current_state = np.zeros_like(plot_clock)
     current_on = False  # Start with current OFF due to pre-trigger
-    
+
     # Toggle state at each rising edge
     for edge_idx in rising_edges:
         current_on = not current_on  # Toggle state at each rising edge
         if edge_idx + 1 &lt; len(current_state):
-            current_state[edge_idx + 1:] = current if current_on else 0
-    
+            current_state[edge_idx + 1 :] = current if current_on else 0
+
     # Create regions for shading
     current_regions = []
     region_start = None
     for i in range(len(current_state)):
         if i &gt; 0:
-            if current_state[i] &gt; 0 and current_state[i-1] == 0:
+            if current_state[i] &gt; 0 and current_state[i - 1] == 0:
                 # Current just turned on
                 region_start = plot_time[i]
-            elif current_state[i] == 0 and current_state[i-1] &gt; 0:
+            elif current_state[i] == 0 and current_state[i - 1] &gt; 0:
                 # Current just turned off
                 if region_start is not None:
                     current_regions.append((region_start, plot_time[i]))
                     region_start = None
-    
+
     # Add final region if measurement ends with current on
     if region_start is not None:
         current_regions.append((region_start, plot_time[-1]))
 
     # Plot 1: Clock Signal
     ax1.plot(plot_time, plot_clock, &#34;b-&#34;, label=&#34;Clock Signal&#34;)
-    ax1.axhline(y=trigger_threshold, color=&#39;k&#39;, linestyle=&#39;--&#39;, 
-                label=f&#39;Trigger ({trigger_threshold}V)&#39;)
+    ax1.axhline(
+        y=trigger_threshold,
+        color=&#34;k&#34;,
+        linestyle=&#34;--&#34;,
+        label=f&#34;Trigger ({trigger_threshold}V)&#34;,
+    )
     ax1.axhline(y=0.7, color=&#34;xkcd:grey&#34;, linestyle=&#34;dotted&#34;, label=&#34;Max logic Off&#34;)
     ax1.axhline(y=3.3, color=&#34;xkcd:dark grey&#34;, linestyle=&#34;dotted&#34;, label=&#34;Min logic On&#34;)
-    
+
     # Shade regions where current is on
     for start, end in current_regions:
-        ax1.axvspan(start, end, color=&#39;g&#39;, alpha=0.1)
-        
+        ax1.axvspan(start, end, color=&#34;g&#34;, alpha=0.1)
+
     # Annotate all detected edges in the clock signal
     # First create a binary signal where clock is above threshold
     clock_binary = plot_clock &gt; trigger_threshold
-    
+
     # Find all edges (transitions in the binary signal)
     edges = np.where(np.diff(clock_binary.astype(int)) != 0)[0]
-    
+
     # Separate rising and falling edges
     rising_edges = np.where(np.diff(clock_binary.astype(int)) &gt; 0)[0]
     falling_edges = np.where(np.diff(clock_binary.astype(int)) &lt; 0)[0]
-    
+
     # Identify magnetic field transitions
-    field_on_edges = rising_edges[::2] if len(rising_edges) &gt; 0 else []  # Every other rising edge (0, 2, 4...)
-    field_off_edges = rising_edges[1::2] if len(rising_edges) &gt; 1 else []  # Every other rising edge (1, 3, 5...)
-    
+    field_on_edges = (
+        rising_edges[::2] if len(rising_edges) &gt; 0 else []
+    )  # Every other rising edge (0, 2, 4...)
+    field_off_edges = (
+        rising_edges[1::2] if len(rising_edges) &gt; 1 else []
+    )  # Every other rising edge (1, 3, 5...)
+
     # Mark field ON edges with green triangles
     for edge in field_on_edges:
         if edge &lt; len(plot_time) - 1:  # Ensure we don&#39;t go out of bounds
-            ax1.plot(plot_time[edge], plot_clock[edge], &#39;g^&#39;, markersize=8, 
-                    label=&#34;Field ON&#34; if edge == field_on_edges[0] else &#34;&#34;)
-    
+            ax1.plot(
+                plot_time[edge],
+                plot_clock[edge],
+                &#34;g^&#34;,
+                markersize=8,
+                label=&#34;Field ON&#34; if edge == field_on_edges[0] else &#34;&#34;,
+            )
+
     # Mark field OFF edges with red triangles
     for edge in field_off_edges:
         if edge &lt; len(plot_time) - 1:  # Ensure we don&#39;t go out of bounds
-            ax1.plot(plot_time[edge], plot_clock[edge], &#39;rv&#39;, markersize=8,
-                    label=&#34;Field OFF&#34; if len(field_off_edges) &gt; 0 and edge == field_off_edges[0] else &#34;&#34;)
-    
+            ax1.plot(
+                plot_time[edge],
+                plot_clock[edge],
+                &#34;rv&#34;,
+                markersize=8,
+                label=&#34;Field OFF&#34;
+                if len(field_off_edges) &gt; 0 and edge == field_off_edges[0]
+                else &#34;&#34;,
+            )
+
     if averages &gt; 1 and show_individual:
         # Plot first and last clock traces
         ax1.plot(
@@ -249,25 +269,45 @@ el.replaceWith(d);
         # Plot raw data with trend line
         raw_pl = results[&#34;mean_pl_raw&#34;][valid_slice]
         trend = results[&#34;trend_info&#34;][&#34;trend&#34;][valid_slice]
-        
+
         ax2.plot(plot_time, raw_pl, &#34;xkcd:grey&#34;, alpha=0.5, label=&#34;&lt;Raw PL Signal&gt;&#34;)
-        ax2.plot(plot_time, trend, &#34;xkcd:grey&#34;, linestyle=&#34;--&#34;, alpha=0.7, label=&#34;Bleaching Trend&#34;)
+        ax2.plot(
+            plot_time,
+            trend,
+            &#34;xkcd:grey&#34;,
+            linestyle=&#34;--&#34;,
+            alpha=0.7,
+            label=&#34;Bleaching Trend&#34;,
+        )
         ax2.plot(plot_time, plot_pl, &#34;r-&#34;, label=&#34;Detrended PL Signal&#34;)
-        
+
         # Add trend slope to plot title
         slope = results[&#34;trend_info&#34;][&#34;slope&#34;]
         method = results[&#34;trend_info&#34;][&#34;method&#34;]
-        method_text = &#34;baseline points only&#34; if method == &#34;baseline_linear&#34; else &#34;all points&#34;
+        method_text = (
+            &#34;baseline points only&#34; if method == &#34;baseline_linear&#34; else &#34;all points&#34;
+        )
         slope_text = f&#34;Trend: {slope:.2e} V/s ({method_text})&#34;
-        ax2.text(0.02, 0.02, slope_text, transform=ax2.transAxes, 
-                 bbox=dict(facecolor=&#39;white&#39;, alpha=0.7))
+        ax2.text(
+            0.02,
+            0.02,
+            slope_text,
+            transform=ax2.transAxes,
+            bbox=dict(facecolor=&#34;white&#34;, alpha=0.7),
+        )
     else:
         ax2.plot(plot_time, plot_pl, &#34;r-&#34;, label=&#34;Average PL Signal&#34;)
-    
+
     # Shade regions where current is on
     for start, end in current_regions:
-        ax2.axvspan(start, end, color=&#39;g&#39;, alpha=0.1, label=&#34;Current On&#34; if start == current_regions[0][0] else &#34;&#34;)
-    
+        ax2.axvspan(
+            start,
+            end,
+            color=&#34;g&#34;,
+            alpha=0.1,
+            label=&#34;Current On&#34; if start == current_regions[0][0] else &#34;&#34;,
+        )
+
     if averages &gt; 1:
         plot_std = results[&#34;std_pl&#34;][valid_slice]
         ax2.fill_between(
@@ -302,7 +342,7 @@ el.replaceWith(d);
                     linestyle=&#34;:&#34;,
                     label=&#34;Last trace (raw)&#34;,
                 )
-            
+
             # Plot detrended individual traces
             ax2.plot(
                 results[&#34;time_data&#34;][0, valid_slice],
@@ -310,7 +350,9 @@ el.replaceWith(d);
                 &#34;xkcd:forest green&#34;,
                 alpha=0.6,
                 lw=0.75,
-                label=&#34;First trace&#34; if &#34;pl_data_raw&#34; not in results else &#34;First trace (detrended)&#34;,
+                label=&#34;First trace&#34;
+                if &#34;pl_data_raw&#34; not in results
+                else &#34;First trace (detrended)&#34;,
             )
             ax2.plot(
                 results[&#34;time_data&#34;][-1, valid_slice],
@@ -318,7 +360,9 @@ el.replaceWith(d);
                 &#34;xkcd:purple&#34;,
                 alpha=0.6,
                 lw=0.75,
-                label=&#34;Last trace&#34; if &#34;pl_data_raw&#34; not in results else &#34;Last trace (detrended)&#34;,
+                label=&#34;Last trace&#34;
+                if &#34;pl_data_raw&#34; not in results
+                else &#34;Last trace (detrended)&#34;,
             )
     ax2.grid(True)
     ax2.set_ylabel(&#34;PL (V)&#34;)
@@ -333,103 +377,164 @@ el.replaceWith(d);
     else:
         # Fallback to first point
         pl_baseline = plot_pl[0]
-        
+
     contrast = 100 * plot_pl / pl_baseline
-    
+
     # Add transition analysis results if available
     if &#34;analysis&#34; in results and &#34;mean_rise_time&#34; in results[&#34;analysis&#34;]:
         analysis = results[&#34;analysis&#34;]
         if not np.isnan(analysis.get(&#34;mean_rise_time&#34;, np.nan)):
             # Add text box with analysis results
             analysis_text = (
-                f&#34;Field ON response time (10-90%): {analysis[&#39;mean_rise_time&#39;]*1000:.2f} ms\n&#34;
-                f&#34;Field OFF response time (10-90%): {analysis[&#39;mean_fall_time&#39;]*1000:.2f} ms\n&#34;
+                f&#34;Field ON response time (10-90%): {analysis[&#39;mean_rise_time&#39;] * 1000:.2f} ms\n&#34;
+                f&#34;Field OFF response time (10-90%): {analysis[&#39;mean_fall_time&#39;] * 1000:.2f} ms\n&#34;
                 f&#34;Contrast: {analysis[&#39;mean_contrast&#39;]:.3f}%&#34;
             )
-            
+
             # Add exponential fit results if available
             if &#34;fit_type&#34; in analysis and analysis[&#34;fit_type&#34;] == &#34;double&#34;:
                 # Double exponential fit results
-                if &#34;mean_rise_tau1&#34; in analysis and not np.isnan(analysis[&#34;mean_rise_tau1&#34;]):
-                    analysis_text += f&#34;\nField ON response: τ1={analysis[&#39;mean_rise_tau1&#39;]*1000:.2f} ms, τ2={analysis[&#39;mean_rise_tau2&#39;]*1000:.2f} ms\n&#34;
-                    analysis_text += f&#34;Field OFF response: τ1={analysis[&#39;mean_fall_tau1&#39;]*1000:.2f} ms, τ2={analysis[&#39;mean_fall_tau2&#39;]*1000:.2f} ms&#34;
-            elif &#34;mean_rise_tau&#34; in analysis and not np.isnan(analysis[&#34;mean_rise_tau&#34;]):
+                if &#34;mean_rise_tau1&#34; in analysis and not np.isnan(
+                    analysis[&#34;mean_rise_tau1&#34;]
+                ):
+                    analysis_text += f&#34;\nField ON response: τ1={analysis[&#39;mean_rise_tau1&#39;] * 1000:.2f} ms, τ2={analysis[&#39;mean_rise_tau2&#39;] * 1000:.2f} ms\n&#34;
+                    analysis_text += f&#34;Field OFF response: τ1={analysis[&#39;mean_fall_tau1&#39;] * 1000:.2f} ms, τ2={analysis[&#39;mean_fall_tau2&#39;] * 1000:.2f} ms&#34;
+            elif &#34;mean_rise_tau&#34; in analysis and not np.isnan(
+                analysis[&#34;mean_rise_tau&#34;]
+            ):
                 # Single exponential fit results
-                analysis_text += f&#34;\nField ON response τ: {analysis[&#39;mean_rise_tau&#39;]*1000:.2f} ms\n&#34;
-                analysis_text += f&#34;Field OFF response τ: {analysis[&#39;mean_fall_tau&#39;]*1000:.2f} ms&#34;
+                analysis_text += f&#34;\nField ON response τ: {analysis[&#39;mean_rise_tau&#39;] * 1000:.2f} ms\n&#34;
+                analysis_text += (
+                    f&#34;Field OFF response τ: {analysis[&#39;mean_fall_tau&#39;] * 1000:.2f} ms&#34;
+                )
             ax3.text(
-                0.02, 0.98, analysis_text,
+                0.02,
+                0.98,
+                analysis_text,
                 transform=ax3.transAxes,
-                verticalalignment=&#39;top&#39;,
-                horizontalalignment=&#39;left&#39;,
-                bbox=dict(boxstyle=&#39;round&#39;, facecolor=&#39;white&#39;, alpha=0.8)
+                verticalalignment=&#34;top&#34;,
+                horizontalalignment=&#34;left&#34;,
+                bbox=dict(boxstyle=&#34;round&#34;, facecolor=&#34;white&#34;, alpha=0.8),
             )
-            
+
             # Annotate 10/90% points on the PL curve in ax2
             if &#34;rise_10_indices&#34; in analysis and analysis[&#34;rise_10_indices&#34;]:
-                for r10, r90 in zip(analysis[&#34;rise_10_indices&#34;], analysis[&#34;rise_90_indices&#34;]):
+                for r10, r90 in zip(
+                    analysis[&#34;rise_10_indices&#34;], analysis[&#34;rise_90_indices&#34;]
+                ):
                     # Adjust indices to account for the valid_slice offset
                     adjusted_r10 = r10 - pad
                     adjusted_r90 = r90 - pad
-                    
-                    if 0 &lt;= adjusted_r10 &lt; len(plot_time) and 0 &lt;= adjusted_r90 &lt; len(plot_time):
+
+                    if 0 &lt;= adjusted_r10 &lt; len(plot_time) and 0 &lt;= adjusted_r90 &lt; len(
+                        plot_time
+                    ):
                         # Get the actual PL values at these points
                         pl_10 = plot_pl[adjusted_r10]
                         pl_90 = plot_pl[adjusted_r90]
-                        
+
                         # Mark 10% field ON response point
-                        ax2.plot(plot_time[adjusted_r10], pl_10, &#39;o&#39;, color=&#39;blue&#39;, markersize=4, 
-                                label=&#34;10% Field ON Response&#34; if r10 == analysis[&#34;rise_10_indices&#34;][0] else &#34;&#34;)
+                        ax2.plot(
+                            plot_time[adjusted_r10],
+                            pl_10,
+                            &#34;o&#34;,
+                            color=&#34;blue&#34;,
+                            markersize=4,
+                            label=&#34;10% Field ON Response&#34;
+                            if r10 == analysis[&#34;rise_10_indices&#34;][0]
+                            else &#34;&#34;,
+                        )
                         # Mark 90% field ON response point
-                        ax2.plot(plot_time[adjusted_r90], pl_90, &#39;o&#39;, color=&#39;green&#39;, markersize=4,
-                                label=&#34;90% Field ON Response&#34; if r90 == analysis[&#34;rise_90_indices&#34;][0] else &#34;&#34;)
+                        ax2.plot(
+                            plot_time[adjusted_r90],
+                            pl_90,
+                            &#34;o&#34;,
+                            color=&#34;green&#34;,
+                            markersize=4,
+                            label=&#34;90% Field ON Response&#34;
+                            if r90 == analysis[&#34;rise_90_indices&#34;][0]
+                            else &#34;&#34;,
+                        )
                         # Draw a line connecting the points
-                        ax2.plot([plot_time[adjusted_r10], plot_time[adjusted_r90]], [pl_10, pl_90], 
-                                 &#39;-&#39;, color=&#39;green&#39;, alpha=0.5, linewidth=1)
-                        
+                        ax2.plot(
+                            [plot_time[adjusted_r10], plot_time[adjusted_r90]],
+                            [pl_10, pl_90],
+                            &#34;-&#34;,
+                            color=&#34;green&#34;,
+                            alpha=0.5,
+                            linewidth=1,
+                        )
+
             if &#34;fall_10_indices&#34; in analysis and analysis[&#34;fall_10_indices&#34;]:
-                for f90, f10 in zip(analysis[&#34;fall_90_indices&#34;], analysis[&#34;fall_10_indices&#34;]):
+                for f90, f10 in zip(
+                    analysis[&#34;fall_90_indices&#34;], analysis[&#34;fall_10_indices&#34;]
+                ):
                     # Adjust indices to account for the valid_slice offset
                     adjusted_f90 = f90 - pad
                     adjusted_f10 = f10 - pad
-                    
-                    if 0 &lt;= adjusted_f10 &lt; len(plot_time) and 0 &lt;= adjusted_f90 &lt; len(plot_time):
+
+                    if 0 &lt;= adjusted_f10 &lt; len(plot_time) and 0 &lt;= adjusted_f90 &lt; len(
+                        plot_time
+                    ):
                         # Get the actual PL values at these points
                         pl_90 = plot_pl[adjusted_f90]
                         pl_10 = plot_pl[adjusted_f10]
-                        
+
                         # Mark 90% field OFF response point (first crossed when field turns off)
-                        ax2.plot(plot_time[adjusted_f90], pl_90, &#39;o&#39;, color=&#39;orange&#39;, markersize=4,
-                                label=&#34;90% Field OFF Response&#34; if f90 == analysis[&#34;fall_90_indices&#34;][0] else &#34;&#34;)
+                        ax2.plot(
+                            plot_time[adjusted_f90],
+                            pl_90,
+                            &#34;o&#34;,
+                            color=&#34;orange&#34;,
+                            markersize=4,
+                            label=&#34;90% Field OFF Response&#34;
+                            if f90 == analysis[&#34;fall_90_indices&#34;][0]
+                            else &#34;&#34;,
+                        )
                         # Mark 10% field OFF response point
-                        ax2.plot(plot_time[adjusted_f10], pl_10, &#39;o&#39;, color=&#39;purple&#39;, markersize=4,
-                                label=&#34;10% Field OFF Response&#34; if f10 == analysis[&#34;fall_10_indices&#34;][0] else &#34;&#34;)
+                        ax2.plot(
+                            plot_time[adjusted_f10],
+                            pl_10,
+                            &#34;o&#34;,
+                            color=&#34;purple&#34;,
+                            markersize=4,
+                            label=&#34;10% Field OFF Response&#34;
+                            if f10 == analysis[&#34;fall_10_indices&#34;][0]
+                            else &#34;&#34;,
+                        )
                         # Draw a line connecting the points
-                        ax2.plot([plot_time[adjusted_f90], plot_time[adjusted_f10]], [pl_90, pl_10], 
-                                 &#39;-&#39;, color=&#39;purple&#39;, alpha=0.5, linewidth=1)
-                                 
+                        ax2.plot(
+                            [plot_time[adjusted_f90], plot_time[adjusted_f10]],
+                            [pl_90, pl_10],
+                            &#34;-&#34;,
+                            color=&#34;purple&#34;,
+                            alpha=0.5,
+                            linewidth=1,
+                        )
+
     # Add exponential fit curves if available
     if &#34;analysis&#34; in results and &#34;rise_fit_params&#34; in results[&#34;analysis&#34;]:
         analysis = results[&#34;analysis&#34;]
-        
+
         # Define exponential functions for plotting
         def rise_exp(t, a, tau, c):
-            return a * (1 - np.exp(-t/tau)) + c
-        
+            return a * (1 - np.exp(-t / tau)) + c
+
         def fall_exp(t, a, tau, c):
-            return a * np.exp(-t/tau) + c
-        
+            return a * np.exp(-t / tau) + c
+
         # Plot rise fits
         if &#34;rise_fit_params&#34; in analysis and &#34;rise_indices&#34; in analysis:
-            for i, (params, start_idx) in enumerate(zip(
-                analysis[&#34;rise_fit_params&#34;],
-                analysis[&#34;rise_indices&#34;]
-            )):
-                if i &lt; len(analysis.get(&#34;rise_10_indices&#34;, [])) and i &lt; len(analysis.get(&#34;rise_90_indices&#34;, [])):
+            for i, (params, start_idx) in enumerate(
+                zip(analysis[&#34;rise_fit_params&#34;], analysis[&#34;rise_indices&#34;])
+            ):
+                if i &lt; len(analysis.get(&#34;rise_10_indices&#34;, [])) and i &lt; len(
+                    analysis.get(&#34;rise_90_indices&#34;, [])
+                ):
                     # Get segment time range
                     r10_idx = analysis[&#34;rise_10_indices&#34;][i] - pad
                     r90_idx = analysis[&#34;rise_90_indices&#34;][i] - pad
-                    
+
                     if 0 &lt;= r10_idx &lt; len(plot_time) and 0 &lt;= r90_idx &lt; len(plot_time):
                         # Create time array for fit curve - use the full segment width
                         # Find the corresponding segment in the analysis data
@@ -443,26 +548,28 @@ el.replaceWith(d);
                             # Fallback to using the 10% and 90% indices with some extension
                             segment_width = abs(r90_idx - r10_idx)
                             segment_start = max(0, r10_idx - segment_width)
-                            segment_end = min(len(plot_time) - 1, r90_idx + segment_width)
-                        
+                            segment_end = min(
+                                len(plot_time) - 1, r90_idx + segment_width
+                            )
+
                         # Ensure indices are within valid range
-                        segment_start = max(0, min(segment_start, len(plot_time)-1))
-                        segment_end = max(0, min(segment_end, len(plot_time)-1))
-                        
+                        segment_start = max(0, min(segment_start, len(plot_time) - 1))
+                        segment_end = max(0, min(segment_end, len(plot_time) - 1))
+
                         # Create time array spanning the full segment
                         t_start = plot_time[segment_start]
                         t_end = plot_time[segment_end]
                         t_fit = np.linspace(t_start, t_end, 100)
-                        
+
                         # Check if we have the complete parameter set
                         if isinstance(params, dict) and &#34;function&#34; in params:
                             # Use the stored function directly
                             y_fit = params[&#34;function&#34;](t_fit)
-                            
+
                             # Get fit type and R-squared if available
                             fit_type = params.get(&#34;fit_type&#34;, &#34;single&#34;)
                             r_squared = params.get(&#34;r_squared&#34;, None)
-                            
+
                             # Create appropriate label
                             if fit_type == &#34;double&#34;:
                                 label = f&#34;Double Exp. ON Fit&#34; if i == 0 else &#34;&#34;
@@ -472,25 +579,39 @@ el.replaceWith(d);
                                 label = f&#34;Field ON Response Fit&#34; if i == 0 else &#34;&#34;
                                 if r_squared is not None:
                                     label += f&#34; (R²={r_squared:.3f})&#34; if i == 0 else &#34;&#34;
-                        elif len(params) &gt;= 4:  # We have all parameters including time offset
+                        elif (
+                            len(params) &gt;= 4
+                        ):  # We have all parameters including time offset
                             if isinstance(params, dict) and &#34;is_rise&#34; in params:
                                 # Use the is_rise flag to determine which function to use
                                 fit_type = params.get(&#34;fit_type&#34;, &#34;single&#34;)
-                                
+
                                 if fit_type == &#34;double&#34;:
                                     if params[&#34;is_rise&#34;]:
-                                        y_fit = MPLFitter.global_double_rise_exp(t_fit, *params[&#34;params&#34;])
+                                        y_fit = MPLFitter.global_double_rise_exp(
+                                            t_fit, *params[&#34;params&#34;]
+                                        )
                                     else:
-                                        y_fit = MPLFitter.global_double_fall_exp(t_fit, *params[&#34;params&#34;])
+                                        y_fit = MPLFitter.global_double_fall_exp(
+                                            t_fit, *params[&#34;params&#34;]
+                                        )
                                 else:  # single exponential
                                     if params[&#34;is_rise&#34;]:
-                                        y_fit = MPLFitter.global_rise_exp(t_fit, *params[&#34;params&#34;])
+                                        y_fit = MPLFitter.global_rise_exp(
+                                            t_fit, *params[&#34;params&#34;]
+                                        )
                                     else:
-                                        y_fit = MPLFitter.global_fall_exp(t_fit, *params[&#34;params&#34;])
-                                
+                                        y_fit = MPLFitter.global_fall_exp(
+                                            t_fit, *params[&#34;params&#34;]
+                                        )
+
                                 label = &#34;Field ON Response Fit&#34; if i == 0 else &#34;&#34;
                                 if &#34;r_squared&#34; in params:
-                                    label += f&#34; (R²={params[&#39;r_squared&#39;]:.3f})&#34; if i == 0 else &#34;&#34;
+                                    label += (
+                                        f&#34; (R²={params[&#39;r_squared&#39;]:.3f})&#34;
+                                        if i == 0
+                                        else &#34;&#34;
+                                    )
                                 else:
                                     y_fit = global_fall_exp(t_fit, *params[&#34;params&#34;])
                                 label = &#34;Field ON Response Fit&#34; if i == 0 else &#34;&#34;
@@ -498,14 +619,28 @@ el.replaceWith(d);
                                 # Check if we have function type information
                                 if len(params) &gt; 4 and params[3] == 1:
                                     # This is a rise exponential
-                                    y_fit = global_rise_exp(t_fit, params[0], params[1], params[2], params[4])
+                                    y_fit = global_rise_exp(
+                                        t_fit,
+                                        params[0],
+                                        params[1],
+                                        params[2],
+                                        params[4],
+                                    )
                                 else:
                                     # This is a fall exponential
-                                    y_fit = global_fall_exp(t_fit, params[0], params[1], params[2], params[4])
+                                    y_fit = global_fall_exp(
+                                        t_fit,
+                                        params[0],
+                                        params[1],
+                                        params[2],
+                                        params[4],
+                                    )
                                 label = &#34;Field ON Response Fit&#34; if i == 0 else &#34;&#34;
                         else:
                             # Fallback for backward compatibility
-                            logger.warning(&#34;Incomplete fit parameters, using fallback method&#34;)
+                            logger.warning(
+                                &#34;Incomplete fit parameters, using fallback method&#34;
+                            )
                             if len(params) &gt; 3 and params[3] == 1:
                                 # This is a rise exponential
                                 y_fit = rise_exp(t_fit - t_fit[0], *params[:3])
@@ -513,22 +648,30 @@ el.replaceWith(d);
                                 # This is a fall exponential
                                 y_fit = fall_exp(t_fit - t_fit[0], *params[:3])
                             label = &#34;Field ON Response Fit&#34; if i == 0 else &#34;&#34;
-                        
+
                         # Plot fit curve
-                        ax2.plot(t_fit, y_fit, &#39;:&#39;, color=&#39;k&#39;, alpha=0.7, 
-                                linewidth=1.5, label=label)
-        
+                        ax2.plot(
+                            t_fit,
+                            y_fit,
+                            &#34;:&#34;,
+                            color=&#34;k&#34;,
+                            alpha=0.7,
+                            linewidth=1.5,
+                            label=label,
+                        )
+
         # Plot fall fits
         if &#34;fall_fit_params&#34; in analysis and &#34;fall_indices&#34; in analysis:
-            for i, (params, start_idx) in enumerate(zip(
-                analysis[&#34;fall_fit_params&#34;],
-                analysis[&#34;fall_indices&#34;]
-            )):
-                if i &lt; len(analysis.get(&#34;fall_10_indices&#34;, [])) and i &lt; len(analysis.get(&#34;fall_90_indices&#34;, [])):
+            for i, (params, start_idx) in enumerate(
+                zip(analysis[&#34;fall_fit_params&#34;], analysis[&#34;fall_indices&#34;])
+            ):
+                if i &lt; len(analysis.get(&#34;fall_10_indices&#34;, [])) and i &lt; len(
+                    analysis.get(&#34;fall_90_indices&#34;, [])
+                ):
                     # Get segment time range
                     f90_idx = analysis[&#34;fall_90_indices&#34;][i] - pad
                     f10_idx = analysis[&#34;fall_10_indices&#34;][i] - pad
-                    
+
                     if 0 &lt;= f90_idx &lt; len(plot_time) and 0 &lt;= f10_idx &lt; len(plot_time):
                         # Create time array for fit curve - use the full segment width
                         # Find the corresponding segment in the analysis data
@@ -542,89 +685,164 @@ el.replaceWith(d);
                             # Fallback to using the 10% and 90% indices with some extension
                             segment_width = abs(f10_idx - f90_idx)
                             segment_start = max(0, f90_idx - segment_width)
-                            segment_end = min(len(plot_time) - 1, f10_idx + segment_width)
-                        
+                            segment_end = min(
+                                len(plot_time) - 1, f10_idx + segment_width
+                            )
+
                         # Ensure indices are within valid range
-                        segment_start = max(0, min(segment_start, len(plot_time)-1))
-                        segment_end = max(0, min(segment_end, len(plot_time)-1))
-                        
+                        segment_start = max(0, min(segment_start, len(plot_time) - 1))
+                        segment_end = max(0, min(segment_end, len(plot_time) - 1))
+
                         # Create time array spanning the full segment
                         t_start = plot_time[segment_start]
                         t_end = plot_time[segment_end]
                         t_fit = np.linspace(t_start, t_end, 100)
-                        
+
                         # Check if we have the complete parameter set
                         if isinstance(params, dict) and &#34;function&#34; in params:
                             # Use the stored function directly
                             y_fit = params[&#34;function&#34;](t_fit)
-                            
+
                             # Get fit type and R-squared if available
                             fit_type = params.get(&#34;fit_type&#34;, &#34;single&#34;)
                             r_squared = params.get(&#34;r_squared&#34;, None)
-                            
+
                             # Create appropriate label
                             if fit_type == &#34;double&#34;:
-                                label = f&#34;Double Exp. OFF Fit&#34; if i == 0 and &#34;rise_fit_params&#34; not in analysis else &#34;&#34;
+                                label = (
+                                    f&#34;Double Exp. OFF Fit&#34;
+                                    if i == 0 and &#34;rise_fit_params&#34; not in analysis
+                                    else &#34;&#34;
+                                )
                                 if r_squared is not None:
-                                    label += f&#34; (R²={r_squared:.3f})&#34; if i == 0 and &#34;rise_fit_params&#34; not in analysis else &#34;&#34;
+                                    label += (
+                                        f&#34; (R²={r_squared:.3f})&#34;
+                                        if i == 0 and &#34;rise_fit_params&#34; not in analysis
+                                        else &#34;&#34;
+                                    )
                             else:
-                                label = f&#34;Field OFF Response Fit&#34; if i == 0 and &#34;rise_fit_params&#34; not in analysis else &#34;&#34;
+                                label = (
+                                    f&#34;Field OFF Response Fit&#34;
+                                    if i == 0 and &#34;rise_fit_params&#34; not in analysis
+                                    else &#34;&#34;
+                                )
                                 if r_squared is not None:
-                                    label += f&#34; (R²={r_squared:.3f})&#34; if i == 0 and &#34;rise_fit_params&#34; not in analysis else &#34;&#34;
-                        elif len(params) &gt;= 4:  # We have all parameters including time offset
+                                    label += (
+                                        f&#34; (R²={r_squared:.3f})&#34;
+                                        if i == 0 and &#34;rise_fit_params&#34; not in analysis
+                                        else &#34;&#34;
+                                    )
+                        elif (
+                            len(params) &gt;= 4
+                        ):  # We have all parameters including time offset
                             if isinstance(params, dict) and &#34;is_rise&#34; in params:
                                 # Use the is_rise flag to determine which function to use
                                 fit_type = params.get(&#34;fit_type&#34;, &#34;single&#34;)
-                                
+
                                 if fit_type == &#34;double&#34;:
                                     if params[&#34;is_rise&#34;]:
-                                        y_fit = MPLFitter.global_double_rise_exp(t_fit, *params[&#34;params&#34;])
+                                        y_fit = MPLFitter.global_double_rise_exp(
+                                            t_fit, *params[&#34;params&#34;]
+                                        )
                                     else:
-                                        y_fit = MPLFitter.global_double_fall_exp(t_fit, *params[&#34;params&#34;])
+                                        y_fit = MPLFitter.global_double_fall_exp(
+                                            t_fit, *params[&#34;params&#34;]
+                                        )
                                 else:  # single exponential
                                     if params[&#34;is_rise&#34;]:
-                                        y_fit = MPLFitter.global_rise_exp(t_fit, *params[&#34;params&#34;])
+                                        y_fit = MPLFitter.global_rise_exp(
+                                            t_fit, *params[&#34;params&#34;]
+                                        )
                                     else:
-                                        y_fit = MPLFitter.global_fall_exp(t_fit, *params[&#34;params&#34;])
-                                
-                                label = &#34;Field OFF Response Fit&#34; if i == 0 and &#34;rise_fit_params&#34; not in analysis else &#34;&#34;
+                                        y_fit = MPLFitter.global_fall_exp(
+                                            t_fit, *params[&#34;params&#34;]
+                                        )
+
+                                label = (
+                                    &#34;Field OFF Response Fit&#34;
+                                    if i == 0 and &#34;rise_fit_params&#34; not in analysis
+                                    else &#34;&#34;
+                                )
                                 if &#34;r_squared&#34; in params:
-                                    label += f&#34; (R²={params[&#39;r_squared&#39;]:.3f})&#34; if i == 0 and &#34;rise_fit_params&#34; not in analysis else &#34;&#34;
+                                    label += (
+                                        f&#34; (R²={params[&#39;r_squared&#39;]:.3f})&#34;
+                                        if i == 0 and &#34;rise_fit_params&#34; not in analysis
+                                        else &#34;&#34;
+                                    )
                                 else:
                                     y_fit = global_fall_exp(t_fit, *params[&#34;params&#34;])
-                                label = &#34;Field OFF Response Fit&#34; if i == 0 and &#34;rise_fit_params&#34; not in analysis else &#34;&#34;
+                                label = (
+                                    &#34;Field OFF Response Fit&#34;
+                                    if i == 0 and &#34;rise_fit_params&#34; not in analysis
+                                    else &#34;&#34;
+                                )
                             elif isinstance(params, (list, tuple)):
                                 # Check if we have function type information
                                 if len(params) &gt; 4 and params[3] == 1:
                                     # This is a rise exponential
-                                    y_fit = global_rise_exp(t_fit, params[0], params[1], params[2], params[4])
+                                    y_fit = global_rise_exp(
+                                        t_fit,
+                                        params[0],
+                                        params[1],
+                                        params[2],
+                                        params[4],
+                                    )
                                 else:
                                     # This is a fall exponential
-                                    y_fit = global_fall_exp(t_fit, params[0], params[1], params[2], params[4])
-                                label = &#34;Field OFF Response Fit&#34; if i == 0 and &#34;rise_fit_params&#34; not in analysis else &#34;&#34;
+                                    y_fit = global_fall_exp(
+                                        t_fit,
+                                        params[0],
+                                        params[1],
+                                        params[2],
+                                        params[4],
+                                    )
+                                label = (
+                                    &#34;Field OFF Response Fit&#34;
+                                    if i == 0 and &#34;rise_fit_params&#34; not in analysis
+                                    else &#34;&#34;
+                                )
                         else:
                             # Fallback for backward compatibility
-                            logger.warning(&#34;Incomplete fit parameters, using fallback method&#34;)
+                            logger.warning(
+                                &#34;Incomplete fit parameters, using fallback method&#34;
+                            )
                             if len(params) &gt; 3 and params[3] == 1:
                                 # This is a rise exponential
                                 y_fit = rise_exp(t_fit - t_fit[0], *params[:3])
                             else:
                                 # This is a fall exponential
                                 y_fit = fall_exp(t_fit - t_fit[0], *params[:3])
-                            label = &#34;Field OFF Response Fit&#34; if i == 0 and &#34;rise_fit_params&#34; not in analysis else &#34;&#34;
-                        
+                            label = (
+                                &#34;Field OFF Response Fit&#34;
+                                if i == 0 and &#34;rise_fit_params&#34; not in analysis
+                                else &#34;&#34;
+                            )
+
                         # Plot fit curve
-                        ax2.plot(t_fit, y_fit, &#39;:&#39;, color=&#39;k&#39;, alpha=0.7, 
-                                linewidth=1.5, label=label)
+                        ax2.plot(
+                            t_fit,
+                            y_fit,
+                            &#34;:&#34;,
+                            color=&#34;k&#34;,
+                            alpha=0.7,
+                            linewidth=1.5,
+                            label=label,
+                        )
 
     # Plot current state as step function
-    ax3.step(plot_time, current_state / current, &#39;g-&#39;, where=&#39;post&#39;, 
-             label=&#34;Current State&#34;, alpha=0.8)
-    
+    ax3.step(
+        plot_time,
+        current_state / current,
+        &#34;g-&#34;,
+        where=&#34;post&#34;,
+        label=&#34;Current State&#34;,
+        alpha=0.8,
+    )
+
     # Shade regions where current is on
     for start, end in current_regions:
-        ax3.axvspan(start, end, color=&#39;g&#39;, alpha=0.1)
-    
+        ax3.axvspan(start, end, color=&#34;g&#34;, alpha=0.1)
+
     # Add secondary y-axis for PL contrast
     ax3_pl = ax3.twinx()
     contrast_min, contrast_max = np.min(contrast), np.max(contrast)
@@ -633,7 +851,7 @@ el.replaceWith(d);
 
     # Plot the contrast line
     ax3_pl.plot(plot_time, contrast, &#34;r-&#34;, label=&#34;PL Contrast&#34;)
-    
+
     # Add fill_between to highlight the contrast
     baseline = 100  # Since we normalized to 100%
     for start, end in current_regions:
@@ -644,18 +862,19 @@ el.replaceWith(d);
                 plot_time[region_mask],
                 baseline,
                 contrast[region_mask],
-                color=&#39;r&#39;, alpha=0.2,
-                label=&#34;Contrast Change&#34; if start == current_regions[0][0] else &#34;&#34;
+                color=&#34;r&#34;,
+                alpha=0.2,
+                label=&#34;Contrast Change&#34; if start == current_regions[0][0] else &#34;&#34;,
             )
-    
+
     ax3_pl.set_ylabel(&#34;Contrast (%)&#34;)
     ax3_pl.set_ylim(contrast_min - padding, contrast_max + padding)
-    
+
     # Set primary y-axis limits and labels
     ax3.set_ylim(-0.1, 1.1)
     ax3.set_ylabel(&#34;Gate&#34;)
     ax3.set_xlabel(&#34;Time (s)&#34;)
-    
+
     # Create combined legend
     lines1, labels1 = ax3.get_legend_handles_labels()
     lines2, labels2 = ax3_pl.get_legend_handles_labels()

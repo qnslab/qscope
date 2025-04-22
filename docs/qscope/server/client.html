@@ -322,10 +322,10 @@ def client_sync(
                 socket.close()
             except zmq.ZMQError as e:
                 logger.debug(f&#34;Error closing socket: {e}&#34;)
-    
+
     # Also terminate the ZMQ context to ensure clean shutdown
     try:
-        if hasattr(client_connection, &#39;context&#39;) and client_connection.context:
+        if hasattr(client_connection, &#34;context&#34;) and client_connection.context:
             client_connection.context.term()
     except Exception as e:
         logger.debug(f&#34;Error terminating ZMQ context: {e}&#34;)</code></pre>
@@ -928,7 +928,7 @@ def measurement_save_sweep(
 <div class="desc"></div>
 </dd>
 <dt id="qscope.server.client.measurement_save_sweep_w_fit"><code class="name flex">
-<span>def <span class="ident">measurement_save_sweep_w_fit</span></span>(<span>client_connection: ClientConnection,<br>meas_id: str,<br>project_name: str,<br>xdata: np.ndarray,<br>ydata: np.ndarray,<br>xfit: np.ndarray,<br>yfit: np.ndarray,<br>fit_results: str,<br>color_map: str = 'gray',<br>notes: str = '',<br>request_retries: int = 3)</span>
+<span>def <span class="ident">measurement_save_sweep_w_fit</span></span>(<span>client_connection: ClientConnection,<br>meas_id: str,<br>project_name: str,<br>xdata: np.ndarray,<br>ydata: np.ndarray,<br>xfit: np.ndarray,<br>yfit: np.ndarray,<br>fit_results: str,<br>comparison_x: np.ndarray = None,<br>comparison_y: np.ndarray = None,<br>comparison_label: str = None,<br>color_map: str = 'gray',<br>notes: str = '',<br>request_retries: int = 3)</span>
 </code></dt>
 <dd>
 <details class="source">
@@ -945,6 +945,9 @@ def measurement_save_sweep_w_fit(
     xfit: np.ndarray,
     yfit: np.ndarray,
     fit_results: str,
+    comparison_x: np.ndarray = None,
+    comparison_y: np.ndarray = None,
+    comparison_label: str = None,
     color_map: str = &#34;gray&#34;,
     notes: str = &#34;&#34;,
     request_retries: int = DEFAULT_RETRIES,
@@ -965,6 +968,9 @@ def measurement_save_sweep_w_fit(
                 &#34;xfit&#34;: xfit,
                 &#34;yfit&#34;: yfit,
                 &#34;fit_results&#34;: fit_results,
+                &#34;comparison_x&#34;: comparison_x,
+                &#34;comparison_y&#34;: comparison_y,
+                &#34;comparison_label&#34;: comparison_label,
                 &#34;color_map&#34;: color_map,
                 &#34;notes&#34;: notes,
             },
@@ -1500,7 +1506,7 @@ def shutdown_server(
     client_connection: ClientConnection, request_retries: int = DEFAULT_RETRIES
 ) -&gt; None:
     &#34;&#34;&#34;Send shutdown request to server and handle expected disconnection.
-    
+
     This function sends a shutdown command to the server and expects the server
     to close the connection afterward. It handles any connection errors that
     may occur during this process.
@@ -1508,11 +1514,9 @@ def shutdown_server(
     calls: qscope.server.server.handle_shutdown
     try:
         # Send the shutdown request with fewer retries since we expect disconnection
-        resp = _send_request(
-            client_connection, Request(CONSTS.COMMS.SHUTDOWN), 1
-        )
+        resp = _send_request(client_connection, Request(CONSTS.COMMS.SHUTDOWN), 1)
         logger.info(&#34;Server shutdown initiated successfully&#34;)
-        
+
         # Close all sockets with LINGER=0 to prevent hanging
         for socket in [
             client_connection.msg_socket,
@@ -1524,13 +1528,13 @@ def shutdown_server(
                 socket.close()
             except:
                 pass
-        
+
         # Terminate the ZMQ context to ensure clean shutdown
         try:
             client_connection.context.term()
         except:
             pass
-            
+
         return resp
     except zmq.ZMQError as e:
         logger.info(f&#34;Expected ZMQ error during shutdown: {e}&#34;)
@@ -1545,12 +1549,12 @@ def shutdown_server(
                 socket.close()
             except:
                 pass
-        
+
         try:
             client_connection.context.term()
         except:
             pass
-            
+
         return None
     except Exception as e:
         logger.warning(f&#34;Unexpected error during shutdown: {e}&#34;)
@@ -1565,12 +1569,12 @@ def shutdown_server(
                 socket.close()
             except:
                 pass
-                
+
         try:
             client_connection.context.term()
         except:
             pass
-            
+
         return None</code></pre>
 </details>
 <div class="desc"><p>Send shutdown request to server and handle expected disconnection.</p>
@@ -1999,6 +2003,158 @@ def stop_measurement(
 </details>
 <div class="desc"></div>
 </dd>
+<dt id="qscope.server.client.wait_for_notif_with_meas_check"><code class="name flex">
+<span>async def <span class="ident">wait_for_notif_with_meas_check</span></span>(<span>qu: asyncio.Queue, notif_type: Type[Notification], meas_id: str, timeout=5)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">async def wait_for_notif_with_meas_check(
+    qu: asyncio.Queue, 
+    notif_type: Type[Notification], 
+    meas_id: str,
+    timeout=DEFAULT_TIMEOUT
+):
+    &#34;&#34;&#34;Wait for a specific notification type while monitoring measurement state.
+    
+    This function watches for both the requested notification type and any
+    measurement state changes that would indicate the measurement has stopped.
+    If the measurement is stopped, it returns the latest matching notification
+    seen so far.
+    
+    Parameters
+    ----------
+    qu : asyncio.Queue
+        Queue of notifications
+    notif_type : Type[Notification]
+        The notification type to wait for
+    meas_id : str
+        Measurement ID to check for state changes
+    timeout : float, optional
+        Maximum time to wait, by default DEFAULT_TIMEOUT
+        
+    Returns
+    -------
+    Notification
+        The notification of the requested type
+        
+    Raises
+    ------
+    MeasurementStoppedError
+        If the measurement is stopped while waiting, includes latest notification
+    TimeoutError
+        If timeout is reached before any relevant notification is received
+    &#34;&#34;&#34;
+    start = time.time()
+    latest_matching_notif = None
+    
+    # First, check if there are any notifications already in the queue
+    # This helps with testing and cases where notifications arrive before we start waiting
+    all_notifs = []
+    while not qu.empty():
+        try:
+            notif = qu.get_nowait()
+            all_notifs.append(notif)
+            
+            # Store the latest matching notification for this measurement
+            if (isinstance(notif, notif_type) and 
+                hasattr(notif, &#39;meas_id&#39;) and 
+                notif.meas_id == meas_id):
+                latest_matching_notif = notif
+            
+            # Check if this is a measurement update indicating the measurement was stopped
+            if (isinstance(notif, MeasurementUpdate) and 
+                notif.meas_id == meas_id and
+                notif.new_state in [MEAS_STATE.FINISHED, MEAS_STATE.CLOSE]):
+                
+                # If we found a stop notification, raise immediately with the latest matching notif
+                raise MeasurementStoppedError(
+                    f&#34;Measurement {meas_id} was stopped with state {notif.new_state}&#34;,
+                    latest_matching_notif
+                )
+        except asyncio.QueueEmpty:
+            break
+    
+    # Put back any notifications that weren&#39;t stop notifications or matching notifications
+    for notif in all_notifs:
+        if (not isinstance(notif, MeasurementUpdate) or 
+            notif.meas_id != meas_id or 
+            notif.new_state not in [MEAS_STATE.FINISHED, MEAS_STATE.CLOSE]):
+            
+            if not (isinstance(notif, notif_type) and 
+                   hasattr(notif, &#39;meas_id&#39;) and 
+                   notif.meas_id == meas_id):
+                qu.put_nowait(notif)
+    
+    # If we found a matching notification, return it
+    if latest_matching_notif is not None:
+        return latest_matching_notif
+    
+    # Otherwise, wait for new notifications
+    while time.time() - start &lt; timeout:
+        try:
+            notif = qu.get_nowait()
+            
+            # Store the latest matching notification for this measurement
+            if (isinstance(notif, notif_type) and 
+                hasattr(notif, &#39;meas_id&#39;) and 
+                notif.meas_id == meas_id):
+                latest_matching_notif = notif
+            
+            # Check if this is a measurement update indicating the measurement was stopped
+            if (isinstance(notif, MeasurementUpdate) and 
+                notif.meas_id == meas_id and
+                notif.new_state in [MEAS_STATE.FINISHED, MEAS_STATE.CLOSE]):
+                
+                raise MeasurementStoppedError(
+                    f&#34;Measurement {meas_id} was stopped with state {notif.new_state}&#34;,
+                    latest_matching_notif
+                )
+                
+            # Return immediately if we find a matching notification
+            if (isinstance(notif, notif_type) and 
+                hasattr(notif, &#39;meas_id&#39;) and 
+                notif.meas_id == meas_id):
+                return notif
+                
+        except asyncio.QueueEmpty:
+            pass
+            
+        await asyncio.sleep(0.01)
+        
+    raise TimeoutError(f&#34;Timeout waiting for {notif_type} notification.&#34;)</code></pre>
+</details>
+<div class="desc"><p>Wait for a specific notification type while monitoring measurement state.</p>
+<p>This function watches for both the requested notification type and any
+measurement state changes that would indicate the measurement has stopped.
+If the measurement is stopped, it returns the latest matching notification
+seen so far.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>qu</code></strong> :&ensp;<code>asyncio.Queue</code></dt>
+<dd>Queue of notifications</dd>
+<dt><strong><code>notif_type</code></strong> :&ensp;<code>Type[Notification]</code></dt>
+<dd>The notification type to wait for</dd>
+<dt><strong><code>meas_id</code></strong> :&ensp;<code>str</code></dt>
+<dd>Measurement ID to check for state changes</dd>
+<dt><strong><code>timeout</code></strong> :&ensp;<code>float</code>, optional</dt>
+<dd>Maximum time to wait, by default DEFAULT_TIMEOUT</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Notification</code></dt>
+<dd>The notification of the requested type</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>MeasurementStoppedError</code></dt>
+<dd>If the measurement is stopped while waiting, includes latest notification</dd>
+<dt><code>TimeoutError</code></dt>
+<dd>If timeout is reached before any relevant notification is received</dd>
+</dl></div>
+</dd>
 </dl>
 </section>
 <section>
@@ -2114,6 +2270,7 @@ setTimeout(() => input.focus(), 100);
 <li><code><a title="qscope.server.client.stop_measurement" href="#qscope.server.client.stop_measurement">stop_measurement</a></code></li>
 <li><code><a title="qscope.server.client.video" href="#qscope.server.client.video">video</a></code></li>
 <li><code><a title="qscope.server.client.wait_for_notif" href="#qscope.server.client.wait_for_notif">wait_for_notif</a></code></li>
+<li><code><a title="qscope.server.client.wait_for_notif_with_meas_check" href="#qscope.server.client.wait_for_notif_with_meas_check">wait_for_notif_with_meas_check</a></code></li>
 </ul>
 </li>
 </ul>

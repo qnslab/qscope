@@ -2,10 +2,6 @@
 
 This section provides conceptual explanations of QScope's architecture and design.
 
-For detailed explanations of QScope's architecture and role system, see the [Developer Documentation](https://github.com/DavidBroadway/qscope/blob/main/DEVDOCS.md).
-
-Below is a summary of key concepts:
-
 ## Architecture Overview
 
 QScope uses a distributed architecture with these key components:
