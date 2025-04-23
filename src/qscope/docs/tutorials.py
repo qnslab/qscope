@@ -24,9 +24,6 @@ Qscope uses the `doit` build system for various tasks:
 ```bash
 # Run logic tests
 doit test_logic
-
-# Check system compatibility
-doit check_systems
 ```
 
 ## Getting Started with QScope

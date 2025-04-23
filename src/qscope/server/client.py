@@ -268,11 +268,12 @@ def _get_response(
     ValueError
         If the response cannot be deserialized from msgpack format
     """
-    retries_left = request_retries
+    retries_left = request_retries + 1 # (+1 to account for the first attempt)
     is_shutdown_request = request.command == CONSTS.COMMS.SHUTDOWN
 
     logger.debug("*REQUEST* (client->): {}", request)
     client_connection.msg_socket.send(request.to_msgpack())
+    logger.trace("*NOTIF* (client<-) Waiting for response...")
     while True:
         try:
             if client_connection.msg_socket.poll(1000 * DEFAULT_TIMEOUT, zmq.POLLIN):
@@ -305,12 +306,7 @@ def _get_response(
         logger.info("Reconnecting to server...")
         # Create new connection, try request again (only on REQ/msg socket)
         client_connection.msg_socket = client_connection.context.socket(zmq.REQ)
-        client_connection = _open_connection(
-            client_connection.host,
-            client_connection.msg_port,
-            client_connection.notif_port,
-            client_connection.stream_port,
-        )
+        _reopen_connection(client_connection)
         logger.debug("*REQUEST* (client->): {}", request)
         client_connection.msg_socket.send(request.to_msgpack())
 
@@ -450,6 +446,55 @@ def _open_connection(
         raise CommsError(f"Error during connection: {format_error_response()}")
     return client_connection
 
+# ===================================== =======================================
+
+def _reopen_connection(
+    client_connection: ClientConnection,
+) -> None:
+    """Reopen ZMQ sockets for all communication channels with the server.
+
+    This function updates the existing `client_connection` object in-place.
+
+    Parameters
+    ----------
+    client_connection : ClientConnection
+        The connection object to update
+
+    Raises
+    ------
+    CommsError
+        If there are any issues establishing the connections
+    zmq.ZMQError
+        If there are any ZMQ-specific errors
+    """
+    logger.info("Reopening connection to server on {}:{}.", client_connection.host, client_connection.msg_port)
+    try:
+        # Close existing sockets
+        for socket in [
+            client_connection.msg_socket,
+            client_connection.notif_socket,
+            client_connection.stream_socket,
+        ]:
+            if socket:
+                socket.setsockopt(zmq.LINGER, 0)
+                socket.close()
+
+        # Reinitialize sockets
+        client_connection.msg_socket = client_connection.context.socket(zmq.REQ)
+        client_connection.msg_socket.connect(f"tcp://{client_connection.host}:{client_connection.msg_port}")
+
+        client_connection.notif_socket = client_connection.context.socket(zmq.SUB)
+        client_connection.notif_socket.setsockopt(zmq.SUBSCRIBE, b"")  # subscribe to all
+        client_connection.notif_socket.connect(f"tcp://{client_connection.host}:{client_connection.notif_port}")
+
+        client_connection.stream_socket = client_connection.context.socket(zmq.SUB)
+        client_connection.stream_socket.setsockopt(zmq.SUBSCRIBE, b"")  # subscribe to all
+        client_connection.stream_socket.connect(f"tcp://{client_connection.host}:{client_connection.stream_port}")
+
+        logger.info("Connection reopened successfully.")
+    except Exception:
+        logger.exception("Error during connection reopening.")
+        raise CommsError(f"Error during connection reopening: {format_error_response()}")
 
 # ===================================== =======================================
 
@@ -886,7 +931,7 @@ def echo(
 
 @command(CONSTS.COMMS.STARTUP, response_type=DictResponse | ErrorResponse)
 def startup(
-    client_connection: ClientConnection, request_retries: int = DEFAULT_RETRIES
+    client_connection: ClientConnection, request_retries: int = 3*DEFAULT_RETRIES
 ) -> tuple[bool, dict[str, dict[str, str | bool]]]:
     """Start up the system on the server."""
     calls: qscope.server.server.handle_startup

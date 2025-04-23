@@ -160,3 +160,5 @@ bash_completion_doit
 /proprietary_artefacts/*
 # include the readme though
 !/proprietary_artefacts/README.md
+
+qscope_env/*

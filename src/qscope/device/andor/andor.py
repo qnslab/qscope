@@ -31,8 +31,9 @@ class AndorSDK3(Device):
         super().__init__(**config_kwargs)
 
         if platform.system() == "Windows":
-            # pll.par["devices/dlls/andor_sdk3"] = lib_folder
-            pll.par["devices/dlls/andor_sdk3"] = "C:\\Qscope\\proprietary_artefacts"
+            logger.info(lib_folder)
+            pll.par["devices/dlls/andor_sdk3"] = lib_folder
+            # pll.par["devices/dlls/andor_sdk3"] = "C:\\Qscope\\proprietary_artefacts"
         else:
             pll.par["devices/only_windows_dlls"] = False
             pll.par["devices/dlls/andor_sdk3"] = "/usr/local/lib/libatcore.so"
@@ -44,8 +45,11 @@ class AndorSDK3(Device):
 
     def open(self) -> tuple[bool, str]:
         try:
+            logger.warning("Opening camera...")
             self.cam = pylablib.devices.Andor.AndorSDK3Camera()
+            logger.warning("Camera object created")
             self.cam.open()
+            logger.warning("Camera opened")
             if pylablib.devices.Andor.get_cameras_number_SDK3() == 2 and not isinstance(
                 self, AndorSimCam
             ):

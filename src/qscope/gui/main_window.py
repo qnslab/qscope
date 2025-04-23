@@ -190,6 +190,9 @@ class MainWindow(QMainWindow):
                     )
                 if self.connection_manager.is_connected():
                     self.connection_manager.startup()  # will do nothing if already started up
+                    self.connection_manager.ping(
+                        request_retries=3
+                    )  # test that server responds
                 logger.info("Connected to local running server.")
                 return
             except:
@@ -201,7 +204,7 @@ class MainWindow(QMainWindow):
                 self.connection_manager.start_local_server(
                     system_name=system_name,
                     log_to_file=True,
-                    log_level="DEBUG",
+                    log_level="TRACE", # TODO use setting passed from cli
                 )
                 self.connection_manager.connect()
                 if self.connection_manager.client_sync.version != qscope.__version__:
@@ -212,7 +215,7 @@ class MainWindow(QMainWindow):
                     )
                 self.connection_manager.startup()
                 self.connection_manager.ping(
-                    request_retries=1
+                    request_retries=3,
                 )  # test that server responds
 
                 logger.info("Connected to background server.")

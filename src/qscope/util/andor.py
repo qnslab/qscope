@@ -1,5 +1,6 @@
 import os
 import platform
+from loguru import logger
 
 import pylablib as pll
 from pylablib.devices import Andor
@@ -12,6 +13,7 @@ lib_folder = os.path.abspath(
 
 def get_available_andor_cameras():
     if platform.system() == "Windows":
+        logger.info(lib_folder)
         pll.par["devices/dlls/andor_sdk3"] = lib_folder
     else:
         pll.par["devices/only_windows_dlls"] = False
