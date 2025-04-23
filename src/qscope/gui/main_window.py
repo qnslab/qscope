@@ -584,19 +584,21 @@ class MainWindow(QMainWindow):
                 len(self.timetrace_data) * self.cam_opts.exposure_time_input.value()
             )
 
-            # Downsample when we exceed the maximum points
-            MAX_POINTS = 1000  # Target maximum number of points
-            if len(self.timetrace_data) > MAX_POINTS * 1.2:  # Add some hysteresis
-                # Calculate the decimation factor needed
-                decimation_factor = len(self.timetrace_data) // (MAX_POINTS // 2)
+            # # Downsample when we exceed the maximum points
+            # MAX_POINTS = 1000  # Target maximum number of points
+            # if len(self.timetrace_data) > MAX_POINTS * 1.2:  # Add some hysteresis
+            #     # Calculate the decimation factor needed
+            #     decimation_factor = len(self.timetrace_data) // (MAX_POINTS // 2)
 
-                # Use every Nth point to maintain even time steps
-                self.timetrace_data = self.timetrace_data[::decimation_factor]
-                self.timetrace_time = self.timetrace_time[::decimation_factor]
+            #     # Use every Nth point to maintain even time steps
+            #     self.timetrace_data = self.timetrace_data[::decimation_factor]
+            #     self.timetrace_time = self.timetrace_time[::decimation_factor]
 
-                logger.debug(
-                    f"Downsampled time trace data with factor {decimation_factor}, new size: {len(self.timetrace_data)}"
-                )
+            #     logger.debug(
+            #         f"Downsampled time trace data with factor {decimation_factor}, new size: {len(self.timetrace_data)}"
+            #     )
+            if len(self.timetrace_data) > 50000:
+                logger.warning("Timetrace reached 50k pts, consider adding downsampling in `handle_new_video_frame`.")
 
             elapsed_time = self.clock.elapsed()
 
