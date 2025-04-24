@@ -35,6 +35,8 @@ class CameraOpts(QGroupBox):
     BINNING_LABEL = "Binning"
     TRIGGER_MODE_LABEL = "Trigger Mode"
     IMAGE_SIZE_LABEL = "Image Size (X, Y)"
+
+
     BUTTON_COLOR_BLUE = "background-color: blue"
     BUTTON_COLOR_GREEN = "background-color: green"
     BUTTON_COLOR_NONE = "background-color: None"
@@ -100,6 +102,8 @@ class CameraOpts(QGroupBox):
         self.image_size_x_input = create_widget_from_config(CameraSettings.image_size_x)
         self.image_size_y_input = create_widget_from_config(CameraSettings.image_size_y)
 
+
+
         camera_settings_frame = QFrame()
         self.camera_settings_layout = QVBoxLayout()
         add_row_to_layout(
@@ -123,6 +127,7 @@ class CameraOpts(QGroupBox):
                 [51, 24, 25],
             ),
         )
+
 
         camera_settings_frame.setLayout(self.camera_settings_layout)
 

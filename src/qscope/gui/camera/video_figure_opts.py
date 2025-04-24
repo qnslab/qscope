@@ -15,11 +15,23 @@ from loguru import logger
 from qscope.gui.figures.matplotlib_canvas import MplCanvas
 from qscope.gui.util.cbar import add_colorbar
 from qscope.gui.util.error_handling import show_critial_error, show_info, show_warning
-
+from qscope.gui.widgets.util import create_widget_from_config
+from qscope.gui.camera.settings_defs import CameraSettings
 
 class ImageFigureOpts(QGroupBox):
+    COLOR_LIMITS_LABEL = "Use Limits (Min, Max)"
+
+    BUTTON_COLOR_BLUE = "background-color: blue"
+    BUTTON_COLOR_GREEN = "background-color: green"
+    BUTTON_COLOR_NONE = "background-color: None"
+
     def __init__(self, target_figure, parent=None, title="Image plot options"):
         super().__init__(title, parent)
+        
+
+        self.min_val = 0
+        self.max_val = 10000
+
         self.figure = target_figure
         self.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.setStyleSheet("QGroupBox { font-weight: bold; }")
@@ -79,6 +91,26 @@ class ImageFigureOpts(QGroupBox):
         self.binning_row.addWidget(self.binning_x_input, 24)
         self.binning_row.addWidget(self.binning_y_input, 25)
 
+        self.use_limits_label = QPushButton(self.COLOR_LIMITS_LABEL)
+        self.use_limits_label.setCheckable(True)
+        self.use_limits_label.setStyleSheet(self.BUTTON_COLOR_NONE)
+        self.use_limits_label.setChecked(False)
+        self.use_limits_label.setToolTip("Use color limits for the image")
+        self.use_limits_label.clicked.connect(self.use_color_limits)
+
+
+        self.min_input = create_widget_from_config(CameraSettings.min_limit)
+        self.min_input.valueChanged.connect(self.min_limit_changed)
+        self.max_input = create_widget_from_config(CameraSettings.max_limit)
+        self.max_input.valueChanged.connect(self.max_limit_changed)
+
+
+        self.limit_row = QHBoxLayout()
+        self.limit_row.addWidget(self.use_limits_label, 50)
+        self.limit_row.addWidget(self.min_input, 24)
+        self.limit_row.addWidget(self.max_input, 25)
+
+
         # add the frame plot options to the frame plot layout
         self.layout = QVBoxLayout()
         # self.layout.addWidget(self.img_plot_label)
@@ -86,6 +118,7 @@ class ImageFigureOpts(QGroupBox):
         self.layout.addLayout(self.cmap_row)
         self.layout.addLayout(self.binning_row)
         self.layout.addStretch()
+        self.layout.addLayout(self.limit_row)
         self.setLayout(self.layout)
 
         # connect the dropdowns to the callback functions
@@ -93,6 +126,8 @@ class ImageFigureOpts(QGroupBox):
 
         self.binning_x_input.valueChanged.connect(self.binning_changed)
         self.binning_y_input.valueChanged.connect(self.binning_changed)
+
+
 
     def binning_changed(self):
         bin_x = int(self.binning_x_input.text())
@@ -218,3 +253,61 @@ class ImageFigureOpts(QGroupBox):
 
         # set the current index to 0 which will trigger the select_cmap_type function
         self.cmap_dropdown.setCurrentIndex(0)
+
+    def use_color_limits(self):
+        """Callback for the use_limits_label clicked event"""
+        # check if the button is checked
+        if self.use_limits_label.isChecked():
+            # set the button to be pressed
+            self.use_limits_label.setStyleSheet(self.BUTTON_COLOR_BLUE)
+
+            self.min_val = self.get_value(self.min_input)
+            self.max_val = self.get_value(self.max_input)
+            self.figure.set_color_limits(True, self.min_val, self.max_val)
+            # enable the min and max inputs
+            self.min_input.setEnabled(True)
+            self.max_input.setEnabled(True)
+        else:
+            # set the button to be unpressed
+            self.use_limits_label.setStyleSheet(self.BUTTON_COLOR_NONE)
+
+            # disable the min and max inputs
+            self.min_input.setEnabled(False)
+            self.max_input.setEnabled(False)
+            self.figure.set_color_limits(False, self.min_val, self.max_val)
+
+    def min_limit_changed(self):
+        """Callback for the min_input valueChanged event"""
+
+        self.min_val = self.get_value(self.min_input)
+        # check if the min limit is less than the max limit
+        if self.min_val >= self.max_val:
+            show_warning("Min limit must be less than max limit")
+            return
+
+        # set the min limit in the figure
+        b_use_limits = self.use_limits_label.isChecked()
+        self.figure.set_color_limits(b_use_limits, self.min_val, self.max_val)
+    
+    def max_limit_changed(self):
+        """Callback for the max_input valueChanged event"""
+        self.max_val = self.get_value(self.max_input)
+        # check if the max limit is greater than the min limit
+        if self.max_val <= self.min_val:
+            show_warning("Max limit must be greater than min limit")
+            return
+
+       
+        # set the max limit in the figure
+        b_use_limits = self.use_limits_label.isChecked()
+        self.figure.set_color_limits(b_use_limits, self.min_val, self.max_val)
+
+    def get_value(self, spinbox):
+        """Get the value of a spinbox"""
+        # check if the spinbox text has a k at the end of it
+        if spinbox.text().endswith("k"):
+            # remove the k and convert to int
+            return int(spinbox.text()[:-1]) * 1000
+        else:
+            # convert to int
+            return int(spinbox.text())

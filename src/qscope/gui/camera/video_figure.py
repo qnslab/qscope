@@ -38,6 +38,10 @@ class ImageFigure(QWidget):
         self.bin_x = 1
         self.bin_y = 1
 
+        self.b_use_limits = False
+        self.vmin = 0
+        self.vmax = 10000
+
         self.init_plot(self.frame)
 
         self.rect = None
@@ -116,8 +120,12 @@ class ImageFigure(QWidget):
         else:
             self.frame_to_plt = frame_to_plt
 
-        self.plot.set_data(frame_to_plt)
-        self.plot.autoscale()
+        if self.b_use_limits:
+            self.plot.set_data(frame_to_plt)
+            self.plot.set_clim(self.vmin, self.vmax)
+        else:
+            self.plot.set_data(frame_to_plt)
+            self.plot.autoscale()
         self.canvas.draw()
 
     def set_binning(self, bin_x, bin_y):
@@ -129,3 +137,8 @@ class ImageFigure(QWidget):
     def set_cmap(self, cmap):
         self.plot.set_cmap(cmap)
         self.update_plot()
+
+    def set_color_limits(self, state, vmin, vmax):
+        self.vmin = vmin
+        self.vmax = vmax
+        self.b_use_limits = state
