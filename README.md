@@ -28,6 +28,18 @@ Then this project might be of interest to you!
 
 ### Installation
 
+For the uv approach on this branch
+- Clone the repo.
+- Install uv to powershell using thier instructions https://docs.astral.sh/uv/getting-started/installation/#cargo
+- Navigate to the repo folder in powershell
+- Using the command 'uv add .' to install qscope
+- uv doesn't install all of the packages so then us 'uv pip install pylablib'
+
+From this point you can now use qscope through uv using the following:
+'uv run qscope' followed by the qscope commands. 
+e.g. 'uv run qscope gui -n mock'
+
+
 Clone the repo & `pip install` it. For more info see [Installation](https://qnslab.github.io/qscope/qscope/docs/tutorials.html#installation).
 
 ### Starting the GUI
