@@ -45,6 +45,22 @@ class CameraSettings:
         max_value=10000,
     )
 
+    min_limit: WidgetConfig[int] = WidgetConfig(
+        name="min_limit",
+        widget_type=WidgetType.INT,
+        default=0,
+        min_value=0,
+        max_value=100000,
+    )
+
+    max_limit: WidgetConfig[int] = WidgetConfig(
+        name="max_limit",
+        widget_type=WidgetType.INT,
+        default=10000,
+        min_value=0,
+        max_value=100000,
+    )
+
     def get_widget_config(self, name: str) -> Optional[WidgetConfig]:
         """Get widget configuration by name"""
         return getattr(self, name, None)

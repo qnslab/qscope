@@ -2,9 +2,10 @@ from __future__ import annotations
 
 import asyncio
 from typing import TYPE_CHECKING
-
+import os
 import numpy as np
 import numpy.random
+from PIL import Image
 from loguru import logger
 
 from qscope.device.device import Device
@@ -12,6 +13,11 @@ from qscope.types.protocols import CameraProtocol
 
 if TYPE_CHECKING:
     from qscope.types import ServerConnection
+
+this_folder = os.path.abspath(os.path.realpath(os.path.dirname(__file__)))
+frame_logo_path = os.path.abspath(
+    os.path.join(this_folder, *[".." for i in range(4)], "docs/images/frame_logo.png")
+)
 
 
 class MockCamera(Device):  # Protocol compliance checked by role system
@@ -55,14 +61,38 @@ class MockCamera(Device):  # Protocol compliance checked by role system
 
     def take_snapshot(self):
         shp = self.get_frame_shape()
-        # return self._rng.random(self.get_frame_shape(), dtype=np.int8)
-        frame = self.__rng.integers(
+
+        # Load the PNG file
+        img = Image.open(frame_logo_path).convert("L")  # Convert to grayscale
+
+        # Convert to binary (0 or 1) using a threshold
+        threshold = 128
+        binary_img = img.point(lambda p: 200 if p < threshold else 100)
+
+        # Resize the image to match the frame shape
+        resized_img = binary_img.resize((shp[1], shp[0]), Image.NEAREST)
+
+        # Convert the image to a NumPy array
+        frame = np.array(resized_img, dtype=np.uint8)
+
+
+        frame_noise = self.__rng.integers(
             low=0,
-            high=np.random.randint(1, high=255),
+            high=np.random.randint(1, high=80),
             size=self.get_frame_shape(),
             dtype=np.uint8,
         )
-        return frame
+
+        # Add the noise to just the background of the image
+        # get all the pixels that are not part of the logo
+        # and set them to 0 in the noise image
+
+        mask = np.where(frame == 200, 0, 1)  # Create a mask for the logo pixels
+        frame_noise = np.where(mask == 0, 0, frame_noise)
+        # set the logo pixels to 0 in the noise image
+
+
+        return frame + frame_noise
 
     # unsure if this is the correct data shape.
     def get_all_seq_frames(self):
