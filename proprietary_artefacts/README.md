@@ -39,3 +39,19 @@ https://www.teledynevisionsolutions.com/support/support-center/software-firmware
 See e.g. https://www.picotech.com/downloads/linux
 On Sam's laptop the picoscope shared objects are in /opt/picoscope/lib/
 & was installed along with some other libraries.
+
+
+
+picoscope 5244D (use libps5000a)
+
+running on opensuse for now, installed from here
+
+follow instructions for python package installed here https://github.com/picotech/picosdk-python-wrappers?tab=readme-ov-file#installing-the-python-driver-bindings
+
+install drivers (zypper install libps5000a)
+
+clone the python wrappers & install into env
+
+-> so far, easy (connects easily, etc.)
+
+see manual here

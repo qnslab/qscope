@@ -5,6 +5,7 @@ This can be used to obtain a colormap of the drift itself over time but it can a
 
 '''
 import asyncio
+from loguru import logger
 import os
 import matplotlib.pyplot as plt
 import time
@@ -74,22 +75,31 @@ full_data = np.zeros((NUM_MEAS, 3, len(f_list)))
 
 
 # Make loop for all of the measurements 
-for i in range(NUM_MEAS):
-    print(f"Measurement {i+1}/{NUM_MEAS}")
-    # Add the measurement to the manager
-    meas_id = manager.add_measurement(config)
-    time.sleep(0.1)
-    # Start the measurement
-    manager.start_measurement_wait(meas_id)
-    time.sleep(0.1)
-    # Close the measurement after the number of sweeps and get the data
-    sweep_data = meas_stop_after_nsweeps(manager, meas_id, NUM_SWEEPS, timeout=60)
-    # sweep_data = meas_wait_for_nsweeps(manager, NUM_SWEEPS, timeout=60)
-    manager.close_measurement_wait(meas_id)
-    # Add the data to the full dataset
-    full_data[i, ::] = sweep_data
-    # wait for a bit to let the system settle
-    time.sleep(0.1)
+i = 0
+while True:
+    try:
+        print(f"Measurement {i+1}/{NUM_MEAS}")
+        # Add the measurement to the manager
+        meas_id = manager.add_measurement(config)
+        time.sleep(0.1)
+        # Start the measurement
+        manager.start_measurement_wait(meas_id)
+        time.sleep(0.1)
+        # Close the measurement after the number of sweeps and get the data
+        sweep_data = meas_stop_after_nsweeps(manager, meas_id, NUM_SWEEPS, timeout=60)
+        # sweep_data = meas_wait_for_nsweeps(manager, NUM_SWEEPS, timeout=60)
+        manager.close_measurement_wait(meas_id)
+        # Add the data to the full dataset
+        full_data[i, ::] = sweep_data
+        # wait for a bit to let the system settle
+        time.sleep(0.1)
+        if i == NUM_MEAS:
+            break
+        i += 1
+    except Exception as e:
+        logger.error(f"Error during script: {e}")
+        logger.error("Atempting to continue with the next measurement")
+    
 
 # Close the connection
 # manager.shutdown()
@@ -114,7 +124,6 @@ while True:
 print(f"Saving data to {SAVE_NAME}_{i}.npy")
 # Save the data
 np.save(SAVE_DIR + f'{SAVE_NAME}_{i}.npy', full_data)
-
 
 # Save the frequency list
 np.save(SAVE_DIR + f'{SAVE_NAME}_{i}_f_list.npy', f_list)
