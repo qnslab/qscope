@@ -622,23 +622,37 @@ class SGCameraMeasurement(Measurement):
 
         sig_acc_frame = np.zeros(self.meas_config.frame_shape, dtype=np.uint64)
         ref_acc_frame = np.zeros(self.meas_config.frame_shape, dtype=np.uint64)
-        for _ in range(self.meas_config.avg_per_point):
-            for sigref in ("sig", "ref") if self.meas_config.ref_mode else ("sig",):
-                frame = self.framegrabber.get(sigref, self._idx)
-                avg_frame = sig_acc_frame if sigref == "sig" else ref_acc_frame
-                avg_frame += frame
-        if not self.meas_config.ref_mode:
-            ref_acc_frame = sig_acc_frame.copy()
 
-        if self._idx == self._frame_sending_num:
-            self.notif_queue.put_nowait(
-                MeasurementFrame(
-                    meas_id=self.meas_id,
-                    frame_num=self._idx,
-                    sig_frame=sig_acc_frame,
-                    ref_frame=ref_acc_frame,
+        # For in the case of long exposure acquisition, we need to average the 
+        # frames all from sig and all from ref rather than interleaving.
+
+        if hasattr(self.meas_config, "long_exposure") and self.meas_config.long_exposure:
+            for _ in range(self.meas_config.avg_per_point):
+                frame = self.framegrabber.get("sig", self._idx)
+                sig_acc_frame += frame
+            for _ in range(self.meas_config.avg_per_point):
+                frame = self.framegrabber.get("ref", self._idx)
+                ref_acc_frame += frame
+        else:
+            # Assume a normal interleaved acquisition
+            # e.g. sig, ref, sig, ref, ...
+            for _ in range(self.meas_config.avg_per_point):
+                for sigref in ("sig", "ref") if self.meas_config.ref_mode else ("sig",):
+                    frame = self.framegrabber.get(sigref, self._idx)
+                    avg_frame = sig_acc_frame if sigref == "sig" else ref_acc_frame
+                    avg_frame += frame
+            if not self.meas_config.ref_mode:
+                ref_acc_frame = sig_acc_frame.copy()
+
+            if self._idx == self._frame_sending_num:
+                self.notif_queue.put_nowait(
+                    MeasurementFrame(
+                        meas_id=self.meas_id,
+                        frame_num=self._idx,
+                        sig_frame=sig_acc_frame,
+                        ref_frame=ref_acc_frame,
+                    )
                 )
-            )
 
         # now update the data arrays
         self.full_y_sig[self._idx, :, :] += sig_acc_frame

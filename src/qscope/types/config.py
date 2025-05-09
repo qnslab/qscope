@@ -85,6 +85,7 @@ class SGAndorCWESRConfig(CameraConfig):
     fmod_freq: float
     rf_pow: float
     laser_delay: float
+    long_exposure: bool = False
 
 
 @dataclass(kw_only=True, repr=False)
