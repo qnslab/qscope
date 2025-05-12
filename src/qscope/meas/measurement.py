@@ -626,7 +626,7 @@ class SGCameraMeasurement(Measurement):
         # For in the case of long exposure acquisition, we need to average the 
         # frames all from sig and all from ref rather than interleaving.
 
-        if hasattr(self.meas_config, "long_exposure") and self.meas_config.long_exposure:
+        if hasattr(self.meas_config, "long_exp") and self.meas_config.long_exp:
             for _ in range(self.meas_config.avg_per_point):
                 frame = self.framegrabber.get("sig", self._idx)
                 sig_acc_frame += frame

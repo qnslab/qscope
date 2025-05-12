@@ -57,9 +57,6 @@ class SGAndorESRBase(SGCameraMeasurement):
         if self.ref_mode != "":
             nframes *= 2
 
-        if self.meas_config.avg_per_point > 1:
-            nframes *= self.meas_config.avg_per_point
-
         # Setup camera through System method
         self.system.setup_camera_sequence(
             nframes=nframes,
@@ -112,6 +109,7 @@ class SGAndorESRBase(SGCameraMeasurement):
 
     def _define_rf_freq_list(self):
         if self.ref_mode == "fmod":
+
             # interleave the sweep_x with the fmod_freq modulated sweep
             sig, ref = (
                 np.zeros(2 * len(self.meas_config.sweep_x)),
@@ -124,17 +122,20 @@ class SGAndorESRBase(SGCameraMeasurement):
                 idx += 1
                 sweep_x = np.array([f for pair in zip(sig, ref) for f in pair])
             if self.meas_config.avg_per_point > 1:
-                return np.repeat(sweep_x, self.meas_config.avg_per_point)
+                if hasattr(self.meas_config, "long_exp") and self.meas_config.long_exp:
+                    return sweep_x
+                else:
+                    return np.repeat(sweep_x, self.meas_config.avg_per_point)
             else:
                 return sweep_x
             # return np.array([f for pair in zip(sig, ref) for f in pair])
         else:
-            if self.meas_config.avg_per_point > 1:
-                return np.repeat(
-                    self.meas_config.sweep_x, self.meas_config.avg_per_point
-                )
-            else:
-                return self.meas_config.sweep_x
+            # if self.meas_config.avg_per_point > 1:
+            #     return np.repeat(
+            #         self.meas_config.sweep_x, self.meas_config.avg_per_point
+            #     )
+            # else:
+            return self.meas_config.sweep_x
 
     def _reset_per_sweep(self):
         self.system.start_rf_sweep()

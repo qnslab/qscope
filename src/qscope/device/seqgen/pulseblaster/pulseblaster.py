@@ -133,7 +133,7 @@ class PulseBlaster(Device):
         sequences = {
             "MockSGAndorCWESR": seq_cw_esr,
             "SGAndorCWESR": seq_cw_esr,
-            "SGAndorCWESRLongExposure": seq_cw_esr_long_exposure,
+            "SGAndorCWESRLongExp": seq_cw_esr_long_exposure,
             "SGAndorPESR": seq_p_esr,
             "SGAndorRabi": seq_rabi,
             "SGAndorT1": seq_t1,

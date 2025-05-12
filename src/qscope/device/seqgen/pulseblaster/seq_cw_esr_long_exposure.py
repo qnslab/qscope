@@ -44,7 +44,7 @@ def seq_cw_esr_long_exposure(
 
     # ------- Trigger -------
     pk_sig_trig = PulseKernel(seqgen.ch_defs)
-    pk_sig_trig.add_pulse(["laser", "rf_x"], 0, trigger_time)
+    pk_sig_trig.append_pulse(["laser", "rf_x"], trigger_time)
 
     # ------- REFERENCE -------
     pk_ref = PulseKernel(seqgen.ch_defs)
@@ -52,6 +52,8 @@ def seq_cw_esr_long_exposure(
         pk_ref.append_pulse(["laser"], exp_t)
     elif ref_mode == "no_laser":
         pk_ref.append_pulse(["rf_x"], exp_t)
+    elif ref_mode == "fmod":
+        pk_ref.append_pulse(["laser", "rf_x"], exp_t)
 
     # ------- Trigger -------
     pk_ref_trig = PulseKernel(seqgen.ch_defs)
@@ -59,7 +61,7 @@ def seq_cw_esr_long_exposure(
         pk_ref_trig.append_pulse(["laser"], trigger_time)
     elif ref_mode == "no_laser":
         pk_ref_trig.append_pulse(["rf_x"], trigger_time)
-    elif ref_mode == "f_mod":
+    elif ref_mode == "fmod":
         pk_ref_trig.append_pulse(["laser", "rf_x"], trigger_time)
 
     # Start the programming of the pulseblaster
@@ -77,23 +79,30 @@ def seq_cw_esr_long_exposure(
         seqgen.add_kernel(pk_sig, 1, const_chs=["camera"])
 
         if avg_per_point > 1:
+            seqgen.add_kernel(pk_sig_trig, 1, const_chs=[])
             seqgen.add_instruction([], 12, loop="end", inst=inst)
-
-        if avg_per_point > 1:
-            inst = seqgen.add_instruction([], 12, loop="start", num=avg_per_point)
-
-        if ref_mode == "f_mod":
-            # trigger the segnal generator to go to the next freq
-            seqgen.add_kernel(pk_sig, 1, const_chs=["rf_trig"])
+            if ref_mode == "fmod":
+                # trigger the segnal generator to go to the next freq
+                seqgen.add_kernel(pk_sig_trig, 1, const_chs=["rf_trig"])
         else:
-            seqgen.add_kernel(pk_sig, 1)
+            if ref_mode == "fmod":
+                # trigger the segnal generator to go to the next freq
+                seqgen.add_kernel(pk_sig_trig, 1, const_chs=["rf_trig"])
+            else:
+                seqgen.add_kernel(pk_sig_trig, 1, const_chs=[])
 
+        # Reference signal
         if b_ref:
-            seqgen.add_kernel(pk_ref, 1, const_chs=["camera"])
-            seqgen.add_kernel(pk_ref_trig, 1, const_chs=["rf_trig"])
+            if avg_per_point > 1:
+                inst = seqgen.add_instruction([], 12, loop="start", num=avg_per_point)
 
-        if avg_per_point > 1:
-            seqgen.add_instruction([], 12, loop="end", inst=inst)
+            seqgen.add_kernel(pk_ref, 1, const_chs=["camera"])
+                
+            if avg_per_point > 1:
+                seqgen.add_kernel(pk_ref_trig, 1, const_chs=[])
+                seqgen.add_instruction([], 12, loop="end", inst=inst)
+
+            seqgen.add_kernel(pk_ref_trig, 1, const_chs=["rf_trig"])
 
         seqgen.add_instruction([], dur=trigger_time)
 

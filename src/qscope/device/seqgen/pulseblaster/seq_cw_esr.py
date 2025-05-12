@@ -52,6 +52,8 @@ def seq_cw_esr(
         pk_ref.append_pulse(["laser"], exp_t)
     elif ref_mode == "no_laser":
         pk_ref.append_pulse(["rf_x"], exp_t)
+    elif ref_mode == "fmod":
+        pk_ref.append_pulse(["laser", "rf_x"], exp_t)
 
     # ------- Trigger -------
     pk_ref_trig = PulseKernel(seqgen.ch_defs)
@@ -59,7 +61,7 @@ def seq_cw_esr(
         pk_ref_trig.append_pulse(["laser"], trigger_time)
     elif ref_mode == "no_laser":
         pk_ref_trig.append_pulse(["rf_x"], trigger_time)
-    elif ref_mode == "f_mod":
+    elif ref_mode == "fmod":
         pk_ref_trig.append_pulse(["laser", "rf_x"], trigger_time)
 
     # Start the programming of the pulseblaster
@@ -75,11 +77,11 @@ def seq_cw_esr(
 
         # Add the SIG kernel to the sequence generator
         seqgen.add_kernel(pk_sig, 1, const_chs=["camera"])
-        if ref_mode == "f_mod":
+        if ref_mode == "fmod":
             # trigger the segnal generator to go to the next freq
-            seqgen.add_kernel(pk_sig, 1, const_chs=["rf_trig"])
+            seqgen.add_kernel(pk_sig_trig, 1, const_chs=["rf_trig"])
         else:
-            seqgen.add_kernel(pk_sig, 1)
+            seqgen.add_kernel(pk_sig_trig, 1)
 
         if b_ref:
             seqgen.add_kernel(pk_ref, 1, const_chs=["camera"])

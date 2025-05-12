@@ -56,7 +56,7 @@ async def _common_meas_runner(
     while time.time() - start < timeout:
         try:
             sweep_update = await manager.wait_for_notification_with_meas_check(
-                qscope.types.SweepUpdate, meas_id, timeout=1
+                qscope.types.SweepUpdate, meas_id, timeout=60
             )
             
             if sweep_update.meas_id == meas_id and sweep_update.nsweeps >= nsweeps:
