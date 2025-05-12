@@ -29,22 +29,24 @@ except qscope.server.ServerAlreadyRunning:
     manager.connect()
     pass
 
+
 # Define the frequency sweep that will be taken
 # f_list = qscope.util.gen_linear_sweep_list(2770, 2970, 100)
 # f_list = qscope.util.gen_multicentre_sweep_list([2840, 2910], 40, 41)
 f_list = qscope.util.gen_centred_sweep_list(2870, 100, 51)
 
 # Configure the measurement
-config = qscope.types.SGAndorCWESRConfig(
+config = qscope.types.SGAndorCWESRLongExpConfig(
     sweep_x=f_list,
     ref_mode="fmod",
     exposure_time=10e-3,
     frame_shape=(512, 512),
     hardware_binning=(1, 1),
-    avg_per_point=1,
+    avg_per_point=2,
     fmod_freq=20,
     rf_pow=-40.0,
     laser_delay=0.0,
+    long_exp=True,
 )
 # Add the measurement to the manager
 meas_id = manager.add_measurement(config)

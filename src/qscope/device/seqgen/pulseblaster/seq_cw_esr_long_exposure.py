@@ -12,7 +12,7 @@ if typing.TYPE_CHECKING:
     from .pulseblaster import PulseBlaster
 
 
-def seq_cw_esr(
+def seq_cw_esr_long_exposure(
     seqgen: PulseBlaster,
     sequence_params: dict[str, float],
     ref_mode: str = "no_rf",
@@ -44,7 +44,7 @@ def seq_cw_esr(
 
     # ------- Trigger -------
     pk_sig_trig = PulseKernel(seqgen.ch_defs)
-    pk_sig_trig.add_pulse(["laser", "rf_x"], 0, trigger_time)
+    pk_sig_trig.append_pulse(["laser", "rf_x"], trigger_time)
 
     # ------- REFERENCE -------
     pk_ref = PulseKernel(seqgen.ch_defs)
@@ -77,18 +77,32 @@ def seq_cw_esr(
 
         # Add the SIG kernel to the sequence generator
         seqgen.add_kernel(pk_sig, 1, const_chs=["camera"])
-        if ref_mode == "fmod":
-            # trigger the segnal generator to go to the next freq
-            seqgen.add_kernel(pk_sig_trig, 1, const_chs=["rf_trig"])
-        else:
-            seqgen.add_kernel(pk_sig_trig, 1)
-
-        if b_ref:
-            seqgen.add_kernel(pk_ref, 1, const_chs=["camera"])
-            seqgen.add_kernel(pk_ref_trig, 1, const_chs=["rf_trig"])
 
         if avg_per_point > 1:
+            seqgen.add_kernel(pk_sig_trig, 1, const_chs=[])
             seqgen.add_instruction([], 12, loop="end", inst=inst)
+            if ref_mode == "fmod":
+                # trigger the segnal generator to go to the next freq
+                seqgen.add_kernel(pk_sig_trig, 1, const_chs=["rf_trig"])
+        else:
+            if ref_mode == "fmod":
+                # trigger the segnal generator to go to the next freq
+                seqgen.add_kernel(pk_sig_trig, 1, const_chs=["rf_trig"])
+            else:
+                seqgen.add_kernel(pk_sig_trig, 1, const_chs=[])
+
+        # Reference signal
+        if b_ref:
+            if avg_per_point > 1:
+                inst = seqgen.add_instruction([], 12, loop="start", num=avg_per_point)
+
+            seqgen.add_kernel(pk_ref, 1, const_chs=["camera"])
+                
+            if avg_per_point > 1:
+                seqgen.add_kernel(pk_ref_trig, 1, const_chs=[])
+                seqgen.add_instruction([], 12, loop="end", inst=inst)
+
+            seqgen.add_kernel(pk_ref_trig, 1, const_chs=["rf_trig"])
 
         seqgen.add_instruction([], dur=trigger_time)
 

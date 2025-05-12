@@ -13,6 +13,7 @@ from qscope.device import Device
 from qscope.device.seqgen.pulseblaster.spinapi import *
 from qscope.util import format_error_response
 
+from .seq_cw_esr_long_exposure import seq_cw_esr_long_exposure
 from .seq_cw_esr import seq_cw_esr
 from .seq_p_esr import seq_p_esr
 from .seq_rabi import seq_rabi
@@ -132,6 +133,7 @@ class PulseBlaster(Device):
         sequences = {
             "MockSGAndorCWESR": seq_cw_esr,
             "SGAndorCWESR": seq_cw_esr,
+            "SGAndorCWESRLongExp": seq_cw_esr_long_exposure,
             "SGAndorPESR": seq_p_esr,
             "SGAndorRabi": seq_rabi,
             "SGAndorT1": seq_t1,
