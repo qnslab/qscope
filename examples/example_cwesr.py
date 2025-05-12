@@ -7,7 +7,7 @@ import qscope.util
 from qscope.scripting import meas_close_after_nsweeps
 
 # Set the total number of sweeps to be taken
-NUM_SWEEPS = 5
+NUM_SWEEPS = 1
 
 # Start the client server
 qscope.server.start_client_log(log_to_stdout=True, log_level="INFO")
@@ -23,7 +23,7 @@ manager.start_local_server(
 
 # Connect to the server
 manager.connect()
-manager.startup()
+# manager.startup()
 
 # Define the frequency sweep that will be taken
 # f_list = qscope.util.gen_linear_sweep_list(2770, 2970, 100)

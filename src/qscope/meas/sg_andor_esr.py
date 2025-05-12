@@ -11,6 +11,7 @@ from qscope.types import (
     SEQUENCE_GEN,
     MeasurementFrame,
     SGAndorCWESRConfig,
+    SGAndorCWESRLongExpConfig,
     SGAndorPESRConfig,
 )
 from qscope.util.defaults import MEAS_SWEEP_TIMEOUT
@@ -237,6 +238,17 @@ class SGAndorCWESR(SGAndorESRBase):
 
     _meas_config_type = SGAndorCWESRConfig
     meas_config: SGAndorCWESRConfig
+
+
+@requires_hardware(
+    SGCameraSystem,
+    roles=(MAIN_CAMERA, SEQUENCE_GEN, PRIMARY_RF),
+)
+class SGAndorCWESRLongExp(SGAndorESRBase):
+    """ESR measurement using CW excitation and camera detection."""
+
+    _meas_config_type = SGAndorCWESRLongExpConfig
+    meas_config: SGAndorCWESRLongExpConfig
 
 
 @requires_hardware(

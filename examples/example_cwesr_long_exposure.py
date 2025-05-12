@@ -31,7 +31,7 @@ manager.startup()
 f_list = qscope.util.gen_multicentre_sweep_list([2840, 2910], 40, 41)
 
 # Configure the measurement
-config = qscope.types.SGAndorCWESRConfig(
+config = qscope.types.SGAndorCWESRLongExpConfig(
     sweep_x=f_list,
     ref_mode="no_rf",
     exposure_time=30e-3,

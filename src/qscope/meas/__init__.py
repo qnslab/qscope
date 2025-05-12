@@ -45,6 +45,8 @@ from .mock_sg_andor_esr import MockSGAndorESR, MockSGAndorESRConfig
 from .sg_andor_esr import (
     SGAndorCWESR,
     SGAndorCWESRConfig,
+    SGAndorCWESRLongExp,
+    SGAndorCWESRLongExpConfig,
     SGAndorPESR,
     SGAndorPESRConfig,
 )

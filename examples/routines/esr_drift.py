@@ -27,7 +27,7 @@ import numpy as np
 SAVE_DIR = 'C:\\ExperimentalData\\2025\\2025-04\\2025-04-11_drift_testing\\'
 SAVE_NAME = 'esr_drift'
 # set the number of measurements to take
-NUM_MEAS = 1000
+NUM_MEAS = 1
 # Set the total number of sweeps to be taken in each esr
 NUM_SWEEPS = 1
 
@@ -39,8 +39,8 @@ manager = qscope.server.ConnectionManager()
 # Start connection manager and define the system
 try:
     manager.start_local_server(
-        "zyla",
-        # "hqdm",
+        # "zyla",
+        "hqdm",
         # "gmx",
     ) # logs go to ~./qscope/server.log
     # Connect to the server

@@ -85,8 +85,18 @@ class SGAndorCWESRConfig(CameraConfig):
     fmod_freq: float
     rf_pow: float
     laser_delay: float
-    long_exposure: bool = False
 
+@dataclass(kw_only=True, repr=False)
+class SGAndorCWESRLongExpConfig(CameraConfig):
+    """Configuration for CW ESR measurements."""
+
+    meas_type: str = "SGAndorCWESRLongExp"
+    save_name: str = "ESR"
+    avg_per_point: int
+    fmod_freq: float
+    rf_pow: float
+    laser_delay: float
+    long_exp: bool = True
 
 @dataclass(kw_only=True, repr=False)
 class SGAndorPESRConfig(CameraConfig):
