@@ -108,7 +108,7 @@ class MeasurementSettings:
         name="start_freq",
         widget_type=WidgetType.FLOAT,
         default=2770.0,
-        min_value=1000.0,
+        min_value=1.0,
         max_value=10000.0,
         transform=lambda x: round(x, 3),
     )
@@ -117,7 +117,7 @@ class MeasurementSettings:
         name="stop_freq",
         widget_type=WidgetType.FLOAT,
         default=2970.0,
-        min_value=1000.0,
+        min_value=1.0,
         max_value=10000.0,
         transform=lambda x: round(x, 3),
     )
@@ -134,7 +134,7 @@ class MeasurementSettings:
         name="freq_center",
         widget_type=WidgetType.FLOAT,
         default=2870.0,
-        min_value=1000.0,
+        min_value=1.0,
         max_value=10000.0,
         transform=lambda x: round(x, 3),
     )
