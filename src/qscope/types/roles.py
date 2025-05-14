@@ -78,6 +78,7 @@ if TYPE_CHECKING:
         MockSeqGen,
         PulseBlaster,
         SynthNV,
+        Sona,
         Zyla42,
         Zyla55,
     )
@@ -142,8 +143,16 @@ def get_valid_device_types() -> dict[str, Type["Device"]]:
             from qscope.device import Zyla55
 
             VALID_DEVICE_TYPES["Zyla55"] = Zyla55
+
         except ImportError:
             logger.error("Zyla55 device class not found")
+
+        try:
+            from qscope.device import Sona
+
+            VALID_DEVICE_TYPES["Sona"] = Sona
+        except ImportError:
+            logger.error("Sona device class not found")
 
     return VALID_DEVICE_TYPES
 

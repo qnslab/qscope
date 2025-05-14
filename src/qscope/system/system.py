@@ -771,6 +771,9 @@ class SGCameraSystem(SGSystem):
         binning: tuple[int, int],
         role: DeviceRole[CameraProtocol] = MAIN_CAMERA,
     ):
+        logger.info(
+            f"Setting camera params: {exp_t=}, {image_size=}, {binning=}"
+        )
         self.get_device_by_role(role).set_exposure_time(exp_t)
         self.get_device_by_role(role).set_frame_shape(
             image_size

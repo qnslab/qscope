@@ -22,7 +22,7 @@ if TYPE_CHECKING:
 
 this_folder = os.path.abspath(os.path.realpath(os.path.dirname(__file__)))
 lib_folder = os.path.abspath(
-    os.path.join(this_folder, *[".." for i in range(4)], "proprietary_artefacts")
+    os.path.join(this_folder, *[".." for i in range(4)], "proprietary_artefacts\\andor_sdk3")
 )
 
 # TODO could probably have a class above this for all pylablib cameras, share functionality
@@ -32,8 +32,8 @@ class AndorSDK3(Device):
 
         if platform.system() == "Windows":
             logger.info(lib_folder)
+            # logger.info(pll.par["devices/dlls/andor_sdk3"])
             pll.par["devices/dlls/andor_sdk3"] = lib_folder
-            # pll.par["devices/dlls/andor_sdk3"] = "C:\\Qscope\\proprietary_artefacts"
         else:
             pll.par["devices/only_windows_dlls"] = False
             pll.par["devices/dlls/andor_sdk3"] = "/usr/local/lib/libatcore.so"
@@ -255,11 +255,14 @@ class AndorSDK3(Device):
         # internal
         trig_mode = self._get_attr_dev("TriggerMode")
         self.cam.set_trigger_mode("int")
-        self.cam.set_exposure(value)
+        # self.cam.set_exposure(value)
+        self.cam.cav["ExposureTime"] = value # This is required for setting the Sona exposure time correctly, it does not work with the set_exposure method
         # switch back to the original trigger mode
-        if trig_mode == "Internal":
+        if trig_mode == "Internal" or trig_mode == "int":
             self.cam.set_trigger_mode("int")
-        elif trig_mode == "External Exposure":
+        elif trig_mode == "External Exposure" or trig_mode == "ext_exp":
+            self.cam.set_trigger_mode("ext_exp")
+        else:
             self.cam.set_trigger_mode("ext_exp")
         self._exposure_time = value
 
@@ -435,17 +438,27 @@ class AndorSimCam(AndorSDK3):
     pass
 
 
-class Sona42(AndorSDK3):
+class Sona(AndorSDK3):
     def __init__(self, **config_kwargs):
         super().__init__(**config_kwargs)
         self._shutter_mode = "Rolling"
-        self._roi = (0, 2048, 0, 2048)  # correct?
+        self._roi = (0, 2048, 0, 2046)  # correct?
+        self._sensor_height = 2046
+        self._sensor_width = 2048
 
     def open(self) -> tuple[bool, str]:
-        # FIXME, SONA temp is set differently.
-        super().open()
-        self.cam.set_temperature(-25, enable_cooler=True)
-        self._set_attr_dev("SensorCooling", True)
+        is_ok, reason = super().open()
+    
+        # Some of the commands and settings are slightly different for the Sona
+        self.cam.set_attribute_value("SimplePreAmpGainControl", 1)
+
+        try:
+            self.cam.set_temperature(-25, enable_cooler=True)
+            self._set_attr_dev("SensorCooling", True)
+        except Exception as e:
+            return False, f"Error setting temp: {e}"
+        
+        return is_ok, reason
 
 
 class Zyla42(AndorSDK3):
@@ -464,8 +477,8 @@ class Zyla55(AndorSDK3):
         super().__init__(**config_kwargs)
         self._shutter_mode = "Rolling"
         # is this the correct order(ing)?
-        self._roi = (0, 2056, 0, 2048)
-        self._sensor_height = 2056
+        self._roi = (0, 2560, 0, 2048)
+        self._sensor_height = 2560
         self._sensor_width = 2048
 
     def open(self) -> tuple[bool, str]:
