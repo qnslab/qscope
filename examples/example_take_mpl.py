@@ -821,3 +821,35 @@ def trigtrace(
 
 
 if __name__ == "__main__":
+
+
+    trigtrace(
+        system_name = "Zyla",
+        current = 0.45, # Amps
+        frequency = 10, # Hz
+        duration= 10, # seconds
+        averages = 10, # Number of measurements to average
+        sample_rate = 1e6, # Hz
+        pl_range = 0.5, # V
+        pl_coupling = "DC", # Coupling type for PL channel
+        trigger_threshold = 2.5, # V
+        downsample_ratio = 1000, # Downsample ratio for hardware downsampling [int]
+        trigger_source = "FREE", # Trigger source for the measurement [str] [FREE|CLOCK]
+        source_mode = "voltage", # Source mode for the SMU [str] [current|voltage]
+        coil_resistance = 27.0, # Resistance of the coil [float] [Ohm]
+        additional_resistance = 0.0, # Additional resistance in series with the coil [float] [Ohm]
+        force_sourcing = False, # Force sourcing mode for the SMU [bool]
+        smu_address = "GPIB0::24::INSTR", # Address of the SMU [str]
+        project_name = "mpl_CQDs_", # Project name for saving results [str]
+        fit = False,
+        fit_type = "single",
+        plot_pulses = False,
+        detrend  = False,
+        save  = True,
+        show_individual = True,
+        log_to_file = True,
+        log_to_stdout = True,
+        log_path = "",
+        clear_prev_log = True,
+        log_level = DEFAULT_LOGLEVEL,
+    )
