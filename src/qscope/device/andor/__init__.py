@@ -1,1 +1,1 @@
-from .andor import Sona42, Zyla42, Zyla55
+from .andor import Sona, Zyla42, Zyla55

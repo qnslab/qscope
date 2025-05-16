@@ -29,7 +29,7 @@ qscope.system : System configuration and management
 qscope.types.roles : Device role definitions
 """
 
-from .andor import Sona42, Zyla42, Zyla55
+from .andor import Sona, Zyla42, Zyla55
 from .device import Device
 from .magnet import APS100, Magnet
 from .mock import MockCamera, MockRFSource, MockSeqGen
@@ -58,7 +58,7 @@ __all__ = [
     "SynthNV",
     "PulseBlaster",
     "APS100",
-    "Sona42",
+    "Sona",
     "Zyla42",
     "Zyla55",
     "get_picoscope",
