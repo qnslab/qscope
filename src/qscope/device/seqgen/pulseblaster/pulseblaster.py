@@ -17,6 +17,7 @@ from .seq_cw_esr_long_exposure import seq_cw_esr_long_exposure
 from .seq_cw_esr import seq_cw_esr
 from .seq_p_esr import seq_p_esr
 from .seq_rabi import seq_rabi
+from .seq_rabi_w_extra_polarisation import seq_rabi_w_extra_polarisation
 from .seq_ramsey import seq_ramsey
 from .seq_spin_echo import seq_spin_echo
 from .seq_t1 import seq_t1

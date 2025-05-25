@@ -81,3 +81,54 @@ QScope documentation is organized according to the Diátaxis framework:
 
 - **[Hardware Support](https://qnslab.github.io/qscope/qscope/docs/supportedhardware.html)**: Documentation for the hardware devices supported.
 - **[MPL Documentation](https://qnslab.github.io/qscope/qscope/docs/mpl.html)**: The CLI MPL docs are separate for now, due to its different architecture.
+
+## Programming a new measurement
+In order to make a new measurement that is accessible through the client-server interface there is multiple locations in the code that need to be updated. 
+
+1. You need to programming the new pulse sequence itself. See examples under devices/seqgen/pulseblaster. 
+2. Once the sequence is programmed it need to be imported into the seqgen main script. For example with the pulseblaster, it needs to be imported into pulseblaster.py 
+```
+from .seq_cw_esr_long_exposure import seq_cw_esr_long_exposure
+from .seq_cw_esr import seq_cw_esr
+from .seq_p_esr import seq_p_esr
+from .seq_rabi import seq_rabi
+```
+3. Next a measurement needs to be defined. If the measurement type is similar in terms of setup and collection we can make a subclass of an already programmed measurement and change the configuration reference and import the new config file from types. e.g. 
+```
+from qscope.types import (
+    MAIN_CAMERA,
+    PRIMARY_RF,
+    SEQUENCE_GEN,
+    MeasurementFrame,
+    SGAndorCWESRConfig,
+    SGAndorCWESRLongExpConfig,
+    SGAndorPESRConfig,
+)
+
+@requires_hardware(
+    SGCameraSystem,
+    roles=(MAIN_CAMERA, SEQUENCE_GEN, PRIMARY_RF),
+)
+class SGAndorPESR(SGAndorESRBase):
+    """Pulsed ESR measurement using camera detection."""
+
+    _meas_config_type = SGAndorPESRConfig
+    meas_config: SGAndorPESRConfig
+```
+
+4. Make a new configuration in types/config.py  which defines the input variable for the pulse sequence that will be passed by the client-server connection. e.g. 
+```
+@dataclass(kw_only=True, repr=False)
+class SGAndorCWESRConfig(CameraConfig):
+    """Configuration for CW ESR measurements."""
+
+    meas_type: str = "SGAndorCWESR"
+    save_name: str = "ESR"
+    avg_per_point: int
+    fmod_freq: float
+    rf_pow: float
+    laser_delay: float
+```
+Make sure you add the new config name to the __inti__.py imports and add it to the __all__ list of commands at the end of that file.
+
+Now you should be able to run the measurement through a script. To add this to the gui itself requires more work to make sure the gui can also access all of the required files. 

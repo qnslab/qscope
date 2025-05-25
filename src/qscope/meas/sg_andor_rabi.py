@@ -4,7 +4,12 @@ import time
 from loguru import logger
 
 from qscope.system.system import SGCameraSystem
-from qscope.types import MAIN_CAMERA, PRIMARY_RF, SEQUENCE_GEN, SGAndorRabiConfig
+from qscope.types import (
+    MAIN_CAMERA, 
+    PRIMARY_RF, 
+    SEQUENCE_GEN, 
+    SGAndorRabiConfig, 
+    SGAndorRabiPolConfig)
 
 from .decorators import requires_hardware
 from .framegrabber import FrameGrabber
@@ -89,3 +94,15 @@ class SGAndorRabi(SGCameraMeasurement):
 
     def _single_meas_acq(self):
         self._single_acq(FrameGrabber)  # see _single_acq in `PulsedCameraMeasurement`
+
+
+
+@requires_hardware(
+    SGCameraSystem,
+    roles=(MAIN_CAMERA, SEQUENCE_GEN, PRIMARY_RF),
+)
+class SGAndorRabi_w_pol(SGAndorRabi):
+    """Pulsed ESR measurement using camera detection."""
+
+    _meas_config_type = SGAndorRabiPolConfig
+    meas_config: SGAndorRabiPolConfig

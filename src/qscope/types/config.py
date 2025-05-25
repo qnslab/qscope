@@ -122,8 +122,25 @@ class SGAndorRabiConfig(CameraConfig):
     save_name: str = "Rabi"
     avg_per_point: int
     laser_dur: float
+    laser_to_rf_delay: float
     rf_dur: float
     laser_delay: float
+    rf_delay: float
+    rf_pow: float
+    rf_freq: float
+
+@dataclass(kw_only=True, repr=False)
+class SGAndorRabiPolConfig(CameraConfig):
+    """Configuration for Rabi measurements."""
+
+    meas_type: str = "SGAndorRabi"
+    save_name: str = "Rabi"
+    avg_per_point: int
+    laser_dur: float
+    rf_dur: float
+    laser_delay: float
+    laser_to_rf_delay: float
+    rf_to_laser_delay: float
     rf_delay: float
     rf_pow: float
     rf_freq: float
@@ -138,6 +155,7 @@ class SGAndorT1Config(CameraConfig):
     laser_dur: float
     pi_dur: float
     laser_delay: float
+    laser_to_rf_delay: float
     rf_delay: float
     rf_pow: float
     rf_freq: float
