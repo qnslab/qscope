@@ -68,7 +68,7 @@ def seq_cw_esr(
     seqgen.start_programming()
 
     # Turn the laser on to initialize the system
-    seqgen.add_instruction(**{"active_chs": ["laser"], "dur": exp_t})
+    seqgen.add_instruction(**{"active_chs": ["laser", "rf_x"], "dur": 3*exp_t})
 
     for i in range(0, sweep_len):
         # Start the per point average loop if required
@@ -88,14 +88,15 @@ def seq_cw_esr(
             seqgen.add_kernel(pk_ref_trig, 1, const_chs=["rf_trig"])
 
         if avg_per_point > 1:
-            seqgen.add_instruction([], 12, loop="end", inst=inst)
+            seqgen.add_instruction(["laser"], 12, loop="end", inst=inst)
 
-        seqgen.add_instruction([], dur=trigger_time)
+        seqgen.add_instruction(["laser"], dur=trigger_time)
 
     # Turn the laser off and end sequence
-    seqgen.end_sequence(10e6)
+    seqgen.add_kernel(pk_sig, 1000)
+    seqgen.end_sequence(1e3)
 
     # End of pulse program
-    seqgen.stop_programming()
+    # seqgen.stop_programming()
 
     return pk_sig, pk_ref

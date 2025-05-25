@@ -204,7 +204,7 @@ class MainWindow(QMainWindow):
                 self.connection_manager.start_local_server(
                     system_name=system_name,
                     log_to_file=True,
-                    log_level="TRACE", # TODO use setting passed from cli
+                    log_level="INFO", # TODO use setting passed from cli
                 )
                 self.connection_manager.connect()
                 if self.connection_manager.client_sync.version != qscope.__version__:

@@ -229,10 +229,10 @@ class DifferentialLorentzian(FitModel):
             + c
         )
 
-    def get_fit_results_txt(self):
+    def get_fit_results_txt(self, total_counts, ith_loop=1):
         results = super().get_fit_results_txt()
         results += (
-            f"sens.: {self.sensitivity(self.fit_results[3]):0.3e} (T/sqrt(Hz)) \n"
+            f"sens.: {self.sensitivity(total_counts, ith_loop=ith_loop):0.3e} (T/sqrt(Hz)) \n"
         )
         return results
 
@@ -241,7 +241,7 @@ class DifferentialLorentzian(FitModel):
         self.fmod = 1
         return super().generate_test_data()
 
-    def sensitivity(self, pl):
+    def sensitivity(self, total_counts, ith_loop=1):
         # To get the sensitivity we need to know the absolute counts.
         # Thus we need to pass this value.
 
@@ -252,12 +252,26 @@ class DifferentialLorentzian(FitModel):
         muB = 9.274009994e-24
         ge = 2.0023
 
+
+        if self.normalisation == "sig - ref" or self.normalisation == "ref - sig":
+            # The amplitude is the difference between the peak value and the mean value
+            amp = total_counts/(amp* ith_loop)
+        elif self.normalisation == "norm sig / ref" or self.normalisation =="norm ref / sig":
+            # The amplitude is the ratio between the peak value and the mean value
+            amp = amp /100
+        elif self.normalisation == "intensity" or self.normalisation == "sig / ref" or self.normalisation == "ref / sig":
+            amp = amp
+        else:
+            # To catch the None case
+            amp = total_counts/(amp* ith_loop)
+
+
         eta = (
             (4 / (3 * np.sqrt(3)))
             * (planks_const / (ge * muB))
             * np.abs(width)
             * 1e6
-            / (np.abs(2 * amp) * np.sqrt(2 * pl))
+            / (np.abs(2 * amp) * np.sqrt(2 * total_counts))
         )
         return eta
 
@@ -307,10 +321,10 @@ class DifferentialGaussian(FitModel):
             + c
         )
 
-    def get_fit_results_txt(self):
+    def get_fit_results_txt(self, total_counts, ith_loop=1):
         results = super().get_fit_results_txt()
         results += (
-            f"sens.: {self.sensitivity(self.fit_results[3]):0.3e} (T/sqrt(Hz)) \n"
+            f"sens.: {self.sensitivity(total_counts, ith_loop=ith_loop):0.3e} (T/sqrt(Hz)) \n"
         )
         return results
 
@@ -319,7 +333,7 @@ class DifferentialGaussian(FitModel):
         self.fmod = 1
         return super().generate_test_data()
 
-    def sensitivity(self, pl):
+    def sensitivity(self, total_counts, ith_loop=1):
         # To get the sensitivity we need to know the absolute counts.
         # Thus we need to pass this value.
 
@@ -330,12 +344,25 @@ class DifferentialGaussian(FitModel):
         muB = 9.274009994e-24
         ge = 2.0023
 
+        if self.normalisation == "sig - ref" or self.normalisation == "ref - sig":
+            # The amplitude is the difference between the peak value and the mean value
+            amp = total_counts/(amp* ith_loop)
+        elif self.normalisation == "norm sig / ref" or self.normalisation =="norm ref / sig":
+            # The amplitude is the ratio between the peak value and the mean value
+            amp = amp /100
+        elif self.normalisation == "intensity" or self.normalisation == "sig / ref" or self.normalisation == "ref / sig":
+            amp = amp
+        else:
+            # To catch the None case
+            amp = total_counts/(amp* ith_loop)
+
+
         eta = (
             0.7
             * (planks_const / (ge * muB))
             * np.abs(width)
             * 1e6
-            / (np.abs(2 * amp) * np.sqrt(2 * pl))
+            / (np.abs(2 * amp) * np.sqrt(2 * total_counts))
         )
         return eta
 

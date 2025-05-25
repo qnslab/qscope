@@ -144,7 +144,7 @@ class MeasurementSettings:
         widget_type=WidgetType.FLOAT,
         default=200.0,
         min_value=0.1,
-        max_value=1000.0,
+        max_value=10000.0,
         transform=lambda x: round(x, 2),
     )
 
