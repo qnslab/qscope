@@ -809,7 +809,7 @@ def plot_mpl_results(
     ax3_pl.set_ylim(contrast_min - padding, contrast_max + padding)
 
     # Set primary y-axis limits and labels
-    ax3.set_ylim(-0.1, 1.1)
+    # ax3.set_ylim(-0.1, 1.1)
     ax3.set_ylabel("Gate")
     ax3.set_xlabel("Time (s)")
 
