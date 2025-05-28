@@ -18,6 +18,7 @@ def seq_p_esr(
     rf_dur: float = 100e-9,
     laser_delay: float = 0,
     laser_to_rf_delay: float = 300e-9,
+    rf_to_laser_delay: float = 0,
     rf_delay: float = 0,
     ref_mode: str = "no_rf",
     exp_t: float = 30e-3,
@@ -53,6 +54,7 @@ def seq_p_esr(
     pk_sig.add_pulse(["laser"], 0, laser_dur, ch_delay=laser_delay)
     pk_sig.append_delay(laser_to_rf_delay)
     pk_sig.append_pulse(["rf_x"], rf_dur, ch_delay=rf_delay)
+    pk_sig.append_delay(rf_to_laser_delay)
     pk_sig.finish_kernel()
 
     # create the REFERENCE kernel
@@ -61,6 +63,7 @@ def seq_p_esr(
     pk_ref.add_pulse(["laser"], 0, laser_dur, ch_delay=laser_delay)
     pk_ref.append_delay(laser_to_rf_delay)
     pk_ref.append_delay(rf_dur)
+    pk_ref.append_delay(rf_to_laser_delay)
     pk_ref.finish_kernel()
 
     # Get the base kernel time

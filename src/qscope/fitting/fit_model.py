@@ -86,10 +86,10 @@ class FitModel:
         for name, val, error, unit in zip(
             self.param_names, self.fit_results, self.fit_error, self.param_units
         ):
-            if name == "position":
-                results += f"{name}: {val:0.3f} ± {error:0.3f} {unit}\n"
+            if name == "position" or name == "width":
+                results += f"{name}: {val:0.2f} ± {error:0.2f} {unit}\n"
             else:
-                results += f"{name}: {val:0.5e} ± {error:0.5e} {unit}\n"
+                results += f"{name}: {val:0.2e} ± {error:0.2e} {unit}\n"
         return results
 
     def print_results(self):

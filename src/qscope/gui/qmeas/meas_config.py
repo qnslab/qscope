@@ -69,6 +69,7 @@ def get_measurement_config(
         "laser_delay": gui_handle.meas_opts.laser_delay_input.value() * 1e-9,
         "laser_dur": gui_handle.meas_opts.laser_dur_input.value() * 1e-9,
         "laser_to_rf_delay": 0,  # FIXME
+        "rf_to_laser_delay": 0,  # FIXME
         # RF settings
         "rf_pow": gui_handle.meas_opts.rf_power_input.value(),
         "rf_freq": gui_handle.meas_opts.rf_freq_input.value(),

@@ -8,8 +8,7 @@ from qscope.types import (
     MAIN_CAMERA, 
     PRIMARY_RF, 
     SEQUENCE_GEN, 
-    SGAndorRabiConfig, 
-    SGAndorRabiPolConfig)
+    SGAndorRabiConfig)
 
 from .decorators import requires_hardware
 from .framegrabber import FrameGrabber
@@ -97,12 +96,12 @@ class SGAndorRabi(SGCameraMeasurement):
 
 
 
-@requires_hardware(
-    SGCameraSystem,
-    roles=(MAIN_CAMERA, SEQUENCE_GEN, PRIMARY_RF),
-)
-class SGAndorRabi_w_pol(SGAndorRabi):
-    """Pulsed ESR measurement using camera detection."""
+# @requires_hardware(
+#     SGCameraSystem,
+#     roles=(MAIN_CAMERA, SEQUENCE_GEN, PRIMARY_RF),
+# )
+# class SGAndorRabi_w_pol(SGAndorRabi):
+#     """Pulsed ESR measurement using camera detection."""
 
-    _meas_config_type = SGAndorRabiPolConfig
-    meas_config: SGAndorRabiPolConfig
+#     _meas_config_type = SGAndorRabiPolConfig
+#     meas_config: SGAndorRabiPolConfig
