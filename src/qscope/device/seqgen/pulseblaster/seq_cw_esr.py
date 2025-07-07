@@ -97,6 +97,6 @@ def seq_cw_esr(
     seqgen.end_sequence(1e3)
 
     # End of pulse program
-    # seqgen.stop_programming()
+    seqgen.stop_programming()
 
     return pk_sig, pk_ref

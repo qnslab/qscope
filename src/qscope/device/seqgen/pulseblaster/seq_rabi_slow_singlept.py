@@ -12,13 +12,14 @@ if typing.TYPE_CHECKING:
 from qscope.device.seqgen.pulse_kernel import PulseKernel
 
 
-def seq_rabi(
+def seq_rabi_w_extra_polarisation(
     seqgen: PulseBlaster,
     sequence_params: dict[str, float],
     sweep_x: np.ndarray = None,
     laser_dur: float = 3e-6,
     laser_delay: float = 0,
     laser_to_rf_delay: float = 200e-9,
+    rf_to_laser_delay: float = 0,
     rf_delay: float = 0,
     ref_mode: str = "no_rf",
     exp_t: float = 30e-3,
@@ -55,22 +56,26 @@ def seq_rabi(
     # Make the time list a list of integers
     time_list = [int(i) for i in time_list.tolist()]
 
+
+    rf_to_laser_delay = exp_t - (laser_to_rf_delay + rf_delay) #filling the exposure
     # --- SIGNAL KERNEL ---
     # initialise the pulse series object
     pk_sig = PulseKernel(seqgen.ch_defs)
     # Program the kernel pulses
-    pk_sig.add_pulse(["laser"], 0, laser_dur, ch_delay=laser_delay)
-    pk_sig.append_delay(laser_to_rf_delay)
+    pk_ref.add_pulse([], 0, laser_to_rf_delay, ch_delay=laser_delay) #we're not including the laser so just program delay
+    #pk_sig.append_delay(laser_to_rf_delay)
     pk_sig.append_pulse(["rf_x"], 12, ch_delay=rf_delay, var_dur=True)
+    pk_sig.append_delay(rf_to_laser_delay)
     pk_sig.finish_kernel()
 
     # --- REFERENCE KERNEL ---
     # Program the kernel pulses
     pk_ref = PulseKernel(seqgen.ch_defs)
     # Program the kernel pulses
-    pk_ref.add_pulse(["laser"], 0, laser_dur, ch_delay=laser_delay)
-    pk_ref.append_delay(laser_to_rf_delay)
+    pk_ref.add_pulse([], 0, laser_to_rf_delay, ch_delay=laser_delay) #we're not including the laser so just program delay
+    #pk_ref.append_delay(laser_to_rf_delay)
     pk_ref.append_delay(12, var_dur=True)
+    pk_sig.append_delay(rf_to_laser_delay)
     pk_ref.finish_kernel()
 
     # Get the base kernel time
@@ -100,17 +105,21 @@ def seq_rabi(
     # --- PROGRAMMING ---
     seqgen.start_programming()
     # Initial laser pulse
-    seqgen.add_instruction(**{"active_chs": ["laser"], "dur": 10 * exp_t})
+    seqgen.add_instruction(**{"active_chs": ["laser"], "dur": 2 * exp_t})
 
     for tau in time_list:
+        
         if avg_per_point > 1:
             # Make a trigger loop for the averaging that is as short as possible
             inst = seqgen.add_instruction([], 12, loop="start", num=avg_per_point)
         # update the time in the kernel
         pk_sig.update_var_durs(tau)
 
+        
+
+
         # Add the SIG kernel to the sequence generator
-        seqgen.add_kernel(pk_sig, num_loops, const_chs=["camera"])
+        seqgen.add_kernel(pk_sig, 1, const_chs=[]) # ["camera"]) turing off camera, 1 iteration only
 
         # Recalculate the trigger loops to maintain the same trigger time.
         # base_time = pk_sig.get_end_time()
@@ -118,7 +127,8 @@ def seq_rabi(
         # # trigger_loops = int(trigger_loops * 1.1)
         # logger.info( f"\ntau: {tau} ns"
         #     + f"\nBase time: {base_time} ns")
-        seqgen.add_kernel(pk_sig, trigger_loops, const_chs=[])
+        seqgen.add_instruction(**{"active_chs": ["laser","camera"], "dur": exp_t})
+        #seqgen.add_kernel(pk_sig, trigger_loops, const_chs=[])
 
         # Reference pulse sequence
         if b_ref:
@@ -126,15 +136,16 @@ def seq_rabi(
             pk_ref.update_var_durs(tau)
 
             # Add the REF kernel to the sequence generator
-            seqgen.add_kernel(pk_ref, num_loops, const_chs=["camera"])
-            seqgen.add_kernel(pk_ref, trigger_loops, const_chs=[])
+            seqgen.add_kernel(pk_ref, 1, const_chs=[])
+            #seqgen.add_kernel(pk_ref, trigger_loops, const_chs=[])
+            seqgen.add_instruction(**{"active_chs": ["laser","camera"], "dur": exp_t})
+
 
             if avg_per_point > 1:
                 seqgen.add_instruction([], 12, loop="end", inst=inst)
 
     # seqgen.add_instruction([], trigger_time)
 
-    # seqgen.add_kernel(pk_sig, 100*num_loops)
     # Turn the laser off and end sequence
     seqgen.end_sequence(1e6)
 

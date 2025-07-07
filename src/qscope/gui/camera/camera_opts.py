@@ -55,6 +55,8 @@ class CameraOpts(QGroupBox):
         self.cam_settings = GUISettings(self, "CAMERA OPTS")
         self.cam_settings.load_prev_state()
 
+        self.b_video_running = False  # Flag to indicate if the video is running
+
     def init_ui(self):
         """Initialize the UI components."""
         self.start_video_button = QPushButton(self.START_VIDEO_LABEL)
@@ -251,12 +253,18 @@ class CameraOpts(QGroupBox):
             self.start_video_button.setChecked(False)
             self.start_video_button.setStyleSheet(self.BUTTON_COLOR_NONE)
             self.show_warning_message("Camera is locked, cannot start video feed")
-
+        if self.b_video_running:
+            self.start_video_button.setChecked(False)
+            self.start_video_button.setStyleSheet(self.BUTTON_COLOR_NONE)
+            self.show_warning_message("Video feed is already running")
+            return
+        
         self.parent.timetrace_data = []
         self.parent.timetrace_time = []
         self.set_camera_settings()
         try:
             self.parent.connection_manager.camera_start_video()
+            self.b_video_running = True
         except Exception as e:
             self.start_video_button.setChecked(False)
             self.start_video_button.setStyleSheet(self.BUTTON_COLOR_NONE)
@@ -271,8 +279,11 @@ class CameraOpts(QGroupBox):
             self.stop_video_button.setChecked(False)
             self.show_warning_message("Not connected to the server")
             return
+        
+        
         self.stop_video_button.setStyleSheet(self.BUTTON_COLOR_BLUE)
         self.parent.connection_manager.camera_stop_video()
+        self.b_video_running = False
         logger.debug("Video stopped")
         self.start_video_button.setChecked(False)
         self.stop_video_button.setChecked(False)
